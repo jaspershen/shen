@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on Shen</title>
+    <link>/tags/github/</link>
+    <description>Recent content in Github on Shen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Xiaotao Shen@2019</copyright>
+    
+	<atom:link href="/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用Github和Hexo建独立博客</title>
+      <link>/post/2017-09-09-github-blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-09-09-github-blog/</guid>
+      <description>参考了一篇非常好的文章，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。 1. Hexo介绍 Hexo是基于Node</description>
+    </item>
+    
+  </channel>
+</rss>

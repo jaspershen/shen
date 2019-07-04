@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Xiaotao Shen">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Ⅰ数据准备 MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(c">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/2017-09-09-metdna-blog/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.4bbed62cf73fb7dfc40b05d598386f11.css">
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/2017-09-09-metdna-blog/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@JasperShen1990">
+  <meta property="twitter:creator" content="@JasperShen1990">
+  
+  <meta property="og:site_name" content="Shen">
+  <meta property="og:url" content="/post/2017-09-09-metdna-blog/">
+  <meta property="og:title" content="MetDNA instruction | Shen">
+  <meta property="og:description" content="Ⅰ数据准备 MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(c"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  
+  
+  
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#2962ff",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#2962ff"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "/privacy/"
+      }
+    })});
+</script>
+
+
+  
+
+  <title>MetDNA instruction | Shen</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"><img src="/img/shen2.jpg" alt="Shen"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about">
+            
+            <span>ABOUT ME</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience">
+            
+            <span>EDUCATION & EXPERIENCE</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#accomplishments">
+            
+            <span>HONORS AND AWARDS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts">
+            
+            <span>POSTS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects">
+            
+            <span>PROJECTS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured">
+            
+            <span>PUBLICATIONS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/presentations/">
+            
+            <span>PRESENTATIONS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact">
+            
+            <span>CONTACTS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">MetDNA instruction</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="" itemprop="datePublished">
+<meta content="" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jan 1, 0001</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/2017-09-09-metdna-blog/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/r-software/">R software</a>, <a href="/categories/metabolomics/">Metabolomics</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=&amp;url="
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u="
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=&amp;body=">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><img src="logo.png" alt="" /></p>
+
+<hr />
+
+<h3 id="ⅰ数据准备"><strong>Ⅰ数据准备</strong></h3>
+
+<h4 id="metdna需要准备的数据包括一级数据peak-table-csv格式-二级数据-mgf格式-和样品信息sample-info-csv格式-点击下载-正离子demo数据-https-github-com-jaspershen-metdna-blob-master-pos-rar-和-负离子demo数据-https-github-com-jaspershen-metdna-blob-master-neg-rar">MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(csv格式)。点击下载<a href="https://github.com/jaspershen/MetDNA/blob/master/pos.rar" target="_blank">正离子demo数据</a>和<a href="https://github.com/jaspershen/MetDNA/blob/master/neg.rar" target="_blank">负离子demo数据</a>。</h4>
+
+<h4 id="table-1-demo数据信息"><strong>Table 1: demo数据信息</strong></h4>
+
+<table>
+<thead>
+<tr>
+<th>组别</th>
+<th>个数</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>QC</td>
+<td>8</td>
+<td>QC</td>
+</tr>
+
+<tr>
+<td>W03</td>
+<td>10</td>
+<td>野生型3天</td>
+</tr>
+
+<tr>
+<td>W30</td>
+<td>10</td>
+<td>野生型30天</td>
+</tr>
+
+<tr>
+<td>E03</td>
+<td>10</td>
+<td>突变型E3天</td>
+</tr>
+
+<tr>
+<td>E30</td>
+<td>10</td>
+<td>突变型E30天</td>
+</tr>
+
+<tr>
+<td>P03</td>
+<td>10</td>
+<td>突变型P3天</td>
+</tr>
+
+<tr>
+<td>P30</td>
+<td>10</td>
+<td>突变型P30天</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="1-一级数据"><strong>1. 一级数据</strong></h3>
+
+<h4 id="一级数据可以是使用xcms-mzmine-ms-dial或者其他软件处理之后的数据-第一列为代谢物峰的名字-name-第二列为-mz-第三列为保留时间-rt-且单位必须为秒-其他为样品的峰强度">一级数据可以是使用XCMS，MZmine，MS-DIAL或者其他软件处理之后的数据。第一列为代谢物峰的名字，&rdquo;name&rdquo;，第二列为&rdquo;mz&rdquo;，第三列为保留时间(RT)，<strong>且单位必须为秒</strong>，其他为样品的峰强度。</h4>
+
+<p><img src="data.example.png" alt="**Figure 1: 一级数据peak table格式示例**" /></p>
+
+<h3 id="2-二级数据"><strong>2. 二级数据</strong></h3>
+
+<h4 id="二级质谱原始数据可以是使用qc样品采集的dda或者targeted-ms-ms数据-对于dda数据来说-也可以是分段采集的二级数据-质谱原始二级数据需要使用proteowizard软件转为mgf格式-转换时参数设置参考下图-二级数据最多不能超过十个">二级质谱原始数据可以是使用QC样品采集的DDA或者targeted MS/MS数据。对于DDA数据来说，也可以是分段采集的二级数据。质谱原始二级数据需要使用ProteoWizard软件转为mgf格式，转换时参数设置参考下图。二级数据最多不能超过十个。</h4>
+
+<p><a href="ProteoWizard.png" target="_blank"><strong>Figure 2: ProteoWizard参数设置</strong></a></p>
+
+<h3 id="3-样品信息"><strong>3. 样品信息</strong></h3>
+
+<h4 id="样品信息是样品的分组信息-第一列是样品名-sample-name-第二列是样品的分组信息-group">样品信息是样品的分组信息。第一列是样品名，&rdquo;sample.name&rdquo;，第二列是样品的分组信息，&rdquo;group&rdquo;。</h4>
+
+<p><img src="sample.info示例.png" alt="**Figure 3：样品信息示例**" /></p>
+
+<hr />
+
+<h3 id="ⅱ-数据整理"><strong>Ⅱ 数据整理</strong></h3>
+
+<h4 id="如果是正离子数据-请建立一个新的文件夹-命名为-pos-如果是负离子数据-请建立一个新的文件夹命名为-neg-然后将一级数据-二级数据和样品信息放置于此文件夹下-并将该文件夹设置为工作路径-现在-metdna-部署在小服务器上-因此可以将数据放在小服务器中-labdata-例如-v-workreport-申小涛-demo-fly-pos">如果是正离子数据，请建立一个新的文件夹，命名为&rdquo;POS&rdquo;，如果是负离子数据，请建立一个新的文件夹命名为&rdquo;NEG&rdquo;，然后将一级数据，二级数据和样品信息放置于此文件夹下。并将该文件夹设置为工作路径。现在*MetDNA*部署在小服务器上，因此可以将数据放在小服务器中(labdata)。例如&rdquo;V:/workreport/申小涛/demo/fly/POS&rdquo;。</h4>
+
+<p><img src="数据整理.png" alt="**Figure 4: 将所需数据放置在文件夹中**" /></p>
+
+<h4 id="设置工作路径">设置工作路径。</h4>
+
+<pre><code>setwd(&quot;/mnt/data/samba/labdata/workreport/申小涛/demo/fly/POS&quot;)
+library(MetDNA)
+</code></pre>
+
+<hr />
+
+<h3 id="ⅲ-数据处理"><strong>Ⅲ 数据处理</strong></h3>
+
+<h3 id="1-只对正离子或者负离子处理"><strong>1. 只对正离子或者负离子处理</strong></h3>
+
+<h4 id="所有的步骤可以使用一个函数-metdna-全部完成">所有的步骤可以使用一个函数*MetDNA*全部完成。</h4>
+
+<h4 id="运行函数-metdna">运行函数*MetDNA*。</h4>
+
+<pre><code>MetDNA(ms1.file = &quot;data.csv&quot;,
+       polarity = &quot;positive&quot;,
+       column = &quot;hilic&quot;,
+       ce = &quot;30&quot;,
+       prefer.adduct = &quot;M+H&quot;,
+       use.default.md = TRUE,
+       threads = 3,
+       group = c(&quot;W03&quot;, &quot;W30&quot;),
+       uni.test = &quot;t&quot;,
+       correct = TRUE,
+       p.cutoff = 0.01,
+       species = &quot;dme&quot;)
+</code></pre>
+
+<blockquote>
+<p><strong>参数含义如下：</strong></p>
+</blockquote>
+
+<ul>
+<li>#### ms1.file：一级数据的名字。</li>
+<li>#### polarity：数据采集极性，&rdquo;positive&rdquo;或者&rdquo;negative&rdquo;。</li>
+<li>#### column：使用的柱子类型，&rdquo;hilic&rdquo;或者&rdquo;rp&rdquo;。</li>
+<li>#### ce：二级采集的碰撞能量，支持&rdquo;10&rdquo;，&rdquo;15&rdquo;，&rdquo;20&rdquo;，&rdquo;25&rdquo;，&rdquo;30&rdquo;，&rdquo;35&rdquo;，&rdquo;35,15&rdquo; (35±15)，&rdquo;40&rdquo;， &ldquo;45&rdquo;，&rdquo;50&rdquo;，&rdquo;55&rdquo;，&rdquo;60&rdquo;，&rdquo;65&rdquo;，&rdquo;70&rdquo;。</li>
+<li>#### prefer.adduct：使用那些加合物形式的注释用于RT预测模型的建立，默认使用所有的注释，推荐正离子模式下使用&rdquo;M+H&rdquo;，负离子模式下使用&rdquo;M-H&rdquo;。</li>
+<li>#### use.default.md：进行保留时间预测模型建立时，是否使用默认的分子描述符，如果设置为FALSE，则会根据你的数据自动选择分子描述符。</li>
+<li>#### threads：使用线程数，默认为3，可以根据电脑本身配置进行修改。</li>
+<li>#### group：要对哪些分组的样品进行分析，<strong>注意</strong>，计算fold change时，使用后面的样品除以前面的样品。</li>
+<li>#### uni.test：单变量分析的方法，&rdquo;t&rdquo;，Student t test；&rdquo;wilcox&rdquo;，Wilcox test。</li>
+<li>#### correct：是否需要对p值进行FDR校正。</li>
+<li>#### p.cutoff：选择dysregulated peak时的p值cutoff。</li>
+<li>#### species：所研究样品的物种来源，&rdquo;dme&rdquo;，果蝇；&rdquo;hsa&rdquo;，人类；&rdquo;mmu&rdquo;，小鼠；&rdquo;rat&rdquo;，大鼠，&rdquo;bta&rdquo;，牛；&rdquo;gga&rdquo;，Gallus gallus (鸡)；&rdquo;dre&rdquo;，Danio rerio (斑马鱼)；&rdquo;cel&rdquo;，Caenorharomyces elegans (线虫)；&rdquo;sce&rdquo;，Saccharomyces cerevisaiae (酵母)； &ldquo;ath&rdquo;，Arabidopsis thaliana (拟南芥)；&rdquo;smm&rdquo;，Schistosoma mansoni；&rdquo;pfa&rdquo;，Plasmodum falciparum 3D7；&rdquo;tbr&rdquo;，Trypanosoma brucei；&rdquo;eco&rdquo;， Escherichia coli K-12 MG1655(大肠杆菌)；&rdquo;ppu&rdquo;，Pseudomonas putida KT2440；&rdquo;syf&rdquo;，Synechococcus elongatus。</li>
+</ul>
+
+<h3 id="2-对正负数据合并分析"><strong>2. 对正负数据合并分析</strong></h3>
+
+<h4 id="正负离子分别处理之后-可以使用函数-metmodule2-函数合并正负离子模式的鉴定结果-进行dysregulated-network-analysis">正负离子分别处理之后，可以使用函数*metModule2*函数合并正负离子模式的鉴定结果，进行dysregulated network analysis。</h4>
+
+<h4 id="运行函数-metmodule2">运行函数<em>MetModule2</em></h4>
+
+<pre><code>metModule2(group = c(&quot;W03&quot;, &quot;W30&quot;),
+           uni.test = &quot;t&quot;,
+           column = &quot;hilic&quot;,
+           correct = TRUE,
+           p.cutoff = 0.01,
+           threads = 3,
+           species = &quot;dme&quot;)
+</code></pre>
+
+<blockquote>
+<p><strong>参数含义如下：</strong></p>
+</blockquote>
+
+<ul>
+<li>#### group：要对哪些分组的样品进行分析，<strong>注意</strong>，计算fold change时，使用后面的样品除以前面的样品。</li>
+<li>#### uni.test：单变量分析的方法，&rdquo;t&rdquo;，Student t test；&rdquo;wilcox&rdquo;，Wilcox test。</li>
+<li>#### column：使用的柱子类型，&rdquo;hilic&rdquo;或者&rdquo;rp&rdquo;。</li>
+<li>#### correct：是否需要对p值进行FDR校正。</li>
+<li>#### p.cutoff：选择dysregulated peak时的p值cutoff。</li>
+<li>#### threads：使用线程数，默认为3，可以根据电脑本身配置进行修改。</li>
+<li>#### species：所研究样品的物种来源，&rdquo;dme&rdquo;，果蝇；&rdquo;hsa&rdquo;，人类；&rdquo;mmu&rdquo;，小鼠；&rdquo;rat&rdquo;，大鼠，&rdquo;bta&rdquo;，牛；&rdquo;gga&rdquo;，Gallus gallus (鸡)；&rdquo;dre&rdquo;，Danio rerio (斑马鱼)；&rdquo;cel&rdquo;，Caenorharomyces elegans (线虫)；&rdquo;sce&rdquo;，Saccharomyces cerevisaiae (酵母)； &ldquo;ath&rdquo;，Arabidopsis thaliana (拟南芥)；&rdquo;smm&rdquo;，Schistosoma mansoni；&rdquo;pfa&rdquo;，Plasmodum falciparum 3D7；&rdquo;tbr&rdquo;，Trypanosoma brucei；&rdquo;eco&rdquo;， Escherichia coli K-12 MG1655(大肠杆菌)；&rdquo;ppu&rdquo;，Pseudomonas putida KT2440；&rdquo;syf&rdquo;，Synechococcus elongatus。</li>
+</ul>
+
+<h4 id="运行函数-analysisreport-得到分析报告">运行函数*analysisReport*得到分析报告。</h4>
+
+<pre><code>analysisReport(polarity = &quot;both&quot;)
+</code></pre>
+
+<hr />
+
+<h3 id="ⅳ-运行结果"><strong>Ⅳ 运行结果</strong></h3>
+
+<h3 id="1-正离子或者负离子的运行结果"><strong>1. 正离子或者负离子的运行结果</strong></h3>
+
+<h4 id="metdna-函数运行结束之后-所有的运行结果都存放在设置的路径中-包含二级谱图匹配结果-mrn注释结果-dysregulated-network分析结果以及分析报告-如图5所示"><strong>MetDNA</strong>函数运行结束之后，所有的运行结果都存放在设置的路径中，包含二级谱图匹配结果，MRN注释结果，dysregulated network分析结果以及分析报告。如图5所示。</h4>
+
+<p><img src="analysis.result.png" alt="**Figure 5: 运行结果**" /></p>
+
+<h3 id="1-metdna-parameters-csv"><strong>(1) MetDNA.parameters.csv</strong></h3>
+
+<h4 id="记录此次运行所使用的参数">记录此次运行所使用的参数。</h4>
+
+<p><img src="MetDNA.parameters.png" alt="**Figure 6: 参数记录**" /></p>
+
+<h3 id="2-ms2-match-result-pos"><strong>(2) ms2_match_result_POS</strong></h3>
+
+<h4 id="二级谱图匹配结果-包括一个csv文件-ms2-match-annotation-result-csv和一个文件夹-ms2-match-spectra-ms2-macth-annotation-result-csv是二级谱图匹配之后的结果-与metanalyzer处理之后的结果相同-ms2-match-spectra文件夹中包含了所有二级匹配图-figure-6">二级谱图匹配结果。包括一个csv文件，ms2.match.annotation.result.csv和一个文件夹，MS2_match_spectra。ms2.macth.annotation.result.csv是二级谱图匹配之后的结果，与MetAnalyzer处理之后的结果相同；MS2_match_spectra文件夹中包含了所有二级匹配图(Figure 6)。</h4>
+
+<p><img src="二级匹配图.png" alt="**Figure 7: 二级谱图匹配图**" /></p>
+
+<h3 id="3-mrn-annotation-result-pos"><strong>(3) MRN_annotation_result_POS</strong></h3>
+
+<h4 id="基于metabolic-reacion-network注释结果-包括两个csv文件-metabm-parameters-csv和mrn-annotation-result-csv-mrn-annotation-result-csv是使用mrn注释结果-figure-8">基于metabolic reacion network注释结果。包括两个csv文件，metABM.parameters.csv和MRN.annotation.result.csv。MRN.annotation.result.csv是使用MRN注释结果(Figure 8)。</h4>
+
+<p><img src="MRN.annotation.result.png" alt="**Figure 8: MRN annotation result**" /></p>
+
+<h4 id="其中">其中：</h4>
+
+<ul>
+<li>#### annotation.from.ID：该peak的该注释来自于哪个metabolite(ID);</li>
+<li>#### annotation.from.peak：该peak的该注释来自于哪个peak;</li>
+<li>#### ID：注释代谢物结果的KEGG ID;</li>
+<li>#### compound.name：注释结果的名字；</li>
+<li>#### isotope：同位素信息；</li>
+<li>#### adduct：加合物信息；</li>
+<li>#### Formula：化学结构式；</li>
+<li>#### score：注释打分；</li>
+<li>#### peak.group：peak group；</li>
+<li>#### confidence：对注释的peak group打分。</li>
+</ul>
+
+<h3 id="4-dysregulated-network-analsysi-result-pos"><strong>(4) Dysregulated_network_analsysi_result_POS</strong></h3>
+
+<h4 id="dysregulated-network分析的结果-其中包括一个pdf文件-volcano-plot-pdf-figure-9-两个csv文件-metmodule-parameters-csv和dna-annotation-result-csv以及两个文件夹-module-information-figure-10-和pathway-inforamtion-figure-11">Dysregulated network分析的结果。其中包括一个pdf文件，volcano.plot.pdf(Figure: 9)，两个csv文件，metModule.parameters.csv和DNA.annotation.result.csv以及两个文件夹，module_information(Figure 10)和pathway_inforamtion (Figure 11)。</h4>
+
+<h4 id="1-volcano-plot是选取差异代谢物峰的火山图">1) volcano.plot是选取差异代谢物峰的火山图。</h4>
+
+<p><img src="volcano.plot.png" alt="**Figure 9: Volcano plot**" /></p>
+
+<h4 id="2-dna-annotation-result-csv是通过dysregulated-network对注释结果进行筛选以及kegg-database注释之后的注释结果">2) DNA.annotation.result.csv是通过dysregulated network对注释结果进行筛选以及KEGG database注释之后的注释结果。</h4>
+
+<h4 id="3-module-information文件夹中包含了dysregulated-module的分析结果-其中module-result-csv是module的信息-module-overview-pdf是module结果的总览-figure-10-module-heatmap-pdf是对module进行定量分析之后的热图-figure-11-boxplot文件夹中包含了module在两组间的定量结果-figure-12-module-mse-analysis文件夹中包含了对每个module进行功能注释-msea-的结果-figure-13">3) module_information文件夹中包含了dysregulated module的分析结果。其中module.result.csv是module的信息。module.overview.pdf是module结果的总览(Figure 10)。module.heatmap.pdf是对module进行定量分析之后的热图(Figure 11)。boxplot文件夹中包含了module在两组间的定量结果(Figure 12)。Module_MSE analysis文件夹中包含了对每个module进行功能注释(MSEA)的结果(Figure 13)。</h4>
+
+<p><img src="module.overview.png" alt="**Figure 10: Module overview**" /></p>
+
+<p><img src="module.heatmap.png" alt="**Figure 11: Module heatmap**" /></p>
+
+<p><img src="module1.boxplot.png" alt="**Figure 12: Module boxplot**" /></p>
+
+<p><img src="module1.MSEA.png" alt="**Figure 13: Module MSEA result**" /></p>
+
+<h4 id="3-pathway-information文件夹中包含了pathway的分析结果-figure-14">3) pathway_information文件夹中包含了pathway的分析结果(Figure 14)。</h4>
+
+<p><img src="pathway.information.png" alt="**Figure 14: Pathway information**" /></p>
+
+<h4 id="其中-1">其中：</h4>
+
+<ul>
+<li>#### boxplot：该文件夹中含有每个pathway的定量信息;</li>
+<li>#### dysregulated.network.overview：该图表示dysregulated network的pathway分析结果;</li>
+<li>#### dysregulated.netwrok.MSEA.csv：dysregulated network的MSEA分析结果;</li>
+<li>#### dysregulated.netwrok.MSEA.pdf：dysregulated network的MSEA分析结果;</li>
+<li>#### dysregulated.networks.for.cytoscape.txt：用于cytoscape作图的数据；</li>
+<li>#### dysregulated.networks.attribute.txt：用于cytoscape作图的节点属性数据；</li>
+<li>#### pathway.heatmap.pdf：dysregulated network的pathway定量的heatmap。</li>
+</ul>
+
+<h3 id="5-analysis-report-pos"><strong>(5) Analysis_report_POS</strong></h3>
+
+<h4 id="对数据处理分析结果的总结-输出的结果存放在analysis-report文件夹内-包括一份html格式的-分析报告-http-rpubs-com-jasper-metdna-analysis-report">对数据处理分析结果的总结。输出的结果存放在Analysis_report文件夹内。包括一份html格式的<a href="http://rpubs.com/Jasper/metdna_analysis_report" target="_blank">分析报告</a>。</h4>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/chinese/">Chinese</a>
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/tags/metabolomics/">Metabolomics</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu1e2e5ea831a1ccb0887a87d1899b0c15_179284_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen</a></h5>
+      <h6 class="card-subtitle">Postdoctoral Research Fellow at Schoold of Medicine</h6>
+      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://scholar.google.co.uk/citations?hl=en&amp;user=3TK9yz8AAAAJ" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/jaspershen" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/2017-09-09-github-blog/">使用Github和Hexo建独立博客</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shenxt" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    Xiaotao Shen@2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//shenxt.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.3258b3a711acd6208568ec000de4beec.js"></script>
+
+  </body>
+</html>
+

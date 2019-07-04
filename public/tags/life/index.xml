@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>life on Shen</title>
+    <link>/tags/life/</link>
+    <description>Recent content in life on Shen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Xiaotao Shen@2019</copyright>
+    
+	<atom:link href="/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017年的第一篇博客</title>
+      <link>/post/2017-02-12-firstblog2017/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-02-12-firstblog2017/</guid>
+      <description>我的2016年 现在想想，其实整个2016年真的是没什么收获，科研上没什么进展，技能上也没有什么提升，原本准备要学习的python，也在1-2</description>
+    </item>
+    
+  </channel>
+</rss>
