@@ -9,18 +9,18 @@
   weight = 10
   
   [[main]]
-  name = "EDUCATION & EXPERIENCE"
+  name = "EDUCATION&EXPERIENCE"
   url = "#experience"
   weight = 20
   
   [[main]]
-  name = "HONORS AND AWARDS"
+  name = "HONORS&AWARDS"
   url = "#accomplishments"
   weight = 30
 
 
 [[main]]
-  name = "POSTS"
+  name = "BLOG"
   url = "#posts"
   weight = 40
 
@@ -31,7 +31,7 @@
 
 [[main]]
   name = "PUBLICATIONS"
-  url = "#featured"
+  url = "#publications"
   weight = 60
 
 [[main]]

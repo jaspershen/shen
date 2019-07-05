@@ -2,21 +2,6 @@
 authors:
 - admin
 bio: Metabolomics, Multi-omics, Bioinformatics, Healthcare.
-education:
-  courses:
-  - course: PhD
-    institution: Chinese Academy of Sciences
-    year: 2018
-  - course: BSc
-    institution: Inner Mongolia University
-    year: 2013
-email: "shenxt1990@163.com"
-interests:
-- Metabolomics
-- R Programming
-- Multi-omics
-- Healthcare
-- System biology
 name: Xiaotao Shen
 organizations:
 - name: Stanford University
