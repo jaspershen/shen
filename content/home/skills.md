@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 30  # Order that this section will appear.
 
 title = "SKILLS"
-subtitle = ""
+subtitle = "Technology is the tool, no the aim."
 
 # Showcase personal skills or business features.
 # 
@@ -43,6 +43,12 @@ subtitle = ""
   icon = "camera-retro"
   icon_pack = "fas"
   name = "Photography"
-  description = "10%"
+  description = "50%"
+  
+[[feature]]
+  icon = "swimmer"
+  icon_pack = "fas"
+  name = "Swimming"
+  description = "80%"
 
 +++

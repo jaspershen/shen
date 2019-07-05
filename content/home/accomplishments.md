@@ -18,34 +18,79 @@ date_format = "Jan 2006"
 #   Leave other parameters empty if not required.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
-[[item]]
-  organization = "Coursera"
-  organization_url = "https://www.coursera.org"
-  title = "Neural Networks and Deep Learning"
-  url = ""
-  certificate_url = "https://www.coursera.org"
-  date_start = "2018-10-01"
-  date_end = ""
-  description = ""
 
 [[item]]
-  organization = "edX"
-  organization_url = "https://www.edx.org"
-  title = "Blockchain Fundamentals"
-  url = "https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
-  certificate_url = "https://www.edx.org"
-  date_start = "2018-03-01"
+  organization = "The International Metabolomics Society"
+  organization_url = ""
+  title = "Student Travel Award"
+  url = ""
+  certificate_url = ""
+  date_start = "2018-06-23"
   date_end = ""
-  description = "Formulated informed blockchain models, hypotheses, and use cases."
+  description = ""
+  
   
 [[item]]
-  organization = "DataCamp"
-  organization_url = "https://www.datacamp.com"
-  title = "Object-Oriented Programming in R: S3 and R6 Course"
+  organization = "Journal Metabolites"
+  organization_url = ""
+  title = "Travel Award"
   url = ""
-  certificate_url = "https://www.datacamp.com"
-  date_start = "2017-07-01"
-  date_end = "2017-12-21"
+  certificate_url = ""
+  date_start = "2018-06-23"
+  date_end = ""
   description = ""
+  
+
+[[item]]
+  organization = "Ministry of Education of the People’s Republic of China"
+  organization_url = ""
+  title = "China National Scholarship"
+  url = ""
+  certificate_url = ""
+  date_start = "2017-12-23"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "The 3<sup>th</sup> China Mass Spectrometry Analysis Conference"
+  organization_url = ""
+  title = "Award for Outstanding Report"
+  url = ""
+  certificate_url = ""
+  date_start = "2017-12-23"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "University of Chinese Academy of Sciences"
+  organization_url = ""
+  title = "Merit Student"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-09-23"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "The 34<sup>th</sup> China Mass Spectrometry Society Conference"
+  organization_url = ""
+  title = "Award for Outstanding Report"
+  url = ""
+  certificate_url = ""
+  date_start = "2016-09-23"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "Inner Mongolia Autonomous Region"
+  organization_url = ""
+  title = "Inner Mongolia Outstanding Graduate"
+  url = ""
+  certificate_url = ""
+  date_start = "2013-06-23"
+  date_end = ""
+  description = ""
+  
+  
 
 +++

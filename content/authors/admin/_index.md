@@ -16,6 +16,7 @@ interests:
 - R Programming
 - Multi-omics
 - Healthcare
+- System biology
 name: Xiaotao Shen
 organizations:
 - name: Stanford University

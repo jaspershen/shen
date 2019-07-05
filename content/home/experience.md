@@ -21,7 +21,7 @@ date_format = "Jan 2006"
   title = "Postdoctoral Research Fellow"
   company = "Stanford University"
   company_url = "https://www.stanford.edu/"
-  location = "California"
+  location = "Palo Alto, California, US"
   date_start = "2019-04-01"
   date_end = ""
   description = """
@@ -29,15 +29,16 @@ date_format = "Jan 2006"
   
   Research:
   
-  * Metabolomics
+  * Metabolomics and System Biology
   * Multi-omics data analysis and their application in healthcare
+  * Sotfware and Algorithm development for metabolomics and other omics data
   """
 
 [[experience]]
   title = "Ph.D."
   company = "Chinese Academy of Sciences"
   company_url = "http://www.ucas.ac.cn/"
-  location = "Shanghai"
+  location = "Shanghai, China"
   date_start = "2013-09-01"
   date_end = "2018-12-31"
   description = """
@@ -45,7 +46,7 @@ date_format = "Jan 2006"
   
   Research:
   
-  * Metabolomics
+  * Metabolomics and System Biology
   * Bioinformatics
   """
   
@@ -57,7 +58,7 @@ date_format = "Jan 2006"
   date_start = "2009-09-01"
   date_end = "2013-07-01"
   description = """
-
+  Advisor: Dr. Pengxia Liu
   """
   
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shen</title>
+    <title>Shen Blog</title>
     <link>/</link>
-    <description>Recent content on Shen</description>
+    <description>Recent content on Shen Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -81,30 +81,6 @@
 &lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
 
 &lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Example Talk</title>
-      <link>/talk/example/</link>
-      <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
-      
-      <guid>/talk/example/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; slides using Academic&amp;rsquo;s &lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;Slides&lt;/em&gt;&lt;/a&gt; feature and link using &lt;code&gt;slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; an existing slide deck to &lt;code&gt;static/&lt;/code&gt; and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Further talk details can easily be added to this page using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
@@ -413,19 +389,12 @@ library(MetDNA)&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>An example preprint / working paper</title>
-      <link>/publication/preprint/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
+      <link>/publication/journal-article/metdna/</link>
+      <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/preprint/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <guid>/publication/journal-article/metdna/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -674,6 +643,78 @@ $$&lt;/p&gt;
     </item>
     
     <item>
+      <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
+      <link>/publication/journal-article/zhuozhong_ac/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/zhuozhong_ac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
+      <link>/publication/journal-article/metflow/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/metflow/</guid>
+      <description>
+
+&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
+
+&lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/PAP/10.1093_bioinformatics_bty1066/4/bty1066_supp.docx?Expires=1562370413&amp;amp;Signature=M~uVkc2HM8lV5SS96cccuCh4ZGmq3t5Y3m6X5UCE85GL6tLSiZh5YderYebpfDOwuKWwA9xMxzosXVrwU7f5l314XM6FtEfdChq7YK50O0UReaExGH7LSDTF9yrr0otobCobxejF9MaLttvPhTSV1u2R-~q3n~uqRA-sMZWF2TDaSWo2s-f6E2dknkx5aYgPa56R1MrSbzG1Eu95NCXBGh56Q6-uaCMn6zuwEnzDnKgvONbm0lHjZsO7HhYZJ3evbZ-OsFJiuGpzgpaXoV2OUdL71sCdqm9ebAlPdiNVTGa7T~iUXRBc4vUvmvPcU0eBNoHo3teCF2fC3I0wA03cSQ__&amp;amp;Key-Pair-Id=APKAIE5G5CRDK6RD3PGA&#34; target=&#34;_blank&#34;&gt;Supplementary data&lt;/a&gt; are available at Bioinformatics online.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
+      <link>/publication/journal-article/metnormalizer/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/metnormalizer/</guid>
+      <description>
+
+&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
+
+&lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/PAP/10.1093_bioinformatics_bty1066/4/bty1066_supp.docx?Expires=1562370413&amp;amp;Signature=M~uVkc2HM8lV5SS96cccuCh4ZGmq3t5Y3m6X5UCE85GL6tLSiZh5YderYebpfDOwuKWwA9xMxzosXVrwU7f5l314XM6FtEfdChq7YK50O0UReaExGH7LSDTF9yrr0otobCobxejF9MaLttvPhTSV1u2R-~q3n~uqRA-sMZWF2TDaSWo2s-f6E2dknkx5aYgPa56R1MrSbzG1Eu95NCXBGh56Q6-uaCMn6zuwEnzDnKgvONbm0lHjZsO7HhYZJ3evbZ-OsFJiuGpzgpaXoV2OUdL71sCdqm9ebAlPdiNVTGa7T~iUXRBc4vUvmvPcU0eBNoHo3teCF2fC3I0wA03cSQ__&amp;amp;Key-Pair-Id=APKAIE5G5CRDK6RD3PGA&#34; target=&#34;_blank&#34;&gt;Supplementary data&lt;/a&gt; are available at Bioinformatics online.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Predicting the pathological response to neoadjuvant chemoradiation using untargeted metabolomics in locally advanced rectal cancer</title>
+      <link>/publication/journal-article/huixun/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/huixun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LipidCCS Prediction of Collision Cross-Section Values for Lipids with High Precision To Support Ion Mobility–Mass Spectrometry-Based Lipidomics</title>
+      <link>/publication/journal-article/lipidccs/</link>
+      <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/lipidccs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LipidIMMS Analyzer integrating multi-dimensional information to support lipid identification in ion mobility—mass spectrometry based lipidomics</title>
+      <link>/publication/journal-article/lipidimms/</link>
+      <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/lipidimms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Privacy Policy</title>
       <link>/privacy/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
@@ -684,29 +725,79 @@ $$&lt;/p&gt;
     </item>
     
     <item>
-      <title>External Project</title>
-      <link>/project/external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics</title>
+      <link>/talk/2018seattle/</link>
+      <pubDate>Sun, 24 Jun 2018 13:00:00 +0000</pubDate>
       
-      <guid>/project/external-project/</guid>
+      <guid>/talk/2018seattle/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; slides using Academic&amp;rsquo;s &lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;Slides&lt;/em&gt;&lt;/a&gt; feature and link using &lt;code&gt;slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; an existing slide deck to &lt;code&gt;static/&lt;/code&gt; and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Further talk details can easily be added to this page using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility-Mass Spectrometry</title>
+      <link>/publication/journal-article/metccs/</link>
+      <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/metccs/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Internal Project</title>
-      <link>/project/internal-project/</link>
+      <title>Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression</title>
+      <link>/talk/2016texas/</link>
+      <pubDate>Fri, 22 Jul 2016 13:00:00 +0000</pubDate>
+      
+      <guid>/talk/2016texas/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; slides using Academic&amp;rsquo;s &lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;Slides&lt;/em&gt;&lt;/a&gt; feature and link using &lt;code&gt;slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; an existing slide deck to &lt;code&gt;static/&lt;/code&gt; and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Further talk details can easily be added to this page using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MetDNA</title>
+      <link>/project/metdna-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/internal-project/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+      <guid>/project/metdna-project/</guid>
+      <description>&lt;p&gt;MetDNA characterizes initial seed metabolites using a small tandem spectral library, and utilize their experimental MS2 spectra as surrogate spectra to annotate their reaction-paired neighbor metabolites which are subsequently served as the basis for recursive analysis.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MetFlow</title>
+      <link>/project/metflow-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/project/metflow-project/</guid>
+      <description>&lt;p&gt;We developed an interactive web server, namely, MetFlow, to provide an integrated and comprehensive workflow for metabolomics data cleaning and differential metabolite discovery.&lt;/p&gt;
 </description>
     </item>
     
@@ -1040,28 +1131,6 @@ $$&lt;/p&gt;
     </item>
     
     <item>
-      <title>An example journal article</title>
-      <link>/publication/journal-article/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/publication/journal-article/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Hello R Markdown</title>
       <link>/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
@@ -1109,28 +1178,6 @@ Figure 1: A fancy pie chart.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>An example conference paper</title>
-      <link>/publication/conference-paper/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>/publication/conference-paper/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Slides&lt;/em&gt; button above to demo Academic&amp;rsquo;s Markdown slides feature.
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
@@ -1596,6 +1643,15 @@ library(MetDNA)
 
 &lt;h4 id=&#34;对数据处理分析结果的总结-输出的结果存放在analysis-report文件夹内-包括一份html格式的-分析报告-http-rpubs-com-jasper-metdna-analysis-report&#34;&gt;对数据处理分析结果的总结。输出的结果存放在Analysis_report文件夹内。包括一份html格式的&lt;a href=&#34;http://rpubs.com/Jasper/metdna_analysis_report&#34; target=&#34;_blank&#34;&gt;分析报告&lt;/a&gt;。&lt;/h4&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
+      <link>/publication/journal-article/taozhang_metabolomics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/journal-article/taozhang_metabolomics/</guid>
+      <description></description>
     </item>
     
     <item>

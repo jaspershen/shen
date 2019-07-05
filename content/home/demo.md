@@ -8,8 +8,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 15  # Order that this section will appear.
 
-title = "尽人事，听天命"
-subtitle = "Do Your Best, And Let The God do The Rest"
+title = "Xiaotao Shen, PhD"
+subtitle = "A Postdoctoral Research Fellow at Stanford University"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -47,16 +47,14 @@ subtitle = "Do Your Best, And Let The God do The Rest"
  css_class = ""
 +++
 
-Welcome to the **personal demo** of Academic. Other demos available include:
+Hello, my visitors! Welcome to my personal blog! I am [Xiaotao Shen](https://profiles.stanford.edu/xiaotao-shen), and now I am a postdoctoral research fellow in School of Medicine, [Stanford University](https://www.stanford.edu/). 
 
-- [**Project Demo** (Academic's actual site)](https://sourcethemes.com/academic/)
+**I am broadly interested in Metabolomics, Analytical chemistry, Biostatictics, System biology and Bioinformatics.** Feel free to reach out to me if you want to know more about me. :smile:
 
-**Over 100,000 [Amazing Websites](https://sourcethemes.com/academic/#expo) have Already Been Built with Academic**
+别人笑我太疯癫，    
+我笑他人看不穿。    
+不见五陵豪杰墓，    
+无花无酒锄作田。     
 
-**[Join](https://sourcethemes.com/academic/docs/install/) the Most Empowered Hugo Community**
+- 唐伯虎
 
-{{% alert note %}}
-This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
-
-Backgrounds can be applied to any section. Here, the *background* option is set give an *image parallax* effect.
-{{% /alert %}}
