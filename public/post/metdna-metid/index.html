@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Xiaotao Shen">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="尽管现在除了二级谱图（MS2 spectra）匹配之外，已经有了各种各样的利用各种方式原理进行代谢物鉴定的方法，算法和工具，但是基于MS2谱图">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/metdna-metid/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.4bbed62cf73fb7dfc40b05d598386f11.css">
+
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-143314205-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/metdna-metid/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@JasperShen1990">
+  <meta property="twitter:creator" content="@JasperShen1990">
+  
+  <meta property="og:site_name" content="Shen Blog">
+  <meta property="og:url" content="/post/metdna-metid/">
+  <meta property="og:title" content="MetDNA-metID | Shen Blog">
+  <meta property="og:description" content="尽管现在除了二级谱图（MS2 spectra）匹配之外，已经有了各种各样的利用各种方式原理进行代谢物鉴定的方法，算法和工具，但是基于MS2谱图"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-08-12T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-08-12T00:00:00&#43;00:00">
+  
+
+  
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#2962ff",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#2962ff"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://cookies.insites.com"
+      }
+    })});
+</script>
+
+
+  
+
+  <title>MetDNA-metID | Shen Blog</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"><img src="/img/shen2.jpg" alt="Shen Blog"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about">
+            
+            <span>ABOUT ME</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience">
+            
+            <span>EDUCATION&EXPERIENCE</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#accomplishments">
+            
+            <span>HONORS&AWARDS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts">
+            
+            <span>BLOG</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects">
+            
+            <span>PROJECTS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications">
+            
+            <span>PUBLICATIONS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#talks">
+            
+            <span>PRESENTATIONS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact">
+            
+            <span>CONTACTS</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf">
+            
+            <span>CV</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">MetDNA-metID</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-08-12 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-08-12 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Aug 12, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/metdna-metid/#disqus_thread"></a>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/r/">R</a>, <a href="/categories/metabolomics/">Metabolomics</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=&amp;url="
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u="
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=&amp;body=">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<blockquote>
+<p>尽管现在除了二级谱图（MS2 spectra）匹配之外，已经有了各种各样的利用各种方式原理进行代谢物鉴定的方法，算法和工具，但是基于MS2谱图匹配的方法，仍然是最为可靠，为人接受，以及方便的方法。比如MetDNA，其前提条件就是数据一定是要尽可能完整的untargeted metabolomics数据。所以，前段时间，我把MetDNA中用于二级谱图匹配的算法单独拿出来，并进行了一定的优化，然后又新加了能够用于in-house代谢物库构建的功能，并将一些常见的public database下载下来，合并成了<code>metID。</code></p>
+</blockquote>
+<div id="introduction-installation" class="section level2">
+<h2><strong>Introduction &amp; Installation</strong></h2>
+<hr />
+<p><em>metID</em> 有两个核心功能：in-house database的构建和利用MS2 spectra进行代谢物鉴定。</p>
+<p>很多实验室都有自己的in-house standards，并且大都采集了MS2数据，并且还有RT信息，但是很多实验室并没有将其构建成真正的in-hosue database，以及配套的软件来自动化利用其进行代谢物鉴定。<code>metID</code>因此提供了这样的功能，能够将实验室的标准品数据自动构建为适用于<code>metID</code>的database。根据MSI的规则，我们知道使用in-hosue database鉴定出的物质就是level 1。而很多我们熟知的database，如HMDB，MoNA和MassBank等，他们都提供了可下载的数据库，但是很多时候，在不同平台之间切换，费事费力，有的甚至不提供batch处理的功能，更是要命。因此，我把几个常见的public database下载下来，并构建成符合<code>metID</code>的数据库格式，并提供给大家使用。后面如果有新的数据库，可以再下载整理。</p>
+<p><img src="2019-08-12-metdna-metid/workflow_metIdentify.png" /></p>
+<p><code>metID</code>的源代码再github上托管，大家可以通过github下载。<a href="https://github.com/jaspershen/metID" class="uri">https://github.com/jaspershen/metID</a></p>
+<pre class="r"><code>if(!require(devtools)){
+  install.packages(&quot;devtools&quot;)
+}
+devtools::install_github(&quot;jaspershen/metID&quot;)
+##tinyTools is a dependent package for metID
+devtools::install_github(&quot;jaspershen/tinyTools&quot;)</code></pre>
+</div>
+<div id="section" class="section level2">
+<h2><strong>引用</strong></h2>
+<hr />
+<p>核心的功能都脱胎于我在朱老师实验室时候做的MetDNA项目，因此，如果你的数据不适合使用MetDNA，而仅仅使用了<code>metID</code>的话，请在文章中引用MetDNA文章。</p>
+<blockquote>
+<p>X. Shen, R. Wang, X. Xiong, Y. Yin, Y. Cai, Z. Ma, N. Liu, and Z.-J. Zhu* (Corresponding Author), Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics, Nature Communications, 2019, 10: 1516.</p>
+</blockquote>
+<p>另外，后期我们可能还会再对<code>metID</code>进行优化更新升级等，可能会单独发表文章。因此，后面如果发表文章的话，希望如果你使用的话，我们会提供新的文章供大家引用。谢谢！</p>
+</div>
+<div id="database-construction" class="section level2">
+<h2><strong>Database construction</strong></h2>
+<hr />
+<p>If you have in-house standards which have been acquired with MS2 spectra data, then you can construct the in-house MS2 spectra databases using <code>metID</code> package.</p>
+<div id="data-preparation" class="section level3">
+<h3><strong>Data preparation</strong></h3>
+<p>首先，请将标准品原始质谱数据使用 ProteoWizard转换为mzXM格式的数据。转换时参数设置可以参考下图。</p>
+<p><img src="2019-08-12-metdna-metid/parameter_setting_MS_conventer.png" /></p>
+</div>
+<div id="data-organization" class="section level3">
+<h3><strong>Data organization</strong></h3>
+<p>其次，需要将你的标准品信息整理成一个表格，然后输出为csv或者xlsx格式。标准品信息表格的格式可以参考我放在 <code>demoData</code> 包中的示例数据。</p>
+<p><img src="2019-08-12-metdna-metid/compound_information.PNG" /></p>
+<p>然后创建一个文件夹，并将你的mzXML格式数据(正离子数据放在’POS’文件夹中，负离子数据放在’NEG’文件夹中)和标准品信息表格（csv或者xlsx格式）放在里面。</p>
+<p><img src="2019-08-12-metdna-metid/database_construction.png" /></p>
+</div>
+<div id="run-databaseconstruction-function" class="section level3">
+<h3><strong>Run <code>databaseConstruction</code> function</strong></h3>
+<p>我们使用<code>demoData</code>包中的示例数据来进行说明，如何使用<code>metID</code>构建实验室自己的in-house database。首先安装该包。</p>
+<pre class="r"><code>devtools::install_github(&quot;jaspershen/demoData&quot;)
+library(demoData)
+library(metID)
+path &lt;- system.file(&quot;database_construction&quot;, package = &quot;demoData&quot;)
+#将示例数据拷贝到当前工作目录中
+file.copy(from = path, to = &quot;.&quot;, overwrite = TRUE, recursive = TRUE)
+new.path &lt;- file.path(&quot;./database_construction&quot;)</code></pre>
+<p>下面开始构建数据库。</p>
+<pre class="r"><code>test.database &lt;- databaseConstruction(path = new.path, 
+                                      version = &quot;0.0.1&quot;,
+                                      metabolite.info.name = &quot;metabolite.info_RPLC.csv&quot;, 
+                                      source = &quot;Michael Snyder lab&quot;, 
+                                      link = &quot;http://snyderlab.stanford.edu/&quot;,
+                                      creater = &quot;Xiaotao Shen&quot;,
+                                      email = &quot;shenxt1990@163.com&quot;,
+                                      rt = TRUE,
+                                      mz.tol = 15,
+                                      rt.tol = 30,
+                                      threads = 3)</code></pre>
+<p>如果想要了解<code>databaseConstruction</code>各个参数的含义，可以使用<code>?databaseConstruction</code>来查看。</p>
+<p>test.database是一个<code>databaseClass</code>对象，你可以直接打印，查看他的信息。</p>
+<pre class="r"><code>test.database</code></pre>
+<p>这样，就构建好了一个in-house database。</p>
+</div>
+</div>
+<div id="metabolite-identification" class="section level2">
+<h2><strong>Metabolite identification</strong></h2>
+<hr />
+<div id="identify-metabolites-based-on-ms2-library" class="section level3">
+<h3><strong>Identify metabolites based on MS2 library</strong></h3>
+<div id="ms1-data-preparation" class="section level4">
+<h4>MS1 data preparation</h4>
+<p>首先需要准备MS1 peak table。MS1 peak table必须包含的信息包括：“name” (peak name), “mz” (mass to charge ratio)和“rt” (retention time, unit is second)。MS1 peak table可以来自于各种不同的软件，如XCMS, MS-DIAL等。</p>
+</div>
+<div id="ms2-data-preparation" class="section level4">
+<h4>MS2 data preparation</h4>
+<p>MS2原始数据可以来自于DDA或者DIA方法，然后使用ProteoWizard软件转换为msp, mgf或者mzXML格式的文件。</p>
+</div>
+<div id="data-organization-1" class="section level4">
+<h4>Data organization</h4>
+<p>将MS1一级数据，二级数据以及你要使用的database放置在某个文件夹中。</p>
+<p><img src="2019-08-12-metdna-metid/metabolite_identification.png" /></p>
+</div>
+<div id="run-metidentify-function" class="section level4">
+<h4>Run <code>metIdentify</code> function</h4>
+<p>下面我们使用<code>demoData</code>中的示例数据演示如何使用我们实验室的in-house database来进行代谢物鉴定。</p>
+<pre class="r"><code>library(metID)
+path &lt;- system.file(&quot;ms2_identification_demo_data1&quot;, package = &quot;demoData&quot;)
+#拷贝数据到当前工作目录中。
+file.copy(from = path, to = &quot;.&quot;, overwrite = TRUE, recursive = TRUE)
+new.path &lt;- file.path(&quot;./ms2_identification_demo_data1&quot;)
+
+data(&quot;msDatabase_rplc0.0.1&quot;, package = &quot;metID&quot;)
+save(msDatabase_rplc0.0.1, file = file.path(new.path, &quot;msDatabase_rplc0.0.1&quot;))
+ms2.data &lt;- grep(pattern = &quot;mgf&quot;, dir(new.path), value = TRUE)</code></pre>
+<p>然后使用<code>metIdentify</code>函数进行鉴定。</p>
+<pre class="r"><code>result &lt;- metIdentify(ms1.data = &quot;ms1.peak.table.csv&quot;, ##csv format
+           ms2.data = ms2.data,##only msp and mgf and mz(X)ML are supported
+           ms1.ms2.match.mz.tol = 25,
+           ms1.ms2.match.rt.tol = 10,
+           ms1.match.ppm = 25,
+           ms2.match.tol = 0.4,
+           fraction.weight = 0.3,
+           dp.forward.weight = 0.6,
+           dp.reverse.weight = 0.1,
+           rt.match.tol = 60,
+           polarity = &quot;positive&quot;, 
+           ce = &quot;all&quot;,
+           column = &quot;rp&quot;,
+           ms1.match.weight = 0.25,
+           rt.match.weight = 0.25,
+           ms2.match.weight = 0.5,
+           path = new.path,
+           total.score.tol = 0,
+           candidate.num = 3,
+           database = &quot;msDatabase_rplc0.0.1&quot;,
+           threads = 3)</code></pre>
+<p><code>metIdentify</code>参数的意义可以使用<code>?metIdentify</code>查看。</p>
+<p>生成的<code>result</code>是一个<code>metIdentifyClass</code>对象。</p>
+<pre class="r"><code>result</code></pre>
+<p>可以从<code>result</code>中提取你处理的参数设置：</p>
+<pre class="r"><code>parameters &lt;- getParams(object = result)
+tibble::as.tibble(parameters)</code></pre>
+<p>从中获取鉴定表格：</p>
+<pre class="r"><code>identification.table1 &lt;- getIdentificationTable(object = result)</code></pre>
+</div>
+</div>
+<div id="ms2-spectra-match-plot-output" class="section level3">
+<h3><strong>MS2 spectra match plot output</strong></h3>
+<p>你也可以使用<code>ms2plot</code>函数来获得一个或者所有的MS2 specra match plot。</p>
+<blockquote>
+<p>Output one MS2 spectra match plot.</p>
+</blockquote>
+<pre class="r"><code>##which peaks have identification
+peak.name &lt;- whichHasIden(object = result)
+head(peak.name)
+ms2.plot1 &lt;- ms2plot(object = result, database = msDatabase_rplc0.0.1, 
+                     which.peak = peak.name[1,1])
+ms2.plot1</code></pre>
+<blockquote>
+<p>You can also output interactive MS2 spectra match plot by setting <code>interaction.plot</code> as TRUE.</p>
+</blockquote>
+<pre class="r"><code>##which peaks have identification
+ms2.plot2 &lt;- ms2plot(object = result, database = msDatabase_rplc0.0.1, 
+                     which.peak = peak.name[1,1], interaction.plot = TRUE)
+ms2.plot2</code></pre>
+<blockquote>
+<p>You can output all MS2 spectra match plots by setting <code>which.peak</code> as “all”.</p>
+</blockquote>
+<pre class="r"><code>ms2plot(object = result, database = msDatabase_rplc0.0.1, 
+                     which.peak = &quot;all&quot;, path = file.path(new.path, &quot;inhouse&quot;))</code></pre>
+<p>所有的MS2 spectra match会存放在“inhouse”文件夹中。</p>
+</div>
+</div>
+<div id="result-integration-and-output" class="section level2">
+<h2><strong>Result integration and output</strong></h2>
+<hr />
+<p>除了可以使用自己构建的in-hosue database之外，你还可以使用public databases。我们提供了4个数据，可以在我的github上下载：<a href="https://github.com/jaspershen/demoData/tree/master/inst/ms2_database" class="uri">https://github.com/jaspershen/demoData/tree/master/inst/ms2_database</a>。</p>
+<ul>
+<li><p>MassBank database (massbankDatabase0.0.1)</p></li>
+<li><p>MoNA database (monaDatabase0.0.1)</p></li>
+<li><p>HMDB database (hmdbDatabase0.0.1)</p></li>
+<li><p>Orbitrap database from MassBank (orbitrapDatabase0.0.1)</p></li>
+</ul>
+</div>
+<div id="summary" class="section level2">
+<h2><strong>Summary</strong></h2>
+<hr />
+<p>这里只是一个简单的介绍，整个项目都是开源再GitHub上，<a href="https://github.com/jaspershen/metID。我也写了较为详细的英文介绍，https://jaspershen.github.io/metID/index.html。大家如果有任何问题，请给我发邮件(shenxt@stanford.edu)或者在github上给我留言。谢谢" class="uri">https://github.com/jaspershen/metID。我也写了较为详细的英文介绍，https://jaspershen.github.io/metID/index.html。大家如果有任何问题，请给我发邮件(shenxt@stanford.edu)或者在github上给我留言。谢谢</a>！</p>
+</div>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/academic/">Academic</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu1e2e5ea831a1ccb0887a87d1899b0c15_179284_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen</a></h5>
+      <h6 class="card-subtitle">Postdoctoral Research Fellow at Schoold of Medicine</h6>
+      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://scholar.google.co.uk/citations?hl=en&amp;user=3TK9yz8AAAAJ" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/jaspershen" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/getting-started/">Academic: the website builder for Hugo</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shenxt" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    Xiaotao Shen@2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//shenxt.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.3258b3a711acd6208568ec000de4beec.js"></script>
+
+  </body>
+</html>
+

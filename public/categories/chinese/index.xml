@@ -7,18 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/chinese/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>MetDNA instruction</title>
-      <link>/post/metdna-instruction/</link>
-      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      <title>R dplyr study 4</title>
+      <link>/post/r-dplyr-study-4/</link>
+      <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/metdna-instruction/</guid>
-      <description>Ⅰ数据准备 MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(c</description>
+      <guid>/post/r-dplyr-study-4/</guid>
+      <description>dplyr中的mutate函数 dplyr中demutate和transmute函数主要用来创建或者转换变量（列）。其中，mutate增加新的</description>
     </item>
     
   </channel>

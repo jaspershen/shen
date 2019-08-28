@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -85,6 +85,135 @@
     </item>
     
     <item>
+      <title>生物统计学习:简单线性回归模型</title>
+      <link>/post/2019-08-26-/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-08-26-/</guid>
+      <description>
+
+
+&lt;div id=&#34;section&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;线性回归&lt;/h2&gt;
+&lt;p&gt;使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simple),有多个自变量,则称之为多元线性回归(multiple regression).这两个模型都必须满足变量是连续性变量,如果变量为分类变量,也可以进行线性回归,称之为逻辑回归(logistic regression).&lt;/p&gt;
+&lt;div id=&#34;section-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;简单线性回归&lt;/h3&gt;
+&lt;p&gt;我们举个例子,年龄和身高是否有线性关系,是否可以使用年龄来预测身高呢?&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;age &amp;lt;- 18:29
+height &amp;lt;- 
+  c(76.1,77,78.1,78.2,78.8,79.7,79.9,81.1,81.2,81.8,82.8,83.5)
+data &amp;lt;- 
+  data.frame(age, height, 
+             stringsAsFactors = FALSE)
+library(ggplot2)
+
+(
+plot &amp;lt;- 
+ggplot(data, aes(age, height)) +
+  geom_point() +
+  theme_bw()
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-26-_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们画出散点图之后,可以看出age和height呈比较明显的线性关系.&lt;/p&gt;
+&lt;p&gt;那我们怎么用一条直线去拟合(fit)数据呢?我们使用的就是最小平方差法(least square).&lt;/p&gt;
+&lt;p&gt;那么最简单的拟合办法是什么呢?也就是直接使用所有人的height的平均值去拟合.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
+  geom_hline(yintercept = mean(data$height))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-26-_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;那么怎么评价一条直线对数据拟合的好坏呢?这时候就需要引入另外一个概念,残差(residuls).残差也就是真实值和拟合值之间差值:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[residual = y_i - y_i^{&amp;#39;}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt;是真实值,而&lt;span class=&#34;math inline&#34;&gt;\(y_i{&amp;#39;}\)&lt;/span&gt;是模型预测值.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
+  geom_hline(yintercept = mean(data$height)) +
+  geom_segment(aes(x = data$age[1], y = data$height[1], xend = data$age[1], yend = mean(data$height)), colour = &amp;quot;red&amp;quot;, arrow = arrow()) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-08-26-_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;从定义可以看到,残差有正有负.为了表示一条拟合直线对数据拟合的程度的好坏,我们将残差平方然后加和,从而得到&lt;strong&gt;残差平方和(sum of squared residuals)&lt;/strong&gt;,该值就可以用来表示一条直线对数据的拟合的好坏.拟合的越好,该值越小,拟合的越差,该值越大.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[sum \quad of \quad squared \quad residuals = \sum_{i=1}^n(y_i-y_i^{&amp;#39;})^2\]&lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意,该值是有量纲的,只能比较同一组数据不同拟合直线的好坏,而不能比较不同数据之间的拟合的好坏.后面会介绍&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;那么怎样找到一个最好的拟合直线呢?我们可以将这条线(平均值)进行旋转,每条直线都会有截距(intersect)和斜率(slope)两个参数,对于每一条直线,我们都会计算其残差平方和.&lt;/p&gt;
+&lt;p&gt;最后,我们会得到一系列的截距和斜率组合以及他们所对应的残差平方和.我们可以简单的理解,直接选取残差平方和最小的参数组合即可(实际情况更为复杂一些).从而得到最佳的参数组合.这也是为什么这种方法称之为’least square’的原因.&lt;/p&gt;
+&lt;p&gt;那么如何估量一个拟合直线的好坏呢?这时候就需要引入&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的概念.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;首先,我们计算使用身高平均值拟合直线的残差平方和,称之为&lt;span class=&#34;math inline&#34;&gt;\(SS(mean)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[SS(mean) = (data - mean)^2\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;同时,我们知道方差(Var(mean))等于残差平方和除以样本个数:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Var(mean) = \frac{SS(mean)}{n}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;然后,按照同样的方法,我们计算拟合直线的残差平方和,称之为&lt;span class=&#34;math inline&#34;&gt;\(SS(fit)\)&lt;/span&gt;.同时,我们也可以计算出来拟合直线的方差(Var(fit)).&lt;/p&gt;
+&lt;p&gt;可以看到,拟合直线得到的残差平方和要比平均值得到的要小,也就是说,将年龄因素考虑进去之后,身高的方差有一部分能够被年龄所解释.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;告诉我们年龄可以解释多少比例的身高的方差.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[R^2 = \frac{Var(mean) - Var(fit)}{Var(mean)} = \frac{SS(mean) - SS(fit)}{SS(mean)} = 1 - \frac{ SS(fit)}{SS(mean)}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;从公式可以看出,如果一条直线正好穿过所有的数据点,那么&lt;span class=&#34;math inline&#34;&gt;\(SS(fit)=0\)&lt;/span&gt;,这时候&lt;span class=&#34;math inline&#34;&gt;\(R^2=1\)&lt;/span&gt;.而如果身高和年龄完全没有关系,则&lt;span class=&#34;math inline&#34;&gt;\(R^2 = 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;需要注意的是,&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的大小并不具有统计学意义,我们可以想象,如果只有两个点,那么必定有一条直线通过他们,因此&lt;span class=&#34;math inline&#34;&gt;\(SS(fit)\)&lt;/span&gt;为0,但是很明显这样的fit是没有意义的,得到的&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;也并不能说明两个变量之间真是的关系.这说明了样本的数量也同样重要,因此,我们需要对&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;进行统计学假设检验,得到其统计学显著性,也就是p value.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r2-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的假设检验&lt;/h3&gt;
+&lt;p&gt;首先,我们需要明白&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的含义,我们上面已经讨论过了,&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;指的是变量x能够解释变量y的方差的比例.比如上面的例子,&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;为0.99,说明年龄可以解释99%的身高的方差.&lt;/p&gt;
+&lt;p&gt;这时候,需要引入一个统计量,F:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F = \frac{(Var(mean) - Var(fit))/(p_{fit}-p_{mean})}{Var(fit)/(n-p_{fit})} = \frac{(SS(mean) - SS(fit))/(p_{fit}-p_{mean})}{SS(fit)/(n-p_{fit})} = \frac{\frac{(SS(mean) - SS(fit))}{p_{fit}-p_{mean}}} {\frac{SS(fit)}{n-p_{fit}}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;也就是说,F等于变量x能够解释变量y的方差除以变量x不能够解释变量y的方差.&lt;/p&gt;
+&lt;p&gt;而&lt;span class=&#34;math inline&#34;&gt;\((n-p_{fit})/(p_{fit}-p_{mean})\)&lt;/span&gt;则称之为自由度(degrees of freedoms).自由度的定义以后再详细解释.&lt;/p&gt;
+&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(p_{fit}\)&lt;/span&gt;代表回归方程中参数的数目,比如一元线性方程中,只有两个参数(intercept和slop),所以&lt;span class=&#34;math inline&#34;&gt;\(p_{fit}=2\)&lt;/span&gt;.&lt;span class=&#34;math inline&#34;&gt;\(p_{mean}\)&lt;/span&gt;代表平均值直线的参数个数,在一元线性方程中,为1.n是数据集的样本个数.&lt;/p&gt;
+&lt;p&gt;因此,&lt;span class=&#34;math inline&#34;&gt;\(p_{fit}-p_{mean}\)&lt;/span&gt;代表的含义是该拟合模型与平均值模型相比,多出来的参数的个数.在简单线性回归中,多出来的就是slope.对于多元线性回归,比如,两个自变量预测一个因变量,则这时候&lt;span class=&#34;math inline&#34;&gt;\(p_{fit}=3\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;我们再来看分母,为什么需要使用&lt;span class=&#34;math inline&#34;&gt;\(SS(fit)\)&lt;/span&gt;除以&lt;span class=&#34;math inline&#34;&gt;\(n-p_{fit}\)&lt;/span&gt;呢?因为我们知道模型越复杂(参数越多),你就需要更多的点去拟合.比如,对于两个点的一元一次方程,只需要两个点即可(两点确定一条直线).而对于二元一次方程,则需要三个点去拟合.&lt;/p&gt;
+&lt;p&gt;这时候我们再来看分子分母分别代表什么意义.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;分子:拟合模型多出来的参数能够解释的方差(变异).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;分母:拟合模型多出来的参数不能够解释的方差(变异).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样我们拿到F值以后,怎么计算p value呢?其实就是使用permutation test的方法.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;随机产生与数据集样本数相同数目的数据集.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对其进行拟合并计算每一组随机数据的F值.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;产生大量的随机F值,并得到随机F值的分布.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;拿到随机F值的分布,p value就等于大于真实F值的数目除以随机F值的总数目.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当然,所有随机F值的分布其实是符合F分布的,拿到了F分布,就可以计算p value.F分布以后再详细介绍.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r2adjusted-r2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;矫正&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;(&lt;span class=&#34;math inline&#34;&gt;\(adjusted R^2\)&lt;/span&gt;)&lt;/h3&gt;
+&lt;p&gt;什么是矫正&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;呢?我们从&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;定义可以看到,如果我们增加了拟合模型的变量个数,因为&lt;span class=&#34;math inline&#34;&gt;\(SS(mean)\)&lt;/span&gt;是固定的,因此&lt;span class=&#34;math inline&#34;&gt;\(SS(fit)\)&lt;/span&gt;都会减小,所以导致&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;变大,从而造成过拟合(over fitting).因此,我们需要对模型选入的变量个数做一个惩罚,这就是&lt;span class=&#34;math inline&#34;&gt;\(adjusted \quad R^2\)&lt;/span&gt;.以后再详细解释.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;系数的假设检验&lt;/h3&gt;
+&lt;p&gt;同样的,我们可以看到,上面是对&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;做假设检验,当然我们也需要对每个变量的系数(包括intersect)进行假设验证,在多元回归中尤其重要,我们会在以后进行详细解释.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;R语言进行线性回归&lt;/h3&gt;
+&lt;p&gt;R语言中的&lt;code&gt;lm()&lt;/code&gt;函数可以用来进行线性回归.使用方法如下:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm_fit &amp;lt;- 
+  lm(height ~ age, data)
+summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = height ~ age, data = data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.27238 -0.24248 -0.02762  0.16014  0.47238 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)  64.9283     0.5084  127.71  &amp;lt; 2e-16 ***
+## age           0.6350     0.0214   29.66 4.43e-11 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.256 on 10 degrees of freedom
+## Multiple R-squared:  0.9888, Adjusted R-squared:  0.9876 
+## F-statistic:   880 on 1 and 10 DF,  p-value: 4.428e-11&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;summary中提供了该线性回归的大部分内容.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Display Jupyter Notebooks with Academic</title>
       <link>/post/blogdown-instruction/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
@@ -144,310 +273,6 @@ rm Untitled.md
 &lt;p&gt;To set a &lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#featured-image&#34; target=&#34;_blank&#34;&gt;featured image&lt;/a&gt;, place an image named &lt;code&gt;featured&lt;/code&gt; into your post&amp;rsquo;s folder.&lt;/p&gt;
 
 &lt;p&gt;For other tips, such as using math, see the guide on &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Academic&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MetDNA instruction</title>
-      <link>/post/metdna-instruction/</link>
-      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/metdna-instruction/</guid>
-      <description>
-
-
-&lt;hr /&gt;
-&lt;div id=&#34;section&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;Ⅰ数据准备&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;metdnapeak-tablecsvmgfsample.infocsvdemodemo&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(csv格式)。点击下载&lt;a href=&#34;https://github.com/jaspershen/MetDNA/blob/master/pos.rar&#34;&gt;正离子demo数据&lt;/a&gt;和&lt;a href=&#34;https://github.com/jaspershen/MetDNA/blob/master/neg.rar&#34;&gt;负离子demo数据&lt;/a&gt;。&lt;/h4&gt;
-&lt;/div&gt;
-&lt;div id=&#34;table-1-demo&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;&lt;strong&gt;Table 1: demo数据信息&lt;/strong&gt;&lt;/h4&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;组别&lt;/th&gt;
-&lt;th&gt;个数&lt;/th&gt;
-&lt;th&gt;含义&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;QC&lt;/td&gt;
-&lt;td&gt;8&lt;/td&gt;
-&lt;td&gt;QC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;W03&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;野生型3天&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;W30&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;野生型30天&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;E03&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型E3天&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;E30&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型E30天&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;P03&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型P3天&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;P30&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型P30天&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-1&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;1. 一级数据&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;xcmsmzminems-dialnamemzrt&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;一级数据可以是使用XCMS，MZmine，MS-DIAL或者其他软件处理之后的数据。第一列为代谢物峰的名字，“name”，第二列为“mz”，第三列为保留时间(RT)，&lt;strong&gt;且单位必须为秒&lt;/strong&gt;，其他为样品的峰强度。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;data.example.png&#34; alt=&#34;Figure 1: 一级数据peak table格式示例&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 1: 一级数据peak table格式示例&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-2&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;2. 二级数据&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;qcddatargeted-msmsddaproteowizardmgf&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;二级质谱原始数据可以是使用QC样品采集的DDA或者targeted MS/MS数据。对于DDA数据来说，也可以是分段采集的二级数据。质谱原始二级数据需要使用ProteoWizard软件转为mgf格式，转换时参数设置参考下图。二级数据最多不能超过十个。&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&#34;ProteoWizard.png&#34;&gt;&lt;strong&gt;Figure 2: ProteoWizard参数设置&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-3&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;3. 样品信息&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;sample.namegroup&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;样品信息是样品的分组信息。第一列是样品名，“sample.name”，第二列是样品的分组信息，“group”。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;sample.info示例.png&#34; alt=&#34;Figure 3：样品信息示例&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 3：样品信息示例&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-4&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;Ⅱ 数据整理&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;posnegmetdnalabdatavworkreportdemoflypos&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;如果是正离子数据，请建立一个新的文件夹，命名为“POS”，如果是负离子数据，请建立一个新的文件夹命名为“NEG”，然后将一级数据，二级数据和样品信息放置于此文件夹下。并将该文件夹设置为工作路径。现在&lt;em&gt;MetDNA&lt;/em&gt;部署在小服务器上，因此可以将数据放在小服务器中(labdata)。例如“V:/workreport/申小涛/demo/fly/POS”。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;数据整理.png&#34; alt=&#34;Figure 4: 将所需数据放置在文件夹中&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 4: 将所需数据放置在文件夹中&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-5&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;设置工作路径。&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;setwd(&amp;quot;/mnt/data/samba/labdata/workreport/申小涛/demo/fly/POS&amp;quot;)
-library(MetDNA)&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-6&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;Ⅲ 数据处理&lt;/strong&gt;&lt;/h3&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-7&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;1. 只对正离子或者负离子处理&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;metdna&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;所有的步骤可以使用一个函数&lt;em&gt;MetDNA&lt;/em&gt;全部完成。&lt;/h4&gt;
-&lt;/div&gt;
-&lt;div id=&#34;metdna-1&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;运行函数&lt;em&gt;MetDNA&lt;/em&gt;。&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;MetDNA(ms1.file = &amp;quot;data.csv&amp;quot;,
-       polarity = &amp;quot;positive&amp;quot;,
-       column = &amp;quot;hilic&amp;quot;,
-       ce = &amp;quot;30&amp;quot;,
-       prefer.adduct = &amp;quot;M+H&amp;quot;,
-       use.default.md = TRUE,
-       threads = 3,
-       group = c(&amp;quot;W03&amp;quot;, &amp;quot;W30&amp;quot;),
-       uni.test = &amp;quot;t&amp;quot;,
-       correct = TRUE,
-       p.cutoff = 0.01,
-       species = &amp;quot;dme&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参数含义如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&#34;ms1.file&#34;&gt;ms1.file：一级数据的名字。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;polaritypositivenegative&#34;&gt;polarity：数据采集极性，“positive”或者“negative”。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;columnhilicrp&#34;&gt;column：使用的柱子类型，“hilic”或者“rp”。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;ce1015202530353515-351540-455055606570&#34;&gt;ce：二级采集的碰撞能量，支持“10”，“15”，“20”，“25”，“30”，“35”，“35,15” (35±15)，“40”， “45”，“50”，“55”，“60”，“65”，“70”。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;prefer.adductrtmhm-h&#34;&gt;prefer.adduct：使用那些加合物形式的注释用于RT预测模型的建立，默认使用所有的注释，推荐正离子模式下使用“M+H”，负离子模式下使用“M-H”。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;use.default.mdfalse&#34;&gt;use.default.md：进行保留时间预测模型建立时，是否使用默认的分子描述符，如果设置为FALSE，则会根据你的数据自动选择分子描述符。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;threads3&#34;&gt;threads：使用线程数，默认为3，可以根据电脑本身配置进行修改。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;groupfold-change&#34;&gt;group：要对哪些分组的样品进行分析，&lt;strong&gt;注意&lt;/strong&gt;，计算fold change时，使用后面的样品除以前面的样品。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;uni.testtstudent-t-testwilcoxwilcox-test&#34;&gt;uni.test：单变量分析的方法，“t”，Student t test；“wilcox”，Wilcox test。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;correctpfdr&#34;&gt;correct：是否需要对p值进行FDR校正。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;p.cutoffdysregulated-peakpcutoff&#34;&gt;p.cutoff：选择dysregulated peak时的p值cutoff。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;speciesdmehsammuratbtaggagallus-gallus-dredanio-rerio-celcaenorharomyces-elegans-scesaccharomyces-cerevisaiae--atharabidopsis-thaliana-smmschistosoma-mansonipfaplasmodum-falciparum-3d7tbrtrypanosoma-bruceieco-escherichia-coli-k-12-mg1655ppupseudomonas-putida-kt2440syfsynechococcus-elongatus&#34;&gt;species：所研究样品的物种来源，“dme”，果蝇；“hsa”，人类；“mmu”，小鼠；“rat”，大鼠，“bta”，牛；“gga”，Gallus gallus (鸡)；“dre”，Danio rerio (斑马鱼)；“cel”，Caenorharomyces elegans (线虫)；“sce”，Saccharomyces cerevisaiae (酵母)； “ath”，Arabidopsis thaliana (拟南芥)；“smm”，Schistosoma mansoni；“pfa”，Plasmodum falciparum 3D7；“tbr”，Trypanosoma brucei；“eco”， Escherichia coli K-12 MG1655(大肠杆菌)；“ppu”，Pseudomonas putida KT2440；“syf”，Synechococcus elongatus。&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-8&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;2. 对正负数据合并分析&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;metmodule2dysregulated-network-analysis&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;正负离子分别处理之后，可以使用函数&lt;em&gt;metModule2&lt;/em&gt;函数合并正负离子模式的鉴定结果，进行dysregulated network analysis。&lt;/h4&gt;
-&lt;/div&gt;
-&lt;div id=&#34;metmodule2&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;运行函数&lt;em&gt;MetModule2&lt;/em&gt;&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;metModule2(group = c(&amp;quot;W03&amp;quot;, &amp;quot;W30&amp;quot;),
-           uni.test = &amp;quot;t&amp;quot;,
-           column = &amp;quot;hilic&amp;quot;,
-           correct = TRUE,
-           p.cutoff = 0.01,
-           threads = 3,
-           species = &amp;quot;dme&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参数含义如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&#34;groupfold-change-1&#34;&gt;group：要对哪些分组的样品进行分析，&lt;strong&gt;注意&lt;/strong&gt;，计算fold change时，使用后面的样品除以前面的样品。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;uni.testtstudent-t-testwilcoxwilcox-test-1&#34;&gt;uni.test：单变量分析的方法，“t”，Student t test；“wilcox”，Wilcox test。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;columnhilicrp-1&#34;&gt;column：使用的柱子类型，“hilic”或者“rp”。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;correctpfdr-1&#34;&gt;correct：是否需要对p值进行FDR校正。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;p.cutoffdysregulated-peakpcutoff-1&#34;&gt;p.cutoff：选择dysregulated peak时的p值cutoff。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;threads3-1&#34;&gt;threads：使用线程数，默认为3，可以根据电脑本身配置进行修改。&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;speciesdmehsammuratbtaggagallus-gallus-dredanio-rerio-celcaenorharomyces-elegans-scesaccharomyces-cerevisaiae--atharabidopsis-thaliana-smmschistosoma-mansonipfaplasmodum-falciparum-3d7tbrtrypanosoma-bruceieco-escherichia-coli-k-12-mg1655ppupseudomonas-putida-kt2440syfsynechococcus-elongatus-1&#34;&gt;species：所研究样品的物种来源，“dme”，果蝇；“hsa”，人类；“mmu”，小鼠；“rat”，大鼠，“bta”，牛；“gga”，Gallus gallus (鸡)；“dre”，Danio rerio (斑马鱼)；“cel”，Caenorharomyces elegans (线虫)；“sce”，Saccharomyces cerevisaiae (酵母)； “ath”，Arabidopsis thaliana (拟南芥)；“smm”，Schistosoma mansoni；“pfa”，Plasmodum falciparum 3D7；“tbr”，Trypanosoma brucei；“eco”， Escherichia coli K-12 MG1655(大肠杆菌)；“ppu”，Pseudomonas putida KT2440；“syf”，Synechococcus elongatus。&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;analysisreport&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;运行函数&lt;em&gt;analysisReport&lt;/em&gt;得到分析报告。&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;analysisReport(polarity = &amp;quot;both&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-9&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;Ⅳ 运行结果&lt;/strong&gt;&lt;/h3&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-10&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;1. 正离子或者负离子的运行结果&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;metdnamrndysregulated-network5&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;&lt;strong&gt;MetDNA&lt;/strong&gt;函数运行结束之后，所有的运行结果都存放在设置的路径中，包含二级谱图匹配结果，MRN注释结果，dysregulated network分析结果以及分析报告。如图5所示。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;analysis.result.png&#34; alt=&#34;Figure 5: 运行结果&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 5: 运行结果&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;metdna.parameters.csv&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;(1) MetDNA.parameters.csv&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;section-11&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;记录此次运行所使用的参数。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;MetDNA.parameters.png&#34; alt=&#34;Figure 6: 参数记录&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 6: 参数记录&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ms2_match_result_pos&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;(2) ms2_match_result_POS&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;csvms2.match.annotation.result.csvms2_match_spectrams2.macth.annotation.result.csvmetanalyzerms2_match_spectrafigure-6&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;二级谱图匹配结果。包括一个csv文件，ms2.match.annotation.result.csv和一个文件夹，MS2_match_spectra。ms2.macth.annotation.result.csv是二级谱图匹配之后的结果，与MetAnalyzer处理之后的结果相同；MS2_match_spectra文件夹中包含了所有二级匹配图(Figure 6)。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;二级匹配图.png&#34; alt=&#34;Figure 7: 二级谱图匹配图&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 7: 二级谱图匹配图&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;mrn_annotation_result_pos&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;(3) MRN_annotation_result_POS&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;metabolic-reacion-networkcsvmetabm.parameters.csvmrn.annotation.result.csvmrn.annotation.result.csvmrnfigure-8&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;基于metabolic reacion network注释结果。包括两个csv文件，metABM.parameters.csv和MRN.annotation.result.csv。MRN.annotation.result.csv是使用MRN注释结果(Figure 8)。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;MRN.annotation.result.png&#34; alt=&#34;Figure 8: MRN annotation result&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 8: MRN annotation result&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-12&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;其中：&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&#34;annotation.from.idpeakmetaboliteid&#34;&gt;annotation.from.ID：该peak的该注释来自于哪个metabolite(ID);&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;annotation.from.peakpeakpeak&#34;&gt;annotation.from.peak：该peak的该注释来自于哪个peak;&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;idkegg-id&#34;&gt;ID：注释代谢物结果的KEGG ID;&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;compound.name&#34;&gt;compound.name：注释结果的名字；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;isotope&#34;&gt;isotope：同位素信息；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;adduct&#34;&gt;adduct：加合物信息；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;formula&#34;&gt;Formula：化学结构式；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;score&#34;&gt;score：注释打分；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;peak.grouppeak-group&#34;&gt;peak.group：peak group；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;confidencepeak-group&#34;&gt;confidence：对注释的peak group打分。&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;dysregulated_network_analsysi_result_pos&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;(4) Dysregulated_network_analsysi_result_POS&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;dysregulated-networkpdfvolcano.plot.pdffigure-9csvmetmodule.parameters.csvdna.annotation.result.csvmodule_informationfigure-10pathway_inforamtion-figure-11&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Dysregulated network分析的结果。其中包括一个pdf文件，volcano.plot.pdf(Figure: 9)，两个csv文件，metModule.parameters.csv和DNA.annotation.result.csv以及两个文件夹，module_information(Figure 10)和pathway_inforamtion (Figure 11)。&lt;/h4&gt;
-&lt;/div&gt;
-&lt;div id=&#34;volcano.plot&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;1) volcano.plot是选取差异代谢物峰的火山图。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;volcano.plot.png&#34; alt=&#34;Figure 9: Volcano plot&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 9: Volcano plot&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;dna.annotation.result.csvdysregulated-networkkegg-database&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2) DNA.annotation.result.csv是通过dysregulated network对注释结果进行筛选以及KEGG database注释之后的注释结果。&lt;/h4&gt;
-&lt;/div&gt;
-&lt;div id=&#34;module_informationdysregulated-modulemodule.result.csvmodulemodule.overview.pdfmodulefigure-10module.heatmap.pdfmodulefigure-11boxplotmodulefigure-12module_mse-analysismodulemseafigure-13&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;3) module_information文件夹中包含了dysregulated module的分析结果。其中module.result.csv是module的信息。module.overview.pdf是module结果的总览(Figure 10)。module.heatmap.pdf是对module进行定量分析之后的热图(Figure 11)。boxplot文件夹中包含了module在两组间的定量结果(Figure 12)。Module_MSE analysis文件夹中包含了对每个module进行功能注释(MSEA)的结果(Figure 13)。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;module.overview.png&#34; alt=&#34;Figure 10: Module overview&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 10: Module overview&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;module.heatmap.png&#34; alt=&#34;Figure 11: Module heatmap&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 11: Module heatmap&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;module1.boxplot.png&#34; alt=&#34;Figure 12: Module boxplot&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 12: Module boxplot&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;module1.MSEA.png&#34; alt=&#34;Figure 13: Module MSEA result&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 13: Module MSEA result&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;pathway_informationpathwayfigure-14&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;3) pathway_information文件夹中包含了pathway的分析结果(Figure 14)。&lt;/h4&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;pathway.information.png&#34; alt=&#34;Figure 14: Pathway information&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;&lt;strong&gt;Figure 14: Pathway information&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;section-13&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;其中：&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&#34;boxplotpathway&#34;&gt;boxplot：该文件夹中含有每个pathway的定量信息;&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;dysregulated.network.overviewdysregulated-networkpathway&#34;&gt;dysregulated.network.overview：该图表示dysregulated network的pathway分析结果;&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;dysregulated.netwrok.msea.csvdysregulated-networkmsea&#34;&gt;dysregulated.netwrok.MSEA.csv：dysregulated network的MSEA分析结果;&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;dysregulated.netwrok.msea.pdfdysregulated-networkmsea&#34;&gt;dysregulated.netwrok.MSEA.pdf：dysregulated network的MSEA分析结果;&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;dysregulated.networks.for.cytoscape.txtcytoscape&#34;&gt;dysregulated.networks.for.cytoscape.txt：用于cytoscape作图的数据；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;dysregulated.networks.attribute.txtcytoscape&#34;&gt;dysregulated.networks.attribute.txt：用于cytoscape作图的节点属性数据；&lt;/h4&gt;&lt;/li&gt;
-&lt;li&gt;&lt;h4 id=&#34;pathway.heatmap.pdfdysregulated-networkpathwayheatmap&#34;&gt;pathway.heatmap.pdf：dysregulated network的pathway定量的heatmap。&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;analysis_report_pos&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;strong&gt;(5) Analysis_report_POS&lt;/strong&gt;&lt;/h3&gt;
-&lt;div id=&#34;analysis_reporthtml&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;对数据处理分析结果的总结。输出的结果存放在Analysis_report文件夹内。包括一份html格式的&lt;a href=&#34;http://rpubs.com/Jasper/metdna_analysis_report&#34;&gt;分析报告&lt;/a&gt;。&lt;/h4&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     
@@ -775,16 +600,6 @@ $$&lt;/p&gt;
       
       <guid>/publication/journal-article/lipidimms/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Privacy Policy</title>
-      <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      
-      <guid>/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
     </item>
     
     <item>
@@ -1190,57 +1005,6 @@ $$&lt;/p&gt;
 &lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>
-
-
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     
