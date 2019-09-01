@@ -604,7 +604,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    7 min read
   </span>
   
 
@@ -729,6 +729,9 @@ ggplot(data, aes(age, height)) +
   geom_segment(aes(x = data$age[1], y = data$height[1], xend = data$age[1], yend = mean(data$height)), colour = &quot;red&quot;, arrow = arrow()) </code></pre>
 <p><img src="/post/2019-08-26-_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>从定义可以看到,残差有正有负.为了表示一条拟合直线对数据拟合的程度的好坏,我们将残差平方然后加和,从而得到<strong>残差平方和(sum of squared residuals)</strong>,该值就可以用来表示一条直线对数据的拟合的好坏.拟合的越好,该值越小,拟合的越差,该值越大.</p>
+<blockquote>
+<p>其实使用残差平方和作为损失函数得到的最后的方程或者说模型并不一定是最优解,但是好处是方便后面求解(求导)并且解是唯一的.另外还有使用残差绝对值之和作为损失函数进行求解.以后再慢慢介绍.</p>
+</blockquote>
 <p><span class="math display">\[sum \quad of \quad squared \quad residuals = \sum_{i=1}^n(y_i-y_i^{&#39;})^2\]</span></p>
 <blockquote>
 <p>注意,该值是有量纲的,只能比较同一组数据不同拟合直线的好坏,而不能比较不同数据之间的拟合的好坏.后面会介绍<span class="math inline">\(R^2\)</span>.</p>
@@ -808,7 +811,12 @@ summary(lm_fit)</code></pre>
 ## Residual standard error: 0.256 on 10 degrees of freedom
 ## Multiple R-squared:  0.9888, Adjusted R-squared:  0.9876 
 ## F-statistic:   880 on 1 and 10 DF,  p-value: 4.428e-11</code></pre>
-<p>summary中提供了该线性回归的大部分内容.</p>
+<p>summary中提供了该线性回归的大部分内容.其中<code>Multiple R-squared</code>其实就是<code>R-squared</code><span class="math inline">\(R^2\)</span>,而<code>Adjusted R-Squred</code>主要是对多元线性回归时对多个变量进行矫正,因为当变量数目增加的时候,<span class="math inline">\(R^2\)</span>总会变小,因此需要对其进行矫正.对于简单线性回归来说.直接使用<code>Multiple R-squared</code>即可,而对于多元线性回归来说,则需要使用<code>Adjusted R-Squred</code>来衡量模型拟合的效果.</p>
+{{ if and (not .Params.disable_mathjax) (or (in (string .Content) “\”) (in (string .Content) “$”)) }}
+&lt;script src=“{{”/js/math-code.js" | relURL }}"&gt;
+</script>
+<script async src="{{ .Site.Params.MathJaxCDN | default "//cdnjs.cloudflare.com/ajax/libs" }}/mathjax/{{ .Site.Params.MathJaxVersion | default "2.7.5" }}/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<p>{{ end }}</p>
 </div>
 </div>
 

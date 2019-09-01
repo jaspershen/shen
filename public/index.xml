@@ -128,6 +128,9 @@ ggplot(data, aes(age, height)) +
   geom_segment(aes(x = data$age[1], y = data$height[1], xend = data$age[1], yend = mean(data$height)), colour = &amp;quot;red&amp;quot;, arrow = arrow()) &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2019-08-26-_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;从定义可以看到,残差有正有负.为了表示一条拟合直线对数据拟合的程度的好坏,我们将残差平方然后加和,从而得到&lt;strong&gt;残差平方和(sum of squared residuals)&lt;/strong&gt;,该值就可以用来表示一条直线对数据的拟合的好坏.拟合的越好,该值越小,拟合的越差,该值越大.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其实使用残差平方和作为损失函数得到的最后的方程或者说模型并不一定是最优解,但是好处是方便后面求解(求导)并且解是唯一的.另外还有使用残差绝对值之和作为损失函数进行求解.以后再慢慢介绍.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[sum \quad of \quad squared \quad residuals = \sum_{i=1}^n(y_i-y_i^{&amp;#39;})^2\]&lt;/span&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注意,该值是有量纲的,只能比较同一组数据不同拟合直线的好坏,而不能比较不同数据之间的拟合的好坏.后面会介绍&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;.&lt;/p&gt;
@@ -207,7 +210,12 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 ## Residual standard error: 0.256 on 10 degrees of freedom
 ## Multiple R-squared:  0.9888, Adjusted R-squared:  0.9876 
 ## F-statistic:   880 on 1 and 10 DF,  p-value: 4.428e-11&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;summary中提供了该线性回归的大部分内容.&lt;/p&gt;
+&lt;p&gt;summary中提供了该线性回归的大部分内容.其中&lt;code&gt;Multiple R-squared&lt;/code&gt;其实就是&lt;code&gt;R-squared&lt;/code&gt;&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;,而&lt;code&gt;Adjusted R-Squred&lt;/code&gt;主要是对多元线性回归时对多个变量进行矫正,因为当变量数目增加的时候,&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;总会变小,因此需要对其进行矫正.对于简单线性回归来说.直接使用&lt;code&gt;Multiple R-squared&lt;/code&gt;即可,而对于多元线性回归来说,则需要使用&lt;code&gt;Adjusted R-Squred&lt;/code&gt;来衡量模型拟合的效果.&lt;/p&gt;
+{{ if and (not .Params.disable_mathjax) (or (in (string .Content) “\”) (in (string .Content) “$”)) }}
+&amp;lt;script src=“{{”/js/math-code.js&#34; | relURL }}&#34;&amp;gt;
+&lt;/script&gt;
+&lt;script async src=&#34;{{ .Site.Params.MathJaxCDN | default &#34;//cdnjs.cloudflare.com/ajax/libs&#34; }}/mathjax/{{ .Site.Params.MathJaxVersion | default &#34;2.7.5&#34; }}/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;
+&lt;p&gt;{{ end }}&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
