@@ -812,11 +812,28 @@ summary(lm_fit)</code></pre>
 ## Multiple R-squared:  0.9888, Adjusted R-squared:  0.9876 
 ## F-statistic:   880 on 1 and 10 DF,  p-value: 4.428e-11</code></pre>
 <p>summary中提供了该线性回归的大部分内容.其中<code>Multiple R-squared</code>其实就是<code>R-squared</code><span class="math inline">\(R^2\)</span>,而<code>Adjusted R-Squred</code>主要是对多元线性回归时对多个变量进行矫正,因为当变量数目增加的时候,<span class="math inline">\(R^2\)</span>总会变小,因此需要对其进行矫正.对于简单线性回归来说.直接使用<code>Multiple R-squared</code>即可,而对于多元线性回归来说,则需要使用<code>Adjusted R-Squred</code>来衡量模型拟合的效果.</p>
-{{ if and (not .Params.disable_mathjax) (or (in (string .Content) “\”) (in (string .Content) “$”)) }}
-&lt;script src=“{{”/js/math-code.js" | relURL }}"&gt;
-</script>
-<script async src="{{ .Site.Params.MathJaxCDN | default "//cdnjs.cloudflare.com/ajax/libs" }}/mathjax/{{ .Site.Params.MathJaxVersion | default "2.7.5" }}/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<p>{{ end }}</p>
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+<pre><code>&lt;script src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt;
+&lt;!-- MathJax configuration --&gt;
+&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&quot;\\(&quot;,&quot;\\)&quot;] ],
+        displayMath: [ [&#39;$$&#39;,&#39;$$&#39;], [&quot;\\[&quot;,&quot;\\]&quot;] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: &#39;center&#39;,
+    &quot;HTML-CSS&quot;: {
+        styles: {&#39;.MathJax_Display&#39;: {&quot;margin&quot;: 0}},
+        linebreaks: { automatic: true }
+    }
+});
+&lt;/script&gt;
+&lt;!-- End of mathjax configuration --&gt;</code></pre>
 </div>
 </div>
 

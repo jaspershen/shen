@@ -211,11 +211,28 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 ## Multiple R-squared:  0.9888, Adjusted R-squared:  0.9876 
 ## F-statistic:   880 on 1 and 10 DF,  p-value: 4.428e-11&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;summary中提供了该线性回归的大部分内容.其中&lt;code&gt;Multiple R-squared&lt;/code&gt;其实就是&lt;code&gt;R-squared&lt;/code&gt;&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;,而&lt;code&gt;Adjusted R-Squred&lt;/code&gt;主要是对多元线性回归时对多个变量进行矫正,因为当变量数目增加的时候,&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;总会变小,因此需要对其进行矫正.对于简单线性回归来说.直接使用&lt;code&gt;Multiple R-squared&lt;/code&gt;即可,而对于多元线性回归来说,则需要使用&lt;code&gt;Adjusted R-Squred&lt;/code&gt;来衡量模型拟合的效果.&lt;/p&gt;
-{{ if and (not .Params.disable_mathjax) (or (in (string .Content) “\”) (in (string .Content) “$”)) }}
-&amp;lt;script src=“{{”/js/math-code.js&#34; | relURL }}&#34;&amp;gt;
-&lt;/script&gt;
-&lt;script async src=&#34;{{ .Site.Params.MathJaxCDN | default &#34;//cdnjs.cloudflare.com/ajax/libs&#34; }}/mathjax/{{ .Site.Params.MathJaxVersion | default &#34;2.7.5&#34; }}/MathJax.js?config=TeX-MML-AM_CHTML&#34;&gt;&lt;/script&gt;
-&lt;p&gt;{{ end }}&lt;/p&gt;
+&lt;!-- Loading mathjax macro --&gt;
+&lt;!-- Load mathjax --&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script src=&amp;quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;!-- MathJax configuration --&amp;gt;
+&amp;lt;script type=&amp;quot;text/x-mathjax-config&amp;quot;&amp;gt;
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ [&amp;#39;$&amp;#39;,&amp;#39;$&amp;#39;], [&amp;quot;\\(&amp;quot;,&amp;quot;\\)&amp;quot;] ],
+        displayMath: [ [&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;], [&amp;quot;\\[&amp;quot;,&amp;quot;\\]&amp;quot;] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: &amp;#39;center&amp;#39;,
+    &amp;quot;HTML-CSS&amp;quot;: {
+        styles: {&amp;#39;.MathJax_Display&amp;#39;: {&amp;quot;margin&amp;quot;: 0}},
+        linebreaks: { automatic: true }
+    }
+});
+&amp;lt;/script&amp;gt;
+&amp;lt;!-- End of mathjax configuration --&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
