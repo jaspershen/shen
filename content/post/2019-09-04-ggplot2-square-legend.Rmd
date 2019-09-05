@@ -1,0 +1,58 @@
+---
+title: 如何修改ggplot2垂直square legend之间的距离
+author: Xiaotao Shen
+date: '2019-09-04'
+slug: ggplot2-square-legend
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+今天看到有人在讨论如何修改`ggplot2`中垂直square legend之间的距离.原来想着`ggplot2`中的`theme`函数的`legend.key.height`参数不就是来控制这个距离的吗?后来试了一下,还真的不行.
+
+先画出图来:
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl)))
+```
+
+使用`legend.key.height`参数来设置:
+
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl))) +
+  theme(legend.key.height = unit(4, "line"))
+```
+
+可以看到每个key变高了,但是距离并没有变化.我们试试其他类型的legend,比如point.
+
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_point(aes(colour = factor(cyl)), stat = "count")
+
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_point(aes(colour = factor(cyl)), stat = "count") +
+  theme(legend.key.height = unit(10, "mm"))
+```
+
+从这幅图看的就非常的清楚了,每个legend的图像元素是由`key`(背景)和指示元素组成的.`legend.key.height`参数可以改变`key`的高度,而指示元素则处在key的中间,对于square legend来说,他们其实是和`key`背景重合的,所以`legend.key.height`没有办法改变他们之间的距离.
+
+那如果确实有需要更改这个距离,怎么做呢?想到一个办法只能更改square指示元素的line的宽度(line颜色为白色),从而间接修改他们之间的距离.
+
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl)))
+
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl))) +
+  theme(legend.key.size = unit(2, "line")) +
+  guides(fill = guide_legend(override.aes = list(size = 3, colour = "white")))
+```
+
+欢迎大家由其他办法的留言讨论.

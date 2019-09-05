@@ -1,0 +1,46 @@
+---
+title: 如何修改ggplot2垂直square legend之间的距离
+author: Xiaotao Shen
+date: '2019-09-04'
+slug: ggplot2-square-legend
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+
+<p>今天看到有人在讨论如何修改<code>ggplot2</code>中垂直square legend之间的距离.原来想着<code>ggplot2</code>中的<code>theme</code>函数的<code>legend.key.height</code>参数不就是来控制这个距离的吗?后来试了一下,还真的不行.</p>
+<p>先画出图来:</p>
+<pre class="r"><code>library(ggplot2)
+ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl)))</code></pre>
+<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>使用<code>legend.key.height</code>参数来设置:</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl))) +
+  theme(legend.key.height = unit(4, &quot;line&quot;))</code></pre>
+<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>可以看到每个key变高了,但是距离并没有变化.我们试试其他类型的legend,比如point.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_point(aes(colour = factor(cyl)), stat = &quot;count&quot;)</code></pre>
+<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_point(aes(colour = factor(cyl)), stat = &quot;count&quot;) +
+  theme(legend.key.height = unit(10, &quot;mm&quot;))</code></pre>
+<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>从这幅图看的就非常的清楚了,每个legend的图像元素是由<code>key</code>(背景)和指示元素组成的.<code>legend.key.height</code>参数可以改变<code>key</code>的高度,而指示元素则处在key的中间,对于square legend来说,他们其实是和<code>key</code>背景重合的,所以<code>legend.key.height</code>没有办法改变他们之间的距离.</p>
+<p>那如果确实有需要更改这个距离,怎么做呢?想到一个办法只能更改square指示元素的line的宽度(line颜色为白色),从而间接修改他们之间的距离.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl)))</code></pre>
+<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl))) +
+  theme(legend.key.size = unit(2, &quot;line&quot;)) +
+  guides(fill = guide_legend(override.aes = list(size = 3, colour = &quot;white&quot;)))</code></pre>
+<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>欢迎大家由其他办法的留言讨论.</p>
