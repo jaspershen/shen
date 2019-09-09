@@ -168,7 +168,7 @@
         "message": "This website uses cookies to ensure you get the best experience on our website.",
         "dismiss": "Got it!",
         "link": "Learn more",
-        "href": "https://cookies.insites.com"
+        "href": "/privacy/"
       }
     })});
 </script>
@@ -730,9 +730,9 @@ height &lt;-
 data &lt;- 
   data.frame(age, height, 
              stringsAsFactors = FALSE)
-library(ggplot2)
-
-(
+library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
+<pre class="r"><code>(
 plot &lt;- 
 ggplot(data, aes(age, height)) +
   geom_point() +
@@ -999,6 +999,10 @@ summary(lm_fit)</code></pre>
 
 <div class="container">
   <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
   
 
   <p class="powered-by">

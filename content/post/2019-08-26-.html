@@ -26,9 +26,9 @@ height &lt;-
 data &lt;- 
   data.frame(age, height, 
              stringsAsFactors = FALSE)
-library(ggplot2)
-
-(
+library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
+<pre class="r"><code>(
 plot &lt;- 
 ggplot(data, aes(age, height)) +
   geom_point() +

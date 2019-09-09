@@ -168,7 +168,7 @@
         "message": "This website uses cookies to ensure you get the best experience on our website.",
         "dismiss": "Got it!",
         "link": "Learn more",
-        "href": "https://cookies.insites.com"
+        "href": "/privacy/"
       }
     })});
 </script>
@@ -720,8 +720,9 @@
 
 <p>今天看到有人在讨论如何修改<code>ggplot2</code>中垂直square legend之间的距离.原来想着<code>ggplot2</code>中的<code>theme</code>函数的<code>legend.key.height</code>参数不就是来控制这个距离的吗?后来试了一下,还真的不行.</p>
 <p>先画出图来:</p>
-<pre class="r"><code>library(ggplot2)
-ggplot(mtcars, aes(x = factor(cyl))) +
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))</code></pre>
 <p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>使用<code>legend.key.height</code>参数来设置:</p>
@@ -913,6 +914,10 @@ ggplot(mtcars, aes(x = factor(cyl))) +
 
 <div class="container">
   <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
   
 
   <p class="powered-by">

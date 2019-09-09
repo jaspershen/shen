@@ -98,50 +98,8 @@
 &lt;h3&gt;安装&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::install_github(&amp;quot;thomasp85/patchwork&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Downloading GitHub repo thomasp85/patchwork@master&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ggplot2 (3.2.0 -&amp;gt; 3.2.1) [CRAN]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Installing 1 packages: ggplot2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## package &amp;#39;ggplot2&amp;#39; successfully unpacked and MD5 sums checked
-## 
-## The downloaded binary packages are in
-##  C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\downloaded_packages
-##   
-  
-  
-   checking for file &amp;#39;C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\remotes4738296d74ba\thomasp85-patchwork-36b4918/DESCRIPTION&amp;#39; ...
-  
-   checking for file &amp;#39;C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\remotes4738296d74ba\thomasp85-patchwork-36b4918/DESCRIPTION&amp;#39; ... 
-  
-v  checking for file &amp;#39;C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\remotes4738296d74ba\thomasp85-patchwork-36b4918/DESCRIPTION&amp;#39;
-## 
-  
-  
-  
--  preparing &amp;#39;patchwork&amp;#39;:
-##    checking DESCRIPTION meta-information ...
-  
-   checking DESCRIPTION meta-information ... 
-  
-v  checking DESCRIPTION meta-information
-## 
-  
-  
-  
--  checking for LF line-endings in source and make files and shell scripts
-## 
-  
-  
-  
--  checking for empty or unneeded directories
-## 
-  
-  
-  
--  building &amp;#39;patchwork_0.0.1.tar.gz&amp;#39;
-## 
-  
-   
-## &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Skipping install of &amp;#39;patchwork&amp;#39; from a github remote, the SHA1 (36b49187) has not changed since last install.
+##   Use `force = TRUE` to force installation&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;section-1&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;使用&lt;/h3&gt;
@@ -227,8 +185,9 @@ plot&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;今天看到有人在讨论如何修改&lt;code&gt;ggplot2&lt;/code&gt;中垂直square legend之间的距离.原来想着&lt;code&gt;ggplot2&lt;/code&gt;中的&lt;code&gt;theme&lt;/code&gt;函数的&lt;code&gt;legend.key.height&lt;/code&gt;参数不就是来控制这个距离的吗?后来试了一下,还真的不行.&lt;/p&gt;
 &lt;p&gt;先画出图来:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
-ggplot(mtcars, aes(x = factor(cyl))) +
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;legend.key.height&lt;/code&gt;参数来设置:&lt;/p&gt;
@@ -292,9 +251,9 @@ height &amp;lt;-
 data &amp;lt;- 
   data.frame(age, height, 
              stringsAsFactors = FALSE)
-library(ggplot2)
-
-(
+library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(
 plot &amp;lt;- 
 ggplot(data, aes(age, height)) +
   geom_point() +
@@ -790,6 +749,16 @@ $$&lt;/p&gt;
       
       <guid>/publication/journal-article/lipidimms/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Privacy Policy</title>
+      <link>/privacy/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      
+      <guid>/privacy/</guid>
+      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
+</description>
     </item>
     
     <item>
