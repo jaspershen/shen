@@ -1,0 +1,92 @@
+---
+title: ggplot2拼图工具:patchwork
+author: Xiaotao Shen
+date: '2019-09-09'
+slug: ggplot2-patchwork
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+推荐一个用来拼图的包:`patchwork`.作者是[Thomas Lin Pedersen](https://github.com/thomasp85).使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟`tidyverse`非常像,直接使用`+`,`-`等符号来进行图的拼接.举个例子说明.
+
+### 安装
+
+`patchwork`
+
+```{r}
+devtools::install_github("thomasp85/patchwork")
+```
+
+### 使用
+
+拼图有两种不同的含义:
+
+1. 像一幅图中不同的panel一样,他们分别是独立的;
+
+2. 反映同样的数据信息,将几个图拼成一个panel.比如对于一个散点图,在其右侧和左侧分别添加其对应的变量的密度分布图等.
+
+
+```{r}
+library(patchwork)
+library(tidyverse)
+
+plot1 <- 
+  ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point() +
+  theme_bw() +
+  scale_x_continuous(limits = c(10, 35)) +
+  scale_y_continuous(limits = c(50, 500))
+  
+plot2 <- 
+  ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram() +
+  theme_bw() +
+  scale_x_continuous(limits = c(10, 35), 
+                     name = NULL, labels = NULL, breaks = NULL) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, .05))) +
+  theme(panel.border = element_blank(),
+        axis.line = element_line(colour = "black"),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank())
+
+plot3 <- 
+  ggplot(mtcars, aes(x = disp)) +
+  geom_histogram() +
+  theme_bw() +
+  coord_flip() +
+    scale_x_continuous(limits = c(150, 500), 
+                     name = NULL, labels = NULL, breaks = NULL) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, .05))) +
+  theme(panel.border = element_blank(),
+        axis.line = element_line(colour = "black"),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank())
+```
+
+我们画出了汽车`mpg`和`disp`的关系,然后想在这个散点图上方和右方分别画上`disp`和`mpg`的分布图.这时候需要注意的是,需要确定`xlim`和`ylim`的发明,从而使其坐标轴能够精确对上.
+
+```{r}
+plot <- 
+{plot2 + plot_spacer() + plot_layout(ncol = 2, widths = c(3, 1))} -
+  {plot1 + plot3 + plot_layout(ncol = 2, widths = c(3, 1))} +
+  plot_layout(ncol = 1, heights = c(1,3))
+plot
+```
+
+`plot_spacer()`函数用来生成一个空白图片.`plot_layout()`函数用来设置拼接图片的一些具体参数,如列数,行数,宽度或者高度比等.
+
+`{}`括起来的几个plot组成一个完整的新的plot.
+
+这里面需要注意的是`-`.它是指该符号左右两侧当成两个新的图层进行拼接.
+
+具体使用方法可以参考作者github(https://github.com/thomasp85/patchwork).
+
+
+
+
+

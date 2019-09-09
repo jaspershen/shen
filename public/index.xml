@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Wed, 04 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -81,6 +81,138 @@
 &lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
 
 &lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ggplot2拼图工具:patchwork</title>
+      <link>/post/ggplot2-patchwork/</link>
+      <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ggplot2-patchwork/</guid>
+      <description>
+
+
+&lt;p&gt;推荐一个用来拼图的包:&lt;code&gt;patchwork&lt;/code&gt;.作者是&lt;a href=&#34;https://github.com/thomasp85&#34;&gt;Thomas Lin Pedersen&lt;/a&gt;.使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟&lt;code&gt;tidyverse&lt;/code&gt;非常像,直接使用&lt;code&gt;+&lt;/code&gt;,&lt;code&gt;-&lt;/code&gt;等符号来进行图的拼接.举个例子说明.&lt;/p&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::install_github(&amp;quot;thomasp85/patchwork&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Downloading GitHub repo thomasp85/patchwork@master&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ggplot2 (3.2.0 -&amp;gt; 3.2.1) [CRAN]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Installing 1 packages: ggplot2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## package &amp;#39;ggplot2&amp;#39; successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\downloaded_packages
+##   
+  
+  
+   checking for file &amp;#39;C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\remotes4738296d74ba\thomasp85-patchwork-36b4918/DESCRIPTION&amp;#39; ...
+  
+   checking for file &amp;#39;C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\remotes4738296d74ba\thomasp85-patchwork-36b4918/DESCRIPTION&amp;#39; ... 
+  
+v  checking for file &amp;#39;C:\Users\MI\AppData\Local\Temp\RtmpSKFbAM\remotes4738296d74ba\thomasp85-patchwork-36b4918/DESCRIPTION&amp;#39;
+## 
+  
+  
+  
+-  preparing &amp;#39;patchwork&amp;#39;:
+##    checking DESCRIPTION meta-information ...
+  
+   checking DESCRIPTION meta-information ... 
+  
+v  checking DESCRIPTION meta-information
+## 
+  
+  
+  
+-  checking for LF line-endings in source and make files and shell scripts
+## 
+  
+  
+  
+-  checking for empty or unneeded directories
+## 
+  
+  
+  
+-  building &amp;#39;patchwork_0.0.1.tar.gz&amp;#39;
+## 
+  
+   
+## &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;使用&lt;/h3&gt;
+&lt;p&gt;拼图有两种不同的含义:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;像一幅图中不同的panel一样,他们分别是独立的;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;反映同样的数据信息,将几个图拼成一个panel.比如对于一个散点图,在其右侧和左侧分别添加其对应的变量的密度分布图等.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(patchwork)
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages -------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   0.8.3     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Conflicts ----------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot1 &amp;lt;- 
+  ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point() +
+  theme_bw() +
+  scale_x_continuous(limits = c(10, 35)) +
+  scale_y_continuous(limits = c(50, 500))
+  
+plot2 &amp;lt;- 
+  ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram() +
+  theme_bw() +
+  scale_x_continuous(limits = c(10, 35), 
+                     name = NULL, labels = NULL, breaks = NULL) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, .05))) +
+  theme(panel.border = element_blank(),
+        axis.line = element_line(colour = &amp;quot;black&amp;quot;),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank())
+
+plot3 &amp;lt;- 
+  ggplot(mtcars, aes(x = disp)) +
+  geom_histogram() +
+  theme_bw() +
+  coord_flip() +
+    scale_x_continuous(limits = c(150, 500), 
+                     name = NULL, labels = NULL, breaks = NULL) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, .05))) +
+  theme(panel.border = element_blank(),
+        axis.line = element_line(colour = &amp;quot;black&amp;quot;),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们画出了汽车&lt;code&gt;mpg&lt;/code&gt;和&lt;code&gt;disp&lt;/code&gt;的关系,然后想在这个散点图上方和右方分别画上&lt;code&gt;disp&lt;/code&gt;和&lt;code&gt;mpg&lt;/code&gt;的分布图.这时候需要注意的是,需要确定&lt;code&gt;xlim&lt;/code&gt;和&lt;code&gt;ylim&lt;/code&gt;的发明,从而使其坐标轴能够精确对上.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot &amp;lt;- 
+{plot2 + plot_spacer() + plot_layout(ncol = 2, widths = c(3, 1))} -
+  {plot1 + plot3 + plot_layout(ncol = 2, widths = c(3, 1))} +
+  plot_layout(ncol = 1, heights = c(1,3))
+plot&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 2 rows containing missing values (geom_bar).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 12 rows containing non-finite values (stat_bin).
+
+## Warning: Removed 2 rows containing missing values (geom_bar).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-09-ggplot2-patchwork_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;plot_spacer()&lt;/code&gt;函数用来生成一个空白图片.&lt;code&gt;plot_layout()&lt;/code&gt;函数用来设置拼接图片的一些具体参数,如列数,行数,宽度或者高度比等.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{}&lt;/code&gt;括起来的几个plot组成一个完整的新的plot.&lt;/p&gt;
+&lt;p&gt;这里面需要注意的是&lt;code&gt;-&lt;/code&gt;.它是指该符号左右两侧当成两个新的图层进行拼接.&lt;/p&gt;
+&lt;p&gt;具体使用方法可以参考作者github(&lt;a href=&#34;https://github.com/thomasp85/patchwork&#34; class=&#34;uri&#34;&gt;https://github.com/thomasp85/patchwork&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

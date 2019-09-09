@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Wed, 04 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ggplot2拼图工具:patchwork</title>
+      <link>/post/ggplot2-patchwork/</link>
+      <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ggplot2-patchwork/</guid>
+      <description>推荐一个用来拼图的包:patchwork.作者是Thomas Lin Pedersen.使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟</description>
+    </item>
     
     <item>
       <title>如何修改ggplot2垂直square legend之间的距离</title>
