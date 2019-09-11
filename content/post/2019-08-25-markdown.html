@@ -1,0 +1,543 @@
+---
+title: Markdown中输入数学公式
+author: Xiaotao Shen
+date: '2019-08-25'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+
+<p>在Markdown中可以方便的输入数学公式.现在将Markdown中数学公式总结一下.</p>
+<div id="section" class="section level3">
+<h3>1. 如何插入公式</h3>
+<p>包括两种,一种是在行内插入,一种是独立公式(单独一行).</p>
+<ul>
+<li><p>行中插入公式(<code>$E = mc^2$</code>): <span class="math inline">\(E = mc^2\)</span></p></li>
+<li><p>独立公式:</p></li>
+</ul>
+<pre><code>$$E = mc^2$$</code></pre>
+<p><span class="math display">\[E = mc^2\]</span></p>
+</div>
+<div id="section-1" class="section level3">
+<h3>2. 上下标</h3>
+<p><code>^</code>上标,<code>_</code>下标.如果上下标内容多于一个字符,需要使用<code>{}</code>将其扩大为一个整体.</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} \]</span></p>
+</div>
+<div id="section-2" class="section level3">
+<h3>3. 括号和分隔符</h3>
+<p>()、[] 和 | 表示符号本身，使用 {} 来表示{} 。当要显示大号的括号或分隔符时，要用 和 命令。</p>
+<p>一些特殊的例子:</p>
+<table>
+<thead>
+<tr class="header">
+<th>输入</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\langle</code></td>
+<td><span class="math inline">\(\langle\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\rangle</code></td>
+<td><span class="math inline">\(\rangle\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\lceil</code></td>
+<td><span class="math inline">\(\rceil\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\lfloor</code></td>
+<td><span class="math inline">\(\lfloor\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\lbrace</code></td>
+<td><span class="math inline">\(\lbrace\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right) $$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2}\right) \]</span></p>
+</div>
+<div id="section-3" class="section level3">
+<h3>4. 分数</h3>
+<p>通常使用  命令产生一个分数，分数可嵌套。</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$\frac{a-1}{b-1} \quad and \quad {a+1\over b+1}$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[\frac{a-1}{b-1}\]</span></p>
+</div>
+<div id="section-4" class="section level3">
+<h3>5. 开方</h3>
+<p>使用  命令输入开方。</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$\sqrt{2} \quad and \quad \sqrt[n]{3}$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[\sqrt{2} \quad and \quad \sqrt[n]{3}\]</span></p>
+<blockquote>
+<p>其中.</p>
+</blockquote>
+</div>
+<div id="section-5" class="section level3">
+<h3>6. 省略号</h3>
+<p>数学公式中常见的省略号有两种，表示与文本底线对齐的省略号，表示与文本中线对齐的省略号。</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$f(x_1,x_2,\ldots ,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[f(x_1,x_2,\ldots ,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2\]</span></p>
+</div>
+<div id="section-6" class="section level3">
+<h3>7. 矢量</h3>
+<p>使用  来自动产生一个矢量。也可以使用 等命令自定义字母上方的符号。</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$\vec{a} \cdot \vec{b}=0$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[\vec{a} \cdot \vec{b}=0\]</span></p>
+<p>其中(<span class="math inline">\(\cdot\)</span>).</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}\]</span></p>
+</div>
+<div id="section-7" class="section level3">
+<h3>8. 积分</h3>
+<p>使用 _积分下限^积分上限 {被积表达式} 来输入一个积分。</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$\int_0^1 {x^2} \,{\rm d}x$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[\int_0^1 {x^2} dx\]</span></p>
+</div>
+<div id="section-8" class="section level3">
+<h3>9. 极限预算</h3>
+<p>使用 _{变量 表达式} 表达式 来输入一个极限。如有需求，可以更改 符号至任意符号。</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} \]</span></p>
+<p>其中,都表示向右的箭头.</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$\to \quad and \quad \rightarrow$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[\to \quad and \quad \rightarrow\]</span></p>
+</div>
+<div id="section-9" class="section level3">
+<h3>10. 累加,累乘公式</h3>
+<p>使用 _{下标表达式}^{上标表达式} {累加表达式} 来输入一个累加。
+与之类似，使用 来分别输入累乘、并集和交集。
+此类符号在行内显示时上下标表达式将会移至右上角和右下角。</p>
+<ul>
+<li><strong>例子</strong></li>
+</ul>
+<p>输入:</p>
+<pre><code>$$\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R$$</code></pre>
+<p>显示:</p>
+<p><span class="math display">\[\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R\]</span></p>
+</div>
+<div id="section-10" class="section level3">
+<h3>11. 希腊字母</h3>
+<p>输入<code>\小写希腊字母英文全称</code>和<code>\首字母大写希腊字母英文全称</code>来分别输入小写和大写希腊字母。</p>
+<blockquote>
+<p>对于大写希腊字母与现有字母相同的，直接输入大写字母即可。</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\alpha</code></td>
+<td><span class="math inline">\(\alpha\)</span></td>
+<td><code>A</code></td>
+<td><span class="math inline">\(A\)</span></td>
+<td><code>\beta</code></td>
+<td><span class="math inline">\(\beta\)</span></td>
+<td><code>B</code></td>
+<td><span class="math inline">\(B\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\gamma</code></td>
+<td><span class="math inline">\(\gamma\)</span></td>
+<td><code>\Gamma</code></td>
+<td><span class="math inline">\(\Gamma\)</span></td>
+<td><code>\delta</code></td>
+<td><span class="math inline">\(\delta\)</span></td>
+<td><code>\Delta</code></td>
+<td><span class="math inline">\(\Delta\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\epsilon</code></td>
+<td><span class="math inline">\(\epsilon\)</span></td>
+<td><code>E</code></td>
+<td><span class="math inline">\(E\)</span></td>
+<td><code>\zeta</code></td>
+<td><span class="math inline">\(\zeta\)</span></td>
+<td><code>Z</code></td>
+<td><span class="math inline">\(Z\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\eta</code></td>
+<td><span class="math inline">\(\eta\)</span></td>
+<td><code>H</code></td>
+<td><span class="math inline">\(H\)</span></td>
+<td><code>\theta</code></td>
+<td><span class="math inline">\(\theta\)</span></td>
+<td><code>\Theta</code></td>
+<td><span class="math inline">\(\Theta\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\iota</code></td>
+<td><span class="math inline">\(\iota\)</span></td>
+<td><code>I</code></td>
+<td><span class="math inline">\(I\)</span></td>
+<td><code>\kappa</code></td>
+<td><span class="math inline">\(\kappa\)</span></td>
+<td><code>K</code></td>
+<td><span class="math inline">\(K\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\lambda</code></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><code>\Lambda</code></td>
+<td><span class="math inline">\(\Lambda\)</span></td>
+<td><code>\mu</code></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><code>M</code></td>
+<td><span class="math inline">\(M\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\nu</code></td>
+<td><span class="math inline">\(\nu\)</span></td>
+<td><code>N</code></td>
+<td><span class="math inline">\(N\)</span></td>
+<td><code>\xi</code></td>
+<td><span class="math inline">\(\xi\)</span></td>
+<td><code>Xi</code></td>
+<td><span class="math inline">\(Xi\)</span></td>
+</tr>
+<tr class="even">
+<td><code>o</code></td>
+<td><span class="math inline">\(o\)</span></td>
+<td><code>O</code></td>
+<td><span class="math inline">\(O\)</span></td>
+<td><code>\pi</code></td>
+<td><span class="math inline">\(\pi\)</span></td>
+<td><code>\Pi</code></td>
+<td><span class="math inline">\(\Pi\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\rho</code></td>
+<td><span class="math inline">\(\rho\)</span></td>
+<td><code>P</code></td>
+<td><span class="math inline">\(P\)</span></td>
+<td><code>\sigma</code></td>
+<td><span class="math inline">\(\sigma\)</span></td>
+<td><code>\Sigma</code></td>
+<td><span class="math inline">\(\Sigma\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\tau</code></td>
+<td><span class="math inline">\(\tau\)</span></td>
+<td><code>T</code></td>
+<td><span class="math inline">\(T\)</span></td>
+<td><code>\upsilon</code></td>
+<td><span class="math inline">\(\upsilon\)</span></td>
+<td><code>\Upsilon</code></td>
+<td><span class="math inline">\(\Upsilon\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\phi</code></td>
+<td><span class="math inline">\(\phi\)</span></td>
+<td><code>\Phi</code></td>
+<td><span class="math inline">\(\Phi\)</span></td>
+<td><code>\chi</code></td>
+<td><span class="math inline">\(\chi\)</span></td>
+<td><code>\Chi</code></td>
+<td><span class="math inline">\(\Chi\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\psi</code></td>
+<td><span class="math inline">\(\psi\)</span></td>
+<td><code>\Psi</code></td>
+<td><span class="math inline">\(\Psi\)</span></td>
+<td><code>\omega</code></td>
+<td><span class="math inline">\(\omega\)</span></td>
+<td><code>\Omega</code></td>
+<td><span class="math inline">\(\Omega\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-11" class="section level3">
+<h3>12. 运算符</h3>
+<div id="section-12" class="section level4">
+<h4>(1) 关系运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\pm</code></td>
+<td><span class="math inline">\(\pm\)</span></td>
+<td><code>\times</code></td>
+<td><span class="math inline">\(\times\)</span></td>
+<td><code>\div</code></td>
+<td><span class="math inline">\(\div\)</span></td>
+<td><code>\mid</code></td>
+<td><span class="math inline">\(\mid\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\nmid</code></td>
+<td><span class="math inline">\(\nmid\)</span></td>
+<td><code>\cdot</code></td>
+<td><span class="math inline">\(\cdot\)</span></td>
+<td><code>\circ</code></td>
+<td><span class="math inline">\(\circ\)</span></td>
+<td><code>\ast</code></td>
+<td><span class="math inline">\(\ast\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\bigodot</code></td>
+<td><span class="math inline">\(\bigodot\)</span></td>
+<td><code>\bigotimes</code></td>
+<td><span class="math inline">\(\bigotimes\)</span></td>
+<td><code>\bigoplus</code></td>
+<td><span class="math inline">\(\bigoplus\)</span></td>
+<td><code>\leq</code></td>
+<td><span class="math inline">\(\leq\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\geq</code></td>
+<td><span class="math inline">\(\geq\)</span></td>
+<td><code>\neq</code></td>
+<td><span class="math inline">\(\neq\)</span></td>
+<td><code>\approx</code></td>
+<td><span class="math inline">\(\approx\)</span></td>
+<td><code>\equiv</code></td>
+<td><span class="math inline">\(\equiv\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\sum</code></td>
+<td><span class="math inline">\(\sum\)</span></td>
+<td><code>\prod</code></td>
+<td><span class="math inline">\(\prod\)</span></td>
+<td><code>\coprod</code></td>
+<td><span class="math inline">\(\coprod\)</span></td>
+<td><code>\backslash</code></td>
+<td><span class="math inline">\(\backslash\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-13" class="section level4">
+<h4>(2) 集合运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+<th>输入</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\emptyset</code></td>
+<td><span class="math inline">\(\emptyset\)</span></td>
+<td><code>\in</code></td>
+<td><span class="math inline">\(\in\)</span></td>
+<td><code>\notin</code></td>
+<td><span class="math inline">\(\notin\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\subset</code></td>
+<td><span class="math inline">\(\subset\)</span></td>
+<td><code>\supset</code></td>
+<td><span class="math inline">\(\supset\)</span></td>
+<td><code>\subseteq</code></td>
+<td><span class="math inline">\(\subseteq\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\supseteq</code></td>
+<td><span class="math inline">\(\supseteq\)</span></td>
+<td><code>\bigcap</code></td>
+<td><span class="math inline">\(\bigcap\)</span></td>
+<td><code>\bigcup</code></td>
+<td><span class="math inline">\(\bigcup\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\bigvee</code></td>
+<td><span class="math inline">\(\bigvee\)</span></td>
+<td><code>\bigwedge</code></td>
+<td><span class="math inline">\(\bigwedge\)</span></td>
+<td><code>\biguplus</code></td>
+<td><span class="math inline">\(\biguplus\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-14" class="section level4">
+<h4>(3) 对数运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th>输入</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\log</code></td>
+<td><span class="math inline">\(\log\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\lg</code></td>
+<td><span class="math inline">\(\lg\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\ln</code></td>
+<td><span class="math inline">\(\ln\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-15" class="section level4">
+<h4>(4) 三角运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th>输入</th>
+<th>显示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>30^\circ</code></td>
+<td><span class="math inline">\(30^\circ\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\bot</code></td>
+<td><span class="math inline">\(\bot\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\angle A</code></td>
+<td><span class="math inline">\(\angle A\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\sin</code></td>
+<td><span class="math inline">\(\sin\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\cos</code></td>
+<td><span class="math inline">\(\cos\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\csc</code></td>
+<td><span class="math inline">\(\csc\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\sec</code></td>
+<td><span class="math inline">\(\sec\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\cot</code></td>
+<td><span class="math inline">\(\cot\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="section-16" class="section level3">
+<h3>13. 字体转换</h3>
+<p>若要对公式的某一部分字符进行字体转换，可以用<code>{\字体 {需转换的部分字符}}</code>命令，其中 <code>\字体</code> 部分可以参照下表选择合适的字体。一般情况下，公式默认为意大利体。</p>
+<p>示例中<code>全部大写</code>的字体仅大写可用。</p>
+<table>
+<thead>
+<tr class="header">
+<th>输入</th>
+<th>显示</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\rm</code></td>
+<td><span class="math inline">\(\rm {Sample}\)</span></td>
+<td>罗马体</td>
+</tr>
+<tr class="even">
+<td><code>\it</code></td>
+<td><span class="math inline">\(\it {Sample}\)</span></td>
+<td>意大利斜体</td>
+</tr>
+<tr class="odd">
+<td><code>\bf</code></td>
+<td><span class="math inline">\(\bf {Sample}\)</span></td>
+<td>粗体</td>
+</tr>
+</tbody>
+</table>
+</div>

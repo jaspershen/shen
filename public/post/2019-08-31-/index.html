@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="逻辑回归(logistic regression)其实就是线性回归的一种.只是对于逻辑回归的因变量,是非连续变量的0和1,通过Sigmoid函">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/2019-08-31-/">
@@ -138,7 +138,7 @@
   <meta property="og:site_name" content="Shen Blog">
   <meta property="og:url" content="/post/2019-08-31-/">
   <meta property="og:title" content=" 生物统计学学习:逻辑回归 | Shen Blog">
-  <meta property="og:description" content=""><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="逻辑回归(logistic regression)其实就是线性回归的一种.只是对于逻辑回归的因变量,是非连续变量的0和1,通过Sigmoid函"><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-08-31T00:00:00&#43;00:00">
@@ -628,7 +628,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
   </span>
   
 
@@ -718,7 +718,23 @@
       
 
 
+<p>逻辑回归(logistic regression)其实就是线性回归的一种.只是对于逻辑回归的因变量,是非连续变量的0和1,通过Sigmoid函数将其映射为连续性变量.逻辑回归虽然叫回归,但是预测给出的值只是0和1,因此其实是属于分类.</p>
+<div id="sigmoidlogistic-function" class="section level3">
+<h3>Sigmoid函数(logistic function)</h3>
+<p>sigmoid函数的方程如下:</p>
+<p><span class="math display">\[f(x) = \frac{1}{1+e^{-x}}\]</span></p>
+<p>其函数曲线我们可以通过模拟给出:</p>
+<pre class="r"><code>library(tidyverse)
+x &lt;- seq(-10, 10, by = 0.1)
+y &lt;- 1/(1+exp(-x))
 
+ggplot(data.frame(x,y), aes(x, y)) +
+  geom_line(colour = &quot;red&quot;) +
+  geom_vline(xintercept = 0) +
+  theme_bw()</code></pre>
+<p><img src="/post/2019-08-31-_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>可以看出来sigmoid函数是一个S型曲线.他的取值在[0,1]之间.</p>
+</div>
 
     </div>
 
@@ -841,6 +857,8 @@
         <ul>
           
           <li><a href="/post/2019-08-26-/">生物统计学习:简单线性回归模型</a></li>
+          
+          <li><a href="/post/2019-08-25-markdown/">Markdown中输入数学公式</a></li>
           
           <li><a href="/post/2017-09-09-github-blog/">使用Github和Hexo建独立博客</a></li>
           

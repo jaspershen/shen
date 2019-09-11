@@ -27,10 +27,10 @@
   
     
   
-  <meta name="description" content="线性回归 使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simp">
+  <meta name="description" content="今天看到有人在讨论如何修改ggplot2中垂直square legend之间的距离.原来想着ggplot2中的theme函数的legend.k">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/2019-08-26-/">
+  <link rel="alternate" hreflang="en-us" href="/ggplot2-square-legend/">
 
   
 
@@ -121,7 +121,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/2019-08-26-/">
+  <link rel="canonical" href="/ggplot2-square-legend/">
 
   
   
@@ -136,14 +136,14 @@
   <meta property="twitter:creator" content="@JasperShen1990">
   
   <meta property="og:site_name" content="Shen Blog">
-  <meta property="og:url" content="/post/2019-08-26-/">
-  <meta property="og:title" content="生物统计学习:简单线性回归模型 | Shen Blog">
-  <meta property="og:description" content="线性回归 使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simp"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/ggplot2-square-legend/">
+  <meta property="og:title" content="如何修改ggplot2垂直square legend之间的距离 | Shen Blog">
+  <meta property="og:description" content="今天看到有人在讨论如何修改ggplot2中垂直square legend之间的距离.原来想着ggplot2中的theme函数的legend.k"><meta property="og:image" content="/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-08-26T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2019-09-04T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2019-08-26T00:00:00&#43;00:00">
+  <meta property="article:modified_time" content="2019-09-04T00:00:00&#43;00:00">
   
 
   
@@ -168,7 +168,7 @@
         "message": "This website uses cookies to ensure you get the best experience on our website.",
         "dismiss": "Got it!",
         "link": "Learn more",
-        "href": "/privacy/"
+        "href": "https://cookies.insites.com"
       }
     })});
 </script>
@@ -176,7 +176,7 @@
 
   
 
-  <title>生物统计学习:简单线性回归模型 | Shen Blog</title>
+  <title>如何修改ggplot2垂直square legend之间的距离 | Shen Blog</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -596,7 +596,7 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">生物统计学习:简单线性回归模型</h1>
+  <h1 itemprop="name">如何修改ggplot2垂直square legend之间的距离</h1>
 
   
 
@@ -605,8 +605,8 @@
 
 
 
-<meta content="2019-08-26 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2019-08-26 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+<meta content="2019-09-04 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-09-04 00:00:00 &#43;0000 UTC" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -614,28 +614,15 @@
   
 
   
-  <span class="article-date">
-    
-    
-      
-    
-    <time>Aug 26, 2019</time>
-  </span>
-  
 
   
 
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    7 min read
-  </span>
   
 
   
   
   <span class="middot-divider"></span>
-  <a href="/post/2019-08-26-/#disqus_thread"></a>
+  <a href="/ggplot2-square-legend/#disqus_thread"></a>
   
 
   
@@ -718,126 +705,37 @@
       
 
 
-<div id="section" class="section level2">
-<h2>线性回归</h2>
-<p>使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simple),有多个自变量,则称之为多元线性回归(multiple regression).这两个模型都必须满足变量是连续性变量,如果变量为分类变量,也可以进行线性回归,称之为逻辑回归(logistic regression).</p>
-<div id="section-1" class="section level3">
-<h3>简单线性回归</h3>
-<p>我们举个例子,年龄和身高是否有线性关系,是否可以使用年龄来预测身高呢?</p>
-<pre class="r"><code>age &lt;- 18:29
-height &lt;- 
-  c(76.1,77,78.1,78.2,78.8,79.7,79.9,81.1,81.2,81.8,82.8,83.5)
-data &lt;- 
-  data.frame(age, height, 
-             stringsAsFactors = FALSE)
-library(ggplot2)</code></pre>
+<p>今天看到有人在讨论如何修改<code>ggplot2</code>中垂直square legend之间的距离.原来想着<code>ggplot2</code>中的<code>theme</code>函数的<code>legend.key.height</code>参数不就是来控制这个距离的吗?后来试了一下,还真的不行.</p>
+<p>先画出图来:</p>
+<pre class="r"><code>library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>(
-plot &lt;- 
-ggplot(data, aes(age, height)) +
-  geom_point() +
-  theme_bw()
-)</code></pre>
-<p><img src="/post/2019-08-26-_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>我们画出散点图之后,可以看出age和height呈比较明显的线性关系.</p>
-<p>那我们怎么用一条直线去拟合(fit)数据呢?我们使用的就是最小平方差法(least square).</p>
-<p>那么最简单的拟合办法是什么呢?也就是直接使用所有人的height的平均值去拟合.</p>
-<pre class="r"><code>plot +
-  geom_hline(yintercept = mean(data$height))</code></pre>
-<p><img src="/post/2019-08-26-_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>那么怎么评价一条直线对数据拟合的好坏呢?这时候就需要引入另外一个概念,残差(residuls).残差也就是真实值和拟合值之间差值:</p>
-<p><span class="math display">\[residual = y_i - y_i^{&#39;}\]</span></p>
-<p>其中<span class="math inline">\(y_i\)</span>是真实值,而<span class="math inline">\(y_i{&#39;}\)</span>是模型预测值.</p>
-<pre class="r"><code>plot +
-  geom_hline(yintercept = mean(data$height)) +
-  geom_segment(aes(x = data$age[1], y = data$height[1], xend = data$age[1], yend = mean(data$height)), colour = &quot;red&quot;, arrow = arrow()) </code></pre>
-<p><img src="/post/2019-08-26-_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>从定义可以看到,残差有正有负.为了表示一条拟合直线对数据拟合的程度的好坏,我们将残差平方然后加和,从而得到<strong>残差平方和(sum of squared residuals)</strong>,该值就可以用来表示一条直线对数据的拟合的好坏.拟合的越好,该值越小,拟合的越差,该值越大.</p>
-<blockquote>
-<p>其实使用残差平方和作为损失函数得到的最后的方程或者说模型并不一定是最优解,但是好处是方便后面求解(求导)并且解是唯一的.另外还有使用残差绝对值之和作为损失函数进行求解.以后再慢慢介绍.</p>
-</blockquote>
-<p><span class="math display">\[sum \quad of \quad squared \quad residuals = \sum_{i=1}^n(y_i-y_i^{&#39;})^2\]</span></p>
-<blockquote>
-<p>注意,该值是有量纲的,只能比较同一组数据不同拟合直线的好坏,而不能比较不同数据之间的拟合的好坏.后面会介绍<span class="math inline">\(R^2\)</span>.</p>
-</blockquote>
-<p>那么怎样找到一个最好的拟合直线呢?我们可以将这条线(平均值)进行旋转,每条直线都会有截距(intersect)和斜率(slope)两个参数,对于每一条直线,我们都会计算其残差平方和.</p>
-<p>最后,我们会得到一系列的截距和斜率组合以及他们所对应的残差平方和.我们可以简单的理解,直接选取残差平方和最小的参数组合即可(实际情况更为复杂一些).从而得到最佳的参数组合.这也是为什么这种方法称之为’least square’的原因.</p>
-<p>那么如何估量一个拟合直线的好坏呢?这时候就需要引入<span class="math inline">\(R^2\)</span>的概念.</p>
-</div>
-<div id="r2" class="section level3">
-<h3><span class="math inline">\(R^2\)</span></h3>
-<p>首先,我们计算使用身高平均值拟合直线的残差平方和,称之为<span class="math inline">\(SS(mean)\)</span></p>
-<p><span class="math display">\[SS(mean) = (data - mean)^2\]</span></p>
-<p>同时,我们知道方差(Var(mean))等于残差平方和除以样本个数:</p>
-<p><span class="math display">\[Var(mean) = \frac{SS(mean)}{n}\]</span></p>
-<p>然后,按照同样的方法,我们计算拟合直线的残差平方和,称之为<span class="math inline">\(SS(fit)\)</span>.同时,我们也可以计算出来拟合直线的方差(Var(fit)).</p>
-<p>可以看到,拟合直线得到的残差平方和要比平均值得到的要小,也就是说,将年龄因素考虑进去之后,身高的方差有一部分能够被年龄所解释.</p>
-<p><span class="math inline">\(R^2\)</span>告诉我们年龄可以解释多少比例的身高的方差.</p>
-<p><span class="math display">\[R^2 = \frac{Var(mean) - Var(fit)}{Var(mean)} = \frac{SS(mean) - SS(fit)}{SS(mean)} = 1 - \frac{ SS(fit)}{SS(mean)}\]</span></p>
-<p>从公式可以看出,如果一条直线正好穿过所有的数据点,那么<span class="math inline">\(SS(fit)=0\)</span>,这时候<span class="math inline">\(R^2=1\)</span>.而如果身高和年龄完全没有关系,则<span class="math inline">\(R^2 = 0\)</span>.</p>
-<blockquote>
-<p>需要注意的是,<span class="math inline">\(R^2\)</span>的大小并不具有统计学意义,我们可以想象,如果只有两个点,那么必定有一条直线通过他们,因此<span class="math inline">\(SS(fit)\)</span>为0,但是很明显这样的fit是没有意义的,得到的<span class="math inline">\(R^2\)</span>也并不能说明两个变量之间真是的关系.这说明了样本的数量也同样重要,因此,我们需要对<span class="math inline">\(R^2\)</span>进行统计学假设检验,得到其统计学显著性,也就是p value.</p>
-</blockquote>
-</div>
-<div id="r2-1" class="section level3">
-<h3><span class="math inline">\(R^2\)</span>的假设检验</h3>
-<p>首先,我们需要明白<span class="math inline">\(R^2\)</span>的含义,我们上面已经讨论过了,<span class="math inline">\(R^2\)</span>指的是变量x能够解释变量y的方差的比例.比如上面的例子,<span class="math inline">\(R^2\)</span>为0.99,说明年龄可以解释99%的身高的方差.</p>
-<p>这时候,需要引入一个统计量,F:</p>
-<p><span class="math display">\[F = \frac{(Var(mean) - Var(fit))/(p_{fit}-p_{mean})}{Var(fit)/(n-p_{fit})} = \frac{(SS(mean) - SS(fit))/(p_{fit}-p_{mean})}{SS(fit)/(n-p_{fit})} = \frac{\frac{(SS(mean) - SS(fit))}{p_{fit}-p_{mean}}} {\frac{SS(fit)}{n-p_{fit}}}\]</span></p>
-<p>也就是说,F等于变量x能够解释变量y的方差除以变量x不能够解释变量y的方差.</p>
-<p>而<span class="math inline">\((n-p_{fit})/(p_{fit}-p_{mean})\)</span>则称之为自由度(degrees of freedoms).自由度的定义以后再详细解释.</p>
-<p>其中<span class="math inline">\(p_{fit}\)</span>代表回归方程中参数的数目,比如一元线性方程中,只有两个参数(intercept和slop),所以<span class="math inline">\(p_{fit}=2\)</span>.<span class="math inline">\(p_{mean}\)</span>代表平均值直线的参数个数,在一元线性方程中,为1.n是数据集的样本个数.</p>
-<p>因此,<span class="math inline">\(p_{fit}-p_{mean}\)</span>代表的含义是该拟合模型与平均值模型相比,多出来的参数的个数.在简单线性回归中,多出来的就是slope.对于多元线性回归,比如,两个自变量预测一个因变量,则这时候<span class="math inline">\(p_{fit}=3\)</span>.</p>
-<p>我们再来看分母,为什么需要使用<span class="math inline">\(SS(fit)\)</span>除以<span class="math inline">\(n-p_{fit}\)</span>呢?因为我们知道模型越复杂(参数越多),你就需要更多的点去拟合.比如,对于两个点的一元一次方程,只需要两个点即可(两点确定一条直线).而对于二元一次方程,则需要三个点去拟合.</p>
-<p>这时候我们再来看分子分母分别代表什么意义.</p>
-<ul>
-<li><p>分子:拟合模型多出来的参数能够解释的方差(变异).</p></li>
-<li><p>分母:拟合模型多出来的参数不能够解释的方差(变异).</p></li>
-</ul>
-<p>这样我们拿到F值以后,怎么计算p value呢?其实就是使用permutation test的方法.</p>
-<ol style="list-style-type: decimal">
-<li><p>随机产生与数据集样本数相同数目的数据集.</p></li>
-<li><p>对其进行拟合并计算每一组随机数据的F值.</p></li>
-<li><p>产生大量的随机F值,并得到随机F值的分布.</p></li>
-<li><p>拿到随机F值的分布,p value就等于大于真实F值的数目除以随机F值的总数目.</p></li>
-</ol>
-<p>当然,所有随机F值的分布其实是符合F分布的,拿到了F分布,就可以计算p value.F分布以后再详细介绍.</p>
-</div>
-<div id="r2adjusted-r2" class="section level3">
-<h3>矫正<span class="math inline">\(R^2\)</span>(<span class="math inline">\(adjusted R^2\)</span>)</h3>
-<p>什么是矫正<span class="math inline">\(R^2\)</span>呢?我们从<span class="math inline">\(R^2\)</span>定义可以看到,如果我们增加了拟合模型的变量个数,因为<span class="math inline">\(SS(mean)\)</span>是固定的,因此<span class="math inline">\(SS(fit)\)</span>都会减小,所以导致<span class="math inline">\(R^2\)</span>变大,从而造成过拟合(over fitting).因此,我们需要对模型选入的变量个数做一个惩罚,这就是<span class="math inline">\(adjusted \quad R^2\)</span>.以后再详细解释.</p>
-</div>
-<div id="section-2" class="section level3">
-<h3>系数的假设检验</h3>
-<p>同样的,我们可以看到,上面是对<span class="math inline">\(R^2\)</span>做假设检验,当然我们也需要对每个变量的系数(包括intersect)进行假设验证,在多元回归中尤其重要,我们会在以后进行详细解释.</p>
-</div>
-<div id="r" class="section level3">
-<h3>R语言进行线性回归</h3>
-<p>R语言中的<code>lm()</code>函数可以用来进行线性回归.使用方法如下:</p>
-<pre class="r"><code>lm_fit &lt;- 
-  lm(height ~ age, data)
-summary(lm_fit)</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = height ~ age, data = data)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.27238 -0.24248 -0.02762  0.16014  0.47238 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  64.9283     0.5084  127.71  &lt; 2e-16 ***
-## age           0.6350     0.0214   29.66 4.43e-11 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.256 on 10 degrees of freedom
-## Multiple R-squared:  0.9888, Adjusted R-squared:  0.9876 
-## F-statistic:   880 on 1 and 10 DF,  p-value: 4.428e-11</code></pre>
-<p>summary中提供了该线性回归的大部分内容.其中<code>Multiple R-squared</code>其实就是<code>R-squared</code><span class="math inline">\(R^2\)</span>,而<code>Adjusted R-Squred</code>主要是对多元线性回归时对多个变量进行矫正,因为当变量数目增加的时候,<span class="math inline">\(R^2\)</span>总会变小,因此需要对其进行矫正.对于简单线性回归来说.直接使用<code>Multiple R-squared</code>即可,而对于多元线性回归来说,则需要使用<code>Adjusted R-Squred</code>来衡量模型拟合的效果.</p>
-</div>
-</div>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl)))</code></pre>
+<p><img src="/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>使用<code>legend.key.height</code>参数来设置:</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl))) +
+  theme(legend.key.height = unit(4, &quot;line&quot;))</code></pre>
+<p><img src="/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>可以看到每个key变高了,但是距离并没有变化.我们试试其他类型的legend,比如point.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_point(aes(colour = factor(cyl)), stat = &quot;count&quot;)</code></pre>
+<p><img src="/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_point(aes(colour = factor(cyl)), stat = &quot;count&quot;) +
+  theme(legend.key.height = unit(10, &quot;mm&quot;))</code></pre>
+<p><img src="/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>从这幅图看的就非常的清楚了,每个legend的图像元素是由<code>key</code>(背景)和指示元素组成的.<code>legend.key.height</code>参数可以改变<code>key</code>的高度,而指示元素则处在key的中间,对于square legend来说,他们其实是和<code>key</code>背景重合的,所以<code>legend.key.height</code>没有办法改变他们之间的距离.</p>
+<p>那如果确实有需要更改这个距离,怎么做呢?想到一个办法只能更改square指示元素的line的宽度(line颜色为白色),从而间接修改他们之间的距离.</p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl)))</code></pre>
+<p><img src="/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
+  geom_bar(aes(fill = factor(cyl))) +
+  theme(legend.key.size = unit(2, &quot;line&quot;)) +
+  guides(fill = guide_legend(override.aes = list(size = 3, colour = &quot;white&quot;)))</code></pre>
+<p><img src="/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>欢迎大家由其他办法的留言讨论.</p>
 
     </div>
 
@@ -851,121 +749,6 @@ summary(lm_fit)</code></pre>
 
 
 
-    
-      
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
-    
-      
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu1e2e5ea831a1ccb0887a87d1899b0c15_179284_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
-    
-
-    <div class="media-body">
-      <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen</a></h5>
-      <h6 class="card-subtitle">Postdoctoral Research Fellow at Schoold of Medicine</h6>
-      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
-      <ul class="network-icon" aria-hidden="true">
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="/#contact" >
-              <i class="fas fa-envelope"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://scholar.google.co.uk/citations?hl=en&amp;user=3TK9yz8AAAAJ" target="_blank" rel="noopener">
-              <i class="ai ai-google-scholar"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://github.com/jaspershen" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-
-
-      
-      
-      <div class="article-widget">
-        <div class="hr-light"></div>
-        <h3>Related</h3>
-        <ul>
-          
-          <li><a href="/post/2019-08-25-markdown/">Markdown中输入数学公式</a></li>
-          
-          <li><a href="/post/2017-09-09-github-blog/">使用Github和Hexo建独立博客</a></li>
-          
-        </ul>
-      </div>
-      
     
 
     
@@ -1001,10 +784,6 @@ summary(lm_fit)</code></pre>
 
 <div class="container">
   <footer class="site-footer">
-  
-  <p class="powered-by">
-    <a href="/privacy/">Privacy Policy</a>
-  </p>
   
 
   <p class="powered-by">
