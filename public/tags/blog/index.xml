@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MetDNA instruction</title>
+      <link>/post/2017-09-09-metdna-blog/</link>
+      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-09-09-metdna-blog/</guid>
+      <description>Ⅰ数据准备 MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(c</description>
+    </item>
+    
+    <item>
+      <title>purrr教程1:Overview</title>
+      <link>/post/2019-10-08-purrr-1-overview/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-10-08-purrr-1-overview/</guid>
+      <description>purrr是一个提供函数编程的工具箱. 安装 purrr包含在tidyverse种,因此如果你已经安装了他,不需要再安装.当然也可以单独安装pu</description>
+    </item>
+    
+    <item>
+      <title>tidyverse select使用总结</title>
+      <link>/post/tidyverse-select/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/tidyverse-select/</guid>
+      <description>test</description>
+    </item>
     
     <item>
       <title>ggplot2拼图工具:patchwork</title>

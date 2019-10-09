@@ -14,10 +14,10 @@ image:
 
 
 
-<div id="section" class="section level2">
+<div id="线性回归" class="section level2">
 <h2>线性回归</h2>
 <p>使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simple),有多个自变量,则称之为多元线性回归(multiple regression).这两个模型都必须满足变量是连续性变量,如果变量为分类变量,也可以进行线性回归,称之为逻辑回归(logistic regression).</p>
-<div id="section-1" class="section level3">
+<div id="简单线性回归" class="section level3">
 <h3>简单线性回归</h3>
 <p>我们举个例子,年龄和身高是否有线性关系,是否可以使用年龄来预测身高呢?</p>
 <pre class="r"><code>age &lt;- 18:29
@@ -75,7 +75,7 @@ ggplot(data, aes(age, height)) +
 <p>需要注意的是,<span class="math inline">\(R^2\)</span>的大小并不具有统计学意义,我们可以想象,如果只有两个点,那么必定有一条直线通过他们,因此<span class="math inline">\(SS(fit)\)</span>为0,但是很明显这样的fit是没有意义的,得到的<span class="math inline">\(R^2\)</span>也并不能说明两个变量之间真是的关系.这说明了样本的数量也同样重要,因此,我们需要对<span class="math inline">\(R^2\)</span>进行统计学假设检验,得到其统计学显著性,也就是p value.</p>
 </blockquote>
 </div>
-<div id="r2-1" class="section level3">
+<div id="r2的假设检验" class="section level3">
 <h3><span class="math inline">\(R^2\)</span>的假设检验</h3>
 <p>首先,我们需要明白<span class="math inline">\(R^2\)</span>的含义,我们上面已经讨论过了,<span class="math inline">\(R^2\)</span>指的是变量x能够解释变量y的方差的比例.比如上面的例子,<span class="math inline">\(R^2\)</span>为0.99,说明年龄可以解释99%的身高的方差.</p>
 <p>这时候,需要引入一个统计量,F:</p>
@@ -99,15 +99,15 @@ ggplot(data, aes(age, height)) +
 </ol>
 <p>当然,所有随机F值的分布其实是符合F分布的,拿到了F分布,就可以计算p value.F分布以后再详细介绍.</p>
 </div>
-<div id="r2adjusted-r2" class="section level3">
+<div id="矫正r2adjusted-r2" class="section level3">
 <h3>矫正<span class="math inline">\(R^2\)</span>(<span class="math inline">\(adjusted R^2\)</span>)</h3>
 <p>什么是矫正<span class="math inline">\(R^2\)</span>呢?我们从<span class="math inline">\(R^2\)</span>定义可以看到,如果我们增加了拟合模型的变量个数,因为<span class="math inline">\(SS(mean)\)</span>是固定的,因此<span class="math inline">\(SS(fit)\)</span>都会减小,所以导致<span class="math inline">\(R^2\)</span>变大,从而造成过拟合(over fitting).因此,我们需要对模型选入的变量个数做一个惩罚,这就是<span class="math inline">\(adjusted \quad R^2\)</span>.以后再详细解释.</p>
 </div>
-<div id="section-2" class="section level3">
+<div id="系数的假设检验" class="section level3">
 <h3>系数的假设检验</h3>
 <p>同样的,我们可以看到,上面是对<span class="math inline">\(R^2\)</span>做假设检验,当然我们也需要对每个变量的系数(包括intersect)进行假设验证,在多元回归中尤其重要,我们会在以后进行详细解释.</p>
 </div>
-<div id="r" class="section level3">
+<div id="r语言进行线性回归" class="section level3">
 <h3>R语言进行线性回归</h3>
 <p>R语言中的<code>lm()</code>函数可以用来进行线性回归.使用方法如下:</p>
 <pre class="r"><code>lm_fit &lt;- 

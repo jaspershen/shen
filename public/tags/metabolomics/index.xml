@@ -58,15 +58,6 @@
     </item>
     
     <item>
-      <title>MetDNA instruction</title>
-      <link>/post/2017-09-09-metdna-blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2017-09-09-metdna-blog/</guid>
-      <description>Ⅰ数据准备 MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(c</description>
-    </item>
-    
-    <item>
       <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
       <link>/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

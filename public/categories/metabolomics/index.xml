@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
+    <lastBuildDate>Mon, 26 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/metabolomics/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +15,7 @@
     <item>
       <title>MetDNA instruction</title>
       <link>/post/2017-09-09-metdna-blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/2017-09-09-metdna-blog/</guid>
       <description>Ⅰ数据准备 MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(c</description>

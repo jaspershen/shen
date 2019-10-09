@@ -1,15 +1,15 @@
 ---
-layout: post
 title: MetDNA instruction
-description: MetDNA instruction。
-tags:
-     - Chinese
-     - R
-     - Metabolomics
-
+author: Xiaotao Shen
+date: '2019-10-09'
+slug: ''
 categories:
-           - R software
-           - Metabolomics
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
 ---
 
 ![](logo.png)

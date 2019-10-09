@@ -1,0 +1,41 @@
+---
+title: 'purrr教程1:Overview'
+author: Xiaotao Shen
+date: '2019-10-08'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+
+<p><code>purrr</code>是一个提供函数编程的工具箱.</p>
+<div id="安装" class="section level3">
+<h3>安装</h3>
+<p><code>purrr</code>包含在<code>tidyverse</code>种,因此如果你已经安装了他,不需要再安装.当然也可以单独安装<code>purrr</code>.</p>
+<pre class="r"><code>### 安装tidyverse
+install.packages(&quot;tidyverse&quot;)
+### 单独安装purrr
+install.packages(&quot;purrr&quot;)
+
+### 安装开发板
+devtools::install_github(&quot;tidyverse/purrr&quot;)</code></pre>
+</div>
+<div id="使用" class="section level3">
+<h3>使用</h3>
+<p>使用一个简单的例子来展示<code>purrr</code>的作用.</p>
+<pre class="r"><code>library(purrr)
+
+mtcars %&gt;%
+  split(x = ., f = .$cyl) %&gt;% # 按照cyl将mtcars数据分割为数个list
+  map(.x = ., .f = ~ lm(mpg ~ wt, data = .)) %&gt;%#对每一个list数据,简历mpg和wt的线性模型
+  map(.x = ., .f = summary) %&gt;%##对每一个线性模型进行summary
+  map_dbl(.x = , .f = &quot;r.squared&quot;)##提取出来R2</code></pre>
+<pre><code>##         4         6         8 
+## 0.5086326 0.4645102 0.4229655</code></pre>
+</div>
