@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruohong Wang on Shen Blog</title>
-    <link>/authors/ruohong-wang/</link>
+    <link>/r-tistic/authors/ruohong-wang/</link>
     <description>Recent content in Ruohong Wang on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Thu, 04 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/authors/ruohong-wang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/r-tistic/authors/ruohong-wang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
-      <link>/publication/journal-article/metdna/</link>
+      <link>/r-tistic/publication/journal-article/metdna/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/metdna/</guid>
+      <guid>/r-tistic/publication/journal-article/metdna/</guid>
       <description>Here, we develop a metabolic reaction network (MRN)-based recursive algorithm (MetDNA) that expands metabolite annotations without the need for a comprehensive standard spectral library.</description>
     </item>
     

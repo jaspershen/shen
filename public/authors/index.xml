@@ -2,77 +2,77 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on Shen Blog</title>
-    <link>/authors/</link>
+    <link>/r-tistic/authors/</link>
     <description>Recent content in Authors on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/r-tistic/authors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>/authors/admin/</link>
+      <link>/r-tistic/authors/admin/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/authors/admin/</guid>
+      <guid>/r-tistic/authors/admin/</guid>
       <description>I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
 My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was MetNormalizer, which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics.</description>
     </item>
     
     <item>
       <title>Others</title>
-      <link>/authors/others/</link>
+      <link>/r-tistic/authors/others/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/authors/others/</guid>
+      <guid>/r-tistic/authors/others/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ruohong Wang</title>
-      <link>/authors/ruohong-wang/</link>
+      <link>/r-tistic/authors/ruohong-wang/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/authors/ruohong-wang/</guid>
+      <guid>/r-tistic/authors/ruohong-wang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zheng-Jiang Zhu</title>
-      <link>/authors/zheng-jiang-zhu/</link>
+      <link>/r-tistic/authors/zheng-jiang-zhu/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/authors/zheng-jiang-zhu/</guid>
+      <guid>/r-tistic/authors/zheng-jiang-zhu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zhuozhong Wang</title>
-      <link>/authors/zhuozhong-wang/</link>
+      <link>/r-tistic/authors/zhuozhong-wang/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/authors/zhuozhong-wang/</guid>
+      <guid>/r-tistic/authors/zhuozhong-wang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Huixun Jia</title>
-      <link>/authors/huixun-jia/</link>
+      <link>/r-tistic/authors/huixun-jia/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/authors/huixun-jia/</guid>
+      <guid>/r-tistic/authors/huixun-jia/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zhiwei Zhou</title>
-      <link>/authors/zhiwei-zhou/</link>
+      <link>/r-tistic/authors/zhiwei-zhou/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/authors/zhiwei-zhou/</guid>
+      <guid>/r-tistic/authors/zhiwei-zhou/</guid>
       <description></description>
     </item>
     

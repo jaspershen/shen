@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Shen Blog</title>
-    <link>/project/</link>
+    <link>/r-tistic/project/</link>
     <description>Recent content in Projects on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/r-tistic/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MetDNA</title>
-      <link>/project/metdna-project/</link>
+      <link>/r-tistic/project/metdna-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/metdna-project/</guid>
+      <guid>/r-tistic/project/metdna-project/</guid>
       <description>Metabololite identification and dysregulated network analysis.</description>
     </item>
     
     <item>
       <title>MetFlow</title>
-      <link>/project/metflow-project/</link>
+      <link>/r-tistic/project/metflow-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/metflow-project/</guid>
+      <guid>/r-tistic/project/metflow-project/</guid>
       <description>Web Server for Metabolomics Data Cleaning and Differential Metabolite Discovery</description>
     </item>
     

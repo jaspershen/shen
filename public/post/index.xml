@@ -2,166 +2,184 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Shen Blog</title>
-    <link>/post/</link>
+    <link>/r-tistic/post/</link>
     <description>Recent content in Posts on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Wed, 09 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/r-tistic/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>MetDNA instruction</title>
-      <link>/post/2017-09-09-metdna-blog/</link>
-      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      <title>Modern Statistics for Modern Biology:第一章</title>
+      <link>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2017-09-09-metdna-blog/</guid>
-      <description>Ⅰ数据准备 MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(c</description>
+      <guid>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
+      <description>离散变量(discrete data)的生成模型 在分子生物学中,在很多情况下都会产生离散变量. 1.1 本章目标 在本章中,我们将会: 学会对于一个给定模</description>
+    </item>
+    
+    <item>
+      <title>组学数据分析常见方法总结</title>
+      <link>/r-tistic/post/2019-10-10-/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/r-tistic/post/2019-10-10-/</guid>
+      <description>Correlation analysis 将组学变量(gene,protein,metabolite,clinical factor)进行相关性分析,得到他们之间的相关性,注意需要</description>
     </item>
     
     <item>
       <title>purrr教程1:Overview</title>
-      <link>/post/2019-10-08-purrr-1-overview/</link>
+      <link>/r-tistic/post/2019-10-08-purrr-1-overview/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-10-08-purrr-1-overview/</guid>
+      <guid>/r-tistic/post/2019-10-08-purrr-1-overview/</guid>
       <description>purrr是一个提供函数编程的工具箱. 安装 purrr包含在tidyverse种,因此如果你已经安装了他,不需要再安装.当然也可以单独安装pu</description>
     </item>
     
     <item>
       <title>tidyverse select使用总结</title>
-      <link>/post/tidyverse-select/</link>
+      <link>/r-tistic/post/tidyverse-select/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/tidyverse-select/</guid>
+      <guid>/r-tistic/post/tidyverse-select/</guid>
       <description>test</description>
     </item>
     
     <item>
+      <title>文献解读:Longitudinal multi-omics of host– microbe dynamics in prediabetes</title>
+      <link>/r-tistic/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/r-tistic/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ggplot2拼图工具:patchwork</title>
-      <link>/post/ggplot2-patchwork/</link>
+      <link>/r-tistic/post/ggplot2-patchwork/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/ggplot2-patchwork/</guid>
+      <guid>/r-tistic/post/ggplot2-patchwork/</guid>
       <description>推荐一个用来拼图的包:patchwork.作者是Thomas Lin Pedersen.使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟</description>
     </item>
     
     <item>
       <title>如何修改ggplot2垂直square legend之间的距离</title>
-      <link>/post/ggplot2-square-legend/</link>
+      <link>/r-tistic/post/ggplot2-square-legend/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/ggplot2-square-legend/</guid>
+      <guid>/r-tistic/post/ggplot2-square-legend/</guid>
       <description>今天看到有人在讨论如何修改ggplot2中垂直square legend之间的距离.原来想着ggplot2中的theme函数的legend.k</description>
     </item>
     
     <item>
       <title> 生物统计学学习:逻辑回归</title>
-      <link>/post/2019-08-31-/</link>
+      <link>/r-tistic/post/2019-08-31-/</link>
       <pubDate>Sat, 31 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-31-/</guid>
+      <guid>/r-tistic/post/2019-08-31-/</guid>
       <description>逻辑回归(logistic regression)其实就是线性回归的一种.只是对于逻辑回归的因变量,是非连续变量的0和1,通过Sigmoid函</description>
     </item>
     
     <item>
       <title>生物统计学习:简单线性回归模型</title>
-      <link>/post/2019-08-26-/</link>
+      <link>/r-tistic/post/2019-08-26-/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-26-/</guid>
+      <guid>/r-tistic/post/2019-08-26-/</guid>
       <description>线性回归 使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simp</description>
     </item>
     
     <item>
       <title>Markdown中输入数学公式</title>
-      <link>/post/2019-08-25-markdown/</link>
+      <link>/r-tistic/post/2019-08-25-markdown/</link>
       <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-25-markdown/</guid>
+      <guid>/r-tistic/post/2019-08-25-markdown/</guid>
       <description>在Markdown中可以方便的输入数学公式.现在将Markdown中数学公式总结一下. 1. 如何插入公式 包括两种,一种是在行内插入,一种是独立公</description>
     </item>
     
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
-      <link>/post/blogdown-instruction/</link>
+      <link>/r-tistic/post/blogdown-instruction/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/blogdown-instruction/</guid>
+      <guid>/r-tistic/post/blogdown-instruction/</guid>
       <description>使用blogdown包搭建个人blog</description>
     </item>
     
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
-      <link>/post/jupyter/</link>
+      <link>/r-tistic/post/jupyter/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/jupyter/</guid>
+      <guid>/r-tistic/post/jupyter/</guid>
       <description>Learn how to blog in Academic using Jupyter notebooks</description>
     </item>
     
     <item>
       <title>Academic: the website builder for Hugo</title>
-      <link>/post/getting-started/</link>
+      <link>/r-tistic/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/post/getting-started/</guid>
+      <guid>/r-tistic/post/getting-started/</guid>
       <description>Create a beautifully simple website in under 10 minutes.</description>
     </item>
     
     <item>
       <title>2017年的第一篇博客</title>
-      <link>/post/2017-02-12-firstblog2017/</link>
+      <link>/r-tistic/post/2017-02-12-firstblog2017/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2017-02-12-firstblog2017/</guid>
+      <guid>/r-tistic/post/2017-02-12-firstblog2017/</guid>
       <description>我的2016年 现在想想，其实整个2016年真的是没什么收获，科研上没什么进展，技能上也没有什么提升，原本准备要学习的python，也在1-2</description>
     </item>
     
     <item>
       <title>MetCleaning instruction</title>
-      <link>/post/2016-11-25-metcleaning/</link>
+      <link>/r-tistic/post/2016-11-25-metcleaning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2016-11-25-metcleaning/</guid>
+      <guid>/r-tistic/post/2016-11-25-metcleaning/</guid>
       <description>Introduction MetCleaning provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, MetClean and MetStat in MetCleaning utilizing demo data.</description>
     </item>
     
     <item>
       <title>使用Github Pages建独立博客</title>
-      <link>/post/2012-02-22-github-pages/</link>
+      <link>/r-tistic/post/2012-02-22-github-pages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2012-02-22-github-pages/</guid>
+      <guid>/r-tistic/post/2012-02-22-github-pages/</guid>
       <description>Github很好的将代码和社区联系在了一起，于是发生了很多有趣的事情，世界也因为他美好了一点点。Github作为现在最流行的代码仓库，已经得</description>
     </item>
     
     <item>
       <title>使用Github和Hexo建独立博客</title>
-      <link>/post/2017-09-09-github-blog/</link>
+      <link>/r-tistic/post/2017-09-09-github-blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2017-09-09-github-blog/</guid>
+      <guid>/r-tistic/post/2017-09-09-github-blog/</guid>
       <description>参考了一篇非常好的文章，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。 1. Hexo介绍 Hexo是基于Node</description>
     </item>
     
     <item>
       <title>使用R爬取HMDB和KEGG数据库</title>
-      <link>/post/2016-12-03-keggandhmdb/</link>
+      <link>/r-tistic/post/2016-12-03-keggandhmdb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2016-12-03-keggandhmdb/</guid>
+      <guid>/r-tistic/post/2016-12-03-keggandhmdb/</guid>
       <description>R语言爬虫 虽然相对于python来说，R语言爬虫并不是那么流行，但是对于比较小的数据爬取量，使用R还是很方便的。R的数据爬取比较流行的是利用</description>
     </item>
     
     <item>
       <title>我的第一篇博客</title>
-      <link>/post/2016-11-25-first-blog/</link>
+      <link>/r-tistic/post/2016-11-25-first-blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2016-11-25-first-blog/</guid>
+      <guid>/r-tistic/post/2016-11-25-first-blog/</guid>
       <description>我的博客 我的博客使用markdown编写，使用的编辑器是ATOM，使用起来还是非常方便的。以后有时间，就用博客来记录我的学习，生活和工作。 申</description>
     </item>
     

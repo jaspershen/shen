@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shen Blog</title>
-    <link>/</link>
+    <link>/r-tistic/</link>
     <description>Recent content on Shen Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Wed, 09 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="/r-tistic/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Example Page 1</title>
-      <link>/courses/example/example1/</link>
+      <link>/r-tistic/courses/example/example1/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
       
-      <guid>/courses/example/example1/</guid>
+      <guid>/r-tistic/courses/example/example1/</guid>
       <description>
 
 &lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
@@ -50,10 +50,10 @@
     
     <item>
       <title>Example Page 2</title>
-      <link>/courses/example/example2/</link>
+      <link>/r-tistic/courses/example/example2/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
       
-      <guid>/courses/example/example2/</guid>
+      <guid>/r-tistic/courses/example/example2/</guid>
       <description>
 
 &lt;p&gt;Here are some more tips for getting started with Academic:&lt;/p&gt;
@@ -85,277 +85,57 @@
     </item>
     
     <item>
-      <title>MetDNA instruction</title>
-      <link>/post/2017-09-09-metdna-blog/</link>
-      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      <title>Modern Statistics for Modern Biology:第一章</title>
+      <link>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2017-09-09-metdna-blog/</guid>
+      <guid>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;logo.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;ⅰ数据准备&#34;&gt;&lt;strong&gt;Ⅰ数据准备&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;metdna需要准备的数据包括一级数据peak-table-csv格式-二级数据-mgf格式-和样品信息sample-info-csv格式-点击下载-正离子demo数据-https-github-com-jaspershen-metdna-blob-master-pos-rar-和-负离子demo数据-https-github-com-jaspershen-metdna-blob-master-neg-rar&#34;&gt;MetDNA需要准备的数据包括一级数据peak table(csv格式)，二级数据(mgf格式)和样品信息sample.info(csv格式)。点击下载&lt;a href=&#34;https://github.com/jaspershen/MetDNA/blob/master/pos.rar&#34; target=&#34;_blank&#34;&gt;正离子demo数据&lt;/a&gt;和&lt;a href=&#34;https://github.com/jaspershen/MetDNA/blob/master/neg.rar&#34; target=&#34;_blank&#34;&gt;负离子demo数据&lt;/a&gt;。&lt;/h4&gt;
-
-&lt;h4 id=&#34;table-1-demo数据信息&#34;&gt;&lt;strong&gt;Table 1: demo数据信息&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;组别&lt;/th&gt;
-&lt;th&gt;个数&lt;/th&gt;
-&lt;th&gt;含义&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;QC&lt;/td&gt;
-&lt;td&gt;8&lt;/td&gt;
-&lt;td&gt;QC&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;W03&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;野生型3天&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;W30&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;野生型30天&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;E03&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型E3天&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;E30&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型E30天&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;P03&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型P3天&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;P30&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;突变型P30天&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&#34;1-一级数据&#34;&gt;&lt;strong&gt;1. 一级数据&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;一级数据可以是使用xcms-mzmine-ms-dial或者其他软件处理之后的数据-第一列为代谢物峰的名字-name-第二列为-mz-第三列为保留时间-rt-且单位必须为秒-其他为样品的峰强度&#34;&gt;一级数据可以是使用XCMS，MZmine，MS-DIAL或者其他软件处理之后的数据。第一列为代谢物峰的名字，&amp;rdquo;name&amp;rdquo;，第二列为&amp;rdquo;mz&amp;rdquo;，第三列为保留时间(RT)，&lt;strong&gt;且单位必须为秒&lt;/strong&gt;，其他为样品的峰强度。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;data.example.png&#34; alt=&#34;**Figure 1: 一级数据peak table格式示例**&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;2-二级数据&#34;&gt;&lt;strong&gt;2. 二级数据&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;二级质谱原始数据可以是使用qc样品采集的dda或者targeted-ms-ms数据-对于dda数据来说-也可以是分段采集的二级数据-质谱原始二级数据需要使用proteowizard软件转为mgf格式-转换时参数设置参考下图-二级数据最多不能超过十个&#34;&gt;二级质谱原始数据可以是使用QC样品采集的DDA或者targeted MS/MS数据。对于DDA数据来说，也可以是分段采集的二级数据。质谱原始二级数据需要使用ProteoWizard软件转为mgf格式，转换时参数设置参考下图。二级数据最多不能超过十个。&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;ProteoWizard.png&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Figure 2: ProteoWizard参数设置&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;3-样品信息&#34;&gt;&lt;strong&gt;3. 样品信息&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;样品信息是样品的分组信息-第一列是样品名-sample-name-第二列是样品的分组信息-group&#34;&gt;样品信息是样品的分组信息。第一列是样品名，&amp;rdquo;sample.name&amp;rdquo;，第二列是样品的分组信息，&amp;rdquo;group&amp;rdquo;。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;sample.info示例.png&#34; alt=&#34;**Figure 3：样品信息示例**&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;ⅱ-数据整理&#34;&gt;&lt;strong&gt;Ⅱ 数据整理&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;如果是正离子数据-请建立一个新的文件夹-命名为-pos-如果是负离子数据-请建立一个新的文件夹命名为-neg-然后将一级数据-二级数据和样品信息放置于此文件夹下-并将该文件夹设置为工作路径-现在-metdna-部署在小服务器上-因此可以将数据放在小服务器中-labdata-例如-v-workreport-申小涛-demo-fly-pos&#34;&gt;如果是正离子数据，请建立一个新的文件夹，命名为&amp;rdquo;POS&amp;rdquo;，如果是负离子数据，请建立一个新的文件夹命名为&amp;rdquo;NEG&amp;rdquo;，然后将一级数据，二级数据和样品信息放置于此文件夹下。并将该文件夹设置为工作路径。现在*MetDNA*部署在小服务器上，因此可以将数据放在小服务器中(labdata)。例如&amp;rdquo;V:/workreport/申小涛/demo/fly/POS&amp;rdquo;。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;数据整理.png&#34; alt=&#34;**Figure 4: 将所需数据放置在文件夹中**&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;设置工作路径&#34;&gt;设置工作路径。&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;setwd(&amp;quot;/mnt/data/samba/labdata/workreport/申小涛/demo/fly/POS&amp;quot;)
-library(MetDNA)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;ⅲ-数据处理&#34;&gt;&lt;strong&gt;Ⅲ 数据处理&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h3 id=&#34;1-只对正离子或者负离子处理&#34;&gt;&lt;strong&gt;1. 只对正离子或者负离子处理&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;所有的步骤可以使用一个函数-metdna-全部完成&#34;&gt;所有的步骤可以使用一个函数*MetDNA*全部完成。&lt;/h4&gt;
-
-&lt;h4 id=&#34;运行函数-metdna&#34;&gt;运行函数*MetDNA*。&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;MetDNA(ms1.file = &amp;quot;data.csv&amp;quot;,
-       polarity = &amp;quot;positive&amp;quot;,
-       column = &amp;quot;hilic&amp;quot;,
-       ce = &amp;quot;30&amp;quot;,
-       prefer.adduct = &amp;quot;M+H&amp;quot;,
-       use.default.md = TRUE,
-       threads = 3,
-       group = c(&amp;quot;W03&amp;quot;, &amp;quot;W30&amp;quot;),
-       uni.test = &amp;quot;t&amp;quot;,
-       correct = TRUE,
-       p.cutoff = 0.01,
-       species = &amp;quot;dme&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参数含义如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
+&lt;div id=&#34;离散变量discrete-data的生成模型&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;离散变量(discrete data)的生成模型&lt;/h3&gt;
+&lt;p&gt;在分子生物学中,在很多情况下都会产生离散变量.&lt;/p&gt;
+&lt;div id=&#34;本章目标&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;1.1 本章目标&lt;/h4&gt;
+&lt;p&gt;在本章中,我们将会:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;#### ms1.file：一级数据的名字。&lt;/li&gt;
-&lt;li&gt;#### polarity：数据采集极性，&amp;rdquo;positive&amp;rdquo;或者&amp;rdquo;negative&amp;rdquo;。&lt;/li&gt;
-&lt;li&gt;#### column：使用的柱子类型，&amp;rdquo;hilic&amp;rdquo;或者&amp;rdquo;rp&amp;rdquo;。&lt;/li&gt;
-&lt;li&gt;#### ce：二级采集的碰撞能量，支持&amp;rdquo;10&amp;rdquo;，&amp;rdquo;15&amp;rdquo;，&amp;rdquo;20&amp;rdquo;，&amp;rdquo;25&amp;rdquo;，&amp;rdquo;30&amp;rdquo;，&amp;rdquo;35&amp;rdquo;，&amp;rdquo;35,15&amp;rdquo; (35±15)，&amp;rdquo;40&amp;rdquo;， &amp;ldquo;45&amp;rdquo;，&amp;rdquo;50&amp;rdquo;，&amp;rdquo;55&amp;rdquo;，&amp;rdquo;60&amp;rdquo;，&amp;rdquo;65&amp;rdquo;，&amp;rdquo;70&amp;rdquo;。&lt;/li&gt;
-&lt;li&gt;#### prefer.adduct：使用那些加合物形式的注释用于RT预测模型的建立，默认使用所有的注释，推荐正离子模式下使用&amp;rdquo;M+H&amp;rdquo;，负离子模式下使用&amp;rdquo;M-H&amp;rdquo;。&lt;/li&gt;
-&lt;li&gt;#### use.default.md：进行保留时间预测模型建立时，是否使用默认的分子描述符，如果设置为FALSE，则会根据你的数据自动选择分子描述符。&lt;/li&gt;
-&lt;li&gt;#### threads：使用线程数，默认为3，可以根据电脑本身配置进行修改。&lt;/li&gt;
-&lt;li&gt;#### group：要对哪些分组的样品进行分析，&lt;strong&gt;注意&lt;/strong&gt;，计算fold change时，使用后面的样品除以前面的样品。&lt;/li&gt;
-&lt;li&gt;#### uni.test：单变量分析的方法，&amp;rdquo;t&amp;rdquo;，Student t test；&amp;rdquo;wilcox&amp;rdquo;，Wilcox test。&lt;/li&gt;
-&lt;li&gt;#### correct：是否需要对p值进行FDR校正。&lt;/li&gt;
-&lt;li&gt;#### p.cutoff：选择dysregulated peak时的p值cutoff。&lt;/li&gt;
-&lt;li&gt;#### species：所研究样品的物种来源，&amp;rdquo;dme&amp;rdquo;，果蝇；&amp;rdquo;hsa&amp;rdquo;，人类；&amp;rdquo;mmu&amp;rdquo;，小鼠；&amp;rdquo;rat&amp;rdquo;，大鼠，&amp;rdquo;bta&amp;rdquo;，牛；&amp;rdquo;gga&amp;rdquo;，Gallus gallus (鸡)；&amp;rdquo;dre&amp;rdquo;，Danio rerio (斑马鱼)；&amp;rdquo;cel&amp;rdquo;，Caenorharomyces elegans (线虫)；&amp;rdquo;sce&amp;rdquo;，Saccharomyces cerevisaiae (酵母)； &amp;ldquo;ath&amp;rdquo;，Arabidopsis thaliana (拟南芥)；&amp;rdquo;smm&amp;rdquo;，Schistosoma mansoni；&amp;rdquo;pfa&amp;rdquo;，Plasmodum falciparum 3D7；&amp;rdquo;tbr&amp;rdquo;，Trypanosoma brucei；&amp;rdquo;eco&amp;rdquo;， Escherichia coli K-12 MG1655(大肠杆菌)；&amp;rdquo;ppu&amp;rdquo;，Pseudomonas putida KT2440；&amp;rdquo;syf&amp;rdquo;，Synechococcus elongatus。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;学会对于一个给定模型如何获取其所有可能结果的概率(probabilities),并且将理论的频率(frequencies)和实际数据观测到的进行比较.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;探索一个完整的例子,如何使用泊松分布来分析表位(epitope)检测.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何使用几种常见的非常有用的离散变量生成模型:泊松,二项式和多项式.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;学会使用R函数来计算概率和计数罕见实例.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;从指定的分布生成随机数.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一个真实例子&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;1.2 一个真实例子&lt;/h4&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>组学数据分析常见方法总结</title>
+      <link>/r-tistic/post/2019-10-10-/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/r-tistic/post/2019-10-10-/</guid>
+      <description>
 
-&lt;h3 id=&#34;2-对正负数据合并分析&#34;&gt;&lt;strong&gt;2. 对正负数据合并分析&lt;/strong&gt;&lt;/h3&gt;
 
-&lt;h4 id=&#34;正负离子分别处理之后-可以使用函数-metmodule2-函数合并正负离子模式的鉴定结果-进行dysregulated-network-analysis&#34;&gt;正负离子分别处理之后，可以使用函数*metModule2*函数合并正负离子模式的鉴定结果，进行dysregulated network analysis。&lt;/h4&gt;
-
-&lt;h4 id=&#34;运行函数-metmodule2&#34;&gt;运行函数&lt;em&gt;MetModule2&lt;/em&gt;&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;metModule2(group = c(&amp;quot;W03&amp;quot;, &amp;quot;W30&amp;quot;),
-           uni.test = &amp;quot;t&amp;quot;,
-           column = &amp;quot;hilic&amp;quot;,
-           correct = TRUE,
-           p.cutoff = 0.01,
-           threads = 3,
-           species = &amp;quot;dme&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参数含义如下：&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;#### group：要对哪些分组的样品进行分析，&lt;strong&gt;注意&lt;/strong&gt;，计算fold change时，使用后面的样品除以前面的样品。&lt;/li&gt;
-&lt;li&gt;#### uni.test：单变量分析的方法，&amp;rdquo;t&amp;rdquo;，Student t test；&amp;rdquo;wilcox&amp;rdquo;，Wilcox test。&lt;/li&gt;
-&lt;li&gt;#### column：使用的柱子类型，&amp;rdquo;hilic&amp;rdquo;或者&amp;rdquo;rp&amp;rdquo;。&lt;/li&gt;
-&lt;li&gt;#### correct：是否需要对p值进行FDR校正。&lt;/li&gt;
-&lt;li&gt;#### p.cutoff：选择dysregulated peak时的p值cutoff。&lt;/li&gt;
-&lt;li&gt;#### threads：使用线程数，默认为3，可以根据电脑本身配置进行修改。&lt;/li&gt;
-&lt;li&gt;#### species：所研究样品的物种来源，&amp;rdquo;dme&amp;rdquo;，果蝇；&amp;rdquo;hsa&amp;rdquo;，人类；&amp;rdquo;mmu&amp;rdquo;，小鼠；&amp;rdquo;rat&amp;rdquo;，大鼠，&amp;rdquo;bta&amp;rdquo;，牛；&amp;rdquo;gga&amp;rdquo;，Gallus gallus (鸡)；&amp;rdquo;dre&amp;rdquo;，Danio rerio (斑马鱼)；&amp;rdquo;cel&amp;rdquo;，Caenorharomyces elegans (线虫)；&amp;rdquo;sce&amp;rdquo;，Saccharomyces cerevisaiae (酵母)； &amp;ldquo;ath&amp;rdquo;，Arabidopsis thaliana (拟南芥)；&amp;rdquo;smm&amp;rdquo;，Schistosoma mansoni；&amp;rdquo;pfa&amp;rdquo;，Plasmodum falciparum 3D7；&amp;rdquo;tbr&amp;rdquo;，Trypanosoma brucei；&amp;rdquo;eco&amp;rdquo;， Escherichia coli K-12 MG1655(大肠杆菌)；&amp;rdquo;ppu&amp;rdquo;，Pseudomonas putida KT2440；&amp;rdquo;syf&amp;rdquo;，Synechococcus elongatus。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;运行函数-analysisreport-得到分析报告&#34;&gt;运行函数*analysisReport*得到分析报告。&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;analysisReport(polarity = &amp;quot;both&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;ⅳ-运行结果&#34;&gt;&lt;strong&gt;Ⅳ 运行结果&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h3 id=&#34;1-正离子或者负离子的运行结果&#34;&gt;&lt;strong&gt;1. 正离子或者负离子的运行结果&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;metdna-函数运行结束之后-所有的运行结果都存放在设置的路径中-包含二级谱图匹配结果-mrn注释结果-dysregulated-network分析结果以及分析报告-如图5所示&#34;&gt;&lt;strong&gt;MetDNA&lt;/strong&gt;函数运行结束之后，所有的运行结果都存放在设置的路径中，包含二级谱图匹配结果，MRN注释结果，dysregulated network分析结果以及分析报告。如图5所示。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;analysis.result.png&#34; alt=&#34;**Figure 5: 运行结果**&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;1-metdna-parameters-csv&#34;&gt;&lt;strong&gt;(1) MetDNA.parameters.csv&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;记录此次运行所使用的参数&#34;&gt;记录此次运行所使用的参数。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;MetDNA.parameters.png&#34; alt=&#34;**Figure 6: 参数记录**&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;2-ms2-match-result-pos&#34;&gt;&lt;strong&gt;(2) ms2_match_result_POS&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;二级谱图匹配结果-包括一个csv文件-ms2-match-annotation-result-csv和一个文件夹-ms2-match-spectra-ms2-macth-annotation-result-csv是二级谱图匹配之后的结果-与metanalyzer处理之后的结果相同-ms2-match-spectra文件夹中包含了所有二级匹配图-figure-6&#34;&gt;二级谱图匹配结果。包括一个csv文件，ms2.match.annotation.result.csv和一个文件夹，MS2_match_spectra。ms2.macth.annotation.result.csv是二级谱图匹配之后的结果，与MetAnalyzer处理之后的结果相同；MS2_match_spectra文件夹中包含了所有二级匹配图(Figure 6)。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;二级匹配图.png&#34; alt=&#34;**Figure 7: 二级谱图匹配图**&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;3-mrn-annotation-result-pos&#34;&gt;&lt;strong&gt;(3) MRN_annotation_result_POS&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;基于metabolic-reacion-network注释结果-包括两个csv文件-metabm-parameters-csv和mrn-annotation-result-csv-mrn-annotation-result-csv是使用mrn注释结果-figure-8&#34;&gt;基于metabolic reacion network注释结果。包括两个csv文件，metABM.parameters.csv和MRN.annotation.result.csv。MRN.annotation.result.csv是使用MRN注释结果(Figure 8)。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;MRN.annotation.result.png&#34; alt=&#34;**Figure 8: MRN annotation result**&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;其中&#34;&gt;其中：&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;#### annotation.from.ID：该peak的该注释来自于哪个metabolite(ID);&lt;/li&gt;
-&lt;li&gt;#### annotation.from.peak：该peak的该注释来自于哪个peak;&lt;/li&gt;
-&lt;li&gt;#### ID：注释代谢物结果的KEGG ID;&lt;/li&gt;
-&lt;li&gt;#### compound.name：注释结果的名字；&lt;/li&gt;
-&lt;li&gt;#### isotope：同位素信息；&lt;/li&gt;
-&lt;li&gt;#### adduct：加合物信息；&lt;/li&gt;
-&lt;li&gt;#### Formula：化学结构式；&lt;/li&gt;
-&lt;li&gt;#### score：注释打分；&lt;/li&gt;
-&lt;li&gt;#### peak.group：peak group；&lt;/li&gt;
-&lt;li&gt;#### confidence：对注释的peak group打分。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;4-dysregulated-network-analsysi-result-pos&#34;&gt;&lt;strong&gt;(4) Dysregulated_network_analsysi_result_POS&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;dysregulated-network分析的结果-其中包括一个pdf文件-volcano-plot-pdf-figure-9-两个csv文件-metmodule-parameters-csv和dna-annotation-result-csv以及两个文件夹-module-information-figure-10-和pathway-inforamtion-figure-11&#34;&gt;Dysregulated network分析的结果。其中包括一个pdf文件，volcano.plot.pdf(Figure: 9)，两个csv文件，metModule.parameters.csv和DNA.annotation.result.csv以及两个文件夹，module_information(Figure 10)和pathway_inforamtion (Figure 11)。&lt;/h4&gt;
-
-&lt;h4 id=&#34;1-volcano-plot是选取差异代谢物峰的火山图&#34;&gt;1) volcano.plot是选取差异代谢物峰的火山图。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;volcano.plot.png&#34; alt=&#34;**Figure 9: Volcano plot**&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;2-dna-annotation-result-csv是通过dysregulated-network对注释结果进行筛选以及kegg-database注释之后的注释结果&#34;&gt;2) DNA.annotation.result.csv是通过dysregulated network对注释结果进行筛选以及KEGG database注释之后的注释结果。&lt;/h4&gt;
-
-&lt;h4 id=&#34;3-module-information文件夹中包含了dysregulated-module的分析结果-其中module-result-csv是module的信息-module-overview-pdf是module结果的总览-figure-10-module-heatmap-pdf是对module进行定量分析之后的热图-figure-11-boxplot文件夹中包含了module在两组间的定量结果-figure-12-module-mse-analysis文件夹中包含了对每个module进行功能注释-msea-的结果-figure-13&#34;&gt;3) module_information文件夹中包含了dysregulated module的分析结果。其中module.result.csv是module的信息。module.overview.pdf是module结果的总览(Figure 10)。module.heatmap.pdf是对module进行定量分析之后的热图(Figure 11)。boxplot文件夹中包含了module在两组间的定量结果(Figure 12)。Module_MSE analysis文件夹中包含了对每个module进行功能注释(MSEA)的结果(Figure 13)。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;module.overview.png&#34; alt=&#34;**Figure 10: Module overview**&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;module.heatmap.png&#34; alt=&#34;**Figure 11: Module heatmap**&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;module1.boxplot.png&#34; alt=&#34;**Figure 12: Module boxplot**&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;module1.MSEA.png&#34; alt=&#34;**Figure 13: Module MSEA result**&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;3-pathway-information文件夹中包含了pathway的分析结果-figure-14&#34;&gt;3) pathway_information文件夹中包含了pathway的分析结果(Figure 14)。&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;pathway.information.png&#34; alt=&#34;**Figure 14: Pathway information**&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;其中-1&#34;&gt;其中：&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;#### boxplot：该文件夹中含有每个pathway的定量信息;&lt;/li&gt;
-&lt;li&gt;#### dysregulated.network.overview：该图表示dysregulated network的pathway分析结果;&lt;/li&gt;
-&lt;li&gt;#### dysregulated.netwrok.MSEA.csv：dysregulated network的MSEA分析结果;&lt;/li&gt;
-&lt;li&gt;#### dysregulated.netwrok.MSEA.pdf：dysregulated network的MSEA分析结果;&lt;/li&gt;
-&lt;li&gt;#### dysregulated.networks.for.cytoscape.txt：用于cytoscape作图的数据；&lt;/li&gt;
-&lt;li&gt;#### dysregulated.networks.attribute.txt：用于cytoscape作图的节点属性数据；&lt;/li&gt;
-&lt;li&gt;#### pathway.heatmap.pdf：dysregulated network的pathway定量的heatmap。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;5-analysis-report-pos&#34;&gt;&lt;strong&gt;(5) Analysis_report_POS&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;对数据处理分析结果的总结-输出的结果存放在analysis-report文件夹内-包括一份html格式的-分析报告-http-rpubs-com-jasper-metdna-analysis-report&#34;&gt;对数据处理分析结果的总结。输出的结果存放在Analysis_report文件夹内。包括一份html格式的&lt;a href=&#34;http://rpubs.com/Jasper/metdna_analysis_report&#34; target=&#34;_blank&#34;&gt;分析报告&lt;/a&gt;。&lt;/h4&gt;
+&lt;div id=&#34;correlation-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Correlation analysis&lt;/h3&gt;
+&lt;p&gt;将组学变量(gene,protein,metabolite,clinical factor)进行相关性分析,得到他们之间的相关性,注意需要选择合适的相关性计算方法,并进行多重比较矫正(FDR,BH等).&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>purrr教程1:Overview</title>
-      <link>/post/2019-10-08-purrr-1-overview/</link>
+      <link>/r-tistic/post/2019-10-08-purrr-1-overview/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-10-08-purrr-1-overview/</guid>
+      <guid>/r-tistic/post/2019-10-08-purrr-1-overview/</guid>
       <description>
 
 
@@ -384,15 +164,19 @@ mtcars %&amp;gt;%
 &lt;pre&gt;&lt;code&gt;##         4         6         8 
 ## 0.5086326 0.4645102 0.4229655&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;div id=&#34;map-family&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Map family&lt;/h3&gt;
+&lt;p&gt;map函数对输入的vector的每一个元素进行&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>tidyverse select使用总结</title>
-      <link>/post/tidyverse-select/</link>
+      <link>/r-tistic/post/tidyverse-select/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/tidyverse-select/</guid>
+      <guid>/r-tistic/post/tidyverse-select/</guid>
       <description>
 
 
@@ -401,11 +185,24 @@ mtcars %&amp;gt;%
     </item>
     
     <item>
+      <title>文献解读:Longitudinal multi-omics of host– microbe dynamics in prediabetes</title>
+      <link>/r-tistic/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/r-tistic/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
       <title>ggplot2拼图工具:patchwork</title>
-      <link>/post/ggplot2-patchwork/</link>
+      <link>/r-tistic/post/ggplot2-patchwork/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/ggplot2-patchwork/</guid>
+      <guid>/r-tistic/post/ggplot2-patchwork/</guid>
       <description>
 
 
@@ -427,7 +224,7 @@ mtcars %&amp;gt;%
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(patchwork)
 library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -- Attaching packages ------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages ----------------------------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -436,7 +233,7 @@ library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -- Conflicts ---------------------------------------------------------------------- tidyverse_conflicts() --
+&lt;pre&gt;&lt;code&gt;## -- Conflicts -------------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot1 &amp;lt;- 
@@ -482,7 +279,7 @@ plot&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 12 rows containing non-finite values (stat_bin).
 
 ## Warning: Removed 2 rows containing missing values (geom_bar).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-09-ggplot2-patchwork_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-09-09-ggplot2-patchwork_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;plot_spacer()&lt;/code&gt;函数用来生成一个空白图片.&lt;code&gt;plot_layout()&lt;/code&gt;函数用来设置拼接图片的一些具体参数,如列数,行数,宽度或者高度比等.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;{}&lt;/code&gt;括起来的几个plot组成一个完整的新的plot.&lt;/p&gt;
 &lt;p&gt;这里面需要注意的是&lt;code&gt;-&lt;/code&gt;.它是指该符号左右两侧当成两个新的图层进行拼接.&lt;/p&gt;
@@ -495,10 +292,10 @@ plot&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>如何修改ggplot2垂直square legend之间的距离</title>
-      <link>/post/ggplot2-square-legend/</link>
+      <link>/r-tistic/post/ggplot2-square-legend/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/ggplot2-square-legend/</guid>
+      <guid>/r-tistic/post/ggplot2-square-legend/</guid>
       <description>
 
 
@@ -508,40 +305,40 @@ plot&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;legend.key.height&lt;/code&gt;参数来设置:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl))) +
   theme(legend.key.height = unit(4, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到每个key变高了,但是距离并没有变化.我们试试其他类型的legend,比如point.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_point(aes(colour = factor(cyl)), stat = &amp;quot;count&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_point(aes(colour = factor(cyl)), stat = &amp;quot;count&amp;quot;) +
   theme(legend.key.height = unit(10, &amp;quot;mm&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;从这幅图看的就非常的清楚了,每个legend的图像元素是由&lt;code&gt;key&lt;/code&gt;(背景)和指示元素组成的.&lt;code&gt;legend.key.height&lt;/code&gt;参数可以改变&lt;code&gt;key&lt;/code&gt;的高度,而指示元素则处在key的中间,对于square legend来说,他们其实是和&lt;code&gt;key&lt;/code&gt;背景重合的,所以&lt;code&gt;legend.key.height&lt;/code&gt;没有办法改变他们之间的距离.&lt;/p&gt;
 &lt;p&gt;那如果确实有需要更改这个距离,怎么做呢?想到一个办法只能更改square指示元素的line的宽度(line颜色为白色),从而间接修改他们之间的距离.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl))) +
   theme(legend.key.size = unit(2, &amp;quot;line&amp;quot;)) +
   guides(fill = guide_legend(override.aes = list(size = 3, colour = &amp;quot;white&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;欢迎大家由其他办法的留言讨论.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title> 生物统计学学习:逻辑回归</title>
-      <link>/post/2019-08-31-/</link>
+      <link>/r-tistic/post/2019-08-31-/</link>
       <pubDate>Sat, 31 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-31-/</guid>
+      <guid>/r-tistic/post/2019-08-31-/</guid>
       <description>
 
 
@@ -559,7 +356,7 @@ ggplot(data.frame(x,y), aes(x, y)) +
   geom_line(colour = &amp;quot;red&amp;quot;) +
   geom_vline(xintercept = 0) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-31-_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-08-31-_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看出来sigmoid函数是一个S型曲线.他的取值在[0,1]之间.&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -567,10 +364,10 @@ ggplot(data.frame(x,y), aes(x, y)) +
     
     <item>
       <title>生物统计学习:简单线性回归模型</title>
-      <link>/post/2019-08-26-/</link>
+      <link>/r-tistic/post/2019-08-26-/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-26-/</guid>
+      <guid>/r-tistic/post/2019-08-26-/</guid>
       <description>
 
 
@@ -594,20 +391,20 @@ ggplot(data, aes(age, height)) +
   geom_point() +
   theme_bw()
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-26-_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-08-26-_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们画出散点图之后,可以看出age和height呈比较明显的线性关系.&lt;/p&gt;
 &lt;p&gt;那我们怎么用一条直线去拟合(fit)数据呢?我们使用的就是最小平方差法(least square).&lt;/p&gt;
 &lt;p&gt;那么最简单的拟合办法是什么呢?也就是直接使用所有人的height的平均值去拟合.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   geom_hline(yintercept = mean(data$height))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-26-_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-08-26-_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;那么怎么评价一条直线对数据拟合的好坏呢?这时候就需要引入另外一个概念,残差(residuls).残差也就是真实值和拟合值之间差值:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[residual = y_i - y_i^{&amp;#39;}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt;是真实值,而&lt;span class=&#34;math inline&#34;&gt;\(y_i{&amp;#39;}\)&lt;/span&gt;是模型预测值.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   geom_hline(yintercept = mean(data$height)) +
   geom_segment(aes(x = data$age[1], y = data$height[1], xend = data$age[1], yend = mean(data$height)), colour = &amp;quot;red&amp;quot;, arrow = arrow()) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-08-26-_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/post/2019-08-26-_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;从定义可以看到,残差有正有负.为了表示一条拟合直线对数据拟合的程度的好坏,我们将残差平方然后加和,从而得到&lt;strong&gt;残差平方和(sum of squared residuals)&lt;/strong&gt;,该值就可以用来表示一条直线对数据的拟合的好坏.拟合的越好,该值越小,拟合的越差,该值越大.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;其实使用残差平方和作为损失函数得到的最后的方程或者说模型并不一定是最优解,但是好处是方便后面求解(求导)并且解是唯一的.另外还有使用残差绝对值之和作为损失函数进行求解.以后再慢慢介绍.&lt;/p&gt;
@@ -699,10 +496,10 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Markdown中输入数学公式</title>
-      <link>/post/2019-08-25-markdown/</link>
+      <link>/r-tistic/post/2019-08-25-markdown/</link>
       <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2019-08-25-markdown/</guid>
+      <guid>/r-tistic/post/2019-08-25-markdown/</guid>
       <description>
 
 
@@ -1238,10 +1035,10 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
-      <link>/post/blogdown-instruction/</link>
+      <link>/r-tistic/post/blogdown-instruction/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/blogdown-instruction/</guid>
+      <guid>/r-tistic/post/blogdown-instruction/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from IPython.core.display import Image
@@ -1301,19 +1098,19 @@ rm Untitled.md
     
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
-      <link>/publication/journal-article/metdna/</link>
+      <link>/r-tistic/publication/journal-article/metdna/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/metdna/</guid>
+      <guid>/r-tistic/publication/journal-article/metdna/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
-      <link>/post/jupyter/</link>
+      <link>/r-tistic/post/jupyter/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/jupyter/</guid>
+      <guid>/r-tistic/post/jupyter/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from IPython.core.display import Image
@@ -1373,10 +1170,10 @@ rm Untitled.md
     
     <item>
       <title>Slides</title>
-      <link>/slides/example/</link>
+      <link>/r-tistic/slides/example/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/slides/example/</guid>
+      <guid>/r-tistic/slides/example/</guid>
       <description>
 
 &lt;h1 id=&#34;welcome-to-slides&#34;&gt;Welcome to Slides&lt;/h1&gt;
@@ -1555,19 +1352,19 @@ $$&lt;/p&gt;
     
     <item>
       <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
-      <link>/publication/journal-article/zhuozhong_ac/</link>
+      <link>/r-tistic/publication/journal-article/zhuozhong_ac/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/zhuozhong_ac/</guid>
+      <guid>/r-tistic/publication/journal-article/zhuozhong_ac/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/publication/journal-article/metflow/</link>
+      <link>/r-tistic/publication/journal-article/metflow/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/metflow/</guid>
+      <guid>/r-tistic/publication/journal-article/metflow/</guid>
       <description>
 
 &lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
@@ -1582,10 +1379,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/publication/journal-article/metnormalizer/</link>
+      <link>/r-tistic/publication/journal-article/metnormalizer/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/metnormalizer/</guid>
+      <guid>/r-tistic/publication/journal-article/metnormalizer/</guid>
       <description>
 
 &lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
@@ -1600,47 +1397,47 @@ $$&lt;/p&gt;
     
     <item>
       <title>Predicting the pathological response to neoadjuvant chemoradiation using untargeted metabolomics in locally advanced rectal cancer</title>
-      <link>/publication/journal-article/huixun/</link>
+      <link>/r-tistic/publication/journal-article/huixun/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/huixun/</guid>
+      <guid>/r-tistic/publication/journal-article/huixun/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LipidCCS Prediction of Collision Cross-Section Values for Lipids with High Precision To Support Ion Mobility–Mass Spectrometry-Based Lipidomics</title>
-      <link>/publication/journal-article/lipidccs/</link>
+      <link>/r-tistic/publication/journal-article/lipidccs/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/lipidccs/</guid>
+      <guid>/r-tistic/publication/journal-article/lipidccs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LipidIMMS Analyzer integrating multi-dimensional information to support lipid identification in ion mobility—mass spectrometry based lipidomics</title>
-      <link>/publication/journal-article/lipidimms/</link>
+      <link>/r-tistic/publication/journal-article/lipidimms/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/lipidimms/</guid>
+      <guid>/r-tistic/publication/journal-article/lipidimms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Privacy Policy</title>
-      <link>/privacy/</link>
+      <link>/r-tistic/privacy/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
       
-      <guid>/privacy/</guid>
+      <guid>/r-tistic/privacy/</guid>
       <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics</title>
-      <link>/talk/2018seattle/</link>
+      <link>/r-tistic/talk/2018seattle/</link>
       <pubDate>Sun, 24 Jun 2018 13:00:00 +0000</pubDate>
       
-      <guid>/talk/2018seattle/</guid>
+      <guid>/r-tistic/talk/2018seattle/</guid>
       <description>&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
@@ -1661,19 +1458,19 @@ $$&lt;/p&gt;
     
     <item>
       <title>Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility-Mass Spectrometry</title>
-      <link>/publication/journal-article/metccs/</link>
+      <link>/r-tistic/publication/journal-article/metccs/</link>
       <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/metccs/</guid>
+      <guid>/r-tistic/publication/journal-article/metccs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression</title>
-      <link>/talk/2016texas/</link>
+      <link>/r-tistic/talk/2016texas/</link>
       <pubDate>Fri, 22 Jul 2016 13:00:00 +0000</pubDate>
       
-      <guid>/talk/2016texas/</guid>
+      <guid>/r-tistic/talk/2016texas/</guid>
       <description>&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
@@ -1694,30 +1491,30 @@ $$&lt;/p&gt;
     
     <item>
       <title>MetDNA</title>
-      <link>/project/metdna-project/</link>
+      <link>/r-tistic/project/metdna-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/metdna-project/</guid>
+      <guid>/r-tistic/project/metdna-project/</guid>
       <description>&lt;p&gt;MetDNA characterizes initial seed metabolites using a small tandem spectral library, and utilize their experimental MS2 spectra as surrogate spectra to annotate their reaction-paired neighbor metabolites which are subsequently served as the basis for recursive analysis.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>MetFlow</title>
-      <link>/project/metflow-project/</link>
+      <link>/r-tistic/project/metflow-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/metflow-project/</guid>
+      <guid>/r-tistic/project/metflow-project/</guid>
       <description>&lt;p&gt;We developed an interactive web server, namely, MetFlow, to provide an integrated and comprehensive workflow for metabolomics data cleaning and differential metabolite discovery.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Academic: the website builder for Hugo</title>
-      <link>/post/getting-started/</link>
+      <link>/r-tistic/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/post/getting-started/</guid>
+      <guid>/r-tistic/post/getting-started/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;Create a free website with Academic using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 &lt;em&gt;widgets&lt;/em&gt;, &lt;em&gt;themes&lt;/em&gt;, and &lt;em&gt;language packs&lt;/em&gt; included!&lt;/strong&gt;&lt;/p&gt;
@@ -1810,8 +1607,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1837,8 +1634,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1864,8 +1661,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1891,8 +1688,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1918,8 +1715,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1945,8 +1742,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1972,8 +1769,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1999,8 +1796,8 @@ $$&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
+  &lt;img src=&#34;/r-tistic/r-tistic/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
 
@@ -2043,10 +1840,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>2017年的第一篇博客</title>
-      <link>/post/2017-02-12-firstblog2017/</link>
+      <link>/r-tistic/post/2017-02-12-firstblog2017/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2017-02-12-firstblog2017/</guid>
+      <guid>/r-tistic/post/2017-02-12-firstblog2017/</guid>
       <description>
 
 &lt;h2 id=&#34;我的2016年&#34;&gt;&lt;strong&gt;我的2016年&lt;/strong&gt;&lt;/h2&gt;
@@ -2099,10 +1896,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>MetCleaning instruction</title>
-      <link>/post/2016-11-25-metcleaning/</link>
+      <link>/r-tistic/post/2016-11-25-metcleaning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2016-11-25-metcleaning/</guid>
+      <guid>/r-tistic/post/2016-11-25-metcleaning/</guid>
       <description>
 
 &lt;h2 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h2&gt;
@@ -2111,7 +1908,7 @@ $$&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;MetCleaning&lt;/em&gt; provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, &lt;em&gt;MetClean&lt;/em&gt; and &lt;em&gt;MetStat&lt;/em&gt; in &lt;em&gt;MetCleaning&lt;/em&gt; utilizing demo data.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/workflow for instruction.jpg&#34; alt=&#34;Figure1 Workflow of *MetCleaning*&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/workflow for instruction.jpg&#34; alt=&#34;Figure1 Workflow of *MetCleaning*&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;installation-and-help&#34;&gt;&lt;strong&gt;Installation and help&lt;/strong&gt;&lt;/h2&gt;
 
@@ -2160,7 +1957,7 @@ write.csv(sample.information , &amp;quot;sample.information.csv&amp;quot;, row.n
 1. &amp;ldquo;data.csv&amp;rdquo; is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain &amp;ldquo;name&amp;rdquo; (feature name), &amp;ldquo;mz&amp;rdquo; (mass to change ratio) and &amp;ldquo;rt&amp;rdquo; (retention time). Other information of features are optional, for example &amp;ldquo;isotopes&amp;rdquo; and &amp;ldquo;adducts&amp;rdquo;. The name of sample can contain &amp;ldquo;.&amp;rdquo;, but cannot contain &amp;ldquo;-&amp;rdquo; and space. And the start of sample name cannot be number. &lt;strong&gt;For example, &amp;ldquo;A210.a&amp;rdquo; and &amp;ldquo;A210a&amp;rdquo; are valid, and &amp;ldquo;210a&amp;rdquo; or &amp;ldquo;210-a&amp;rdquo; are invalid.&lt;/strong&gt;
 2. &amp;ldquo;sample.information.csv&amp;rdquo; is sample information for metabolomic dataset. Column 1 is &amp;ldquo;sample.name&amp;rdquo; which is the names of subject and QC samples. Please confirm that the sample names in &amp;ldquo;sample.information.csv&amp;rdquo; and &amp;ldquo;data.csv&amp;rdquo; are completely same. Column 2 is &amp;ldquo;injection.order&amp;rdquo; which is the injection order of QC and subject samples. Column 3 is &amp;ldquo;class&amp;rdquo;, which is used to distinguish &amp;ldquo;QC&amp;rdquo; and &amp;ldquo;Subject&amp;rdquo; samples. Column 4 is &amp;ldquo;batch&amp;rdquo; to provide acquisition batch information for samples. Column 5 is &amp;ldquo;group&amp;rdquo;, which is used to label the group of subject sample, for example, &amp;ldquo;control&amp;rdquo; and &amp;ldquo;case&amp;rdquo;. The &amp;ldquo;group&amp;rdquo; of QC samples is labeled as &amp;ldquo;QC&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/data organisation.jpg&#34; alt=&#34;Figure2 Data organisation of MetCleaning&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/data organisation.jpg&#34; alt=&#34;Figure2 Data organisation of MetCleaning&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Then you can run &lt;em&gt;MetClean&lt;/em&gt; function to do data cleaning of data. All the arguments of &lt;em&gt;MetClean&lt;/em&gt; can be found in the other functions in &lt;em&gt;MetCleaning&lt;/em&gt;. You can use &lt;em&gt;help(package = &amp;ldquo;MetCleaning&amp;rdquo;)&lt;/em&gt; to see the help page of &lt;em&gt;MetCleaning&lt;/em&gt;.&lt;/p&gt;
 
@@ -2173,11 +1970,11 @@ MetClean(polarity = &amp;quot;positive&amp;quot;)
 &lt;p&gt;Running results of &lt;em&gt;MetClean&lt;/em&gt;
 1.Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/mv filter.jpg&#34; alt=&#34;Figure3 Missing or zero value filtering&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/mv filter.jpg&#34; alt=&#34;Figure3 Missing or zero value filtering&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;2.Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don&amp;rsquo;t recommend to remove them as Figure 4 shows, because they should be consired combined other information.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/sample filter.jpg&#34; alt=&#34;Figure4 Sample filtering&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/sample filter.jpg&#34; alt=&#34;Figure4 Sample filtering&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;3.Output files. Output files of &lt;em&gt;MetClean&lt;/em&gt; are listed as Figure 5 shows.
 (1) &amp;ldquo;1MV overview&amp;rdquo;, &amp;ldquo;2MV filter&amp;rdquo;, &amp;ldquo;3Zero overview&amp;rdquo; and &amp;ldquo;4Zero filter&amp;rdquo; are missing and zero values filtering information.
@@ -2190,7 +1987,7 @@ MetClean(polarity = &amp;quot;positive&amp;quot;)
 (8) &lt;strong&gt;&amp;ldquo;data_after_pre.csv&amp;rdquo;, &amp;ldquo;qc.info.csv&amp;rdquo; and &amp;ldquo;subject.info&amp;rdquo;&lt;/strong&gt; are the data and sample information after data cleaning.
 (9) &amp;ldquo;intermediate&amp;rdquo; is the intermediate data during processing.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/output files of MetClean.jpg&#34; alt=&#34;Figure5 Output files of *MetClean*&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/output files of MetClean.jpg&#34; alt=&#34;Figure5 Output files of *MetClean*&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;statistical-analysis&#34;&gt;&lt;strong&gt;Statistical analysis&lt;/strong&gt;&lt;/h2&gt;
 
@@ -2211,7 +2008,7 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)
 
 &lt;p&gt;The demo data have been added in your work directory. &amp;ldquo;new.group.csv&amp;rdquo; is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don&amp;rsquo;t want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/new.group.jpg&#34; alt=&#34;Figure6 new group information&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/new.group.jpg&#34; alt=&#34;Figure6 new group information&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;code 5: Running of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
 
@@ -2221,11 +2018,11 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)
 &lt;p&gt;Running results of &lt;em&gt;MetStat&lt;/em&gt;
 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/sample remove.jpg&#34; alt=&#34;Figure7 sample removing confirmation&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/sample remove.jpg&#34; alt=&#34;Figure7 sample removing confirmation&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;2.Number of component selection in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the Console show &amp;ldquo;How many comps do you want to see?&amp;rdquo;, you can type 10 and enter &amp;ldquo;Enter&amp;rdquo; key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and enter &amp;ldquo;Enter&amp;rdquo; key.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/PLS analysis.jpg&#34; alt=&#34;Figure8 Number of component selection in PLS-DA analysis&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/PLS analysis.jpg&#34; alt=&#34;Figure8 Number of component selection in PLS-DA analysis&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;3.Output files. Output files of &lt;em&gt;MetStat&lt;/em&gt; are listed as Figure 9 shows.
 (1) &amp;ldquo;12PCA analysis&amp;rdquo; is the PCA score plot.
@@ -2235,25 +2032,25 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)
 (5) &lt;strong&gt;&amp;ldquo;data_after_stat.csv&amp;rdquo;, &amp;ldquo;qc.info.csv&amp;rdquo; and &amp;ldquo;subject.info&amp;rdquo;&lt;/strong&gt; are the data and sample information after statistical analysis.
 (6) &amp;ldquo;intermediate&amp;rdquo; is the intermediate data during processing.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/images/metcleaning/output files of MetStat.jpg&#34; alt=&#34;Figure9 Output files of *MetStat*&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/r-tistic/images/metcleaning/output files of MetStat.jpg&#34; alt=&#34;Figure9 Output files of *MetStat*&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
-      <link>/publication/journal-article/taozhang_metabolomics/</link>
+      <link>/r-tistic/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/taozhang_metabolomics/</guid>
+      <guid>/r-tistic/publication/journal-article/taozhang_metabolomics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>使用Github Pages建独立博客</title>
-      <link>/post/2012-02-22-github-pages/</link>
+      <link>/r-tistic/post/2012-02-22-github-pages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2012-02-22-github-pages/</guid>
+      <guid>/r-tistic/post/2012-02-22-github-pages/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://github.com&#34; title=&#34;Github&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt;很好的将代码和社区联系在了一起，于是发生了很多有趣的事情，世界也因为他美好了一点点。Github作为现在最流行的代码仓库，已经得到很多大公司和项目的青睐，比如&lt;a href=&#34;https://github.com/jquery/jquery&#34; title=&#34;jQuery@github&#34; target=&#34;_blank&#34;&gt;jQuery&lt;/a&gt;、&lt;a href=&#34;https://github.com/twitter/bootstrap&#34; title=&#34;Twitter@github&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt;等。为使项目更方便的被人理解，介绍页面少不了，甚至会需要完整的文档站，Github替你想到了这一点，他提供了&lt;a href=&#34;http://pages.github.com/&#34; title=&#34;Github Pages&#34; target=&#34;_blank&#34;&gt;Github Pages&lt;/a&gt;的服务，不仅可以方便的为项目建立介绍站点，也可以用来建立个人博客。&lt;/p&gt;
@@ -2306,7 +2103,7 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)
 &lt;p&gt;下载安装客户端之后，各个系统的配置就类似了，我们使用windows作为例子，Linux和Mac与此类似。&lt;/p&gt;
 
 &lt;p&gt;在Windows下，打开Git Bash，其他系统下面则打开终端（Terminal）：
-&lt;img src=&#34;/images/githubpages/bootcamp_1_win_gitbash.jpg&#34; alt=&#34;Git Bash&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/bootcamp_1_win_gitbash.jpg&#34; alt=&#34;Git Bash&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;1-检查ssh-keys的设置&#34;&gt;1、检查SSH keys的设置&lt;/h3&gt;
 
@@ -2344,7 +2141,7 @@ Enter same passphrase again:&amp;lt;再次输入加密串&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;最后看到这样的界面，就成功设置ssh key了：
-&lt;img src=&#34;/images/githubpages/ssh-key-set.png&#34; alt=&#34;ssh key success&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/ssh-key-set.png&#34; alt=&#34;ssh key success&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;4-添加ssh-key到github&#34;&gt;4、添加SSH Key到GitHub：&lt;/h3&gt;
 
@@ -2353,10 +2150,10 @@ Enter same passphrase again:&amp;lt;再次输入加密串&amp;gt;
 &lt;p&gt;用文本编辑工具打开id_rsa.pub文件，如果看不到这个文件，你需要设置显示隐藏文件。准确的复制这个文件的内容，才能保证设置的成功。&lt;/p&gt;
 
 &lt;p&gt;在GitHub的主页上点击设置按钮：
-&lt;img src=&#34;/images/githubpages/github-account-setting.png&#34; alt=&#34;github account setting&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/github-account-setting.png&#34; alt=&#34;github account setting&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;选择SSH Keys项，把复制的内容粘贴进去，然后点击Add Key按钮即可：
-&lt;img src=&#34;/images/githubpages/bootcamp_1_ssh.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/bootcamp_1_ssh.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;PS：如果需要配置多个GitHub账号，可以参看这个&lt;a href=&#34;http://omiga.org/blog/archives/2269&#34; target=&#34;_blank&#34;&gt;多个github帐号的SSH key切换&lt;/a&gt;，不过需要提醒一下的是，如果你只是通过这篇文章中所述配置了Host，那么你多个账号下面的提交用户会是一个人，所以需要通过命令&lt;code&gt;git config --global --unset user.email&lt;/code&gt;删除用户账户设置，在每一个repo下面使用&lt;code&gt;git config --local user.email &#39;你的github邮箱@mail.com&#39;&lt;/code&gt; 命令单独设置用户账户信息&lt;/p&gt;
 
@@ -2396,7 +2193,7 @@ $ git config --global user.email &amp;quot;your_email@youremail.com&amp;quot;
 &lt;p&gt;有些工具没有通过SSH来链接GitHub。如果要使用这类工具，你需要找到然后设置你的API Token。&lt;/p&gt;
 
 &lt;p&gt;在GitHub上，你可以点击*Account Setting &amp;gt; Account Admin*：
-&lt;img src=&#34;/images/githubpages/bootcamp_1_token.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/bootcamp_1_token.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;然后在你的命令行中，输入下面的命令，把token添加进去：&lt;/p&gt;
 
@@ -2417,9 +2214,9 @@ $ git config --global user.token 0123456789your123456789token
 &lt;h3 id=&#34;user-organization-pages&#34;&gt;User &amp;amp; Organization Pages&lt;/h3&gt;
 
 &lt;p&gt;想建立个人博客是用的第一种，形如&lt;code&gt;beiyuu.github.io&lt;/code&gt;这样的可访问的站，每个用户名下面只能建立一个，创建之后点击&lt;code&gt;Admin&lt;/code&gt;进入项目管理，可以看到是这样的：
-&lt;img src=&#34;/images/githubpages/user-pages.png&#34; alt=&#34;user pages&#34; /&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/user-pages.png&#34; alt=&#34;user pages&#34; /&gt;
 而普通的项目是这样的，即使你也是用的&lt;code&gt;othername.github.io&lt;/code&gt;：
-&lt;img src=&#34;/images/githubpages/other-pages.png&#34; alt=&#34;other pages&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/other-pages.png&#34; alt=&#34;other pages&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;创建好&lt;code&gt;username.github.io&lt;/code&gt;项目之后，提交一个&lt;code&gt;index.html&lt;/code&gt;文件，然后&lt;code&gt;push&lt;/code&gt;到GitHub的&lt;code&gt;master&lt;/code&gt;分支（也就是普通意义上的主干）。第一次页面生效需要一些时间，大概10分钟左右。&lt;/p&gt;
 
@@ -2555,7 +2352,7 @@ title: Blogging Like a Hacker
 &lt;p&gt;现在专做评论模块的产品有很多，比如&lt;a href=&#34;http://disqus.com/&#34; target=&#34;_blank&#34;&gt;Disqus&lt;/a&gt;，还有国产的&lt;a href=&#34;http://duoshuo.com/&#34; target=&#34;_blank&#34;&gt;多说&lt;/a&gt;，Disqus对现在各种系统的支持都比较全面，到写博客为止，多说现在仅是WordPress的一个插件，所以我这里暂时也使用不了，多说与国内的社交网络紧密结合，还是有很多亮点的，值得期待一下。我先选择了Disqus。&lt;/p&gt;
 
 &lt;p&gt;注册账号什么的就不提了，Disqus支持很多的博客平台，参见下图：
-&lt;img src=&#34;/images/githubpages/disqus-site.jpg&#34; alt=&#34;Disqus sites&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;/r-tistic/images/githubpages/disqus-site.jpg&#34; alt=&#34;Disqus sites&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我们选择最下面的&lt;code&gt;Universal Code&lt;/code&gt;就好，然后会看到一个介绍页面，把下面这段代码复制到你的模板里面，可以只复制到显示文章的模板中：&lt;/p&gt;
 
@@ -2644,10 +2441,10 @@ sudo gem sources -a http://ruby.taobao.org/
     
     <item>
       <title>使用Github和Hexo建独立博客</title>
-      <link>/post/2017-09-09-github-blog/</link>
+      <link>/r-tistic/post/2017-09-09-github-blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2017-09-09-github-blog/</guid>
+      <guid>/r-tistic/post/2017-09-09-github-blog/</guid>
       <description>
 
 &lt;p&gt;参考了一篇&lt;a href=&#34;https://github.com/limedroid/HexoLearning#42-直接方式&#34; target=&#34;_blank&#34;&gt;非常好的文章&lt;/a&gt;，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。&lt;/p&gt;
@@ -2882,10 +2679,10 @@ categories:
     
     <item>
       <title>使用R爬取HMDB和KEGG数据库</title>
-      <link>/post/2016-12-03-keggandhmdb/</link>
+      <link>/r-tistic/post/2016-12-03-keggandhmdb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2016-12-03-keggandhmdb/</guid>
+      <guid>/r-tistic/post/2016-12-03-keggandhmdb/</guid>
       <description>
 
 &lt;h2 id=&#34;r语言爬虫&#34;&gt;&lt;strong&gt;R语言爬虫&lt;/strong&gt;&lt;/h2&gt;
@@ -3246,10 +3043,10 @@ for (i in 1:400) {
     
     <item>
       <title>我的第一篇博客</title>
-      <link>/post/2016-11-25-first-blog/</link>
+      <link>/r-tistic/post/2016-11-25-first-blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2016-11-25-first-blog/</guid>
+      <guid>/r-tistic/post/2016-11-25-first-blog/</guid>
       <description>
 
 &lt;h2 id=&#34;我的博客&#34;&gt;我的博客&lt;/h2&gt;

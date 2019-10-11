@@ -3,364 +3,387 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/courses/example/example1/</loc>
+    <loc>/r-tistic/courses/example/example1/</loc>
     <lastmod>2019-05-05T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/courses/example/</loc>
+    <loc>/r-tistic/courses/example/</loc>
     <lastmod>2018-09-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/courses/example/example2/</loc>
+    <loc>/r-tistic/courses/example/example2/</loc>
     <lastmod>2019-05-05T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/blog/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+    <loc>/r-tistic/tags/blog/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+    <loc>/r-tistic/categories/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2017-09-09-metdna-blog/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+    <loc>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+    <loc>/r-tistic/post/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+    <loc>/r-tistic/categories/r/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+    <loc>/r-tistic/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2019-10-08-purrr-1-overview/</loc>
+    <loc>/r-tistic/tags/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/categories/omics/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/post/2019-10-10-/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/tags/academic/</loc>
+    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/categories/literature/</loc>
+    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/post/2019-10-08-purrr-1-overview/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/tidyverse-select/</loc>
+    <loc>/r-tistic/post/tidyverse-select/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/ggplot2-patchwork/</loc>
+    <loc>/r-tistic/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</loc>
+    <lastmod>2019-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/post/ggplot2-patchwork/</loc>
     <lastmod>2019-09-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/ggplot2-square-legend/</loc>
+    <loc>/r-tistic/post/ggplot2-square-legend/</loc>
     <lastmod>2019-09-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-08-31-/</loc>
+    <loc>/r-tistic/post/2019-08-31-/</loc>
     <lastmod>2019-08-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-08-26-/</loc>
+    <loc>/r-tistic/post/2019-08-26-/</loc>
     <lastmod>2019-08-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2019-08-25-markdown/</loc>
+    <loc>/r-tistic/post/2019-08-25-markdown/</loc>
     <lastmod>2019-08-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/admin/</loc>
+    <loc>/r-tistic/authors/admin/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/</loc>
+    <loc>/r-tistic/authors/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/blogdown-instruction/</loc>
+    <loc>/r-tistic/post/blogdown-instruction/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication_types/2/</loc>
+    <loc>/r-tistic/publication_types/2/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/publication/journal-article/metdna/</loc>
+    <loc>/r-tistic/publication/journal-article/metdna/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/others/</loc>
-    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/publication_types/</loc>
+    <loc>/r-tistic/authors/others/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/publication/</loc>
-    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/ruohong-wang/</loc>
+    <loc>/r-tistic/publication_types/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/source-themes/</loc>
+    <loc>/r-tistic/publication/</loc>
+    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/authors/ruohong-wang/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/authors/zheng-jiang-zhu/</loc>
+    <loc>/r-tistic/tags/source-themes/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/jupyter/</loc>
+    <loc>/r-tistic/authors/zheng-jiang-zhu/</loc>
+    <lastmod>2019-04-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/post/jupyter/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/slides/</loc>
+    <loc>/r-tistic/slides/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/slides/example/</loc>
+    <loc>/r-tistic/slides/example/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/biomarker-discovery/</loc>
+    <loc>/r-tistic/tags/biomarker-discovery/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/publication/journal-article/zhuozhong_ac/</loc>
+    <loc>/r-tistic/publication/journal-article/zhuozhong_ac/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication/journal-article/metflow/</loc>
+    <loc>/r-tistic/publication/journal-article/metflow/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication/journal-article/metnormalizer/</loc>
+    <loc>/r-tistic/publication/journal-article/metnormalizer/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/metabolomics/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/statistical-analysis/</loc>
+    <loc>/r-tistic/tags/metabolomics/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/authors/zhuozhong-wang/</loc>
+    <loc>/r-tistic/tags/statistical-analysis/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/authors/huixun-jia/</loc>
+    <loc>/r-tistic/authors/zhuozhong-wang/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/authors/huixun-jia/</loc>
     <lastmod>2018-09-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/publication/journal-article/huixun/</loc>
+    <loc>/r-tistic/publication/journal-article/huixun/</loc>
     <lastmod>2018-09-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/data-processing/</loc>
+    <loc>/r-tistic/tags/data-processing/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/publication/journal-article/lipidccs/</loc>
+    <loc>/r-tistic/publication/journal-article/lipidccs/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication/journal-article/lipidimms/</loc>
+    <loc>/r-tistic/publication/journal-article/lipidimms/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/lipidomics/</loc>
-    <lastmod>2018-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/software/</loc>
+    <loc>/r-tistic/tags/lipidomics/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/authors/zhiwei-zhou/</loc>
+    <loc>/r-tistic/tags/software/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/privacy/</loc>
+    <loc>/r-tistic/authors/zhiwei-zhou/</loc>
+    <lastmod>2018-07-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/r-tistic/privacy/</loc>
     <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2018seattle/</loc>
+    <loc>/r-tistic/talk/2018seattle/</loc>
     <lastmod>2018-06-24T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/</loc>
+    <loc>/r-tistic/talk/</loc>
     <lastmod>2018-06-24T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication/journal-article/metccs/</loc>
+    <loc>/r-tistic/publication/journal-article/metccs/</loc>
     <lastmod>2016-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/talk/2016texas/</loc>
+    <loc>/r-tistic/talk/2016texas/</loc>
     <lastmod>2016-07-22T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/metdna-project/</loc>
+    <loc>/r-tistic/project/metdna-project/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/metflow-project/</loc>
+    <loc>/r-tistic/project/metflow-project/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/</loc>
+    <loc>/r-tistic/project/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/academic/</loc>
-    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/getting-started/</loc>
+    <loc>/r-tistic/post/getting-started/</loc>
     <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2017-02-12-firstblog2017/</loc>
+    <loc>/r-tistic/post/2017-02-12-firstblog2017/</loc>
   </url>
   
   <url>
-    <loc>/tags/chinese/</loc>
+    <loc>/r-tistic/tags/chinese/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/courses/</loc>
+    <loc>/r-tistic/courses/</loc>
   </url>
   
   <url>
-    <loc>/tags/data-cleaning/</loc>
+    <loc>/r-tistic/tags/data-cleaning/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/github/</loc>
+    <loc>/r-tistic/tags/github/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2016-11-25-metcleaning/</loc>
+    <loc>/r-tistic/post/2016-11-25-metcleaning/</loc>
   </url>
   
   <url>
-    <loc>/publication/journal-article/taozhang_metabolomics/</loc>
+    <loc>/r-tistic/publication/journal-article/taozhang_metabolomics/</loc>
   </url>
   
   <url>
-    <loc>/categories/github-technology/</loc>
+    <loc>/r-tistic/categories/github-technology/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/life/</loc>
+    <loc>/r-tistic/tags/life/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/2012-02-22-github-pages/</loc>
+    <loc>/r-tistic/post/2012-02-22-github-pages/</loc>
   </url>
   
   <url>
-    <loc>/post/2017-09-09-github-blog/</loc>
+    <loc>/r-tistic/post/2017-09-09-github-blog/</loc>
   </url>
   
   <url>
-    <loc>/post/2016-12-03-keggandhmdb/</loc>
+    <loc>/r-tistic/post/2016-12-03-keggandhmdb/</loc>
   </url>
   
   <url>
-    <loc>/post/2016-11-25-first-blog/</loc>
+    <loc>/r-tistic/post/2016-11-25-first-blog/</loc>
   </url>
   
 </urlset>

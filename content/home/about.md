@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 20  # Order that this section will appear in.
 
-title = "ABOUT ME"
+title = "About"
 subtitle = "Do your best, and let the God do the rest."
 
 # Choose the user profile to display

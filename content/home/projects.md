@@ -5,8 +5,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 65  # Order that this section will appear.
 
-title = "PROJECTS"
-subtitle = "Software and algorithm development. More software in my [Github](https://github.com/jaspershen)."
+title = "Projects"
+subtitle = "Software and algorithm development. More software are in my [Github](https://github.com/jaspershen)."
 
 [content]
   # Page type to display. E.g. project.

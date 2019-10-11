@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistical analysis on Shen Blog</title>
-    <link>/tags/statistical-analysis/</link>
+    <link>/r-tistic/tags/statistical-analysis/</link>
     <description>Recent content in Statistical analysis on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/statistical-analysis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/r-tistic/tags/statistical-analysis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
-      <link>/publication/journal-article/zhuozhong_ac/</link>
+      <link>/r-tistic/publication/journal-article/zhuozhong_ac/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/journal-article/zhuozhong_ac/</guid>
+      <guid>/r-tistic/publication/journal-article/zhuozhong_ac/</guid>
       <description>The metabolic profiling of biofluids using untargeted metabolomics provides a promising choice to discover metabolite biomarkers for clinical cancer diagnosis. However, metabolite biomarkers discovered in biofluids may not necessarily reflect the pathological status of tumor tissue, which makes these biomarkers difficult to reproduce. In this study, we developed a new analysis strategy by integrating the univariate and multivariate correlation analysis approach to discover tumor tissue derived (TTD) metabolites in plasma samples. Specifically, untargeted metabolomics was first used to profile a set of paired tissue and plasma samples from 34 colorectal cancer (CRC) patients. Next, univariate correlation analysis was used to select correlative metabolite pairs between tissue and plasma, and a random forest regression model was utilized to define 243 TTD metabolites in plasma samples. The TTD metabolites in CRC plasma were demonstrated to accurately reflect the pathological status of tumor tissue and have great potential for metabolite biomarker discovery. Accordingly, we conducted a clinical study using a set of 146 plasma samples from CRC patients and gender-matched polyp controls to discover metabolite biomarkers from TTD metabolites. As a result, eight metabolites were selected as potential biomarkers for CRC diagnosis with high sensitivity and specificity. For CRC patients after surgery, the survival risk score defined by metabolite biomarkers also performed well in predicting overall survival time (p = 0.022) and progression-free survival time (p = 0.002). In conclusion, we developed a new analysis strategy which effectively discovers tumor tissue related metabolite biomarkers in plasma for cancer diagnosis and prognosis.</description>
     </item>
     
