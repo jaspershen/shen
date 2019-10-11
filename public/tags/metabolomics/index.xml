@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Metabolomics on Shen Blog</title>
-    <link>/r-tistic/tags/metabolomics/</link>
+    <link>/tags/metabolomics/</link>
     <description>Recent content in Metabolomics on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/r-tistic/tags/metabolomics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/metabolomics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
-      <link>/r-tistic/publication/journal-article/zhuozhong_ac/</link>
+      <link>/publication/journal-article/zhuozhong_ac/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/publication/journal-article/zhuozhong_ac/</guid>
+      <guid>/publication/journal-article/zhuozhong_ac/</guid>
       <description>The metabolic profiling of biofluids using untargeted metabolomics provides a promising choice to discover metabolite biomarkers for clinical cancer diagnosis. However, metabolite biomarkers discovered in biofluids may not necessarily reflect the pathological status of tumor tissue, which makes these biomarkers difficult to reproduce. In this study, we developed a new analysis strategy by integrating the univariate and multivariate correlation analysis approach to discover tumor tissue derived (TTD) metabolites in plasma samples. Specifically, untargeted metabolomics was first used to profile a set of paired tissue and plasma samples from 34 colorectal cancer (CRC) patients. Next, univariate correlation analysis was used to select correlative metabolite pairs between tissue and plasma, and a random forest regression model was utilized to define 243 TTD metabolites in plasma samples. The TTD metabolites in CRC plasma were demonstrated to accurately reflect the pathological status of tumor tissue and have great potential for metabolite biomarker discovery. Accordingly, we conducted a clinical study using a set of 146 plasma samples from CRC patients and gender-matched polyp controls to discover metabolite biomarkers from TTD metabolites. As a result, eight metabolites were selected as potential biomarkers for CRC diagnosis with high sensitivity and specificity. For CRC patients after surgery, the survival risk score defined by metabolite biomarkers also performed well in predicting overall survival time (p = 0.022) and progression-free survival time (p = 0.002). In conclusion, we developed a new analysis strategy which effectively discovers tumor tissue related metabolite biomarkers in plasma for cancer diagnosis and prognosis.</description>
     </item>
     
     <item>
       <title>Predicting the pathological response to neoadjuvant chemoradiation using untargeted metabolomics in locally advanced rectal cancer</title>
-      <link>/r-tistic/publication/journal-article/huixun/</link>
+      <link>/publication/journal-article/huixun/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/publication/journal-article/huixun/</guid>
+      <guid>/publication/journal-article/huixun/</guid>
       <description>A panel of metabolites has been identified to facilitate the prediction of tumor response to NCRT in LARC, which is promising for the generation of personalized treatment strategies for LARC patients.</description>
     </item>
     
     <item>
       <title>Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility-Mass Spectrometry</title>
-      <link>/r-tistic/publication/journal-article/metccs/</link>
+      <link>/publication/journal-article/metccs/</link>
       <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/publication/journal-article/metccs/</guid>
+      <guid>/publication/journal-article/metccs/</guid>
       <description>The use of collision cross-section (CCS) values derived from ion mobility–mass spectrometry (IM–MS) has been proven to facilitate lipid identifications. Its utility is restricted by the limited availability of CCS values. Recently, the machine-learning algorithm-based prediction (e.g., MetCCS) is reported to generate CCS values in a large-scale. However, the prediction precision is not sufficient to differentiate lipids due to their high structural similarities and subtle differences on CCS values. To address this challenge, we developed a new approach, namely, LipidCCS, to precisely predict lipid CCS values.</description>
     </item>
     
     <item>
       <title>MetDNA</title>
-      <link>/r-tistic/project/metdna-project/</link>
+      <link>/project/metdna-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/project/metdna-project/</guid>
+      <guid>/project/metdna-project/</guid>
       <description>Metabololite identification and dysregulated network analysis.</description>
     </item>
     
     <item>
       <title>MetFlow</title>
-      <link>/r-tistic/project/metflow-project/</link>
+      <link>/project/metflow-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/project/metflow-project/</guid>
+      <guid>/project/metflow-project/</guid>
       <description>Web Server for Metabolomics Data Cleaning and Differential Metabolite Discovery</description>
     </item>
     
     <item>
       <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
-      <link>/r-tistic/publication/journal-article/taozhang_metabolomics/</link>
+      <link>/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/publication/journal-article/taozhang_metabolomics/</guid>
+      <guid>/publication/journal-article/taozhang_metabolomics/</guid>
       <description>Untargeted metabolomics studies for biomarker discovery often have hundreds to thousands of human samples. Data acquisition of large-scale samples has to be divided into several batches and may span from months to as long as several years. The signal drift of metabolites during data acquisition (intra- and inter-batch) is unavoidable and is a major confounding factor for large-scale metabolomics studies. We aim to develop a data normalization method to reduce unwanted variations and integrate multiple batches in large-scale metabolomics studies prior to statistical analyses. We developed a machine learning algorithm-based method, support vector regression (SVR), for large-scale metabolomics data normalization and integration. An R package named MetNormalizer was developed and provided for data processing using SVR normalization. After SVR normalization, the portion of metabolite ion peaks with relative standard deviations (RSDs) less than 30 % increased to more than 90 % of the total peaks, which is much better than other common normalization methods. The reduction of unwanted analytical variations helps to improve the performance of multivariate statistical analyses, both unsupervised and supervised, in terms of classification and prediction accuracy so that subtle metabolic changes in epidemiological studies can be detected. SVR normalization can effectively remove the unwanted intra- and inter-batch variations, and is much better than other common normalization methods.</description>
     </item>
     

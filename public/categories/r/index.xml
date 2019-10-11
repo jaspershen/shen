@@ -2,94 +2,94 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Shen Blog</title>
-    <link>/r-tistic/categories/r/</link>
+    <link>/categories/r/</link>
     <description>Recent content in R on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/r-tistic/categories/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Modern Statistics for Modern Biology:第一章</title>
-      <link>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</link>
+      <link>/post/2019-10-10-modern-statistics-for-modern-biology/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
+      <guid>/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
       <description>离散变量(discrete data)的生成模型 在分子生物学中,在很多情况下都会产生离散变量. 1.1 本章目标 在本章中,我们将会: 学会对于一个给定模</description>
     </item>
     
     <item>
       <title>组学数据分析常见方法总结</title>
-      <link>/r-tistic/post/2019-10-10-/</link>
+      <link>/post/2019-10-10-/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-10-10-/</guid>
+      <guid>/post/2019-10-10-/</guid>
       <description>Correlation analysis 将组学变量(gene,protein,metabolite,clinical factor)进行相关性分析,得到他们之间的相关性,注意需要</description>
     </item>
     
     <item>
       <title>purrr教程1:Overview</title>
-      <link>/r-tistic/post/2019-10-08-purrr-1-overview/</link>
+      <link>/post/2019-10-08-purrr-1-overview/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-10-08-purrr-1-overview/</guid>
+      <guid>/post/2019-10-08-purrr-1-overview/</guid>
       <description>purrr是一个提供函数编程的工具箱. 安装 purrr包含在tidyverse种,因此如果你已经安装了他,不需要再安装.当然也可以单独安装pu</description>
     </item>
     
     <item>
       <title>tidyverse select使用总结</title>
-      <link>/r-tistic/post/tidyverse-select/</link>
+      <link>/post/tidyverse-select/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/tidyverse-select/</guid>
+      <guid>/post/tidyverse-select/</guid>
       <description>test</description>
     </item>
     
     <item>
       <title>ggplot2拼图工具:patchwork</title>
-      <link>/r-tistic/post/ggplot2-patchwork/</link>
+      <link>/post/ggplot2-patchwork/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/ggplot2-patchwork/</guid>
+      <guid>/post/ggplot2-patchwork/</guid>
       <description>推荐一个用来拼图的包:patchwork.作者是Thomas Lin Pedersen.使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟</description>
     </item>
     
     <item>
       <title>如何修改ggplot2垂直square legend之间的距离</title>
-      <link>/r-tistic/post/ggplot2-square-legend/</link>
+      <link>/post/ggplot2-square-legend/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/ggplot2-square-legend/</guid>
+      <guid>/post/ggplot2-square-legend/</guid>
       <description>今天看到有人在讨论如何修改ggplot2中垂直square legend之间的距离.原来想着ggplot2中的theme函数的legend.k</description>
     </item>
     
     <item>
       <title> 生物统计学学习:逻辑回归</title>
-      <link>/r-tistic/post/2019-08-31-/</link>
+      <link>/post/2019-08-31-/</link>
       <pubDate>Sat, 31 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-08-31-/</guid>
+      <guid>/post/2019-08-31-/</guid>
       <description>逻辑回归(logistic regression)其实就是线性回归的一种.只是对于逻辑回归的因变量,是非连续变量的0和1,通过Sigmoid函</description>
     </item>
     
     <item>
       <title>生物统计学习:简单线性回归模型</title>
-      <link>/r-tistic/post/2019-08-26-/</link>
+      <link>/post/2019-08-26-/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-08-26-/</guid>
+      <guid>/post/2019-08-26-/</guid>
       <description>线性回归 使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simp</description>
     </item>
     
     <item>
       <title>Markdown中输入数学公式</title>
-      <link>/r-tistic/post/2019-08-25-markdown/</link>
+      <link>/post/2019-08-25-markdown/</link>
       <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-08-25-markdown/</guid>
+      <guid>/post/2019-08-25-markdown/</guid>
       <description>在Markdown中可以方便的输入数学公式.现在将Markdown中数学公式总结一下. 1. 如何插入公式 包括两种,一种是在行内插入,一种是独立公</description>
     </item>
     

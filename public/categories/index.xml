@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Shen Blog</title>
-    <link>/r-tistic/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/r-tistic/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R</title>
-      <link>/r-tistic/categories/r/</link>
+      <link>/categories/r/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/categories/r/</guid>
+      <guid>/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>omics</title>
-      <link>/r-tistic/categories/omics/</link>
+      <link>/categories/omics/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/categories/omics/</guid>
+      <guid>/categories/omics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>literature</title>
-      <link>/r-tistic/categories/literature/</link>
+      <link>/categories/literature/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/categories/literature/</guid>
+      <guid>/categories/literature/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github technology</title>
-      <link>/r-tistic/categories/github-technology/</link>
+      <link>/categories/github-technology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/categories/github-technology/</guid>
+      <guid>/categories/github-technology/</guid>
       <description></description>
     </item>
     

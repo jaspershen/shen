@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PRESENTATIONS on Shen Blog</title>
-    <link>/r-tistic/talk/</link>
+    <link>/talk/</link>
     <description>Recent content in PRESENTATIONS on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Sun, 24 Jun 2018 13:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/r-tistic/talk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics</title>
-      <link>/r-tistic/talk/2018seattle/</link>
+      <link>/talk/2018seattle/</link>
       <pubDate>Sun, 24 Jun 2018 13:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/talk/2018seattle/</guid>
+      <guid>/talk/2018seattle/</guid>
       <description>Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics</description>
     </item>
     
     <item>
       <title>Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression</title>
-      <link>/r-tistic/talk/2016texas/</link>
+      <link>/talk/2016texas/</link>
       <pubDate>Fri, 22 Jul 2016 13:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/talk/2016texas/</guid>
+      <guid>/talk/2016texas/</guid>
       <description>Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression</description>
     </item>
     

@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Source Themes on Shen Blog</title>
-    <link>/r-tistic/tags/source-themes/</link>
+    <link>/tags/source-themes/</link>
     <description>Recent content in Source Themes on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Thu, 04 Apr 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/r-tistic/tags/source-themes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/source-themes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
-      <link>/r-tistic/publication/journal-article/metdna/</link>
+      <link>/publication/journal-article/metdna/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/publication/journal-article/metdna/</guid>
+      <guid>/publication/journal-article/metdna/</guid>
       <description>Here, we develop a metabolic reaction network (MRN)-based recursive algorithm (MetDNA) that expands metabolite annotations without the need for a comprehensive standard spectral library.</description>
     </item>
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/r-tistic/publication/journal-article/metflow/</link>
+      <link>/publication/journal-article/metflow/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/publication/journal-article/metflow/</guid>
+      <guid>/publication/journal-article/metflow/</guid>
       <description>Mass spectrometry-based metabolomics aims to profile the metabolic changes in biological systems and identify differential metabolites related to physiological phenotypes and aberrant activities.</description>
     </item>
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/r-tistic/publication/journal-article/metnormalizer/</link>
+      <link>/publication/journal-article/metnormalizer/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/publication/journal-article/metnormalizer/</guid>
+      <guid>/publication/journal-article/metnormalizer/</guid>
       <description>Mass spectrometry-based metabolomics aims to profile the metabolic changes in biological systems and identify differential metabolites related to physiological phenotypes and aberrant activities.</description>
     </item>
     

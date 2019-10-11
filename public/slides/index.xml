@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Slides on Shen Blog</title>
-    <link>/r-tistic/slides/</link>
+    <link>/slides/</link>
     <description>Recent content in Slides on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/r-tistic/slides/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/slides/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Slides</title>
-      <link>/r-tistic/slides/example/</link>
+      <link>/slides/example/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/slides/example/</guid>
+      <guid>/slides/example/</guid>
       <description>An introduction to using Academic&amp;rsquo;s Slides feature.</description>
     </item>
     

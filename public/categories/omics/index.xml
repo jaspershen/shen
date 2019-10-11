@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>omics on Shen Blog</title>
-    <link>/r-tistic/categories/omics/</link>
+    <link>/categories/omics/</link>
     <description>Recent content in omics on Shen Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
     <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/r-tistic/categories/omics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/omics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Modern Statistics for Modern Biology:第一章</title>
-      <link>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</link>
+      <link>/post/2019-10-10-modern-statistics-for-modern-biology/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
+      <guid>/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
       <description>离散变量(discrete data)的生成模型 在分子生物学中,在很多情况下都会产生离散变量. 1.1 本章目标 在本章中,我们将会: 学会对于一个给定模</description>
     </item>
     
     <item>
       <title>组学数据分析常见方法总结</title>
-      <link>/r-tistic/post/2019-10-10-/</link>
+      <link>/post/2019-10-10-/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/r-tistic/post/2019-10-10-/</guid>
+      <guid>/post/2019-10-10-/</guid>
       <description>Correlation analysis 将组学变量(gene,protein,metabolite,clinical factor)进行相关性分析,得到他们之间的相关性,注意需要</description>
     </item>
     
