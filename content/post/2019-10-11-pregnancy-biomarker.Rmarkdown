@@ -1,0 +1,46 @@
+---
+title: pregnancy biomarker文献阅读总结
+author: Xiaotao Shen
+date: '2019-10-11'
+slug: pregnancy-biomarker
+categories:
+  - literature
+tags:
+  - Academic
+image:
+  caption: ''
+  focal_point: ''
+---
+
+### Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration
+
+* 早产(preterm birth),是指在妊娠不足37周出生的婴儿.早产与婴儿之后的神经发育延迟(neurodevelopmental delay),脑瘫(cerebral palsy),糖尿病(diabetes),高血压以及精神疾病(psychiatric disorders)等都有关.
+
+* 过期生产(postterm birth),是指在妊娠超过42周之后出生的婴儿.
+
+在发达国家,preterm和postterm都有大约5%-10%的比例.在低收入和中等收入国家,preterm的比例比高收入国家更高.
+
+Although timing of parturition is influenced by many non-genetic risk factors, including parity(母亲的胎数), maternal stress(母亲的紧张状态), smoking, urogenital infection(泌尿系统的感染), educational attainment(受教育程度), and socioeconomic status(社会经济程度), there is compelling evidence for a substantial genetic impact.
+
+
+### 定义
+
+* preterm: < 34 weeks   
+* preterm: < 34 weeks
+* postterm: >= 42 weeks
+
+### 一些pregnancy公开数据库
+
+* Early Growth Genetics Consortium https://egg-consortium.org/
+* Integrative Psychiatric Research (iPSYCH) study https://ipsych.au.dk/about-ipsych/
+* Genomic and Proteomic Network for Preterm Birth Research (GPN) https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000714.v1.p1
+
+这些数据库大部分是关于基因组学的,可以到时候考虑用它做个验证什么的.
+
+parturition(分娩)
+
+
+
+
+
+
