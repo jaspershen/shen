@@ -11,6 +11,9 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '#contact'
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/shenxt/
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/JasperShen1990
@@ -20,6 +23,9 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
+- icon: wechat
+  icon_pack: fab
+  link: http://shenxt.me/image/wechat_QR.jpg
 superuser: true
 user_groups:
 - Researchers
