@@ -22,20 +22,20 @@
     </item>
     
     <item>
-      <title>R</title>
-      <link>/categories/r/</link>
-      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>omics</title>
       <link>/categories/omics/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/omics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/categories/r/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/r/</guid>
       <description></description>
     </item>
     

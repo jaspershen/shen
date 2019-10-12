@@ -1,8 +1,8 @@
 ---
-title: pregnancy biomarker文献阅读总结
+title: pregnancy project文献阅读总结
 author: Xiaotao Shen
 date: '2019-10-11'
-slug: pregnancy-biomarker
+slug: pregnancy-project
 categories:
   - literature
 tags:
@@ -38,6 +38,14 @@ Although timing of parturition is influenced by many non-genetic risk factors, i
 这些数据库大部分是关于基因组学的,可以到时候考虑用它做个验证什么的.
 
 parturition(分娩)
+
+### 文章总结:
+
+
+
+
+
+
 
 
 

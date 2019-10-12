@@ -20,48 +20,41 @@
   <url>
     <loc>/tags/academic/</loc>
     <lastmod>2019-10-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
     <lastmod>2019-10-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2019-10-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2019-10-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-10-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/literature/</loc>
     <lastmod>2019-10-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/pregnancy-biomarker/</loc>
+    <loc>/post/</loc>
+    <lastmod>2019-10-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/pregnancy-project/</loc>
+    <lastmod>2019-10-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-10-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2019-10-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/blog/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -70,15 +63,13 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
+    <loc>/categories/omics/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/omics/</loc>
+    <loc>/categories/r/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -134,7 +125,6 @@
   <url>
     <loc>/authors/</loc>
     <lastmod>2019-07-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -145,7 +135,6 @@
   <url>
     <loc>/publication_types/2/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -156,13 +145,11 @@
   <url>
     <loc>/authors/others/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/publication_types/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -173,19 +160,16 @@
   <url>
     <loc>/authors/ruohong-wang/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/source-themes/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/zheng-jiang-zhu/</loc>
     <lastmod>2019-04-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -196,7 +180,6 @@
   <url>
     <loc>/slides/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -207,11 +190,15 @@
   <url>
     <loc>/tags/biomarker-discovery/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/publication/journal-article/zhuozhong_ac/</loc>
+    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/metabolomics/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -226,27 +213,18 @@
   </url>
   
   <url>
-    <loc>/tags/metabolomics/</loc>
-    <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/statistical-analysis/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/zhuozhong-wang/</loc>
     <lastmod>2019-01-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/huixun-jia/</loc>
     <lastmod>2018-09-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -257,7 +235,6 @@
   <url>
     <loc>/tags/data-processing/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -273,19 +250,16 @@
   <url>
     <loc>/tags/lipidomics/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/software/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/zhiwei-zhou/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -326,7 +300,6 @@
   <url>
     <loc>/project/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -335,17 +308,11 @@
   </url>
   
   <url>
-    <loc>/post/2019-10-11-pregnancy-biomarker/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/post/2017-02-12-firstblog2017/</loc>
   </url>
   
   <url>
     <loc>/tags/chinese/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -354,12 +321,18 @@
   
   <url>
     <loc>/tags/data-cleaning/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/github/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/github-technology/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/life/</loc>
   </url>
   
   <url>
@@ -368,16 +341,6 @@
   
   <url>
     <loc>/publication/journal-article/taozhang_metabolomics/</loc>
-  </url>
-  
-  <url>
-    <loc>/categories/github-technology/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/life/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

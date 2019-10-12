@@ -3,7 +3,7 @@
 
 # Color theme.
 #   Choose from `default`, `ocean`, `forest`, `dark`, `apogee`, `1950s`, `coffee`, `cupcake`.
-color_theme = "forest"
+color_theme = "1950s"
 # Enable users to switch between day and night mode?
 day_night = true
 
@@ -15,14 +15,14 @@ font = "default"
 description = ""
 
 # Default image for social sharing and search engines. Place image in `static/img/` folder and specify image name here.
-sharing_image = ""
+sharing_image = "shen3.png"
 
 # Twitter username (without @). Used when a vistor shares your site on Twitter.
 twitter = "JasperShen1990"
 
 # Diplay a logo in navigation bar rather than title (optional).
 #   To enable, place an image in `static/img/` and reference its filename below. To disable, set the value to "".
-logo = "shen2.jpg"
+logo = "shen3.png"
 
 # Enable global source code highlighting? true/false
 # Documentation: https://sourcethemes.com/academic/docs/writing-markdown-latex/#highlighting-options
@@ -64,14 +64,14 @@ appointment_url = "https://calendly.com"
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
-  {icon = "twitter", icon_pack = "fab", name = "DM Me", link = "https://twitter.com/JasperShen1990"},
-  {icon = "skype", icon_pack = "fab", name = "Skype Me", link = "skype:zutaoshen@outlook.com"},
-    {icon = "facebook-square", icon_pack = "fab", name = "Facebook", link = "https://www.facebook.com/xiaotao.shen.3"},
-    {icon = "github", icon_pack = "fab", name = "Github", link = "https://github.com/jaspershen"},
-    {icon = "weibo", icon_pack = "fab", name = "Weibo", link = "https://www.weibo.com/u/2717397881?wvr=5&c=spr_web_sq_baidub_weibo_t001&sudaref=www.baidu.com"},
-    {icon = "linkedin", icon_pack = "fab", name = "Linkedin", link = "https://www.linkedin.com/in/shenxt/"},
+  {icon = "twitter", icon_pack = "fab", name = "Twitter", link = "https://twitter.com/JasperShen1990"},
+  {icon = "skype", icon_pack = "fab", name = "Skype", link = "skype:zutaoshen@outlook.com"},
+  {icon = "facebook-square", icon_pack = "fab", name = "Facebook", link = "https://www.facebook.com/xiaotao.shen.3"},
+#    {icon = "github", icon_pack = "fab", name = "Github", link = "https://github.com/jaspershen"},
+  #  {icon = "weibo", icon_pack = "fab", name = "Weibo", link = "https://www.weibo.com/u/2717397881?wvr=5&c=spr_web_sq_baidub_weibo_t001&sudaref=www.baidu.com"}
+#    {icon = "linkedin", icon_pack = "fab", name = "Linkedin", link = "https://www.linkedin.com/in/shenxt/"},
 #  {icon = "keybase", icon_pack = "fab", name = "Chat on Keybase", link = "https://keybase.io/"},
-   {icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://disqus.com/home/"},
+ #  {icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://disqus.com/home/"},
   # {icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Telegram"},
   ]
 

@@ -112,16 +112,6 @@
     </item>
     
     <item>
-      <title></title>
-      <link>/authors/admin/</link>
-      <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/authors/admin/</guid>
-      <description>I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
-My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was MetNormalizer, which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics.</description>
-    </item>
-    
-    <item>
       <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
       <link>/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
