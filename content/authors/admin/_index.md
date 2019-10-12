@@ -4,10 +4,13 @@ authors:
 bio: Metabolomics, Multi-omics, Bioinformatics, Healthcare.
 name: Xiaotao Shen
 organizations:
-- name: Stanford University
+- name: Stanford University 
   url: "https://www.stanford.edu/"
-role: Postdoctoral Research Fellow at Schoold of Medicine
+role: Postdoctoral Research Fellow
 social:
+- icon: wechat
+  icon_pack: fab
+  link: http://shenxt.me/image/wechat_QR.jpg
 - icon: envelope
   icon_pack: fas
   link: '#contact'
@@ -23,9 +26,7 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
-- icon: wechat
-  icon_pack: fab
-  link: http://shenxt.me/image/wechat_QR.jpg
+
 superuser: true
 user_groups:
 - Researchers
