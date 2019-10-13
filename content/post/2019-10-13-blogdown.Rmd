@@ -1,0 +1,32 @@
+---
+title: blogdown创建博客总结
+author: Xiaotao Shen
+date: '2019-10-13'
+slug: blogdown
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+### 如何修改网站icon?
+
+将自己的logo图片截取为192x192像素(长款分别为0.21cm).然后将其命名为'icon-192.png'放置于`static/img`文件夹中即可.
+
+### 如何将个人网站作为图床使用?
+
+将图片放置于`static/files`文件夹中即可.使用如下路径访问:   
+
+`shenxt.info/files/figure.name`
+
+如: https://www.shenxt.info/files/wechat_QR.jpg
+
+### 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?
+
+以blog为例(posts).
+
+![png](./2019-10-13-blogdown/test.png)

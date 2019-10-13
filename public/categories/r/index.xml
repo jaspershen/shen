@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Sat, 12 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>blogdown创建博客总结</title>
+      <link>/post/blogdown/</link>
+      <pubDate>Sun, 13 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/blogdown/</guid>
+      <description>如何修改网站icon? 将自己的logo图片截取为192x192像素(长款分别为0.21cm).然后将其命名为’icon-192.png’放置</description>
+    </item>
     
     <item>
       <title>R可视化之小提琴图</title>
