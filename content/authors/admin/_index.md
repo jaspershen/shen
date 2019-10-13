@@ -7,6 +7,21 @@ organizations:
 - name: Stanford University 
   url: "https://www.stanford.edu/"
 role: Postdoctoral Research Fellow
+
+interests:
+- Bioinformatics
+- Metabolomics
+- Systems Biology
+
+education:
+  courses:
+  - course: PhD
+    institution: Chinese Academy of Sciences
+    year: 2018
+  - course: BSc
+    institution: Inner Mongolia University
+    year: 2013
+
 social:
 - icon: wechat
   icon_pack: fab
@@ -26,6 +41,9 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
+
+# Enter email to display Gravatar (if Gravatar enabled in Config)
+email: "shenxt@stanford.edu"
 
 superuser: true
 user_groups:

@@ -18,6 +18,20 @@
   </url>
   
   <url>
+    <loc>/post/</loc>
+    <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/landing/</loc>
+  </url>
+  
+  <url>
+    <loc>/landing/</loc>
+    <lastmod>2019-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/academic/</loc>
     <lastmod>2019-10-12T00:00:00+00:00</lastmod>
   </url>
@@ -29,11 +43,6 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-10-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
     <lastmod>2019-10-12T00:00:00+00:00</lastmod>
   </url>
   

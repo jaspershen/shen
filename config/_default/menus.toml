@@ -6,49 +6,74 @@
 [[main]]
   name = "About"
   url = "#about"
-  weight = 10
+  weight = 1
   
   [[main]]
   name = "Education&Experience"
   url = "#experience"
-  weight = 20
+  weight = 2
   
   [[main]]
   name = "Honors&Awards"
   url = "#accomplishments"
-  weight = 30
+  weight = 3
+  
+  [[main]]
+  name = "Publications"
+  url = "#publications"
+  weight = 4
+  
+  
+[[main]]
+  name = "Presentations"
+  url = "#talks"
+  weight = 5
+  
+[[main]]
+  name = "Projects"
+  url = "#projects"
+  weight = 6
+  
+[[main]]
+  name = "Contacts"
+  url = "#contact"
+  weight = 7
 
 
 [[main]]
   name = "Blog"
-  url = "#posts"
-  weight = 40
-
-[[main]]
-  name = "Projects"
-  url = "#projects"
-  weight = 50
-
-
-[[main]]
-  name = "Presentations"
-  url = "#talks"
-  weight = 60
-
-[[main]]
-  name = "Publications"
-  url = "#publications"
-  weight = 70
-
-
-[[main]]
-  name = "Contacts"
-  url = "#contact"
-  weight = 80
-
+  url = "post/"
+  weight = 8
+  
+#[[main]]
+#  name = "Blog"
+#  url = "#posts"
+#  weight = 40
+  
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
  [[main]]
   name = "CV"
   url = "files/cv.pdf"
-  weight = 80
+  weight = 9
+
+
+
+
+
+
+
+
+
+
+  
+#  [[main]]
+#  name = "Landing"  # Title of the link.
+#  url = "landing/"  # Widget Page folder name.
+#  weight = 90  # Position of the link in the navigation bar.
+  
+  
+#[[main]]
+#  name = "Courses"
+#  url = "courses/"
+#  weight = 100
