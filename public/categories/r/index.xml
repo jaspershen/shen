@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on Shen Blog</title>
+    <title>R on Xiaotao Shen PhD</title>
     <link>/categories/r/</link>
-    <description>Recent content in R on Shen Blog</description>
+    <description>Recent content in R on Xiaotao Shen PhD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Xiaotao Shen@2019</copyright>
-    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R可视化之小提琴图</title>
+      <link>/post/r/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/</guid>
+      <description>本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/95-violin</description>
+    </item>
+    
+    <item>
+      <title>R可视化之桑吉图</title>
+      <link>/post/r-sankey/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-sankey/</guid>
+      <description>本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/sankey-di</description>
+    </item>
     
     <item>
       <title>Modern Statistics for Modern Biology:第一章</title>

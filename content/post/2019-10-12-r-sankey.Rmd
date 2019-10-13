@@ -1,0 +1,35 @@
+---
+title: R可视化之桑吉图
+author: Xiaotao Shen
+date: '2019-10-12'
+slug: r-sankey
+categories:
+  - R
+tags:
+  - Blog
+  - Academic
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+> 本文翻译自"The graph gallery"网站,原帖文地址链接:https://www.r-graph-gallery.com/sankey-diagram.html
+
+桑吉图(sankey diagram)使用来研究同一个变量在其不同分类中的比例或者说是流动的.实体(或者说是节点,node)一般使用长方形或者文字来表示.箭头和弧线用来表示在他们之间的流动.
+
+## 使用`networkD3`包构建桑吉图
+
+### 基础桑吉图绘制
+
+可以使用两种格式的数据进行桑吉图绘制:
+
+* connection data frame(一共三列)
+* 关联矩阵(incidence matrix)
+
+#### 使用connection data frame
+
+```{r}
+library(networkD3)
+```
+
