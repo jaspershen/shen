@@ -13,6 +13,10 @@ image:
   focal_point: ''
 ---
 
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/d3/d3.min.js"></script>
+<script src="/rmarkdown-libs/sankey/sankey.js"></script>
+<script src="/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js"></script>
 
 
 <blockquote>
@@ -25,12 +29,103 @@ image:
 <h3>基础桑吉图绘制</h3>
 <p>可以使用两种格式的数据进行桑吉图绘制:</p>
 <ul>
-<li>connection data frame(一共三列)</li>
-<li>关联矩阵(incidence matrix)</li>
+<li>connection data frame(一共三列),可以理解为长数据.</li>
+<li>关联矩阵(incidence matrix),可以理解为宽数据.</li>
 </ul>
 <div id="使用connection-data-frame" class="section level4">
 <h4>使用connection data frame</h4>
-<pre class="r"><code>library(networkD3)</code></pre>
+<p>connection data frame至少需要两列,分别为source和target.第三列可以用来说明该connection的数值.</p>
+<pre class="r"><code>library(networkD3)
+library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## -- Conflicts ---------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>links &lt;- data.frame(
+  source = c(&quot;group_A&quot;,&quot;group_A&quot;, &quot;group_B&quot;, &quot;group_C&quot;, &quot;group_C&quot;, &quot;group_E&quot;), 
+  target = c(&quot;group_C&quot;,&quot;group_D&quot;, &quot;group_E&quot;, &quot;group_F&quot;, &quot;group_G&quot;, &quot;group_H&quot;), 
+  value = c(2,3, 2, 3, 1, 3)
+  )
+head(links)</code></pre>
+<pre><code>##    source  target value
+## 1 group_A group_C     2
+## 2 group_A group_D     3
+## 3 group_B group_E     2
+## 4 group_C group_F     3
+## 5 group_C group_G     1
+## 6 group_E group_H     3</code></pre>
+<pre class="r"><code>##构建connection data frame中所有nodes的data frame
+nodes &lt;- data.frame(
+  name = c(as.character(links$source), 
+  as.character(links$target)) %&gt;% unique()
+)
+
+#然后我们需要将每个node的名字代替为其在node data frame中的位置index,注意是要从哦开始计算.
+links$IDsource &lt;- match(links$source, nodes$name) - 1 
+links$IDtarget &lt;- match(links$target, nodes$name) - 1
+
+#开始创建桑吉图
+p &lt;- networkD3::sankeyNetwork(
+  Links = links,
+  Nodes = nodes,
+  Source = &quot;IDsource&quot;,
+  Target = &quot;IDtarget&quot;,
+  Value = &quot;value&quot;,
+  NodeID = &quot;name&quot;,
+  sinksRight = FALSE
+)
+p</code></pre>
+<p><div id="htmlwidget-1" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"links":{"source":[0,0,1,2,2,3],"target":[2,4,3,5,6,7],"value":[2,3,2,3,1,3]},"nodes":{"name":["group_A","group_B","group_C","group_E","group_D","group_F","group_G","group_H"],"group":["group_A","group_B","group_C","group_E","group_D","group_F","group_G","group_H"]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}</script>
+图片时交互性的.</p>
+</div>
+<div id="使用关联矩阵" class="section level4">
+<h4>使用关联矩阵</h4>
+<p>关联矩阵时正方形或者长方形的.行名和列名分别为node的名称.每一个cell代表着两个node之间flow的数值.但是因为在<code>network3D</code>中,只能使用长数据,因此同样需要对宽数据进行转换.</p>
+<pre class="r"><code>library(networkD3)
+library(tidyverse)
+# 创建数据
+set.seed(1)
+data &lt;- 
+  matrix(sample(seq(0,40), 49, replace = TRUE), 7, 7)
+data[data &lt; 35] &lt;- 0
+colnames(data) &lt;- 
+  rownames(data) &lt;-  
+  c(&quot;group_A&quot;, &quot;group_B&quot;, &quot;group_C&quot;, &quot;group_D&quot;, &quot;group_E&quot;, &quot;group_F&quot;, &quot;group_G&quot;)
+
+#将宽数据转变为长数据
+links &lt;- data %&gt;% 
+  as.data.frame() %&gt;% 
+  rownames_to_column(var = &quot;source&quot;) %&gt;% 
+  pivot_longer(., cols = -source, names_to = &quot;target&quot;, values_to = &quot;value&quot;) %&gt;% 
+  filter(value != 0)
+ 
+# 创建node data frame
+nodes &lt;- data.frame(
+  name = c(as.character(links$source), as.character(links$target)) %&gt;% 
+    unique()
+  )
+ 
+links$IDsource &lt;- match(links$source, nodes$name)-1 
+links$IDtarget &lt;- match(links$target, nodes$name)-1
+ 
+p &lt;- sankeyNetwork(Links = links, Nodes = nodes,
+                     Source = &quot;IDsource&quot;, Target = &quot;IDtarget&quot;,
+                     Value = &quot;value&quot;, NodeID = &quot;name&quot;, 
+                     sinksRight = FALSE)</code></pre>
+<pre><code>## Links is a tbl_df. Converting to a plain data frame.</code></pre>
+<pre class="r"><code>p</code></pre>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"links":{"source":[0,1,1,2,2,3,3,4,5,5],"target":[3,0,2,2,4,2,5,2,3,5],"value":[37,38,36,40,38,36,37,36,39,39]},"nodes":{"name":["group_A","group_B","group_C","group_E","group_F","group_G"],"group":["group_A","group_B","group_C","group_E","group_F","group_G"]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>

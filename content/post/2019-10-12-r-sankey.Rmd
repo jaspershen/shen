@@ -24,12 +24,87 @@ image:
 
 可以使用两种格式的数据进行桑吉图绘制:
 
-* connection data frame(一共三列)
-* 关联矩阵(incidence matrix)
+* connection data frame(一共三列),可以理解为长数据.
+* 关联矩阵(incidence matrix),可以理解为宽数据.
 
 #### 使用connection data frame
 
+connection data frame至少需要两列,分别为source和target.第三列可以用来说明该connection的数值.
+
 ```{r}
 library(networkD3)
+library(tidyverse)
+links <- data.frame(
+  source = c("group_A","group_A", "group_B", "group_C", "group_C", "group_E"), 
+  target = c("group_C","group_D", "group_E", "group_F", "group_G", "group_H"), 
+  value = c(2,3, 2, 3, 1, 3)
+  )
+head(links)
+
+##构建connection data frame中所有nodes的data frame
+nodes <- data.frame(
+  name = c(as.character(links$source), 
+  as.character(links$target)) %>% unique()
+)
+
+#然后我们需要将每个node的名字代替为其在node data frame中的位置index,注意是要从哦开始计算.
+links$IDsource <- match(links$source, nodes$name) - 1 
+links$IDtarget <- match(links$target, nodes$name) - 1
+
+#开始创建桑吉图
+p <- networkD3::sankeyNetwork(
+  Links = links,
+  Nodes = nodes,
+  Source = "IDsource",
+  Target = "IDtarget",
+  Value = "value",
+  NodeID = "name",
+  sinksRight = FALSE
+)
+p
+
 ```
+图片时交互性的.
+
+#### 使用关联矩阵
+
+关联矩阵时正方形或者长方形的.行名和列名分别为node的名称.每一个cell代表着两个node之间flow的数值.但是因为在`network3D`中,只能使用长数据,因此同样需要对宽数据进行转换.
+
+```{r}
+library(networkD3)
+library(tidyverse)
+# 创建数据
+set.seed(1)
+data <- 
+  matrix(sample(seq(0,40), 49, replace = TRUE), 7, 7)
+data[data < 35] <- 0
+colnames(data) <- 
+  rownames(data) <-  
+  c("group_A", "group_B", "group_C", "group_D", "group_E", "group_F", "group_G")
+
+#将宽数据转变为长数据
+links <- data %>% 
+  as.data.frame() %>% 
+  rownames_to_column(var = "source") %>% 
+  pivot_longer(., cols = -source, names_to = "target", values_to = "value") %>% 
+  filter(value != 0)
+ 
+# 创建node data frame
+nodes <- data.frame(
+  name = c(as.character(links$source), as.character(links$target)) %>% 
+    unique()
+  )
+ 
+links$IDsource <- match(links$source, nodes$name)-1 
+links$IDtarget <- match(links$target, nodes$name)-1
+ 
+p <- sankeyNetwork(Links = links, Nodes = nodes,
+                     Source = "IDsource", Target = "IDtarget",
+                     Value = "value", NodeID = "name", 
+                     sinksRight = FALSE)
+
+p
+
+```
+
 
