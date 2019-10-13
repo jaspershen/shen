@@ -723,10 +723,15 @@
 <div id="如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page" class="section level3">
 <h3>如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</h3>
 <p>以blog为例(posts).</p>
-<div class="figure">
-<img src="2019-10-13-blogdown/test.png" alt="png" />
-<p class="caption">png</p>
-</div>
+<ol style="list-style-type: decimal">
+<li>首先需要将 <code>content/home</code>中的<code>posts.md</code>中的active设置为false.这样,这一部分就不会在home主页显示.</li>
+</ol>
+<p><img src="2019-10-13-blogdown/change-active.png" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>然后将<code>content/home</code>中的<code>posts.md</code>拷贝到<code>content/post</code>中,并改名为<code>index.md</code>.</p></li>
+<li><p>打开<code>config/_default/menus.toml</code>,然后将Blog的url修改为文件夹的名称.</p></li>
+</ol>
+<p><img src="2019-10-13-blogdown/change-url.png" /></p>
 </div>
 
     </div>

@@ -29,4 +29,12 @@ image:
 
 以blog为例(posts).
 
-![png](./2019-10-13-blogdown/test.png)
+1. 首先需要将 `content/home`中的`posts.md`中的active设置为false.这样,这一部分就不会在home主页显示.
+
+![](2019-10-13-blogdown/change-active.png)
+
+2. 然后将`content/home`中的`posts.md`拷贝到`content/post`中,并改名为`index.md`.
+
+3. 打开`config/_default/menus.toml`,然后将Blog的url修改为文件夹的名称.
+
+![](2019-10-13-blogdown/change-url.png)
