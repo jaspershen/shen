@@ -54,11 +54,11 @@ date_format = "Jan 2006"
   title = "BS"
   company = "Inner Mongolia University"
   company_url = "http://www.imu.edu.cn/index.htm"
-  location = "Inner Mongolia"
+  location = "Hohhot, Inner Mongolia, China"
   date_start = "2009-09-01"
   date_end = "2013-07-01"
   description = """
-  Advisor: Dr. Pengxia Liu
+  Advisor: [Dr. Pengxia Liu](http://smkxxy.imu.edu.cn/info/1027/4522.htm)
   """
   
 

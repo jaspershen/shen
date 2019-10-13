@@ -2,7 +2,7 @@
 authors:
 - admin
 bio: Metabolomics, Multi-omics, Bioinformatics, Healthcare.
-name: Xiaotao Shen
+name: Xiaotao Shen PhD
 organizations:
 - name: Stanford University 
   url: "https://www.stanford.edu/"

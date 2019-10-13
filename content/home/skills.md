@@ -40,15 +40,15 @@ subtitle = "Technology is the tool, no the aim."
   description = "50%"  
   
 [[feature]]
-  icon = "camera-retro"
-  icon_pack = "fas"
-  name = "Photography"
+  icon = "python"
+  icon_pack = "fab"
+  name = "Python"
   description = "50%"
   
 [[feature]]
-  icon = "swimmer"
-  icon_pack = "fas"
-  name = "Swimming"
+  icon = "linux"
+  icon_pack = "fab"
+  name = "Linuxs"
   description = "80%"
 
 +++
