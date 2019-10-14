@@ -23,9 +23,9 @@ education:
     year: 2013
 
 social:
-- icon: wechat
+- icon: weixin
   icon_pack: fab
-  link: http://shenxt.me/image/wechat_QR.jpg
+  link: https://www.shenxt.info/files/wechat_QR.jpg
 - icon: envelope
   icon_pack: fas
   link: '#contact'
@@ -41,6 +41,9 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
+- icon: skype
+  icon_pack: fab
+  link: skype:zutaoshen@outlook.com
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "shenxt@stanford.edu"
