@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>literature on Xiaotao Shen PhD</title>
+    <title>literature on Xiaotao Shen</title>
     <link>/categories/literature/</link>
-    <description>Recent content in literature on Xiaotao Shen PhD</description>
+    <description>Recent content in literature on Xiaotao Shen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Xiaotao Shen@2019</copyright>
+    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
     <lastBuildDate>Fri, 11 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/literature/index.xml" rel="self" type="application/rss+xml" />
