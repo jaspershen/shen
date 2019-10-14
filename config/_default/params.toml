@@ -65,8 +65,8 @@ appointment_url = "https://calendly.com"
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
 #  {icon = "twitter", icon_pack = "fab", name = "Twitter", link = "https://twitter.com/JasperShen1990"},
-  {icon = "skype", icon_pack = "fab", name = "Skype", link = "skype:zutaoshen@outlook.com"},
-  {icon = "weixin", icon_pack = "fab", name = "Wechat", link = "https://www.shenxt.info/files/wechat_QR.jpg"}
+#  {icon = "skype", icon_pack = "fab", name = "Skype", link = "skype:zutaoshen@outlook.com"},
+#  {icon = "weixin", icon_pack = "fab", name = "Wechat", link = "https://www.shenxt.info/files/wechat_QR.jpg"}
 #  {icon = "facebook-square", icon_pack = "fab", name = "Facebook", link = "https://www.facebook.com/xiaotao.shen.3"},
 #    {icon = "github", icon_pack = "fab", name = "Github", link = "https://github.com/jaspershen"},
   #  {icon = "weibo", icon_pack = "fab", name = "Weibo", link = "https://www.weibo.com/u/2717397881?wvr=5&c=spr_web_sq_baidub_weibo_t001&sudaref=www.baidu.com"}

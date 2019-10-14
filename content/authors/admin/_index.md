@@ -41,9 +41,6 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
-- icon: skype
-  icon_pack: fab
-  link: skype:zutaoshen@outlook.com
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "shenxt@stanford.edu"
