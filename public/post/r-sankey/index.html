@@ -620,7 +620,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -733,7 +733,7 @@
 <pre class="r"><code>library(networkD3)
 library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ----------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -742,7 +742,7 @@ library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts ---------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts -------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>links &lt;- data.frame(
@@ -785,43 +785,116 @@ p</code></pre>
 </div>
 <div id="使用关联矩阵" class="section level4">
 <h4>使用关联矩阵</h4>
-<p>关联矩阵时正方形或者长方形的.行名和列名分别为node的名称.每一个cell代表着两个node之间flow的数值.但是因为在<code>network3D</code>中,只能使用长数据,因此同样需要对宽数据进行转换.</p>
-<pre class="r"><code>library(networkD3)
-library(tidyverse)
-# 创建数据
-set.seed(1)
-data &lt;- 
-  matrix(sample(seq(0,40), 49, replace = TRUE), 7, 7)
-data[data &lt; 35] &lt;- 0
-colnames(data) &lt;- 
-  rownames(data) &lt;-  
-  c(&quot;group_A&quot;, &quot;group_B&quot;, &quot;group_C&quot;, &quot;group_D&quot;, &quot;group_E&quot;, &quot;group_F&quot;, &quot;group_G&quot;)
-
-#将宽数据转变为长数据
-links &lt;- data %&gt;% 
-  as.data.frame() %&gt;% 
-  rownames_to_column(var = &quot;source&quot;) %&gt;% 
-  pivot_longer(., cols = -source, names_to = &quot;target&quot;, values_to = &quot;value&quot;) %&gt;% 
-  filter(value != 0)
- 
-# 创建node data frame
-nodes &lt;- data.frame(
-  name = c(as.character(links$source), as.character(links$target)) %&gt;% 
-    unique()
-  )
- 
-links$IDsource &lt;- match(links$source, nodes$name)-1 
-links$IDtarget &lt;- match(links$target, nodes$name)-1
- 
-p &lt;- sankeyNetwork(Links = links, Nodes = nodes,
-                     Source = &quot;IDsource&quot;, Target = &quot;IDtarget&quot;,
-                     Value = &quot;value&quot;, NodeID = &quot;name&quot;, 
-                     sinksRight = FALSE)</code></pre>
-<pre><code>## Links is a tbl_df. Converting to a plain data frame.</code></pre>
-<pre class="r"><code>p</code></pre>
-<div id="htmlwidget-2" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2">{"x":{"links":{"source":[0,1,1,2,2,3,3,4,5,5],"target":[3,0,2,2,4,2,5,2,3,5],"value":[37,38,36,40,38,36,37,36,39,39]},"nodes":{"name":["group_A","group_B","group_C","group_E","group_F","group_G"],"group":["group_A","group_B","group_C","group_E","group_F","group_G"]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}</script>
+<p>关联矩阵时正方形或者长方形的.行名和列名分别为node的名称.每一个cell代表着两个node之间flow的数值.但是因为在<code>network3D</code>中,只能使用长数据,因此其实就是将宽数据转换为长数据.</p>
 </div>
+</div>
+<div id="另外一个例子" class="section level3">
+<h3>另外一个例子</h3>
+<p>我们使用桑吉图来展示科学家的移民或者说是流动情况.左边代表科学家的移出国,右边代表科学家的移进国.数据来自scientific publication(<a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327" class="uri">https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327</a>).</p>
+<pre class="r"><code>#加载包
+library(tidyverse)
+library(networkD3)
+
+# 读取数据
+data &lt;- 
+  read.table(&quot;https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/13_AdjacencyDirectedWeighted.csv&quot;, header = TRUE)
+
+# 讲数据转换为长数据
+data_long &lt;- data %&gt;%
+  rownames_to_column(var = &quot;name&quot;) %&gt;%
+  pivot_longer(cols = -name, names_to = &quot;key&quot;, values_to = &quot;value&quot;) %&gt;% 
+  filter(value &gt; 0) %&gt;% 
+  as.data.frame()
+
+colnames(data_long) &lt;- 
+  c(&quot;source&quot;, &quot;target&quot;, &quot;value&quot;)
+
+data_long$target &lt;- 
+  paste(data_long$target, &quot; &quot;, sep = &quot;&quot;)
+
+# 创建node data frame
+nodes &lt;- 
+  data.frame(name = c(as.character(data_long$source),  
+                      as.character(data_long$target)) %&gt;% unique()
+             ) %&gt;% 
+  arrange(name) %&gt;% 
+  as.data.frame()
+ 
+data_long$IDsource = match(data_long$source, nodes$name) - 1 
+data_long$IDtarget = match(data_long$target, nodes$name) - 1
+
+# prepare colour scale
+ColourScal &lt;- &#39;d3.scaleOrdinal() .range([&quot;#FDE725FF&quot;,&quot;#B4DE2CFF&quot;,&quot;#6DCD59FF&quot;,&quot;#35B779FF&quot;,&quot;#1F9E89FF&quot;,
+&quot;#26828EFF&quot;,&quot;#31688EFF&quot;,&quot;#3E4A89FF&quot;,&quot;#482878FF&quot;,&quot;#440154FF&quot;])&#39;
+
+# Make the Network
+sankeyNetwork(
+  Links = data_long,
+  Nodes = nodes,
+  Source = &quot;IDsource&quot;,
+  Target = &quot;IDtarget&quot;,
+  Value = &quot;value&quot;,
+  NodeID = &quot;name&quot;,
+  sinksRight = FALSE,
+  colourScale = ColourScal,
+  nodeWidth = 40,
+  fontSize = 13,
+  nodePadding = 20
+)</code></pre>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"links":{"source":[0,0,0,0,0,2,2,2,2,2,2,4,6,6,6,8,8,10,10,12,12,12,12,12,12,13,13,13,13,13,16,16,18,18,18],"target":[1,5,9,11,19,3,5,9,11,15,19,5,5,7,9,5,7,5,11,3,5,9,11,14,19,3,5,9,11,15,5,17,5,9,19],"value":[3.142471,2.107883,0.540887,0.155988,0.673004,1.630997,0.601265,0.97306,0.333608,0.380388,0.869311,2.401476,1.762587,0.879198,3.627847,1.215929,0.276908,0.17037,0.190706,0.525881,1.390272,1.508008,0.34742,1.307907,4.902081,0.145264,0.468762,1.057904,0.278746,0.781316,0.60923,1.870501,0.449623,0.169274,0.927243]},"nodes":{"name":["Africa","Africa ","East Asia","East.Asia ","Europe","Europe ","Latin America","Latin.America ","North America","North.America ","Oceania","Oceania ","South Asia","South East Asia","South.Asia ","South.East.Asia ","Soviet Union","Soviet.Union ","West Asia","West.Asia "],"group":["Africa","Africa ","East Asia","East.Asia ","Europe","Europe ","Latin America","Latin.America ","North America","North.America ","Oceania","Oceania ","South Asia","South East Asia","South.Asia ","South.East.Asia ","Soviet Union","Soviet.Union ","West Asia","West.Asia "]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal() .range([\"#FDE725FF\",\"#B4DE2CFF\",\"#6DCD59FF\",\"#35B779FF\",\"#1F9E89FF\",\n\"#26828EFF\",\"#31688EFF\",\"#3E4A89FF\",\"#482878FF\",\"#440154FF\"])","fontSize":13,"fontFamily":null,"nodeWidth":40,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="使用ggalluvial包绘制桑吉图" class="section level3">
+<h3>使用<code>ggalluvial</code>包绘制桑吉图</h3>
+<p><code>ggalluvial</code>包是<code>ggplot2</code>的一个扩展包.可以用来绘制桑吉图.</p>
+<pre class="r"><code>##加载包
+library(ggalluvial)</code></pre>
+<pre><code>## Warning: package &#39;ggalluvial&#39; was built under R version 3.6.1</code></pre>
+<pre class="r"><code>##我们使用上面的那个例子
+data &lt;- 
+  read.table(&quot;https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/13_AdjacencyDirectedWeighted.csv&quot;, header = TRUE)
+
+data_long &lt;- data %&gt;%
+  rownames_to_column(var = &quot;name&quot;) %&gt;%
+  pivot_longer(cols = -name, names_to = &quot;key&quot;, values_to = &quot;value&quot;) %&gt;% 
+  filter(value &gt; 0) %&gt;% 
+  as.data.frame()
+
+colnames(data_long) &lt;-
+  c(&quot;from&quot;, &quot;to&quot;, &quot;value&quot;)
+
+## 使用示例数据
+data(vaccinations)
+head(vaccinations)</code></pre>
+<pre><code>##   freq           a subject    survey response
+## 1   48 0.050367261       1 ms153_NSA   Always
+## 2    9 0.009443861       2 ms153_NSA   Always
+## 3   66 0.069254984       3 ms153_NSA   Always
+## 4    1 0.001049318       4 ms153_NSA   Always
+## 5   11 0.011542497       5 ms153_NSA   Always
+## 6    1 0.001049318       6 ms153_NSA   Always</code></pre>
+<pre class="r"><code>levels(vaccinations$response) &lt;- rev(levels(vaccinations$response))
+ggplot(vaccinations,
+       aes(x = survey, 
+           y = freq,
+           stratum = response, 
+           alluvium = subject,
+           fill = response, 
+           label = response)) +
+  scale_x_discrete(expand = c(.1, .1)) +
+  ggalluvial::geom_flow() +
+  labs(x = &quot;&quot;, y = &quot;&quot;) +
+  ggalluvial::geom_stratum(alpha = .5) +
+  geom_text(stat = &quot;stratum&quot;, size = 3) +
+  theme_bw() +
+  theme(legend.position = &quot;none&quot;, 
+        plot.background = element_blank(), 
+        panel.border = element_blank(), 
+        panel.grid = element_blank(), 
+        axis.ticks = element_blank(), 
+        axis.text.y = element_blank()) +
+  ggtitle(&quot;vaccination survey responses at three points in time&quot;)</code></pre>
+<p><img src="/post/2019-10-12-r-sankey_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 </div>
 
