@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chinese on Xiaotao Shen</title>
-    <link>/tags/chinese/</link>
-    <description>Recent content in Chinese on Xiaotao Shen</description>
+    <title>life on Xiaotao Shen</title>
+    <link>/categories/life/</link>
+    <description>Recent content in life on Xiaotao Shen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
     <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/life/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>/post/20191014/</guid>
       <description>实验室新买了一台workstation.因为有软件需要在windows上运行,因此本来需要安装windows server版本.但是后来问了一</description>
-    </item>
-    
-    <item>
-      <title>使用Github和Hexo建独立博客</title>
-      <link>/post/2017-09-09-github-blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2017-09-09-github-blog/</guid>
-      <description>参考了一篇非常好的文章，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。 1. Hexo介绍 Hexo是基于Node</description>
     </item>
     
   </channel>

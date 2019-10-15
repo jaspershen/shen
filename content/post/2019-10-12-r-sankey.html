@@ -38,7 +38,7 @@ image:
 <pre class="r"><code>library(networkD3)
 library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ----------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages -------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -47,7 +47,7 @@ library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts -------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ----------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>links &lt;- data.frame(
@@ -155,20 +155,7 @@ sankeyNetwork(
 <pre class="r"><code>##加载包
 library(ggalluvial)</code></pre>
 <pre><code>## Warning: package &#39;ggalluvial&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>##我们使用上面的那个例子
-data &lt;- 
-  read.table(&quot;https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/13_AdjacencyDirectedWeighted.csv&quot;, header = TRUE)
-
-data_long &lt;- data %&gt;%
-  rownames_to_column(var = &quot;name&quot;) %&gt;%
-  pivot_longer(cols = -name, names_to = &quot;key&quot;, values_to = &quot;value&quot;) %&gt;% 
-  filter(value &gt; 0) %&gt;% 
-  as.data.frame()
-
-colnames(data_long) &lt;-
-  c(&quot;from&quot;, &quot;to&quot;, &quot;value&quot;)
-
-## 使用示例数据
+<pre class="r"><code>## 使用示例数据
 data(vaccinations)
 head(vaccinations)</code></pre>
 <pre><code>##   freq           a subject    survey response
@@ -200,5 +187,25 @@ ggplot(vaccinations,
         axis.text.y = element_blank()) +
   ggtitle(&quot;vaccination survey responses at three points in time&quot;)</code></pre>
 <p><img src="/post/2019-10-12-r-sankey_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>我们在对该包做一个详细的讲解.</p>
+<div id="冲积图alluvial-diagrams的结构" class="section level4">
+<h4>冲积图(Alluvial diagrams)的结构</h4>
+<p>使用<code>ggalluvial</code>包绘制的图称之为冲积图(Alluvial diagrams).我们以上面的例子图为例,来进行解释.</p>
+<ul>
+<li><p>X轴代表着数据流动的分类.比如上图中,一共有三类,也就是ms153_NSA,ms432_NSA和ms460_NSA.</p></li>
+<li><p>而X轴的每一类又会分为不同的分组,称之为地层(strata).在我们这个例子中,每一类都分成了四组,Missing,Never,Sometimes和Always.</p></li>
+<li><p>然后我们再看每一列,每一列的每一个分组都会被图形分割,这称之为冲积(alluvia).在这个例子中,每个冲积的宽度(也就是在Y轴上range)代表着分类的该组分到下一个分类某个分组的数据的多少.当然,冲积的颜色用来代表不同的分类.</p></li>
+<li><p>两个相邻的分类之间的连接的冲积称之为flow.</p></li>
+</ul>
+<p>我们对这个图的结构进行详细的理解之后,我们在来看如何使用<code>galluvial</code>包绘制冲积图.</p>
+</div>
+<div id="所需要的数据类型" class="section level4">
+<h4>所需要的数据类型</h4>
+<p>跟<code>network3D</code>包一样,<code>ggalluvial</code>包也可以使用宽数据和长数据.我们使用<code>UCBAdmissions</code>数据为例进行说明.</p>
+<div id="宽数据" class="section level5">
+<h5>宽数据</h5>
+<p><code>UCBAdmissions</code>数据一共有4列.</p>
+</div>
+</div>
 </div>
 </div>

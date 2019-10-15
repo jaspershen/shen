@@ -135,20 +135,6 @@ sankeyNetwork(
 ```{r}
 ##加载包
 library(ggalluvial)
-
-##我们使用上面的那个例子
-data <- 
-  read.table("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/13_AdjacencyDirectedWeighted.csv", header = TRUE)
-
-data_long <- data %>%
-  rownames_to_column(var = "name") %>%
-  pivot_longer(cols = -name, names_to = "key", values_to = "value") %>% 
-  filter(value > 0) %>% 
-  as.data.frame()
-
-colnames(data_long) <-
-  c("from", "to", "value")
-
 ## 使用示例数据
 data(vaccinations)
 head(vaccinations)
@@ -174,4 +160,29 @@ ggplot(vaccinations,
         axis.text.y = element_blank()) +
   ggtitle("vaccination survey responses at three points in time")
 ```
+
+我们在对该包做一个详细的讲解.
+
+#### 冲积图(Alluvial diagrams)的结构
+
+使用`ggalluvial`包绘制的图称之为冲积图(Alluvial diagrams).我们以上面的例子图为例,来进行解释.
+
+* X轴代表着数据流动的分类.比如上图中,一共有三类,也就是ms153_NSA,ms432_NSA和ms460_NSA.
+
+* 而X轴的每一类又会分为不同的分组,称之为地层(strata).在我们这个例子中,每一类都分成了四组,Missing,Never,Sometimes和Always.
+
+* 然后我们再看每一列,每一列的每一个分组都会被图形分割,这称之为冲积(alluvia).在这个例子中,每个冲积的宽度(也就是在Y轴上range)代表着分类的该组分到下一个分类某个分组的数据的多少.当然,冲积的颜色用来代表不同的分类.
+
+* 两个相邻的分类之间的连接的冲积称之为flow.
+
+我们对这个图的结构进行详细的理解之后,我们在来看如何使用`galluvial`包绘制冲积图.
+
+#### 所需要的数据类型
+
+跟`network3D`包一样,`ggalluvial`包也可以使用宽数据和长数据.我们使用`UCBAdmissions`数据为例进行说明.
+
+##### 宽数据
+
+`UCBAdmissions`数据一共有4列.
+
 
