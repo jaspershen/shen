@@ -60,3 +60,5 @@ https://igraph.org/r/doc/plot.common.html
 * index:需要获取那些vertex的属性,默认提取所有的vertex.
 
 
+
+

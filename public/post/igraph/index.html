@@ -50,7 +50,7 @@
   
   
   
-  <meta name="theme-color" content="#EF525B">
+  <meta name="theme-color" content="#4caf50">
   
 
   
@@ -93,7 +93,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.2f4b8d74b4a6e396b340b30fdc837418.css">
+  <link rel="stylesheet" href="/css/academic.min.3b3edbcfac4db007699bb64eefe7853a.css">
 
   
 
@@ -154,12 +154,12 @@
     window.cookieconsent.initialise({
       "palette": {
         "popup": {
-          "background": "#EF525B",
-          "text": "#EAE7D6"
+          "background": "#4caf50",
+          "text": "#fff"
         },
         "button": {
-          "background": "#EAE7D6",
-          "text": "#EF525B"
+          "background": "#fff",
+          "text": "#4caf50"
         }
       },
       "theme": "classic",
@@ -620,7 +620,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 min read
+    2 min read
   </span>
   
 
@@ -738,6 +738,29 @@
 </li>
 <li><code>index</code>:设置vertex属性时的vertex的index.默认按照graph中vertex的默认index(V(graph))来设置.</li>
 <li><code>value</code>:设置的属性的值.需要和vertex的长度一致.</li>
+</ul>
+</div>
+<div id="将igraph对象转变为data.frame格式" class="section level4">
+<h4>将<code>igraph</code>对象转变为data.frame格式</h4>
+<p>使用<code>as_long_data_frame()</code>函数可以将<code>igraph</code>转换为data.frame格式.只有一个参数,就是<code>graph</code>.</p>
+</div>
+<div id="从一个graph提取子graphsubgraph" class="section level4">
+<h4>从一个graph提取子graph(subgraph)</h4>
+<p>使用<code>subgraph()</code>函数.一共两个参数:</p>
+<ul>
+<li><code>graph</code>:<code>igraph</code>类对象.<br />
+</li>
+<li><code>V</code>:要提取的subgraph的所有的vertex的名字(name).</li>
+</ul>
+</div>
+<div id="获取vertex属性" class="section level4">
+<h4>获取vertex属性</h4>
+<p>使用<code>vertex_attr()</code>函数.一共4个参数.</p>
+<ul>
+<li><code>graph</code>:<code>igraph</code>类对象.<br />
+</li>
+<li><code>name</code>:需要获取的属性的名字,默认提取所有属性.</li>
+<li>index:需要获取那些vertex的属性,默认提取所有的vertex.</li>
 </ul>
 </div>
 </div>
