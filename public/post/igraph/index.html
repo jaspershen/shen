@@ -715,6 +715,32 @@
 <div id="安装" class="section level3">
 <h3>安装</h3>
 </div>
+<div id="常用功能总结" class="section level3">
+<h3>常用功能总结</h3>
+<div id="寻找某个vertex的neighbor" class="section level4">
+<h4>寻找某个vertex的neighbor</h4>
+<p>使用<code>neighbors()</code>函数.一共两个参数:</p>
+<ul>
+<li><code>graph</code>:<code>igraph</code>类对象.<br />
+</li>
+<li><code>V</code>:某vertex的名字(name).<br />
+</li>
+<li><code>mode</code>: 对于有向图来说,是寻找从该vertex出发的neighbors(‘out’),还是指向该vertex的neighbors(‘in’),还是两种都寻找(‘both’).</li>
+</ul>
+</div>
+<div id="设置graph中vertex的属性" class="section level4">
+<h4>设置graph中vertex的属性</h4>
+<p>如果需要给graph中的vertex增加或者修改属性,可以使用<code>ste_vertex_attr()</code>函数.一共四个参数:</p>
+<ul>
+<li><code>graph</code>:<code>igraph</code>类对象.<br />
+</li>
+<li><code>name</code>:设置的新的属性的名字.<br />
+</li>
+<li><code>index</code>:设置vertex属性时的vertex的index.默认按照graph中vertex的默认index(V(graph))来设置.</li>
+<li><code>value</code>:设置的属性的值.需要和vertex的长度一致.</li>
+</ul>
+</div>
+</div>
 
     </div>
 

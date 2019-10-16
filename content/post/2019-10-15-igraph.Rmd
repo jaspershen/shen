@@ -21,3 +21,42 @@ https://igraph.org/r/doc/plot.common.html
 
 ### 安装
 
+### 常用功能总结
+
+#### 寻找某个vertex的neighbor
+
+使用`neighbors()`函数.一共两个参数:
+
+* `graph`:`igraph`类对象.   
+* `V`:某vertex的名字(name).   
+* `mode`: 对于有向图来说,是寻找从该vertex出发的neighbors('out'),还是指向该vertex的neighbors('in'),还是两种都寻找('both').
+
+#### 设置graph中vertex的属性
+
+如果需要给graph中的vertex增加或者修改属性,可以使用`ste_vertex_attr()`函数.一共四个参数:
+
+* `graph`:`igraph`类对象.    
+* `name`:设置的新的属性的名字.   
+* `index`:设置vertex属性时的vertex的index.默认按照graph中vertex的默认index(V(graph))来设置.
+* `value`:设置的属性的值.需要和vertex的长度一致.
+
+#### 将`igraph`对象转变为data.frame格式
+
+使用`as_long_data_frame()`函数可以将`igraph`转换为data.frame格式.只有一个参数,就是`graph`.
+
+#### 从一个graph提取子graph(subgraph)
+
+使用`subgraph()`函数.一共两个参数:
+
+* `graph`:`igraph`类对象.   
+* `V`:要提取的subgraph的所有的vertex的名字(name). 
+
+#### 获取vertex属性
+
+使用`vertex_attr()`函数.一共4个参数.
+
+* `graph`:`igraph`类对象.    
+* `name`:需要获取的属性的名字,默认提取所有属性.
+* index:需要获取那些vertex的属性,默认提取所有的vertex.
+
+

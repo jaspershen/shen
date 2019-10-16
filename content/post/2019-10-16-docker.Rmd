@@ -1,0 +1,18 @@
+---
+title: Docker的安装使用和配置
+author: Xiaotao Shen
+date: '2019-10-16'
+slug: docker
+categories:
+  - docker
+tags:
+  - Blog
+  - Academic
+  - Software
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+将自己安装docker,使用以及配置记录下来,主要还包括常用的命令总结以及一些bug的处理,以及一些常见资源.
