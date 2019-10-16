@@ -19,7 +19,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -27,17 +27,47 @@
   </url>
   
   <url>
-    <loc>/post/20191014/</loc>
-    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
+    <loc>/tags/academic/</loc>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/blog/</loc>
-    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/software/</loc>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/igraph/</loc>
+    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/20191014/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -47,22 +77,12 @@
   </url>
   
   <url>
-    <loc>/categories/life/</loc>
-    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/life/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+    <loc>/categories/life/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -74,16 +94,6 @@
   <url>
     <loc>/landing/</loc>
     <lastmod>2019-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-10-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/academic/</loc>
-    <lastmod>2019-10-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -293,11 +303,6 @@
   
   <url>
     <loc>/tags/lipidomics/</loc>
-    <lastmod>2018-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/software/</loc>
     <lastmod>2018-07-23T00:00:00+00:00</lastmod>
   </url>
   
