@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>R 语言常见统计预测模型</title>
+      <link>/post/r/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r/</guid>
+      <description>lasso模型 LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regulari</description>
+    </item>
+    
+    <item>
       <title>网络分析之igraph</title>
       <link>/post/igraph/</link>
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
