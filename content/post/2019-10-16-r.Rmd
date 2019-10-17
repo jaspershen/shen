@@ -2,7 +2,7 @@
 title: R 语言常见统计预测模型
 author: Xiaotao Shen
 date: '2019-10-16'
-slug: r
+slug: r-ml-model
 categories:
   - R
 tags:

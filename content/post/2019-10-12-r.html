@@ -2,7 +2,7 @@
 title: R可视化之小提琴图
 author: Xiaotao Shen
 date: '2019-10-12'
-slug: r
+slug: r-violin
 categories:
   - R
 tags:
@@ -31,12 +31,12 @@ data &lt;- data.frame(
 
 head(data)</code></pre>
 <pre><code>##   name     value
-## 1    A 16.639619
-## 2    A  6.423190
-## 3    A  5.625347
-## 4    A  2.920249
-## 5    A  6.689325
-## 6    A  9.916756</code></pre>
+## 1    A  3.952780
+## 2    A  4.772741
+## 3    A  5.091742
+## 4    A 11.042562
+## 5    A 14.206179
+## 6    A  6.995379</code></pre>
 <pre class="r"><code># Most basic violin chart
 p &lt;- 
   ggplot(data, aes(x = name, y = value, fill = name)) + 

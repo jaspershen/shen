@@ -2,7 +2,7 @@
 title: R可视化之小提琴图
 author: Xiaotao Shen
 date: '2019-10-12'
-slug: r
+slug: r-violin
 categories:
   - R
 tags:

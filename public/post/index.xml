@@ -23,10 +23,10 @@
     
     <item>
       <title>R 语言常见统计预测模型</title>
-      <link>/post/r/</link>
+      <link>/post/r-ml-model/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/r/</guid>
+      <guid>/post/r-ml-model/</guid>
       <description>lasso模型 LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regulari</description>
     </item>
     
@@ -59,10 +59,10 @@
     
     <item>
       <title>R可视化之小提琴图</title>
-      <link>/post/r/</link>
+      <link>/post/r-violin/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/r/</guid>
+      <guid>/post/r-violin/</guid>
       <description>本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/95-violin</description>
     </item>
     

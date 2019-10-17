@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/95-violin">
+  <meta name="description" content="lasso模型 LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regulari">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/r/">
@@ -136,13 +136,13 @@
   
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/r/">
-  <meta property="og:title" content="R可视化之小提琴图 | Xiaotao Shen">
-  <meta property="og:description" content="本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/95-violin"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:title" content="R 语言常见统计预测模型 | Xiaotao Shen">
+  <meta property="og:description" content="lasso模型 LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regulari"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-10-12T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2019-10-16T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2019-10-12T00:00:00&#43;00:00">
+  <meta property="article:modified_time" content="2019-10-16T00:00:00&#43;00:00">
   
 
   
@@ -175,7 +175,7 @@
 
   
 
-  <title>R可视化之小提琴图 | Xiaotao Shen</title>
+  <title>R 语言常见统计预测模型 | Xiaotao Shen</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -588,7 +588,7 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">R可视化之小提琴图</h1>
+  <h1 itemprop="name">R 语言常见统计预测模型</h1>
 
   
 
@@ -597,8 +597,8 @@
 
 
 
-<meta content="2019-10-12 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2019-10-12 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+<meta content="2019-10-16 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-10-16 00:00:00 &#43;0000 UTC" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -611,7 +611,7 @@
     
       
     
-    <time>Oct 12, 2019</time>
+    <time>Oct 16, 2019</time>
   </span>
   
 
@@ -620,7 +620,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -710,119 +710,35 @@
       
 
 
-<blockquote>
-<p>本文翻译自“The graph gallery”网站,原帖文地址链接:<a href="https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html" class="uri">https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html</a>.</p>
-</blockquote>
-<div id="基础小提琴图绘制" class="section level2">
-<h2>基础小提琴图绘制</h2>
-<div id="使用ggplot2包中的geom_violin函数." class="section level3">
-<h3>使用<code>ggplot2</code>包中的<code>geom_violin()</code>函数.</h3>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>#构建数据
-data &lt;- data.frame(
-  name = c( rep(&quot;A&quot;,500), rep(&quot;B&quot;,500), rep(&quot;B&quot;,500), rep(&quot;C&quot;,20), rep(&#39;D&#39;, 100)),
-  value = c( rnorm(500, 10, 5), rnorm(500, 13, 1), rnorm(500, 18, 1), rnorm(20, 25, 4), rnorm(100, 12, 1) )
-)
-
-head(data)</code></pre>
-<pre><code>##   name     value
-## 1    A 16.639619
-## 2    A  6.423190
-## 3    A  5.625347
-## 4    A  2.920249
-## 5    A  6.689325
-## 6    A  9.916756</code></pre>
-<pre class="r"><code># Most basic violin chart
-p &lt;- 
-  ggplot(data, aes(x = name, y = value, fill = name)) + 
-  geom_violin() +
-  theme_bw()
-
-p</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<div id="数据格式" class="section level4">
-<h4>数据格式</h4>
-<p>注意在使用<code>geom_violin()</code>函数构建小提琴图时,数据格式为长数据(long format).每一行时一个观测.一共需要两列:</p>
+<div id="lasso模型" class="section level3">
+<h3>lasso模型</h3>
+<p>LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regularization).因此,不论因变量(dependent/response varaible)是连续的(continuous),还是二元或者多元离散的（discrete）,都可以用LASSO回归建模然后预测.这里的变量筛选是指不把所有的变量都放入模型中进行拟合,而是有选择的把变量放入模型从而得到更好的性能参数. 复杂度调整是指通过一系列参数控制模型的复杂度,从而避免过拟合(overfitting). 对于线性模型来说,复杂度与模型的变量数有直接关系,变量数越多,模型复杂度就越高. 更多的变量在拟合时往往可以给出一个看似更好的模型,但是同时也面临过度拟合的危险.此时如果用全新的数据去验证模型(validation),通常效果很差. 一般来说,变量数大于数据点数量很多,或者某一个离散变量有太多独特值时,都有可能过度拟合.</p>
+<p>LASSO回归的复杂度主要由参数<span class="math inline">\(\lambda\)</span>(lambda)来控制.lambda越大,对变量较多的线性模型的惩罚力度就越大.最终获得一个变量较少的模型.</p>
+<p>另外还有一个参数<span class="math inline">\(\alpha\)</span>(alpha)用来控制高度相关性模型的性状.LASSO回归时,alpha设置为1.</p>
+<p>使用<code>glmnet</code>包可以进行LASSO回归.它可以对一系列不同的lambda值进行拟合,每次拟合都用到上一个lambda拟合的结果,从而大大提高了运行效率.</p>
+<div id="常用参数如下" class="section level4">
+<h4>常用参数如下:</h4>
 <ul>
-<li>一个分类变量,用于X轴.需要为<code>factor</code>格式.<br />
+<li><code>x</code>: 自变量数据集,需要为matrix格式,行为观测列为变量.<br />
 </li>
-<li>数值型变量,用于Y轴.</li>
+<li><code>y</code>: 因变量数据集,需要为matrix格式,只有一列.</li>
+<li><code>family</code>: 应变量类型.如果时连续性变量(也就是要做回归分析),<code>family</code>应该为<code>gussian</code>(高斯分布/正态分布)或者<code>poisson</code>(泊松分布).如果为两分类不连续变量(factor类型,且只有两个levels),应设置为<code>binomial</code>.如果时多分类不连续变量(factor类型,且多个levels),则应设置为<code>multinomial</code>.如果设置为<code>cox</code>,则y应当为一个两列的matrix,列名分别为<code>time</code>和<code>status</code>,<code>tiem</code>为存活时间,<code>status</code>为结局状态(1代表死亡,0代表还未死亡).</li>
+<li><code>alpha</code>: 在LASSO回归中,将其设置为1.</li>
+<li><code>nlambda</code>: 选取多少个lambda进行优化,默认为100.也就是使用100个lambda值拟合出100个系数不同的模型.</li>
+<li><code>lambda</code>: 提供lambda值,如果设置该值(一个或者多个),则会覆盖掉自动选择的lambda值.</li>
+<li><code>standardize</code>: 是否对数据进行标准化(scale),默认为TRUE.推荐自己对数据进行标准化,如果自己做过sca了,这里需要设置为FALSE.</li>
 </ul>
 </div>
-<div id="数据转换" class="section level4">
-<h4>数据转换</h4>
-<p>如果数据为宽数据格式,需要对其进行转变.可以使用<code>tidyr</code>中的<code>pivot_longer()</code>函数将其转变为长数据格式.</p>
-<pre class="r"><code>data_wide &lt;- 
-  iris[ , 1:4]
-library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ----------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v tibble  2.1.3     v purrr   0.3.2
-## v tidyr   1.0.0     v dplyr   0.8.3
-## v readr   1.3.1     v stringr 1.4.0
-## v tibble  2.1.3     v forcats 0.4.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts -------------------------------------------------------------------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>data_long &lt;- 
-  data_wide %&gt;% 
-  tidyr::pivot_longer(cols = everything(), 
-                      names_to = &quot;variable&quot;, values_to = &quot;value&quot;)
-head(data_long)</code></pre>
-<pre><code>## # A tibble: 6 x 2
-##   variable     value
-##   &lt;chr&gt;        &lt;dbl&gt;
-## 1 Sepal.Length   5.1
-## 2 Sepal.Width    3.5
-## 3 Petal.Length   1.4
-## 4 Petal.Width    0.2
-## 5 Sepal.Length   4.9
-## 6 Sepal.Width    3</code></pre>
-<pre class="r"><code>library(ggplot2)
-
-data_long %&gt;% 
-  ggplot(., aes(variable, value)) +
-  geom_violin(aes(fill = variable)) +
-  theme_bw()</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="构建模型" class="section level4">
+<h4>构建模型</h4>
+<p>构建模型之后,可以将其打印出来观察具体信息.</p>
 </div>
 </div>
-</div>
-<div id="将小提琴图水平展示" class="section level2">
-<h2>将小提琴图水平展示</h2>
-<pre class="r"><code>library(ggplot2)
-library(tidyverse)
-  iris[ , 1:4] %&gt;% 
-  tidyr::pivot_longer(cols = everything(), 
-                      names_to = &quot;variable&quot;,
-                      values_to = &quot;value&quot;) %&gt;% 
-  ggplot(., aes(variable, value)) +
-  geom_violin(aes(fill = variable, colour = variable)) +
-  theme_bw() +
-    theme(legend.position = &quot;none&quot;) +
-    coord_flip()</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-</div>
-<div id="小提琴图与箱型图同时展示" class="section level2">
-<h2>小提琴图与箱型图同时展示</h2>
-<pre class="r"><code>library(ggplot2)
-library(tidyverse)
-  iris[ , 1:4] %&gt;% 
-  tidyr::pivot_longer(cols = everything(), 
-                      names_to = &quot;variable&quot;,
-                      values_to = &quot;value&quot;) %&gt;% 
-  ggplot(., aes(variable, value)) +
-  geom_violin(aes(fill = variable, colour = variable), width = 1.4) +
-    geom_boxplot(fill = NA, width = 0.1, colour = &quot;grey&quot;) +
-  theme_bw() +
-    theme(legend.position = &quot;none&quot;) +
-    coord_flip()</code></pre>
-<pre><code>## Warning: position_dodge requires non-overlapping x intervals</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="references" class="section level3">
+<h3>References</h3>
+<ul>
+<li><a href="https://cosx.org/2016/10/data-mining-1-lasso/" class="uri">https://cosx.org/2016/10/data-mining-1-lasso/</a></li>
+</ul>
 </div>
 
     </div>
@@ -831,7 +747,11 @@ library(tidyverse)
 
 <div class="article-tags">
   
+  <a class="badge badge-light" href="/tags/blog/">Blog</a>
+  
   <a class="badge badge-light" href="/tags/academic/">Academic</a>
+  
+  <a class="badge badge-light" href="/tags/statistical-analysis/">Statistical analysis</a>
   
 </div>
 
@@ -979,13 +899,15 @@ library(tidyverse)
         <h3>Related</h3>
         <ul>
           
-          <li><a href="/post/r-sankey/">R可视化之桑吉图</a></li>
+          <li><a href="/post/docker/">Docker的安装使用和配置</a></li>
           
-          <li><a href="/post/pregnancy-project/">pregnancy project文献阅读总结</a></li>
+          <li><a href="/post/igraph/">网络分析之igraph</a></li>
+          
+          <li><a href="/post/r-sankey/">R可视化之桑吉图</a></li>
           
           <li><a href="/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/">文献解读:Longitudinal multi-omics of host– microbe dynamics in prediabetes</a></li>
           
-          <li><a href="/post/getting-started/">Academic: the website builder for Hugo</a></li>
+          <li><a href="/post/20191014/">20191014一点感想</a></li>
           
         </ul>
       </div>
