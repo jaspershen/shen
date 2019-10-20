@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Machine for genomics conference</title>
+      <link>/post/machine-for-genomics-conference/</link>
+      <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/machine-for-genomics-conference/</guid>
+      <description>freenome
+freenome intergateing innovative science to develop a blood-based cancer test starting with CRC.
+cfDNA (cell free DNA).
+Interpreting deep learning models of regulatory DNA
+Anshul Kundaje
+decoding genome function
+control elements gene
+ATAC-seq/DNase-seq
+ChIP-seq
+prediCtive model of regularity DNA
+Just transform DNA sequence to dummy matrxi.
+Machine learning for biomedical informationhierarchical latent variable models?
+</description>
+    </item>
     
     <item>
       <title>Docker的安装使用和配置</title>
