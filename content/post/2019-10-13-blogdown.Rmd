@@ -38,3 +38,9 @@ image:
 3. 打开`config/_default/menus.toml`,然后将Blog的url修改为文件夹的名称.
 
 ![](2019-10-13-blogdown/change-url.png)
+
+### 如何添加新的页面?
+
+以在我的网页添加新的中文入口为例.
+
+在`conternt`文件夹下面创建新的`chinese`文件夹.在该文件夹下面创建`_index.md`文件.

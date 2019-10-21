@@ -18,6 +18,10 @@
   </url>
   
   <url>
+    <loc>/chinese/</loc>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
     <lastmod>2019-10-17T00:00:00+00:00</lastmod>
   </url>
@@ -107,12 +111,12 @@
   </url>
   
   <url>
-    <loc>/tags/life/</loc>
+    <loc>/categories/life/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/life/</loc>
+    <loc>/tags/life/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -374,6 +378,14 @@
   <url>
     <loc>/post/getting-started/</loc>
     <lastmod>2019-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/chinese/</loc>
+  </url>
+  
+  <url>
+    <loc>/chinese/admin/</loc>
   </url>
   
   <url>

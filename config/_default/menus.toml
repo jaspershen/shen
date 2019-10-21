@@ -56,7 +56,12 @@
   name = "CV"
   url = "files/cv.pdf"
   weight = 9
-
+  
+  
+#[[main]]
+#  name = "Chinese"
+#  url = "chinese/"
+#  weight = 10
 
 
 

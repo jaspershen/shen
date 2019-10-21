@@ -13,6 +13,75 @@
     
     
     <item>
+      <title>About</title>
+      <link>/chinese/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/chinese/</guid>
+      <description>
+
+&lt;hr /&gt;
+
+&lt;p&gt;authors:
+- admin
+bio: Metabolomics, Multi-omics, Bioinformatics, Healthcare.
+name: Xiaotao Shen PhD
+organizations:
+- name: Stanford University
+  url: &amp;ldquo;&lt;a href=&#34;https://www.stanford.edu/&amp;quot;&#34; target=&#34;_blank&#34;&gt;https://www.stanford.edu/&amp;quot;&lt;/a&gt;
+role: Postdoctoral Research Fellow&lt;/p&gt;
+
+&lt;p&gt;interests:
+- Bioinformatics
+- Metabolomics
+- Systems Biology&lt;/p&gt;
+
+&lt;p&gt;education:
+  courses:
+  - course: PhD
+    institution: Chinese Academy of Sciences
+    year: 2018
+  - course: BSc
+    institution: Inner Mongolia University
+    year: 2013&lt;/p&gt;
+
+&lt;p&gt;social:
+- icon: weixin
+  icon_pack: fab
+  link: &lt;a href=&#34;https://www.shenxt.info/files/wechat_QR.jpg&#34; target=&#34;_blank&#34;&gt;https://www.shenxt.info/files/wechat_QR.jpg&lt;/a&gt;
+- icon: envelope
+  icon_pack: fas
+  link: &amp;lsquo;#contact&amp;rsquo;
+- icon: linkedin
+  icon_pack: fab
+  link: &lt;a href=&#34;https://www.linkedin.com/in/shenxt/&#34; target=&#34;_blank&#34;&gt;https://www.linkedin.com/in/shenxt/&lt;/a&gt;
+- icon: twitter
+  icon_pack: fab
+  link: &lt;a href=&#34;https://twitter.com/JasperShen1990&#34; target=&#34;_blank&#34;&gt;https://twitter.com/JasperShen1990&lt;/a&gt;
+- icon: google-scholar
+  icon_pack: ai
+  link: &lt;a href=&#34;https://scholar.google.co.uk/citations?hl=en&amp;amp;user=3TK9yz8AAAAJ&#34; target=&#34;_blank&#34;&gt;https://scholar.google.co.uk/citations?hl=en&amp;amp;user=3TK9yz8AAAAJ&lt;/a&gt;
+- icon: github
+  icon_pack: fab
+  link: &lt;a href=&#34;https://github.com/jaspershen&#34; target=&#34;_blank&#34;&gt;https://github.com/jaspershen&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;enter-email-to-display-gravatar-if-gravatar-enabled-in-config&#34;&gt;Enter email to display Gravatar (if Gravatar enabled in Config)&lt;/h1&gt;
+
+&lt;p&gt;email: &amp;ldquo;shenxt@stanford.edu&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;superuser: true
+user_groups:
+- Researchers&lt;/p&gt;
+
+&lt;h2 id=&#34;visitors&#34;&gt;- Visitors&lt;/h2&gt;
+
+&lt;p&gt;I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.&lt;/p&gt;
+
+&lt;p&gt;My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was &lt;a href=&#34;https://jaspershen.github.io/MetNormalizer/&#34; target=&#34;_blank&#34;&gt;MetNormalizer&lt;/a&gt;, which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics. Then I developed a web-based tool, &lt;a href=&#34;http://metflow.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;MetFlow&lt;/a&gt;, aiming to provide a comprehensive pipeline for data cleaning and statistical analysis of large-scale metabolomics. The most important algorithm I have developed is called &lt;a href=&#34;http://metdna.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;MetDNA&lt;/a&gt;, which is a novel algorithm for metabolite identification and dysregulated pathway analysis in untargeted metabolomics.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Blog</title>
       <link>/post/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
