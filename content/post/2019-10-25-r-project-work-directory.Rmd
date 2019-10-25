@@ -18,7 +18,7 @@ image:
 
 代码如下:
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 setwd_project <- function() {
   currect_wd <-
     getwd()
@@ -79,7 +79,7 @@ setwd_project <- function() {
 
 思路和代码都很简单,这个函数也在我自己常用的小工具集合`sxtTools`包中,所过想要直接使用,可以考虑安装这个包.
 
-```{r, eval=FALSE, echo=FALSE}
+```{r, eval=FALSE, echo=TRUE}
 devtools::install_github("jaspershen/sxtTools")
 ```
 
