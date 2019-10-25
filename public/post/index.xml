@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>快速回到R project所在的工作目录</title>
+      <link>/post/r-project-work-directory/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-project-work-directory/</guid>
+      <description>Rstudio的Rproject可以用来方便的管理自己的某个项目的所有代码,文件等等.另外的一个好处是打开该项目文件之后,路径自动设置为该p</description>
+    </item>
     
     <item>
       <title>Machine for genomics conference</title>
