@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="绘图基础(plot basics) 所有的ggplot2图形都开始于ggplot()函数的调用.给其提供数据,以及美学映射(aesthethic mappin">
+  <meta name="description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1 绘图基础(plot basics) 所有的ggplot2图形都开始于ggplot()">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/ggplot2-cookbook/">
@@ -137,7 +137,7 @@
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/ggplot2-cookbook/">
   <meta property="og:title" content="ggplot2-cookbook | Xiaotao Shen">
-  <meta property="og:description" content="绘图基础(plot basics) 所有的ggplot2图形都开始于ggplot()函数的调用.给其提供数据,以及美学映射(aesthethic mappin"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1 绘图基础(plot basics) 所有的ggplot2图形都开始于ggplot()"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-10-25T00:00:00&#43;00:00">
@@ -709,18 +709,26 @@
     <div class="article-style" itemprop="articleBody">
       
 
+<div id="TOC">
+<ul>
+<li><a href="#绘图基础plot-basics"><span class="toc-section-number">0.1</span> 绘图基础(plot basics)</a><ul>
+<li><a href="#ggplot-创建一个新的ggplot图片"><span class="toc-section-number">0.1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</a></li>
+<li><a href="#aes-创建美学映射"><span class="toc-section-number">0.1.2</span> <code>aes()</code> 创建美学映射</a></li>
+</ul></li>
+</ul>
+</div>
 
 <div id="绘图基础plot-basics" class="section level2">
-<h2>绘图基础(plot basics)</h2>
+<h2><span class="header-section-number">0.1</span> 绘图基础(plot basics)</h2>
 <p>所有的ggplot2图形都开始于<code>ggplot()</code>函数的调用.给其提供数据,以及美学映射(aesthethic mappings)(使用<code>aes()</code>函数).然后添加图层(layers), 度量系统(scales), 坐标系(coords)以及分面(facets).添加的每个对象,都是在前一行末尾使用符号<code>+</code>.如果需要将一个ggplot2图像保存在本地,使用<code>ggsave()</code>函数.</p>
 <div id="ggplot-创建一个新的ggplot图片" class="section level3">
-<h3><code>ggplot()</code> 创建一个新的ggplot图片</h3>
+<h3><span class="header-section-number">0.1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</h3>
 <p><code>ggplot()</code>函数是用来启动初始化一个ggplot2对象的.It can be used to declare the input data frame for a graphic and to specify the set of plot aesthetics intended to be common throughout all subsequent layers unless specifically overridden.</p>
 <pre><code>ggplot(data = NULL, mapping = aes(), ...,
   environment = parent.frame())
 Arguments</code></pre>
 <div id="参数" class="section level4">
-<h4>参数</h4>
+<h4><span class="header-section-number">0.1.1.1</span> 参数</h4>
 <ul>
 <li><p><strong>data</strong> 用于绘图的数据.如果数据格式不是<code>data.frame</code>,会默认使用<code>fortity()</code>函数转换为<code>data.frame</code>格式.如果在该函数中不提供data,则在后面添加的每一个图层,都需要提供data.</p></li>
 <li><p><strong>mapping</strong> 用于美学图层映射的参数.如果在这里不提供,则后面添加的每个图层,都需要提供.</p></li>
@@ -729,7 +737,7 @@ Arguments</code></pre>
 </ul>
 </div>
 <div id="细节" class="section level4">
-<h4>细节</h4>
+<h4><span class="header-section-number">0.1.1.2</span> 细节</h4>
 <p><code>ggplot()</code>用来初始化ggplot2图形对象.经常后面需要通过<code>+</code>来添加其他的对象.一般有三种方法调用该函数:</p>
 <ul>
 <li><p><code>ggplot(df, aes(x, y, other aesthetics))</code></p></li>
@@ -739,7 +747,7 @@ Arguments</code></pre>
 <p>如果后面的所有图层使用的都是同一套数据以及美学映射,则推荐使用第一种用法.如果后面图层使用数据一致,但是美学映射不同,则推荐使用第二种方法.如果每一个图层使用的数据和美学映射都不相同,则使用第三种方法,一般用来构建比较复杂的图形.</p>
 </div>
 <div id="例子" class="section level4">
-<h4>例子</h4>
+<h4><span class="header-section-number">0.1.1.3</span> 例子</h4>
 <pre class="r"><code>library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
 <pre class="r"><code># 产生随机数据,然后计算平均值和标准差
@@ -781,21 +789,21 @@ ggplot() +
 </div>
 </div>
 <div id="aes-创建美学映射" class="section level3">
-<h3><code>aes()</code> 创建美学映射</h3>
+<h3><span class="header-section-number">0.1.2</span> <code>aes()</code> 创建美学映射</h3>
 <p>美学映射指的是数据中的变量如何映射到图形的视觉特性上(也就是美学aesthetics).美学映射可以在<code>ggplot()</code>函数以及每一个单独的图层中进行设置.</p>
 <p><code>aes(x, y, ...)</code></p>
 <div id="参数-1" class="section level4">
-<h4>参数</h4>
+<h4><span class="header-section-number">0.1.2.1</span> 参数</h4>
 <ul>
 <li><strong>x, y, …</strong> 将变量映射到图形的视觉特性的名字.x和y分别指x轴和y轴.通常他们可以省略不写.但是其他的,如颜色(colour/color),填充颜色(fill),大小(size)等则必须写明参数名字.</li>
 </ul>
 </div>
 <div id="细节-1" class="section level4">
-<h4>细节</h4>
+<h4><span class="header-section-number">0.1.2.2</span> 细节</h4>
 <p>注意的是,在ggplot2种,对于视觉特征的名字进行了规范化,因此和R base绘图函数种的并不相同,比如从<code>pch</code>改为<code>shape</code>,从<code>cex</code>改为<code>size</code>.</p>
 </div>
 <div id="例子-1" class="section level4">
-<h4>例子</h4>
+<h4><span class="header-section-number">0.1.2.3</span> 例子</h4>
 <pre class="r"><code>aes(x = mpg, y = wt)</code></pre>
 <pre><code>## Aesthetic mapping: 
 ## * `x` -&gt; `mpg`
