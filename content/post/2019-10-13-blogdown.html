@@ -10,22 +10,35 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#如何修改网站icon"><span class="toc-section-number">0.0.1</span> 如何修改网站icon?</a></li>
+<li><a href="#如何将个人网站作为图床使用"><span class="toc-section-number">0.0.2</span> 如何将个人网站作为图床使用?</a></li>
+<li><a href="#如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page"><span class="toc-section-number">0.0.3</span> 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</a></li>
+<li><a href="#如何添加新的页面"><span class="toc-section-number">0.0.4</span> 如何添加新的页面?</a></li>
+<li><a href="#如何在post中添加本地图片"><span class="toc-section-number">0.0.5</span> 如何在post中添加本地图片?</a></li>
+</ul>
+</div>
 
 <div id="如何修改网站icon" class="section level3">
-<h3>如何修改网站icon?</h3>
+<h3><span class="header-section-number">0.0.1</span> 如何修改网站icon?</h3>
 <p>将自己的logo图片截取为192x192像素(长款分别为0.21cm).然后将其命名为’icon-192.png’放置于<code>static/img</code>文件夹中即可.</p>
 </div>
 <div id="如何将个人网站作为图床使用" class="section level3">
-<h3>如何将个人网站作为图床使用?</h3>
+<h3><span class="header-section-number">0.0.2</span> 如何将个人网站作为图床使用?</h3>
 <p>将图片放置于<code>static/files</code>文件夹中即可.使用如下路径访问:</p>
 <p><code>shenxt.info/files/figure.name</code></p>
 <p>如: <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="uri">https://www.shenxt.info/files/wechat_QR.jpg</a></p>
 </div>
 <div id="如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page" class="section level3">
-<h3>如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</h3>
+<h3><span class="header-section-number">0.0.3</span> 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</h3>
 <p>以blog为例(posts).</p>
 <ol style="list-style-type: decimal">
 <li>首先需要将 <code>content/home</code>中的<code>posts.md</code>中的active设置为false.这样,这一部分就不会在home主页显示.</li>
@@ -38,12 +51,12 @@ image:
 <p><img src="2019-10-13-blogdown/change-url.png" /></p>
 </div>
 <div id="如何添加新的页面" class="section level3">
-<h3>如何添加新的页面?</h3>
+<h3><span class="header-section-number">0.0.4</span> 如何添加新的页面?</h3>
 <p>以在我的网页添加新的中文入口为例.</p>
 <p>在<code>conternt</code>文件夹下面创建新的<code>chinese</code>文件夹.在该文件夹下面创建<code>_index.md</code>文件.</p>
 </div>
 <div id="如何在post中添加本地图片" class="section level3">
-<h3>如何在post中添加本地图片?</h3>
+<h3><span class="header-section-number">0.0.5</span> 如何在post中添加本地图片?</h3>
 <p>首先在<code>content/post/</code>建立和post名z字去除掉数字之后的的文件夹(比如post名字为<code>2019-10-25-test</code>,则文件夹命名为<code>test</code>),然后再在该文件夹下建立和post同名的文件夹(<code>2019-10-25-test</code>),然后将图片(如<code>test.png</code>)放入该文件夹下.在post中,使用:</p>
 <p><code>![](test/2019-10-25-test/test.png)</code>语句插入图片.</p>
 </div>
