@@ -999,10 +999,17 @@ ggplot(vaccinations,
       <guid>/post/2019-10-08-purrr-1-overview/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#map-family&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.3&lt;/span&gt; Map family&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;code&gt;purrr&lt;/code&gt;是一个提供函数编程的工具箱.&lt;/p&gt;
 &lt;div id=&#34;安装&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;安装&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;purrr&lt;/code&gt;包含在&lt;code&gt;tidyverse&lt;/code&gt;种,因此如果你已经安装了他,不需要再安装.当然也可以单独安装&lt;code&gt;purrr&lt;/code&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;### 安装tidyverse
 install.packages(&amp;quot;tidyverse&amp;quot;)
@@ -1013,7 +1020,7 @@ install.packages(&amp;quot;purrr&amp;quot;)
 devtools::install_github(&amp;quot;tidyverse/purrr&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;使用&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 使用&lt;/h3&gt;
 &lt;p&gt;使用一个简单的例子来展示&lt;code&gt;purrr&lt;/code&gt;的作用.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(purrr)
 
@@ -1027,7 +1034,7 @@ mtcars %&amp;gt;%
 &lt;p&gt;这个例子显示了和R中相同功能的base函数的优点.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;map-family&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Map family&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3&lt;/span&gt; Map family&lt;/h3&gt;
 &lt;p&gt;map函数对输入的vector的每一个元素进行&lt;/p&gt;
 &lt;/div&gt;
 </description>
