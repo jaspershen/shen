@@ -41,12 +41,27 @@
   </url>
   
   <url>
+    <loc>/post/ggplot2-cookbook/</loc>
+    <lastmod>2019-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/ggplot2-dark-theme/</loc>
+    <lastmod>2019-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/life/</loc>
     <lastmod>2019-10-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/r/</loc>
+    <lastmod>2019-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/r-data-visulization-cookbook/</loc>
     <lastmod>2019-10-25T00:00:00+00:00</lastmod>
   </url>
   

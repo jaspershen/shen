@@ -1,0 +1,175 @@
+---
+title: ggplot2-cookbook
+author: Xiaotao Shen
+date: '2019-10-25'
+slug: ggplot2-cookbook
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+## 绘图基础(plot basics)
+
+所有的ggplot2图形都开始于`ggplot()`函数的调用.给其提供数据,以及美学映射(aesthethic mappings)(使用`aes()`函数).然后添加图层(layers), 度量系统(scales), 坐标系(coords)以及分面(facets).添加的每个对象,都是在前一行末尾使用符号`+`.如果需要将一个ggplot2图像保存在本地,使用`ggsave()`函数.
+
+### `ggplot()` 创建一个新的ggplot图片
+
+`ggplot()`函数是用来启动初始化一个ggplot2对象的.It can be used to declare the input data frame for a graphic and to specify the set of plot aesthetics intended to be common throughout all subsequent layers unless specifically overridden.
+
+```
+ggplot(data = NULL, mapping = aes(), ...,
+  environment = parent.frame())
+Arguments
+```
+
+#### 参数
+
+* **data** 用于绘图的数据.如果数据格式不是`data.frame`,会默认使用`fortity()`函数转换为`data.frame`格式.如果在该函数中不提供data,则在后面添加的每一个图层,都需要提供data.
+
+* **mapping** 用于美学图层映射的参数.如果在这里不提供,则后面添加的每个图层,都需要提供.
+
+* **...** 其他可用于该函数的参数.
+
+* **environment** 该参数已经淘汰了.
+
+#### 细节
+
+`ggplot()`用来初始化ggplot2图形对象.经常后面需要通过`+`来添加其他的对象.一般有三种方法调用该函数:
+
+* `ggplot(df, aes(x, y, other aesthetics))`
+
+* `ggplot(df)`
+
+* `ggplot2`
+
+如果后面的所有图层使用的都是同一套数据以及美学映射,则推荐使用第一种用法.如果后面图层使用数据一致,但是美学映射不同,则推荐使用第二种方法.如果每一个图层使用的数据和美学映射都不相同,则使用第三种方法,一般用来构建比较复杂的图形.
+
+#### 例子
+
+```{r}
+library(ggplot2)
+# 产生随机数据,然后计算平均值和标准差
+df <- data.frame(
+  gp = factor(rep(letters[1:3], each = 10)),
+  y = rnorm(30)
+)
+ds <- do.call(rbind, lapply(split(df, df$gp), function(d) {
+  data.frame(mean = mean(d$y), sd = sd(d$y), gp = d$gp)
+}))
+
+ggplot(df, aes(gp, y)) +
+  geom_point() +
+  geom_point(data = ds, aes(y = mean), colour = 'red', size = 3)
+
+#注意,第一个geom_point图层使用的是ggplot中的数据和美学映射.而第二个geom_point
+#图层中使用的则是不同的数据和美学映射.
+
+# 而下面这幅图,第一个geonm_point图层因为没有提供data,因此使用的是ggplot()中的data,
+#而美学映射则是自己定义的.
+
+ggplot(df) +
+  geom_point(aes(gp, y)) +
+  geom_point(data = ds, aes(gp, mean), colour = 'red', size = 3)
+
+# 另外一个选择则是完全不在ggplot中定义数据和美学映射,而是在每一个图层中分别定义.
+# 当你要画复杂图形的时候,这种方法就会显示的非常清晰和明了.
+ggplot() +
+  geom_point(data = df, aes(gp, y)) +
+  geom_point(data = ds, aes(gp, mean), colour = 'red', size = 3) +
+  geom_errorbar(
+    data = ds,
+    aes(gp, mean, ymin = mean - sd, ymax = mean + sd),
+    colour = 'red',
+    width = 0.4
+  )
+
+```
+
+### `aes()` 创建美学映射
+
+美学映射指的是数据中的变量如何映射到图形的视觉特性上(也就是美学aesthetics).美学映射可以在`ggplot()`函数以及每一个单独的图层中进行设置.
+
+`aes(x, y, ...)`
+
+#### 参数
+
+* **x, y, ...** 将变量映射到图形的视觉特性的名字.x和y分别指x轴和y轴.通常他们可以省略不写.但是其他的,如颜色(colour/color),填充颜色(fill),大小(size)等则必须写明参数名字.
+
+#### 细节
+
+注意的是,在ggplot2种,对于视觉特征的名字进行了规范化,因此和R base绘图函数种的并不相同,比如从`pch`改为`shape`,从`cex`改为`size`.
+
+#### 例子
+
+```{r}
+aes(x = mpg, y = wt)
+#> Aesthetic mapping: 
+#> * `x` -> `mpg`
+#> * `y` -> `wt`
+aes(mpg, wt)
+#> Aesthetic mapping: 
+#> * `x` -> `mpg`
+#> * `y` -> `wt`
+
+# You can also map aesthetics to functions of variables
+aes(x = mpg ^ 2, y = wt / cyl)
+#> Aesthetic mapping: 
+#> * `x` -> `mpg^2`
+#> * `y` -> `wt/cyl`
+
+# Or to constants
+aes(x = 1, colour = "smooth")
+#> Aesthetic mapping: 
+#> * `x`      -> 1
+#> * `colour` -> "smooth"
+
+# Aesthetic names are automatically standardised
+aes(col = x)
+#> Aesthetic mapping: 
+#> * `colour` -> `x`
+aes(fg = x)
+#> Aesthetic mapping: 
+#> * `colour` -> `x`
+aes(color = x)
+#> Aesthetic mapping: 
+#> * `colour` -> `x`
+aes(colour = x)
+#> Aesthetic mapping: 
+#> * `colour` -> `x`
+
+# aes() is passed to either ggplot() or specific layer. Aesthetics supplied
+# to ggplot() are used as defaults for every layer.
+ggplot(mpg, aes(displ, hwy)) + geom_point()
+
+ggplot(mpg) + geom_point(aes(displ, hwy))
+
+# Tidy evaluation ----------------------------------------------------
+# aes() automatically quotes all its arguments, so you need to use tidy
+# evaluation to create wrappers around ggplot2 pipelines. The
+# simplest case occurs when your wrapper takes dots:
+scatter_by <- function(data, ...) {
+  ggplot(data) + geom_point(aes(...))
+}
+scatter_by(mtcars, disp, drat)
+
+# If your wrapper has a more specific interface with named arguments,
+# you need "enquote and unquote":
+scatter_by <- function(data, x, y) {
+  x <- enquo(x)
+  y <- enquo(y)
+
+  ggplot(data) + geom_point(aes(!!x, !!y))
+}
+scatter_by(mtcars, disp, drat)
+
+# Note that users of your wrapper can use their own functions in the
+# quoted expressions and all will resolve as it should!
+cut3 <- function(x) cut_number(x, 3)
+scatter_by(mtcars, cut3(disp), drat)
+```
+
+

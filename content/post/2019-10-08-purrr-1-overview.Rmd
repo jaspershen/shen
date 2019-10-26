@@ -44,6 +44,8 @@ mtcars %>%
   map_dbl(.x = , .f = "r.squared")##提取出来R2
 ```
 
+这个例子显示了和R中相同功能的base函数的优点.
+
 ### Map family
 
 map函数对输入的vector的每一个元素进行

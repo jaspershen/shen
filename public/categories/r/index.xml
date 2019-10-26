@@ -13,6 +13,24 @@
     
     
     <item>
+      <title>ggplot2-cookbook</title>
+      <link>/post/ggplot2-cookbook/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ggplot2-cookbook/</guid>
+      <description>绘图基础(plot basics) 所有的ggplot2图形都开始于ggplot()函数的调用.给其提供数据,以及美学映射(aesthethic mappin</description>
+    </item>
+    
+    <item>
+      <title>R data visulization cookbook</title>
+      <link>/post/r-data-visulization-cookbook/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-data-visulization-cookbook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>快速回到R project所在的工作目录</title>
       <link>/post/r-project-work-directory/</link>
       <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
