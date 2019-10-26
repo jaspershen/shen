@@ -90,7 +90,7 @@ https://app.netlify.com/teams/jaspershen/sites
 
 #### 点击`Site settings`
 
-![](2019-10-13-blogdown/site_settingy.png)
+![](2019-10-13-blogdown/site_setting.png)
 
 #### 点击`Build & deploy`
 
