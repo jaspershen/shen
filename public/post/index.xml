@@ -770,19 +770,28 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
       <guid>/post/blogdown/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#如何修改网站icon&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 如何修改网站icon?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何将个人网站作为图床使用&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 如何将个人网站作为图床使用?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.3&lt;/span&gt; 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何添加新的页面&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.4&lt;/span&gt; 如何添加新的页面?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何在post中添加本地图片&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.5&lt;/span&gt; 如何在post中添加本地图片?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;如何修改网站icon&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;如何修改网站icon?&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 如何修改网站icon?&lt;/h3&gt;
 &lt;p&gt;将自己的logo图片截取为192x192像素(长款分别为0.21cm).然后将其命名为’icon-192.png’放置于&lt;code&gt;static/img&lt;/code&gt;文件夹中即可.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何将个人网站作为图床使用&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;如何将个人网站作为图床使用?&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 如何将个人网站作为图床使用?&lt;/h3&gt;
 &lt;p&gt;将图片放置于&lt;code&gt;static/files&lt;/code&gt;文件夹中即可.使用如下路径访问:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;shenxt.info/files/figure.name&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;如: &lt;a href=&#34;https://www.shenxt.info/files/wechat_QR.jpg&#34; class=&#34;uri&#34;&gt;https://www.shenxt.info/files/wechat_QR.jpg&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3&lt;/span&gt; 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?&lt;/h3&gt;
 &lt;p&gt;以blog为例(posts).&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;首先需要将 &lt;code&gt;content/home&lt;/code&gt;中的&lt;code&gt;posts.md&lt;/code&gt;中的active设置为false.这样,这一部分就不会在home主页显示.&lt;/li&gt;
@@ -795,12 +804,12 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;2019-10-13-blogdown/change-url.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何添加新的页面&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;如何添加新的页面?&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.4&lt;/span&gt; 如何添加新的页面?&lt;/h3&gt;
 &lt;p&gt;以在我的网页添加新的中文入口为例.&lt;/p&gt;
 &lt;p&gt;在&lt;code&gt;conternt&lt;/code&gt;文件夹下面创建新的&lt;code&gt;chinese&lt;/code&gt;文件夹.在该文件夹下面创建&lt;code&gt;_index.md&lt;/code&gt;文件.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何在post中添加本地图片&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;如何在post中添加本地图片?&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.5&lt;/span&gt; 如何在post中添加本地图片?&lt;/h3&gt;
 &lt;p&gt;首先在&lt;code&gt;content/post/&lt;/code&gt;建立和post名z字去除掉数字之后的的文件夹(比如post名字为&lt;code&gt;2019-10-25-test&lt;/code&gt;,则文件夹命名为&lt;code&gt;test&lt;/code&gt;),然后再在该文件夹下建立和post同名的文件夹(&lt;code&gt;2019-10-25-test&lt;/code&gt;),然后将图片(如&lt;code&gt;test.png&lt;/code&gt;)放入该文件夹下.在post中,使用:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;![](test/2019-10-25-test/test.png)&lt;/code&gt;语句插入图片.&lt;/p&gt;
 &lt;/div&gt;
