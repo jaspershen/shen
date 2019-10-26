@@ -10,6 +10,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 记录使用一些R语言包下载KEGG数据库.
