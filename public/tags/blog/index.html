@@ -143,7 +143,7 @@
   <meta property="og:description" content="Share"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-10-25T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2019-10-26T00:00:00&#43;00:00">
   
 
   
@@ -604,6 +604,15 @@
   
   
   <div>
+    <h2><a href="/post/download-kegg-database/">下载KEGG数据库</a></h2>
+    <div class="article-style">
+      
+      记录使用一些R语言包下载KEGG数据库. #get the ID of all hsa pathways KEGGREST::listDatabases() path_ID &lt;- KEGGREST::keggList(organism = &quot;hsa&quot;, database = &quot;pathway&quot;) %&gt;% names() %&gt;% unique() %&gt;% stringr::str_replace_all(., &quot;path:&quot;, &quot;&quot;) dir.create(path = &quot;kegg_pathway&quot;) setwd(&quot;kegg_pathway/&quot;) node_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) edge_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) for(i in i:length(path_ID)){ cat(i, &quot; &quot;)
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/post/ggplot2-cookbook/">ggplot2-cookbook</a></h2>
     <div class="article-style">
       
@@ -680,15 +689,6 @@
     <div class="article-style">
       
       如何修改网站icon? 将自己的logo图片截取为192x192像素(长款分别为0.21cm).然后将其命名为’icon-192.png’放置
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-sankey/">R可视化之桑吉图</a></h2>
-    <div class="article-style">
-      
-      本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/sankey-di
       
     </div>
   </div>

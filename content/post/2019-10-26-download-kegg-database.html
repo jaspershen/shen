@@ -1,0 +1,108 @@
+---
+title: 下载KEGG数据库
+author: Xiaotao Shen
+date: '2019-10-26'
+slug: download-kegg-database
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+
+<p>记录使用一些R语言包下载KEGG数据库.</p>
+<pre class="r"><code>#get the ID of all hsa pathways
+KEGGREST::listDatabases()
+path_ID &lt;- 
+KEGGREST::keggList(organism = &quot;hsa&quot;, database = &quot;pathway&quot;) %&gt;% 
+  names() %&gt;% 
+  unique() %&gt;% 
+  stringr::str_replace_all(., &quot;path:&quot;, &quot;&quot;)
+
+dir.create(path = &quot;kegg_pathway&quot;)
+setwd(&quot;kegg_pathway/&quot;)
+
+
+node_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID))
+edge_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID))
+
+for(i in i:length(path_ID)){
+  cat(i, &quot; &quot;)
+  temp_kgml &lt;- 
+    get_KGML(pathwayid = path_ID[i])
+  if(is.na(temp_kgml)){
+    next()
+  }
+  # slot(object = temp_kgml, name = &quot;pathwayInfo&quot;)
+  #Download a static pathway image (png file) to working directory:
+  temp_image_link &lt;- slot(slot(temp_kgml, &quot;pathwayInfo&quot;), &quot;image&quot;)
+  download.file(temp_image_link, basename(temp_image_link), mode = &quot;wb&quot;)
+  temp_kegg_mappings &lt;- expand_KEGG_mappings(KGML_file = temp_kgml)
+  temp_kegg_edges &lt;- expand_KEGG_edges(temp_kgml, temp_kegg_mappings)
+  #Modify existing data sets; specify as nodes and edges
+  temp_node_mapping_info &lt;- node_mapping_info(temp_kegg_mappings)
+  temp_edge_mapping_info &lt;- edge_mapping_info(temp_kegg_edges)
+  #Create an igraph object
+  # kegg_graph &lt;- get_graph_object(temp_node_mapping_info, temp_edge_mapping_info)
+  
+  edge_info[[i]] &lt;- 
+    temp_kegg_edges
+  node_info[[i]] &lt;- temp_node_mapping_info
+
+  temp_kegg_nodes &lt;- temp_node_mapping_info
+
+}
+
+
+save(node_info, file = &quot;node_info&quot;)
+save(edge_info, file = &quot;edge_info&quot;)
+
+
+
+path_name &lt;- KEGGREST::keggList(organism = &quot;hsa&quot;, database = &quot;pathway&quot;) %&gt;% 
+  unname()
+
+path_name_id &lt;- 
+  paste(path_ID, path_name, sep = &quot;;&quot;)
+
+
+for(i in 1:length(path_name_id)){
+  cat(i, &quot; &quot;)
+  if(!is.null(node_info[[i]])){
+    temp &lt;- node_info[[i]]
+    temp[,3] &lt;- lapply(temp[,3], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    temp[,4] &lt;- lapply(temp[,4], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    temp[,13] &lt;- lapply(temp[,13], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    temp[,14] &lt;- lapply(temp[,14], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    readr::write_csv(temp[,-c(6,7,8,9,10,11,12,13,17,18)], paste(path_ID[i], &quot;_node_info.csv&quot;, sep = &quot;&quot;))
+  }
+  
+  if(!is.null(edge_info[[i]])){
+    temp &lt;- edge_info[[i]]
+    # temp[,3] &lt;- lapply(temp[,3], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    # temp[,4] &lt;- lapply(temp[,4], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    # temp[,13] &lt;- lapply(temp[,13], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    # temp[,14] &lt;- lapply(temp[,14], function(x) paste(x, collapse = &quot;;&quot;)) %&gt;% unlist()
+    readr::write_csv(temp, paste(path_ID[i], &quot;_edge_info.csv&quot;, sep = &quot;&quot;))
+  }
+  
+}
+
+for(i in 1:length(path_ID)){
+  cat(i, &quot; &quot;)
+  file &lt;- grep(path_ID[i], dir(), value = TRUE)
+  dir.create(path_ID[i])
+  file.copy(from = file, to = path_ID[i]) 
+}
+
+unlink(grep(&quot;csv&quot;, dir(), value = TRUE))
+
+library(igraph)
+
+as_edgelist(GO)
+
+vertex_attr(GO)</code></pre>

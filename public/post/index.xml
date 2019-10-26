@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Fri, 25 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>下载KEGG数据库</title>
+      <link>/post/download-kegg-database/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/download-kegg-database/</guid>
+      <description>记录使用一些R语言包下载KEGG数据库. #get the ID of all hsa pathways KEGGREST::listDatabases() path_ID &amp;lt;- KEGGREST::keggList(organism = &amp;quot;hsa&amp;quot;, database = &amp;quot;pathway&amp;quot;) %&amp;gt;% names() %&amp;gt;% unique() %&amp;gt;% stringr::str_replace_all(., &amp;quot;path:&amp;quot;, &amp;quot;&amp;quot;) dir.create(path = &amp;quot;kegg_pathway&amp;quot;) setwd(&amp;quot;kegg_pathway/&amp;quot;) node_info &amp;lt;- vector(mode = &amp;quot;list&amp;quot;, length = length(path_ID)) edge_info &amp;lt;- vector(mode = &amp;quot;list&amp;quot;, length = length(path_ID)) for(i in i:length(path_ID)){ cat(i, &amp;quot; &amp;quot;)</description>
+    </item>
     
     <item>
       <title>ggplot2-cookbook</title>
