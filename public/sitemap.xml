@@ -41,6 +41,11 @@
   </url>
   
   <url>
+    <loc>/categories/life/</loc>
+    <lastmod>2019-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/r/</loc>
     <lastmod>2019-10-25T00:00:00+00:00</lastmod>
   </url>
@@ -57,6 +62,11 @@
   
   <url>
     <loc>/post/r-project-work-directory/</loc>
+    <lastmod>2019-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/stanford-resource-summary/</loc>
     <lastmod>2019-10-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -117,11 +127,6 @@
   
   <url>
     <loc>/tags/life/</loc>
-    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/life/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
   </url>
   

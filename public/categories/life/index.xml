@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/life/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>斯坦福资源总结</title>
+      <link>/post/stanford-resource-summary/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stanford-resource-summary/</guid>
+      <description>这篇博文主要用来记录斯坦福校内的一些资源和手续的办理事项. Adobe软件 斯坦福医学院是有免费的Adobe软件可以使用的,包括Illustra</description>
+    </item>
     
     <item>
       <title>20191014一点感想</title>
