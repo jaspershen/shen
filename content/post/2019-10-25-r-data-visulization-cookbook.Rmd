@@ -12,7 +12,7 @@ image:
   focal_point: ''
 ---
 
-### `ggplot2`中如何反转坐标轴
+### `ggplot2`中如何反转坐标轴?
 
 使用`scale_x_reverse()/scale_y_reverse()`函数.
 
@@ -68,5 +68,18 @@ test_colour <-
   ggsci::pal_jama(alpha = 0.5)(7)
 
 show_col(test_colour)
+```
+
+另外,`RColorBrewer`包也非常方便.
+
+```{r}
+library(RColorBrewer)
+##显示所有的配色
+RColorBrewer::display.brewer.all()
+##可以扩大弄每一种配色左边都有该配色的名字,因此如果想要单独显示该配色,直接使用下列命令.
+RColorBrewer::display.brewer.pal(n = 9, name = "Set1")
+##两个参数分别用来设置需要显示的颜色的个数以及配色的名字.
+#如果需要将该配色名字提出来,使用下面命令
+RColorBrewer::brewer.pal(n = 9, name = "Set1")
 ```
 
