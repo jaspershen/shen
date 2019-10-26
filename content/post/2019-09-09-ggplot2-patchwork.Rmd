@@ -10,6 +10,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 推荐一个用来拼图的包:`patchwork`.作者是[Thomas Lin Pedersen](https://github.com/thomasp85).使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟`tidyverse`非常像,直接使用`+`,`-`等符号来进行图的拼接.举个例子说明.

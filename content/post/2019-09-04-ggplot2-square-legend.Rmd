@@ -10,6 +10,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 今天看到有人在讨论如何修改`ggplot2`中垂直square legend之间的距离.原来想着`ggplot2`中的`theme`函数的`legend.key.height`参数不就是来控制这个距离的吗?后来试了一下,还真的不行.

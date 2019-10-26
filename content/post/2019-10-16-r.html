@@ -12,18 +12,28 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#lasso模型"><span class="toc-section-number">0.0.1</span> lasso模型</a></li>
+<li><a href="#references"><span class="toc-section-number">0.0.2</span> References</a></li>
+</ul>
+</div>
 
 <div id="lasso模型" class="section level3">
-<h3>lasso模型</h3>
+<h3><span class="header-section-number">0.0.1</span> lasso模型</h3>
 <p>LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regularization).因此,不论因变量(dependent/response varaible)是连续的(continuous),还是二元或者多元离散的（discrete）,都可以用LASSO回归建模然后预测.这里的变量筛选是指不把所有的变量都放入模型中进行拟合,而是有选择的把变量放入模型从而得到更好的性能参数. 复杂度调整是指通过一系列参数控制模型的复杂度,从而避免过拟合(overfitting). 对于线性模型来说,复杂度与模型的变量数有直接关系,变量数越多,模型复杂度就越高. 更多的变量在拟合时往往可以给出一个看似更好的模型,但是同时也面临过度拟合的危险.此时如果用全新的数据去验证模型(validation),通常效果很差. 一般来说,变量数大于数据点数量很多,或者某一个离散变量有太多独特值时,都有可能过度拟合.</p>
 <p>LASSO回归的复杂度主要由参数<span class="math inline">\(\lambda\)</span>(lambda)来控制.lambda越大,对变量较多的线性模型的惩罚力度就越大.最终获得一个变量较少的模型.</p>
 <p>另外还有一个参数<span class="math inline">\(\alpha\)</span>(alpha)用来控制高度相关性模型的性状.LASSO回归时,alpha设置为1.</p>
 <p>使用<code>glmnet</code>包可以进行LASSO回归.它可以对一系列不同的lambda值进行拟合,每次拟合都用到上一个lambda拟合的结果,从而大大提高了运行效率.</p>
 <div id="常用参数如下" class="section level4">
-<h4>常用参数如下:</h4>
+<h4><span class="header-section-number">0.0.1.1</span> 常用参数如下:</h4>
 <ul>
 <li><code>x</code>: 自变量数据集,需要为matrix格式,行为观测列为变量.<br />
 </li>
@@ -36,12 +46,12 @@ image:
 </ul>
 </div>
 <div id="构建模型" class="section level4">
-<h4>构建模型</h4>
+<h4><span class="header-section-number">0.0.1.2</span> 构建模型</h4>
 <p>构建模型之后,可以将其打印出来观察具体信息.</p>
 </div>
 </div>
 <div id="references" class="section level3">
-<h3>References</h3>
+<h3><span class="header-section-number">0.0.2</span> References</h3>
 <ul>
 <li><a href="https://cosx.org/2016/10/data-mining-1-lasso/" class="uri">https://cosx.org/2016/10/data-mining-1-lasso/</a></li>
 </ul>

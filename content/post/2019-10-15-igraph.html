@@ -12,19 +12,29 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#安装"><span class="toc-section-number">0.0.1</span> 安装</a></li>
+<li><a href="#常用功能总结"><span class="toc-section-number">0.0.2</span> 常用功能总结</a></li>
+</ul>
+</div>
 
 <p><code>igraph</code>是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的<code>igraph</code>包.其官网如下:
 <a href="https://igraph.org/r/doc/plot.common.html" class="uri">https://igraph.org/r/doc/plot.common.html</a></p>
 <div id="安装" class="section level3">
-<h3>安装</h3>
+<h3><span class="header-section-number">0.0.1</span> 安装</h3>
 </div>
 <div id="常用功能总结" class="section level3">
-<h3>常用功能总结</h3>
+<h3><span class="header-section-number">0.0.2</span> 常用功能总结</h3>
 <div id="寻找某个vertex的neighbor" class="section level4">
-<h4>寻找某个vertex的neighbor</h4>
+<h4><span class="header-section-number">0.0.2.1</span> 寻找某个vertex的neighbor</h4>
 <p>使用<code>neighbors()</code>函数.一共两个参数:</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />
@@ -35,7 +45,7 @@ image:
 </ul>
 </div>
 <div id="设置graph中vertex的属性" class="section level4">
-<h4>设置graph中vertex的属性</h4>
+<h4><span class="header-section-number">0.0.2.2</span> 设置graph中vertex的属性</h4>
 <p>如果需要给graph中的vertex增加或者修改属性,可以使用<code>ste_vertex_attr()</code>函数.一共四个参数:</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />
@@ -47,11 +57,11 @@ image:
 </ul>
 </div>
 <div id="将igraph对象转变为data.frame格式" class="section level4">
-<h4>将<code>igraph</code>对象转变为data.frame格式</h4>
+<h4><span class="header-section-number">0.0.2.3</span> 将<code>igraph</code>对象转变为data.frame格式</h4>
 <p>使用<code>as_long_data_frame()</code>函数可以将<code>igraph</code>转换为data.frame格式.只有一个参数,就是<code>graph</code>.</p>
 </div>
 <div id="从一个graph提取子graphsubgraph" class="section level4">
-<h4>从一个graph提取子graph(subgraph)</h4>
+<h4><span class="header-section-number">0.0.2.4</span> 从一个graph提取子graph(subgraph)</h4>
 <p>使用<code>subgraph()</code>函数.一共两个参数:</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />
@@ -60,7 +70,7 @@ image:
 </ul>
 </div>
 <div id="获取vertex属性" class="section level4">
-<h4>获取vertex属性</h4>
+<h4><span class="header-section-number">0.0.2.5</span> 获取vertex属性</h4>
 <p>使用<code>vertex_attr()</code>函数.一共4个参数.</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />

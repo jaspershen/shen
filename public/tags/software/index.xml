@@ -25,16 +25,22 @@
       <guid>/post/igraph/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#常用功能总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 常用功能总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;code&gt;igraph&lt;/code&gt;是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的&lt;code&gt;igraph&lt;/code&gt;包.其官网如下:
 &lt;a href=&#34;https://igraph.org/r/doc/plot.common.html&#34; class=&#34;uri&#34;&gt;https://igraph.org/r/doc/plot.common.html&lt;/a&gt;&lt;/p&gt;
 &lt;div id=&#34;安装&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;安装&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/h3&gt;
 &lt;/div&gt;
 &lt;div id=&#34;常用功能总结&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;常用功能总结&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 常用功能总结&lt;/h3&gt;
 &lt;div id=&#34;寻找某个vertex的neighbor&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;寻找某个vertex的neighbor&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.1&lt;/span&gt; 寻找某个vertex的neighbor&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;neighbors()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -45,7 +51,7 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;设置graph中vertex的属性&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;设置graph中vertex的属性&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.2&lt;/span&gt; 设置graph中vertex的属性&lt;/h4&gt;
 &lt;p&gt;如果需要给graph中的vertex增加或者修改属性,可以使用&lt;code&gt;ste_vertex_attr()&lt;/code&gt;函数.一共四个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -57,11 +63,11 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;将igraph对象转变为data.frame格式&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.3&lt;/span&gt; 将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;as_long_data_frame()&lt;/code&gt;函数可以将&lt;code&gt;igraph&lt;/code&gt;转换为data.frame格式.只有一个参数,就是&lt;code&gt;graph&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;从一个graph提取子graphsubgraph&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;从一个graph提取子graph(subgraph)&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.4&lt;/span&gt; 从一个graph提取子graph(subgraph)&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;subgraph()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -70,7 +76,7 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;获取vertex属性&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;获取vertex属性&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.5&lt;/span&gt; 获取vertex属性&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;vertex_attr()&lt;/code&gt;函数.一共4个参数.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;

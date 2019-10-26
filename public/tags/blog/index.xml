@@ -502,15 +502,21 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
       <guid>/post/r-ml-model/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#lasso模型&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; lasso模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#references&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;lasso模型&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;lasso模型&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; lasso模型&lt;/h3&gt;
 &lt;p&gt;LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regularization).因此,不论因变量(dependent/response varaible)是连续的(continuous),还是二元或者多元离散的（discrete）,都可以用LASSO回归建模然后预测.这里的变量筛选是指不把所有的变量都放入模型中进行拟合,而是有选择的把变量放入模型从而得到更好的性能参数. 复杂度调整是指通过一系列参数控制模型的复杂度,从而避免过拟合(overfitting). 对于线性模型来说,复杂度与模型的变量数有直接关系,变量数越多,模型复杂度就越高. 更多的变量在拟合时往往可以给出一个看似更好的模型,但是同时也面临过度拟合的危险.此时如果用全新的数据去验证模型(validation),通常效果很差. 一般来说,变量数大于数据点数量很多,或者某一个离散变量有太多独特值时,都有可能过度拟合.&lt;/p&gt;
 &lt;p&gt;LASSO回归的复杂度主要由参数&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;(lambda)来控制.lambda越大,对变量较多的线性模型的惩罚力度就越大.最终获得一个变量较少的模型.&lt;/p&gt;
 &lt;p&gt;另外还有一个参数&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;(alpha)用来控制高度相关性模型的性状.LASSO回归时,alpha设置为1.&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;glmnet&lt;/code&gt;包可以进行LASSO回归.它可以对一系列不同的lambda值进行拟合,每次拟合都用到上一个lambda拟合的结果,从而大大提高了运行效率.&lt;/p&gt;
 &lt;div id=&#34;常用参数如下&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;常用参数如下:&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1.1&lt;/span&gt; 常用参数如下:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;x&lt;/code&gt;: 自变量数据集,需要为matrix格式,行为观测列为变量.&lt;br /&gt;
 &lt;/li&gt;
@@ -523,12 +529,12 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;构建模型&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;构建模型&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1.2&lt;/span&gt; 构建模型&lt;/h4&gt;
 &lt;p&gt;构建模型之后,可以将其打印出来观察具体信息.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;references&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;References&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; References&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://cosx.org/2016/10/data-mining-1-lasso/&#34; class=&#34;uri&#34;&gt;https://cosx.org/2016/10/data-mining-1-lasso/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -543,16 +549,22 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
       <guid>/post/igraph/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#常用功能总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 常用功能总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;code&gt;igraph&lt;/code&gt;是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的&lt;code&gt;igraph&lt;/code&gt;包.其官网如下:
 &lt;a href=&#34;https://igraph.org/r/doc/plot.common.html&#34; class=&#34;uri&#34;&gt;https://igraph.org/r/doc/plot.common.html&lt;/a&gt;&lt;/p&gt;
 &lt;div id=&#34;安装&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;安装&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/h3&gt;
 &lt;/div&gt;
 &lt;div id=&#34;常用功能总结&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;常用功能总结&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 常用功能总结&lt;/h3&gt;
 &lt;div id=&#34;寻找某个vertex的neighbor&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;寻找某个vertex的neighbor&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.1&lt;/span&gt; 寻找某个vertex的neighbor&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;neighbors()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -563,7 +575,7 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;设置graph中vertex的属性&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;设置graph中vertex的属性&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.2&lt;/span&gt; 设置graph中vertex的属性&lt;/h4&gt;
 &lt;p&gt;如果需要给graph中的vertex增加或者修改属性,可以使用&lt;code&gt;ste_vertex_attr()&lt;/code&gt;函数.一共四个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -575,11 +587,11 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;将igraph对象转变为data.frame格式&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.3&lt;/span&gt; 将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;as_long_data_frame()&lt;/code&gt;函数可以将&lt;code&gt;igraph&lt;/code&gt;转换为data.frame格式.只有一个参数,就是&lt;code&gt;graph&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;从一个graph提取子graphsubgraph&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;从一个graph提取子graph(subgraph)&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.4&lt;/span&gt; 从一个graph提取子graph(subgraph)&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;subgraph()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -588,7 +600,7 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;获取vertex属性&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;获取vertex属性&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.5&lt;/span&gt; 获取vertex属性&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;vertex_attr()&lt;/code&gt;函数.一共4个参数.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -608,10 +620,17 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
       <guid>/post/20191014/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#远程连接&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 远程连接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装虚拟机&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 安装虚拟机&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#网络连接问题&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.3&lt;/span&gt; 网络连接问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;实验室新买了一台workstation.因为有软件需要在windows上运行,因此本来需要安装windows server版本.但是后来问了一下学校的IT部门,安装一台服务器非常麻烦,需要学校IT部门来关理,每月收费350刀.如果是自己关理,也可以,但是如果有数据外漏的话,责任需要自己负责.因此最后考虑安装普通的window10版本,然后可以远程连接.我自己再看看能够在上面的虚拟机上安装linux系统,实现多人同时远程练级额.&lt;/p&gt;
 &lt;div id=&#34;远程连接&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;远程连接&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 远程连接&lt;/h3&gt;
 &lt;p&gt;连接上Stanford的VPN之后,远程连接并不起作用.当时推测的可能就是这台电脑属于某个group,需要把我们的SunetID加入刀该group内,然后才能进去.但是来的IT人员搞了好几天也没搞定,我也是略微无语.随后不在管他,我在IT online提交了ticket,过了大概一个星期,终于查到了解决办法,就是说需要加入某个group.将邮件记录如下:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Xiaotao,
@@ -628,14 +647,14 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
 &lt;p&gt;使用Windows上的&lt;code&gt;Remote Desktop Connection&lt;/code&gt;软件进行连接时,注意&lt;code&gt;User name&lt;/code&gt;时需要在用户名前面加上&lt;code&gt;win\&lt;/code&gt;,也就是写&lt;code&gt;win\shenxt&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;安装虚拟机&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;安装虚拟机&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 安装虚拟机&lt;/h3&gt;
 &lt;p&gt;原本想要安装VMware软件的,后来发现这个软件跟win10自带的&lt;code&gt;Hyper-V&lt;/code&gt;软件是冲突的.后来就放弃使用VMware,直接使用Hyper-V软件.&lt;/p&gt;
 &lt;p&gt;最开始下载的&lt;code&gt;CentOS-8&lt;/code&gt;系统,但是安装的时候,遇到了问题,安装成功之后,重启之后没有进入登录界面,反而又重新到了安装界面!查了很多,都没有找到解决办法.&lt;/p&gt;
 &lt;p&gt;后来,觉得有可能是系统版本的问题,因此在CentOS官网上找到了CentOS-7版本.重新走了一遍安装程序,终于成功了.&lt;/p&gt;
 &lt;p&gt;安装之后没有图形界面,只有命令行形式.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;网络连接问题&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;网络连接问题&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3&lt;/span&gt; 网络连接问题&lt;/h3&gt;
 &lt;p&gt;直接安装之后,并没有网络连接.需要进行设置.查了一些资料,首先需要在Hyper-V软件上创建虚拟交换机,但是我在创建的时候,总是报错,无法创建,然后又开始google.结果找到了这样一个网页:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://support.microsoft.com/zh-cn/help/3101106/you-cannot-create-a-hyper-v-virtual-switch-on-64-bit-versions-of-windo&#34; class=&#34;uri&#34;&gt;https://support.microsoft.com/zh-cn/help/3101106/you-cannot-create-a-hyper-v-virtual-switch-on-64-bit-versions-of-windo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;然后就下载软件,运行,重启,然后就没有网络连接了!而且是所有的网络都没有了,查了一下感觉应该是驱动的问题,然后在官网上下载了Intel的驱动,走的时候还没有安装好,看看明天结果如何.&lt;/p&gt;
@@ -708,27 +727,36 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
 &lt;script src=&#34;/rmarkdown-libs/sankey/sankey.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js&#34;&gt;&lt;/script&gt;
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#使用networkd3包构建桑吉图&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; 使用&lt;code&gt;networkD3&lt;/code&gt;包构建桑吉图&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#基础桑吉图绘制&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.1&lt;/span&gt; 基础桑吉图绘制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#另外一个例子&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.2&lt;/span&gt; 另外一个例子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用ggalluvial包绘制桑吉图&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.3&lt;/span&gt; 使用&lt;code&gt;ggalluvial&lt;/code&gt;包绘制桑吉图&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;本文翻译自“The graph gallery”网站,原帖文地址链接:&lt;a href=&#34;https://www.r-graph-gallery.com/sankey-diagram.html&#34; class=&#34;uri&#34;&gt;https://www.r-graph-gallery.com/sankey-diagram.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;桑吉图(sankey diagram)使用来研究同一个变量在其不同分类中的比例或者说是流动的.实体(或者说是节点,node)一般使用长方形或者文字来表示.箭头和弧线用来表示在他们之间的流动.&lt;/p&gt;
 &lt;div id=&#34;使用networkd3包构建桑吉图&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;使用&lt;code&gt;networkD3&lt;/code&gt;包构建桑吉图&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; 使用&lt;code&gt;networkD3&lt;/code&gt;包构建桑吉图&lt;/h2&gt;
 &lt;div id=&#34;基础桑吉图绘制&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;基础桑吉图绘制&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1&lt;/span&gt; 基础桑吉图绘制&lt;/h3&gt;
 &lt;p&gt;可以使用两种格式的数据进行桑吉图绘制:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;connection data frame(一共三列),可以理解为长数据.&lt;/li&gt;
 &lt;li&gt;关联矩阵(incidence matrix),可以理解为宽数据.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div id=&#34;使用connection-data-frame&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;使用connection data frame&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1.1&lt;/span&gt; 使用connection data frame&lt;/h4&gt;
 &lt;p&gt;connection data frame至少需要两列,分别为source和target.第三列可以用来说明该connection的数值.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(networkD3)
 library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -- Attaching packages ---------------------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages ---------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -737,7 +765,7 @@ library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -- Conflicts ------------------------------------------------------------------------------------- tidyverse_conflicts() --
+&lt;pre&gt;&lt;code&gt;## -- Conflicts ------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;links &amp;lt;- data.frame(
@@ -779,12 +807,12 @@ p&lt;/code&gt;&lt;/pre&gt;
 图片时交互性的.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用关联矩阵&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;使用关联矩阵&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1.2&lt;/span&gt; 使用关联矩阵&lt;/h4&gt;
 &lt;p&gt;关联矩阵时正方形或者长方形的.行名和列名分别为node的名称.每一个cell代表着两个node之间flow的数值.但是因为在&lt;code&gt;network3D&lt;/code&gt;中,只能使用长数据,因此其实就是将宽数据转换为长数据.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;另外一个例子&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;另外一个例子&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.2&lt;/span&gt; 另外一个例子&lt;/h3&gt;
 &lt;p&gt;我们使用桑吉图来展示科学家的移民或者说是流动情况.左边代表科学家的移出国,右边代表科学家的移进国.数据来自scientific publication(&lt;a href=&#34;https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327&#34; class=&#34;uri&#34;&gt;https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327&lt;/a&gt;).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#加载包
 library(tidyverse)
@@ -840,7 +868,7 @@ sankeyNetwork(
 &lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;links&#34;:{&#34;source&#34;:[0,0,0,0,0,2,2,2,2,2,2,4,6,6,6,8,8,10,10,12,12,12,12,12,12,13,13,13,13,13,16,16,18,18,18],&#34;target&#34;:[1,5,9,11,19,3,5,9,11,15,19,5,5,7,9,5,7,5,11,3,5,9,11,14,19,3,5,9,11,15,5,17,5,9,19],&#34;value&#34;:[3.142471,2.107883,0.540887,0.155988,0.673004,1.630997,0.601265,0.97306,0.333608,0.380388,0.869311,2.401476,1.762587,0.879198,3.627847,1.215929,0.276908,0.17037,0.190706,0.525881,1.390272,1.508008,0.34742,1.307907,4.902081,0.145264,0.468762,1.057904,0.278746,0.781316,0.60923,1.870501,0.449623,0.169274,0.927243]},&#34;nodes&#34;:{&#34;name&#34;:[&#34;Africa&#34;,&#34;Africa &#34;,&#34;East Asia&#34;,&#34;East.Asia &#34;,&#34;Europe&#34;,&#34;Europe &#34;,&#34;Latin America&#34;,&#34;Latin.America &#34;,&#34;North America&#34;,&#34;North.America &#34;,&#34;Oceania&#34;,&#34;Oceania &#34;,&#34;South Asia&#34;,&#34;South East Asia&#34;,&#34;South.Asia &#34;,&#34;South.East.Asia &#34;,&#34;Soviet Union&#34;,&#34;Soviet.Union &#34;,&#34;West Asia&#34;,&#34;West.Asia &#34;],&#34;group&#34;:[&#34;Africa&#34;,&#34;Africa &#34;,&#34;East Asia&#34;,&#34;East.Asia &#34;,&#34;Europe&#34;,&#34;Europe &#34;,&#34;Latin America&#34;,&#34;Latin.America &#34;,&#34;North America&#34;,&#34;North.America &#34;,&#34;Oceania&#34;,&#34;Oceania &#34;,&#34;South Asia&#34;,&#34;South East Asia&#34;,&#34;South.Asia &#34;,&#34;South.East.Asia &#34;,&#34;Soviet Union&#34;,&#34;Soviet.Union &#34;,&#34;West Asia&#34;,&#34;West.Asia &#34;]},&#34;options&#34;:{&#34;NodeID&#34;:&#34;name&#34;,&#34;NodeGroup&#34;:&#34;name&#34;,&#34;LinkGroup&#34;:null,&#34;colourScale&#34;:&#34;d3.scaleOrdinal() .range([\&#34;#FDE725FF\&#34;,\&#34;#B4DE2CFF\&#34;,\&#34;#6DCD59FF\&#34;,\&#34;#35B779FF\&#34;,\&#34;#1F9E89FF\&#34;,\n\&#34;#26828EFF\&#34;,\&#34;#31688EFF\&#34;,\&#34;#3E4A89FF\&#34;,\&#34;#482878FF\&#34;,\&#34;#440154FF\&#34;])&#34;,&#34;fontSize&#34;:13,&#34;fontFamily&#34;:null,&#34;nodeWidth&#34;:40,&#34;nodePadding&#34;:20,&#34;units&#34;:&#34;&#34;,&#34;margin&#34;:{&#34;top&#34;:null,&#34;right&#34;:null,&#34;bottom&#34;:null,&#34;left&#34;:null},&#34;iterations&#34;:32,&#34;sinksRight&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用ggalluvial包绘制桑吉图&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;使用&lt;code&gt;ggalluvial&lt;/code&gt;包绘制桑吉图&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3&lt;/span&gt; 使用&lt;code&gt;ggalluvial&lt;/code&gt;包绘制桑吉图&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;ggalluvial&lt;/code&gt;包是&lt;code&gt;ggplot2&lt;/code&gt;的一个扩展包.可以用来绘制桑吉图.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##加载包
 library(ggalluvial)&lt;/code&gt;&lt;/pre&gt;
@@ -879,7 +907,7 @@ ggplot(vaccinations,
 &lt;p&gt;&lt;img src=&#34;/post/2019-10-12-r-sankey_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们在对该包做一个详细的讲解.&lt;/p&gt;
 &lt;div id=&#34;冲积图alluvial-diagrams的结构&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;冲积图(Alluvial diagrams)的结构&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3.1&lt;/span&gt; 冲积图(Alluvial diagrams)的结构&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;ggalluvial&lt;/code&gt;包绘制的图称之为冲积图(Alluvial diagrams).我们以上面的例子图为例,来进行解释.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;X轴代表着数据流动的分类.比如上图中,一共有三类,也就是ms153_NSA,ms432_NSA和ms460_NSA.&lt;/p&gt;&lt;/li&gt;
@@ -890,10 +918,10 @@ ggplot(vaccinations,
 &lt;p&gt;我们对这个图的结构进行详细的理解之后,我们在来看如何使用&lt;code&gt;galluvial&lt;/code&gt;包绘制冲积图.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;所需要的数据类型&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;所需要的数据类型&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3.2&lt;/span&gt; 所需要的数据类型&lt;/h4&gt;
 &lt;p&gt;跟&lt;code&gt;network3D&lt;/code&gt;包一样,&lt;code&gt;ggalluvial&lt;/code&gt;包也可以使用宽数据和长数据.我们使用&lt;code&gt;UCBAdmissions&lt;/code&gt;数据为例进行说明.&lt;/p&gt;
 &lt;div id=&#34;宽数据&#34; class=&#34;section level5&#34;&gt;
-&lt;h5&gt;宽数据&lt;/h5&gt;
+&lt;h5&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3.2.1&lt;/span&gt; 宽数据&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;UCBAdmissions&lt;/code&gt;数据一共有4列.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -909,12 +937,17 @@ ggplot(vaccinations,
       <guid>/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#离散变量discrete-data的生成模型&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 离散变量(discrete data)的生成模型&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;离散变量discrete-data的生成模型&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;离散变量(discrete data)的生成模型&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 离散变量(discrete data)的生成模型&lt;/h3&gt;
 &lt;p&gt;在分子生物学中,在很多情况下都会产生离散变量.&lt;/p&gt;
 &lt;div id=&#34;本章目标&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;1.1 本章目标&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1.1&lt;/span&gt; 1.1 本章目标&lt;/h4&gt;
 &lt;p&gt;在本章中,我们将会:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;学会对于一个给定模型如何获取其所有可能结果的概率(probabilities),并且将理论的频率(frequencies)和实际数据观测到的进行比较.&lt;/p&gt;&lt;/li&gt;
@@ -925,7 +958,7 @@ ggplot(vaccinations,
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;一个真实例子&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;1.2 一个真实例子&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1.2&lt;/span&gt; 1.2 一个真实例子&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -938,9 +971,14 @@ ggplot(vaccinations,
       <guid>/post/2019-10-10-/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#correlation-analysis&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; Correlation analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;correlation-analysis&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Correlation analysis&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; Correlation analysis&lt;/h3&gt;
 &lt;p&gt;将组学变量(gene,protein,metabolite,clinical factor)进行相关性分析,得到他们之间的相关性,注意需要选择合适的相关性计算方法,并进行多重比较矫正(FDR,BH等).&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -1025,17 +1063,23 @@ mtcars %&amp;gt;%
       <guid>/post/ggplot2-patchwork/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 使用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;推荐一个用来拼图的包:&lt;code&gt;patchwork&lt;/code&gt;.作者是&lt;a href=&#34;https://github.com/thomasp85&#34;&gt;Thomas Lin Pedersen&lt;/a&gt;.使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟&lt;code&gt;tidyverse&lt;/code&gt;非常像,直接使用&lt;code&gt;+&lt;/code&gt;,&lt;code&gt;-&lt;/code&gt;等符号来进行图的拼接.举个例子说明.&lt;/p&gt;
 &lt;div id=&#34;安装&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;安装&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;patchwork&lt;/code&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::install_github(&amp;quot;thomasp85/patchwork&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Skipping install of &amp;#39;patchwork&amp;#39; from a github remote, the SHA1 (36b49187) has not changed since last install.
 ##   Use `force = TRUE` to force installation&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;使用&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 使用&lt;/h3&gt;
 &lt;p&gt;拼图有两种不同的含义:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;像一幅图中不同的panel一样,他们分别是独立的;&lt;/p&gt;&lt;/li&gt;
@@ -1044,7 +1088,7 @@ mtcars %&amp;gt;%
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(patchwork)
 library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -- Attaching packages ---------------------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages ---------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -1053,7 +1097,7 @@ library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## -- Conflicts ------------------------------------------------------------------------------------- tidyverse_conflicts() --
+&lt;pre&gt;&lt;code&gt;## -- Conflicts ------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot1 &amp;lt;- 
@@ -1159,10 +1203,15 @@ plot&lt;/code&gt;&lt;/pre&gt;
       <guid>/post/2019-08-31-/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#sigmoid函数logistic-function&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; Sigmoid函数(logistic function)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;逻辑回归(logistic regression)其实就是线性回归的一种.只是对于逻辑回归的因变量,是非连续变量的0和1,通过Sigmoid函数将其映射为连续性变量.逻辑回归虽然叫回归,但是预测给出的值只是0和1,因此其实是属于分类.&lt;/p&gt;
 &lt;div id=&#34;sigmoid函数logistic-function&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Sigmoid函数(logistic function)&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; Sigmoid函数(logistic function)&lt;/h3&gt;
 &lt;p&gt;sigmoid函数的方程如下:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x) = \frac{1}{1+e^{-x}}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;其函数曲线我们可以通过模拟给出:&lt;/p&gt;
@@ -1330,10 +1379,27 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
       <guid>/post/2019-08-25-markdown/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#如何插入公式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 1. 如何插入公式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#上下标&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 2. 上下标&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#括号和分隔符&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.3&lt;/span&gt; 3. 括号和分隔符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.4&lt;/span&gt; 4. 分数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#开方&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.5&lt;/span&gt; 5. 开方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#省略号&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.6&lt;/span&gt; 6. 省略号&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#矢量&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.7&lt;/span&gt; 7. 矢量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#积分&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.8&lt;/span&gt; 8. 积分&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#极限预算&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.9&lt;/span&gt; 9. 极限预算&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#累加累乘公式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.10&lt;/span&gt; 10. 累加,累乘公式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#希腊字母&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.11&lt;/span&gt; 11. 希腊字母&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#运算符&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.12&lt;/span&gt; 12. 运算符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#字体转换&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.13&lt;/span&gt; 13. 字体转换&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;在Markdown中可以方便的输入数学公式.现在将Markdown中数学公式总结一下.&lt;/p&gt;
 &lt;div id=&#34;如何插入公式&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1. 如何插入公式&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 1. 如何插入公式&lt;/h3&gt;
 &lt;p&gt;包括两种,一种是在行内插入,一种是独立公式(单独一行).&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;行中插入公式(&lt;code&gt;$E = mc^2$&lt;/code&gt;): &lt;span class=&#34;math inline&#34;&gt;\(E = mc^2\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
@@ -1343,7 +1409,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[E = mc^2\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;上下标&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2. 上下标&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 2. 上下标&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;^&lt;/code&gt;上标,&lt;code&gt;_&lt;/code&gt;下标.如果上下标内容多于一个字符,需要使用&lt;code&gt;{}&lt;/code&gt;将其扩大为一个整体.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/li&gt;
@@ -1354,7 +1420,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} \]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;括号和分隔符&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;3. 括号和分隔符&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3&lt;/span&gt; 3. 括号和分隔符&lt;/h3&gt;
 &lt;p&gt;()、[] 和 | 表示符号本身，使用 {} 来表示{} 。当要显示大号的括号或分隔符时，要用 和 命令。&lt;/p&gt;
 &lt;p&gt;一些特殊的例子:&lt;/p&gt;
 &lt;table&gt;
@@ -1396,7 +1462,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2}\right) \]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;分数&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4. 分数&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.4&lt;/span&gt; 4. 分数&lt;/h3&gt;
 &lt;p&gt;通常使用  {分母} 命令产生一个分数，分数可嵌套。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/li&gt;
@@ -1407,7 +1473,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{a-1}{b-1}\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;开方&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;5. 开方&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.5&lt;/span&gt; 5. 开方&lt;/h3&gt;
 &lt;p&gt;使用  命令输入开方。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/li&gt;
@@ -1421,7 +1487,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;div id=&#34;省略号&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;6. 省略号&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.6&lt;/span&gt; 6. 省略号&lt;/h3&gt;
 &lt;p&gt;数学公式中常见的省略号有两种，表示与文本底线对齐的省略号，表示与文本中线对齐的省略号。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/li&gt;
@@ -1432,7 +1498,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[f(x_1,x_2,\ldots ,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;矢量&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;7. 矢量&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.7&lt;/span&gt; 7. 矢量&lt;/h3&gt;
 &lt;p&gt;使用  来自动产生一个矢量。也可以使用 等命令自定义字母上方的符号。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/li&gt;
@@ -1451,7 +1517,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;积分&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;8. 积分&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.8&lt;/span&gt; 8. 积分&lt;/h3&gt;
 &lt;p&gt;使用 _积分下限^积分上限 {被积表达式} 来输入一个积分。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/li&gt;
@@ -1462,7 +1528,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\int_0^1 {x^2} dx\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;极限预算&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;9. 极限预算&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.9&lt;/span&gt; 9. 极限预算&lt;/h3&gt;
 &lt;p&gt;使用 _{变量 表达式} 表达式 来输入一个极限。如有需求，可以更改 符号至任意符号。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;例子&lt;/strong&gt;&lt;/li&gt;
@@ -1481,7 +1547,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\to \quad and \quad \rightarrow\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;累加累乘公式&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;10. 累加,累乘公式&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.10&lt;/span&gt; 10. 累加,累乘公式&lt;/h3&gt;
 &lt;p&gt;使用 _{下标表达式}^{上标表达式} {累加表达式} 来输入一个累加。
 与之类似，使用 来分别输入累乘、并集和交集。
 此类符号在行内显示时上下标表达式将会移至右上角和右下角。&lt;/p&gt;
@@ -1494,7 +1560,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;希腊字母&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;11. 希腊字母&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.11&lt;/span&gt; 11. 希腊字母&lt;/h3&gt;
 &lt;p&gt;输入&lt;code&gt;\小写希腊字母英文全称&lt;/code&gt;和&lt;code&gt;\首字母大写希腊字母英文全称&lt;/code&gt;来分别输入小写和大写希腊字母。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;对于大写希腊字母与现有字母相同的，直接输入大写字母即可。&lt;/p&gt;
@@ -1637,9 +1703,9 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;div id=&#34;运算符&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;12. 运算符&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.12&lt;/span&gt; 12. 运算符&lt;/h3&gt;
 &lt;div id=&#34;关系运算符&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;(1) 关系运算符&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.12.1&lt;/span&gt; (1) 关系运算符&lt;/h4&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
@@ -1708,7 +1774,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;div id=&#34;集合运算符&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;(2) 集合运算符&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.12.2&lt;/span&gt; (2) 集合运算符&lt;/h4&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
@@ -1757,7 +1823,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;div id=&#34;对数运算符&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;(3) 对数运算符&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.12.3&lt;/span&gt; (3) 对数运算符&lt;/h4&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
@@ -1782,7 +1848,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;div id=&#34;三角运算符&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;(4) 三角运算符&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.12.4&lt;/span&gt; (4) 三角运算符&lt;/h4&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
@@ -1828,7 +1894,7 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;字体转换&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;13. 字体转换&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.13&lt;/span&gt; 13. 字体转换&lt;/h3&gt;
 &lt;p&gt;若要对公式的某一部分字符进行字体转换，可以用&lt;code&gt;{\字体 {需转换的部分字符}}&lt;/code&gt;命令，其中 &lt;code&gt;\字体&lt;/code&gt; 部分可以参照下表选择合适的字体。一般情况下，公式默认为意大利体。&lt;/p&gt;
 &lt;p&gt;示例中&lt;code&gt;全部大写&lt;/code&gt;的字体仅大写可用。&lt;/p&gt;
 &lt;table&gt;

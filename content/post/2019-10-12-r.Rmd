@@ -10,6 +10,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 > 本文翻译自"The graph gallery"网站,原帖文地址链接:https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html.

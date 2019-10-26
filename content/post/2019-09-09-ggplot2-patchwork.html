@@ -10,20 +10,30 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#安装"><span class="toc-section-number">0.0.1</span> 安装</a></li>
+<li><a href="#使用"><span class="toc-section-number">0.0.2</span> 使用</a></li>
+</ul>
+</div>
 
 <p>推荐一个用来拼图的包:<code>patchwork</code>.作者是<a href="https://github.com/thomasp85">Thomas Lin Pedersen</a>.使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟<code>tidyverse</code>非常像,直接使用<code>+</code>,<code>-</code>等符号来进行图的拼接.举个例子说明.</p>
 <div id="安装" class="section level3">
-<h3>安装</h3>
+<h3><span class="header-section-number">0.0.1</span> 安装</h3>
 <p><code>patchwork</code></p>
 <pre class="r"><code>devtools::install_github(&quot;thomasp85/patchwork&quot;)</code></pre>
 <pre><code>## Skipping install of &#39;patchwork&#39; from a github remote, the SHA1 (36b49187) has not changed since last install.
 ##   Use `force = TRUE` to force installation</code></pre>
 </div>
 <div id="使用" class="section level3">
-<h3>使用</h3>
+<h3><span class="header-section-number">0.0.2</span> 使用</h3>
 <p>拼图有两种不同的含义:</p>
 <ol style="list-style-type: decimal">
 <li><p>像一幅图中不同的panel一样,他们分别是独立的;</p></li>
@@ -32,7 +42,7 @@ image:
 <pre class="r"><code>library(patchwork)
 library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ---------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -41,7 +51,7 @@ library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>plot1 &lt;- 

@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/sankey-di">
+  <meta name="description" content="0.1 使用networkD3包构建桑吉图 0.1.1 基础桑吉图绘制 0.1.2 另外一个例子 0.1.3 使用ggalluvial包绘制桑吉图 本文翻译自“The graph gallery”">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/r-sankey/">
@@ -137,7 +137,7 @@
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/r-sankey/">
   <meta property="og:title" content="R可视化之桑吉图 | Xiaotao Shen">
-  <meta property="og:description" content="本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/sankey-di"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:description" content="0.1 使用networkD3包构建桑吉图 0.1.1 基础桑吉图绘制 0.1.2 另外一个例子 0.1.3 使用ggalluvial包绘制桑吉图 本文翻译自“The graph gallery”"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-10-12T00:00:00&#43;00:00">
@@ -713,27 +713,36 @@
 <script src="/rmarkdown-libs/sankey/sankey.js"></script>
 <script src="/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#使用networkd3包构建桑吉图"><span class="toc-section-number">0.1</span> 使用<code>networkD3</code>包构建桑吉图</a><ul>
+<li><a href="#基础桑吉图绘制"><span class="toc-section-number">0.1.1</span> 基础桑吉图绘制</a></li>
+<li><a href="#另外一个例子"><span class="toc-section-number">0.1.2</span> 另外一个例子</a></li>
+<li><a href="#使用ggalluvial包绘制桑吉图"><span class="toc-section-number">0.1.3</span> 使用<code>ggalluvial</code>包绘制桑吉图</a></li>
+</ul></li>
+</ul>
+</div>
 
 <blockquote>
 <p>本文翻译自“The graph gallery”网站,原帖文地址链接:<a href="https://www.r-graph-gallery.com/sankey-diagram.html" class="uri">https://www.r-graph-gallery.com/sankey-diagram.html</a></p>
 </blockquote>
 <p>桑吉图(sankey diagram)使用来研究同一个变量在其不同分类中的比例或者说是流动的.实体(或者说是节点,node)一般使用长方形或者文字来表示.箭头和弧线用来表示在他们之间的流动.</p>
 <div id="使用networkd3包构建桑吉图" class="section level2">
-<h2>使用<code>networkD3</code>包构建桑吉图</h2>
+<h2><span class="header-section-number">0.1</span> 使用<code>networkD3</code>包构建桑吉图</h2>
 <div id="基础桑吉图绘制" class="section level3">
-<h3>基础桑吉图绘制</h3>
+<h3><span class="header-section-number">0.1.1</span> 基础桑吉图绘制</h3>
 <p>可以使用两种格式的数据进行桑吉图绘制:</p>
 <ul>
 <li>connection data frame(一共三列),可以理解为长数据.</li>
 <li>关联矩阵(incidence matrix),可以理解为宽数据.</li>
 </ul>
 <div id="使用connection-data-frame" class="section level4">
-<h4>使用connection data frame</h4>
+<h4><span class="header-section-number">0.1.1.1</span> 使用connection data frame</h4>
 <p>connection data frame至少需要两列,分别为source和target.第三列可以用来说明该connection的数值.</p>
 <pre class="r"><code>library(networkD3)
 library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ---------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -742,7 +751,7 @@ library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>links &lt;- data.frame(
@@ -784,12 +793,12 @@ p</code></pre>
 图片时交互性的.</p>
 </div>
 <div id="使用关联矩阵" class="section level4">
-<h4>使用关联矩阵</h4>
+<h4><span class="header-section-number">0.1.1.2</span> 使用关联矩阵</h4>
 <p>关联矩阵时正方形或者长方形的.行名和列名分别为node的名称.每一个cell代表着两个node之间flow的数值.但是因为在<code>network3D</code>中,只能使用长数据,因此其实就是将宽数据转换为长数据.</p>
 </div>
 </div>
 <div id="另外一个例子" class="section level3">
-<h3>另外一个例子</h3>
+<h3><span class="header-section-number">0.1.2</span> 另外一个例子</h3>
 <p>我们使用桑吉图来展示科学家的移民或者说是流动情况.左边代表科学家的移出国,右边代表科学家的移进国.数据来自scientific publication(<a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327" class="uri">https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327</a>).</p>
 <pre class="r"><code>#加载包
 library(tidyverse)
@@ -845,7 +854,7 @@ sankeyNetwork(
 <script type="application/json" data-for="htmlwidget-2">{"x":{"links":{"source":[0,0,0,0,0,2,2,2,2,2,2,4,6,6,6,8,8,10,10,12,12,12,12,12,12,13,13,13,13,13,16,16,18,18,18],"target":[1,5,9,11,19,3,5,9,11,15,19,5,5,7,9,5,7,5,11,3,5,9,11,14,19,3,5,9,11,15,5,17,5,9,19],"value":[3.142471,2.107883,0.540887,0.155988,0.673004,1.630997,0.601265,0.97306,0.333608,0.380388,0.869311,2.401476,1.762587,0.879198,3.627847,1.215929,0.276908,0.17037,0.190706,0.525881,1.390272,1.508008,0.34742,1.307907,4.902081,0.145264,0.468762,1.057904,0.278746,0.781316,0.60923,1.870501,0.449623,0.169274,0.927243]},"nodes":{"name":["Africa","Africa ","East Asia","East.Asia ","Europe","Europe ","Latin America","Latin.America ","North America","North.America ","Oceania","Oceania ","South Asia","South East Asia","South.Asia ","South.East.Asia ","Soviet Union","Soviet.Union ","West Asia","West.Asia "],"group":["Africa","Africa ","East Asia","East.Asia ","Europe","Europe ","Latin America","Latin.America ","North America","North.America ","Oceania","Oceania ","South Asia","South East Asia","South.Asia ","South.East.Asia ","Soviet Union","Soviet.Union ","West Asia","West.Asia "]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal() .range([\"#FDE725FF\",\"#B4DE2CFF\",\"#6DCD59FF\",\"#35B779FF\",\"#1F9E89FF\",\n\"#26828EFF\",\"#31688EFF\",\"#3E4A89FF\",\"#482878FF\",\"#440154FF\"])","fontSize":13,"fontFamily":null,"nodeWidth":40,"nodePadding":20,"units":"","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="使用ggalluvial包绘制桑吉图" class="section level3">
-<h3>使用<code>ggalluvial</code>包绘制桑吉图</h3>
+<h3><span class="header-section-number">0.1.3</span> 使用<code>ggalluvial</code>包绘制桑吉图</h3>
 <p><code>ggalluvial</code>包是<code>ggplot2</code>的一个扩展包.可以用来绘制桑吉图.</p>
 <pre class="r"><code>##加载包
 library(ggalluvial)</code></pre>
@@ -884,7 +893,7 @@ ggplot(vaccinations,
 <p><img src="/post/2019-10-12-r-sankey_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>我们在对该包做一个详细的讲解.</p>
 <div id="冲积图alluvial-diagrams的结构" class="section level4">
-<h4>冲积图(Alluvial diagrams)的结构</h4>
+<h4><span class="header-section-number">0.1.3.1</span> 冲积图(Alluvial diagrams)的结构</h4>
 <p>使用<code>ggalluvial</code>包绘制的图称之为冲积图(Alluvial diagrams).我们以上面的例子图为例,来进行解释.</p>
 <ul>
 <li><p>X轴代表着数据流动的分类.比如上图中,一共有三类,也就是ms153_NSA,ms432_NSA和ms460_NSA.</p></li>
@@ -895,10 +904,10 @@ ggplot(vaccinations,
 <p>我们对这个图的结构进行详细的理解之后,我们在来看如何使用<code>galluvial</code>包绘制冲积图.</p>
 </div>
 <div id="所需要的数据类型" class="section level4">
-<h4>所需要的数据类型</h4>
+<h4><span class="header-section-number">0.1.3.2</span> 所需要的数据类型</h4>
 <p>跟<code>network3D</code>包一样,<code>ggalluvial</code>包也可以使用宽数据和长数据.我们使用<code>UCBAdmissions</code>数据为例进行说明.</p>
 <div id="宽数据" class="section level5">
-<h5>宽数据</h5>
+<h5><span class="header-section-number">0.1.3.2.1</span> 宽数据</h5>
 <p><code>UCBAdmissions</code>数据一共有4列.</p>
 </div>
 </div>
