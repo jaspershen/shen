@@ -1214,12 +1214,24 @@ ggplot(data.frame(x,y), aes(x, y)) +
       <guid>/post/2019-08-26-/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#线性回归&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; 线性回归&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#简单线性回归&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.1&lt;/span&gt; 简单线性回归&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r2&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.2&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r2的假设检验&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.3&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的假设检验&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#矫正r2adjusted-r2&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.4&lt;/span&gt; 矫正&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;(&lt;span class=&#34;math inline&#34;&gt;\(adjusted R^2\)&lt;/span&gt;)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#系数的假设检验&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.5&lt;/span&gt; 系数的假设检验&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r语言进行线性回归&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.6&lt;/span&gt; R语言进行线性回归&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;线性回归&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;线性回归&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; 线性回归&lt;/h2&gt;
 &lt;p&gt;使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simple),有多个自变量,则称之为多元线性回归(multiple regression).这两个模型都必须满足变量是连续性变量,如果变量为分类变量,也可以进行线性回归,称之为逻辑回归(logistic regression).&lt;/p&gt;
 &lt;div id=&#34;简单线性回归&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;简单线性回归&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1&lt;/span&gt; 简单线性回归&lt;/h3&gt;
 &lt;p&gt;我们举个例子,年龄和身高是否有线性关系,是否可以使用年龄来预测身高呢?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;age &amp;lt;- 18:29
 height &amp;lt;- 
@@ -1262,7 +1274,7 @@ ggplot(data, aes(age, height)) +
 &lt;p&gt;那么如何估量一个拟合直线的好坏呢?这时候就需要引入&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的概念.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;r2&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.2&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;首先,我们计算使用身高平均值拟合直线的残差平方和,称之为&lt;span class=&#34;math inline&#34;&gt;\(SS(mean)\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[SS(mean) = (data - mean)^2\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;同时,我们知道方差(Var(mean))等于残差平方和除以样本个数:&lt;/p&gt;
@@ -1277,7 +1289,7 @@ ggplot(data, aes(age, height)) +
 &lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;div id=&#34;r2的假设检验&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的假设检验&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的假设检验&lt;/h3&gt;
 &lt;p&gt;首先,我们需要明白&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;的含义,我们上面已经讨论过了,&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;指的是变量x能够解释变量y的方差的比例.比如上面的例子,&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;为0.99,说明年龄可以解释99%的身高的方差.&lt;/p&gt;
 &lt;p&gt;这时候,需要引入一个统计量,F:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[F = \frac{(Var(mean) - Var(fit))/(p_{fit}-p_{mean})}{Var(fit)/(n-p_{fit})} = \frac{(SS(mean) - SS(fit))/(p_{fit}-p_{mean})}{SS(fit)/(n-p_{fit})} = \frac{\frac{(SS(mean) - SS(fit))}{p_{fit}-p_{mean}}} {\frac{SS(fit)}{n-p_{fit}}}\]&lt;/span&gt;&lt;/p&gt;
@@ -1301,15 +1313,15 @@ ggplot(data, aes(age, height)) +
 &lt;p&gt;当然,所有随机F值的分布其实是符合F分布的,拿到了F分布,就可以计算p value.F分布以后再详细介绍.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;矫正r2adjusted-r2&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;矫正&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;(&lt;span class=&#34;math inline&#34;&gt;\(adjusted R^2\)&lt;/span&gt;)&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.4&lt;/span&gt; 矫正&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;(&lt;span class=&#34;math inline&#34;&gt;\(adjusted R^2\)&lt;/span&gt;)&lt;/h3&gt;
 &lt;p&gt;什么是矫正&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;呢?我们从&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;定义可以看到,如果我们增加了拟合模型的变量个数,因为&lt;span class=&#34;math inline&#34;&gt;\(SS(mean)\)&lt;/span&gt;是固定的,因此&lt;span class=&#34;math inline&#34;&gt;\(SS(fit)\)&lt;/span&gt;都会减小,所以导致&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;变大,从而造成过拟合(over fitting).因此,我们需要对模型选入的变量个数做一个惩罚,这就是&lt;span class=&#34;math inline&#34;&gt;\(adjusted \quad R^2\)&lt;/span&gt;.以后再详细解释.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;系数的假设检验&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;系数的假设检验&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.5&lt;/span&gt; 系数的假设检验&lt;/h3&gt;
 &lt;p&gt;同样的,我们可以看到,上面是对&lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;做假设检验,当然我们也需要对每个变量的系数(包括intersect)进行假设验证,在多元回归中尤其重要,我们会在以后进行详细解释.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;r语言进行线性回归&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;R语言进行线性回归&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.6&lt;/span&gt; R语言进行线性回归&lt;/h3&gt;
 &lt;p&gt;R语言中的&lt;code&gt;lm()&lt;/code&gt;函数可以用来进行线性回归.使用方法如下:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm_fit &amp;lt;- 
   lm(height ~ age, data)

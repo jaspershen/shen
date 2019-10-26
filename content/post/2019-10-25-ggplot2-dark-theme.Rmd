@@ -8,6 +8,10 @@ tags: []
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 今天介绍一个`ggplot2`的扩展包,也是一个主题包,叫做`ggdark`.

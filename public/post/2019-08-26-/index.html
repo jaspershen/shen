@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="线性回归 使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simp">
+  <meta name="description" content="0.1 线性回归 0.1.1 简单线性回归 0.1.2 \(R^2\) 0.1.3 \(R^2\)的假设检验 0.1.4 矫正\(R^2\)(\(adjusted R^2\)) 0.1.5 系数的假设检验 0.1.6 R语言进行线性回归 0.1 线性">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/2019-08-26-/">
@@ -137,7 +137,7 @@
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/2019-08-26-/">
   <meta property="og:title" content="生物统计学习:简单线性回归模型 | Xiaotao Shen">
-  <meta property="og:description" content="线性回归 使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simp"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:description" content="0.1 线性回归 0.1.1 简单线性回归 0.1.2 \(R^2\) 0.1.3 \(R^2\)的假设检验 0.1.4 矫正\(R^2\)(\(adjusted R^2\)) 0.1.5 系数的假设检验 0.1.6 R语言进行线性回归 0.1 线性"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-08-26T00:00:00&#43;00:00">
@@ -709,12 +709,24 @@
     <div class="article-style" itemprop="articleBody">
       
 
+<div id="TOC">
+<ul>
+<li><a href="#线性回归"><span class="toc-section-number">0.1</span> 线性回归</a><ul>
+<li><a href="#简单线性回归"><span class="toc-section-number">0.1.1</span> 简单线性回归</a></li>
+<li><a href="#r2"><span class="toc-section-number">0.1.2</span> <span class="math inline">\(R^2\)</span></a></li>
+<li><a href="#r2的假设检验"><span class="toc-section-number">0.1.3</span> <span class="math inline">\(R^2\)</span>的假设检验</a></li>
+<li><a href="#矫正r2adjusted-r2"><span class="toc-section-number">0.1.4</span> 矫正<span class="math inline">\(R^2\)</span>(<span class="math inline">\(adjusted R^2\)</span>)</a></li>
+<li><a href="#系数的假设检验"><span class="toc-section-number">0.1.5</span> 系数的假设检验</a></li>
+<li><a href="#r语言进行线性回归"><span class="toc-section-number">0.1.6</span> R语言进行线性回归</a></li>
+</ul></li>
+</ul>
+</div>
 
 <div id="线性回归" class="section level2">
-<h2>线性回归</h2>
+<h2><span class="header-section-number">0.1</span> 线性回归</h2>
 <p>使用直线拟合的方法得到拟合直线称之为线性回归(linear regression).如果只有一个自变量,则称之为简单线性回归(simple),有多个自变量,则称之为多元线性回归(multiple regression).这两个模型都必须满足变量是连续性变量,如果变量为分类变量,也可以进行线性回归,称之为逻辑回归(logistic regression).</p>
 <div id="简单线性回归" class="section level3">
-<h3>简单线性回归</h3>
+<h3><span class="header-section-number">0.1.1</span> 简单线性回归</h3>
 <p>我们举个例子,年龄和身高是否有线性关系,是否可以使用年龄来预测身高呢?</p>
 <pre class="r"><code>age &lt;- 18:29
 height &lt;- 
@@ -757,7 +769,7 @@ ggplot(data, aes(age, height)) +
 <p>那么如何估量一个拟合直线的好坏呢?这时候就需要引入<span class="math inline">\(R^2\)</span>的概念.</p>
 </div>
 <div id="r2" class="section level3">
-<h3><span class="math inline">\(R^2\)</span></h3>
+<h3><span class="header-section-number">0.1.2</span> <span class="math inline">\(R^2\)</span></h3>
 <p>首先,我们计算使用身高平均值拟合直线的残差平方和,称之为<span class="math inline">\(SS(mean)\)</span></p>
 <p><span class="math display">\[SS(mean) = (data - mean)^2\]</span></p>
 <p>同时,我们知道方差(Var(mean))等于残差平方和除以样本个数:</p>
@@ -772,7 +784,7 @@ ggplot(data, aes(age, height)) +
 </blockquote>
 </div>
 <div id="r2的假设检验" class="section level3">
-<h3><span class="math inline">\(R^2\)</span>的假设检验</h3>
+<h3><span class="header-section-number">0.1.3</span> <span class="math inline">\(R^2\)</span>的假设检验</h3>
 <p>首先,我们需要明白<span class="math inline">\(R^2\)</span>的含义,我们上面已经讨论过了,<span class="math inline">\(R^2\)</span>指的是变量x能够解释变量y的方差的比例.比如上面的例子,<span class="math inline">\(R^2\)</span>为0.99,说明年龄可以解释99%的身高的方差.</p>
 <p>这时候,需要引入一个统计量,F:</p>
 <p><span class="math display">\[F = \frac{(Var(mean) - Var(fit))/(p_{fit}-p_{mean})}{Var(fit)/(n-p_{fit})} = \frac{(SS(mean) - SS(fit))/(p_{fit}-p_{mean})}{SS(fit)/(n-p_{fit})} = \frac{\frac{(SS(mean) - SS(fit))}{p_{fit}-p_{mean}}} {\frac{SS(fit)}{n-p_{fit}}}\]</span></p>
@@ -796,15 +808,15 @@ ggplot(data, aes(age, height)) +
 <p>当然,所有随机F值的分布其实是符合F分布的,拿到了F分布,就可以计算p value.F分布以后再详细介绍.</p>
 </div>
 <div id="矫正r2adjusted-r2" class="section level3">
-<h3>矫正<span class="math inline">\(R^2\)</span>(<span class="math inline">\(adjusted R^2\)</span>)</h3>
+<h3><span class="header-section-number">0.1.4</span> 矫正<span class="math inline">\(R^2\)</span>(<span class="math inline">\(adjusted R^2\)</span>)</h3>
 <p>什么是矫正<span class="math inline">\(R^2\)</span>呢?我们从<span class="math inline">\(R^2\)</span>定义可以看到,如果我们增加了拟合模型的变量个数,因为<span class="math inline">\(SS(mean)\)</span>是固定的,因此<span class="math inline">\(SS(fit)\)</span>都会减小,所以导致<span class="math inline">\(R^2\)</span>变大,从而造成过拟合(over fitting).因此,我们需要对模型选入的变量个数做一个惩罚,这就是<span class="math inline">\(adjusted \quad R^2\)</span>.以后再详细解释.</p>
 </div>
 <div id="系数的假设检验" class="section level3">
-<h3>系数的假设检验</h3>
+<h3><span class="header-section-number">0.1.5</span> 系数的假设检验</h3>
 <p>同样的,我们可以看到,上面是对<span class="math inline">\(R^2\)</span>做假设检验,当然我们也需要对每个变量的系数(包括intersect)进行假设验证,在多元回归中尤其重要,我们会在以后进行详细解释.</p>
 </div>
 <div id="r语言进行线性回归" class="section level3">
-<h3>R语言进行线性回归</h3>
+<h3><span class="header-section-number">0.1.6</span> R语言进行线性回归</h3>
 <p>R语言中的<code>lm()</code>函数可以用来进行线性回归.使用方法如下:</p>
 <pre class="r"><code>lm_fit &lt;- 
   lm(height ~ age, data)
