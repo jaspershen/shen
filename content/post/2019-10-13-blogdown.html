@@ -24,6 +24,8 @@ output:
 <li><a href="#如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page"><span class="toc-section-number">0.0.3</span> 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</a></li>
 <li><a href="#如何添加新的页面"><span class="toc-section-number">0.0.4</span> 如何添加新的页面?</a></li>
 <li><a href="#如何在post中添加本地图片"><span class="toc-section-number">0.0.5</span> 如何在post中添加本地图片?</a></li>
+<li><a href="#如何在rmarkdown中添加table-of-contents"><span class="toc-section-number">0.0.6</span> 如何在Rmarkdown中添加table of contents?</a></li>
+<li><a href="#netlify自动部署deployfailed的问题"><span class="toc-section-number">0.0.7</span> netlify自动部署(deploy)failed的问题</a></li>
 </ul>
 </div>
 
@@ -59,4 +61,40 @@ output:
 <h3><span class="header-section-number">0.0.5</span> 如何在post中添加本地图片?</h3>
 <p>首先在<code>content/post/</code>建立和post名z字去除掉数字之后的的文件夹(比如post名字为<code>2019-10-25-test</code>,则文件夹命名为<code>test</code>),然后再在该文件夹下建立和post同名的文件夹(<code>2019-10-25-test</code>),然后将图片(如<code>test.png</code>)放入该文件夹下.在post中,使用:</p>
 <p><code>![](test/2019-10-25-test/test.png)</code>语句插入图片.</p>
+</div>
+<div id="如何在rmarkdown中添加table-of-contents" class="section level3">
+<h3><span class="header-section-number">0.0.6</span> 如何在Rmarkdown中添加table of contents?</h3>
+<p>在每篇<code>Rmarkdown</code>的<code>YAML</code>添加如下内容:</p>
+<pre><code>output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true</code></pre>
+</div>
+<div id="netlify自动部署deployfailed的问题" class="section level3">
+<h3><span class="header-section-number">0.0.7</span> netlify自动部署(deploy)failed的问题</h3>
+<p>发现自动部署总是失败.查了一下,应该是本地的<code>Hugo</code>和netlify上的版本不一致,解决方法如下:</p>
+<p>首先,在R console输入下列语句,查看本地<code>Hugo</code>版本:</p>
+<pre class="r"><code>blogdown::hugo_version()</code></pre>
+<pre><code>## [1] &#39;0.58.3&#39;</code></pre>
+<p>然后修改netlify上的<code>Hugo</code>的版本.</p>
+<div id="打开netlify网站" class="section level4">
+<h4><span class="header-section-number">0.0.7.1</span> 打开netlify网站:</h4>
+<p>点击下面网站:</p>
+<p><a href="https://app.netlify.com/teams/jaspershen/sites" class="uri">https://app.netlify.com/teams/jaspershen/sites</a></p>
+<p>然后点击托管的自己的网站.</p>
+<p><img src="2019-10-13-blogdown/netlify.png" /></p>
+</div>
+<div id="点击site-settings" class="section level4">
+<h4><span class="header-section-number">0.0.7.2</span> 点击<code>Site settings</code></h4>
+<p><img src="2019-10-13-blogdown/site_settingy.png" /></p>
+</div>
+<div id="点击build-deploy" class="section level4">
+<h4><span class="header-section-number">0.0.7.3</span> 点击<code>Build &amp; deploy</code></h4>
+<p><img src="2019-10-13-blogdown/build_deploy.png" /></p>
+</div>
+<div id="修改hugo-version" class="section level4">
+<h4><span class="header-section-number">0.0.7.4</span> 修改<code>Hugo version</code></h4>
+<p>然后点击<code>Environment</code>,将HUGO_VERSION版本修改为和本地一致的版本.</p>
+<p><img src="2019-10-13-blogdown/hugo_version.png" /></p>
+</div>
 </div>

@@ -677,6 +677,8 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;#如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.3&lt;/span&gt; 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#如何添加新的页面&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.4&lt;/span&gt; 如何添加新的页面?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#如何在post中添加本地图片&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.5&lt;/span&gt; 如何在post中添加本地图片?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何在rmarkdown中添加table-of-contents&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.6&lt;/span&gt; 如何在Rmarkdown中添加table of contents?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#netlify自动部署deployfailed的问题&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.7&lt;/span&gt; netlify自动部署(deploy)failed的问题&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -712,6 +714,42 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.5&lt;/span&gt; 如何在post中添加本地图片?&lt;/h3&gt;
 &lt;p&gt;首先在&lt;code&gt;content/post/&lt;/code&gt;建立和post名z字去除掉数字之后的的文件夹(比如post名字为&lt;code&gt;2019-10-25-test&lt;/code&gt;,则文件夹命名为&lt;code&gt;test&lt;/code&gt;),然后再在该文件夹下建立和post同名的文件夹(&lt;code&gt;2019-10-25-test&lt;/code&gt;),然后将图片(如&lt;code&gt;test.png&lt;/code&gt;)放入该文件夹下.在post中,使用:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;![](test/2019-10-25-test/test.png)&lt;/code&gt;语句插入图片.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;如何在rmarkdown中添加table-of-contents&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.6&lt;/span&gt; 如何在Rmarkdown中添加table of contents?&lt;/h3&gt;
+&lt;p&gt;在每篇&lt;code&gt;Rmarkdown&lt;/code&gt;的&lt;code&gt;YAML&lt;/code&gt;添加如下内容:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;netlify自动部署deployfailed的问题&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.7&lt;/span&gt; netlify自动部署(deploy)failed的问题&lt;/h3&gt;
+&lt;p&gt;发现自动部署总是失败.查了一下,应该是本地的&lt;code&gt;Hugo&lt;/code&gt;和netlify上的版本不一致,解决方法如下:&lt;/p&gt;
+&lt;p&gt;首先,在R console输入下列语句,查看本地&lt;code&gt;Hugo&lt;/code&gt;版本:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::hugo_version()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;#39;0.58.3&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后修改netlify上的&lt;code&gt;Hugo&lt;/code&gt;的版本.&lt;/p&gt;
+&lt;div id=&#34;打开netlify网站&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.7.1&lt;/span&gt; 打开netlify网站:&lt;/h4&gt;
+&lt;p&gt;点击下面网站:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://app.netlify.com/teams/jaspershen/sites&#34; class=&#34;uri&#34;&gt;https://app.netlify.com/teams/jaspershen/sites&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后点击托管的自己的网站.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2019-10-13-blogdown/netlify.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;点击site-settings&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.7.2&lt;/span&gt; 点击&lt;code&gt;Site settings&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;2019-10-13-blogdown/site_settingy.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;点击build-deploy&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.7.3&lt;/span&gt; 点击&lt;code&gt;Build &amp;amp; deploy&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;2019-10-13-blogdown/build_deploy.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改hugo-version&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.7.4&lt;/span&gt; 修改&lt;code&gt;Hugo version&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;然后点击&lt;code&gt;Environment&lt;/code&gt;,将HUGO_VERSION版本修改为和本地一致的版本.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2019-10-13-blogdown/hugo_version.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
