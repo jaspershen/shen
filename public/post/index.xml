@@ -309,10 +309,17 @@ scatter_by(mtcars, cut3(disp), drat)&lt;/code&gt;&lt;/pre&gt;
       <guid>/post/ggplot2-dark-theme/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#制作自己的暗黑主题&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.3&lt;/span&gt; 制作自己的暗黑主题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;p&gt;今天介绍一个&lt;code&gt;ggplot2&lt;/code&gt;的扩展包,也是一个主题包,叫做&lt;code&gt;ggdark&lt;/code&gt;.&lt;/p&gt;
 &lt;div id=&#34;安装&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;安装&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/h3&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#可以直接从cran安装
 # if(!require(ggdark)){
 #  install.packages(&amp;quot;ggdark&amp;quot;) 
@@ -323,7 +330,7 @@ scatter_by(mtcars, cut3(disp), drat)&lt;/code&gt;&lt;/pre&gt;
 # }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;使用&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 使用&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;ggdark&lt;/code&gt;中的函数可以分为两大类,一类就是提供与&lt;code&gt;ggplot2&lt;/code&gt;主题相对应的暗黑模式.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggdark)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggdark&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
@@ -363,7 +370,7 @@ p + ggdark::dark_theme_bw()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-dark-theme_files/figure-html/unnamed-chunk-2-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;制作自己的暗黑主题&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;制作自己的暗黑主题&lt;/h3&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3&lt;/span&gt; 制作自己的暗黑主题&lt;/h3&gt;
 &lt;p&gt;对于任意其他的主题,只需将主题放入到&lt;code&gt;dark_mode()&lt;/code&gt;函数中,就可以将其转变为暗黑款的主题.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggdark::invert_geom_defaults()  # change geom defaults back to black
 
