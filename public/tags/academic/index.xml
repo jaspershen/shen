@@ -1,108 +1,865 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Academic on Xiaotao Shen</title>
+    <title>Academic | Xiaotao Shen</title>
     <link>/tags/academic/</link>
-    <description>Recent content in Academic on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/academic/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/tags/academic/index.xml" rel="self" type="application/rss+xml" />
+    <description>Academic</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Machine for genomics conference</title>
       <link>/post/machine-for-genomics-conference/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/machine-for-genomics-conference/</guid>
-      <description>freenome
-freenome intergateing innovative science to develop a blood-based cancer test starting with CRC.
-cfDNA (cell free DNA).
-Interpreting deep learning models of regulatory DNA
-Anshul Kundaje
-decoding genome function
-control elements gene
-ATAC-seq/DNase-seq
-ChIP-seq
-prediCtive model of regularity DNA
-Just transform DNA sequence to dummy matrxi.
-Machine learning for biomedical informationhierarchical latent variable models?
-</description>
+      <description>
+
+
+&lt;p&gt;freenome&lt;/p&gt;
+&lt;p&gt;freenome intergateing innovative science to develop a blood-based cancer test starting with CRC.&lt;/p&gt;
+&lt;p&gt;cfDNA (cell free DNA).&lt;/p&gt;
+&lt;p&gt;Interpreting deep learning models of regulatory DNA&lt;/p&gt;
+&lt;p&gt;Anshul Kundaje&lt;/p&gt;
+&lt;p&gt;decoding genome function&lt;/p&gt;
+&lt;p&gt;control elements gene&lt;/p&gt;
+&lt;p&gt;ATAC-seq/DNase-seq&lt;/p&gt;
+&lt;p&gt;ChIP-seq&lt;/p&gt;
+&lt;p&gt;prediCtive model of regularity DNA&lt;/p&gt;
+&lt;p&gt;Just transform DNA sequence to dummy matrxi.&lt;/p&gt;
+&lt;div id=&#34;machine-learning-for-biomedical-information&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Machine learning for biomedical information&lt;/h3&gt;
+&lt;p&gt;hierarchical latent variable models?&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>Docker的安装使用和配置</title>
       <link>/post/docker/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/docker/</guid>
-      <description>将自己安装docker,使用以及配置记录下来,主要还包括常用的命令总结以及一些bug的处理,以及一些常见资源.</description>
+      <description>
+
+
+&lt;p&gt;将自己安装docker,使用以及配置记录下来,主要还包括常用的命令总结以及一些bug的处理,以及一些常见资源.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>R 语言常见统计预测模型</title>
       <link>/post/r-ml-model/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/r-ml-model/</guid>
-      <description>lasso模型 LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regulari</description>
+      <description>
+
+
+&lt;div id=&#34;lasso模型&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;lasso模型&lt;/h3&gt;
+&lt;p&gt;LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regularization).因此,不论因变量(dependent/response varaible)是连续的(continuous),还是二元或者多元离散的（discrete）,都可以用LASSO回归建模然后预测.这里的变量筛选是指不把所有的变量都放入模型中进行拟合,而是有选择的把变量放入模型从而得到更好的性能参数. 复杂度调整是指通过一系列参数控制模型的复杂度,从而避免过拟合(overfitting). 对于线性模型来说,复杂度与模型的变量数有直接关系,变量数越多,模型复杂度就越高. 更多的变量在拟合时往往可以给出一个看似更好的模型,但是同时也面临过度拟合的危险.此时如果用全新的数据去验证模型(validation),通常效果很差. 一般来说,变量数大于数据点数量很多,或者某一个离散变量有太多独特值时,都有可能过度拟合.&lt;/p&gt;
+&lt;p&gt;LASSO回归的复杂度主要由参数&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;(lambda)来控制.lambda越大,对变量较多的线性模型的惩罚力度就越大.最终获得一个变量较少的模型.&lt;/p&gt;
+&lt;p&gt;另外还有一个参数&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;(alpha)用来控制高度相关性模型的性状.LASSO回归时,alpha设置为1.&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;glmnet&lt;/code&gt;包可以进行LASSO回归.它可以对一系列不同的lambda值进行拟合,每次拟合都用到上一个lambda拟合的结果,从而大大提高了运行效率.&lt;/p&gt;
+&lt;div id=&#34;常用参数如下&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;常用参数如下:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt;: 自变量数据集,需要为matrix格式,行为观测列为变量.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;y&lt;/code&gt;: 因变量数据集,需要为matrix格式,只有一列.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;family&lt;/code&gt;: 应变量类型.如果时连续性变量(也就是要做回归分析),&lt;code&gt;family&lt;/code&gt;应该为&lt;code&gt;gussian&lt;/code&gt;(高斯分布/正态分布)或者&lt;code&gt;poisson&lt;/code&gt;(泊松分布).如果为两分类不连续变量(factor类型,且只有两个levels),应设置为&lt;code&gt;binomial&lt;/code&gt;.如果时多分类不连续变量(factor类型,且多个levels),则应设置为&lt;code&gt;multinomial&lt;/code&gt;.如果设置为&lt;code&gt;cox&lt;/code&gt;,则y应当为一个两列的matrix,列名分别为&lt;code&gt;time&lt;/code&gt;和&lt;code&gt;status&lt;/code&gt;,&lt;code&gt;tiem&lt;/code&gt;为存活时间,&lt;code&gt;status&lt;/code&gt;为结局状态(1代表死亡,0代表还未死亡).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;alpha&lt;/code&gt;: 在LASSO回归中,将其设置为1.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nlambda&lt;/code&gt;: 选取多少个lambda进行优化,默认为100.也就是使用100个lambda值拟合出100个系数不同的模型.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lambda&lt;/code&gt;: 提供lambda值,如果设置该值(一个或者多个),则会覆盖掉自动选择的lambda值.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;standardize&lt;/code&gt;: 是否对数据进行标准化(scale),默认为TRUE.推荐自己对数据进行标准化,如果自己做过sca了,这里需要设置为FALSE.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;构建模型&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;构建模型&lt;/h4&gt;
+&lt;p&gt;构建模型之后,可以将其打印出来观察具体信息.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cosx.org/2016/10/data-mining-1-lasso/&#34; class=&#34;uri&#34;&gt;https://cosx.org/2016/10/data-mining-1-lasso/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>网络分析之igraph</title>
       <link>/post/igraph/</link>
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/igraph/</guid>
-      <description>igraph是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的igraph包.其官</description>
+      <description>
+
+
+&lt;p&gt;&lt;code&gt;igraph&lt;/code&gt;是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的&lt;code&gt;igraph&lt;/code&gt;包.其官网如下:
+&lt;a href=&#34;https://igraph.org/r/doc/plot.common.html&#34; class=&#34;uri&#34;&gt;https://igraph.org/r/doc/plot.common.html&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;安装&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;常用功能总结&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;常用功能总结&lt;/h3&gt;
+&lt;div id=&#34;寻找某个vertex的neighbor&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;寻找某个vertex的neighbor&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;neighbors()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;V&lt;/code&gt;:某vertex的名字(name).&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mode&lt;/code&gt;: 对于有向图来说,是寻找从该vertex出发的neighbors(‘out’),还是指向该vertex的neighbors(‘in’),还是两种都寻找(‘both’).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置graph中vertex的属性&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;设置graph中vertex的属性&lt;/h4&gt;
+&lt;p&gt;如果需要给graph中的vertex增加或者修改属性,可以使用&lt;code&gt;ste_vertex_attr()&lt;/code&gt;函数.一共四个参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;:设置的新的属性的名字.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;index&lt;/code&gt;:设置vertex属性时的vertex的index.默认按照graph中vertex的默认index(V(graph))来设置.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;value&lt;/code&gt;:设置的属性的值.需要和vertex的长度一致.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将igraph对象转变为data.frame格式&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;as_long_data_frame()&lt;/code&gt;函数可以将&lt;code&gt;igraph&lt;/code&gt;转换为data.frame格式.只有一个参数,就是&lt;code&gt;graph&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;从一个graph提取子graphsubgraph&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;从一个graph提取子graph(subgraph)&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;subgraph()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;V&lt;/code&gt;:要提取的subgraph的所有的vertex的名字(name).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;获取vertex属性&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;获取vertex属性&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;vertex_attr()&lt;/code&gt;函数.一共4个参数.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;:需要获取的属性的名字,默认提取所有属性.&lt;/li&gt;
+&lt;li&gt;index:需要获取那些vertex的属性,默认提取所有的vertex.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>R可视化之小提琴图</title>
       <link>/post/r-violin/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/r-violin/</guid>
-      <description>本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/95-violin</description>
+      <description>
+
+
+&lt;blockquote&gt;
+&lt;p&gt;本文翻译自“The graph gallery”网站,原帖文地址链接:&lt;a href=&#34;https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html&#34; class=&#34;uri&#34;&gt;https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;基础小提琴图绘制&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;基础小提琴图绘制&lt;/h2&gt;
+&lt;div id=&#34;使用ggplot2包中的geom_violin函数.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;使用&lt;code&gt;ggplot2&lt;/code&gt;包中的&lt;code&gt;geom_violin()&lt;/code&gt;函数.&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#构建数据
+data &amp;lt;- data.frame(
+  name = c( rep(&amp;quot;A&amp;quot;,500), rep(&amp;quot;B&amp;quot;,500), rep(&amp;quot;B&amp;quot;,500), rep(&amp;quot;C&amp;quot;,20), rep(&amp;#39;D&amp;#39;, 100)),
+  value = c( rnorm(500, 10, 5), rnorm(500, 13, 1), rnorm(500, 18, 1), rnorm(20, 25, 4), rnorm(100, 12, 1) )
+)
+
+head(data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   name     value
+## 1    A  3.952780
+## 2    A  4.772741
+## 3    A  5.091742
+## 4    A 11.042562
+## 5    A 14.206179
+## 6    A  6.995379&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Most basic violin chart
+p &amp;lt;- 
+  ggplot(data, aes(x = name, y = value, fill = name)) + 
+  geom_violin() +
+  theme_bw()
+
+p&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-r_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;数据格式&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;数据格式&lt;/h4&gt;
+&lt;p&gt;注意在使用&lt;code&gt;geom_violin()&lt;/code&gt;函数构建小提琴图时,数据格式为长数据(long format).每一行时一个观测.一共需要两列:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个分类变量,用于X轴.需要为&lt;code&gt;factor&lt;/code&gt;格式.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;数值型变量,用于Y轴.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;数据转换&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;数据转换&lt;/h4&gt;
+&lt;p&gt;如果数据为宽数据格式,需要对其进行转变.可以使用&lt;code&gt;tidyr&lt;/code&gt;中的&lt;code&gt;pivot_longer()&lt;/code&gt;函数将其转变为长数据格式.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_wide &amp;lt;- 
+  iris[ , 1:4]
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages ----------------------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## v tibble  2.1.3     v purrr   0.3.2
+## v tidyr   1.0.0     v dplyr   0.8.3
+## v readr   1.3.1     v stringr 1.4.0
+## v tibble  2.1.3     v forcats 0.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Conflicts -------------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_long &amp;lt;- 
+  data_wide %&amp;gt;% 
+  tidyr::pivot_longer(cols = everything(), 
+                      names_to = &amp;quot;variable&amp;quot;, values_to = &amp;quot;value&amp;quot;)
+head(data_long)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 2
+##   variable     value
+##   &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;
+## 1 Sepal.Length   5.1
+## 2 Sepal.Width    3.5
+## 3 Petal.Length   1.4
+## 4 Petal.Width    0.2
+## 5 Sepal.Length   4.9
+## 6 Sepal.Width    3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+
+data_long %&amp;gt;% 
+  ggplot(., aes(variable, value)) +
+  geom_violin(aes(fill = variable)) +
+  theme_bw()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-r_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将小提琴图水平展示&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;将小提琴图水平展示&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(tidyverse)
+  iris[ , 1:4] %&amp;gt;% 
+  tidyr::pivot_longer(cols = everything(), 
+                      names_to = &amp;quot;variable&amp;quot;,
+                      values_to = &amp;quot;value&amp;quot;) %&amp;gt;% 
+  ggplot(., aes(variable, value)) +
+  geom_violin(aes(fill = variable, colour = variable)) +
+  theme_bw() +
+    theme(legend.position = &amp;quot;none&amp;quot;) +
+    coord_flip()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-r_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;小提琴图与箱型图同时展示&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;小提琴图与箱型图同时展示&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(tidyverse)
+  iris[ , 1:4] %&amp;gt;% 
+  tidyr::pivot_longer(cols = everything(), 
+                      names_to = &amp;quot;variable&amp;quot;,
+                      values_to = &amp;quot;value&amp;quot;) %&amp;gt;% 
+  ggplot(., aes(variable, value)) +
+  geom_violin(aes(fill = variable, colour = variable), width = 1.4) +
+    geom_boxplot(fill = NA, width = 0.1, colour = &amp;quot;grey&amp;quot;) +
+  theme_bw() +
+    theme(legend.position = &amp;quot;none&amp;quot;) +
+    coord_flip()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: position_dodge requires non-overlapping x intervals&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-r_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>R可视化之桑吉图</title>
       <link>/post/r-sankey/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/r-sankey/</guid>
-      <description>本文翻译自“The graph gallery”网站,原帖文地址链接:https://www.r-graph-gallery.com/sankey-di</description>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/sankey/sankey.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;本文翻译自“The graph gallery”网站,原帖文地址链接:&lt;a href=&#34;https://www.r-graph-gallery.com/sankey-diagram.html&#34; class=&#34;uri&#34;&gt;https://www.r-graph-gallery.com/sankey-diagram.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;桑吉图(sankey diagram)使用来研究同一个变量在其不同分类中的比例或者说是流动的.实体(或者说是节点,node)一般使用长方形或者文字来表示.箭头和弧线用来表示在他们之间的流动.&lt;/p&gt;
+&lt;div id=&#34;使用networkd3包构建桑吉图&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;使用&lt;code&gt;networkD3&lt;/code&gt;包构建桑吉图&lt;/h2&gt;
+&lt;div id=&#34;基础桑吉图绘制&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;基础桑吉图绘制&lt;/h3&gt;
+&lt;p&gt;可以使用两种格式的数据进行桑吉图绘制:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;connection data frame(一共三列),可以理解为长数据.&lt;/li&gt;
+&lt;li&gt;关联矩阵(incidence matrix),可以理解为宽数据.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;使用connection-data-frame&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;使用connection data frame&lt;/h4&gt;
+&lt;p&gt;connection data frame至少需要两列,分别为source和target.第三列可以用来说明该connection的数值.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(networkD3)
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages -------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Conflicts ----------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;links &amp;lt;- data.frame(
+  source = c(&amp;quot;group_A&amp;quot;,&amp;quot;group_A&amp;quot;, &amp;quot;group_B&amp;quot;, &amp;quot;group_C&amp;quot;, &amp;quot;group_C&amp;quot;, &amp;quot;group_E&amp;quot;), 
+  target = c(&amp;quot;group_C&amp;quot;,&amp;quot;group_D&amp;quot;, &amp;quot;group_E&amp;quot;, &amp;quot;group_F&amp;quot;, &amp;quot;group_G&amp;quot;, &amp;quot;group_H&amp;quot;), 
+  value = c(2,3, 2, 3, 1, 3)
+  )
+head(links)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    source  target value
+## 1 group_A group_C     2
+## 2 group_A group_D     3
+## 3 group_B group_E     2
+## 4 group_C group_F     3
+## 5 group_C group_G     1
+## 6 group_E group_H     3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##构建connection data frame中所有nodes的data frame
+nodes &amp;lt;- data.frame(
+  name = c(as.character(links$source), 
+  as.character(links$target)) %&amp;gt;% unique()
+)
+
+#然后我们需要将每个node的名字代替为其在node data frame中的位置index,注意是要从哦开始计算.
+links$IDsource &amp;lt;- match(links$source, nodes$name) - 1 
+links$IDtarget &amp;lt;- match(links$target, nodes$name) - 1
+
+#开始创建桑吉图
+p &amp;lt;- networkD3::sankeyNetwork(
+  Links = links,
+  Nodes = nodes,
+  Source = &amp;quot;IDsource&amp;quot;,
+  Target = &amp;quot;IDtarget&amp;quot;,
+  Value = &amp;quot;value&amp;quot;,
+  NodeID = &amp;quot;name&amp;quot;,
+  sinksRight = FALSE
+)
+p&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;sankeyNetwork html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;links&#34;:{&#34;source&#34;:[0,0,1,2,2,3],&#34;target&#34;:[2,4,3,5,6,7],&#34;value&#34;:[2,3,2,3,1,3]},&#34;nodes&#34;:{&#34;name&#34;:[&#34;group_A&#34;,&#34;group_B&#34;,&#34;group_C&#34;,&#34;group_E&#34;,&#34;group_D&#34;,&#34;group_F&#34;,&#34;group_G&#34;,&#34;group_H&#34;],&#34;group&#34;:[&#34;group_A&#34;,&#34;group_B&#34;,&#34;group_C&#34;,&#34;group_E&#34;,&#34;group_D&#34;,&#34;group_F&#34;,&#34;group_G&#34;,&#34;group_H&#34;]},&#34;options&#34;:{&#34;NodeID&#34;:&#34;name&#34;,&#34;NodeGroup&#34;:&#34;name&#34;,&#34;LinkGroup&#34;:null,&#34;colourScale&#34;:&#34;d3.scaleOrdinal(d3.schemeCategory20);&#34;,&#34;fontSize&#34;:7,&#34;fontFamily&#34;:null,&#34;nodeWidth&#34;:15,&#34;nodePadding&#34;:10,&#34;units&#34;:&#34;&#34;,&#34;margin&#34;:{&#34;top&#34;:null,&#34;right&#34;:null,&#34;bottom&#34;:null,&#34;left&#34;:null},&#34;iterations&#34;:32,&#34;sinksRight&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+图片时交互性的.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用关联矩阵&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;使用关联矩阵&lt;/h4&gt;
+&lt;p&gt;关联矩阵时正方形或者长方形的.行名和列名分别为node的名称.每一个cell代表着两个node之间flow的数值.但是因为在&lt;code&gt;network3D&lt;/code&gt;中,只能使用长数据,因此其实就是将宽数据转换为长数据.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;另外一个例子&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;另外一个例子&lt;/h3&gt;
+&lt;p&gt;我们使用桑吉图来展示科学家的移民或者说是流动情况.左边代表科学家的移出国,右边代表科学家的移进国.数据来自scientific publication(&lt;a href=&#34;https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327&#34; class=&#34;uri&#34;&gt;https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327&lt;/a&gt;).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#加载包
+library(tidyverse)
+library(networkD3)
+
+# 读取数据
+data &amp;lt;- 
+  read.table(&amp;quot;https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/13_AdjacencyDirectedWeighted.csv&amp;quot;, header = TRUE)
+
+# 讲数据转换为长数据
+data_long &amp;lt;- data %&amp;gt;%
+  rownames_to_column(var = &amp;quot;name&amp;quot;) %&amp;gt;%
+  pivot_longer(cols = -name, names_to = &amp;quot;key&amp;quot;, values_to = &amp;quot;value&amp;quot;) %&amp;gt;% 
+  filter(value &amp;gt; 0) %&amp;gt;% 
+  as.data.frame()
+
+colnames(data_long) &amp;lt;- 
+  c(&amp;quot;source&amp;quot;, &amp;quot;target&amp;quot;, &amp;quot;value&amp;quot;)
+
+data_long$target &amp;lt;- 
+  paste(data_long$target, &amp;quot; &amp;quot;, sep = &amp;quot;&amp;quot;)
+
+# 创建node data frame
+nodes &amp;lt;- 
+  data.frame(name = c(as.character(data_long$source),  
+                      as.character(data_long$target)) %&amp;gt;% unique()
+             ) %&amp;gt;% 
+  arrange(name) %&amp;gt;% 
+  as.data.frame()
+ 
+data_long$IDsource = match(data_long$source, nodes$name) - 1 
+data_long$IDtarget = match(data_long$target, nodes$name) - 1
+
+# prepare colour scale
+ColourScal &amp;lt;- &amp;#39;d3.scaleOrdinal() .range([&amp;quot;#FDE725FF&amp;quot;,&amp;quot;#B4DE2CFF&amp;quot;,&amp;quot;#6DCD59FF&amp;quot;,&amp;quot;#35B779FF&amp;quot;,&amp;quot;#1F9E89FF&amp;quot;,
+&amp;quot;#26828EFF&amp;quot;,&amp;quot;#31688EFF&amp;quot;,&amp;quot;#3E4A89FF&amp;quot;,&amp;quot;#482878FF&amp;quot;,&amp;quot;#440154FF&amp;quot;])&amp;#39;
+
+# Make the Network
+sankeyNetwork(
+  Links = data_long,
+  Nodes = nodes,
+  Source = &amp;quot;IDsource&amp;quot;,
+  Target = &amp;quot;IDtarget&amp;quot;,
+  Value = &amp;quot;value&amp;quot;,
+  NodeID = &amp;quot;name&amp;quot;,
+  sinksRight = FALSE,
+  colourScale = ColourScal,
+  nodeWidth = 40,
+  fontSize = 13,
+  nodePadding = 20
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;sankeyNetwork html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;links&#34;:{&#34;source&#34;:[0,0,0,0,0,2,2,2,2,2,2,4,6,6,6,8,8,10,10,12,12,12,12,12,12,13,13,13,13,13,16,16,18,18,18],&#34;target&#34;:[1,5,9,11,19,3,5,9,11,15,19,5,5,7,9,5,7,5,11,3,5,9,11,14,19,3,5,9,11,15,5,17,5,9,19],&#34;value&#34;:[3.142471,2.107883,0.540887,0.155988,0.673004,1.630997,0.601265,0.97306,0.333608,0.380388,0.869311,2.401476,1.762587,0.879198,3.627847,1.215929,0.276908,0.17037,0.190706,0.525881,1.390272,1.508008,0.34742,1.307907,4.902081,0.145264,0.468762,1.057904,0.278746,0.781316,0.60923,1.870501,0.449623,0.169274,0.927243]},&#34;nodes&#34;:{&#34;name&#34;:[&#34;Africa&#34;,&#34;Africa &#34;,&#34;East Asia&#34;,&#34;East.Asia &#34;,&#34;Europe&#34;,&#34;Europe &#34;,&#34;Latin America&#34;,&#34;Latin.America &#34;,&#34;North America&#34;,&#34;North.America &#34;,&#34;Oceania&#34;,&#34;Oceania &#34;,&#34;South Asia&#34;,&#34;South East Asia&#34;,&#34;South.Asia &#34;,&#34;South.East.Asia &#34;,&#34;Soviet Union&#34;,&#34;Soviet.Union &#34;,&#34;West Asia&#34;,&#34;West.Asia &#34;],&#34;group&#34;:[&#34;Africa&#34;,&#34;Africa &#34;,&#34;East Asia&#34;,&#34;East.Asia &#34;,&#34;Europe&#34;,&#34;Europe &#34;,&#34;Latin America&#34;,&#34;Latin.America &#34;,&#34;North America&#34;,&#34;North.America &#34;,&#34;Oceania&#34;,&#34;Oceania &#34;,&#34;South Asia&#34;,&#34;South East Asia&#34;,&#34;South.Asia &#34;,&#34;South.East.Asia &#34;,&#34;Soviet Union&#34;,&#34;Soviet.Union &#34;,&#34;West Asia&#34;,&#34;West.Asia &#34;]},&#34;options&#34;:{&#34;NodeID&#34;:&#34;name&#34;,&#34;NodeGroup&#34;:&#34;name&#34;,&#34;LinkGroup&#34;:null,&#34;colourScale&#34;:&#34;d3.scaleOrdinal() .range([\&#34;#FDE725FF\&#34;,\&#34;#B4DE2CFF\&#34;,\&#34;#6DCD59FF\&#34;,\&#34;#35B779FF\&#34;,\&#34;#1F9E89FF\&#34;,\n\&#34;#26828EFF\&#34;,\&#34;#31688EFF\&#34;,\&#34;#3E4A89FF\&#34;,\&#34;#482878FF\&#34;,\&#34;#440154FF\&#34;])&#34;,&#34;fontSize&#34;:13,&#34;fontFamily&#34;:null,&#34;nodeWidth&#34;:40,&#34;nodePadding&#34;:20,&#34;units&#34;:&#34;&#34;,&#34;margin&#34;:{&#34;top&#34;:null,&#34;right&#34;:null,&#34;bottom&#34;:null,&#34;left&#34;:null},&#34;iterations&#34;:32,&#34;sinksRight&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用ggalluvial包绘制桑吉图&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;使用&lt;code&gt;ggalluvial&lt;/code&gt;包绘制桑吉图&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ggalluvial&lt;/code&gt;包是&lt;code&gt;ggplot2&lt;/code&gt;的一个扩展包.可以用来绘制桑吉图.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##加载包
+library(ggalluvial)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggalluvial&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## 使用示例数据
+data(vaccinations)
+head(vaccinations)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   freq           a subject    survey response
+## 1   48 0.050367261       1 ms153_NSA   Always
+## 2    9 0.009443861       2 ms153_NSA   Always
+## 3   66 0.069254984       3 ms153_NSA   Always
+## 4    1 0.001049318       4 ms153_NSA   Always
+## 5   11 0.011542497       5 ms153_NSA   Always
+## 6    1 0.001049318       6 ms153_NSA   Always&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;levels(vaccinations$response) &amp;lt;- rev(levels(vaccinations$response))
+ggplot(vaccinations,
+       aes(x = survey, 
+           y = freq,
+           stratum = response, 
+           alluvium = subject,
+           fill = response, 
+           label = response)) +
+  scale_x_discrete(expand = c(.1, .1)) +
+  ggalluvial::geom_flow() +
+  labs(x = &amp;quot;&amp;quot;, y = &amp;quot;&amp;quot;) +
+  ggalluvial::geom_stratum(alpha = .5) +
+  geom_text(stat = &amp;quot;stratum&amp;quot;, size = 3) +
+  theme_bw() +
+  theme(legend.position = &amp;quot;none&amp;quot;, 
+        plot.background = element_blank(), 
+        panel.border = element_blank(), 
+        panel.grid = element_blank(), 
+        axis.ticks = element_blank(), 
+        axis.text.y = element_blank()) +
+  ggtitle(&amp;quot;vaccination survey responses at three points in time&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-r-sankey_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们在对该包做一个详细的讲解.&lt;/p&gt;
+&lt;div id=&#34;冲积图alluvial-diagrams的结构&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;冲积图(Alluvial diagrams)的结构&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;ggalluvial&lt;/code&gt;包绘制的图称之为冲积图(Alluvial diagrams).我们以上面的例子图为例,来进行解释.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;X轴代表着数据流动的分类.比如上图中,一共有三类,也就是ms153_NSA,ms432_NSA和ms460_NSA.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;而X轴的每一类又会分为不同的分组,称之为地层(strata).在我们这个例子中,每一类都分成了四组,Missing,Never,Sometimes和Always.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后我们再看每一列,每一列的每一个分组都会被图形分割,这称之为冲积(alluvia).在这个例子中,每个冲积的宽度(也就是在Y轴上range)代表着分类的该组分到下一个分类某个分组的数据的多少.当然,冲积的颜色用来代表不同的分类.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;两个相邻的分类之间的连接的冲积称之为flow.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们对这个图的结构进行详细的理解之后,我们在来看如何使用&lt;code&gt;galluvial&lt;/code&gt;包绘制冲积图.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;所需要的数据类型&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;所需要的数据类型&lt;/h4&gt;
+&lt;p&gt;跟&lt;code&gt;network3D&lt;/code&gt;包一样,&lt;code&gt;ggalluvial&lt;/code&gt;包也可以使用宽数据和长数据.我们使用&lt;code&gt;UCBAdmissions&lt;/code&gt;数据为例进行说明.&lt;/p&gt;
+&lt;div id=&#34;宽数据&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;宽数据&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;UCBAdmissions&lt;/code&gt;数据一共有4列.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>pregnancy project文献阅读总结</title>
       <link>/post/pregnancy-project/</link>
       <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/pregnancy-project/</guid>
-      <description>Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration 早产(preterm birth),是指在妊娠不足37周出生的婴儿.早产与婴儿之后的神经发育延迟(neurode</description>
+      <description>
+
+
+&lt;div id=&#34;variants-in-the-fetal-genome-near-pro-inflammatory-cytokine-genes-on-2q13-associate-with-gestational-duration&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;早产(preterm birth),是指在妊娠不足37周出生的婴儿.早产与婴儿之后的神经发育延迟(neurodevelopmental delay),脑瘫(cerebral palsy),糖尿病(diabetes),高血压以及精神疾病(psychiatric disorders)等都有关.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;过期生产(postterm birth),是指在妊娠超过42周之后出生的婴儿.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在发达国家,preterm和postterm都有大约5%-10%的比例.在低收入和中等收入国家,preterm的比例比高收入国家更高.&lt;/p&gt;
+&lt;p&gt;Although timing of parturition is influenced by many non-genetic risk factors, including parity(母亲的胎数), maternal stress(母亲的紧张状态), smoking, urogenital infection(泌尿系统的感染), educational attainment(受教育程度), and socioeconomic status(社会经济程度), there is compelling evidence for a substantial genetic impact.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;定义&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;定义&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;preterm: &amp;lt; 34 weeks&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;preterm: &amp;lt; 34 weeks&lt;/li&gt;
+&lt;li&gt;postterm: &amp;gt;= 42 weeks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一些pregnancy公开数据库&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;一些pregnancy公开数据库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Early Growth Genetics Consortium &lt;a href=&#34;https://egg-consortium.org/&#34; class=&#34;uri&#34;&gt;https://egg-consortium.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Integrative Psychiatric Research (iPSYCH) study &lt;a href=&#34;https://ipsych.au.dk/about-ipsych/&#34; class=&#34;uri&#34;&gt;https://ipsych.au.dk/about-ipsych/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Genomic and Proteomic Network for Preterm Birth Research (GPN) &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000714.v1.p1&#34; class=&#34;uri&#34;&gt;https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000714.v1.p1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些数据库大部分是关于基因组学的,可以到时候考虑用它做个验证什么的.&lt;/p&gt;
+&lt;p&gt;parturition(分娩)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;文章总结&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;文章总结:&lt;/h3&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>文献解读:Longitudinal multi-omics of host– microbe dynamics in prediabetes</title>
       <link>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
-      <description></description>
+      <description>
+
+
+
+</description>
     </item>
     
     <item>
       <title>Academic: the website builder for Hugo</title>
       <link>/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-      
       <guid>/post/getting-started/</guid>
-      <description>Create a beautifully simple website in under 10 minutes.</description>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Create a free website with Academic using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 &lt;em&gt;widgets&lt;/em&gt;, &lt;em&gt;themes&lt;/em&gt;, and &lt;em&gt;language packs&lt;/em&gt; included!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://academic-demo.netlify.com/&#34; target=&#34;_blank&#34;&gt;Check out the latest &lt;strong&gt;demo&lt;/strong&gt;&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes, or &lt;a href=&#34;https://sourcethemes.com/academic/#expo&#34; target=&#34;_blank&#34;&gt;view the &lt;strong&gt;showcase&lt;/strong&gt;&lt;/a&gt; of personal, project, and business sites.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#install&#34;&gt;&lt;strong&gt;Setup Academic&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/get-started/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Get Started&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;View the documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://discuss.gohugo.io/&#34; target=&#34;_blank&#34;&gt;Ask a question&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/issues&#34; target=&#34;_blank&#34;&gt;Request a feature or report a bug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Updating? View the &lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;Update Guide&lt;/a&gt; and &lt;a href=&#34;https://sourcethemes.com/academic/updates/&#34; target=&#34;_blank&#34;&gt;Release Notes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Support development of Academic:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://paypal.me/cushen&#34; target=&#34;_blank&#34;&gt;Donate a coffee&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.patreon.com/cushen&#34; target=&#34;_blank&#34;&gt;Become a backer on Patreon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.redbubble.com/people/neutreno/works/34387919-academic&#34; target=&#34;_blank&#34;&gt;Decorate your laptop or journal with an Academic sticker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://academic.threadless.com/&#34; target=&#34;_blank&#34;&gt;Wear the T-shirt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/academic.png&#34; alt=&#34;Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Page builder&lt;/strong&gt; - Create &lt;em&gt;anything&lt;/em&gt; with &lt;a href=&#34;https://sourcethemes.com/academic/docs/page-builder/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;widgets&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;elements&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Edit any type of content&lt;/strong&gt; - Blog posts, publications, talks, slides, projects, and more!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create content&lt;/strong&gt; in &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://sourcethemes.com/academic/docs/jupyter/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Jupyter&lt;/strong&gt;&lt;/a&gt;, or &lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-rstudio&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;RStudio&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plugin System&lt;/strong&gt; - Fully customizable &lt;a href=&#34;https://sourcethemes.com/academic/themes/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;color&lt;/strong&gt; and &lt;strong&gt;font themes&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Display Code and Math&lt;/strong&gt; - Code highlighting and &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX math&lt;/a&gt; supported&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integrations&lt;/strong&gt; - &lt;a href=&#34;https://analytics.google.com&#34; target=&#34;_blank&#34;&gt;Google Analytics&lt;/a&gt;, &lt;a href=&#34;https://disqus.com&#34; target=&#34;_blank&#34;&gt;Disqus commenting&lt;/a&gt;, Maps, Contact Forms, and more!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Beautiful Site&lt;/strong&gt; - Simple and refreshing one page design&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Industry-Leading SEO&lt;/strong&gt; - Help get your website found on search engines and social media&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Media Galleries&lt;/strong&gt; - Display your images and videos with captions in a customizable gallery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Friendly&lt;/strong&gt; - Look amazing on every screen with a mobile friendly version of your site&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-language&lt;/strong&gt; - 15+ language packs including English, 中文, and Português&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-user&lt;/strong&gt; - Each author gets their own profile page&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Privacy Pack&lt;/strong&gt; - Assists with GDPR&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stand Out&lt;/strong&gt; - Bring your site to life with animation, parallax backgrounds, and scroll effects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;One-Click Deployment&lt;/strong&gt; - No servers. No databases. Only files.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;color-themes&#34;&gt;Color Themes&lt;/h2&gt;
+
+&lt;p&gt;Academic comes with &lt;strong&gt;day (light) and night (dark) mode&lt;/strong&gt; built-in. Click the sun/moon icon in the top right of the &lt;a href=&#34;https://academic-demo.netlify.com/&#34; target=&#34;_blank&#34;&gt;Demo&lt;/a&gt; to see it in action!&lt;/p&gt;
+
+&lt;p&gt;Choose a stunning color and font theme for your site. Themes are fully customizable and include:&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+&lt;div class=&#34;gallery&#34;&gt;
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
+  &lt;img src=&#34;/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+
+  
+&lt;/div&gt;
+
+&lt;h2 id=&#34;ecosystem&#34;&gt;Ecosystem&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-admin&#34; target=&#34;_blank&#34;&gt;Academic Admin&lt;/a&gt;:&lt;/strong&gt; An admin tool to import publications from BibTeX or import assets for an offline site&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-scripts&#34; target=&#34;_blank&#34;&gt;Academic Scripts&lt;/a&gt;:&lt;/strong&gt; Scripts to help migrate content to new versions of Academic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
+
+&lt;p&gt;You can choose from one of the following four methods to install:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-web-browser&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;one-click install using your web browser (recommended)&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-git&#34; target=&#34;_blank&#34;&gt;install on your computer using &lt;strong&gt;Git&lt;/strong&gt; with the Command Prompt/Terminal app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-zip&#34; target=&#34;_blank&#34;&gt;install on your computer by downloading the &lt;strong&gt;ZIP files&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-rstudio&#34; target=&#34;_blank&#34;&gt;install on your computer with &lt;strong&gt;RStudio&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then &lt;a href=&#34;https://sourcethemes.com/academic/docs/get-started/&#34; target=&#34;_blank&#34;&gt;personalize and deploy your new site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;updating&#34;&gt;Updating&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;View the Update Guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Feel free to &lt;em&gt;star&lt;/em&gt; the project on &lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; to help keep track of &lt;a href=&#34;https://sourcethemes.com/academic/updates&#34; target=&#34;_blank&#34;&gt;updates&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

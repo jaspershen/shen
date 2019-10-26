@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Xiaotao Shen</title>
+    <title>Categories | Xiaotao Shen</title>
     <link>/categories/</link>
-    <description>Recent content in Categories on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <description>Categories</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>R</title>
       <link>/categories/r/</link>
       <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/categories/r/</guid>
       <description></description>
     </item>
@@ -25,7 +18,6 @@
       <title>life</title>
       <link>/categories/life/</link>
       <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/categories/life/</guid>
       <description></description>
     </item>
@@ -34,7 +26,6 @@
       <title>omics</title>
       <link>/categories/omics/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/categories/omics/</guid>
       <description></description>
     </item>
@@ -43,7 +34,6 @@
       <title>docker</title>
       <link>/categories/docker/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/categories/docker/</guid>
       <description></description>
     </item>
@@ -52,7 +42,6 @@
       <title>literature</title>
       <link>/categories/literature/</link>
       <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/categories/literature/</guid>
       <description></description>
     </item>
@@ -61,7 +50,6 @@
       <title>github technology</title>
       <link>/categories/github-technology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/categories/github-technology/</guid>
       <description></description>
     </item>

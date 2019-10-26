@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on Xiaotao Shen</title>
+    <title>Projects | Xiaotao Shen</title>
     <link>/project/</link>
-    <description>Recent content in Projects on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <description>Projects</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
     <item>
       <title>MetDNA</title>
       <link>/project/metdna-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
       <guid>/project/metdna-project/</guid>
-      <description>Metabololite identification and dysregulated network analysis.</description>
+      <description>&lt;p&gt;MetDNA characterizes initial seed metabolites using a small tandem spectral library, and utilize their experimental MS2 spectra as surrogate spectra to annotate their reaction-paired neighbor metabolites which are subsequently served as the basis for recursive analysis.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>MetFlow</title>
       <link>/project/metflow-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
       <guid>/project/metflow-project/</guid>
-      <description>Web Server for Metabolomics Data Cleaning and Differential Metabolite Discovery</description>
+      <description>&lt;p&gt;We developed an interactive web server, namely, MetFlow, to provide an integrated and comprehensive workflow for metabolomics data cleaning and differential metabolite discovery.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

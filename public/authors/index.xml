@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors on Xiaotao Shen</title>
+    <title>Authors | Xiaotao Shen</title>
     <link>/authors/</link>
-    <description>Recent content in Authors on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title></title>
       <link>/authors/admin/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      
       <guid>/authors/admin/</guid>
-      <description>I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
-My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was MetNormalizer, which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics.</description>
+      <description>&lt;p&gt;I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.&lt;/p&gt;
+
+&lt;p&gt;My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was &lt;a href=&#34;https://jaspershen.github.io/MetNormalizer/&#34; target=&#34;_blank&#34;&gt;MetNormalizer&lt;/a&gt;, which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics. Then I developed a web-based tool, &lt;a href=&#34;http://metflow.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;MetFlow&lt;/a&gt;, aiming to provide a comprehensive pipeline for data cleaning and statistical analysis of large-scale metabolomics. The most important algorithm I have developed is called &lt;a href=&#34;http://metdna.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;MetDNA&lt;/a&gt;, which is a novel algorithm for metabolite identification and dysregulated pathway analysis in untargeted metabolomics.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Others</title>
       <link>/authors/others/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      
       <guid>/authors/others/</guid>
       <description></description>
     </item>
@@ -35,7 +29,6 @@ My research focuses on the development of bioinformatic algorithms and tools for
       <title>Ruohong Wang</title>
       <link>/authors/ruohong-wang/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      
       <guid>/authors/ruohong-wang/</guid>
       <description></description>
     </item>
@@ -44,7 +37,6 @@ My research focuses on the development of bioinformatic algorithms and tools for
       <title>Zheng-Jiang Zhu</title>
       <link>/authors/zheng-jiang-zhu/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      
       <guid>/authors/zheng-jiang-zhu/</guid>
       <description></description>
     </item>
@@ -53,7 +45,6 @@ My research focuses on the development of bioinformatic algorithms and tools for
       <title>Zhuozhong Wang</title>
       <link>/authors/zhuozhong-wang/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      
       <guid>/authors/zhuozhong-wang/</guid>
       <description></description>
     </item>
@@ -62,7 +53,6 @@ My research focuses on the development of bioinformatic algorithms and tools for
       <title>Huixun Jia</title>
       <link>/authors/huixun-jia/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>/authors/huixun-jia/</guid>
       <description></description>
     </item>
@@ -71,7 +61,6 @@ My research focuses on the development of bioinformatic algorithms and tools for
       <title>Zhiwei Zhou</title>
       <link>/authors/zhiwei-zhou/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      
       <guid>/authors/zhiwei-zhou/</guid>
       <description></description>
     </item>
@@ -80,9 +69,11 @@ My research focuses on the development of bioinformatic algorithms and tools for
       <title></title>
       <link>/authors/chinese/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/authors/chinese/</guid>
-      <description>I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare. My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was</description>
+      <description>&lt;p&gt;I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.&lt;/p&gt;
+
+&lt;p&gt;My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was &lt;a href=&#34;https://jaspershen.github.io/MetNormalizer/&#34; target=&#34;_blank&#34;&gt;MetNormalizer&lt;/a&gt;, which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics. Then I developed a web-based tool, &lt;a href=&#34;http://metflow.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;MetFlow&lt;/a&gt;, aiming to provide a comprehensive pipeline for data cleaning and statistical analysis of large-scale metabolomics. The most important algorithm I have developed is called &lt;a href=&#34;http://metdna.zhulab.cn/&#34; target=&#34;_blank&#34;&gt;MetDNA&lt;/a&gt;, which is a novel algorithm for metabolite identification and dysregulated pathway analysis in untargeted metabolomics.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

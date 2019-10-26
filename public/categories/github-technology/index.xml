@@ -1,23 +1,246 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>github technology on Xiaotao Shen</title>
+    <title>github technology | Xiaotao Shen</title>
     <link>/categories/github-technology/</link>
-    <description>Recent content in github technology on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    
-	<atom:link href="/categories/github-technology/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/categories/github-technology/index.xml" rel="self" type="application/rss+xml" />
+    <description>github technology</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright>
     <item>
       <title>使用Github和Hexo建独立博客</title>
       <link>/post/2017-09-09-github-blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/post/2017-09-09-github-blog/</guid>
-      <description>参考了一篇非常好的文章，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。 1. Hexo介绍 Hexo是基于Node</description>
+      <description>
+
+&lt;p&gt;参考了一篇&lt;a href=&#34;https://github.com/limedroid/HexoLearning#42-直接方式&#34; target=&#34;_blank&#34;&gt;非常好的文章&lt;/a&gt;，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-hexo介绍&#34;&gt;1. Hexo介绍&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-cn/&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt;是基于NodeJs的静态博客框架，简单、轻量，其生成的静态网页可以托管在Github和Heroku上。&lt;/p&gt;
+
+&lt;p&gt;. 超快速度
+. 支持MarkDown
+. 一键部署
+. 丰富的插件&lt;/p&gt;
+
+&lt;p&gt;下面以我的博客为例，&lt;a href=&#34;https://shenxt.github.io/&#34; target=&#34;_blank&#34;&gt;shenxt.github.io&lt;/a&gt;为例，讲解如何部署自己的博客。&lt;/p&gt;
+
+&lt;h2 id=&#34;2-环境准备&#34;&gt;2. 环境准备&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-1-安装node-js&#34;&gt;2.1 安装node.js&lt;/h3&gt;
+
+&lt;p&gt;去&lt;a href=&#34;https://nodejs.org/en/download/&#34; target=&#34;_blank&#34;&gt;nodejs&lt;/a&gt;官网下载对应系统的安装包，按提示安装。&lt;/p&gt;
+
+&lt;p&gt;检验安装成功，在git shell中输入一下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ node -v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;2-2-安装hexo&#34;&gt;2.2 安装hexo&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install hexo-cli -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是mac，则需要输入：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo npm install hexo-cli -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-利用hexo搭建一个博客&#34;&gt;3. 利用Hexo搭建一个博客&lt;/h2&gt;
+
+&lt;h3 id=&#34;3-1-创建博客目录shenxt-github-io&#34;&gt;3.1 创建博客目录shenxt@github.io&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo init shenxt.github.io
+$ cd limedroid.github.io
+$ npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-2-生成静态页面&#34;&gt;3.2 生成静态页面&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo clean
+$ hexo g # g is generate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-3-运行&#34;&gt;3.3 运行&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo s -p3600# is server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。&lt;/p&gt;
+
+&lt;h2 id=&#34;4-发一篇文章试试&#34;&gt;4 发一篇文章试试&lt;/h2&gt;
+
+&lt;h3 id=&#34;4-1-穿件一个新的博客&#34;&gt;4.1 穿件一个新的博客&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo new test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时会在source/posts目录下生成test.md文件，输入一些内容，然后保存。&lt;/p&gt;
+
+&lt;p&gt;然后看一下效果:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。&lt;/p&gt;
+
+&lt;h2 id=&#34;5-配置&#34;&gt;5 配置&lt;/h2&gt;
+
+&lt;p&gt;网站的设置大部分都在_config.yml文件夹中，详细配置可以查看&lt;a href=&#34;https://hexo.io/zh-cn/docs/configuration.html&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;下面只列出简单常用配置:&lt;/p&gt;
+
+&lt;p&gt;.title -&amp;gt; 网站标题
+.subtitle -&amp;gt; 网站副标题
+.description -&amp;gt; 网站描述
+.author -&amp;gt; 您的名字
+.language -&amp;gt; 网站使用的语言&lt;/p&gt;
+
+&lt;p&gt;注意：进行配置时，需要在冒号:后加一个英文空格。&lt;/p&gt;
+
+&lt;h2 id=&#34;6-更换主题&#34;&gt;6 更换主题&lt;/h2&gt;
+
+&lt;p&gt;在网站配置文件_config.yml中，配置theme。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;theme: next
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;next是主题的名字。Hexo有不同的人贡献主题，可以到其&lt;a href=&#34;https://hexo.io/themes/index.html&#34; target=&#34;_blank&#34;&gt;官方网站&lt;/a&gt;上下载不同主题。看中某一主题之后，直接点击其名字，进入到其github界面，然后复制其网址，使用下面代码，即可下载主题到本地。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/fi3ework/hexo-theme-archer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后将博客的配置文件theme修改为archer即可。&lt;/p&gt;
+
+&lt;p&gt;观察效果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;7-部署到github上&#34;&gt;7 部署到github上&lt;/h2&gt;
+
+&lt;h3 id=&#34;7-1-在github网页版上创建和自己账户名相同的仓库-比如我的账户为shenxt-因此-创建的仓库为shenxt-github-io&#34;&gt;7.1 在github网页版上创建和自己账户名相同的仓库，比如我的账户为shenxt，因此，创建的仓库为shenxt.github.io。&lt;/h3&gt;
+
+&lt;h3 id=&#34;7-2-安装hexo-deployer-git&#34;&gt;7.2 安装hexo-deployer-git&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install hexo-deployer-git --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;7-3-网站配置git&#34;&gt;7.3 网站配置git&lt;/h3&gt;
+
+&lt;p&gt;在网上的配置文件_config.yml中配置deploy。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-deploy:&#34;&gt;  type: git
+  repo: https://github.com/shenxt/shenxt.github.io
+  branch: master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;7-4-部署&#34;&gt;7.4 部署&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo d# d is deploy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;贴标签-方便搜索&#34;&gt;贴标签，方便搜索&lt;/h2&gt;
+
+&lt;h3 id=&#34;8-1-两个确认&#34;&gt;8.1 两个确认&lt;/h3&gt;
+
+&lt;p&gt;. 首先确认博客的配置文件中有：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tag_dir: tags
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;. 然后确认主题的配置文件有：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tags: tags
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;8-2-新建tags页面&#34;&gt;8.2 新建tags页面&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo new page tags
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时会在source/下生成tags/index.md文件。&lt;/p&gt;
+
+&lt;h3 id=&#34;8-3-修改source-tags-index-md&#34;&gt;8.3 修改source/tags/index.md&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;title: tags
+date: 2015-10-20 06:49:50
+type: &amp;quot;tags&amp;quot;
+comments: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;8-4-在文章中添加tags&#34;&gt;8.4 在文章中添加tags&lt;/h3&gt;
+
+&lt;p&gt;在你的文章中添加：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tags:
+	- Tag1
+	- Tag2
+	- Tag3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其文件头部类似于：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;title: TagEditText
+date: 2016-11-19 10:44:25
+tags:
+	- Tag1
+	- Tag2
+	- Tag3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;9-分类-给文章归档&#34;&gt;9 分类，给文章归档&lt;/h2&gt;
+
+&lt;h3 id=&#34;9-1-两个确认&#34;&gt;9.1 两个确认&lt;/h3&gt;
+
+&lt;p&gt;. 确认博客配置文件打开了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;category_dir: categories
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;. 确认主题配置文件打开了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;categories: /categories
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;9-2-新建categories文件&#34;&gt;9.2 新建categories文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;hexo new page categories
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;9-3-修改categories-index-md&#34;&gt;9.3 修改categories/index.md&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;title: categories
+date: 2015-10-20 06:49:50
+type: &amp;quot;categories&amp;quot;
+comments: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;9-4-在文章中添加categories&#34;&gt;9.4 在文章中添加categories&lt;/h3&gt;
+
+&lt;p&gt;在文章中添加：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;categories:
+	- cate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其文件头部类似：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;title: TagEditText
+date: 2016-11-19 10:44:25
+categories:
+	- cate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;10-添加评论功能&#34;&gt;10 添加评论功能&lt;/h2&gt;
+
+&lt;p&gt;这里推荐使用韩国的来必力系统。参考&lt;a href=&#34;https://www.drixn.com/2017/LiveReCommentsSystem/&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;进行设置。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

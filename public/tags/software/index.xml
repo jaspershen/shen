@@ -1,69 +1,118 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software on Xiaotao Shen</title>
+    <title>Software | Xiaotao Shen</title>
     <link>/tags/software/</link>
-    <description>Recent content in Software on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/software/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/tags/software/index.xml" rel="self" type="application/rss+xml" />
+    <description>Software</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Docker的安装使用和配置</title>
       <link>/post/docker/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/docker/</guid>
-      <description>将自己安装docker,使用以及配置记录下来,主要还包括常用的命令总结以及一些bug的处理,以及一些常见资源.</description>
+      <description>
+
+
+&lt;p&gt;将自己安装docker,使用以及配置记录下来,主要还包括常用的命令总结以及一些bug的处理,以及一些常见资源.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>网络分析之igraph</title>
       <link>/post/igraph/</link>
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/igraph/</guid>
-      <description>igraph是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的igraph包.其官</description>
+      <description>
+
+
+&lt;p&gt;&lt;code&gt;igraph&lt;/code&gt;是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的&lt;code&gt;igraph&lt;/code&gt;包.其官网如下:
+&lt;a href=&#34;https://igraph.org/r/doc/plot.common.html&#34; class=&#34;uri&#34;&gt;https://igraph.org/r/doc/plot.common.html&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;安装&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;安装&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;常用功能总结&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;常用功能总结&lt;/h3&gt;
+&lt;div id=&#34;寻找某个vertex的neighbor&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;寻找某个vertex的neighbor&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;neighbors()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;V&lt;/code&gt;:某vertex的名字(name).&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mode&lt;/code&gt;: 对于有向图来说,是寻找从该vertex出发的neighbors(‘out’),还是指向该vertex的neighbors(‘in’),还是两种都寻找(‘both’).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置graph中vertex的属性&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;设置graph中vertex的属性&lt;/h4&gt;
+&lt;p&gt;如果需要给graph中的vertex增加或者修改属性,可以使用&lt;code&gt;ste_vertex_attr()&lt;/code&gt;函数.一共四个参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;:设置的新的属性的名字.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;index&lt;/code&gt;:设置vertex属性时的vertex的index.默认按照graph中vertex的默认index(V(graph))来设置.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;value&lt;/code&gt;:设置的属性的值.需要和vertex的长度一致.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将igraph对象转变为data.frame格式&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;as_long_data_frame()&lt;/code&gt;函数可以将&lt;code&gt;igraph&lt;/code&gt;转换为data.frame格式.只有一个参数,就是&lt;code&gt;graph&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;从一个graph提取子graphsubgraph&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;从一个graph提取子graph(subgraph)&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;subgraph()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;V&lt;/code&gt;:要提取的subgraph的所有的vertex的名字(name).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;获取vertex属性&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;获取vertex属性&lt;/h4&gt;
+&lt;p&gt;使用&lt;code&gt;vertex_attr()&lt;/code&gt;函数.一共4个参数.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;:需要获取的属性的名字,默认提取所有属性.&lt;/li&gt;
+&lt;li&gt;index:需要获取那些vertex的属性,默认提取所有的vertex.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>LipidCCS Prediction of Collision Cross-Section Values for Lipids with High Precision To Support Ion Mobility–Mass Spectrometry-Based Lipidomics</title>
       <link>/publication/journal-article/lipidccs/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      
       <guid>/publication/journal-article/lipidccs/</guid>
-      <description>The use of collision cross-section (CCS) values derived from ion mobility–mass spectrometry (IM–MS) has been proven to facilitate lipid identifications. Its utility is restricted by the limited availability of CCS values. Recently, the machine-learning algorithm-based prediction (e.g., MetCCS) is reported to generate CCS values in a large-scale. However, the prediction precision is not sufficient to differentiate lipids due to their high structural similarities and subtle differences on CCS values. To address this challenge, we developed a new approach, namely, LipidCCS, to precisely predict lipid CCS values.</description>
+      <description></description>
     </item>
     
     <item>
       <title>LipidIMMS Analyzer integrating multi-dimensional information to support lipid identification in ion mobility—mass spectrometry based lipidomics</title>
       <link>/publication/journal-article/lipidimms/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      
       <guid>/publication/journal-article/lipidimms/</guid>
-      <description>Ion mobility—mass spectrometry (IM-MS) has showed great application potential for lipidomics. However, IM-MS based lipidomics is significantly restricted by the available software for lipid structural identification. Here, we developed a software tool, namely, LipidIMMS Analyzer, to support the accurate identification of lipids in IM-MS. For the first time, the software incorporates a large-scale database covering over 260 000 lipids and four-dimensional structural information for each lipid [i.e. m/z, retention time (RT), collision cross-section (CCS) and MS/MS spectra]. Therefore, multi-dimensional information can be readily integrated to support lipid identifications, and significantly improve the coverage and confidence of identification. Currently, the software supports different IM-MS instruments and data acquisition approaches.</description>
+      <description></description>
     </item>
     
     <item>
       <title>Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility-Mass Spectrometry</title>
       <link>/publication/journal-article/metccs/</link>
       <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>/publication/journal-article/metccs/</guid>
-      <description>The use of collision cross-section (CCS) values derived from ion mobility–mass spectrometry (IM–MS) has been proven to facilitate lipid identifications. Its utility is restricted by the limited availability of CCS values. Recently, the machine-learning algorithm-based prediction (e.g., MetCCS) is reported to generate CCS values in a large-scale. However, the prediction precision is not sufficient to differentiate lipids due to their high structural similarities and subtle differences on CCS values. To address this challenge, we developed a new approach, namely, LipidCCS, to precisely predict lipid CCS values.</description>
+      <description></description>
     </item>
     
     <item>
       <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
       <link>/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/publication/journal-article/taozhang_metabolomics/</guid>
-      <description>Untargeted metabolomics studies for biomarker discovery often have hundreds to thousands of human samples. Data acquisition of large-scale samples has to be divided into several batches and may span from months to as long as several years. The signal drift of metabolites during data acquisition (intra- and inter-batch) is unavoidable and is a major confounding factor for large-scale metabolomics studies. We aim to develop a data normalization method to reduce unwanted variations and integrate multiple batches in large-scale metabolomics studies prior to statistical analyses. We developed a machine learning algorithm-based method, support vector regression (SVR), for large-scale metabolomics data normalization and integration. An R package named MetNormalizer was developed and provided for data processing using SVR normalization. After SVR normalization, the portion of metabolite ion peaks with relative standard deviations (RSDs) less than 30 % increased to more than 90 % of the total peaks, which is much better than other common normalization methods. The reduction of unwanted analytical variations helps to improve the performance of multivariate statistical analyses, both unsupervised and supervised, in terms of classification and prediction accuracy so that subtle metabolic changes in epidemiological studies can be detected. SVR normalization can effectively remove the unwanted intra- and inter-batch variations, and is much better than other common normalization methods.</description>
+      <description></description>
     </item>
     
   </channel>

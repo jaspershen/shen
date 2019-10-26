@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Xiaotao Shen</title>
+    <title>Tags | Xiaotao Shen</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Blog</title>
       <link>/tags/blog/</link>
       <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/blog/</guid>
       <description></description>
     </item>
@@ -25,7 +18,6 @@
       <title>Academic</title>
       <link>/tags/academic/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/academic/</guid>
       <description></description>
     </item>
@@ -34,7 +26,6 @@
       <title>Software</title>
       <link>/tags/software/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/software/</guid>
       <description></description>
     </item>
@@ -43,7 +34,6 @@
       <title>Statistical analysis</title>
       <link>/tags/statistical-analysis/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/statistical-analysis/</guid>
       <description></description>
     </item>
@@ -52,7 +42,6 @@
       <title>Chinese</title>
       <link>/tags/chinese/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/chinese/</guid>
       <description></description>
     </item>
@@ -61,7 +50,6 @@
       <title>life</title>
       <link>/tags/life/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/life/</guid>
       <description></description>
     </item>
@@ -70,7 +58,6 @@
       <title>Source Themes</title>
       <link>/tags/source-themes/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/source-themes/</guid>
       <description></description>
     </item>
@@ -79,7 +66,6 @@
       <title>Biomarker discovery</title>
       <link>/tags/biomarker-discovery/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/biomarker-discovery/</guid>
       <description></description>
     </item>
@@ -88,7 +74,6 @@
       <title>Metabolomics</title>
       <link>/tags/metabolomics/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      
       <guid>/tags/metabolomics/</guid>
       <description></description>
     </item>
@@ -97,7 +82,6 @@
       <title>Data processing</title>
       <link>/tags/data-processing/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      
       <guid>/tags/data-processing/</guid>
       <description></description>
     </item>
@@ -106,7 +90,6 @@
       <title>Lipidomics</title>
       <link>/tags/lipidomics/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      
       <guid>/tags/lipidomics/</guid>
       <description></description>
     </item>
@@ -115,7 +98,6 @@
       <title>Data cleaning</title>
       <link>/tags/data-cleaning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/tags/data-cleaning/</guid>
       <description></description>
     </item>
@@ -124,7 +106,6 @@
       <title>Github</title>
       <link>/tags/github/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/tags/github/</guid>
       <description></description>
     </item>

@@ -1,33 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>literature on Xiaotao Shen</title>
+    <title>literature | Xiaotao Shen</title>
     <link>/categories/literature/</link>
-    <description>Recent content in literature on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Fri, 11 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/literature/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/categories/literature/index.xml" rel="self" type="application/rss+xml" />
+    <description>literature</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Fri, 11 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>pregnancy project文献阅读总结</title>
       <link>/post/pregnancy-project/</link>
       <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/pregnancy-project/</guid>
-      <description>Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration 早产(preterm birth),是指在妊娠不足37周出生的婴儿.早产与婴儿之后的神经发育延迟(neurode</description>
+      <description>
+
+
+&lt;div id=&#34;variants-in-the-fetal-genome-near-pro-inflammatory-cytokine-genes-on-2q13-associate-with-gestational-duration&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;早产(preterm birth),是指在妊娠不足37周出生的婴儿.早产与婴儿之后的神经发育延迟(neurodevelopmental delay),脑瘫(cerebral palsy),糖尿病(diabetes),高血压以及精神疾病(psychiatric disorders)等都有关.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;过期生产(postterm birth),是指在妊娠超过42周之后出生的婴儿.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在发达国家,preterm和postterm都有大约5%-10%的比例.在低收入和中等收入国家,preterm的比例比高收入国家更高.&lt;/p&gt;
+&lt;p&gt;Although timing of parturition is influenced by many non-genetic risk factors, including parity(母亲的胎数), maternal stress(母亲的紧张状态), smoking, urogenital infection(泌尿系统的感染), educational attainment(受教育程度), and socioeconomic status(社会经济程度), there is compelling evidence for a substantial genetic impact.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;定义&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;定义&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;preterm: &amp;lt; 34 weeks&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;preterm: &amp;lt; 34 weeks&lt;/li&gt;
+&lt;li&gt;postterm: &amp;gt;= 42 weeks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一些pregnancy公开数据库&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;一些pregnancy公开数据库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Early Growth Genetics Consortium &lt;a href=&#34;https://egg-consortium.org/&#34; class=&#34;uri&#34;&gt;https://egg-consortium.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Integrative Psychiatric Research (iPSYCH) study &lt;a href=&#34;https://ipsych.au.dk/about-ipsych/&#34; class=&#34;uri&#34;&gt;https://ipsych.au.dk/about-ipsych/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Genomic and Proteomic Network for Preterm Birth Research (GPN) &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000714.v1.p1&#34; class=&#34;uri&#34;&gt;https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000714.v1.p1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些数据库大部分是关于基因组学的,可以到时候考虑用它做个验证什么的.&lt;/p&gt;
+&lt;p&gt;parturition(分娩)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;文章总结&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;文章总结:&lt;/h3&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>文献解读:Longitudinal multi-omics of host– microbe dynamics in prediabetes</title>
       <link>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
-      <description></description>
+      <description>
+
+
+
+</description>
     </item>
     
   </channel>

@@ -1,33 +1,289 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chinese on Xiaotao Shen</title>
+    <title>Chinese | Xiaotao Shen</title>
     <link>/tags/chinese/</link>
-    <description>Recent content in Chinese on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
+    <description>Chinese</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>20191014一点感想</title>
       <link>/post/20191014/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/20191014/</guid>
-      <description>实验室新买了一台workstation.因为有软件需要在windows上运行,因此本来需要安装windows server版本.但是后来问了一</description>
+      <description>
+
+
+&lt;p&gt;实验室新买了一台workstation.因为有软件需要在windows上运行,因此本来需要安装windows server版本.但是后来问了一下学校的IT部门,安装一台服务器非常麻烦,需要学校IT部门来关理,每月收费350刀.如果是自己关理,也可以,但是如果有数据外漏的话,责任需要自己负责.因此最后考虑安装普通的window10版本,然后可以远程连接.我自己再看看能够在上面的虚拟机上安装linux系统,实现多人同时远程练级额.&lt;/p&gt;
+&lt;div id=&#34;远程连接&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;远程连接&lt;/h3&gt;
+&lt;p&gt;连接上Stanford的VPN之后,远程连接并不起作用.当时推测的可能就是这台电脑属于某个group,需要把我们的SunetID加入刀该group内,然后才能进去.但是来的IT人员搞了好几天也没搞定,我也是略微无语.随后不在管他,我在IT online提交了ticket,过了大概一个星期,终于查到了解决办法,就是说需要加入某个group.将邮件记录如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Xiaotao,
+Your device is connected to Genetics VLAN 3020, CIDR 171.65.76.0/23. Users who need to have VPN/RDP access to the device need to be added to workgroup: net-access-som-vpn-genetics.&lt;br /&gt;
+Please reach out to one of the admins below (to request access):&lt;br /&gt;
+Chris Probert&lt;br /&gt;
+Jin Wook Lee&lt;br /&gt;
+Anna Scherbina&lt;br /&gt;
+Please let me know if you have any questions.&lt;br /&gt;
+Best regards,&lt;br /&gt;
+Brian, Med T&amp;amp;DS&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但是非常奇怪的是,这几个人我们都不认识,google一下,竟然是Biomedicine Informatics实验室的.然后赶紧给他们发了邮件,没想到很快就给了回复,说已经把我们的SunetID加入到该group中,大约20分钟之后可以连接.随后果然可以.&lt;/p&gt;
+&lt;p&gt;使用Windows上的&lt;code&gt;Remote Desktop Connection&lt;/code&gt;软件进行连接时,注意&lt;code&gt;User name&lt;/code&gt;时需要在用户名前面加上&lt;code&gt;win\&lt;/code&gt;,也就是写&lt;code&gt;win\shenxt&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;安装虚拟机&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;安装虚拟机&lt;/h3&gt;
+&lt;p&gt;原本想要安装VMware软件的,后来发现这个软件跟win10自带的&lt;code&gt;Hyper-V&lt;/code&gt;软件是冲突的.后来就放弃使用VMware,直接使用Hyper-V软件.&lt;/p&gt;
+&lt;p&gt;最开始下载的&lt;code&gt;CentOS-8&lt;/code&gt;系统,但是安装的时候,遇到了问题,安装成功之后,重启之后没有进入登录界面,反而又重新到了安装界面!查了很多,都没有找到解决办法.&lt;/p&gt;
+&lt;p&gt;后来,觉得有可能是系统版本的问题,因此在CentOS官网上找到了CentOS-7版本.重新走了一遍安装程序,终于成功了.&lt;/p&gt;
+&lt;p&gt;安装之后没有图形界面,只有命令行形式.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;网络连接问题&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;网络连接问题&lt;/h3&gt;
+&lt;p&gt;直接安装之后,并没有网络连接.需要进行设置.查了一些资料,首先需要在Hyper-V软件上创建虚拟交换机,但是我在创建的时候,总是报错,无法创建,然后又开始google.结果找到了这样一个网页:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://support.microsoft.com/zh-cn/help/3101106/you-cannot-create-a-hyper-v-virtual-switch-on-64-bit-versions-of-windo&#34; class=&#34;uri&#34;&gt;https://support.microsoft.com/zh-cn/help/3101106/you-cannot-create-a-hyper-v-virtual-switch-on-64-bit-versions-of-windo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后就下载软件,运行,重启,然后就没有网络连接了!而且是所有的网络都没有了,查了一下感觉应该是驱动的问题,然后在官网上下载了Intel的驱动,走的时候还没有安装好,看看明天结果如何.&lt;/p&gt;
+&lt;p&gt;并不是driver的问题,第二天IT过来瞅了一眼,又重新搞了一会driver,还是不行,最后拉走了,说需要慢慢检查.&lt;/p&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
       <title>使用Github和Hexo建独立博客</title>
       <link>/post/2017-09-09-github-blog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/post/2017-09-09-github-blog/</guid>
-      <description>参考了一篇非常好的文章，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。 1. Hexo介绍 Hexo是基于Node</description>
+      <description>
+
+&lt;p&gt;参考了一篇&lt;a href=&#34;https://github.com/limedroid/HexoLearning#42-直接方式&#34; target=&#34;_blank&#34;&gt;非常好的文章&lt;/a&gt;，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-hexo介绍&#34;&gt;1. Hexo介绍&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-cn/&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt;是基于NodeJs的静态博客框架，简单、轻量，其生成的静态网页可以托管在Github和Heroku上。&lt;/p&gt;
+
+&lt;p&gt;. 超快速度
+. 支持MarkDown
+. 一键部署
+. 丰富的插件&lt;/p&gt;
+
+&lt;p&gt;下面以我的博客为例，&lt;a href=&#34;https://shenxt.github.io/&#34; target=&#34;_blank&#34;&gt;shenxt.github.io&lt;/a&gt;为例，讲解如何部署自己的博客。&lt;/p&gt;
+
+&lt;h2 id=&#34;2-环境准备&#34;&gt;2. 环境准备&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-1-安装node-js&#34;&gt;2.1 安装node.js&lt;/h3&gt;
+
+&lt;p&gt;去&lt;a href=&#34;https://nodejs.org/en/download/&#34; target=&#34;_blank&#34;&gt;nodejs&lt;/a&gt;官网下载对应系统的安装包，按提示安装。&lt;/p&gt;
+
+&lt;p&gt;检验安装成功，在git shell中输入一下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ node -v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;2-2-安装hexo&#34;&gt;2.2 安装hexo&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install hexo-cli -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果是mac，则需要输入：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo npm install hexo-cli -g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3-利用hexo搭建一个博客&#34;&gt;3. 利用Hexo搭建一个博客&lt;/h2&gt;
+
+&lt;h3 id=&#34;3-1-创建博客目录shenxt-github-io&#34;&gt;3.1 创建博客目录shenxt@github.io&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo init shenxt.github.io
+$ cd limedroid.github.io
+$ npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-2-生成静态页面&#34;&gt;3.2 生成静态页面&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo clean
+$ hexo g # g is generate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-3-运行&#34;&gt;3.3 运行&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo s -p3600# is server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。&lt;/p&gt;
+
+&lt;h2 id=&#34;4-发一篇文章试试&#34;&gt;4 发一篇文章试试&lt;/h2&gt;
+
+&lt;h3 id=&#34;4-1-穿件一个新的博客&#34;&gt;4.1 穿件一个新的博客&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo new test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时会在source/posts目录下生成test.md文件，输入一些内容，然后保存。&lt;/p&gt;
+
+&lt;p&gt;然后看一下效果:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。&lt;/p&gt;
+
+&lt;h2 id=&#34;5-配置&#34;&gt;5 配置&lt;/h2&gt;
+
+&lt;p&gt;网站的设置大部分都在_config.yml文件夹中，详细配置可以查看&lt;a href=&#34;https://hexo.io/zh-cn/docs/configuration.html&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;下面只列出简单常用配置:&lt;/p&gt;
+
+&lt;p&gt;.title -&amp;gt; 网站标题
+.subtitle -&amp;gt; 网站副标题
+.description -&amp;gt; 网站描述
+.author -&amp;gt; 您的名字
+.language -&amp;gt; 网站使用的语言&lt;/p&gt;
+
+&lt;p&gt;注意：进行配置时，需要在冒号:后加一个英文空格。&lt;/p&gt;
+
+&lt;h2 id=&#34;6-更换主题&#34;&gt;6 更换主题&lt;/h2&gt;
+
+&lt;p&gt;在网站配置文件_config.yml中，配置theme。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;theme: next
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;next是主题的名字。Hexo有不同的人贡献主题，可以到其&lt;a href=&#34;https://hexo.io/themes/index.html&#34; target=&#34;_blank&#34;&gt;官方网站&lt;/a&gt;上下载不同主题。看中某一主题之后，直接点击其名字，进入到其github界面，然后复制其网址，使用下面代码，即可下载主题到本地。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/fi3ework/hexo-theme-archer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后将博客的配置文件theme修改为archer即可。&lt;/p&gt;
+
+&lt;p&gt;观察效果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;7-部署到github上&#34;&gt;7 部署到github上&lt;/h2&gt;
+
+&lt;h3 id=&#34;7-1-在github网页版上创建和自己账户名相同的仓库-比如我的账户为shenxt-因此-创建的仓库为shenxt-github-io&#34;&gt;7.1 在github网页版上创建和自己账户名相同的仓库，比如我的账户为shenxt，因此，创建的仓库为shenxt.github.io。&lt;/h3&gt;
+
+&lt;h3 id=&#34;7-2-安装hexo-deployer-git&#34;&gt;7.2 安装hexo-deployer-git&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install hexo-deployer-git --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;7-3-网站配置git&#34;&gt;7.3 网站配置git&lt;/h3&gt;
+
+&lt;p&gt;在网上的配置文件_config.yml中配置deploy。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-deploy:&#34;&gt;  type: git
+  repo: https://github.com/shenxt/shenxt.github.io
+  branch: master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;7-4-部署&#34;&gt;7.4 部署&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo d# d is deploy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;贴标签-方便搜索&#34;&gt;贴标签，方便搜索&lt;/h2&gt;
+
+&lt;h3 id=&#34;8-1-两个确认&#34;&gt;8.1 两个确认&lt;/h3&gt;
+
+&lt;p&gt;. 首先确认博客的配置文件中有：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tag_dir: tags
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;. 然后确认主题的配置文件有：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tags: tags
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;8-2-新建tags页面&#34;&gt;8.2 新建tags页面&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hexo new page tags
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时会在source/下生成tags/index.md文件。&lt;/p&gt;
+
+&lt;h3 id=&#34;8-3-修改source-tags-index-md&#34;&gt;8.3 修改source/tags/index.md&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;title: tags
+date: 2015-10-20 06:49:50
+type: &amp;quot;tags&amp;quot;
+comments: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;8-4-在文章中添加tags&#34;&gt;8.4 在文章中添加tags&lt;/h3&gt;
+
+&lt;p&gt;在你的文章中添加：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tags:
+	- Tag1
+	- Tag2
+	- Tag3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其文件头部类似于：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;title: TagEditText
+date: 2016-11-19 10:44:25
+tags:
+	- Tag1
+	- Tag2
+	- Tag3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;9-分类-给文章归档&#34;&gt;9 分类，给文章归档&lt;/h2&gt;
+
+&lt;h3 id=&#34;9-1-两个确认&#34;&gt;9.1 两个确认&lt;/h3&gt;
+
+&lt;p&gt;. 确认博客配置文件打开了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;category_dir: categories
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;. 确认主题配置文件打开了&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;categories: /categories
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;9-2-新建categories文件&#34;&gt;9.2 新建categories文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;hexo new page categories
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;9-3-修改categories-index-md&#34;&gt;9.3 修改categories/index.md&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;title: categories
+date: 2015-10-20 06:49:50
+type: &amp;quot;categories&amp;quot;
+comments: false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;9-4-在文章中添加categories&#34;&gt;9.4 在文章中添加categories&lt;/h3&gt;
+
+&lt;p&gt;在文章中添加：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;categories:
+	- cate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其文件头部类似：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;title: TagEditText
+date: 2016-11-19 10:44:25
+categories:
+	- cate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;10-添加评论功能&#34;&gt;10 添加评论功能&lt;/h2&gt;
+
+&lt;p&gt;这里推荐使用韩国的来必力系统。参考&lt;a href=&#34;https://www.drixn.com/2017/LiveReCommentsSystem/&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;进行设置。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -3,13 +3,8 @@
   <channel>
     <title>Xiaotao Shen</title>
     <link>/chinese/admin/</link>
-    <description>Recent content on Xiaotao Shen</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy;Xiaotao Shen{year}</copyright>
-    
-	<atom:link href="/chinese/admin/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="/chinese/admin/index.xml" rel="self" type="application/rss+xml" />
+    <description>Xiaotao Shen</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright>
   </channel>
 </rss>
