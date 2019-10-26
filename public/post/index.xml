@@ -36,7 +36,7 @@
       <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/r-data-visulization-cookbook/</guid>
-      <description></description>
+      <description>ggplot2中如何反转坐标轴 使用scale_x_reverse()/scale_y_reverse()函数. library(ggplot2) ## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1 library(magrittr) ## Warning: package</description>
     </item>
     
     <item>

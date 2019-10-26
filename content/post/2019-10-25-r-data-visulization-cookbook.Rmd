@@ -11,3 +11,51 @@ image:
   caption: ''
   focal_point: ''
 ---
+
+### `ggplot2`中如何反转坐标轴
+
+使用`scale_x_reverse()/scale_y_reverse()`函数.
+
+```{r}
+library(ggplot2)
+library(magrittr)
+p <- 
+mtcars %>% 
+  ggplot(aes(mpg, disp)) +
+  geom_point() 
+p
+##反转X坐标轴
+p + 
+  scale_x_reverse()
+
+# 反转y坐标轴
+p + 
+  scale_y_reverse()
+```
+
+### `ggplot2`中如何修改绘图区域的边界?
+
+在`theme()`函数中设置`plot.margin`参数,且该参数应该是一个`margin()`函数构建的对象.
+
+```{r}
+library(ggplot2)
+library(magrittr)
+p <- 
+mtcars %>% 
+  ggplot(aes(mpg, disp)) +
+  geom_point(size = 2, colour = "skyblue") +
+  theme_bw() +
+  theme(plot.margin = margin(t = 0, r = 0, b = 0, l = 0, unit = "pt"))
+p
+
+```
+
+### 如何获得合适的配色组合?
+
+比较常见的配色工具包括`ggsci`,`RColorBrewer`等.且可以使用`scales`包中的`show_col()`函数来展示颜色.
+
+```{r}
+library(ggsci)
+library(scales)
+```
+
