@@ -55,5 +55,16 @@ p</code></pre>
 <p>比较常见的配色工具包括<code>ggsci</code>,<code>RColorBrewer</code>等.且可以使用<code>scales</code>包中的<code>show_col()</code>函数来展示颜色.</p>
 <pre class="r"><code>library(ggsci)</code></pre>
 <pre><code>## Warning: package &#39;ggsci&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>library(scales)</code></pre>
+<pre class="r"><code>library(scales)
+
+test_colour &lt;- 
+  ggsci::pal_jama()(7)
+
+show_col(test_colour)</code></pre>
+<p><img src="/post/2019-10-25-r-data-visulization-cookbook_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>test_colour &lt;- 
+  ggsci::pal_jama(alpha = 0.5)(7)
+
+show_col(test_colour)</code></pre>
+<p><img src="/post/2019-10-25-r-data-visulization-cookbook_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 </div>

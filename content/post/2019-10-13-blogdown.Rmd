@@ -31,7 +31,7 @@ image:
 
 1. 首先需要将 `content/home`中的`posts.md`中的active设置为false.这样,这一部分就不会在home主页显示.
 
-![](change-active.png)
+![](2019-10-13-blogdown/change-active.png)
 
 2. 然后将`content/home`中的`posts.md`拷贝到`content/post`中,并改名为`index.md`.
 
@@ -47,6 +47,6 @@ image:
 
 ### 如何在post中添加本地图片?
 
-首先在`content/post/blogdown`建立和post同名的文件夹(如`test`).然后将图片(如`test.png`)放入该文件夹下.在post中,使用:
+首先在`content/post/`建立和post名z字去除掉数字之后的的文件夹(比如post名字为`2019-10-25-test`,则文件夹命名为`test`),然后再在该文件夹下建立和post同名的文件夹(`2019-10-25-test`),然后将图片(如`test.png`)放入该文件夹下.在post中,使用:
 
-`![](test/test.png)`语句插入图片.
+`![](test/2019-10-25-test/test.png)`语句插入图片.

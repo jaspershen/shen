@@ -57,5 +57,16 @@ p
 ```{r}
 library(ggsci)
 library(scales)
+
+test_colour <- 
+  ggsci::pal_jama()(7)
+
+show_col(test_colour)
+
+
+test_colour <- 
+  ggsci::pal_jama(alpha = 0.5)(7)
+
+show_col(test_colour)
 ```
 
