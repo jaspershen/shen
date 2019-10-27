@@ -308,6 +308,11 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
   facet_wrap(~ cyl)
 ```
 
+-----
+
+## 柱形图`geom_bar()`,`geom_col()`和`stat_count`
+
+
 
 
 
