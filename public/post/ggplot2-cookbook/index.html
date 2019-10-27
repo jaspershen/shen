@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1.3 ggsave()保存ggplot2图片对象 0.2 图层(Layer):几何">
+  <meta name="description" content="1 绘图基础(plot basics) 1.1 ggplot() 创建一个新的ggplot图片 1.1.1 参数 1.1.2 细节 1.1.3 例子 1.2 aes() 创建美学映射 1.2.1 参数 1.2.2 细节 1.2.3 例子 1.3 ggsave()保存ggplot">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/ggplot2-cookbook/">
@@ -137,7 +137,7 @@
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/ggplot2-cookbook/">
   <meta property="og:title" content="ggplot2-cookbook | Xiaotao Shen">
-  <meta property="og:description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1.3 ggsave()保存ggplot2图片对象 0.2 图层(Layer):几何"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:description" content="1 绘图基础(plot basics) 1.1 ggplot() 创建一个新的ggplot图片 1.1.1 参数 1.1.2 细节 1.1.3 例子 1.2 aes() 创建美学映射 1.2.1 参数 1.2.2 细节 1.2.3 例子 1.3 ggsave()保存ggplot"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-10-25T00:00:00&#43;00:00">
@@ -620,7 +620,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    10 min read
+    11 min read
   </span>
   
 
@@ -711,29 +711,50 @@
 
 <div id="TOC">
 <ul>
-<li><a href="#绘图基础plot-basics"><span class="toc-section-number">0.1</span> 绘图基础(plot basics)</a><ul>
-<li><a href="#ggplot-创建一个新的ggplot图片"><span class="toc-section-number">0.1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</a></li>
-<li><a href="#aes-创建美学映射"><span class="toc-section-number">0.1.2</span> <code>aes()</code> 创建美学映射</a></li>
-<li><a href="#ggsave保存ggplot2图片对象"><span class="toc-section-number">0.1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</a></li>
+<li><a href="#绘图基础plot-basics"><span class="toc-section-number">1</span> 绘图基础(plot basics)</a><ul>
+<li><a href="#ggplot-创建一个新的ggplot图片"><span class="toc-section-number">1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</a><ul>
+<li><a href="#参数"><span class="toc-section-number">1.1.1</span> 参数</a></li>
+<li><a href="#细节"><span class="toc-section-number">1.1.2</span> 细节</a></li>
+<li><a href="#例子"><span class="toc-section-number">1.1.3</span> 例子</a></li>
 </ul></li>
-<li><a href="#图层layer几何对象geoms"><span class="toc-section-number">0.2</span> 图层(Layer):几何对象(geoms)</a><ul>
-<li><a href="#直线geom_ablinegeom_hline和geom_vline"><span class="toc-section-number">0.2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></a></li>
-<li><a href="#柱形图bar-chartsgeom_bargeom_col和stat_count"><span class="toc-section-number">0.2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></a></li>
+<li><a href="#aes-创建美学映射"><span class="toc-section-number">1.2</span> <code>aes()</code> 创建美学映射</a><ul>
+<li><a href="#参数-1"><span class="toc-section-number">1.2.1</span> 参数</a></li>
+<li><a href="#细节-1"><span class="toc-section-number">1.2.2</span> 细节</a></li>
+<li><a href="#例子-1"><span class="toc-section-number">1.2.3</span> 例子</a></li>
+</ul></li>
+<li><a href="#ggsave保存ggplot2图片对象"><span class="toc-section-number">1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</a><ul>
+<li><a href="#参数-2"><span class="toc-section-number">1.3.1</span> 参数</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#图层layer几何对象geoms"><span class="toc-section-number">2</span> 图层(Layer):几何对象(geoms)</a><ul>
+<li><a href="#直线geom_ablinegeom_hline和geom_vline"><span class="toc-section-number">2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></a><ul>
+<li><a href="#参数-3"><span class="toc-section-number">2.1.1</span> 参数</a></li>
+<li><a href="#细节-2"><span class="toc-section-number">2.1.2</span> 细节</a></li>
+<li><a href="#美学映射aesthetics"><span class="toc-section-number">2.1.3</span> 美学映射(Aesthetics)</a></li>
+<li><a href="#例子-2"><span class="toc-section-number">2.1.4</span> 例子</a></li>
+</ul></li>
+<li><a href="#柱形图bar-chartsgeom_bargeom_col和stat_count"><span class="toc-section-number">2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></a><ul>
+<li><a href="#参数-4"><span class="toc-section-number">2.2.1</span> 参数</a></li>
+<li><a href="#细节-3"><span class="toc-section-number">2.2.2</span> 细节</a></li>
+<li><a href="#美学参数aesthetics"><span class="toc-section-number">2.2.3</span> 美学参数(Aesthetics)</a></li>
+<li><a href="#计算变量-computed-variables"><span class="toc-section-number">2.2.4</span> 计算变量 (Computed variables)</a></li>
+<li><a href="#例子-3"><span class="toc-section-number">2.2.5</span> 例子</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="绘图基础plot-basics" class="section level2">
-<h2><span class="header-section-number">0.1</span> 绘图基础(plot basics)</h2>
+<div id="绘图基础plot-basics" class="section level1">
+<h1><span class="header-section-number">1</span> 绘图基础(plot basics)</h1>
 <p>所有的ggplot2图形都开始于<code>ggplot()</code>函数的调用.给其提供数据,以及美学映射(aesthethic mappings)(使用<code>aes()</code>函数).然后添加图层(layers), 度量系统(scales), 坐标系(coords)以及分面(facets).添加的每个对象,都是在前一行末尾使用符号<code>+</code>.如果需要将一个ggplot2图像保存在本地,使用<code>ggsave()</code>函数.</p>
-<div id="ggplot-创建一个新的ggplot图片" class="section level3">
-<h3><span class="header-section-number">0.1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</h3>
+<div id="ggplot-创建一个新的ggplot图片" class="section level2">
+<h2><span class="header-section-number">1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</h2>
 <p><code>ggplot()</code>函数是用来启动初始化一个ggplot2对象的.It can be used to declare the input data frame for a graphic and to specify the set of plot aesthetics intended to be common throughout all subsequent layers unless specifically overridden.</p>
 <pre><code>ggplot(data = NULL, mapping = aes(), ...,
   environment = parent.frame())
 Arguments</code></pre>
-<div id="参数" class="section level4">
-<h4><span class="header-section-number">0.1.1.1</span> 参数</h4>
+<div id="参数" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> 参数</h3>
 <ul>
 <li><p><strong>data</strong> 用于绘图的数据.如果数据格式不是<code>data.frame</code>,会默认使用<code>fortity()</code>函数转换为<code>data.frame</code>格式.如果在该函数中不提供data,则在后面添加的每一个图层,都需要提供data.</p></li>
 <li><p><strong>mapping</strong> 用于美学图层映射的参数.如果在这里不提供,则后面添加的每个图层,都需要提供.</p></li>
@@ -741,8 +762,8 @@ Arguments</code></pre>
 <li><p><strong>environment</strong> 该参数已经淘汰了.</p></li>
 </ul>
 </div>
-<div id="细节" class="section level4">
-<h4><span class="header-section-number">0.1.1.2</span> 细节</h4>
+<div id="细节" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> 细节</h3>
 <p><code>ggplot()</code>用来初始化ggplot2图形对象.经常后面需要通过<code>+</code>来添加其他的对象.一般有三种方法调用该函数:</p>
 <ul>
 <li><p><code>ggplot(df, aes(x, y, other aesthetics))</code></p></li>
@@ -751,8 +772,8 @@ Arguments</code></pre>
 </ul>
 <p>如果后面的所有图层使用的都是同一套数据以及美学映射,则推荐使用第一种用法.如果后面图层使用数据一致,但是美学映射不同,则推荐使用第二种方法.如果每一个图层使用的数据和美学映射都不相同,则使用第三种方法,一般用来构建比较复杂的图形.</p>
 </div>
-<div id="例子" class="section level4">
-<h4><span class="header-section-number">0.1.1.3</span> 例子</h4>
+<div id="例子" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> 例子</h3>
 <pre class="r"><code>library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
 <pre class="r"><code># 产生随机数据,然后计算平均值和标准差
@@ -793,22 +814,22 @@ ggplot() +
 <p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
 </div>
 </div>
-<div id="aes-创建美学映射" class="section level3">
-<h3><span class="header-section-number">0.1.2</span> <code>aes()</code> 创建美学映射</h3>
+<div id="aes-创建美学映射" class="section level2">
+<h2><span class="header-section-number">1.2</span> <code>aes()</code> 创建美学映射</h2>
 <p>美学映射指的是数据中的变量如何映射到图形的视觉特性上(也就是美学aesthetics).美学映射可以在<code>ggplot()</code>函数以及每一个单独的图层中进行设置.</p>
 <p><code>aes(x, y, ...)</code></p>
-<div id="参数-1" class="section level4">
-<h4><span class="header-section-number">0.1.2.1</span> 参数</h4>
+<div id="参数-1" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> 参数</h3>
 <ul>
 <li><strong>x, y, …</strong> 将变量映射到图形的视觉特性的名字.x和y分别指x轴和y轴.通常他们可以省略不写.但是其他的,如颜色(colour/color),填充颜色(fill),大小(size)等则必须写明参数名字.</li>
 </ul>
 </div>
-<div id="细节-1" class="section level4">
-<h4><span class="header-section-number">0.1.2.2</span> 细节</h4>
+<div id="细节-1" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> 细节</h3>
 <p>注意的是,在ggplot2种,对于视觉特征的名字进行了规范化,因此和R base绘图函数种的并不相同,比如从<code>pch</code>改为<code>shape</code>,从<code>cex</code>改为<code>size</code>.</p>
 </div>
-<div id="例子-1" class="section level4">
-<h4><span class="header-section-number">0.1.2.3</span> 例子</h4>
+<div id="例子-1" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> 例子</h3>
 <pre class="r"><code>aes(x = mpg, y = wt)</code></pre>
 <pre><code>## Aesthetic mapping: 
 ## * `x` -&gt; `mpg`
@@ -896,14 +917,14 @@ scatter_by(mtcars, cut3(disp), drat)</code></pre>
 <p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
 </div>
 </div>
-<div id="ggsave保存ggplot2图片对象" class="section level3">
-<h3><span class="header-section-number">0.1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</h3>
+<div id="ggsave保存ggplot2图片对象" class="section level2">
+<h2><span class="header-section-number">1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</h2>
 <p><code>ggsave()</code>默认会保存当前最后一幅<code>ggplot2</code>图片.如果不设置尺寸,则使用当前设备尺寸.</p>
 <pre><code>ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
   scale = 1, width = NA, height = NA, units = c(&quot;in&quot;, &quot;cm&quot;, &quot;mm&quot;),
   dpi = 300, limitsize = TRUE, ...)</code></pre>
-<div id="参数-2" class="section level4">
-<h4><span class="header-section-number">0.1.3.1</span> 参数</h4>
+<div id="参数-2" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> 参数</h3>
 <ul>
 <li><p><strong>filename</strong> 要保存的图片的名字,注意不包括后缀名.</p></li>
 <li><p><strong>plot</strong> 要保存的<code>ggplot2</code>图片.</p></li>
@@ -918,11 +939,11 @@ scatter_by(mtcars, cut3(disp), drat)</code></pre>
 </div>
 </div>
 </div>
-<div id="图层layer几何对象geoms" class="section level2">
-<h2><span class="header-section-number">0.2</span> 图层(Layer):几何对象(geoms)</h2>
+<div id="图层layer几何对象geoms" class="section level1">
+<h1><span class="header-section-number">2</span> 图层(Layer):几何对象(geoms)</h1>
 <p>一个图层包括了数据(data),美学映射(aesthetic mapping),几何对象(geometric object),统计转换(statistical transformation),以及位置调整(position adjustment).一般来说,应该使用<code>geom_xxx()</code>函数来创建图层.必要情况下,需要手动设置去覆盖默认的位置和统计转换.</p>
-<div id="直线geom_ablinegeom_hline和geom_vline" class="section level3">
-<h3><span class="header-section-number">0.2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></h3>
+<div id="直线geom_ablinegeom_hline和geom_vline" class="section level2">
+<h2><span class="header-section-number">2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></h2>
 <p>这三个函数(几何对象)分别用来画对角线,水平和垂直直线.</p>
 <pre><code>geom_abline(mapping = NULL, data = NULL, ..., slope, intercept,
   na.rm = FALSE, show.legend = NA)
@@ -932,8 +953,8 @@ geom_hline(mapping = NULL, data = NULL, ..., yintercept,
 
 geom_vline(mapping = NULL, data = NULL, ..., xintercept,
   na.rm = FALSE, show.legend = NA)</code></pre>
-<div id="参数-3" class="section level4">
-<h4><span class="header-section-number">0.2.1.1</span> 参数</h4>
+<div id="参数-3" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> 参数</h3>
 <ul>
 <li><p><strong>mapping</strong> 美学映射,使用<code>aes()</code>函数设置.</p></li>
 <li><p><strong>data</strong> 用于创建该图层的数据.有三种选择: 1)如果设置为<code>NULL</code>,也是默认设置.则该数据继承自<code>ggplot()</code>函数中的数据.2)一个<code>data.frame</code>,或者其他的对象,如<code>tibble</code>,这将会覆盖<code>ggplot()</code>中的数据.3)也可以是一个<code>function()</code>,但是该function最后返回的对象应该是<code>data.frame</code>.<code>function</code>可以使用<code>formula</code>格式进行创建,如:<code>head(.x, 10)</code></p></li>
@@ -943,13 +964,13 @@ geom_vline(mapping = NULL, data = NULL, ..., xintercept,
 <li><p><strong>xintercept/yintercept/slope/intercept</strong> 控制直线的位置参数.如果这些设置了,则<code>data</code>,<code>mapping</code>和<code>show.legend</code>则会被覆盖掉.</p></li>
 </ul>
 </div>
-<div id="细节-2" class="section level4">
-<h4><span class="header-section-number">0.2.1.2</span> 细节</h4>
+<div id="细节-2" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> 细节</h3>
 <p>这些几何对象和其他的几何对象稍微有些不同.可以通过两种方法提供参数:1)给layer函数提供参数,或者2)通过美学对象提供参数.如果你使用参数,例如<code>geom_abline(intercept = 0, slope = 1)</code>,然后几何对象(<code>geom_</code>)会创建一个新的data frame,这个data rame只包括了你所提供的数据.这意味着在所有的分面中,直线都是相同的.如果你想在不同的分面中,直线不相同,你需要自己创建一个data frame,然后再美学映射(aesthetics)中设置.</p>
 <p>与其他的几何对象不同,这些几何对象不会从<code>ggplot</code>中继承data.他们也不会影响到x和y的scale.</p>
 </div>
-<div id="美学映射aesthetics" class="section level4">
-<h4><span class="header-section-number">0.2.1.3</span> 美学映射(Aesthetics)</h4>
+<div id="美学映射aesthetics" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> 美学映射(Aesthetics)</h3>
 <p>这三个几何对象(geom)其实都是使用<code>geom_line()</code>函数来画直线的,因此他们都支持<code>geom_line()</code>的美学参数,如<code>alpha</code>,<code>colour</code>,<code>linetype</code>和<code>size</code>.对于每个几何对象都有,都有单独的参数用来控制直线的位置:</p>
 <ul>
 <li><p><code>geom_vline</code>:<code>xintercept</code>.</p></li>
@@ -957,8 +978,8 @@ geom_vline(mapping = NULL, data = NULL, ..., xintercept,
 <li><p><code>geom_vline</code>:<code>slope</code>(斜率)和<code>intercept</code>(截距).</p></li>
 </ul>
 </div>
-<div id="例子-2" class="section level4">
-<h4><span class="header-section-number">0.2.1.4</span> 例子</h4>
+<div id="例子-2" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> 例子</h3>
 <pre class="r"><code>library(ggplot2)
 p &lt;- 
   ggplot(mtcars, aes(wt, mpg)) + 
@@ -1020,8 +1041,8 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
 <hr />
 </div>
 </div>
-<div id="柱形图bar-chartsgeom_bargeom_col和stat_count" class="section level3">
-<h3><span class="header-section-number">0.2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></h3>
+<div id="柱形图bar-chartsgeom_bargeom_col和stat_count" class="section level2">
+<h2><span class="header-section-number">2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></h2>
 <p>一共有两种类型的函数用来绘制柱形图:<code>geom_bar()</code>和<code>geom_col()</code>函数.<code>geom_bar()</code>配对的统计转换函数为<code>stat_count()</code>函数,所以他会自动将每个group的case个数计算出来,然后转为新的data frame,也就是group和数目,然后映射到x和y轴上.而<code>geom_bar()</code>则和R base的bar plot函数相似(默认配对统计转换函数为<code>stat_identify()</code>函数),需要指定x和y轴变量,然后直接将指定的y轴变量映射为bar的高度.</p>
 <pre><code>geom_bar(mapping = NULL, data = NULL, stat = &quot;count&quot;,
   position = &quot;stack&quot;, ..., width = NULL, binwidth = NULL,
@@ -1034,15 +1055,66 @@ geom_col(mapping = NULL, data = NULL, position = &quot;stack&quot;, ...,
 stat_count(mapping = NULL, data = NULL, geom = &quot;bar&quot;,
   position = &quot;stack&quot;, ..., width = NULL, na.rm = FALSE,
   show.legend = NA, inherit.aes = TRUE)</code></pre>
-<div id="参数-4" class="section level4">
-<h4><span class="header-section-number">0.2.2.1</span> 参数</h4>
+<div id="参数-4" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> 参数</h3>
 <ul>
-<li><p><strong>mapping</strong> 美学映射,使用<code>aes()</code>函数设置.如果设置参数<code>inherit.aes = TRUE</code>(默认),</p></li>
+<li><p><strong>mapping</strong> 美学映射,使用<code>aes()</code>函数设置.如果设置参数<code>inherit.aes = TRUE</code>(默认),则该图层会从<code>ggplot()</code>函数继承美学映射的参数.</p></li>
 <li><p><strong>data</strong> 用于创建该图层的数据.有三种选择: 1)如果设置为<code>NULL</code>,也是默认设置.则该数据继承自<code>ggplot()</code>函数中的数据.2)一个<code>data.frame</code>,或者其他的对象,如<code>tibble</code>,这将会覆盖<code>ggplot()</code>中的数据.3)也可以是一个<code>function()</code>,但是该function最后返回的对象应该是<code>data.frame</code>.<code>function</code>可以使用<code>formula</code>格式进行创建,如:<code>head(.x, 10)</code></p></li>
+<li><p><strong>position</strong> 位置调整(position adjustment).可以是字符,也可以是使用位置调整参数返回的对象.</p></li>
 <li><p><strong>…</strong> 其他的可以传入<code>layer()</code>的参数.一般是美学对象,如<code>colour = "red"</code>或者<code>size = 3</code>.也可以是一些一些能够传入到和<code>geom_</code>配对的geom/stat的参数.</p></li>
+<li><p><strong>width</strong> 柱形图的宽度. 默认设置为数据“分辨率”的90%(0.9).</p></li>
 <li><p><strong>na.rm</strong> 默认为<code>FALSE</code>, missing value会被去除掉,但是会给出<code>warning</code>,如果设置为<code>TRUE</code>,missing value也会被去除掉,但是不会给<code>warning</code>.</p></li>
 <li><p><strong>show.legend</strong> 该图层是否要显示在legend上.默认为<code>NA</code>,则该图层中所有的映射到图形属性的变量都会显示在legend中.<code>FALSE</code>则永远不显示,<code>TRUE</code>则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.</p></li>
+<li><p><strong>inherit.aes</strong> 如果设置为<code>FALSE</code>,覆盖掉而不是结合默认美学参数. This is most useful for helper functions that define both data and aesthetics and shouldn’t inherit behaviour from the default plot specification, e.g. borders().不太明白这个意思?</p></li>
+<li><p><strong>geom, stat</strong> 覆盖掉默认的<code>geom_()</code>和<code>stat_()</code>函数.</p></li>
 </ul>
+</div>
+<div id="细节-3" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> 细节</h3>
+<p>柱形图使用高度来表示数值.所以一般柱形图是用来进行对比展示的.这也是为什么如果你将数据log之后,使用柱形图就不太合适.</p>
+<p>默认,对于同个x轴位置有着多个柱子,则他们会堆积在一起.也就输堆积柱形图,这是由默认的位置调整函数<code>position_stack()</code>实现的.如果你想要让他们并排排列,则需要使用<code>position_dodge()</code>或者<code>position_dodge2()</code>函数.当然,如果你想要堆叠柱形图,而显示的是比例而不是真实数值,则需要使用<code>position_fill()</code>函数.</p>
+</div>
+<div id="美学参数aesthetics" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> 美学参数(Aesthetics)</h3>
+<p><code>geom_bar()</code>可以接受以下美学参数(粗体为必须参数).</p>
+<ul>
+<li><p><strong>x</strong></p></li>
+<li><p><strong>y</strong></p></li>
+<li><p>alpha</p></li>
+<li><p>colour</p></li>
+<li><p>fill</p></li>
+<li><p>group</p></li>
+<li><p>linetype</p></li>
+<li><p>size</p></li>
+</ul>
+<p><code>geom_col()</code>可以接受以下美学参数(粗体为必须参数).</p>
+<ul>
+<li><p><strong>x</strong></p></li>
+<li><p><strong>y</strong></p></li>
+<li><p>alpha</p></li>
+<li><p>colour</p></li>
+<li><p>fill</p></li>
+<li><p>group</p></li>
+<li><p>linetype</p></li>
+<li><p>size</p></li>
+</ul>
+<p><code>stat_count()</code>可以接受以下美学参数(粗体为必须参数).</p>
+<ul>
+<li><p><strong>x</strong></p></li>
+<li><p>y</p></li>
+<li><p>group</p></li>
+<li><p>weight</p></li>
+</ul>
+</div>
+<div id="计算变量-computed-variables" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> 计算变量 (Computed variables)</h3>
+<ul>
+<li><p><strong>count</strong> 每一个grou中的数目</p></li>
+<li><p><strong>prop</strong> 每组的比例</p></li>
+</ul>
+</div>
+<div id="例子-3" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> 例子</h3>
 </div>
 </div>
 </div>

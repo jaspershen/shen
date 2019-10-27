@@ -16,11 +16,11 @@ output:
     number_sections: true
 ---
 
-## 绘图基础(plot basics)
+# 绘图基础(plot basics)
 
 所有的ggplot2图形都开始于`ggplot()`函数的调用.给其提供数据,以及美学映射(aesthethic mappings)(使用`aes()`函数).然后添加图层(layers), 度量系统(scales), 坐标系(coords)以及分面(facets).添加的每个对象,都是在前一行末尾使用符号`+`.如果需要将一个ggplot2图像保存在本地,使用`ggsave()`函数.
 
-### `ggplot()` 创建一个新的ggplot图片
+## `ggplot()` 创建一个新的ggplot图片
 
 `ggplot()`函数是用来启动初始化一个ggplot2对象的.It can be used to declare the input data frame for a graphic and to specify the set of plot aesthetics intended to be common throughout all subsequent layers unless specifically overridden.
 
@@ -30,7 +30,7 @@ ggplot(data = NULL, mapping = aes(), ...,
 Arguments
 ```
 
-#### 参数
+### 参数
 
 * **data** 用于绘图的数据.如果数据格式不是`data.frame`,会默认使用`fortity()`函数转换为`data.frame`格式.如果在该函数中不提供data,则在后面添加的每一个图层,都需要提供data.
 
@@ -40,7 +40,7 @@ Arguments
 
 * **environment** 该参数已经淘汰了.
 
-#### 细节
+### 细节
 
 `ggplot()`用来初始化ggplot2图形对象.经常后面需要通过`+`来添加其他的对象.一般有三种方法调用该函数:
 
@@ -52,7 +52,7 @@ Arguments
 
 如果后面的所有图层使用的都是同一套数据以及美学映射,则推荐使用第一种用法.如果后面图层使用数据一致,但是美学映射不同,则推荐使用第二种方法.如果每一个图层使用的数据和美学映射都不相同,则使用第三种方法,一般用来构建比较复杂的图形.
 
-#### 例子
+### 例子
 
 ```{r}
 library(ggplot2)
@@ -93,21 +93,21 @@ ggplot() +
 
 ```
 
-### `aes()` 创建美学映射
+## `aes()` 创建美学映射
 
 美学映射指的是数据中的变量如何映射到图形的视觉特性上(也就是美学aesthetics).美学映射可以在`ggplot()`函数以及每一个单独的图层中进行设置.
 
 `aes(x, y, ...)`
 
-#### 参数
+### 参数
 
 * **x, y, ...** 将变量映射到图形的视觉特性的名字.x和y分别指x轴和y轴.通常他们可以省略不写.但是其他的,如颜色(colour/color),填充颜色(fill),大小(size)等则必须写明参数名字.
 
-#### 细节
+### 细节
 
 注意的是,在ggplot2种,对于视觉特征的名字进行了规范化,因此和R base绘图函数种的并不相同,比如从`pch`改为`shape`,从`cex`改为`size`.
 
-#### 例子
+### 例子
 
 ```{r}
 aes(x = mpg, y = wt)
@@ -176,7 +176,7 @@ cut3 <- function(x) cut_number(x, 3)
 scatter_by(mtcars, cut3(disp), drat)
 ```
 
-### `ggsave()`保存`ggplot2`图片对象
+## `ggsave()`保存`ggplot2`图片对象
 
 `ggsave()`默认会保存当前最后一幅`ggplot2`图片.如果不设置尺寸,则使用当前设备尺寸.
 
@@ -186,7 +186,7 @@ ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
   dpi = 300, limitsize = TRUE, ...)
 ```
 
-#### 参数
+### 参数
 
 * **filename** 要保存的图片的名字,注意不包括后缀名.
 
@@ -206,11 +206,11 @@ ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
 
 * **...** 其他可以用于图形设备(graphics device function)的参数.
 
-## 图层(Layer):几何对象(geoms)
+# 图层(Layer):几何对象(geoms)
 
 一个图层包括了数据(data),美学映射(aesthetic mapping),几何对象(geometric object),统计转换(statistical transformation),以及位置调整(position adjustment).一般来说,应该使用`geom_xxx()`函数来创建图层.必要情况下,需要手动设置去覆盖默认的位置和统计转换.
 
-### 直线`geom_abline`,`geom_hline`和`geom_vline`
+## 直线`geom_abline`,`geom_hline`和`geom_vline`
 
 这三个函数(几何对象)分别用来画对角线,水平和垂直直线.
 
@@ -225,7 +225,7 @@ geom_vline(mapping = NULL, data = NULL, ..., xintercept,
   na.rm = FALSE, show.legend = NA)
 ```
 
-#### 参数
+### 参数
 
 * **mapping** 美学映射,使用`aes()`函数设置.
 
@@ -239,13 +239,13 @@ geom_vline(mapping = NULL, data = NULL, ..., xintercept,
 
 * **xintercept/yintercept/slope/intercept** 控制直线的位置参数.如果这些设置了,则`data`,`mapping`和`show.legend`则会被覆盖掉.
 
-#### 细节
+### 细节
 
 这些几何对象和其他的几何对象稍微有些不同.可以通过两种方法提供参数:1)给layer函数提供参数,或者2)通过美学对象提供参数.如果你使用参数,例如`geom_abline(intercept = 0, slope = 1)`,然后几何对象(`geom_`)会创建一个新的data frame,这个data rame只包括了你所提供的数据.这意味着在所有的分面中,直线都是相同的.如果你想在不同的分面中,直线不相同,你需要自己创建一个data frame,然后再美学映射(aesthetics)中设置.
 
 与其他的几何对象不同,这些几何对象不会从`ggplot`中继承data.他们也不会影响到x和y的scale.
 
-#### 美学映射(Aesthetics)
+### 美学映射(Aesthetics)
 
 这三个几何对象(geom)其实都是使用`geom_line()`函数来画直线的,因此他们都支持`geom_line()`的美学参数,如`alpha`,`colour`,`linetype`和`size`.对于每个几何对象都有,都有单独的参数用来控制直线的位置:
 
@@ -255,7 +255,7 @@ geom_vline(mapping = NULL, data = NULL, ..., xintercept,
 
 * `geom_vline`:`slope`(斜率)和`intercept`(截距).
 
-#### 例子
+### 例子
 
 ```{r}
 library(ggplot2)
@@ -310,7 +310,7 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
 
 -----
 
-### 柱形图(bar charts)`geom_bar()`,`geom_col()`和`stat_count`
+## 柱形图(bar charts)`geom_bar()`,`geom_col()`和`stat_count`
 
 一共有两种类型的函数用来绘制柱形图:`geom_bar()`和`geom_col()`函数.`geom_bar()`配对的统计转换函数为`stat_count()`函数,所以他会自动将每个group的case个数计算出来,然后转为新的data frame,也就是group和数目,然后映射到x和y轴上.而`geom_bar()`则和R base的bar plot函数相似(默认配对统计转换函数为`stat_identify()`函数),需要指定x和y轴变量,然后直接将指定的y轴变量映射为bar的高度.
 
@@ -328,18 +328,88 @@ stat_count(mapping = NULL, data = NULL, geom = "bar",
   show.legend = NA, inherit.aes = TRUE)
 ```
 
-#### 参数
+### 参数
 
-* **mapping** 美学映射,使用`aes()`函数设置.如果设置参数`inherit.aes = TRUE`(默认),
+* **mapping** 美学映射,使用`aes()`函数设置.如果设置参数`inherit.aes = TRUE`(默认),则该图层会从`ggplot()`函数继承美学映射的参数.
 
 * **data** 用于创建该图层的数据.有三种选择:     1)如果设置为`NULL`,也是默认设置.则该数据继承自`ggplot()`函数中的数据.2)一个`data.frame`,或者其他的对象,如`tibble`,这将会覆盖`ggplot()`中的数据.3)也可以是一个`function()`,但是该function最后返回的对象应该是`data.frame`.`function`可以使用`formula`格式进行创建,如:`head(.x, 10)`
 
+* **position** 位置调整(position adjustment).可以是字符,也可以是使用位置调整参数返回的对象. 
+
 * **...** 其他的可以传入`layer()`的参数.一般是美学对象,如`colour = "red"`或者`size = 3`.也可以是一些一些能够传入到和`geom_`配对的geom/stat的参数.
+
+* **width** 柱形图的宽度. 默认设置为数据"分辨率"的90%(0.9).
 
 * **na.rm** 默认为`FALSE`, missing value会被去除掉,但是会给出`warning`,如果设置为`TRUE`,missing value也会被去除掉,但是不会给`warning`.
 
 * **show.legend** 该图层是否要显示在legend上.默认为`NA`,则该图层中所有的映射到图形属性的变量都会显示在legend中.`FALSE`则永远不显示,`TRUE`则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.
 
+* **inherit.aes** 如果设置为`FALSE`,覆盖掉而不是结合默认美学参数. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().不太明白这个意思?
+
+* **geom, stat** 覆盖掉默认的`geom_()`和`stat_()`函数.
+
+### 细节
+
+柱形图使用高度来表示数值.所以一般柱形图是用来进行对比展示的.这也是为什么如果你将数据log之后,使用柱形图就不太合适.
+
+默认,对于同个x轴位置有着多个柱子,则他们会堆积在一起.也就输堆积柱形图,这是由默认的位置调整函数`position_stack()`实现的.如果你想要让他们并排排列,则需要使用`position_dodge()`或者`position_dodge2()`函数.当然,如果你想要堆叠柱形图,而显示的是比例而不是真实数值,则需要使用`position_fill()`函数.
+
+### 美学参数(Aesthetics)
+
+`geom_bar()`可以接受以下美学参数(粗体为必须参数).
+
+* **x**
+
+* **y**
+
+* alpha
+
+* colour
+
+* fill
+
+* group
+
+* linetype
+
+* size
+
+`geom_col()`可以接受以下美学参数(粗体为必须参数).
+
+* **x**
+
+* **y**
+
+* alpha
+
+* colour
+
+* fill
+
+* group
+
+* linetype
+
+* size
+
+`stat_count()`可以接受以下美学参数(粗体为必须参数).
+
+
+* **x**
+
+* y
+
+* group
+
+* weight
+
+### 计算变量 (Computed variables)
+
+* **count** 每一个grou中的数目
+
+* **prop** 每组的比例
+
+### 例子
 
 
 
