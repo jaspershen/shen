@@ -176,4 +176,144 @@ cut3 <- function(x) cut_number(x, 3)
 scatter_by(mtcars, cut3(disp), drat)
 ```
 
+### `ggsave()`保存`ggplot2`图片对象
+
+`ggsave()`默认会保存当前最后一幅`ggplot2`图片.如果不设置尺寸,则使用当前设备尺寸.
+
+```
+ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
+  scale = 1, width = NA, height = NA, units = c("in", "cm", "mm"),
+  dpi = 300, limitsize = TRUE, ...)
+```
+
+#### 参数
+
+* **filename** 要保存的图片的名字,注意不包括后缀名.
+
+* **plot** 要保存的`ggplot2`图片.
+
+* **device** 要保存的图片的类型.包括以下:"eps", "ps", "tex" (pictex), "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf" (windows only).
+
+* **path** 图片所要保存的路径.
+
+* **scale** Multiplicative scaling factor.暂时不知道什么意思?
+
+* **width, height, units** 要保存图片的宽和高,以及其单位.单位包括:"in"(英寸), "cm", or "mm".
+
+* **dpi** 图片分辨率.一般是数字.也可以使用文字符:"retina" (320), "print" (300), or "screen" (72).
+
+* **limitsize** 如果设置为TRUE,则`ggsave`不会保存尺寸大于50×50 inch的图片.
+
+* **...** 其他可以用于图形设备(graphics device function)的参数.
+
+## 图层(Layer):几何对象(geoms)
+
+一个图层包括了数据(data),美学映射(aesthetic mapping),几何对象(geometric object),统计转换(statistical transformation),以及位置调整(position adjustment).一般来说,应该使用`geom_xxx()`函数来创建图层.必要情况下,需要手动设置去覆盖默认的位置和统计转换.
+
+### 直线`geom_abline`,`geom_hline`和`geom_vline`
+
+这三个函数(几何对象)分别用来画对角线,水平和垂直直线.
+
+```
+geom_abline(mapping = NULL, data = NULL, ..., slope, intercept,
+  na.rm = FALSE, show.legend = NA)
+
+geom_hline(mapping = NULL, data = NULL, ..., yintercept,
+  na.rm = FALSE, show.legend = NA)
+
+geom_vline(mapping = NULL, data = NULL, ..., xintercept,
+  na.rm = FALSE, show.legend = NA)
+```
+
+#### 参数
+
+* **mapping** 美学映射,使用`aes()`函数设置.
+
+* **data** 用于创建该图层的数据.有三种选择:     1)如果设置为`NULL`,也是默认设置.则该数据继承自`ggplot()`函数中的数据.2)一个`data.frame`,或者其他的对象,如`tibble`,这将会覆盖`ggplot()`中的数据.3)也可以是一个`function()`,但是该function最后返回的对象应该是`data.frame`.`function`可以使用`formula`格式进行创建,如:`head(.x, 10)`
+
+* **...** 其他的可以传入`layer()`的参数.一般是美学对象,如`colour = "red"`或者`size = 3`.也可以是一些一些能够传入到和`geom_`配对的geom/stat的参数.
+
+* **na.rm** 默认为`FALSE`, missing value会被去除掉,但是会给出`warning`,如果设置为`TRUE`,missing value也会被去除掉,但是不会给`warning`.
+
+* **show.legend** 该图层是否要显示在legend上.默认为`NA`,则该图层中所有的映射到图形属性的变量都会显示在legend中.`FALSE`则永远不显示,`TRUE`则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.
+
+* **xintercept/yintercept/slope/intercept** 控制直线的位置参数.如果这些设置了,则`data`,`mapping`和`show.legend`则会被覆盖掉.
+
+#### 细节
+
+这些几何对象和其他的几何对象稍微有些不同.可以通过两种方法提供参数:1)给layer函数提供参数,或者2)通过美学对象提供参数.如果你使用参数,例如`geom_abline(intercept = 0, slope = 1)`,然后几何对象(`geom_`)会创建一个新的data frame,这个data rame只包括了你所提供的数据.这意味着在所有的分面中,直线都是相同的.如果你想在不同的分面中,直线不相同,你需要自己创建一个data frame,然后再美学映射(aesthetics)中设置.
+
+与其他的几何对象不同,这些几何对象不会从`ggplot`中继承data.他们也不会影响到x和y的scale.
+
+#### 美学映射(Aesthetics)
+
+这三个几何对象(geom)其实都是使用`geom_line()`函数来画直线的,因此他们都支持`geom_line()`的美学参数,如`alpha`,`colour`,`linetype`和`size`.对于每个几何对象都有,都有单独的参数用来控制直线的位置:
+
+* `geom_vline`:`xintercept`.
+
+* `geom_hline`:`yintercept`.
+
+* `geom_vline`:`slope`(斜率)和`intercept`(截距).
+
+#### 例子
+
+```{r}
+library(ggplot2)
+p <- 
+  ggplot(mtcars, aes(wt, mpg)) + 
+  geom_point()
+
+# 添加垂直直线
+p + 
+  geom_vline(xintercept = 5)
+p + 
+  geom_vline(xintercept = 1:5)
+
+# 添加水平直线
+p + 
+  geom_hline(yintercept = 20)
+
+# 添加对角线,默认斜率为1
+p + 
+  geom_abline(intercept = 20)
+
+# 计算直线回归的斜率和截距
+coef(lm(mpg ~ wt, data = mtcars))
+p + 
+  geom_abline(intercept = 37, slope = -5)
+
+# 但是使用geom_smooth更加简单h:
+p + 
+  geom_smooth(method = "lm", se = FALSE)
+
+# 如果想要再不同分面显示不同的直线,则使用美学对象,也就是需要自己创建
+p <- ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  facet_wrap(~ cyl)
+
+mean_wt <- 
+  data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
+mean_wt
+p + 
+  geom_hline(mapping = aes(x = cyl, yintercept = wt), 
+             data = mean_wt)
+##如果不使用美学对象,则在每一个分面上都是一样的
+p +
+  geom_hline(yintercept = mean_wt$wt)
+
+# 控制其他美学对象
+ggplot(mtcars, aes(mpg, wt, colour = wt)) +
+  geom_point() +
+  geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
+  facet_wrap(~ cyl)
+```
+
+
+
+
+
+
+
+
+
 

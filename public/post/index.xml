@@ -7,6 +7,18 @@
     <description>Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
+      <title>R常见错误总结</title>
+      <link>/post/r-error-summary/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/r-error-summary/</guid>
+      <description>
+
+
+&lt;p&gt;这篇博客用来记录R常见的错误机器解决办法.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>下载KEGG数据库</title>
       <link>/post/download-kegg-database/</link>
       <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
@@ -121,6 +133,10 @@ vertex_attr(GO)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;#绘图基础plot-basics&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; 绘图基础(plot basics)&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#ggplot-创建一个新的ggplot图片&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.1&lt;/span&gt; &lt;code&gt;ggplot()&lt;/code&gt; 创建一个新的ggplot图片&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#aes-创建美学映射&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.2&lt;/span&gt; &lt;code&gt;aes()&lt;/code&gt; 创建美学映射&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ggsave保存ggplot2图片对象&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.3&lt;/span&gt; &lt;code&gt;ggsave()&lt;/code&gt;保存&lt;code&gt;ggplot2&lt;/code&gt;图片对象&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#图层layer几何对象geoms&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; 图层(Layer):几何对象(geoms)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#直线geom_ablinegeom_hline和geom_vline&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.1&lt;/span&gt; 直线&lt;code&gt;geom_abline&lt;/code&gt;,&lt;code&gt;geom_hline&lt;/code&gt;和&lt;code&gt;geom_vline&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -296,6 +312,129 @@ scatter_by(mtcars, disp, drat)&lt;/code&gt;&lt;/pre&gt;
 cut3 &amp;lt;- function(x) cut_number(x, 3)
 scatter_by(mtcars, cut3(disp), drat)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-2-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ggsave保存ggplot2图片对象&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3&lt;/span&gt; &lt;code&gt;ggsave()&lt;/code&gt;保存&lt;code&gt;ggplot2&lt;/code&gt;图片对象&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ggsave()&lt;/code&gt;默认会保存当前最后一幅&lt;code&gt;ggplot2&lt;/code&gt;图片.如果不设置尺寸,则使用当前设备尺寸.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
+  scale = 1, width = NA, height = NA, units = c(&amp;quot;in&amp;quot;, &amp;quot;cm&amp;quot;, &amp;quot;mm&amp;quot;),
+  dpi = 300, limitsize = TRUE, ...)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;参数-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3.1&lt;/span&gt; 参数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;filename&lt;/strong&gt; 要保存的图片的名字,注意不包括后缀名.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;plot&lt;/strong&gt; 要保存的&lt;code&gt;ggplot2&lt;/code&gt;图片.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;device&lt;/strong&gt; 要保存的图片的类型.包括以下:“eps”, “ps”, “tex” (pictex), “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf” (windows only).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;path&lt;/strong&gt; 图片所要保存的路径.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;scale&lt;/strong&gt; Multiplicative scaling factor.暂时不知道什么意思?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;width, height, units&lt;/strong&gt; 要保存图片的宽和高,以及其单位.单位包括:“in”(英寸), “cm”, or “mm”.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;dpi&lt;/strong&gt; 图片分辨率.一般是数字.也可以使用文字符:“retina” (320), “print” (300), or “screen” (72).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;limitsize&lt;/strong&gt; 如果设置为TRUE,则&lt;code&gt;ggsave&lt;/code&gt;不会保存尺寸大于50×50 inch的图片.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;…&lt;/strong&gt; 其他可以用于图形设备(graphics device function)的参数.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;图层layer几何对象geoms&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2&lt;/span&gt; 图层(Layer):几何对象(geoms)&lt;/h2&gt;
+&lt;p&gt;一个图层包括了数据(data),美学映射(aesthetic mapping),几何对象(geometric object),统计转换(statistical transformation),以及位置调整(position adjustment).一般来说,应该使用&lt;code&gt;geom_xxx()&lt;/code&gt;函数来创建图层.必要情况下,需要手动设置去覆盖默认的位置和统计转换.&lt;/p&gt;
+&lt;div id=&#34;直线geom_ablinegeom_hline和geom_vline&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1&lt;/span&gt; 直线&lt;code&gt;geom_abline&lt;/code&gt;,&lt;code&gt;geom_hline&lt;/code&gt;和&lt;code&gt;geom_vline&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;这三个函数(几何对象)分别用来画对角线,水平和垂直直线.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;geom_abline(mapping = NULL, data = NULL, ..., slope, intercept,
+  na.rm = FALSE, show.legend = NA)
+
+geom_hline(mapping = NULL, data = NULL, ..., yintercept,
+  na.rm = FALSE, show.legend = NA)
+
+geom_vline(mapping = NULL, data = NULL, ..., xintercept,
+  na.rm = FALSE, show.legend = NA)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;参数-3&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1.1&lt;/span&gt; 参数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;mapping&lt;/strong&gt; 美学映射,使用&lt;code&gt;aes()&lt;/code&gt;函数设置.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;data&lt;/strong&gt; 用于创建该图层的数据.有三种选择: 1)如果设置为&lt;code&gt;NULL&lt;/code&gt;,也是默认设置.则该数据继承自&lt;code&gt;ggplot()&lt;/code&gt;函数中的数据.2)一个&lt;code&gt;data.frame&lt;/code&gt;,或者其他的对象,如&lt;code&gt;tibble&lt;/code&gt;,这将会覆盖&lt;code&gt;ggplot()&lt;/code&gt;中的数据.3)也可以是一个&lt;code&gt;function()&lt;/code&gt;,但是该function最后返回的对象应该是&lt;code&gt;data.frame&lt;/code&gt;.&lt;code&gt;function&lt;/code&gt;可以使用&lt;code&gt;formula&lt;/code&gt;格式进行创建,如:&lt;code&gt;head(.x, 10)&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;…&lt;/strong&gt; 其他的可以传入&lt;code&gt;layer()&lt;/code&gt;的参数.一般是美学对象,如&lt;code&gt;colour = &#34;red&#34;&lt;/code&gt;或者&lt;code&gt;size = 3&lt;/code&gt;.也可以是一些一些能够传入到和&lt;code&gt;geom_&lt;/code&gt;配对的geom/stat的参数.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;na.rm&lt;/strong&gt; 默认为&lt;code&gt;FALSE&lt;/code&gt;, missing value会被去除掉,但是会给出&lt;code&gt;warning&lt;/code&gt;,如果设置为&lt;code&gt;TRUE&lt;/code&gt;,missing value也会被去除掉,但是不会给&lt;code&gt;warning&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;show.legend&lt;/strong&gt; 该图层是否要显示在legend上.默认为&lt;code&gt;NA&lt;/code&gt;,则该图层中所有的映射到图形属性的变量都会显示在legend中.&lt;code&gt;FALSE&lt;/code&gt;则永远不显示,&lt;code&gt;TRUE&lt;/code&gt;则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;xintercept/yintercept/slope/intercept&lt;/strong&gt; 控制直线的位置参数.如果这些设置了,则&lt;code&gt;data&lt;/code&gt;,&lt;code&gt;mapping&lt;/code&gt;和&lt;code&gt;show.legend&lt;/code&gt;则会被覆盖掉.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;细节-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1.2&lt;/span&gt; 细节&lt;/h4&gt;
+&lt;p&gt;这些几何对象和其他的几何对象稍微有些不同.可以通过两种方法提供参数:1)给layer函数提供参数,或者2)通过美学对象提供参数.如果你使用参数,例如&lt;code&gt;geom_abline(intercept = 0, slope = 1)&lt;/code&gt;,然后几何对象(&lt;code&gt;geom_&lt;/code&gt;)会创建一个新的data frame,这个data rame只包括了你所提供的数据.这意味着在所有的分面中,直线都是相同的.如果你想在不同的分面中,直线不相同,你需要自己创建一个data frame,然后再美学映射(aesthetics)中设置.&lt;/p&gt;
+&lt;p&gt;与其他的几何对象不同,这些几何对象不会从&lt;code&gt;ggplot&lt;/code&gt;中继承data.他们也不会影响到x和y的scale.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;美学映射aesthetics&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1.3&lt;/span&gt; 美学映射(Aesthetics)&lt;/h4&gt;
+&lt;p&gt;这三个几何对象(geom)其实都是使用&lt;code&gt;geom_line()&lt;/code&gt;函数来画直线的,因此他们都支持&lt;code&gt;geom_line()&lt;/code&gt;的美学参数,如&lt;code&gt;alpha&lt;/code&gt;,&lt;code&gt;colour&lt;/code&gt;,&lt;code&gt;linetype&lt;/code&gt;和&lt;code&gt;size&lt;/code&gt;.对于每个几何对象都有,都有单独的参数用来控制直线的位置:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;geom_vline&lt;/code&gt;:&lt;code&gt;xintercept&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;geom_hline&lt;/code&gt;:&lt;code&gt;yintercept&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;geom_vline&lt;/code&gt;:&lt;code&gt;slope&lt;/code&gt;(斜率)和&lt;code&gt;intercept&lt;/code&gt;(截距).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;例子-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1.4&lt;/span&gt; 例子&lt;/h4&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+p &amp;lt;- 
+  ggplot(mtcars, aes(wt, mpg)) + 
+  geom_point()
+
+# 添加垂直直线
+p + 
+  geom_vline(xintercept = 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
+  geom_vline(xintercept = 1:5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 添加水平直线
+p + 
+  geom_hline(yintercept = 20)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 添加对角线,默认斜率为1
+p + 
+  geom_abline(intercept = 20)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 计算直线回归的斜率和截距
+coef(lm(mpg ~ wt, data = mtcars))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)          wt 
+##   37.285126   -5.344472&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
+  geom_abline(intercept = 37, slope = -5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 但是使用geom_smooth更加简单h:
+p + 
+  geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果想要再不同分面显示不同的直线,则使用美学对象,也就是需要自己创建
+p &amp;lt;- ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  facet_wrap(~ cyl)
+
+mean_wt &amp;lt;- 
+  data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
+mean_wt&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   cyl   wt
+## 1   4 2.28
+## 2   6 3.11
+## 3   8 4.00&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
+  geom_hline(mapping = aes(x = cyl, yintercept = wt), 
+             data = mean_wt)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Ignoring unknown aesthetics: x&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##如果不使用美学对象,则在每一个分面上都是一样的
+p +
+  geom_hline(yintercept = mean_wt$wt)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 控制其他美学对象
+ggplot(mtcars, aes(mpg, wt, colour = wt)) +
+  geom_point() +
+  geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
+  facet_wrap(~ cyl)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

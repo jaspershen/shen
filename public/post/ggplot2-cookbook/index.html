@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1 绘图基础(plot basics) 所有的ggplot2图形都开始于ggplot()">
+  <meta name="description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1.3 ggsave()保存ggplot2图片对象 0.2 图层(Layer):几何">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/ggplot2-cookbook/">
@@ -137,7 +137,7 @@
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/ggplot2-cookbook/">
   <meta property="og:title" content="ggplot2-cookbook | Xiaotao Shen">
-  <meta property="og:description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1 绘图基础(plot basics) 所有的ggplot2图形都开始于ggplot()"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:description" content="0.1 绘图基础(plot basics) 0.1.1 ggplot() 创建一个新的ggplot图片 0.1.2 aes() 创建美学映射 0.1.3 ggsave()保存ggplot2图片对象 0.2 图层(Layer):几何"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-10-25T00:00:00&#43;00:00">
@@ -620,7 +620,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    8 min read
   </span>
   
 
@@ -714,6 +714,10 @@
 <li><a href="#绘图基础plot-basics"><span class="toc-section-number">0.1</span> 绘图基础(plot basics)</a><ul>
 <li><a href="#ggplot-创建一个新的ggplot图片"><span class="toc-section-number">0.1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</a></li>
 <li><a href="#aes-创建美学映射"><span class="toc-section-number">0.1.2</span> <code>aes()</code> 创建美学映射</a></li>
+<li><a href="#ggsave保存ggplot2图片对象"><span class="toc-section-number">0.1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</a></li>
+</ul></li>
+<li><a href="#图层layer几何对象geoms"><span class="toc-section-number">0.2</span> 图层(Layer):几何对象(geoms)</a><ul>
+<li><a href="#直线geom_ablinegeom_hline和geom_vline"><span class="toc-section-number">0.2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></a></li>
 </ul></li>
 </ul>
 </div>
@@ -889,6 +893,129 @@ scatter_by(mtcars, disp, drat)</code></pre>
 cut3 &lt;- function(x) cut_number(x, 3)
 scatter_by(mtcars, cut3(disp), drat)</code></pre>
 <p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
+</div>
+</div>
+<div id="ggsave保存ggplot2图片对象" class="section level3">
+<h3><span class="header-section-number">0.1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</h3>
+<p><code>ggsave()</code>默认会保存当前最后一幅<code>ggplot2</code>图片.如果不设置尺寸,则使用当前设备尺寸.</p>
+<pre><code>ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
+  scale = 1, width = NA, height = NA, units = c(&quot;in&quot;, &quot;cm&quot;, &quot;mm&quot;),
+  dpi = 300, limitsize = TRUE, ...)</code></pre>
+<div id="参数-2" class="section level4">
+<h4><span class="header-section-number">0.1.3.1</span> 参数</h4>
+<ul>
+<li><p><strong>filename</strong> 要保存的图片的名字,注意不包括后缀名.</p></li>
+<li><p><strong>plot</strong> 要保存的<code>ggplot2</code>图片.</p></li>
+<li><p><strong>device</strong> 要保存的图片的类型.包括以下:“eps”, “ps”, “tex” (pictex), “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf” (windows only).</p></li>
+<li><p><strong>path</strong> 图片所要保存的路径.</p></li>
+<li><p><strong>scale</strong> Multiplicative scaling factor.暂时不知道什么意思?</p></li>
+<li><p><strong>width, height, units</strong> 要保存图片的宽和高,以及其单位.单位包括:“in”(英寸), “cm”, or “mm”.</p></li>
+<li><p><strong>dpi</strong> 图片分辨率.一般是数字.也可以使用文字符:“retina” (320), “print” (300), or “screen” (72).</p></li>
+<li><p><strong>limitsize</strong> 如果设置为TRUE,则<code>ggsave</code>不会保存尺寸大于50×50 inch的图片.</p></li>
+<li><p><strong>…</strong> 其他可以用于图形设备(graphics device function)的参数.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="图层layer几何对象geoms" class="section level2">
+<h2><span class="header-section-number">0.2</span> 图层(Layer):几何对象(geoms)</h2>
+<p>一个图层包括了数据(data),美学映射(aesthetic mapping),几何对象(geometric object),统计转换(statistical transformation),以及位置调整(position adjustment).一般来说,应该使用<code>geom_xxx()</code>函数来创建图层.必要情况下,需要手动设置去覆盖默认的位置和统计转换.</p>
+<div id="直线geom_ablinegeom_hline和geom_vline" class="section level3">
+<h3><span class="header-section-number">0.2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></h3>
+<p>这三个函数(几何对象)分别用来画对角线,水平和垂直直线.</p>
+<pre><code>geom_abline(mapping = NULL, data = NULL, ..., slope, intercept,
+  na.rm = FALSE, show.legend = NA)
+
+geom_hline(mapping = NULL, data = NULL, ..., yintercept,
+  na.rm = FALSE, show.legend = NA)
+
+geom_vline(mapping = NULL, data = NULL, ..., xintercept,
+  na.rm = FALSE, show.legend = NA)</code></pre>
+<div id="参数-3" class="section level4">
+<h4><span class="header-section-number">0.2.1.1</span> 参数</h4>
+<ul>
+<li><p><strong>mapping</strong> 美学映射,使用<code>aes()</code>函数设置.</p></li>
+<li><p><strong>data</strong> 用于创建该图层的数据.有三种选择: 1)如果设置为<code>NULL</code>,也是默认设置.则该数据继承自<code>ggplot()</code>函数中的数据.2)一个<code>data.frame</code>,或者其他的对象,如<code>tibble</code>,这将会覆盖<code>ggplot()</code>中的数据.3)也可以是一个<code>function()</code>,但是该function最后返回的对象应该是<code>data.frame</code>.<code>function</code>可以使用<code>formula</code>格式进行创建,如:<code>head(.x, 10)</code></p></li>
+<li><p><strong>…</strong> 其他的可以传入<code>layer()</code>的参数.一般是美学对象,如<code>colour = "red"</code>或者<code>size = 3</code>.也可以是一些一些能够传入到和<code>geom_</code>配对的geom/stat的参数.</p></li>
+<li><p><strong>na.rm</strong> 默认为<code>FALSE</code>, missing value会被去除掉,但是会给出<code>warning</code>,如果设置为<code>TRUE</code>,missing value也会被去除掉,但是不会给<code>warning</code>.</p></li>
+<li><p><strong>show.legend</strong> 该图层是否要显示在legend上.默认为<code>NA</code>,则该图层中所有的映射到图形属性的变量都会显示在legend中.<code>FALSE</code>则永远不显示,<code>TRUE</code>则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.</p></li>
+<li><p><strong>xintercept/yintercept/slope/intercept</strong> 控制直线的位置参数.如果这些设置了,则<code>data</code>,<code>mapping</code>和<code>show.legend</code>则会被覆盖掉.</p></li>
+</ul>
+</div>
+<div id="细节-2" class="section level4">
+<h4><span class="header-section-number">0.2.1.2</span> 细节</h4>
+<p>这些几何对象和其他的几何对象稍微有些不同.可以通过两种方法提供参数:1)给layer函数提供参数,或者2)通过美学对象提供参数.如果你使用参数,例如<code>geom_abline(intercept = 0, slope = 1)</code>,然后几何对象(<code>geom_</code>)会创建一个新的data frame,这个data rame只包括了你所提供的数据.这意味着在所有的分面中,直线都是相同的.如果你想在不同的分面中,直线不相同,你需要自己创建一个data frame,然后再美学映射(aesthetics)中设置.</p>
+<p>与其他的几何对象不同,这些几何对象不会从<code>ggplot</code>中继承data.他们也不会影响到x和y的scale.</p>
+</div>
+<div id="美学映射aesthetics" class="section level4">
+<h4><span class="header-section-number">0.2.1.3</span> 美学映射(Aesthetics)</h4>
+<p>这三个几何对象(geom)其实都是使用<code>geom_line()</code>函数来画直线的,因此他们都支持<code>geom_line()</code>的美学参数,如<code>alpha</code>,<code>colour</code>,<code>linetype</code>和<code>size</code>.对于每个几何对象都有,都有单独的参数用来控制直线的位置:</p>
+<ul>
+<li><p><code>geom_vline</code>:<code>xintercept</code>.</p></li>
+<li><p><code>geom_hline</code>:<code>yintercept</code>.</p></li>
+<li><p><code>geom_vline</code>:<code>slope</code>(斜率)和<code>intercept</code>(截距).</p></li>
+</ul>
+</div>
+<div id="例子-2" class="section level4">
+<h4><span class="header-section-number">0.2.1.4</span> 例子</h4>
+<pre class="r"><code>library(ggplot2)
+p &lt;- 
+  ggplot(mtcars, aes(wt, mpg)) + 
+  geom_point()
+
+# 添加垂直直线
+p + 
+  geom_vline(xintercept = 5)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>p + 
+  geom_vline(xintercept = 1:5)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code># 添加水平直线
+p + 
+  geom_hline(yintercept = 20)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<pre class="r"><code># 添加对角线,默认斜率为1
+p + 
+  geom_abline(intercept = 20)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
+<pre class="r"><code># 计算直线回归的斜率和截距
+coef(lm(mpg ~ wt, data = mtcars))</code></pre>
+<pre><code>## (Intercept)          wt 
+##   37.285126   -5.344472</code></pre>
+<pre class="r"><code>p + 
+  geom_abline(intercept = 37, slope = -5)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-5.png" width="672" /></p>
+<pre class="r"><code># 但是使用geom_smooth更加简单h:
+p + 
+  geom_smooth(method = &quot;lm&quot;, se = FALSE)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-6.png" width="672" /></p>
+<pre class="r"><code># 如果想要再不同分面显示不同的直线,则使用美学对象,也就是需要自己创建
+p &lt;- ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  facet_wrap(~ cyl)
+
+mean_wt &lt;- 
+  data.frame(cyl = c(4, 6, 8), wt = c(2.28, 3.11, 4.00))
+mean_wt</code></pre>
+<pre><code>##   cyl   wt
+## 1   4 2.28
+## 2   6 3.11
+## 3   8 4.00</code></pre>
+<pre class="r"><code>p + 
+  geom_hline(mapping = aes(x = cyl, yintercept = wt), 
+             data = mean_wt)</code></pre>
+<pre><code>## Warning: Ignoring unknown aesthetics: x</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-7.png" width="672" /></p>
+<pre class="r"><code>##如果不使用美学对象,则在每一个分面上都是一样的
+p +
+  geom_hline(yintercept = mean_wt$wt)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-8.png" width="672" /></p>
+<pre class="r"><code># 控制其他美学对象
+ggplot(mtcars, aes(mpg, wt, colour = wt)) +
+  geom_point() +
+  geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
+  facet_wrap(~ cyl)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-9.png" width="672" /></p>
 </div>
 </div>
 </div>
