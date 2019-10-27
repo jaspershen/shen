@@ -138,6 +138,7 @@ vertex_attr(GO)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;#图层layer几何对象geoms&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; 图层(Layer):几何对象(geoms)&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#直线geom_ablinegeom_hline和geom_vline&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.1&lt;/span&gt; 直线&lt;code&gt;geom_abline&lt;/code&gt;,&lt;code&gt;geom_hline&lt;/code&gt;和&lt;code&gt;geom_vline&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#柱形图geom_bargeom_col和stat_count&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; 柱形图&lt;code&gt;geom_bar()&lt;/code&gt;,&lt;code&gt;geom_col()&lt;/code&gt;和&lt;code&gt;stat_count&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -435,8 +436,12 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
   geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
   facet_wrap(~ cyl)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;柱形图geom_bargeom_col和stat_count&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 柱形图&lt;code&gt;geom_bar()&lt;/code&gt;,&lt;code&gt;geom_col()&lt;/code&gt;和&lt;code&gt;stat_count&lt;/code&gt;&lt;/h2&gt;
 &lt;/div&gt;
 </description>
     </item>

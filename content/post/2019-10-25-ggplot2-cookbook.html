@@ -27,6 +27,7 @@ output:
 <li><a href="#图层layer几何对象geoms"><span class="toc-section-number">0.2</span> 图层(Layer):几何对象(geoms)</a><ul>
 <li><a href="#直线geom_ablinegeom_hline和geom_vline"><span class="toc-section-number">0.2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></a></li>
 </ul></li>
+<li><a href="#柱形图geom_bargeom_col和stat_count"><span class="toc-section-number">0.3</span> 柱形图<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></a></li>
 </ul>
 </div>
 
@@ -324,6 +325,10 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
   geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
   facet_wrap(~ cyl)</code></pre>
 <p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-3-9.png" width="672" /></p>
+<hr />
 </div>
 </div>
+</div>
+<div id="柱形图geom_bargeom_col和stat_count" class="section level2">
+<h2><span class="header-section-number">0.3</span> 柱形图<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></h2>
 </div>
