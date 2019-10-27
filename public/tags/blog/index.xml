@@ -137,8 +137,8 @@ vertex_attr(GO)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#图层layer几何对象geoms&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; 图层(Layer):几何对象(geoms)&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#直线geom_ablinegeom_hline和geom_vline&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.1&lt;/span&gt; 直线&lt;code&gt;geom_abline&lt;/code&gt;,&lt;code&gt;geom_hline&lt;/code&gt;和&lt;code&gt;geom_vline&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#柱形图bar-chartsgeom_bargeom_col和stat_count&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.2&lt;/span&gt; 柱形图(bar charts)&lt;code&gt;geom_bar()&lt;/code&gt;,&lt;code&gt;geom_col()&lt;/code&gt;和&lt;code&gt;stat_count&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#柱形图geom_bargeom_col和stat_count&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; 柱形图&lt;code&gt;geom_bar()&lt;/code&gt;,&lt;code&gt;geom_col()&lt;/code&gt;和&lt;code&gt;stat_count&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -439,9 +439,31 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;柱形图bar-chartsgeom_bargeom_col和stat_count&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.2&lt;/span&gt; 柱形图(bar charts)&lt;code&gt;geom_bar()&lt;/code&gt;,&lt;code&gt;geom_col()&lt;/code&gt;和&lt;code&gt;stat_count&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;一共有两种类型的函数用来绘制柱形图:&lt;code&gt;geom_bar()&lt;/code&gt;和&lt;code&gt;geom_col()&lt;/code&gt;函数.&lt;code&gt;geom_bar()&lt;/code&gt;配对的统计转换函数为&lt;code&gt;stat_count()&lt;/code&gt;函数,所以他会自动将每个group的case个数计算出来,然后转为新的data frame,也就是group和数目,然后映射到x和y轴上.而&lt;code&gt;geom_bar()&lt;/code&gt;则和R base的bar plot函数相似(默认配对统计转换函数为&lt;code&gt;stat_identify()&lt;/code&gt;函数),需要指定x和y轴变量,然后直接将指定的y轴变量映射为bar的高度.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;geom_bar(mapping = NULL, data = NULL, stat = &amp;quot;count&amp;quot;,
+  position = &amp;quot;stack&amp;quot;, ..., width = NULL, binwidth = NULL,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
+
+geom_col(mapping = NULL, data = NULL, position = &amp;quot;stack&amp;quot;, ...,
+  width = NULL, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
+
+stat_count(mapping = NULL, data = NULL, geom = &amp;quot;bar&amp;quot;,
+  position = &amp;quot;stack&amp;quot;, ..., width = NULL, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;参数-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.2.1&lt;/span&gt; 参数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;mapping&lt;/strong&gt; 美学映射,使用&lt;code&gt;aes()&lt;/code&gt;函数设置.如果设置参数&lt;code&gt;inherit.aes = TRUE&lt;/code&gt;(默认),&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;data&lt;/strong&gt; 用于创建该图层的数据.有三种选择: 1)如果设置为&lt;code&gt;NULL&lt;/code&gt;,也是默认设置.则该数据继承自&lt;code&gt;ggplot()&lt;/code&gt;函数中的数据.2)一个&lt;code&gt;data.frame&lt;/code&gt;,或者其他的对象,如&lt;code&gt;tibble&lt;/code&gt;,这将会覆盖&lt;code&gt;ggplot()&lt;/code&gt;中的数据.3)也可以是一个&lt;code&gt;function()&lt;/code&gt;,但是该function最后返回的对象应该是&lt;code&gt;data.frame&lt;/code&gt;.&lt;code&gt;function&lt;/code&gt;可以使用&lt;code&gt;formula&lt;/code&gt;格式进行创建,如:&lt;code&gt;head(.x, 10)&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;…&lt;/strong&gt; 其他的可以传入&lt;code&gt;layer()&lt;/code&gt;的参数.一般是美学对象,如&lt;code&gt;colour = &#34;red&#34;&lt;/code&gt;或者&lt;code&gt;size = 3&lt;/code&gt;.也可以是一些一些能够传入到和&lt;code&gt;geom_&lt;/code&gt;配对的geom/stat的参数.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;na.rm&lt;/strong&gt; 默认为&lt;code&gt;FALSE&lt;/code&gt;, missing value会被去除掉,但是会给出&lt;code&gt;warning&lt;/code&gt;,如果设置为&lt;code&gt;TRUE&lt;/code&gt;,missing value也会被去除掉,但是不会给&lt;code&gt;warning&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;show.legend&lt;/strong&gt; 该图层是否要显示在legend上.默认为&lt;code&gt;NA&lt;/code&gt;,则该图层中所有的映射到图形属性的变量都会显示在legend中.&lt;code&gt;FALSE&lt;/code&gt;则永远不显示,&lt;code&gt;TRUE&lt;/code&gt;则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
-&lt;div id=&#34;柱形图geom_bargeom_col和stat_count&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 柱形图&lt;code&gt;geom_bar()&lt;/code&gt;,&lt;code&gt;geom_col()&lt;/code&gt;和&lt;code&gt;stat_count&lt;/code&gt;&lt;/h2&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

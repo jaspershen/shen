@@ -620,7 +620,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    8 min read
+    10 min read
   </span>
   
 
@@ -718,8 +718,8 @@
 </ul></li>
 <li><a href="#图层layer几何对象geoms"><span class="toc-section-number">0.2</span> 图层(Layer):几何对象(geoms)</a><ul>
 <li><a href="#直线geom_ablinegeom_hline和geom_vline"><span class="toc-section-number">0.2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></a></li>
+<li><a href="#柱形图bar-chartsgeom_bargeom_col和stat_count"><span class="toc-section-number">0.2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></a></li>
 </ul></li>
-<li><a href="#柱形图geom_bargeom_col和stat_count"><span class="toc-section-number">0.3</span> 柱形图<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></a></li>
 </ul>
 </div>
 
@@ -1020,9 +1020,31 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
 <hr />
 </div>
 </div>
+<div id="柱形图bar-chartsgeom_bargeom_col和stat_count" class="section level3">
+<h3><span class="header-section-number">0.2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></h3>
+<p>一共有两种类型的函数用来绘制柱形图:<code>geom_bar()</code>和<code>geom_col()</code>函数.<code>geom_bar()</code>配对的统计转换函数为<code>stat_count()</code>函数,所以他会自动将每个group的case个数计算出来,然后转为新的data frame,也就是group和数目,然后映射到x和y轴上.而<code>geom_bar()</code>则和R base的bar plot函数相似(默认配对统计转换函数为<code>stat_identify()</code>函数),需要指定x和y轴变量,然后直接将指定的y轴变量映射为bar的高度.</p>
+<pre><code>geom_bar(mapping = NULL, data = NULL, stat = &quot;count&quot;,
+  position = &quot;stack&quot;, ..., width = NULL, binwidth = NULL,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
+
+geom_col(mapping = NULL, data = NULL, position = &quot;stack&quot;, ...,
+  width = NULL, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
+
+stat_count(mapping = NULL, data = NULL, geom = &quot;bar&quot;,
+  position = &quot;stack&quot;, ..., width = NULL, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE)</code></pre>
+<div id="参数-4" class="section level4">
+<h4><span class="header-section-number">0.2.2.1</span> 参数</h4>
+<ul>
+<li><p><strong>mapping</strong> 美学映射,使用<code>aes()</code>函数设置.如果设置参数<code>inherit.aes = TRUE</code>(默认),</p></li>
+<li><p><strong>data</strong> 用于创建该图层的数据.有三种选择: 1)如果设置为<code>NULL</code>,也是默认设置.则该数据继承自<code>ggplot()</code>函数中的数据.2)一个<code>data.frame</code>,或者其他的对象,如<code>tibble</code>,这将会覆盖<code>ggplot()</code>中的数据.3)也可以是一个<code>function()</code>,但是该function最后返回的对象应该是<code>data.frame</code>.<code>function</code>可以使用<code>formula</code>格式进行创建,如:<code>head(.x, 10)</code></p></li>
+<li><p><strong>…</strong> 其他的可以传入<code>layer()</code>的参数.一般是美学对象,如<code>colour = "red"</code>或者<code>size = 3</code>.也可以是一些一些能够传入到和<code>geom_</code>配对的geom/stat的参数.</p></li>
+<li><p><strong>na.rm</strong> 默认为<code>FALSE</code>, missing value会被去除掉,但是会给出<code>warning</code>,如果设置为<code>TRUE</code>,missing value也会被去除掉,但是不会给<code>warning</code>.</p></li>
+<li><p><strong>show.legend</strong> 该图层是否要显示在legend上.默认为<code>NA</code>,则该图层中所有的映射到图形属性的变量都会显示在legend中.<code>FALSE</code>则永远不显示,<code>TRUE</code>则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.</p></li>
+</ul>
 </div>
-<div id="柱形图geom_bargeom_col和stat_count" class="section level2">
-<h2><span class="header-section-number">0.3</span> 柱形图<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></h2>
+</div>
 </div>
 
     </div>

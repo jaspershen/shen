@@ -310,10 +310,35 @@ ggplot(mtcars, aes(mpg, wt, colour = wt)) +
 
 -----
 
-## 柱形图`geom_bar()`,`geom_col()`和`stat_count`
+### 柱形图(bar charts)`geom_bar()`,`geom_col()`和`stat_count`
 
+一共有两种类型的函数用来绘制柱形图:`geom_bar()`和`geom_col()`函数.`geom_bar()`配对的统计转换函数为`stat_count()`函数,所以他会自动将每个group的case个数计算出来,然后转为新的data frame,也就是group和数目,然后映射到x和y轴上.而`geom_bar()`则和R base的bar plot函数相似(默认配对统计转换函数为`stat_identify()`函数),需要指定x和y轴变量,然后直接将指定的y轴变量映射为bar的高度.
 
+```
+geom_bar(mapping = NULL, data = NULL, stat = "count",
+  position = "stack", ..., width = NULL, binwidth = NULL,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
 
+geom_col(mapping = NULL, data = NULL, position = "stack", ...,
+  width = NULL, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
+
+stat_count(mapping = NULL, data = NULL, geom = "bar",
+  position = "stack", ..., width = NULL, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE)
+```
+
+#### 参数
+
+* **mapping** 美学映射,使用`aes()`函数设置.如果设置参数`inherit.aes = TRUE`(默认),
+
+* **data** 用于创建该图层的数据.有三种选择:     1)如果设置为`NULL`,也是默认设置.则该数据继承自`ggplot()`函数中的数据.2)一个`data.frame`,或者其他的对象,如`tibble`,这将会覆盖`ggplot()`中的数据.3)也可以是一个`function()`,但是该function最后返回的对象应该是`data.frame`.`function`可以使用`formula`格式进行创建,如:`head(.x, 10)`
+
+* **...** 其他的可以传入`layer()`的参数.一般是美学对象,如`colour = "red"`或者`size = 3`.也可以是一些一些能够传入到和`geom_`配对的geom/stat的参数.
+
+* **na.rm** 默认为`FALSE`, missing value会被去除掉,但是会给出`warning`,如果设置为`TRUE`,missing value也会被去除掉,但是不会给`warning`.
+
+* **show.legend** 该图层是否要显示在legend上.默认为`NA`,则该图层中所有的映射到图形属性的变量都会显示在legend中.`FALSE`则永远不显示,`TRUE`则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.
 
 
 
