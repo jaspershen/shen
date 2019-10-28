@@ -620,7 +620,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    11 min read
+    14 min read
   </span>
   
 
@@ -739,6 +739,12 @@
 <li><a href="#美学参数aesthetics"><span class="toc-section-number">2.2.3</span> 美学参数(Aesthetics)</a></li>
 <li><a href="#计算变量-computed-variables"><span class="toc-section-number">2.2.4</span> 计算变量 (Computed variables)</a></li>
 <li><a href="#例子-3"><span class="toc-section-number">2.2.5</span> 例子</a></li>
+</ul></li>
+<li><a href="#二维方格计数热图heatmap-of-2d-bin-countsgeom_bin2d和stat_bin_2d"><span class="toc-section-number">2.3</span> 二维方格计数热图(Heatmap of 2d bin counts)<code>geom_bin2d()</code>和<code>stat_bin_2d()</code></a><ul>
+<li><a href="#参数-5"><span class="toc-section-number">2.3.1</span> 参数</a></li>
+<li><a href="#美学参数asethetics"><span class="toc-section-number">2.3.2</span> 美学参数(Asethetics)</a></li>
+<li><a href="#计算变量computed-variables"><span class="toc-section-number">2.3.3</span> 计算变量(Computed variables)</a></li>
+<li><a href="#例子-4"><span class="toc-section-number">2.3.4</span> 例子</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1115,6 +1121,93 @@ stat_count(mapping = NULL, data = NULL, geom = &quot;bar&quot;,
 </div>
 <div id="例子-3" class="section level3">
 <h3><span class="header-section-number">2.2.5</span> 例子</h3>
+<pre class="r"><code>library(ggplot2)
+## 首先创建一个ggplot2对象
+g &lt;- ggplot(mpg, aes(class))
+# 然后使用geom_bar来展示每个class的case的数目
+g + geom_bar()</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code># 可以通过设置weight参数,将每个柱子的高度改为该变量的和
+g + geom_bar(aes(weight = displ))</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<pre class="r"><code># 当每一个柱子又可以分为不同的group时,默认是堆积在一起的.
+g + geom_bar(aes(fill = drv))</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<pre class="r"><code># 如果想要翻转类别的顺序,可以在position参数中设置
+g +
+ geom_bar(aes(fill = drv), 
+          position = position_stack(reverse = TRUE)) +
+ coord_flip() +
+ theme(legend.position = &quot;top&quot;)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
+<pre class="r"><code># 如果只是想要柱子高度显示某个变量的值,使用geom_col函数
+df &lt;- data.frame(trt = c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), outcome = c(2.3, 1.9, 3.2))
+ggplot(df, aes(trt, outcome)) +
+  geom_col()</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-4-5.png" width="672" /></p>
+<pre class="r"><code># 当然,geom_bar函数也可以用来显示连续性的变量
+df &lt;- data.frame(x = rep(c(2.9, 3.1, 4.5), c(5, 10, 4)))
+ggplot(df, aes(x)) + geom_bar()</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-4-6.png" width="672" /></p>
+<pre class="r"><code># cf. a histogram of the same data
+ggplot(df, aes(x)) + geom_histogram(binwidth = 0.5)</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-4-7.png" width="672" /></p>
+</div>
+</div>
+<div id="二维方格计数热图heatmap-of-2d-bin-countsgeom_bin2d和stat_bin_2d" class="section level2">
+<h2><span class="header-section-number">2.3</span> 二维方格计数热图(Heatmap of 2d bin counts)<code>geom_bin2d()</code>和<code>stat_bin_2d()</code></h2>
+<p>将平面划分为放个,然后计算每个方格中case的数目,然后将小方格内的case的数目映射到小方格的填充颜色上(默认).这种作图方法与<code>geom_point()</code>相比,好处是可以有效的避免重叠.</p>
+<pre><code>geom_bin2d(mapping = NULL, data = NULL, stat = &quot;bin2d&quot;,
+  position = &quot;identity&quot;, ..., na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
+
+stat_bin_2d(mapping = NULL, data = NULL, geom = &quot;tile&quot;,
+  position = &quot;identity&quot;, ..., bins = 30, binwidth = NULL,
+  drop = TRUE, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)</code></pre>
+<div id="参数-5" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> 参数</h3>
+<ul>
+<li><p><strong>mapping</strong> 美学映射参数,使用<code>aes()</code>建立.如果在该图层进行设置,并且<code>inherit.aes = TRUE</code>(默认), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping?</p></li>
+<li><p><strong>data</strong> 用于创建该图层的数据.有三种选择: 1)如果设置为<code>NULL</code>,也是默认设置.则该数据继承自<code>ggplot()</code>函数中的数据.2)一个<code>data.frame</code>,或者其他的对象,如<code>tibble</code>,这将会覆盖<code>ggplot()</code>中的数据.3)也可以是一个<code>function()</code>,但是该function最后返回的对象应该是<code>data.frame</code>.<code>function</code>可以使用<code>formula</code>格式进行创建,如:<code>head(.x, 10)</code></p></li>
+<li><p><strong>position</strong> 位置调整(position adjustment).可以是字符,也可以是使用位置调整参数返回的对象.</p></li>
+<li><p><strong>…</strong> 其他的可以传入<code>layer()</code>的参数.一般是美学对象,如<code>colour = "red"</code>或者<code>size = 3</code>.也可以是一些一些能够传入到和<code>geom_</code>配对的geom/stat的参数.</p></li>
+<li><p><strong>na.rm</strong> 默认为<code>FALSE</code>, missing value会被去除掉,但是会给出<code>warning</code>,如果设置为<code>TRUE</code>,missing value也会被去除掉,但是不会给<code>warning</code>.</p></li>
+<li><p><strong>show.legend</strong> 该图层是否要显示在legend上.默认为<code>NA</code>,则该图层中所有的映射到图形属性的变量都会显示在legend中.<code>FALSE</code>则永远不显示,<code>TRUE</code>则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.</p></li>
+<li><p><strong>inherit.aes</strong> 如果设置为<code>FALSE</code>,覆盖掉而不是结合默认美学参数. This is most useful for helper functions that define both data and aesthetics and shouldn’t inherit behaviour from the default plot specification, e.g. borders().不太明白这个意思?</p></li>
+<li><p><strong>geom, stat</strong> 覆盖掉默认的<code>geom_()</code>和<code>stat_()</code>函数.</p></li>
+<li><p><strong>bins</strong> 数值型的向量,用来分别设置垂直和水平方向上的bin的数目,默认都是30.</p></li>
+<li><p><strong>binwidth</strong> 数值型向量,用于设置在垂直和水平方向上的bin的宽度.如果该参数设置,则会覆盖掉bins参数.</p></li>
+<li><p><strong>drop</strong> 如果设置为<code>TRUE</code>,则会去除掉count为0的方格.</p></li>
+</ul>
+</div>
+<div id="美学参数asethetics" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> 美学参数(Asethetics)</h3>
+<p><code>stat_bind2d()</code>接受以下美学参数(黑体为必须参数):</p>
+<ul>
+<li><p><strong>x</strong></p></li>
+<li><p><strong>y</strong></p></li>
+<li><p>fill</p></li>
+</ul>
+<p>*group</p>
+</div>
+<div id="计算变量computed-variables" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> 计算变量(Computed variables)</h3>
+<ul>
+<li><p><strong>count</strong> bin中的数据点的个数.</p></li>
+<li><p><strong>density</strong> bin中数据点的密度(density),整体数据点数目为1,所有其他bin内数据点数目与之scale.</p></li>
+<li><p><strong>ncount</strong> count, scaled to maximum of 1?</p></li>
+<li><p><strong>ndensity</strong> density, scaled to maximum of 1</p></li>
+</ul>
+</div>
+<div id="例子-4" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> 例子</h3>
+<pre class="r"><code>library(ggplot2)
+d &lt;- ggplot(diamonds, aes(x, y)) + 
+  xlim(4, 10) + 
+  ylim(4, 10)
+d + geom_bin2d()</code></pre>
+<pre><code>## Warning: Removed 478 rows containing non-finite values (stat_bin2d).</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
 </div>

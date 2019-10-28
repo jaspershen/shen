@@ -411,9 +411,101 @@ stat_count(mapping = NULL, data = NULL, geom = "bar",
 
 ### 例子
 
+```{r}
+library(ggplot2)
+## 首先创建一个ggplot2对象
+g <- ggplot(mpg, aes(class))
+# 然后使用geom_bar来展示每个class的case的数目
+g + geom_bar()
+# 可以通过设置weight参数,将每个柱子的高度改为该变量的和
+g + geom_bar(aes(weight = displ))
+# 当每一个柱子又可以分为不同的group时,默认是堆积在一起的.
+g + geom_bar(aes(fill = drv))
+# 如果想要翻转类别的顺序,可以在position参数中设置
+g +
+ geom_bar(aes(fill = drv), 
+          position = position_stack(reverse = TRUE)) +
+ coord_flip() +
+ theme(legend.position = "top")
+# 如果只是想要柱子高度显示某个变量的值,使用geom_col函数
+df <- data.frame(trt = c("a", "b", "c"), outcome = c(2.3, 1.9, 3.2))
+ggplot(df, aes(trt, outcome)) +
+  geom_col()
+# 当然,geom_bar函数也可以用来显示连续性的变量
+df <- data.frame(x = rep(c(2.9, 3.1, 4.5), c(5, 10, 4)))
+ggplot(df, aes(x)) + geom_bar()
+# cf. a histogram of the same data
+ggplot(df, aes(x)) + geom_histogram(binwidth = 0.5)
+```
 
+## 二维方格计数热图(Heatmap of 2d bin counts)`geom_bin2d()`和`stat_bin_2d()`
 
+将平面划分为放个,然后计算每个方格中case的数目,然后将小方格内的case的数目映射到小方格的填充颜色上(默认).这种作图方法与`geom_point()`相比,好处是可以有效的避免重叠.
 
+```
+geom_bin2d(mapping = NULL, data = NULL, stat = "bin2d",
+  position = "identity", ..., na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE)
 
+stat_bin_2d(mapping = NULL, data = NULL, geom = "tile",
+  position = "identity", ..., bins = 30, binwidth = NULL,
+  drop = TRUE, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
+```
+
+### 参数
+
+* **mapping** 美学映射参数,使用`aes()`建立.如果在该图层进行设置,并且`inherit.aes = TRUE`(默认), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping?
+
+* **data** 用于创建该图层的数据.有三种选择:     1)如果设置为`NULL`,也是默认设置.则该数据继承自`ggplot()`函数中的数据.2)一个`data.frame`,或者其他的对象,如`tibble`,这将会覆盖`ggplot()`中的数据.3)也可以是一个`function()`,但是该function最后返回的对象应该是`data.frame`.`function`可以使用`formula`格式进行创建,如:`head(.x, 10)`
+
+* **position** 位置调整(position adjustment).可以是字符,也可以是使用位置调整参数返回的对象. 
+
+* **...** 其他的可以传入`layer()`的参数.一般是美学对象,如`colour = "red"`或者`size = 3`.也可以是一些一些能够传入到和`geom_`配对的geom/stat的参数.
+
+* **na.rm** 默认为`FALSE`, missing value会被去除掉,但是会给出`warning`,如果设置为`TRUE`,missing value也会被去除掉,但是不会给`warning`.
+
+* **show.legend** 该图层是否要显示在legend上.默认为`NA`,则该图层中所有的映射到图形属性的变量都会显示在legend中.`FALSE`则永远不显示,`TRUE`则永远显示.如果该图形有多个变量映射到不同的图形属性,则可以将其设置为一个vector,分别控制不同的变量是否显示.
+
+* **inherit.aes** 如果设置为`FALSE`,覆盖掉而不是结合默认美学参数. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders().不太明白这个意思?
+
+* **geom, stat** 覆盖掉默认的`geom_()`和`stat_()`函数.
+
+* **bins** 数值型的向量,用来分别设置垂直和水平方向上的bin的数目,默认都是30.
+
+* **binwidth** 数值型向量,用于设置在垂直和水平方向上的bin的宽度.如果该参数设置,则会覆盖掉bins参数.
+
+* **drop** 如果设置为`TRUE`,则会去除掉count为0的方格.
+
+### 美学参数(Asethetics)
+
+`stat_bind2d()`接受以下美学参数(黑体为必须参数):
+
+* **x**
+
+* **y**
+
+* fill
+
+*group
+
+### 计算变量(Computed variables)
+
+* **count** bin中的数据点的个数.
+
+* **density** bin中数据点的密度(density),整体数据点数目为1,所有其他bin内数据点数目与之scale.
+
+* **ncount** count, scaled to maximum of 1?
+
+* **ndensity** density, scaled to maximum of 1
+
+### 例子
+
+```{r}
+library(ggplot2)
+d <- ggplot(diamonds, aes(x, y)) + 
+  xlim(4, 10) + 
+  ylim(4, 10)
+d + geom_bin2d()
+```
 
 

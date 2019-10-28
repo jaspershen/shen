@@ -87,3 +87,4 @@ RColorBrewer::display.brewer.pal(n = 9, name = "Set1")
 RColorBrewer::brewer.pal(n = 9, name = "Set1")
 ```
 
+### `ggplot2`中如何反转坐标轴?
