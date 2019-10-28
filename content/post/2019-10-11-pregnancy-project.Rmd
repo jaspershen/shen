@@ -16,7 +16,45 @@ output:
     number_sections: true
 ---
 
-### Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration
+# Google key work search
+
+## Urinary metabolic variation analysis during pregnancy and application in Gestational Diabetes Mellitus and spontaneous abortion biomarker discovery
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6384939/pdf/41598_2019_Article_39259.pdf
+
+LC-MS urine metabolomics, 50 health pregant women. 3 time points. Age, BMI, parity and gravity (引力). Additionally, urine metabolomics was applied for early prediction of two pregnancy complications(并发症), gestational diabetes mellitus(妊娠期糖尿病) and spontaneous abortion(自然流产).
+
+Our results suggested that during normal pregnancy progression, pathways of **steroid hormone biosynthesis and tyrosine metabolism** were signifcantly regulated.
+
+
+First, second and third trimester:
+
+妊娠期是指受孕后至分娩前的生理时期，属生理学名词，亦称怀孕期。自成熟卵受精后至胎儿娩出，一般为266天左右。为便于计算，妊娠通常是从末次月经第一天算起，足月妊娠约为280天(40周)。在妊娠期间母体的新陈代谢、消化系统、呼吸系统、血管系统、神经系统、内分泌系统、生殖系统、骨关节韧带及乳房均发生相应的改变。妊娠期全过程共分为3个时期：妊娠13周末以前称早期妊娠(First trimester)；第14～27周末称中期妊娠(Second trimester)；第28周及其后称晚期妊娠(Third trimester)。
+
+MetPA pathway analysis showed that steroid hormone biosynthesis was upregulated in healthy controls during pregnancy with a high impact. Tyrosine metabolism was down-regulated with less impact (Fig. 2c).
+
+
+BMI and other clinical factor correlation with metabolome.
+
+Waters ACQUITY H-class LC system coupled with an LTQ-Orbitrap mass spectrometer (Thermo Fisher Scientific, Villebon-sur-Yvette, France).
+
+**It is also RPLC column**
+
+Waters HSS C18 column (3.0 × 100 mm, 1.7 μm) at a flow rate of 0.3 ml/min. Mobile
+
+
+## Metabolic profiling of pregnancy: cross- sectional and longitudinal evidence
+
+The aim of this study is to comprehensively characterise the maternal systemic metabolism across a wide range of metabolic and inflammatory measures in both cross-sectional and longitudinal settings coupled with with replication.
+
+This is a serum based study.
+
+## Maternal urinary metabolic signatures of fetal growth and associated clinical and environmental factors in the INMA study
+
+This is good study.
+
+
+## Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration
 
 * 早产(preterm birth),是指在妊娠不足37周出生的婴儿.早产与婴儿之后的神经发育延迟(neurodevelopmental delay),脑瘫(cerebral palsy),糖尿病(diabetes),高血压以及精神疾病(psychiatric disorders)等都有关.
 

@@ -5,7 +5,40 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 28 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>pubmed插件scholarscoop使用总结</title>
+      <link>/post/pubmed-scholarscoop-summary/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/pubmed-scholarscoop-summary/</guid>
+      <description>
+
+
+&lt;div id=&#34;如何对某个影响因子范围内的文章进行筛选&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;如何对某个影响因子范围内的文章进行筛选?&lt;/h1&gt;
+&lt;p&gt;可以参考下面的连接.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://blog.scholarscope.cn/tutorial/pubmed-filter-longterm/&#34; class=&#34;uri&#34;&gt;http://blog.scholarscope.cn/tutorial/pubmed-filter-longterm/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;如何查看期刊影响因子&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;如何查看期刊影响因子?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.scholarscope.cn/tools.html&#34; class=&#34;uri&#34;&gt;https://www.scholarscope.cn/tools.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;点击该网址,然后点击&lt;code&gt;查询期刊影响因子&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>文献管理工具mendeley使用总结</title>
+      <link>/post/mendeley-summary/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/mendeley-summary/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
     <item>
       <title>R常见错误总结</title>
       <link>/post/r-error-summary/</link>
