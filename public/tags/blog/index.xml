@@ -5,7 +5,34 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 28 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>英语学习</title>
+      <link>/post/english-study/</link>
+      <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/english-study/</guid>
+      <description>
+
+
+&lt;p&gt;这篇博客用来记录在美国跟美国人打交道的时候学到的英语,包括口语,邮件,书面和文章等等.&lt;/p&gt;
+&lt;div id=&#34;email&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Email&lt;/h1&gt;
+&lt;div id=&#34;fare-thee-well-再会吧&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fare thee well (再会吧)&lt;/h2&gt;
+&lt;p&gt;Hi everyone,&lt;/p&gt;
+&lt;p&gt;I’m excited and surprised to announce that I have accepted an offer to become the xxx at xxx. My last day at Stanford will be Friday, Nov 15.&lt;/p&gt;
+&lt;p&gt;After nearly twelve years at Stanford – the last eight in xxx – I’m filled with gratitude and pride to have been even a small part of the remarkable work you amazing people do every day. It has been the privilege of a lifetime to work with so many dedicated and talented and tireless and splendid people. I’ve benefitted from your knowledge, your creativity, your patience, friendship, and faith, and I’ve received far more than I could ever repay. My endless thanks to you all.&lt;/p&gt;
+&lt;p&gt;Yours,&lt;/p&gt;
+&lt;p&gt;xxx&lt;/p&gt;
+&lt;p&gt;这封邮件是系里面的一位工作人员要离开Stanford发给大家的再见信.感觉写的非常好.值得我好好学习.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;oral-communication&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Oral communication&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>dplyr cookbook</title>
       <link>/post/dplyr-cookbook/</link>

@@ -53,6 +53,12 @@ This is a serum based study.
 
 This is good study.
 
+Exploratory metabolic profiling offers a powerful means of capturing systems-level information that re- flects both maternal genetic and environmental influ- ences, hence helping to elucidate metabolic disturbances and pathways associated with fetal outcomes.
+
+This study aimed to (1) characterize the maternal urinary metabolome throughout pregnancy, (2) identify maternal metabolic signatures of fetal growth in two subcohorts, (3) explain potential sources of variation in metabolic profiles based on lifestyle and clinical data, and finally (4) to determine the individ- ual importance of metabolic signatures versus other maternal
+
+
+
 
 ## Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration
 
