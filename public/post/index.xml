@@ -7,6 +7,209 @@
     <description>Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 28 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
+      <title>dplyr cookbook</title>
+      <link>/post/dplyr-cookbook/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/dplyr-cookbook/</guid>
+      <description>
+
+
+&lt;p&gt;test&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ggplot2主题扩充包-ggthemes</title>
+      <link>/post/ggplot2-ggthemes/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/ggplot2-ggthemes/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;code&gt;ggthemes&lt;/code&gt;是&lt;code&gt;ggplot2&lt;/code&gt;的一个主题扩展包.含有&lt;code&gt;ggplot2&lt;/code&gt;的多个扩展主题.官网参考文档见下面链接:&lt;/p&gt;
+&lt;div id=&#34;安装&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;安装&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# 从CRAN安装
+install.packages(&amp;#39;ggthemes&amp;#39;, dependencies = TRUE)
+# 从github安装
+library(&amp;quot;devtools&amp;quot;)
+install_github(c(&amp;quot;hadley/ggplot2&amp;quot;, &amp;quot;jrnold/ggthemes&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;主题&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;主题&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;ggthemes&lt;/code&gt;提供的最直接的就是主题.可以直接在ggplot2对象后通过&lt;code&gt;+&lt;/code&gt;好添加主题.&lt;/p&gt;
+&lt;div id=&#34;theme_base主题&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;theme_base()&lt;/code&gt;主题&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ggplot2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggthemes)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggthemes&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(
+p &amp;lt;- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
+     colour = factor(gear))) + facet_wrap(~am)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + theme_base()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;theme_base()&lt;/code&gt;有两个参数,&lt;code&gt;base_size&lt;/code&gt;和&lt;code&gt;base_family&lt;/code&gt;,分别用来设置图片中所有字体的颜色和字体.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;theme_calc主题&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;theme_calc()&lt;/code&gt;主题&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ggplot2&amp;quot;)
+library(ggthemes)
+(
+p &amp;lt;- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
+     colour = factor(gear))) + facet_wrap(~am)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + theme_calc()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;还有很多其他的主题,可以直接参考官方网站.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;颜色标度&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;颜色标度&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;ggthemes()&lt;/code&gt;同样也提供了颜色标度.&lt;/p&gt;
+&lt;div id=&#34;色盲友好型颜色调色板和标度&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;色盲友好型颜色调色板和标度&lt;/h2&gt;
+&lt;p&gt;可以参考如下网址:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette&#34; class=&#34;uri&#34;&gt;http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/#a-colorblind-friendly-palette&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一共包括四个函数:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;colorblind_pal()&lt;/code&gt;,&lt;code&gt;scale_colour_colorblind()&lt;/code&gt;,&lt;code&gt;scale_color_colorblind()&lt;/code&gt;和&lt;code&gt;scale_fill_colorblind()&lt;/code&gt;.用于分散性的数据.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;scales&amp;quot;)
+library(ggthemes)
+
+show_col(colorblind_pal()(8))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##该函数用来给出最多8种颜色的名字&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ggplot2&amp;quot;)
+library(&amp;quot;scales&amp;quot;)
+library(ggthemes)
+
+show_col(colorblind_pal()(8))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##该函数用来给出最多8种颜色的名字
+(
+p &amp;lt;- ggplot(mtcars) + 
+  geom_point(aes(x = wt, y = mpg,
+     colour = factor(gear))) + 
+  facet_wrap(~am)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
+  theme_igray() + 
+  scale_colour_colorblind()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;scale_fill_colorblind()&lt;/code&gt;函数和colour函数相同,只是用来填充.&lt;/p&gt;
+&lt;p&gt;还有很多其他的颜色标度扩展,详情可以看其官方网站.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;形状标度&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;形状标度&lt;/h1&gt;
+&lt;p&gt;给美学参数&lt;code&gt;shape&lt;/code&gt;来提供扩展.&lt;/p&gt;
+&lt;div id=&#34;scale_shape_calc&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;scale_shape_calc()&lt;/code&gt;&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(
+p &amp;lt;- ggplot(mtcars) + 
+  geom_point(aes(x = wt, y = mpg,
+     shape = factor(gear))) + 
+  facet_wrap(~am)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + scale_shape_calc()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-5-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;线性标度&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;线性标度&lt;/h1&gt;
+&lt;p&gt;给美学参数&lt;code&gt;linetype&lt;/code&gt;来提供扩展.&lt;/p&gt;
+&lt;div id=&#34;scale_linetype_stata&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;scale_linetype_stata()&lt;/code&gt;&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+require(ggthemes)
+(
+  p &amp;lt;- 
+    ggplot(mtcars,aes(mpg, wt)) +
+    geom_line(aes(linetype = factor(gear)))
+) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p  +
+    scale_linetype_stata()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;颜色形状和线性调色板&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;颜色,形状和线性&lt;code&gt;调色板&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;提供了非常多的色板,可以看官网.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggthemes)
+library(scales)
+show_col(few_pal(palette = &amp;quot;Light&amp;quot;)(8))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show_col(few_pal(palette = &amp;quot;Medium&amp;quot;)(8))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show_col(few_pal(palette = &amp;quot;Dark&amp;quot;)(8))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;几何对象和统计变换函数&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;几何对象和统计变换函数&lt;/h1&gt;
+&lt;div id=&#34;range-framesgeom_rangeframe&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Range Frames&lt;code&gt;geom_rangeframe&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;该函数是用来给轴加上直线的.看以下例子.与其他几何对象参数一样,他也可以接受一些常见的参数.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ggplot2&amp;quot;)
+library(ggthemes)
+(
+p &amp;lt;- 
+ggplot(mtcars, aes(wt, mpg)) +
+ geom_point() 
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
+   geom_rangeframe(colour = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
+   geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
+   geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2, sides = &amp;quot;top&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
+   geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2, sides = c(&amp;quot;top&amp;quot;)) +
+  geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2, sides = c(&amp;quot;right&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tuftes-box-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tufte’s Box Plot&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ggplot2&amp;quot;)
+library(ggthemes)
+(
+  p &amp;lt;- ggplot(mtcars, aes(factor(cyl), mpg))
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with a point for the median and lines for whiskers
+p + geom_tufteboxplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with a line for the interquartile range and points for whiskers
+p + geom_tufteboxplot(median.type = &amp;quot;line&amp;quot;, whisker.type = &amp;quot;point&amp;quot;, hoffset = 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with a wide line for the interquartile range and lines for whiskers
+p + geom_tufteboxplot(median.type = &amp;quot;line&amp;quot;, hoffset = 0, width = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: position_dodge requires non-overlapping x intervals&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with an offset line for the interquartile range and lines for whiskers
+p + geom_tufteboxplot(median.type = &amp;quot;line&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# combined with theme_tufte
+p + geom_tufteboxplot() +
+  theme_tufte() +
+  theme(axis.ticks.x = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>pubmed插件scholarscoop使用总结</title>
       <link>/post/pubmed-scholarscoop-summary/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
@@ -32,6 +235,18 @@
       <link>/post/mendeley-summary/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
       <guid>/post/mendeley-summary/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>质谱常见问题总结</title>
+      <link>/post/ms-summary/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/ms-summary/</guid>
       <description>
 
 
@@ -197,6 +412,10 @@ vertex_attr(GO)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;#美学参数asethetics&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3.2&lt;/span&gt; 美学参数(Asethetics)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#计算变量computed-variables&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3.3&lt;/span&gt; 计算变量(Computed variables)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#例子-4&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3.4&lt;/span&gt; 例子&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#空白图geom_blank&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4&lt;/span&gt; 空白图&lt;code&gt;geom_blank()&lt;/code&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#参数-6&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4.1&lt;/span&gt; 参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#例子-5&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4.2&lt;/span&gt; 例子&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -660,6 +879,26 @@ d &amp;lt;- ggplot(diamonds, aes(x, y)) +
 d + geom_bin2d()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 478 rows containing non-finite values (stat_bin2d).&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;空白图geom_blank&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4&lt;/span&gt; 空白图&lt;code&gt;geom_blank()&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;geom_blank()&lt;/code&gt;函数不绘制任何东西,但是可以用来绘制一个空的plot来保持一定的刻度.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;geom_blank(mapping = NULL, data = NULL, stat = &amp;quot;identity&amp;quot;,
+  position = &amp;quot;identity&amp;quot;, ..., show.legend = NA, inherit.aes = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;参数-6&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4.1&lt;/span&gt; 参数&lt;/h3&gt;
+&lt;p&gt;所有参数可以参考上面所有的函数.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;例子-5&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4.2&lt;/span&gt; 例子&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p &amp;lt;- 
+  ggplot(mtcars, aes(wt, mpg))
+p&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
+  geom_blank()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

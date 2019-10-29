@@ -54,6 +54,10 @@ output:
 <li><a href="#计算变量computed-variables"><span class="toc-section-number">2.3.3</span> 计算变量(Computed variables)</a></li>
 <li><a href="#例子-4"><span class="toc-section-number">2.3.4</span> 例子</a></li>
 </ul></li>
+<li><a href="#空白图geom_blank"><span class="toc-section-number">2.4</span> 空白图<code>geom_blank()</code></a><ul>
+<li><a href="#参数-6"><span class="toc-section-number">2.4.1</span> 参数</a></li>
+<li><a href="#例子-5"><span class="toc-section-number">2.4.2</span> 例子</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -516,6 +520,26 @@ d &lt;- ggplot(diamonds, aes(x, y)) +
 d + geom_bin2d()</code></pre>
 <pre><code>## Warning: Removed 478 rows containing non-finite values (stat_bin2d).</code></pre>
 <p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+<div id="空白图geom_blank" class="section level2">
+<h2><span class="header-section-number">2.4</span> 空白图<code>geom_blank()</code></h2>
+<p><code>geom_blank()</code>函数不绘制任何东西,但是可以用来绘制一个空的plot来保持一定的刻度.</p>
+<pre><code>geom_blank(mapping = NULL, data = NULL, stat = &quot;identity&quot;,
+  position = &quot;identity&quot;, ..., show.legend = NA, inherit.aes = TRUE)</code></pre>
+<div id="参数-6" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> 参数</h3>
+<p>所有参数可以参考上面所有的函数.</p>
+</div>
+<div id="例子-5" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> 例子</h3>
+<pre class="r"><code>p &lt;- 
+  ggplot(mtcars, aes(wt, mpg))
+p</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>p + 
+  geom_blank()</code></pre>
+<p><img src="/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 </div>
 </div>
 </div>

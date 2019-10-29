@@ -508,4 +508,26 @@ d <- ggplot(diamonds, aes(x, y)) +
 d + geom_bin2d()
 ```
 
+## 空白图`geom_blank()`
+
+`geom_blank()`函数不绘制任何东西,但是可以用来绘制一个空的plot来保持一定的刻度.
+
+```
+geom_blank(mapping = NULL, data = NULL, stat = "identity",
+  position = "identity", ..., show.legend = NA, inherit.aes = TRUE)
+```
+
+### 参数
+
+所有参数可以参考上面所有的函数.
+
+### 例子
+
+```{r}
+p <- 
+  ggplot(mtcars, aes(wt, mpg))
+p
+p + 
+  geom_blank()
+```
 

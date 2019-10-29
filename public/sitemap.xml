@@ -41,12 +41,37 @@
   </url>
   
   <url>
+    <loc>/tags/chinese/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/dplyr-cookbook/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/ggplot2-ggthemes/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/literature/</loc>
     <lastmod>2019-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>/categories/mass-spectrometry/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/pubmed-scholarscoop-summary/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
     <lastmod>2019-10-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -66,8 +91,8 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-10-26T00:00:00+00:00</lastmod>
+    <loc>/post/ms-summary/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -157,11 +182,6 @@
   
   <url>
     <loc>/post/20191014/</loc>
-    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/chinese/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
   </url>
   
