@@ -5,7 +5,160 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Pregancy project participant information summary</title>
+      <link>/post/pregancy-project-participant-information-summary/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/pregancy-project-participant-information-summary/</guid>
+      <description>
+
+
+&lt;div id=&#34;maternal-dob&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Maternal DOB&lt;/h1&gt;
+&lt;p&gt;Maternal date of birth.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;age&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Age&lt;/h1&gt;
+&lt;p&gt;Mother age.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;marital-status&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Marital Status&lt;/h1&gt;
+&lt;p&gt;Mothers’ marriage status&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Lable&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Married, FOB involved&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Married, FOB involved&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Unknown, FOB involved&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Unknown, FOB involved&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Single, FOB involved&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Single, FOB involved&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Unknown&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Unknown&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Unmarried, FOB involved&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Unmarried, FOB involved&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Unmarried, FOB involved, but not living together&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Unmarried, FOB involved, but not living together&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Unmarried, FOB not involved&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Unmarried, FOB not involved&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;unknown, FOB involved but living separately&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;unknown, FOB involved but living separately&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Single&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Single&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;I don’t know what the meaning of “FOB involved”.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ethinic-group&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Ethinic Group&lt;/h1&gt;
+&lt;p&gt;The ethnicity of mothers.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Lable&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Afr Am&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Black&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;4 (Asian)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Asian&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;White&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Black&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Latina&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Pacific Islander&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Asian&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;employed&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Employed&lt;/h1&gt;
+&lt;p&gt;The mothers’ work status.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;housing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Housing&lt;/h1&gt;
+&lt;p&gt;House status.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;parity&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Parity&lt;/h1&gt;
+&lt;p&gt;Gravidity is defined as the number of times that a woman has been pregnant.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;[8] “G4P1021” “G3P1011” NA “G5P2” “G5P0” “G10P3154” “G3P2002”&lt;br /&gt;
+[15] “G4P2012” “G4P0303” “G6P5005” “G14P4-1-8-4” “G4P3003” “G7P4115” “G9P4044”&lt;br /&gt;
+[22] “G5P2022” “G5P2113” “G5P0040” “G8P5025”&lt;/p&gt;
+&lt;p&gt;I don not understand what that means.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pmh&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;PMH&lt;/h1&gt;
+&lt;p&gt;I don’t understand what this means, but it may be mothers’s diesease.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;psh&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;PSH&lt;/h1&gt;
+&lt;p&gt;I don’t understand what this means.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ob-hx&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;OB hx&lt;/h1&gt;
+&lt;p&gt;I donn’t understand what this means.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;genetic-testing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Genetic testing&lt;/h1&gt;
+&lt;p&gt;Genetic testing for mothers.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Markdown cookbook</title>
       <link>/post/markdown-cookbook/</link>
