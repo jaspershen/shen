@@ -29,7 +29,7 @@
   {{ i18n "btn_pdf" }}
 </a>
 {{ end }}
-{{ $resource := $page.Resources.GetMatch "cite.bib" }}
+{{ $resource := $page.Resources.GetMatch "*.bib" }}
 {{ with $resource }}
 <button type="button" class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}} js-cite-modal"
         data-filename="{{ .RelPermalink }}">
@@ -138,15 +138,15 @@
   {{ if in (slice "fab" "fas" "far" "fal") $pack }}
     {{ $pack_prefix = "fa" }}
   {{ end }}
-  {{ $link := .url | default "" }}
+  {{ $link := .url }}
   {{ $scheme := (urls.Parse $link).Scheme }}
   {{ $target := "" }}
   {{ if not $scheme }}
-    {{ $resource := $page.Resources.GetMatch $link }}
+    {{ $resource := $page.Resources.GetMatch .url }}
     {{ if $resource }}
       {{ $link = $resource.RelPermalink }}
     {{ else }}
-      {{ $link = $link | relURL }}
+      {{ $link = .url | relURL }}
     {{ end }}
   {{ else if in (slice "http" "https") $scheme }}
     {{ $target = "target=\"_blank\" rel=\"noopener\"" }}

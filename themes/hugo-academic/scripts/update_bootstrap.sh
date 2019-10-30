@@ -2,7 +2,7 @@
 # Script to copy Bootstrap files into project after running `npm install` to download Bootstrap.
 
 ASSETS_JS_DIR="assets/js/vendor/"
-ASSETS_SCSS_DIR="assets/scss/vendor/"
+ASSETS_SCSS_DIR="assets/sass/vendor/"
 
 mkdir -p $ASSETS_SCSS_DIR/bootstrap/
 
