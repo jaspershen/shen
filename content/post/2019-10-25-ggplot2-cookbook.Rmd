@@ -531,3 +531,154 @@ p +
   geom_blank()
 ```
 
+## 箱型图(boxplot或者whiskers plot)`geom_boxplot()`和`stat_boxplot()`
+
+箱型图用来展示连续性变量的分布.它可以展示5个统计量(中位值,two hinges and two whiskers), 以及所有的outlier值.
+
+```
+geom_boxplot(mapping = NULL, data = NULL, stat = "boxplot",
+  position = "dodge2", ..., outlier.colour = NULL,
+  outlier.color = NULL, outlier.fill = NULL, outlier.shape = 19,
+  outlier.size = 1.5, outlier.stroke = 0.5, outlier.alpha = NULL,
+  notch = FALSE, notchwidth = 0.5, varwidth = FALSE, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE)
+
+stat_boxplot(mapping = NULL, data = NULL, geom = "boxplot",
+  position = "dodge2", ..., coef = 1.5, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE)
+```
+
+### 参数
+
+**mapping**,**data**,**position**和**...**参数可以参考前面的参数.都是一致的.
+
+* **outlier.colour**,**outlier.fill**,**outlier.shape**,**outlier.size**,**outlier.stroke**,**outlier.alpha**:离群点的美学参数.如果想要隐藏outlier,则可以将**outlier.shape**设置为NA.
+
+* **notch**:默认为`FALSE`,一个标准的box plot,如果设置为`TRUE`,则是一个有缺口的box plot.有缺口的box plot可以方便多组数据进行比较.因为缺口处就是中位值所在位置.
+
+* **notchwidth**:缺口box plot的缺口处的宽度和整体宽度的比值,默认为0.5.
+
+* **varwidth**:默认为`FALSE`,一个标准的box plot.如果设置为`TRUE`,则每组的box的宽度和该组的变量的个数的平方根成正比.
+
+* **coef**:默认为1.5.也就是上下边框扩展出的上下晶须的距离为1.5倍的IQR.
+
+
+### 统计总结
+
+box plot框的上下边界(hinge)分别代表第一和第三分位数.
+
+从框上边界扩展出的上晶须(whisker)的距离为1.5倍的IQR(IQR为inter quartile range,也就是第三分位数和第一份位数之差).从框下边界扩展出的下晶须(whisker)的距离为1.5倍的IQR.在上下晶须范围以外的,就是outlier.
+
+### 美学参数
+
+`geom_boxplot()`接收以下美学参数(黑体为必须参数):
+
+* **x**
+
+* **lower**
+
+* **upper**
+
+* **umiddle**
+
+* **ymin**
+
+* **yax**
+
+* alpha
+
+* colour
+
+* fill
+
+* group
+
+* linetype
+
+* shape
+
+* size
+
+* weight
+
+### 计算变量
+
+* width box plot宽度.
+
+ymin:下晶须==下框边界-1.5*IQR
+
+lower:下框边界.默认为25% quantile.
+
+notchlower:对于有缺口box plot的下框边界.默认为median - 1.58 * IQR / sqrt(n)
+
+middle:中位值,默认为50%分位数.
+
+notchupper:对于有缺口box plot的上框边界.默认为median + 1.58 * IQR / sqrt(n)
+
+upper:上框边界,默认为75%分位数.
+
+ymax上晶须==上框边界+1.5*IQR
+
+### 例子
+
+```{r}
+library(ggplot2)
+p <- ggplot(mpg, aes(class, hwy))
+
+p +
+    geom_boxplot()  
+
+# 交换x轴和y轴
+p + geom_boxplot() + 
+  coord_flip()
+
+# 有缺口的box plot,注意此时上下晶须距离是有变化的.
+p +
+  geom_boxplot(notch = TRUE)
+
+# box宽度和每组数目n的平方根成正比
+p + geom_boxplot(varwidth = TRUE)
+
+p + geom_boxplot(fill = "white", colour = "#3366FF")
+
+# 设置outlier的美学参数
+p + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+
+# 将点和boxplot画在一起,这时候需要把outlier去除掉,因为和原始点会有重叠
+p + geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(width = 0.2)
+
+# 如果每组的box plot再分类,则默认是并列排在一起的
+p + geom_boxplot(aes(colour = drv))
+
+# x轴不是分类数据,而是连续数据也是可以的.但是需要提供如何对x轴进行分类,比如通过
+#cut_width函数将连续性变量进行分类
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_boxplot()
+
+ggplot(diamonds, aes(carat, price)) +
+  geom_boxplot(aes(colour = cut_width(carat, 0.25)), show.legend = FALSE)
+
+ggplot(diamonds, aes(carat, price)) +
+  geom_boxplot(aes(group = cut_width(carat, 0.25)), show.legend = FALSE)
+
+
+# 如果你自己定义了boxplot的各个元素,也可以通过设置stat=`identify`来画boxplot
+y <- rnorm(100)
+df <- data.frame(
+  x = 1,
+  y0 = min(y),
+  y25 = quantile(y, 0.25),
+  y50 = median(y),
+  y75 = quantile(y, 0.75),
+  y100 = max(y)
+)
+ggplot(df, aes(x)) +
+  geom_boxplot(
+   aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),
+   stat = "identity"
+ )
+```
+
+
+

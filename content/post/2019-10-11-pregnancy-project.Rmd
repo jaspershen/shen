@@ -51,6 +51,20 @@ This is a serum based study.
 
 ## Maternal urinary metabolic signatures of fetal growth and associated clinical and environmental factors in the INMA study
 
+使用NMR仪器采集urine数据.一共两个cohort.两个时间点(fisrt and third trimesters of gestation).用metabolome来预测fetal growth和birth weight.
+
+测到的东西包括:branched-chain amino acids(支链氨基酸);isoleucine(异亮氨酸),valine(颉氨酸),leucine(亮氨酸),alanine(丙氨酸)和3 hydroxyisobutyrate(羟基异丁酸)(metabolite of valine).
+
+另外一大类就是:pregnancy-related hormone by-products of estrogens and progesterone, and the methyl donor choline.
+Physical activity, as well as other modifiable lifestyle/clinical factors, such as coffee consumption, vitamin D intake, and smoking, were identified as potential sources of metabolic variation during pregnancy.First trimester metabolic phenotypes could not predict reproducibly weight at later stages of development. 
+
+### 结论
+
+Significant reproducible maternal urinary metabolic signatures of fetal growth and birth weight are identified for the first time and linked to modifiable lifestyle factors. This novel approach to prenatal(产前的) screening, combining multiple risk factors, present a great opportunity to personalize pregnancy management management and reduce newborn disease risk in later life.
+
+
+NMR采集数据,一共1695 metabolic phenotypes.
+
 This is good study.
 
 Exploratory metabolic profiling offers a powerful means of capturing systems-level information that re- flects both maternal genetic and environmental influ- ences, hence helping to elucidate metabolic disturbances and pathways associated with fetal outcomes.
@@ -58,6 +72,29 @@ Exploratory metabolic profiling offers a powerful means of capturing systems-lev
 This study aimed to (1) characterize the maternal urinary metabolome throughout pregnancy, (2) identify maternal metabolic signatures of fetal growth in two subcohorts, (3) explain potential sources of variation in metabolic profiles based on lifestyle and clinical data, and finally (4) to determine the individ- ual importance of metabolic signatures versus other maternal
 
 
+### Study population
+
+The women were interviewed twice during pregnancy (in the first and third trimesters of gestation) to obtain infor- mation about their sociodemographic characteristics and lifestyle variables. The urine samples were collected in the same interview in the morning (spot samples). The urine samples were collected in the same interview in the morning (spot samples). 所以一共有两个时间点.分别在first trimester and third trimesters.时间为12.4 ± 1.2 and 33.9 ± 1.3 weeks.
+
+### Definition of the fetal and birth measurements
+
+fetal growth score()
+
+用来预测胎儿体重(fetal birth weight)的几个参数(从超声波测量而来):
+
+* Fiparietal diameter(BPD):胎儿双顶径.为两侧顶骨隆突间的距离,是胎头最大横径,临床用B型超声检测此值判断胎儿大小,妊娠足月时平均长度约9.3cm.
+
+* Femur length(FL):胎儿股骨长度.
+
+* Head circumference (AC):胎儿头围.
+
+* Abdominal circumference (AC):胎儿腹围.
+
+crown–rump length:胎儿的头臀长.
+
+date of conception:妊娠期.
+
+Gestational age(孕龄)was established by using crown–rump length when the calculated date of conception differed from the fetal age based on the subject’s self-reported last menstrual period by 7 days or more.
 
 
 ## Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration

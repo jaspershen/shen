@@ -7,6 +7,18 @@
     <description>Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
+      <title>Markdown cookbook</title>
+      <link>/post/markdown-cookbook/</link>
+      <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/markdown-cookbook/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
       <title>英语学习</title>
       <link>/post/english-study/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
@@ -25,6 +37,14 @@
 &lt;p&gt;Yours,&lt;/p&gt;
 &lt;p&gt;xxx&lt;/p&gt;
 &lt;p&gt;这封邮件是系里面的一位工作人员要离开Stanford发给大家的再见信.感觉写的非常好.值得我好好学习.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;november-3-2019-request&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;November 3, 2019 Request&lt;/h2&gt;
+&lt;p&gt;Hi Jasper,&lt;/p&gt;
+&lt;p&gt;I put you on the schedule for this upcoming Sunday. I will be out of town, so please let me know as soon as possible if you are able to help out(这个用法第一次见&lt;code&gt;help out&lt;/code&gt;). Remember to come by (类似于stop by) 6:30 to welcome people, and stick around (逗留) for a few minutes afterward to help any newcomers get plugged in(这个第一次见这个意思). Let me know if you have any questions! Thanks for all you do.&lt;/p&gt;
+&lt;p&gt;Thanks,&lt;/p&gt;
+&lt;p&gt;xxx&lt;/p&gt;
+&lt;p&gt;这封邮件是一个组织的周末聚会要求我过去当志愿者的.学到的知识,包括: help out, come by, stick around, get plugged in等.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;oral-communication&#34; class=&#34;section level1&#34;&gt;
@@ -277,7 +297,17 @@ p + geom_tufteboxplot() +
       <description>
 
 
-
+&lt;div id=&#34;ms&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;MS&lt;/h1&gt;
+&lt;div id=&#34;forevacuum-presure-too-high.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Forevacuum presure too high.&lt;/h2&gt;
+&lt;p&gt;两个原因:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;ion transfer tube堵了,洗一下试试.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2)大概率是needle堵了,一般只能重新换个新的needle.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     
@@ -443,6 +473,13 @@ vertex_attr(GO)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;#空白图geom_blank&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4&lt;/span&gt; 空白图&lt;code&gt;geom_blank()&lt;/code&gt;&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#参数-6&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4.1&lt;/span&gt; 参数&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#例子-5&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4.2&lt;/span&gt; 例子&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#箱型图boxplot或者whiskers-plotgeom_boxplot和stat_boxplot&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5&lt;/span&gt; 箱型图(boxplot或者whiskers plot)&lt;code&gt;geom_boxplot()&lt;/code&gt;和&lt;code&gt;stat_boxplot()&lt;/code&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#参数-7&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5.1&lt;/span&gt; 参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#统计总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5.2&lt;/span&gt; 统计总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#美学参数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5.3&lt;/span&gt; 美学参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#计算变量&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5.4&lt;/span&gt; 计算变量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#例子-6&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5.5&lt;/span&gt; 例子&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -926,6 +963,131 @@ p&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
   geom_blank()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;箱型图boxplot或者whiskers-plotgeom_boxplot和stat_boxplot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5&lt;/span&gt; 箱型图(boxplot或者whiskers plot)&lt;code&gt;geom_boxplot()&lt;/code&gt;和&lt;code&gt;stat_boxplot()&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;箱型图用来展示连续性变量的分布.它可以展示5个统计量(中位值,two hinges and two whiskers), 以及所有的outlier值.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;geom_boxplot(mapping = NULL, data = NULL, stat = &amp;quot;boxplot&amp;quot;,
+  position = &amp;quot;dodge2&amp;quot;, ..., outlier.colour = NULL,
+  outlier.color = NULL, outlier.fill = NULL, outlier.shape = 19,
+  outlier.size = 1.5, outlier.stroke = 0.5, outlier.alpha = NULL,
+  notch = FALSE, notchwidth = 0.5, varwidth = FALSE, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE)
+
+stat_boxplot(mapping = NULL, data = NULL, geom = &amp;quot;boxplot&amp;quot;,
+  position = &amp;quot;dodge2&amp;quot;, ..., coef = 1.5, na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;参数-7&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5.1&lt;/span&gt; 参数&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;mapping&lt;/strong&gt;,&lt;strong&gt;data&lt;/strong&gt;,&lt;strong&gt;position&lt;/strong&gt;和&lt;strong&gt;…&lt;/strong&gt;参数可以参考前面的参数.都是一致的.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;outlier.colour&lt;/strong&gt;,&lt;strong&gt;outlier.fill&lt;/strong&gt;,&lt;strong&gt;outlier.shape&lt;/strong&gt;,&lt;strong&gt;outlier.size&lt;/strong&gt;,&lt;strong&gt;outlier.stroke&lt;/strong&gt;,&lt;strong&gt;outlier.alpha&lt;/strong&gt;:离群点的美学参数.如果想要隐藏outlier,则可以将&lt;strong&gt;outlier.shape&lt;/strong&gt;设置为NA.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;notch&lt;/strong&gt;:默认为&lt;code&gt;FALSE&lt;/code&gt;,一个标准的box plot,如果设置为&lt;code&gt;TRUE&lt;/code&gt;,则是一个有缺口的box plot.有缺口的box plot可以方便多组数据进行比较.因为缺口处就是中位值所在位置.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;notchwidth&lt;/strong&gt;:缺口box plot的缺口处的宽度和整体宽度的比值,默认为0.5.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;varwidth&lt;/strong&gt;:默认为&lt;code&gt;FALSE&lt;/code&gt;,一个标准的box plot.如果设置为&lt;code&gt;TRUE&lt;/code&gt;,则每组的box的宽度和该组的变量的个数的平方根成正比.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;coef&lt;/strong&gt;:默认为1.5.也就是上下边框扩展出的上下晶须的距离为1.5倍的IQR.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;统计总结&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5.2&lt;/span&gt; 统计总结&lt;/h3&gt;
+&lt;p&gt;box plot框的上下边界(hinge)分别代表第一和第三分位数.&lt;/p&gt;
+&lt;p&gt;从框上边界扩展出的上晶须(whisker)的距离为1.5倍的IQR(IQR为inter quartile range,也就是第三分位数和第一份位数之差).从框下边界扩展出的下晶须(whisker)的距离为1.5倍的IQR.在上下晶须范围以外的,就是outlier.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;美学参数&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5.3&lt;/span&gt; 美学参数&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;geom_boxplot()&lt;/code&gt;接收以下美学参数(黑体为必须参数):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;x&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;lower&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;upper&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;umiddle&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;ymin&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;yax&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;alpha&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;colour&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;fill&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;group&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;linetype&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;shape&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;size&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;weight&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;计算变量&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5.4&lt;/span&gt; 计算变量&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;width box plot宽度.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ymin:下晶须==下框边界-1.5*IQR&lt;/p&gt;
+&lt;p&gt;lower:下框边界.默认为25% quantile.&lt;/p&gt;
+&lt;p&gt;notchlower:对于有缺口box plot的下框边界.默认为median - 1.58 * IQR / sqrt(n)&lt;/p&gt;
+&lt;p&gt;middle:中位值,默认为50%分位数.&lt;/p&gt;
+&lt;p&gt;notchupper:对于有缺口box plot的上框边界.默认为median + 1.58 * IQR / sqrt(n)&lt;/p&gt;
+&lt;p&gt;upper:上框边界,默认为75%分位数.&lt;/p&gt;
+&lt;p&gt;ymax上晶须==上框边界+1.5*IQR&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;例子-6&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5.5&lt;/span&gt; 例子&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+p &amp;lt;- ggplot(mpg, aes(class, hwy))
+
+p +
+    geom_boxplot()  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 交换x轴和y轴
+p + geom_boxplot() + 
+  coord_flip()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 有缺口的box plot,注意此时上下晶须距离是有变化的.
+p +
+  geom_boxplot(notch = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## notch went outside hinges. Try setting notch=FALSE.
+## notch went outside hinges. Try setting notch=FALSE.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# box宽度和每组数目n的平方根成正比
+p + geom_boxplot(varwidth = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + geom_boxplot(fill = &amp;quot;white&amp;quot;, colour = &amp;quot;#3366FF&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 设置outlier的美学参数
+p + geom_boxplot(outlier.colour = &amp;quot;red&amp;quot;, outlier.shape = 1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 将点和boxplot画在一起,这时候需要把outlier去除掉,因为和原始点会有重叠
+p + geom_boxplot(outlier.shape = NA) + 
+  geom_jitter(width = 0.2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果每组的box plot再分类,则默认是并列排在一起的
+p + geom_boxplot(aes(colour = drv))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# x轴不是分类数据,而是连续数据也是可以的.但是需要提供如何对x轴进行分类,比如通过
+#cut_width函数将连续性变量进行分类
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Continuous x aesthetic -- did you forget aes(group=...)?&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(diamonds, aes(carat, price)) +
+  geom_boxplot(aes(colour = cut_width(carat, 0.25)), show.legend = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(diamonds, aes(carat, price)) +
+  geom_boxplot(aes(group = cut_width(carat, 0.25)), show.legend = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-11.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果你自己定义了boxplot的各个元素,也可以通过设置stat=`identify`来画boxplot
+y &amp;lt;- rnorm(100)
+df &amp;lt;- data.frame(
+  x = 1,
+  y0 = min(y),
+  y25 = quantile(y, 0.25),
+  y50 = median(y),
+  y75 = quantile(y, 0.75),
+  y100 = max(y)
+)
+ggplot(df, aes(x)) +
+  geom_boxplot(
+   aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),
+   stat = &amp;quot;identity&amp;quot;
+ )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-25-ggplot2-cookbook_files/figure-html/unnamed-chunk-7-12.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1879,7 +2041,11 @@ ggplot(vaccinations,
 &lt;li&gt;&lt;a href=&#34;#google-key-work-search&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Google key work search&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#urinary-metabolic-variation-analysis-during-pregnancy-and-application-in-gestational-diabetes-mellitus-and-spontaneous-abortion-biomarker-discovery&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Urinary metabolic variation analysis during pregnancy and application in Gestational Diabetes Mellitus and spontaneous abortion biomarker discovery&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#metabolic-profiling-of-pregnancy-cross--sectional-and-longitudinal-evidence&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Metabolic profiling of pregnancy: cross- sectional and longitudinal evidence&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#maternal-urinary-metabolic-signatures-of-fetal-growth-and-associated-clinical-and-environmental-factors-in-the-inma-study&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Maternal urinary metabolic signatures of fetal growth and associated clinical and environmental factors in the INMA study&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#maternal-urinary-metabolic-signatures-of-fetal-growth-and-associated-clinical-and-environmental-factors-in-the-inma-study&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Maternal urinary metabolic signatures of fetal growth and associated clinical and environmental factors in the INMA study&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#结论&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3.1&lt;/span&gt; 结论&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#study-population&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3.2&lt;/span&gt; Study population&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#definition-of-the-fetal-and-birth-measurements&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3.3&lt;/span&gt; Definition of the fetal and birth measurements&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#variants-in-the-fetal-genome-near-pro-inflammatory-cytokine-genes-on-2q13-associate-with-gestational-duration&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4&lt;/span&gt; Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#定义&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4.1&lt;/span&gt; 定义&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#一些pregnancy公开数据库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4.2&lt;/span&gt; 一些pregnancy公开数据库&lt;/a&gt;&lt;/li&gt;
@@ -1911,9 +2077,36 @@ ggplot(vaccinations,
 &lt;/div&gt;
 &lt;div id=&#34;maternal-urinary-metabolic-signatures-of-fetal-growth-and-associated-clinical-and-environmental-factors-in-the-inma-study&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; Maternal urinary metabolic signatures of fetal growth and associated clinical and environmental factors in the INMA study&lt;/h2&gt;
+&lt;p&gt;使用NMR仪器采集urine数据.一共两个cohort.两个时间点(fisrt and third trimesters of gestation).用metabolome来预测fetal growth和birth weight.&lt;/p&gt;
+&lt;p&gt;测到的东西包括:branched-chain amino acids(支链氨基酸);isoleucine(异亮氨酸),valine(颉氨酸),leucine(亮氨酸),alanine(丙氨酸)和3 hydroxyisobutyrate(羟基异丁酸)(metabolite of valine).&lt;/p&gt;
+&lt;p&gt;另外一大类就是:pregnancy-related hormone by-products of estrogens and progesterone, and the methyl donor choline.
+Physical activity, as well as other modifiable lifestyle/clinical factors, such as coffee consumption, vitamin D intake, and smoking, were identified as potential sources of metabolic variation during pregnancy.First trimester metabolic phenotypes could not predict reproducibly weight at later stages of development.&lt;/p&gt;
+&lt;div id=&#34;结论&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3.1&lt;/span&gt; 结论&lt;/h3&gt;
+&lt;p&gt;Significant reproducible maternal urinary metabolic signatures of fetal growth and birth weight are identified for the first time and linked to modifiable lifestyle factors. This novel approach to prenatal(产前的) screening, combining multiple risk factors, present a great opportunity to personalize pregnancy management management and reduce newborn disease risk in later life.&lt;/p&gt;
+&lt;p&gt;NMR采集数据,一共1695 metabolic phenotypes.&lt;/p&gt;
 &lt;p&gt;This is good study.&lt;/p&gt;
 &lt;p&gt;Exploratory metabolic profiling offers a powerful means of capturing systems-level information that re- flects both maternal genetic and environmental influ- ences, hence helping to elucidate metabolic disturbances and pathways associated with fetal outcomes.&lt;/p&gt;
 &lt;p&gt;This study aimed to (1) characterize the maternal urinary metabolome throughout pregnancy, (2) identify maternal metabolic signatures of fetal growth in two subcohorts, (3) explain potential sources of variation in metabolic profiles based on lifestyle and clinical data, and finally (4) to determine the individ- ual importance of metabolic signatures versus other maternal&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;study-population&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3.2&lt;/span&gt; Study population&lt;/h3&gt;
+&lt;p&gt;The women were interviewed twice during pregnancy (in the first and third trimesters of gestation) to obtain infor- mation about their sociodemographic characteristics and lifestyle variables. The urine samples were collected in the same interview in the morning (spot samples). The urine samples were collected in the same interview in the morning (spot samples). 所以一共有两个时间点.分别在first trimester and third trimesters.时间为12.4 ± 1.2 and 33.9 ± 1.3 weeks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;definition-of-the-fetal-and-birth-measurements&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3.3&lt;/span&gt; Definition of the fetal and birth measurements&lt;/h3&gt;
+&lt;p&gt;fetal growth score()&lt;/p&gt;
+&lt;p&gt;用来预测胎儿体重(fetal birth weight)的几个参数(从超声波测量而来):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Fiparietal diameter(BPD):胎儿双顶径.为两侧顶骨隆突间的距离,是胎头最大横径,临床用B型超声检测此值判断胎儿大小,妊娠足月时平均长度约9.3cm.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Femur length(FL):胎儿股骨长度.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Head circumference (AC):胎儿头围.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Abdominal circumference (AC):胎儿腹围.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;crown–rump length:胎儿的头臀长.&lt;/p&gt;
+&lt;p&gt;date of conception:妊娠期.&lt;/p&gt;
+&lt;p&gt;Gestational age(孕龄)was established by using crown–rump length when the calculated date of conception differed from the fetal age based on the subject’s self-reported last menstrual period by 7 days or more.&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;variants-in-the-fetal-genome-near-pro-inflammatory-cytokine-genes-on-2q13-associate-with-gestational-duration&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4&lt;/span&gt; Variants in the fetal genome near pro-inflammatory cytokine genes on 2q13 associate with gestational duration&lt;/h2&gt;

@@ -41,7 +41,22 @@
   </url>
   
   <url>
+    <loc>/tags/chinese/</loc>
+    <lastmod>2019-10-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/life/</loc>
+    <lastmod>2019-10-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/markdown-cookbook/</loc>
+    <lastmod>2019-10-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/study/</loc>
     <lastmod>2019-10-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -58,11 +73,6 @@
   <url>
     <loc>/post/english-study/</loc>
     <lastmod>2019-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/chinese/</loc>
-    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>

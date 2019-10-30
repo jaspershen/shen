@@ -12,3 +12,13 @@ image:
   caption: ''
   focal_point: ''
 ---
+
+# MS
+
+## Forevacuum presure too high.
+
+两个原因:
+
+1) ion transfer tube堵了,洗一下试试.  
+
+2)大概率是needle堵了,一般只能重新换个新的needle.
