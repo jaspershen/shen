@@ -1,0 +1,307 @@
+---
+title: Markdown中输入数学公式
+author: Xiaotao Shen
+date: '2019-08-25'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+在Markdown中可以方便的输入数学公式.现在将Markdown中数学公式总结一下.
+
+### 1. 如何插入公式
+
+包括两种,一种是在行内插入,一种是独立公式(单独一行).
+
+* 行中插入公式(`$E = mc^2$`): $E = mc^2$
+
+* 独立公式:
+
+```
+$$E = mc^2$$
+```
+
+$$E = mc^2$$
+
+### 2. 上下标
+
+`^`上标,`_`下标.如果上下标内容多于一个字符,需要使用`{}`将其扩大为一个整体.
+
+* **例子**
+
+输入:
+
+```
+$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
+```
+
+显示:
+
+$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
+
+### 3. 括号和分隔符
+
+()、[] 和 | 表示符号本身，使用 \{\} 来表示{} 。当要显示大号的括号或分隔符时，要用 \left 和 \right 命令。
+
+一些特殊的例子:
+
+|输入     |     显示|
+|---------|---------|
+|`\langle`|$\langle$|
+|`\rangle`|$\rangle$|
+|`\lceil`|$\rceil$|
+|`\lfloor`|$\lfloor$|
+|`\lbrace`|$\lbrace$|
+
+
+* **例子**
+
+输入:
+
+```
+$$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right) $$
+```
+
+显示:
+
+$$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2}\right) $$
+
+
+### 4. 分数
+
+通常使用 \frac {分子} {分母} 命令产生一个分数，分数可嵌套。 
+
+* **例子**
+
+输入:
+
+```
+$$\frac{a-1}{b-1} \quad and \quad {a+1\over b+1}$$
+```
+
+显示:
+
+$$\frac{a-1}{b-1}$$
+
+### 5. 开方
+
+使用 \sqrt [根指数，省略时为2] {被开方数} 命令输入开方。
+
+* **例子**
+
+输入:
+
+```
+$$\sqrt{2} \quad and \quad \sqrt[n]{3}$$
+```
+
+显示:
+
+$$\sqrt{2} \quad and \quad \sqrt[n]{3}$$
+
+> 其中\quad代表空格.
+
+### 6. 省略号
+
+数学公式中常见的省略号有两种，\ldots 表示与文本底线对齐的省略号，\cdots 表示与文本中线对齐的省略号。
+
+* **例子**
+
+输入:
+
+```
+$$f(x_1,x_2,\ldots ,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$
+```
+
+显示:
+
+$$f(x_1,x_2,\ldots ,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2$$
+
+### 7. 矢量
+
+使用 \vec{矢量} 来自动产生一个矢量。也可以使用 \overrightarrow 等命令自定义字母上方的符号。
+
+* **例子**
+
+输入:
+
+```
+$$\vec{a} \cdot \vec{b}=0$$
+```
+
+显示:
+
+$$\vec{a} \cdot \vec{b}=0$$
+
+其中\cdot是指在水平中间添加一个点($\cdot$).
+
+* **例子**
+
+输入:
+
+```
+$$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}$$
+```
+
+显示:
+
+$$\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}$$
+
+
+### 8. 积分
+
+使用 \int_积分下限^积分上限 {被积表达式} 来输入一个积分。
+
+* **例子**
+
+输入:
+
+```
+$$\int_0^1 {x^2} \,{\rm d}x$$
+```
+
+显示:
+
+$$\int_0^1 {x^2} dx$$
+
+### 9. 极限预算
+
+使用 \lim_{变量 \to 表达式} 表达式 来输入一个极限。如有需求，可以更改 \to 符号至任意符号。
+
+* **例子**
+
+输入:
+
+```
+$$ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $$
+```
+
+显示:
+
+$$ \lim_{n \to +\infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $$
+
+其中\to和\rightarrow一样,都表示向右的箭头.
+
+* **例子**
+
+输入:
+
+```
+$$\to \quad and \quad \rightarrow$$
+```
+
+显示:
+
+$$\to \quad and \quad \rightarrow$$
+
+### 10. 累加,累乘公式
+
+使用 \sum_{下标表达式}^{上标表达式} {累加表达式} 来输入一个累加。 
+与之类似，使用 \prod \bigcup \bigcap 来分别输入累乘、并集和交集。 
+此类符号在行内显示时上下标表达式将会移至右上角和右下角。
+
+* **例子**
+
+输入:
+
+```
+$$\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R$$
+```
+
+显示:
+
+$$\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R$$
+
+### 11. 希腊字母
+
+输入`\小写希腊字母英文全称`和`\首字母大写希腊字母英文全称`来分别输入小写和大写希腊字母。 
+
+> 对于大写希腊字母与现有字母相同的，直接输入大写字母即可。
+
+|输入     |     显示|输入     |     显示|输入     |     显示|输入     |     显示|
+|---------|---------|---------|---------|---------|---------|---------|---------|
+|`\alpha`|$\alpha$  |`A`      |$A$      |`\beta`  |$\beta$  |`B`      |$B$      |
+|`\gamma`  |$\gamma$|`\Gamma` |$\Gamma$ |`\delta` |$\delta$ |`\Delta` |$\Delta$ |
+|`\epsilon`|$\epsilon$|`E`    |$E$      |`\zeta`  |$\zeta$  |`Z`      |$Z$      |
+|`\eta`   |$\eta$   |`H`      |$H$      |`\theta` |$\theta$ |`\Theta` |$\Theta$ |
+|`\iota`  |$\iota$  |`I`      |$I$      |`\kappa` |$\kappa$ |`K`      |$K$      |
+|`\lambda`|$\lambda$|`\Lambda`|$\Lambda$|`\mu`    |$\mu$    |`M`      |$M$      |
+|`\nu`    |$\nu$    |`N`      |$N$      |`\xi`    |$\xi$    |`Xi`     |$Xi$     |
+|`o`      |$o$      |`O`      |$O$      |`\pi`    |$\pi$    |`\Pi`    |$\Pi$    |
+|`\rho`   |$\rho$   |`P`      |$P$      |`\sigma` |$\sigma$ |`\Sigma` |$\Sigma$ |
+|`\tau`   |$\tau$   |`T`      |$T$      |`\upsilon`|$\upsilon$|`\Upsilon`|$\Upsilon$|
+|`\phi`   |$\phi$   |`\Phi`   |$\Phi$   |`\chi`   |$\chi$   |`\Chi`   |$\Chi$   |
+|`\psi`   |$\psi$   |`\Psi`   |$\Psi$   |`\omega` |$\omega$ |`\Omega` |$\Omega$       |
+
+
+### 12. 运算符
+
+#### (1) 关系运算符
+
+|输入     |     显示|输入     |     显示|输入     |     显示|输入     |     显示|
+|---------|---------|---------|---------|---------|---------|---------|---------|
+|`\pm`    |$\pm$    |`\times` |$\times$ |`\div`   |$\div$   |`\mid`   |$\mid$   |
+|`\nmid`  |$\nmid$  |`\cdot`  |$\cdot$  |`\circ`  |$\circ$   |`\ast`   |$\ast$   |
+|`\bigodot`|$\bigodot$|`\bigotimes`|$\bigotimes$  |`\bigoplus`|$\bigoplus$|`\leq`|$\leq$|
+|`\geq`   |$\geq$   |`\neq`   |$\neq$   |`\approx`|$\approx$ |`\equiv`|$\equiv$ |
+|`\sum`   |$\sum$   |`\prod`  |$\prod$  |`\coprod`|$\coprod$|`\backslash`|$\backslash$|
+
+#### (2) 集合运算符
+
+|输入     |     显示|输入     |     显示|输入     |     显示|
+|---------|---------|---------|---------|---------|---------|
+|`\emptyset`|$\emptyset$|`\in`|$\in$    |`\notin` |$\notin$ |
+|`\subset`|$\subset$|`\supset`|$\supset$|`\subseteq`|$\subseteq$|
+|`\supseteq`|$\supseteq$|`\bigcap`|$\bigcap$|`\bigcup`|$\bigcup$|
+|`\bigvee`|$\bigvee$|`\bigwedge`|$\bigwedge$|`\biguplus`|$\biguplus$|
+
+#### (3) 对数运算符
+
+|输入     |     显示|
+|---------|---------|
+|`\log`|$\log$|
+|`\lg`|$\lg$|
+|`\ln`|$\ln$|
+
+#### (4) 三角运算符
+
+|输入     |     显示|
+|---------|---------|
+|`30^\circ`|$30^\circ$|
+|`\bot`|$\bot$|
+|`\angle A`|$\angle A$|
+|`\sin`|$\sin$|
+|`\cos`|$\cos$|
+|`\csc`|$\csc$|
+|`\sec`|$\sec$|
+|`\cot`|$\cot$|
+
+
+### 13. 字体转换
+
+若要对公式的某一部分字符进行字体转换，可以用`{\字体 {需转换的部分字符}}`命令，其中 `\字体` 部分可以参照下表选择合适的字体。一般情况下，公式默认为意大利体。
+
+示例中`全部大写`的字体仅大写可用。
+
+|输入     |     显示|说明
+|---------|--------------|--------|
+|`\rm`    |$\rm {Sample}$|  罗马体|
+|`\it`    |$\it {Sample}$|意大利斜体|
+|`\bf`    |$\bf {Sample}$|粗体|
+
+
+
+
+
+
+

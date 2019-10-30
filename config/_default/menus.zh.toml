@@ -1,0 +1,84 @@
+# Navigation Links
+#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
+#     desired widget in your `content/home/` folder.
+#   The weight parameter defines the order that the links will appear in.
+
+[[main]]
+  name = "关于"
+  url = "#about"
+  weight = 1
+  
+  [[main]]
+  name = "教育&经历"
+  url = "#experience"
+  weight = 2
+  
+  [[main]]
+  name = "获奖"
+  url = "#accomplishments"
+  weight = 3
+  
+  [[main]]
+  name = "文章"
+  url = "#publications"
+  weight = 4
+  
+  
+[[main]]
+  name = "报告"
+  url = "#talks"
+  weight = 5
+  
+[[main]]
+  name = "项目"
+  url = "#projects"
+  weight = 6
+  
+[[main]]
+  name = "联系"
+  url = "#contact"
+  weight = 7
+
+
+[[main]]
+  name = "博客"
+  url = "post/"
+  weight = 8
+  
+#[[main]]
+#  name = "Blog"
+#  url = "#posts"
+#  weight = 40
+  
+# Link to a PDF of your resume/CV from the menu.
+# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
+ [[main]]
+  name = "简历"
+  url = "files/cv.pdf"
+  weight = 9
+  
+  
+#[[main]]
+#  name = "Chinese"
+#  url = "chinese/"
+#  weight = 10
+
+
+
+
+
+
+
+
+
+  
+#  [[main]]
+#  name = "Landing"  # Title of the link.
+#  url = "landing/"  # Widget Page folder name.
+#  weight = 90  # Position of the link in the navigation bar.
+  
+  
+#[[main]]
+#  name = "Courses"
+#  url = "courses/"
+#  weight = 100

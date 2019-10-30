@@ -1,0 +1,41 @@
+---
+title: ' 生物统计学学习:逻辑回归'
+author: Xiaotao Shen
+date: '2019-08-31'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+逻辑回归(logistic regression)其实就是线性回归的一种.只是对于逻辑回归的因变量,是非连续变量的0和1,通过Sigmoid函数将其映射为连续性变量.逻辑回归虽然叫回归,但是预测给出的值只是0和1,因此其实是属于分类.
+
+### Sigmoid函数(logistic function)
+
+sigmoid函数的方程如下:
+
+$$f(x) = \frac{1}{1+e^{-x}}$$
+
+其函数曲线我们可以通过模拟给出:
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+x <- seq(-10, 10, by = 0.1)
+y <- 1/(1+exp(-x))
+
+ggplot(data.frame(x,y), aes(x, y)) +
+  geom_line(colour = "red") +
+  geom_vline(xintercept = 0) +
+  theme_bw()
+```
+
+可以看出来sigmoid函数是一个S型曲线.他的取值在[0,1]之间.
