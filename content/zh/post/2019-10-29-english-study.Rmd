@@ -10,6 +10,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 这篇博客用来记录在美国跟美国人打交道的时候学到的英语,包括口语,邮件,书面和文章等等.
@@ -41,5 +45,27 @@ Thanks,
 xxx
 
 这封邮件是一个组织的周末聚会要求我过去当志愿者的.学到的知识,包括: help out, come by, stick around, get plugged in等.
+
+## Thanksgiving
+
+You are invited to xxx’s Thanksgiving Potluck `(家常便饭,美分自带一个菜的家庭聚会)` at his home ~ xxx November 28, 2019.
+
+If you are able to attend please let us know what **potluck item** you would like to bring & if you plan to come for football (to play or cheer from the sidelines`(球场的边线,场边)`).
+
+Please use the following link to sign up:
+
+## Desktop PC fixing
+
+Hi xxx,
+
+We were able to find the drivers for the Desktop and we will start the re-imaging process.
+
+I will let you know when this is completed.
+
+Thank you.
+xxx
+Field Service Technician
+Technology & Digital Solutions
+Stanford Health Care
 
 # Oral communication

@@ -5,52 +5,12 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Blog</title>
-      <link>/tags/blog/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Chinese</title>
-      <link>/tags/chinese/</link>
-      <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/chinese/</guid>
-      <description></description>
-    </item>
-    
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Academic</title>
       <link>/tags/academic/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
       <guid>/tags/academic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Software</title>
-      <link>/tags/software/</link>
-      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/software/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Statistical analysis</title>
-      <link>/tags/statistical-analysis/</link>
-      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/statistical-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>life</title>
-      <link>/tags/life/</link>
-      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/life/</guid>
       <description></description>
     </item>
     
@@ -79,6 +39,14 @@
     </item>
     
     <item>
+      <title>Statistical analysis</title>
+      <link>/tags/statistical-analysis/</link>
+      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/statistical-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Data processing</title>
       <link>/tags/data-processing/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
@@ -95,18 +63,18 @@
     </item>
     
     <item>
-      <title>Data cleaning</title>
-      <link>/tags/data-cleaning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/data-cleaning/</guid>
+      <title>Software</title>
+      <link>/tags/software/</link>
+      <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/software/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Github</title>
-      <link>/tags/github/</link>
+      <title>Data cleaning</title>
+      <link>/tags/data-cleaning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/github/</guid>
+      <guid>/tags/data-cleaning/</guid>
       <description></description>
     </item>
     

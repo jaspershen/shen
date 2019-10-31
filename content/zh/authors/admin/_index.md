@@ -51,6 +51,8 @@ user_groups:
 - Visitors
 ---
 
-I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
+美国斯坦福大学医学院博士后一枚.感兴趣的研究方向为代谢组学数据分析,多组学数据分析,生物统计,系统生物学以及生物信息学.当然,这些都是工具,最终还是希望能够利用这些工具用于人类健康的发展.
 
-My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was [MetNormalizer](https://jaspershen.github.io/MetNormalizer/), which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics. Then I developed a web-based tool, [MetFlow](http://metflow.zhulab.cn/), aiming to provide a comprehensive pipeline for data cleaning and statistical analysis of large-scale metabolomics. The most important algorithm I have developed is called [MetDNA](http://metdna.zhulab.cn/), which is a novel algorithm for metabolite identification and dysregulated pathway analysis in untargeted metabolomics.
+本科期间基本上什么都没做.真正的研究是从博士期间开始的.主要集中于大规模代谢组学的数据分析方法开发.di一个算法叫做[MetNormalizer](https://jaspershen.github.io/MetNormalizer/),基于支持向量机的数据标准化的方法.第二个工具叫做[MetFlow](http://metflow.zhulab.cn/),是一个网页版的软件,可以进行大规模代谢组学的数据清洗到统计分析.第三工具叫做[MetDNA](http://metdna.zhulab.cn/),可以用于代谢物鉴定可紊乱网络分析的网络工具.
+
+
