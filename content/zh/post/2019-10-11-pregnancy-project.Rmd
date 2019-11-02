@@ -78,7 +78,16 @@ The women were interviewed twice during pregnancy (in the first and third trimes
 
 ### Definition of the fetal and birth measurements
 
-fetal growth score()
+Fetal growth scores or standard deviation scores (z- scores) were obtained using longitudinal growth curves calculated for each individual adjusting for constitutional factors known to affect fetal growth (i.e., maternal age, height, parity, pre-pregnancy weight, country of origin, father’s height, and fetal sex).
+
+Fetal growth score是使用longitudinal growth curve来计算的,然后adjust了一些已知的能够影响fetal growth的因素,如maternal age(母亲的年龄),height(母亲的身高),parity(已生胎数),pre-pregnancy weight(怀孕前的体重),country of origin(地区),father’s height(母亲的身高),and fetal sex(胎儿性别).
+
+这个值是一个标准化后的值.(standard deviation scores,z-scores).
+
+没有矫正后的z-score.
+
+Anthropometric measures at birth included body weight and placental weight and were scaled to z-scores by subtracting the mean and dividing by the standard deviation. For further details on phenotype measurements and covariate definitions, such as gestational age, see Additional file 1: Supplementary Methods and a pre- vious article on the INMA cohort [13].
+Metabolic
 
 用来预测胎儿体重(fetal birth weight)的几个参数(从超声波测量而来):
 
@@ -90,7 +99,9 @@ fetal growth score()
 
 * Abdominal circumference (AC):胎儿腹围.
 
-crown–rump length:胎儿的头臀长.
+* crown–rump length:胎儿的头臀长.
+
+
 
 date of conception:妊娠期.
 

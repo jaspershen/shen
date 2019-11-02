@@ -17,6 +17,7 @@ output:
     number_sections: true
 ---
 
+是斯坦福大学统计系教授[Susan Holmes]()
 
 ### 离散变量(discrete data)的生成模型     
   
