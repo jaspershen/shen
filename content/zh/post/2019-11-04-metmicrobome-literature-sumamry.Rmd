@@ -1,0 +1,58 @@
+---
+title: 2019 11 04 Metmicrobome Literature Sumamry
+author: Xiaotao Shen
+date: '2019-11-04'
+slug: ''
+categories:
+  - literature
+tags:
+  - Academic
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# Predictive metabolomic profiling of microbial communities using amplicon or metagenomic sequences
+
+开发的软件名字叫做MelonnPan(Model-based Genomically Informed High-dimensional Predictor of Microbial Community Metabolic Profile)
+
+在一个cohort上开发, 在另一个indepent dataset上做验证.
+
+This revealed high concordance (一致) between predicted and observed community metabolic trends in >50% of metabolites whose identities were confirmed against laboratory standards, including prediction of metabolic shifts associated with bile acids, fatty acids, steroids, prenol lipids, and sphingolipids.
+
+## Methods
+
+### Training and validation cohort descriptions
+
+One training data sets, two validation data sets.
+
+### Taxonomic and functional profiling
+
+Stool samples. 
+
+### Metabolite profiling
+
+HHILIC and RPLC. 8869 features and 466 metabolites.
+
+### Elastic net regularization
+
+Elastic net regularization technique. Use the R package `glmnet`.
+
+Spearman correlation coefficient (r) between the true and pre- dicted metabolite compositions was used to evaluate the predictability of each compound. Following Cohen68, we term those metabolites for which r is >0.3 as “well predicted” and flag the rest as poorly predicted metabolites.
+
+### Significance testing with shuffled data
+
+其实就是permutation test.
+
+### Gene set enrichment analysis
+
+
+
+
+
+
+

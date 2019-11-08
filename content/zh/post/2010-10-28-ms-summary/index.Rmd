@@ -17,8 +17,12 @@ image:
 
 ## Forevacuum presure too high.
 
-两个原因:
+![](./error1.png)
+
+几个原因:
 
 1) ion transfer tube堵了,洗一下试试.  
 
-2)大概率是needle堵了,一般只能重新换个新的needle.
+2) 大概率是needle堵了,一般只能重新换个新的needle.
+
+3) 温度太低,比如320度就不行,温度太低导致离子化程度不够.

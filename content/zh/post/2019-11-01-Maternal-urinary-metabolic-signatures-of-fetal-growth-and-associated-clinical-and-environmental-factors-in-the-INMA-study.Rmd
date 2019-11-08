@@ -6,7 +6,7 @@ slug: ''
 categories:
   - literature
 tags:
-  - Academic
+  - Blog
 image:
   caption: ''
   focal_point: ''
