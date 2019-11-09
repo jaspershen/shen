@@ -35,13 +35,13 @@ output:
 
 1. 首先需要将 `content/home`中的`posts.md`中的active设置为false.这样,这一部分就不会在home主页显示.
 
-![](2019-10-13-blogdown/change-active.png)
+![](./change-active.png)
 
 2. 然后将`content/home`中的`posts.md`拷贝到`content/post`中,并改名为`index.md`.
 
 3. 打开`config/_default/menus.toml`,然后将Blog的url修改为文件夹的名称.
 
-![](2019-10-13-blogdown/change-url.png)
+![](./change-url.png)
 
 # 如何添加新的页面?
 
@@ -86,22 +86,23 @@ https://app.netlify.com/teams/jaspershen/sites
 
 然后点击托管的自己的网站.
 
-![](2019-10-13-blogdown/netlify.png)
+![](./netlify.png)
+
 
 ## 点击`Site settings`
 
-![](2019-10-13-blogdown/site_setting.png)
+![](./site_setting.png)
 
 ## 点击`Build & deploy`
 
-![](2019-10-13-blogdown/build_deploy.png)
+![](./build_deploy.png)
 
 
 ## 修改`Hugo version`
 
 然后点击`Environment`,将HUGO_VERSION版本修改为和本地一致的版本.
 
-![](2019-10-13-blogdown/hugo_version.png)
+![](./hugo_version.png)
 
 # 将网站改为中英双文之后,新建`post`报错
 
