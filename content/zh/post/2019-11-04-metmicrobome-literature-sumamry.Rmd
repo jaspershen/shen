@@ -1,5 +1,5 @@
 ---
-title: 2019 11 04 Metmicrobome Literature Sumamry
+title: Metmicrobome Literature Sumamry
 author: Xiaotao Shen
 date: '2019-11-04'
 slug: ''
