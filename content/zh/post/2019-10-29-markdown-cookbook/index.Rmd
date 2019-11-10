@@ -11,3 +11,38 @@ image:
   caption: ''
   focal_point: ''
 ---
+
+
+# Markdown通用技巧
+
+## 如何在markdown中使用font?
+
+参考文档:https://sspai.com/post/45217
+
+在markdown文档任意地方插入下面的代码:
+
+```
+<head> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script> 
+</head> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+```
+
+然后使用下列语句插入font:
+
+```
+<i class="fa fa-weixin"></i>
+```
+显示:<i class="fa fa-weixin"></i>
+
+# Rmarkdown
+
+
+
+
+<head> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script> 
+</head> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
