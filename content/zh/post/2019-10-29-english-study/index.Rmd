@@ -73,3 +73,12 @@ Stanford Health Care
 ## `A`的发音
 
 已知分不清`A`什么时候是`æ`的发音,什么时候`e`的发音.后来问一个朋友,他说`一般`长单词是`æ`,短单词是`e`.比如"Ada",音标为`/e di e/ `,读音为![/e di e/](https://translate.google.com/?source=gtx#view=home&op=translate&sl=en&tl=zh-CN&text=ada).而"Apple",音标为` /ˈæpl/`读音为![/ˈæpl/](https://translate.google.com/?source=gtx#view=home&op=translate&sl=en&tl=zh-CN&text=apple).
+
+
+<i class="fa fa-weixin"></i>
+
+<head> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script> 
+</head> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
