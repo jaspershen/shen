@@ -1,0 +1,61 @@
+---
+title: tibble cookbook
+author: Xiaotao Shen
+date: '2019-11-09'
+slug: tibble-cookbook
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+---
+
+# tibble显示控制
+
+tibble默认情况下只输出前十行内容,列自动适应屏幕宽度,如果想要输出比默认更多的数据,有以下几种方法.
+
+## 使用`print()`函数
+
+使用`print()`函数,可以控制行数和列数.
+
+```{r}
+library(tidyverse)
+# 默认显示
+nycflights13::flights
+
+# 输出15行及所有列数
+nycflights13::flights %>% 
+  print(n = 15, width = Inf)
+```
+
+## 修改`options()`默认参数 
+
+* `options(tibble.print_max = n, tibble.pring_min = m)`:如果多于m行,则只打印出n
+行.`options(tibble.print_min = Inf)`表示总是打印所有行.
+
+* `options(tibble.width = Inf)`表示总是打印所有列,不考虑屏幕的宽度.
+
+`options()`中所有和`tibble`相关的参数:
+
+1. `tibble.print_max`:Row number threshold: Maximum number of rows printed. Set to Inf to always print all rows. Default: 20.
+
+2. `tibble.print_min`: 如果设置为m,意思即为如果行数大于m,则只打印出前n行.
+
+3. `tibble.width`: 打印列的宽度.默认为NULL,也就是适应屏幕宽度.设置为`Inf`,则打印出全部列.
+
+4. `tibble.max_extra_cols`: Number of extra columns printed in reduced form. Default: 100.
+
+5. `pillar.bold`: pillar是柱子的意思.如果设置为TRUE,则列名为粗体,默认为FALSE,因为在terminal中很多字体对粗体支持不够.
+
+6. `pillar.subtle`: 是否打印出其他详细的信息,比如总的行和列数.默认为TRUE.
+
+7. `pillar.subtle_num`: Use subtle style for insignificant digits? Default: FALSE, is also affected by the pillar.subtle option.
+
+8. `pillar.neg`: 是否高亮负值.默认为TRUE.
+
+9. `pillar.sigfig`: 高亮那些数字,比如如果设置为3,则会高亮数字3.
+
+10. `pillar.min_title_chars`: 列名打印时最小的字符数,默认为15.意味着如果某些列名大于15,则会被截断.设置为`Inf`,打印出完整的列名.

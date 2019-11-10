@@ -1,0 +1,115 @@
+---
+title: 日期操作总结
+author: Xiaotao Shen
+date: '2019-10-31'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#日期格式转换"><span class="toc-section-number">1</span> 日期格式转换</a><ul>
+<li><a href="#比如美国这边常见的月日年."><span class="toc-section-number">1.1</span> 比如美国这边常见的<code>月/日/年</code>.</a></li>
+<li><a href="#国内常见常见的年月日"><span class="toc-section-number">1.2</span> 国内常见常见的<code>年/月/日</code></a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="日期格式转换" class="section level1">
+<h1><span class="header-section-number">1</span> 日期格式转换</h1>
+<p>使用<code>as.Date()</code>函数将文本格式日期转换为date格式数据.一共需要两个参数:</p>
+<ul>
+<li><p>x:文本格式日期.</p></li>
+<li><p>format:文本格式日期的格式.</p></li>
+</ul>
+<div id="比如美国这边常见的月日年." class="section level2">
+<h2><span class="header-section-number">1.1</span> 比如美国这边常见的<code>月/日/年</code>.</h2>
+<pre class="r"><code>date &lt;- c(&quot;8/6/2014&quot;, &quot;3/18/2015&quot;)
+class(date)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>date2 &lt;- as.Date(x = date, format = &quot;%m/%d/%Y&quot;)
+date2</code></pre>
+<pre><code>## [1] &quot;2014-08-06&quot; &quot;2015-03-18&quot;</code></pre>
+<pre class="r"><code>class(date2)</code></pre>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<pre class="r"><code>date &lt;- c(&quot;08/06/2014&quot;, &quot;03/18/2015&quot;)
+date2 &lt;- as.Date(x = date, format = &quot;%m/%d/%Y&quot;)
+date2</code></pre>
+<pre><code>## [1] &quot;2014-08-06&quot; &quot;2015-03-18&quot;</code></pre>
+<pre class="r"><code>class(date2)</code></pre>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<pre class="r"><code>date &lt;- c(&quot;08/06/14&quot;, &quot;03/18/15&quot;)
+date2 &lt;- as.Date(x = date, format = &quot;%m/%d/%y&quot;)
+date2</code></pre>
+<pre><code>## [1] &quot;2014-08-06&quot; &quot;2015-03-18&quot;</code></pre>
+<pre class="r"><code>class(date2)</code></pre>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<p>注意可以看到,对于<code>年</code>,有时候大家会省写,比如<code>2015</code>写为<code>15</code>.这时候在<code>format</code>参数中代表年的位置应当由全写的<code>Y</code>改为小写的<code>y</code>.对于<code>月</code>和<code>日</code>则不存在这个问题.</p>
+</div>
+<div id="国内常见常见的年月日" class="section level2">
+<h2><span class="header-section-number">1.2</span> 国内常见常见的<code>年/月/日</code></h2>
+<p>当然对于其他的类似使用<code>/</code>分隔开日期形式,只要变换<code>format</code>中的顺序即可.</p>
+<pre class="r"><code>date &lt;- c(&quot;2015/8/6&quot;, &quot;3/18/15&quot;)
+class(date)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>date2 &lt;- as.Date(x = date, format = c(&quot;%Y/%m/%d&quot; ,&quot;%m/%d/%y&quot;))
+date2</code></pre>
+<pre><code>## [1] &quot;2015-08-06&quot; &quot;2015-03-18&quot;</code></pre>
+<pre class="r"><code>class(date2)</code></pre>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<p>可以看到对于格式不同的数据,可以将<code>format</code>设置为向量.</p>
+<pre class="r"><code>## locale-specific version of the date
+format(Sys.Date(), &quot;%a %b %d&quot;)</code></pre>
+<pre><code>## [1] &quot;Sat Nov 09&quot;</code></pre>
+<pre class="r"><code>x &lt;- c(&quot;1jan1960&quot;, &quot;2jan1960&quot;, &quot;31mar1960&quot;, &quot;30jul1960&quot;)
+z &lt;- as.Date(x, &quot;%d%b%Y&quot;)
+z</code></pre>
+<pre><code>## [1] &quot;1960-01-01&quot; &quot;1960-01-02&quot; &quot;1960-03-31&quot; &quot;1960-07-30&quot;</code></pre>
+<pre class="r"><code>## read in date/time info in format &#39;m/d/y&#39;
+dates &lt;- c(&quot;02/27/92&quot;, &quot;02/27/92&quot;, &quot;01/14/92&quot;, &quot;02/28/92&quot;, &quot;02/01/92&quot;)
+as.Date(dates, &quot;%m/%d/%y&quot;)</code></pre>
+<pre><code>## [1] &quot;1992-02-27&quot; &quot;1992-02-27&quot; &quot;1992-01-14&quot; &quot;1992-02-28&quot; &quot;1992-02-01&quot;</code></pre>
+<pre class="r"><code>## date given as number of days since 1900-01-01 (a date in 1989)
+as.Date(32768, origin = &quot;1900-01-01&quot;)</code></pre>
+<pre><code>## [1] &quot;1989-09-19&quot;</code></pre>
+<pre class="r"><code>## Excel is said to use 1900-01-01 as day 1 (Windows default) or
+## 1904-01-01 as day 0 (Mac default), but this is complicated by Excel
+## incorrectly treating 1900 as a leap year.
+## So for dates (post-1901) from Windows Excel
+as.Date(35981, origin = &quot;1899-12-30&quot;) # 1998-07-05</code></pre>
+<pre><code>## [1] &quot;1998-07-05&quot;</code></pre>
+<pre class="r"><code>## and Mac Excel
+as.Date(34519, origin = &quot;1904-01-01&quot;) # 1998-07-05</code></pre>
+<pre><code>## [1] &quot;1998-07-05&quot;</code></pre>
+<pre class="r"><code>## (these values come from http://support.microsoft.com/kb/214330)
+
+## Experiment shows that Matlab&#39;s origin is 719529 days before ours,
+## (it takes the non-existent 0000-01-01 as day 1)
+## so Matlab day 734373 can be imported as
+as.Date(734373, origin = &quot;1970-01-01&quot;) - 719529 # 2010-08-23</code></pre>
+<pre><code>## [1] &quot;2010-08-23&quot;</code></pre>
+<pre class="r"><code>## (value from
+## http://www.mathworks.de/de/help/matlab/matlab_prog/represent-date-and-times-in-MATLAB.html)
+
+## Time zone effect
+z &lt;- ISOdate(2010, 04, 13, c(0,12)) # midnight and midday UTC
+as.Date(z) # in UTC</code></pre>
+<pre><code>## [1] &quot;2010-04-13&quot; &quot;2010-04-13&quot;</code></pre>
+<pre class="r"><code>## these time zone names are common
+as.Date(z, tz = &quot;NZ&quot;)</code></pre>
+<pre><code>## [1] &quot;2010-04-13&quot; &quot;2010-04-14&quot;</code></pre>
+<pre class="r"><code>as.Date(z, tz = &quot;HST&quot;) # Hawaii</code></pre>
+<pre><code>## [1] &quot;2010-04-12&quot; &quot;2010-04-13&quot;</code></pre>
+</div>
+</div>

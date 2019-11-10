@@ -1,0 +1,189 @@
+---
+layout: post
+title: 使用Github和Hexo建独立博客
+description: 使用github和Hexo建立个人博客。
+tags:
+    - Chinese
+    - Github
+    - Blog
+
+categories:
+          - github technology
+---
+
+
+
+<p>参考了一篇<a href="https://github.com/limedroid/HexoLearning#42-直接方式">非常好的文章</a>，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。</p>
+<div id="hexo介绍" class="section level2">
+<h2>1. Hexo介绍</h2>
+<p><a href="https://hexo.io/zh-cn/">Hexo</a>是基于NodeJs的静态博客框架，简单、轻量，其生成的静态网页可以托管在Github和Heroku上。</p>
+<p>. 超快速度
+. 支持MarkDown
+. 一键部署
+. 丰富的插件</p>
+<p>下面以我的博客为例，<a href="https://shenxt.github.io/">shenxt.github.io</a>为例，讲解如何部署自己的博客。</p>
+</div>
+<div id="环境准备" class="section level2">
+<h2>2. 环境准备</h2>
+<div id="安装node.js" class="section level3">
+<h3>2.1 安装node.js</h3>
+<p>去<a href="https://nodejs.org/en/download/">nodejs</a>官网下载对应系统的安装包，按提示安装。</p>
+<p>检验安装成功，在git shell中输入一下代码：</p>
+<pre><code>$ node -v</code></pre>
+</div>
+<div id="安装hexo" class="section level3">
+<h3>2.2 安装hexo</h3>
+<pre><code>$ npm install hexo-cli -g</code></pre>
+<p>如果是mac，则需要输入：</p>
+<pre><code>$ sudo npm install hexo-cli -g</code></pre>
+</div>
+</div>
+<div id="利用hexo搭建一个博客" class="section level2">
+<h2>3. 利用Hexo搭建一个博客</h2>
+<div id="创建博客目录shenxtgithub.io" class="section level3">
+<h3>3.1 <a href="mailto:创建博客目录shenxt@github.io" class="email">创建博客目录shenxt@github.io</a></h3>
+<pre><code>$ hexo init shenxt.github.io
+$ cd limedroid.github.io
+$ npm install</code></pre>
+</div>
+<div id="生成静态页面" class="section level3">
+<h3>3.2 生成静态页面</h3>
+<pre><code>$ hexo clean
+$ hexo g # g is generate</code></pre>
+</div>
+<div id="运行" class="section level3">
+<h3>3.3 运行</h3>
+<pre><code>$ hexo s -p3600# is server</code></pre>
+<p>然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。</p>
+</div>
+</div>
+<div id="发一篇文章试试" class="section level2">
+<h2>4 发一篇文章试试</h2>
+<div id="穿件一个新的博客" class="section level3">
+<h3>4.1 穿件一个新的博客</h3>
+<pre><code>$ hexo new test</code></pre>
+<p>此时会在source/posts目录下生成test.md文件，输入一些内容，然后保存。</p>
+<p>然后看一下效果:</p>
+<pre><code>$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server</code></pre>
+<p>然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。</p>
+</div>
+</div>
+<div id="配置" class="section level2">
+<h2>5 配置</h2>
+<p>网站的设置大部分都在_config.yml文件夹中，详细配置可以查看<a href="https://hexo.io/zh-cn/docs/configuration.html">官方文档</a>。</p>
+<p>下面只列出简单常用配置:</p>
+<p>.title -&gt; 网站标题
+.subtitle -&gt; 网站副标题
+.description -&gt; 网站描述
+.author -&gt; 您的名字
+.language -&gt; 网站使用的语言</p>
+<p>注意：进行配置时，需要在冒号:后加一个英文空格。</p>
+</div>
+<div id="更换主题" class="section level2">
+<h2>6 更换主题</h2>
+<p>在网站配置文件_config.yml中，配置theme。</p>
+<pre><code>theme: next</code></pre>
+<p>next是主题的名字。Hexo有不同的人贡献主题，可以到其<a href="https://hexo.io/themes/index.html">官方网站</a>上下载不同主题。看中某一主题之后，直接点击其名字，进入到其github界面，然后复制其网址，使用下面代码，即可下载主题到本地。</p>
+<pre><code>git clone https://github.com/fi3ework/hexo-theme-archer</code></pre>
+<p>然后将博客的配置文件theme修改为archer即可。</p>
+<p>观察效果：</p>
+<pre><code>$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server</code></pre>
+</div>
+<div id="部署到github上" class="section level2">
+<h2>7 部署到github上</h2>
+<div id="在github网页版上创建和自己账户名相同的仓库比如我的账户为shenxt因此创建的仓库为shenxt.github.io" class="section level3">
+<h3>7.1 在github网页版上创建和自己账户名相同的仓库，比如我的账户为shenxt，因此，创建的仓库为shenxt.github.io。</h3>
+</div>
+<div id="安装hexo-deployer-git" class="section level3">
+<h3>7.2 安装hexo-deployer-git</h3>
+<pre><code>$ npm install hexo-deployer-git --save</code></pre>
+</div>
+<div id="网站配置git" class="section level3">
+<h3>7.3 网站配置git</h3>
+<p>在网上的配置文件_config.yml中配置deploy。</p>
+<pre class="deploy:"><code>  type: git
+  repo: https://github.com/shenxt/shenxt.github.io
+  branch: master</code></pre>
+</div>
+<div id="部署" class="section level3">
+<h3>7.4 部署</h3>
+<pre><code>$ hexo d# d is deploy</code></pre>
+</div>
+</div>
+<div id="贴标签方便搜索" class="section level2">
+<h2>贴标签，方便搜索</h2>
+<div id="两个确认" class="section level3">
+<h3>8.1 两个确认</h3>
+<p>. 首先确认博客的配置文件中有：</p>
+<pre><code>tag_dir: tags</code></pre>
+<p>. 然后确认主题的配置文件有：</p>
+<pre><code>tags: tags</code></pre>
+</div>
+<div id="新建tags页面" class="section level3">
+<h3>8.2 新建tags页面</h3>
+<pre><code>$ hexo new page tags</code></pre>
+<p>此时会在source/下生成tags/index.md文件。</p>
+</div>
+<div id="修改sourcetagsindex.md" class="section level3">
+<h3>8.3 修改source/tags/index.md</h3>
+<pre><code>title: tags
+date: 2015-10-20 06:49:50
+type: &quot;tags&quot;
+comments: false</code></pre>
+</div>
+<div id="在文章中添加tags" class="section level3">
+<h3>8.4 在文章中添加tags</h3>
+<p>在你的文章中添加：</p>
+<pre><code>tags:
+    - Tag1
+    - Tag2
+    - Tag3</code></pre>
+<p>其文件头部类似于：</p>
+<pre><code>title: TagEditText
+date: 2016-11-19 10:44:25
+tags:
+    - Tag1
+    - Tag2
+    - Tag3</code></pre>
+</div>
+</div>
+<div id="分类给文章归档" class="section level2">
+<h2>9 分类，给文章归档</h2>
+<div id="两个确认-1" class="section level3">
+<h3>9.1 两个确认</h3>
+<p>. 确认博客配置文件打开了</p>
+<pre><code>category_dir: categories</code></pre>
+<p>. 确认主题配置文件打开了</p>
+<pre><code>categories: /categories</code></pre>
+</div>
+<div id="新建categories文件" class="section level3">
+<h3>9.2 新建categories文件</h3>
+<pre><code>hexo new page categories</code></pre>
+</div>
+<div id="修改categoriesindex.md" class="section level3">
+<h3>9.3 修改categories/index.md</h3>
+<pre><code>title: categories
+date: 2015-10-20 06:49:50
+type: &quot;categories&quot;
+comments: false</code></pre>
+</div>
+<div id="在文章中添加categories" class="section level3">
+<h3>9.4 在文章中添加categories</h3>
+<p>在文章中添加：</p>
+<pre><code>categories:
+    - cate</code></pre>
+<p>其文件头部类似：</p>
+<pre><code>title: TagEditText
+date: 2016-11-19 10:44:25
+categories:
+    - cate</code></pre>
+</div>
+</div>
+<div id="添加评论功能" class="section level2">
+<h2>10 添加评论功能</h2>
+<p>这里推荐使用韩国的来必力系统。参考<a href="https://www.drixn.com/2017/LiveReCommentsSystem/">这个博客</a>进行设置。</p>
+</div>

@@ -11,6 +11,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 # MS
@@ -26,3 +30,5 @@ image:
 2) 大概率是needle堵了,一般只能重新换个新的needle.
 
 3) 温度太低,比如320度就不行,温度太低导致离子化程度不够.
+
+4) 能够做的都做了,还是解决不了,然后冲了大概几个小时,自己变好了....
