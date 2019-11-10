@@ -1,8 +1,22 @@
 ---
-layout: post
 title: 使用R爬取HMDB和KEGG数据库
-description: 因为最近需要使用代谢通路数据，因此想到了使用R编写爬虫爬取KEGG和HMDB数据。
+author: Xiaotao Shen
+date: '2016-11-25'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
+
 
 ## **R语言爬虫**
 ******************************************

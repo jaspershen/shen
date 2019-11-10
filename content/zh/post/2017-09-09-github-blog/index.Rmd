@@ -1,14 +1,20 @@
 ---
-layout: post
 title: 使用Github和Hexo建独立博客
-description: 使用github和Hexo建立个人博客。
-tags:
-    - Chinese
-    - Github
-    - Blog
-
+author: Xiaotao Shen
+date: '2016-11-25'
+slug: ''
 categories:
-          - github technology
+  - Github
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 参考了一篇[非常好的文章](https://github.com/limedroid/HexoLearning#42-直接方式)，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。

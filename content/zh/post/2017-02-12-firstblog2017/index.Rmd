@@ -1,9 +1,20 @@
 ---
-layout: post
 title: 2017年的第一篇博客
-description: 计划一下自己的2017年。
+author: Xiaotao Shen
+date: '2017-01-01'
+slug: ''
+categories:
+  - life
 tags:
-    - life
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 # **我的2016年**
