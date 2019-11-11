@@ -4,7 +4,7 @@
 #   The weight parameter defines the order that the links will appear in.
 
 [[main]]
-  name = "关于"
+  name = "关于我"
   url = "#about"
   weight = 1
   
@@ -35,7 +35,7 @@
   weight = 6
   
 [[main]]
-  name = "联系"
+  name = "联系我"
   url = "#contact"
   weight = 7
 

@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 6  # Order that this section will appear.
 
 title = "项目"
-subtitle = "Software and algorithm development. More software are in my [Github](https://github.com/jaspershen)."
+subtitle = "软件和算法开发.更多的软件请看我的[Github主页](https://github.com/jaspershen)."
 
 [content]
   # Page type to display. E.g. project.
@@ -22,15 +22,15 @@ subtitle = "Software and algorithm development. More software are in my [Github]
   filter_default = 0
   
   [[content.filter_button]]
-    name = "All"
+    name = "所有"
     tag = "*"
   
   [[content.filter_button]]
-    name = "Metabolomics"
+    name = "代谢组学"
     tag = "Metabolomics"
     
   [[content.filter_button]]
-    name = "Multi-omics"
+    name = "多组学"
     tag = "Multi-omics"
   
   [[content.filter_button]]

@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
 title = "文章"
-subtitle = "Science can be interesting."
+subtitle = "科学也很有趣"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.

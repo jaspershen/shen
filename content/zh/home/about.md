@@ -5,8 +5,8 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 1  # Order that this section will appear in.
 
-title = "关于"
-subtitle = "Do your best, and let the God do the rest."
+title = "关于我"
+subtitle = "尽人事,听天命."
 
 # Choose the user profile to display
 # This should be the username of a profile in your `content/authors/` folder.

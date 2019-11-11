@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 7  # Order that this section will appear.
 
 title = "技术"
-subtitle = "Technology is the tool, no the aim."
+subtitle = "技术只是手段,不是目的."
 
 # Showcase personal skills or business features.
 # 
@@ -17,13 +17,13 @@ subtitle = "Technology is the tool, no the aim."
 [[feature]]
   icon = "r-project"
   icon_pack = "fab"
-  name = "R"
+  name = "R语言"
   description = "90%"
   
 [[feature]]
   icon = "chart-line"
   icon_pack = "fas"
-  name = "Statistics"
+  name = "统计"
   description = "50%"  
   
 [[feature]]
@@ -36,7 +36,7 @@ subtitle = "Technology is the tool, no the aim."
 [[feature]]
   icon = "dna"
   icon_pack = "fas"
-  name = "Molecular biology"
+  name = "分子生物学"
   description = "50%"  
   
 [[feature]]

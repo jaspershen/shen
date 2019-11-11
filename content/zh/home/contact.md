@@ -5,8 +5,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 8  # Order that this section will appear.
 
-title = "联系"
-subtitle = "Please contact me via the email (shenxt@stanford.edu)."
+title = "联系我"
+subtitle = "可以通过邮件联系我(shenxt@stanford.edu)."
 
 # Automatically link email and phone?
 autolink = true

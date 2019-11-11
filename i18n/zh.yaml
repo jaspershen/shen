@@ -128,4 +128,8 @@
   translation: 知道了!
 - id: cookie_learn
   translation: 了解更多
+- id: Advisor
+  translation: 导师
+- id: Research
+  translation: 研究方向
 

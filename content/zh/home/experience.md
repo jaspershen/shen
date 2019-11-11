@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 2  # Order that this section will appear.
 
 title = "教育&经历"
-subtitle = "I am made up of choices."
+subtitle = "人生是由一个个选择组成的."
 
 # Date format for experience
 #   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
@@ -29,9 +29,9 @@ date_format = "Jan 2006"
   
   Research:
   
-  * Metabolomics and System Biology
-  * Multi-omics data analysis and their application in healthcare
-  * Sotfware and Algorithm development for metabolomics and other omics data
+  * 代谢组学和系统生物学
+  * 多组学数据分析及其在健康上的应用
+  * 代谢组学及其与其他组学联合分析的方法开发
   """
 
 [[experience]]
@@ -46,8 +46,8 @@ date_format = "Jan 2006"
   
   Research:
   
-  * Metabolomics and System Biology
-  * Bioinformatics
+  * 代谢组学和系统生物学
+  * 生物信息
   """
   
 [[experience]]
@@ -58,7 +58,7 @@ date_format = "Jan 2006"
   date_start = "2009-09-01"
   date_end = "2013-07-01"
   description = """
-  Advisor: [刘鹏下教授](http://smkxxy.imu.edu.cn/info/1027/4522.htm)
+  Advisor: [刘鹏霞教授](http://smkxxy.imu.edu.cn/info/1027/4522.htm)
   """
   
 

@@ -2,6 +2,6 @@
 header:
   caption: ""
   image: ""
-title: Publications
+title: 发表文章
 view: 4
 ---
