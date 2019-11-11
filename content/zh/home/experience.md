@@ -25,9 +25,9 @@ date_format = "Jan 2006"
   date_start = "2019-04-01"
   date_end = ""
   description = """
-  Advisor: [Michael Snyder教授](http://snyderlab.stanford.edu/)
+  导师: [Michael Snyder教授](http://snyderlab.stanford.edu/)
   
-  Research:
+  研究方向:
   
   * 代谢组学和系统生物学
   * 多组学数据分析及其在健康上的应用
@@ -42,9 +42,9 @@ date_format = "Jan 2006"
   date_start = "2013-09-01"
   date_end = "2018-12-31"
   description = """
-   Advisor: [朱正江研究员](http://www.zhulab.cn/index.php)
+  导师: [朱正江研究员](http://www.zhulab.cn/index.php)
   
-  Research:
+  研究方向:
   
   * 代谢组学和系统生物学
   * 生物信息
@@ -58,7 +58,7 @@ date_format = "Jan 2006"
   date_start = "2009-09-01"
   date_end = "2013-07-01"
   description = """
-  Advisor: [刘鹏霞教授](http://smkxxy.imu.edu.cn/info/1027/4522.htm)
+  导师: [刘鹏霞教授](http://smkxxy.imu.edu.cn/info/1027/4522.htm)
   """
   
 
