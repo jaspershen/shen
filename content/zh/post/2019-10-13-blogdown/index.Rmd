@@ -166,8 +166,9 @@ https://www.webfx.com/tools/emoji-cheat-sheet/
 输入:
 
 ```
-I :heart: Academic :smile:
+I : heart : Academic : smile :
 ```
+注意需要把emoji文字和两边的冒号之间的空格去除掉.
 
 显示:
 

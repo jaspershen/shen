@@ -2,7 +2,7 @@
 date: "2016-04-27T00:00:00Z"
 external_link: "http://metdna.zhulab.cn"
 image:
-  caption: Photo by rawpixel on Unsplash
+  caption: MetDNA logo
   focal_point: Smart
 links:
 - icon: twitter
