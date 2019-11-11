@@ -1,0 +1,28 @@
+---
+title: R cookbook
+author: Xiaotao Shen
+date: '2019-10-28'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# R一些常用小命令
+
+## 系统相关
+
+### 重启R session
+
+```
+.rs.restartR()
+```
