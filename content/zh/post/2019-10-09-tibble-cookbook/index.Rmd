@@ -205,3 +205,108 @@ test %>%
 
 当然,还可以使用`dplyr`中的`pull()`函数,取出来的也是vector.
 
+# tibble添加新的列或者行
+
+## 添加新的行
+
+使用`add_row()`函数可以给已有的tibble对象添加新的行.
+
+```{r}
+df <- tibble(x = 1:3, y = 3:1)
+add_row(df, x = 4, y = 0)
+```
+
+可以通过设置`.before`和`.after`参数来指定插入的位置.默认都是NULL,插入到最后的位置.
+
+```{r}
+add_row(df, x = 4, y = 0, .before = 1)
+add_row(df, x = 4, y = 0, .before = 2)
+add_row(df, x = 4, y = 0, .before = 3)
+```
+
+`.before`设置为n,则是指从原来的第n行的前一行开始添加.
+
+```{r}
+add_row(df, x = 4, y = 0, .after = 1)
+add_row(df, x = 4, y = 0, .after = 2)
+add_row(df, x = 4, y = 0, .after = 3)
+```
+
+`.after`设置为m,则是指从原来的第m行的后面一行开始添加.
+
+如果某些行不提供新的元素,则会变为NA.
+
+```{r}
+add_row(df, x = 4)
+```
+
+## 添加新的列
+
+使用`add_column()`函数可以给已有的tibble对象添加新的列.跟`add_column()`一样的.
+
+```{r}
+# add_column ---------------------------------
+df <- tibble(x = 1:3, y = 3:1)
+add_column(df, z = -1:1, w = 0)
+```
+需要注意的是,并不能覆盖原来的列以及和原来的行数不一样的新的列.
+
+```{r}
+# You can't overwrite existing columns
+try(
+add_column(df, x = 4:6)  
+)
+# You can't create new observations
+try(
+ add_column(df, z = 1:5) 
+)
+```
+
+所以其实并不方便,还是使用`dplyr`更方便.
+
+# tibble对列名和行名的操作
+
+## 判断是否有行名
+
+```{r}
+head(mtcars)
+rownames(mtcars)
+has_rownames(mtcars)
+
+head(iris)
+rownames(iris)
+has_rownames(iris)
+```
+
+可以使用`remove_rownames()`函数去除掉行名.当然也可以使用将行名设置为NULL打到目的
+```{r}
+has_rownames(mtcars)
+mtcars2 <- 
+  remove_rownames(mtcars)
+has_rownames(mtcars2)
+```
+
+## 行名和某一列互相转换
+
+`rownames_to_column()`函数可以将tibble的行名转变为某一列,并且删除掉行名.
+
+```{r}
+mtcars2 <- 
+rownames_to_column(mtcars, var = "test")
+mtcars2
+```
+
+另外一个函数,`rowid_to_column()`可以去除掉行名,并在最开始添加一列rowid,从1开始.
+
+```{r}
+rowid_to_column(mtcars) %>% 
+  as_tibble()
+```
+
+
+当然也可以将某一列变为行名:`column_to_rownames()`.注意必须要求tibble没有行名,且新的行名是没有重复元素的.
+
+```{r}
+column_to_rownames(mtcars2, var = "test")
+```
+
