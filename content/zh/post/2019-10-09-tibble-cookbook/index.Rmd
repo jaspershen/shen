@@ -293,7 +293,8 @@ has_rownames(mtcars2)
 ```{r}
 mtcars2 <- 
 rownames_to_column(mtcars, var = "test")
-mtcars2
+mtcars2 %>% 
+  as_tibble()
 ```
 
 另外一个函数,`rowid_to_column()`可以去除掉行名,并在最开始添加一列rowid,从1开始.
