@@ -156,3 +156,19 @@ output:
 12. Source Thermes   
 13. Statistical analysis   
  
+ 
+# 如何在post(markdown)中插入Emojis
+
+完整的emoji名单在这:
+
+https://www.webfx.com/tools/emoji-cheat-sheet/
+
+输入:
+
+```
+I :heart: Academic :smile:
+```
+
+显示:
+
+I :heart: Academic :smile:

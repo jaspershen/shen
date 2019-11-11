@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-categories: []
+categories: [R]
 date: "2019-07-04T00:00:00Z"
 draft: false
 featured: false
@@ -20,14 +20,7 @@ title: Display Jupyter Notebooks with Academic
 from IPython.core.display import Image
 Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
 ```
-
-
-
-
 ![png](./academic_0_0.png)
-
-
-
 
 ```python
 print("Welcome to Academic!")

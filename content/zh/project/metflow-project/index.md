@@ -2,13 +2,13 @@
 date: "2016-04-27T00:00:00Z"
 external_link: "http://metflow.zhulab.cn/"
 image:
-  caption: Photo by rawpixel on Unsplash
+  caption: MetFlow logo
   focal_point: Smart
 links:
 - icon: twitter
   icon_pack: fab
   name: Follow
-  url: https://twitter.com/georgecushen
+  url: https://twitter.com/JasperShen1990
 slides: example
 summary: Web Server for Metabolomics Data Cleaning and Differential Metabolite Discovery
 tags:

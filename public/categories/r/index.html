@@ -145,7 +145,7 @@
   <meta property="og:description" content="Share"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-10-28T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2019-07-04T00:00:00&#43;00:00">
   
 
   
@@ -565,7 +565,7 @@
             
             <li class="dropdown-item my-0 py-0 mx-0 px-0">
               <a href="/zh/categories/r/">
-                <span>中文 (简体)</span>
+                <span>中文</span>
               </a>
             </li>
             
@@ -622,106 +622,16 @@
   
   
   <div>
-    <h2><a href="/post/dplyr-cookbook/">dplyr cookbook</a></h2>
+    <h2><a href="/post/blogdown-instruction/">Display Jupyter Notebooks with Academic</a></h2>
     <div class="article-style">
       
-      test
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/ggplot2-ggthemes/">ggplot2主题扩充包-ggthemes</a></h2>
-    <div class="article-style">
-      
-      ggthemes是ggplot2的一个主题扩展包.含有ggplot2的多个扩展主题.官网参考文档见下面链接: 安装 # 从CRAN安装 install.packages(&#39;ggthemes&#39;, dependencies = TRUE) # 从
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-error-summary/">R常见错误总结</a></h2>
-    <div class="article-style">
-      
-      这篇博客用来记录R常见的错及其器解决办法.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/download-kegg-database/">下载KEGG数据库</a></h2>
-    <div class="article-style">
-      
-      记录使用一些R语言包下载KEGG数据库. #get the ID of all hsa pathways KEGGREST::listDatabases() path_ID &lt;- KEGGREST::keggList(organism = &quot;hsa&quot;, database = &quot;pathway&quot;) %&gt;% names() %&gt;% unique() %&gt;% stringr::str_replace_all(., &quot;path:&quot;, &quot;&quot;) dir.create(path = &quot;kegg_pathway&quot;) setwd(&quot;kegg_pathway/&quot;) node_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) edge_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) for(i in i:length(path_ID)){ cat(i, &quot; &quot;)
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/ggplot2-cookbook/">ggplot2-cookbook</a></h2>
-    <div class="article-style">
-      
-      1 绘图基础(plot basics) 1.1 ggplot() 创建一个新的ggplot图片 1.1.1 参数 1.1.2 细节 1.1.3 例子 1.2 aes() 创建美学映射 1.2.1 参数 1.2.2 细节 1.2.3 例子 1.3 ggsave()保存ggplot
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-data-visulization-cookbook/">R data visulization cookbook</a></h2>
-    <div class="article-style">
-      
-      0.0.1 ggplot2中如何反转坐标轴? 0.0.2 ggplot2中如何修改绘图区域的边界? 0.0.3 如何获得合适的配色组合? 0.0.4 ggplot2中如何反转坐标轴? 0.0.1 g
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-project-work-directory/">快速回到R project所在的工作目录</a></h2>
-    <div class="article-style">
-      
-      Rstudio的Rproject可以用来方便的管理自己的某个项目的所有代码,文件等等.另外的一个好处是打开该项目文件之后,路径自动设置为该p
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/r-ml-model/">R 语言常见统计预测模型</a></h2>
-    <div class="article-style">
-      
-      0.0.1 lasso模型 0.0.2 References 0.0.1 lasso模型 LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/igraph/">网络分析之igraph</a></h2>
-    <div class="article-style">
-      
-      0.0.1 安装 0.0.2 常用功能总结 igraph是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/blogdown/">blogdown创建博客总结</a></h2>
-    <div class="article-style">
-      
-      0.0.1 如何修改网站icon? 0.0.2 如何将个人网站作为图床使用? 0.0.3 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单
+      使用blogdown包搭建个人blog
       
     </div>
   </div>
   
 
   
-<nav>
-  <ul class="pagination justify-content-center">
-    
-    
-    <li class="page-item"><a class="page-link" href="/categories/r/page/2/">&raquo;</a></li>
-    
-  </ul>
-</nav>
-
 
 </div>
 <div class="container">
