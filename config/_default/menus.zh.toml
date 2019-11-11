@@ -19,7 +19,7 @@
   weight = 3
   
   [[main]]
-  name = "文章"
+  name = "发表文章"
   url = "#publications"
   weight = 4
   
@@ -64,20 +64,6 @@
 #  weight = 10
 
 
-
-
-
-
-
-
-
-  
-#  [[main]]
-#  name = "Landing"  # Title of the link.
-#  url = "landing/"  # Widget Page folder name.
-#  weight = 90  # Position of the link in the navigation bar.
-  
-  
 #[[main]]
 #  name = "Courses"
 #  url = "courses/"
