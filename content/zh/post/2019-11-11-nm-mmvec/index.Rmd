@@ -81,19 +81,9 @@ Through iterative training, mmvec can learn the co-occurrence probabilities betw
 
 其实就是给定microbe的中的一个sequnce之后,预测所有metabolite abundance.
 
+# Results
 
-
-
-
-
-
-
-
-
-
-
-
-
+# Reference
 
 [^1]: Noecker, C. et al. Metabolic model-based integration of microbiome taxonomic and metabolomic profiles elucidates mechanistic links between ecological and metabolic variation. MSystems 1, e00013–e00015 (2016).
 
