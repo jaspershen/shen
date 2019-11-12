@@ -46,7 +46,7 @@ rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)
 ```
 
 ```{r, eval=TRUE}
-blogdown::shortcode(.name = "video", "test.mp4")
+blogdown::shortcode("video", src = "./test.mp4")
 ```
 
 ```{r, eval=TRUE}
