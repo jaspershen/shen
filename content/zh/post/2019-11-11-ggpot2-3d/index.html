@@ -45,8 +45,8 @@ gg &lt;- ggplot(diamonds, aes(x, depth)) +
   facet_wrap(clarity~.) +
   scale_fill_viridis_c(option = &quot;A&quot;)
 rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)</code></pre>
-<p>{{&lt; video src=“test.mp4” controls=“yes” &gt;}}</p>
-<p>{{&lt; youtube id = p4liifrbK8w" &gt;}}</p>
-<iframe width="560" height="315" src="hhttps://www.youtube.com/watch?v=p4liifrbK8w" frameborder="0" allowfullscreen>
-</iframe>
+<pre class="r"><code>blogdown::shortcode(.name = &quot;video&quot;, &quot;test.mp4&quot;)</code></pre>
+{{% video "test.mp4" %}}
+<pre class="r"><code>blogdown::shortcode(&quot;youtube&quot;, &quot;p4liifrbK8w&quot;)</code></pre>
+{{% youtube "p4liifrbK8w" %}}
 </div>
