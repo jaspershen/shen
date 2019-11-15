@@ -23,24 +23,39 @@ education:
     year: 2013
 
 social:
-- icon: weixin
-  icon_pack: fab
-  link: https://www.shenxt.info/files/wechat_QR.jpg
 - icon: envelope
   icon_pack: fas
   link: '#contact'
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/shenxt/
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/JasperShen1990
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.co.uk/citations?hl=en&user=3TK9yz8AAAAJ
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
+- icon: researchgate
+  icon_pack: fab
+  link: https://www.researchgate.net/profile/Xiaotao_Shen
+- icon: stack-overflow
+  icon_pack: fab
+  link: https://stackoverflow.com/users/7579484/jasper-shen
+- icon: zhihu
+  icon_pack: fab
+  link: https://www.zhihu.com/people/shen-zu-tao-73/activities
+- icon: weixin
+  icon_pack: fab
+  link: https://www.shenxt.info/files/wechat_QR.jpg
+- icon: qq
+  icon_pack: fab
+  link: https://www.shenxt.info/files/qq_QR.jpg
+- icon: twitter
+  icon_pack: fab
+  link: https://twitter.com/JasperShen1990
+- icon: facebook
+  icon_pack: fab
+  link: https://www.facebook.com/xiaotao.shen.3
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "shenxt@stanford.edu"
