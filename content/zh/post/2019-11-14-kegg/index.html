@@ -1,0 +1,202 @@
+---
+title: KEGG数据库总结
+author: Xiaotao Shen
+date: '2019-11-14'
+slug: ''
+categories:
+  - R
+  - Database
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#kegg-pathway数据库"><span class="toc-section-number">1</span> KEGG Pathway数据库</a><ul>
+<li><a href="#背景"><span class="toc-section-number">1.1</span> 背景</a></li>
+<li><a href="#kgml的overview"><span class="toc-section-number">1.2</span> <code>KGML</code>的overview</a></li>
+<li><a href="#如何获得某个pathwaykgml文件"><span class="toc-section-number">1.3</span> 如何获得某个pathway<code>KGML</code>文件</a></li>
+<li><a href="#pathway"><span class="toc-section-number">1.4</span> Pathway</a><ul>
+<li><a href="#pathway-element"><span class="toc-section-number">1.4.1</span> Pathway element</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="kegg-pathway数据库" class="section level1">
+<h1><span class="header-section-number">1</span> KEGG Pathway数据库</h1>
+<p>KEGG pathway的数据是使用<code>KGML</code>(KEGG Markup Language)格式存储下来的.详细的信息可以阅读官方文档.</p>
+<p><a href="https://www.kegg.jp/kegg/xml/docs/" class="uri">https://www.kegg.jp/kegg/xml/docs/</a></p>
+<div id="背景" class="section level2">
+<h2><span class="header-section-number">1.1</span> 背景</h2>
+<p>KEGG pathway有两个类型.</p>
+<ul>
+<li><p><strong>reference pathways</strong>: 手动画的.</p></li>
+<li><p><strong>organism-specific pathways</strong>: 使用计算方法自动从reference pathway得到的.</p></li>
+</ul>
+<p>在<code>KGML</code>文件中,<code>entry</code>指的是node,而<code>relation</code>和<code>reaction</code>指的是整个网络的边.在KEGG pathway中,矩形表示基因(也可以认为是gene的产物蛋白质),而circle代表的是metabolite.</p>
+<p>如果网络中只有<code>entry</code>和<code>relation</code>,则该网络称为<code>protein network</code>.如果只有<code>entry</code>和<code>reaction</code>,则称为<code>chemical network</code>.</p>
+<p>所以一般来说,可以用两种方式来表示metabolic pathway:</p>
+<ol style="list-style-type: decimal">
+<li><p>metabolic pathways viewed as both protein networks and chemical networks and</p></li>
+<li><p>regulatory pathways viewed as protein networks only.</p></li>
+</ol>
+</div>
+<div id="kgml的overview" class="section level2">
+<h2><span class="header-section-number">1.2</span> <code>KGML</code>的overview</h2>
+<p><img src="overview.png" /></p>
+<p>这幅图是整个<code>KGML</code>的总览.</p>
+</div>
+<div id="如何获得某个pathwaykgml文件" class="section level2">
+<h2><span class="header-section-number">1.3</span> 如何获得某个pathway<code>KGML</code>文件</h2>
+<p>使用R包<code>KEGGlincs</code>可以下载pathway的<code>KGML</code>文件.</p>
+<pre class="r"><code>library(tidyverse)
+library(KEGGREST)
+library(KEGGlincs)
+###
+#获得所有has的pathway ID
+path_id &lt;- KEGGREST::keggList(database = &quot;pathway&quot;, 
+                              organism = &quot;hsa&quot;)
+head(path_id)</code></pre>
+<pre><code>##                                                     path:hsa00010 
+##             &quot;Glycolysis / Gluconeogenesis - Homo sapiens (human)&quot; 
+##                                                     path:hsa00020 
+##                &quot;Citrate cycle (TCA cycle) - Homo sapiens (human)&quot; 
+##                                                     path:hsa00030 
+##                &quot;Pentose phosphate pathway - Homo sapiens (human)&quot; 
+##                                                     path:hsa00040 
+## &quot;Pentose and glucuronate interconversions - Homo sapiens (human)&quot; 
+##                                                     path:hsa00051 
+##          &quot;Fructose and mannose metabolism - Homo sapiens (human)&quot; 
+##                                                     path:hsa00052 
+##                     &quot;Galactose metabolism - Homo sapiens (human)&quot;</code></pre>
+<pre class="r"><code>path_id &lt;- 
+  path_id %&gt;% 
+  names() %&gt;% 
+  unique() %&gt;% 
+  stringr::str_replace(&quot;path:&quot;, &quot;&quot;)
+head(path_id)</code></pre>
+<pre><code>## [1] &quot;hsa00010&quot; &quot;hsa00020&quot; &quot;hsa00030&quot; &quot;hsa00040&quot; &quot;hsa00051&quot; &quot;hsa00052&quot;</code></pre>
+<pre class="r"><code>##下载kgml文件并进行解析
+temp_kgml &lt;- 
+  KEGGlincs::get_KGML(pathwayid = path_id[1])
+class(temp_kgml)</code></pre>
+<pre><code>## [1] &quot;KEGGPathway&quot;
+## attr(,&quot;package&quot;)
+## [1] &quot;KEGGgraph&quot;</code></pre>
+<pre class="r"><code>temp_kgml</code></pre>
+<pre><code>## KEGG Pathway
+## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## ------------------------------------------------------------
+## Statistics:
+##  100 node(s)
+##  89 edge(s)
+##  35 reaction(s)
+## ------------------------------------------------------------</code></pre>
+<p><code>get_KGML()</code>函数其实分别使用了<code>KEGGREST</code>包中的<code>keggGet()</code>函数来下载的,然后使用<code>KEGGgraph</code>包中的<code>paraseKGML()</code>函数来解析.</p>
+<pre class="r"><code>temp_kgml2 &lt;-
+  KEGGREST::keggGet(dbentries = path_id[1], option = &quot;kgml&quot;)</code></pre>
+<pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
+<pre class="r"><code>class(temp_kgml2)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>temp_kgml2 &lt;- 
+  KEGGgraph::parseKGML(file = temp_kgml2)
+temp_kgml2</code></pre>
+<pre><code>## KEGG Pathway
+## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## ------------------------------------------------------------
+## Statistics:
+##  100 node(s)
+##  89 edge(s)
+##  35 reaction(s)
+## ------------------------------------------------------------</code></pre>
+</div>
+<div id="pathway" class="section level2">
+<h2><span class="header-section-number">1.4</span> Pathway</h2>
+<div id="pathway-element" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Pathway element</h3>
+<p>一共有六个属性.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Attribute.name
+</th>
+<th style="text-align:left;">
+Explanation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+name
+</td>
+<td style="text-align:left;">
+Pathway&lt;U+7684&gt;ID
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+org
+</td>
+<td style="text-align:left;">
+ko/ec/&lt;U+6216&gt;&lt;U+8005&gt;&lt;U+7269&gt;&lt;U+79CD&gt;&lt;U+7684&gt;&lt;U+7B80&gt;&lt;U+79F0&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+number
+</td>
+<td style="text-align:left;">
+&lt;U+8BE5&gt;pathway&lt;U+7684&gt;ID numebr
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+title
+</td>
+<td style="text-align:left;">
+pathway&lt;U+7684&gt;title,&lt;U+540D&gt;&lt;U+79F0&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+image
+</td>
+<td style="text-align:left;">
+pathway&lt;U+7684&gt;&lt;U+56FE&gt;&lt;U+7247&gt;&lt;U+7684&gt;&lt;U+4E0B&gt;&lt;U+8F7D&gt;link
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+link
+</td>
+<td style="text-align:left;">
+&lt;U+8BE5&gt;pathway&lt;U+7684&gt;link
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
