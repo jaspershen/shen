@@ -1,5 +1,5 @@
 ---
-title: ggplot2-cookbook
+title: ggplot2 cookbook
 author: Xiaotao Shen
 date: '2019-10-25'
 slug: ggplot2-cookbook
@@ -71,6 +71,9 @@ output:
 <li><a href="#计算变量-1"><span class="toc-section-number">2.6.3</span> 计算变量</a></li>
 <li><a href="#例子-7"><span class="toc-section-number">2.6.4</span> 例子</a></li>
 </ul></li>
+</ul></li>
+<li><a href="#常见问题总结"><span class="toc-section-number">3</span> 常见问题总结</a><ul>
+<li><a href="#如何保证不同图中legend的scale一致"><span class="toc-section-number">3.1</span> 如何保证不同图中legend的scale一致</a></li>
 </ul></li>
 </ul>
 </div>
@@ -777,5 +780,34 @@ v + geom_raster(aes(fill = density)) +
   geom_contour(colour = &quot;white&quot;)</code></pre>
 <p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-10.png" width="672" /></p>
 </div>
+</div>
+</div>
+<div id="常见问题总结" class="section level1">
+<h1><span class="header-section-number">3</span> 常见问题总结</h1>
+<div id="如何保证不同图中legend的scale一致" class="section level2">
+<h2><span class="header-section-number">3.1</span> 如何保证不同图中legend的scale一致</h2>
+<p>比如两个图中,我们想保证legend对应的size的粗细是和数据一致的.</p>
+<pre class="r"><code>library(ggplot2)
+library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
+<pre class="r"><code>  data.frame(x = 1:5, y = 1:5) %&gt;% 
+  ggplot() +
+  geom_point(aes(x = x, y = y, size = x))</code></pre>
+<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>使用<code>scale_size_...()</code>函数来进行设置.</p>
+<pre class="r"><code>  data.frame(x = 1:5, y = 1:5) %&gt;% 
+  ggplot() +
+  geom_point(aes(x = x, y = y, size = x)) +
+  scale_size_continuous(limits = c(1,5), range = c(1,5))</code></pre>
+<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>data.frame(x = 1:5, y = 1:5) %&gt;% 
+  ggplot() +
+  geom_point(aes(x = x, y = y, size = x)) +
+  scale_size_continuous(limits = c(1,5), range = c(5,6))</code></pre>
+<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p>其中参数<code>limits</code>是一个两个的数值vector,用来设置是指的最小和最大值.而参数<code>range</code>也是一个两个数值的vector,用来设置point的size的最小值和最大值.</p>
 </div>
 </div>

@@ -1,5 +1,5 @@
 ---
-title: ggplot2-cookbook
+title: ggplot2 cookbook
 author: Xiaotao Shen
 date: '2019-10-25'
 slug: ggplot2-cookbook
@@ -783,3 +783,34 @@ v + geom_raster(aes(fill = density)) +
   scale_fill_gradient(low = "white", high = "red") +
   geom_contour(colour = "white")
 ```
+
+# 常见问题总结
+
+## 如何保证不同图中legend的scale一致
+
+比如两个图中,我们想保证legend对应的size的粗细是和数据一致的.
+
+```{r, message=FALSE}
+library(ggplot2)
+library(tidyverse)
+  data.frame(x = 1:5, y = 1:5) %>% 
+  ggplot() +
+  geom_point(aes(x = x, y = y, size = x))
+```
+
+使用`scale_size_...()`函数来进行设置.
+
+```{r}
+  data.frame(x = 1:5, y = 1:5) %>% 
+  ggplot() +
+  geom_point(aes(x = x, y = y, size = x)) +
+  scale_size_continuous(limits = c(1,5), range = c(1,5))
+
+data.frame(x = 1:5, y = 1:5) %>% 
+  ggplot() +
+  geom_point(aes(x = x, y = y, size = x)) +
+  scale_size_continuous(limits = c(1,5), range = c(5,6))
+```
+
+其中参数`limits`是一个两个的数值vector,用来设置是指的最小和最大值.而参数`range`也是一个两个数值的vector,用来设置point的size的最小值和最大值.
+
