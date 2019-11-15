@@ -31,6 +31,10 @@ output:
 <li><a href="#entry条目"><span class="toc-section-number">1.5</span> Entry(条目)</a><ul>
 <li><a href="#entry-element"><span class="toc-section-number">1.5.1</span> Entry element</a></li>
 </ul></li>
+<li><a href="#relation"><span class="toc-section-number">1.6</span> Relation</a><ul>
+<li><a href="#relation元素"><span class="toc-section-number">1.6.1</span> relation元素</a></li>
+</ul></li>
+<li><a href="#reaction反应"><span class="toc-section-number">1.7</span> Reaction反应</a></li>
 </ul></li>
 </ul>
 </div>
@@ -428,5 +432,95 @@ the node is an unclassified type
 </table>
 </div>
 </div>
+</div>
+<div id="relation" class="section level2">
+<h2><span class="header-section-number">1.6</span> Relation</h2>
+<div id="relation元素" class="section level3">
+<h3><span class="header-section-number">1.6.1</span> relation元素</h3>
+<p>这里面的relation不包括我们所知道的酶催化代谢物的联系.只包括两个proteins(gene products)或者两个KOs(ortholog groups)或者protein和compound</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Attribute.name
+</th>
+<th style="text-align:left;">
+Explanation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+entry1
+</td>
+<td style="text-align:left;">
+the first (from) entry that defines this relation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entry2
+</td>
+<td style="text-align:left;">
+the second (to) entry that defines this relation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:left;">
+the type of this relation
+</td>
+</tr>
+</tbody>
+</table>
+<div id="type属性" class="section level4">
+<h4><span class="header-section-number">1.6.1.1</span> Type属性</h4>
+<p>relation的type一共有5个,分别是</p>
+<ul>
+<li><p><strong>ECrel</strong>: enzyme-enzyme relation, indicating two enzymes catalyzing successive reaction steps.代表的是两个酶之间的联系,比如enzyme1-metabolite1-enzyme2-metabolite2.那么enzyme1-enzyme2之间的关系realtion就是<code>ECrel</code>.</p></li>
+<li><p><strong>PPrel</strong>: protein-protein interaction, such as binding and modification.</p></li>
+<li><p><strong>GErel</strong>: gene expression interaction, indicating relation of transcription factor and target gene product.</p></li>
+<li><p><strong>PCrel</strong>: protein-compound interaction,注意这个关系不是enzyme催化的关系.</p></li>
+<li><p><strong>maplink</strong>: 跟另外一个pathway的联系.</p></li>
+</ul>
+</div>
+<div id="subtype-element" class="section level4">
+<h4><span class="header-section-number">1.6.1.2</span> subtype element</h4>
+<p>每个relatio还有一个subtype属性.这个属性用来对relation做进一步的说明.</p>
+<ul>
+<li><strong>name</strong>: interation/relation的信息.</li>
+</ul>
+<p>包含以下几种信息.</p>
+<p><img src="figure2.png" /></p>
+<p>其中<code>compound</code>是指这个relation其实是两个enzyme.</p>
+<pre class="r"><code>temp_kgml@edges[[1]]@entry1ID</code></pre>
+<pre><code>## [1] &quot;73&quot;</code></pre>
+<pre class="r"><code>temp_kgml@edges[[1]]@entry2ID</code></pre>
+<pre><code>## [1] &quot;75&quot;</code></pre>
+<pre class="r"><code>temp_kgml@edges[[1]]@type</code></pre>
+<pre><code>## [1] &quot;ECrel&quot;</code></pre>
+<pre class="r"><code>temp_kgml@edges[[1]]@subtype</code></pre>
+<pre><code>## $subtype
+##   [ Subtype name ]: compound
+##   [ Subtype value ]: 90</code></pre>
+<p>这个relation就是两个enzyme连接起来的.</p>
+</div>
+</div>
+</div>
+<div id="reaction反应" class="section level2">
+<h2><span class="header-section-number">1.7</span> Reaction反应</h2>
+<p>reaction和relation很类似.不一样的是type属性.</p>
+<p>type属性包括<code>reversible</code>和<code>irreversible</code>.分别表示可逆反应和不可逆反映.</p>
+<pre class="r"><code>temp_kgml@reactions[[1]]@name</code></pre>
+<pre><code>## [1] &quot;rn:R00710&quot;</code></pre>
+<pre class="r"><code>temp_kgml@reactions[[1]]@type</code></pre>
+<pre><code>## [1] &quot;reversible&quot;</code></pre>
+<pre class="r"><code>temp_kgml@reactions[[1]]@substrateName</code></pre>
+<pre><code>## [1] &quot;cpd:C00084&quot;</code></pre>
+<pre class="r"><code>temp_kgml@reactions[[1]]@productName</code></pre>
+<pre><code>## [1] &quot;cpd:C00033&quot;</code></pre>
 </div>
 </div>
