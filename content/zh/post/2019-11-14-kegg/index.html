@@ -28,6 +28,9 @@ output:
 <li><a href="#pathway"><span class="toc-section-number">1.4</span> Pathway</a><ul>
 <li><a href="#pathway-element"><span class="toc-section-number">1.4.1</span> Pathway element</a></li>
 </ul></li>
+<li><a href="#entry条目"><span class="toc-section-number">1.5</span> Entry(条目)</a><ul>
+<li><a href="#entry-element"><span class="toc-section-number">1.5.1</span> Entry element</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -152,7 +155,7 @@ Explanation
 name
 </td>
 <td style="text-align:left;">
-Pathway&lt;U+7684&gt;ID
+Pathway ID
 </td>
 </tr>
 <tr>
@@ -160,7 +163,7 @@ Pathway&lt;U+7684&gt;ID
 org
 </td>
 <td style="text-align:left;">
-ko/ec/&lt;U+6216&gt;&lt;U+8005&gt;&lt;U+7269&gt;&lt;U+79CD&gt;&lt;U+7684&gt;&lt;U+7B80&gt;&lt;U+79F0&gt;
+ko/ec/org ID
 </td>
 </tr>
 <tr>
@@ -168,7 +171,7 @@ ko/ec/&lt;U+6216&gt;&lt;U+8005&gt;&lt;U+7269&gt;&lt;U+79CD&gt;&lt;U+7684&gt;&lt;
 number
 </td>
 <td style="text-align:left;">
-&lt;U+8BE5&gt;pathway&lt;U+7684&gt;ID numebr
+pathway ID numebr
 </td>
 </tr>
 <tr>
@@ -176,7 +179,7 @@ number
 title
 </td>
 <td style="text-align:left;">
-pathway&lt;U+7684&gt;title,&lt;U+540D&gt;&lt;U+79F0&gt;
+pathway title
 </td>
 </tr>
 <tr>
@@ -184,7 +187,7 @@ pathway&lt;U+7684&gt;title,&lt;U+540D&gt;&lt;U+79F0&gt;
 image
 </td>
 <td style="text-align:left;">
-pathway&lt;U+7684&gt;&lt;U+56FE&gt;&lt;U+7247&gt;&lt;U+7684&gt;&lt;U+4E0B&gt;&lt;U+8F7D&gt;link
+pathway figure link
 </td>
 </tr>
 <tr>
@@ -192,11 +195,238 @@ pathway&lt;U+7684&gt;&lt;U+56FE&gt;&lt;U+7247&gt;&lt;U+7684&gt;&lt;U+4E0B&gt;&lt
 link
 </td>
 <td style="text-align:left;">
-&lt;U+8BE5&gt;pathway&lt;U+7684&gt;link
+pathway link
 </td>
 </tr>
 </tbody>
 </table>
+<p>我们可以下载pathway的图片.</p>
+<pre class="r"><code>image_link &lt;- slot(slot(temp_kgml, &quot;pathwayInfo&quot;), &quot;image&quot;)
+image_link</code></pre>
+<pre><code>## [1] &quot;http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&quot;</code></pre>
+<pre class="r"><code>download.file(url = image_link, 
+              destfile = basename(image_link), 
+              mode = &quot;wb&quot;)</code></pre>
+<p><img src="hsa00010.png" /></p>
+</div>
+</div>
+<div id="entry条目" class="section level2">
+<h2><span class="header-section-number">1.5</span> Entry(条目)</h2>
+<div id="entry-element" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Entry element</h3>
+<p>包括了网络中的node的属性.属性包括以下内容.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Attribute.name
+</th>
+<th style="text-align:left;">
+Explanation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+id
+</td>
+<td style="text-align:left;">
+ID of the entry
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+name
+</td>
+<td style="text-align:left;">
+KEGG ID of the entry
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:left;">
+Type of the entry
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+link
+</td>
+<td style="text-align:left;">
+Link of the entry
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reaction
+</td>
+<td style="text-align:left;">
+The KEGG ID of corresponding reaction
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>#整体信息
+temp_kgml@pathwayInfo</code></pre>
+<pre><code>## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010</code></pre>
+<pre class="r"><code>#分别的属性
+temp_kgml@pathwayInfo@name</code></pre>
+<pre><code>## [1] &quot;path:hsa00010&quot;</code></pre>
+<pre class="r"><code>temp_kgml@pathwayInfo@org</code></pre>
+<pre><code>## [1] &quot;hsa&quot;</code></pre>
+<pre class="r"><code>temp_kgml@pathwayInfo@number</code></pre>
+<pre><code>## [1] &quot;00010&quot;</code></pre>
+<pre class="r"><code>temp_kgml@pathwayInfo@title</code></pre>
+<pre><code>## [1] &quot;Glycolysis / Gluconeogenesis&quot;</code></pre>
+<pre class="r"><code>temp_kgml@pathwayInfo@image</code></pre>
+<pre><code>## [1] &quot;http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&quot;</code></pre>
+<pre class="r"><code>temp_kgml@pathwayInfo@link</code></pre>
+<pre><code>## [1] &quot;http://www.kegg.jp/kegg-bin/show_pathway?hsa00010&quot;</code></pre>
+<p>图片下载链接:</p>
+<p><a href="http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png"></a></p>
+<p>pathway详细信息链接:</p>
+<p><a href="http://www.kegg.jp/kegg-bin/show_pathway?hsa00010"></a></p>
+<p>我们下面看看pathwa中node的信息.</p>
+<pre class="r"><code>temp_kgml</code></pre>
+<pre><code>## KEGG Pathway
+## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## ------------------------------------------------------------
+## Statistics:
+##  100 node(s)
+##  89 edge(s)
+##  35 reaction(s)
+## ------------------------------------------------------------</code></pre>
+<p>可以看到这个pathway含有node,edge还有reaction.</p>
+<pre class="r"><code># node
+temp_kgml@nodes$`18`</code></pre>
+<pre><code>## KEGG Node (Entry &#39;18&#39;):
+## ------------------------------------------------------------
+## [ displayName ]: ALDOA, ALDA, GSD12, HEL-S-87p...
+## [ Name ]: hsa:226,hsa:229,hsa:230
+## [ Type ]: gene
+## [ Link ]: http://www.kegg.jp/dbget-bin/www_bget?hsa:226+hsa:229+hsa:230
+## ------------------------------------------------------------</code></pre>
+<pre class="r"><code>#edge
+temp_kgml@edges[[1]]</code></pre>
+<pre><code>##   KEGG Edge (Type: ECrel):
+## ------------------------------------------------------------
+## [ Entry 1 ID ]: 73
+## [ Entry 2 ID ]: 75
+## [ Subtype ]: 
+##   [ Subtype name ]: compound
+##   [ Subtype value ]: 90
+## ------------------------------------------------------------</code></pre>
+<pre class="r"><code>#reaction
+temp_kgml@reactions[[1]]</code></pre>
+<pre><code>## KEGG Reaction(rn:R00710)
+## ------------------------------------------------------------
+## [ Name ]: rn:R00710
+## [ Type ]: reversible
+## [ Substrate Name ]: cpd:C00084
+## [ Product Name ]: cpd:C00033</code></pre>
+<div id="type属性的详细解释" class="section level4">
+<h4><span class="header-section-number">1.5.1.1</span> Type属性的详细解释</h4>
+<p>在pathway中,如果一个pathway链接到另外一个pathway,那么pathway也是会被作为一个node展示出来.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Attribute.name
+</th>
+<th style="text-align:left;">
+Explanation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ortholog
+</td>
+<td style="text-align:left;">
+the node is a KO (ortholog group)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+enzyme
+</td>
+<td style="text-align:left;">
+the node is an enzyme
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reaction
+</td>
+<td style="text-align:left;">
+the node is a reaction
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gene
+</td>
+<td style="text-align:left;">
+the node is a gene product (mostly a protein)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+group
+</td>
+<td style="text-align:left;">
+the node is a complex of gene products (mostly a protein complex)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+compound
+</td>
+<td style="text-align:left;">
+the node is a chemical compound (including a glycan)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+map
+</td>
+<td style="text-align:left;">
+the node is a linked pathway map
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+brite
+</td>
+<td style="text-align:left;">
+the node is a linked brite hierarchy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+other
+</td>
+<td style="text-align:left;">
+the node is an unclassified type
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>

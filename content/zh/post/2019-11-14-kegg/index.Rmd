@@ -97,15 +97,111 @@ temp_kgml2
 kableExtra::kable(x = 
                   data.frame(
                     Attribute.name = c("name", "org", "number", "title", "image", "link"),
-                    Explanation = c("Pathway的ID", "ko/ec/或者物种的简称","该pathway的ID numebr",
-                                    "pathway的title,名称",
-                                    "pathway的图片的下载link",
-                                    "该pathway的link"),
+                    Explanation = c("Pathway ID", "ko/ec/org ID","pathway ID numebr",
+                                    "pathway title",
+                                    "pathway figure link",
+                                    "pathway link"),
                     stringsAsFactors = FALSE
                   )
                   )
 
 ```
+
+我们可以下载pathway的图片.
+
+```{r}
+image_link <- slot(slot(temp_kgml, "pathwayInfo"), "image")
+image_link
+download.file(url = image_link, 
+              destfile = basename(image_link), 
+              mode = "wb")
+```
+
+![](./hsa00010.png)
+
+## Entry(条目)
+
+### Entry element
+
+包括了网络中的node的属性.属性包括以下内容.
+
+```{r,echo=FALSE}
+kableExtra::kable(x = 
+                  data.frame(
+                    Attribute.name = c("id", "name", "type", "link", "reaction"),
+                    Explanation = c("ID of the entry",
+                                    "KEGG ID of the entry",
+                                    "Type of the entry",
+                                    "Link of the entry",
+                                    "The KEGG ID of corresponding reaction"),
+                    stringsAsFactors = FALSE
+                  )
+                  )
+
+```
+
+```{r}
+#整体信息
+temp_kgml@pathwayInfo
+#分别的属性
+temp_kgml@pathwayInfo@name
+temp_kgml@pathwayInfo@org
+temp_kgml@pathwayInfo@number
+temp_kgml@pathwayInfo@title
+temp_kgml@pathwayInfo@image
+temp_kgml@pathwayInfo@link
+```
+
+图片下载链接:
+
+[](http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png)
+
+pathway详细信息链接:
+
+[](http://www.kegg.jp/kegg-bin/show_pathway?hsa00010)
+
+我们下面看看pathwa中node的信息.
+
+```{r}
+temp_kgml
+```
+可以看到这个pathway含有node,edge还有reaction.
+
+```{r}
+# node
+temp_kgml@nodes$`18`
+#edge
+temp_kgml@edges[[1]]
+#reaction
+temp_kgml@reactions[[1]]
+```
+
+#### Type属性的详细解释
+
+在pathway中,如果一个pathway链接到另外一个pathway,那么pathway也是会被作为一个node展示出来.
+
+```{r,echo=FALSE}
+kableExtra::kable(x = 
+                  data.frame(
+                    Attribute.name = c("ortholog", "enzyme", 
+                                       "reaction", "gene", 
+                                       "group", "compound",
+                                       "map", "brite", "other"),
+                    Explanation = c("the node is a KO (ortholog group)", "the node is an enzyme",
+                                    "the node is a reaction", "the node is a gene product (mostly a protein)",
+                                    "the node is a complex of gene products (mostly a protein complex)",
+                                    "the node is a chemical compound (including a glycan)",
+                                    "the node is a linked pathway map",
+                                    "the node is a linked brite hierarchy",
+                                    "	the node is an unclassified type"),
+                    stringsAsFactors = FALSE
+                  )
+                  )
+
+```
+
+
+
 
 
 
