@@ -1,0 +1,270 @@
+---
+title: 使用Github和Hexo建独立博客
+author: Xiaotao Shen
+date: '2016-11-25'
+slug: ''
+categories:
+  - Github
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+参考了一篇[非常好的文章](https://github.com/limedroid/HexoLearning#42-直接方式)，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。
+
+## 1. Hexo介绍
+[Hexo](https://hexo.io/zh-cn/)是基于NodeJs的静态博客框架，简单、轻量，其生成的静态网页可以托管在Github和Heroku上。
+
+. 超快速度
+. 支持MarkDown
+. 一键部署
+. 丰富的插件
+
+下面以我的博客为例，[shenxt.github.io](https://shenxt.github.io/)为例，讲解如何部署自己的博客。
+
+## 2. 环境准备
+
+### 2.1 安装node.js
+
+去[nodejs](https://nodejs.org/en/download/)官网下载对应系统的安装包，按提示安装。
+
+检验安装成功，在git shell中输入一下代码：
+
+```
+$ node -v
+```
+
+### 2.2 安装hexo
+
+```
+$ npm install hexo-cli -g
+```
+
+如果是mac，则需要输入：
+
+```
+$ sudo npm install hexo-cli -g
+```
+
+## 3. 利用Hexo搭建一个博客
+
+### 3.1 创建博客目录shenxt@github.io
+
+```
+$ hexo init shenxt.github.io
+$ cd limedroid.github.io
+$ npm install
+```
+
+### 3.2 生成静态页面
+
+```
+$ hexo clean
+$ hexo g # g is generate
+```
+
+### 3.3 运行
+
+```
+$ hexo s -p3600# is server
+```
+
+然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。
+
+## 4 发一篇文章试试
+
+### 4.1 穿件一个新的博客
+
+```
+$ hexo new test
+```
+
+此时会在source/posts目录下生成test.md文件，输入一些内容，然后保存。
+
+然后看一下效果:
+
+```
+$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server
+```
+然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。
+
+## 5 配置
+
+网站的设置大部分都在_config.yml文件夹中，详细配置可以查看[官方文档](https://hexo.io/zh-cn/docs/configuration.html)。
+
+下面只列出简单常用配置:
+
+.title -> 网站标题
+.subtitle -> 网站副标题
+.description -> 网站描述
+.author -> 您的名字
+.language -> 网站使用的语言
+
+注意：进行配置时，需要在冒号:后加一个英文空格。
+
+## 6 更换主题
+
+在网站配置文件_config.yml中，配置theme。
+
+```
+theme: next
+```
+
+next是主题的名字。Hexo有不同的人贡献主题，可以到其[官方网站](https://hexo.io/themes/index.html)上下载不同主题。看中某一主题之后，直接点击其名字，进入到其github界面，然后复制其网址，使用下面代码，即可下载主题到本地。
+
+```
+git clone https://github.com/fi3ework/hexo-theme-archer
+```
+
+然后将博客的配置文件theme修改为archer即可。
+
+观察效果：
+
+```
+$ hexo clean
+$ hexo g
+$ hexo s -p3600# is server
+```
+
+## 7 部署到github上
+
+### 7.1 在github网页版上创建和自己账户名相同的仓库，比如我的账户为shenxt，因此，创建的仓库为shenxt.github.io。
+
+### 7.2 安装hexo-deployer-git
+
+```
+$ npm install hexo-deployer-git --save
+```
+
+### 7.3 网站配置git
+
+在网上的配置文件_config.yml中配置deploy。
+
+```deploy:
+  type: git
+  repo: https://github.com/shenxt/shenxt.github.io
+  branch: master
+```
+
+### 7.4 部署
+
+```
+$ hexo d# d is deploy
+```
+
+## 贴标签，方便搜索
+
+### 8.1 两个确认
+
+. 首先确认博客的配置文件中有：
+
+```
+tag_dir: tags
+```
+
+. 然后确认主题的配置文件有：
+
+```
+tags: tags
+```
+
+### 8.2 新建tags页面
+
+```
+$ hexo new page tags
+```
+
+此时会在source/下生成tags/index.md文件。
+
+### 8.3 修改source/tags/index.md
+
+```
+title: tags
+date: 2015-10-20 06:49:50
+type: "tags"
+comments: false
+```
+
+### 8.4 在文章中添加tags
+
+在你的文章中添加：
+
+```
+tags:
+	- Tag1
+	- Tag2
+	- Tag3
+```
+
+其文件头部类似于：
+
+```
+title: TagEditText
+date: 2016-11-19 10:44:25
+tags:
+	- Tag1
+	- Tag2
+	- Tag3
+```
+
+## 9 分类，给文章归档
+
+### 9.1 两个确认
+
+. 确认博客配置文件打开了
+
+```
+category_dir: categories
+```
+
+. 确认主题配置文件打开了
+
+```
+categories: /categories
+```
+
+### 9.2 新建categories文件
+
+```
+hexo new page categories
+```
+
+### 9.3 修改categories/index.md
+
+```
+title: categories
+date: 2015-10-20 06:49:50
+type: "categories"
+comments: false
+```
+
+### 9.4 在文章中添加categories
+
+在文章中添加：
+
+```
+categories:
+	- cate
+```
+
+其文件头部类似：
+
+```
+title: TagEditText
+date: 2016-11-19 10:44:25
+categories:
+	- cate
+```
+
+## 10 添加评论功能
+
+这里推荐使用韩国的来必力系统。参考[这个博客](https://www.drixn.com/2017/LiveReCommentsSystem/)进行设置。

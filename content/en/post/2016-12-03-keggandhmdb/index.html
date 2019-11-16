@@ -1,0 +1,359 @@
+---
+title: 使用R爬取HMDB和KEGG数据库
+author: Xiaotao Shen
+date: '2016-11-25'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#r语言爬虫"><span class="toc-section-number">0.1</span> <strong>R语言爬虫</strong></a></li>
+<li><a href="#爬取kegg通路信息"><span class="toc-section-number">0.2</span> <strong>爬取KEGG通路信息</strong></a></li>
+<li><a href="#爬取hmdb通路信息"><span class="toc-section-number">0.3</span> <strong>爬取HMDB通路信息</strong></a></li>
+<li><a href="#爬取hmdb代谢物信息"><span class="toc-section-number">0.4</span> <strong>爬取HMDB代谢物信息</strong></a></li>
+</ul>
+</div>
+
+<div id="r语言爬虫" class="section level2">
+<h2><span class="header-section-number">0.1</span> <strong>R语言爬虫</strong></h2>
+<hr />
+<p>虽然相对于python来说，R语言爬虫并不是那么流行，但是对于比较小的数据爬取量，使用R还是很方便的。R的数据爬取比较流行的是利用XML和RCurl包进行爬取，在这篇博客里面，我就利用XML和RCurl包进行KEGG和HMDB的数据爬取。</p>
+</div>
+<div id="爬取kegg通路信息" class="section level2">
+<h2><span class="header-section-number">0.2</span> <strong>爬取KEGG通路信息</strong></h2>
+<hr />
+<p>因为我需要的信息是KEGG的通路信息，比较简单，也就是每个通路包含哪些代谢物，只要人的metaboloic pathway，因此，我需要先将KEGG中的通路的网页链接拿到。</p>
+<pre><code>library(XML)
+library(RCurl)
+##从kegg主页上抓取代谢通路的url
+URL = getURL(&quot;http://www.genome.jp/kegg/pathway.html#global&quot;)
+doc &lt;- htmlParse(URL,encoding=&quot;utf-8&quot;)
+xpath.a &lt;- &quot;//a/@href&quot;
+node &lt;- getNodeSet(doc, xpath.a)
+url1 &lt;- sapply(node, as.character)
+
+xpath.b &lt;- &quot;//a[@href]&quot;
+name &lt;- getNodeSet(doc, xpath.b)
+name &lt;- sapply(name, xmlValue)
+
+name2 &lt;- name[59:247]
+url2 &lt;- url1[59:247]
+
+url3 &lt;- url2[grep(&quot;show&quot;, url2)]
+
+pathwat.name &lt;- NULL
+metabolite.id &lt;- list()
+metabolite.name &lt;- list()
+for (i in 1:length(url3)) {
+  cat(paste(i,&quot;/&quot;,length(url3)))
+  cat(&quot;\n&quot;)
+  URL &lt;- paste(&quot;http://www.genome.jp&quot;, url3[i], sep = &quot;&quot;)
+  URL = getURL(URL)
+  doc&lt;-htmlParse(URL,encoding=&quot;utf-8&quot;)
+  xpath &lt;- &quot;//option[@value=&#39;hsa&#39;]&quot;
+  node&lt;-getNodeSet(doc, xpath)
+  if (length(node) ==0 ) {
+    cat(&quot;No human pathwat.&quot;)
+    next()
+  }else{
+    URL &lt;- paste(&quot;http://www.genome.jp&quot;, url3[i], sep = &quot;&quot;)
+    URL &lt;- gsub(pattern = &quot;map=map&quot;, replacement = &quot;map=hsa&quot;, x = URL)
+    doc&lt;-htmlParse(URL,encoding=&quot;utf-8&quot;)
+    xpath1 &lt;- &quot;//title&quot;
+    node&lt;-getNodeSet(doc, xpath1)
+    pathway.name[i] &lt;- xmlValue(node[[1]])
+    pathway.name[i] &lt;- substr(pathway.name[i], start = 2, stop = nchar(pathway.name[i])-1)
+
+    xpath2 &lt;- &quot;//area[@shape=&#39;circle&#39;]/@title&quot;
+    node&lt;-getNodeSet(doc, xpath2)
+    metabolite &lt;- lapply(node, function(x) as.character(x))
+    metabolite.name[[i]] &lt;- substr(metabolite, start = 9, nchar(metabolite)-1)
+    metabolite.id[[i]] &lt;- substr(metabolite, start = 1, stop = 6)
+  }
+}</code></pre>
+<p>下面对爬取到的代谢通路进行筛选。</p>
+<pre><code>idx &lt;- which(!is.na(pathway.name))
+pathway.name1 &lt;- pathway.name[idx]
+metabolite.id1 &lt;- metabolite.id[idx]
+metabolite.name1 &lt;- metabolite.name[idx]
+
+pathway.name2 &lt;- pathway.name1[-c(83,84)]
+metabolite.id2 &lt;- metabolite.id1[-c(83,84)]
+metabolite.name2 &lt;- metabolite.name1[-c(83,84)]</code></pre>
+<p>将爬取到的信息保存输出。</p>
+<pre><code>met.name &lt;- NULL
+met.id &lt;- NULL
+path.name &lt;- NULL
+for(i in 1:length(pathway.name2)) {
+  met.name[i] &lt;- paste(metabolite.name2[[i]], collapse = &quot;;&quot;)
+  met.id[i] &lt;- paste(metabolite.id2[[i]], collapse = &quot;;&quot;)
+  path.name[i] &lt;- gsub(pattern = &quot;KEGG PATHWAY: &quot;, &quot;&quot;, pathway.name2[i])
+  path.name[i] &lt;- substr(path.name[i], start = 1, stop = nchar(path.name[i])-23)
+}
+
+
+kegg &lt;- data.frame(path.name, met.name, met.id)
+write.csv(kegg, &quot;kegg.csv&quot;, row.names = F)
+
+save(path.name, file = &quot;path.name&quot;)
+save(met.name, file = &quot;met.name&quot;)
+save(met.id, file = &quot;met.id&quot;)
+
+kegg.met &lt;- list()
+kegg.met[[2]] &lt;- sapply(path.name, list)
+kegg.met[[1]] &lt;- metabolite.name2
+kegg.met[[3]] &lt;- metabolite.id2
+
+names(kegg.met) &lt;- c(&quot;gs&quot;, &quot;pathwaynames&quot;, &quot;metid&quot;)
+
+save(kegg.met, file = &quot;kegg.met&quot;)</code></pre>
+</div>
+<div id="爬取hmdb通路信息" class="section level2">
+<h2><span class="header-section-number">0.3</span> <strong>爬取HMDB通路信息</strong></h2>
+<hr />
+<p>首先爬取HMDB的通路信息。</p>
+<pre><code>##抓取HMDB通路信息
+library(XML)
+library(RCurl)
+
+hmdb.main &lt;- &quot;http://www.hmdb.ca/pathways?page=&quot;
+hmdb.main &lt;- paste(hmdb.main, c(2:46), sep = &quot;&quot;)
+hmdb.main &lt;- c(&quot;http://www.hmdb.ca/pathways&quot;, hmdb.main)
+
+##从HMDB主页上抓取代谢通路的url
+path.name &lt;- list()
+metabolite.id &lt;- list()
+spec &lt;- list()
+path.class &lt;- list()
+for (i in 40:length(hmdb.main)) {
+  cat(paste(&quot;page&quot;,i))
+  cat(&quot;:&quot;)
+  URL = getURL(hmdb.main[i])
+  doc&lt;-htmlParse(URL,encoding=&quot;utf-8&quot;)
+  xpath1 &lt;- &quot;//div[@class=&#39;panel-heading&#39;]&quot;
+  node1 &lt;- getNodeSet(doc, xpath1)
+  pathway.name &lt;- sapply(node1, xmlValue)
+
+  cat(paste(length(pathway.name), &quot;pathways&quot;))
+  cat(&quot;\n&quot;)
+
+  path.name[[i]] &lt;- pathway.name
+
+  xpath2 &lt;- &quot;//div[@class=&#39;panel-body&#39;]&quot;
+  node2 &lt;- getNodeSet(doc, xpath2)
+
+  metabolite &lt;- sapply(node2, xmlValue)
+  metabolite &lt;- unname(sapply(metabolite, function(x) {gsub(&quot;Show&quot;, &quot; &quot;, x)}))
+
+  idx &lt;- sapply(metabolite, function(x) {gregexpr(&quot;HMDB[0-9]{5}&quot;, x)})
+
+  met.id &lt;- list()
+  for (j in 1:length(idx)) {
+    id &lt;- NULL
+    for (k in 1:length(idx[[j]])) {
+      id[k] &lt;- substr(metabolite[j], idx[[j]][k], idx[[j]][k]+8)
+    }
+    met.id[[j]] &lt;- id
+  }
+
+  metabolite.id[[i]] &lt;- met.id
+
+  xpath.a &lt;- &quot;//a[@class=&#39;link-out&#39;]/@href&quot;
+  node&lt;-getNodeSet(doc, xpath.a)
+
+  url1 &lt;- sapply(node, as.character)
+  url1 &lt;- substr(url1, start = 1, stop = 29)
+  url1 &lt;- url1[!duplicated(url1)]
+
+
+  ###获取通路的人种和类别
+  species &lt;- NULL
+  metabolic &lt;- NULL
+  for (t in 1:length(url1)) {
+    cat(paste(&quot;t:&quot;,t));cat(&quot; &quot;)
+    URL = getURL(url1[t])
+    doc &lt;- htmlParse(URL,encoding=&quot;utf-8&quot;)
+    xpath &lt;- &quot;//div[@class=&#39;species&#39;]/text()&quot;
+    node &lt;- getNodeSet(doc, xpath)
+    species[t] &lt;- xmlValue(node[[1]])
+
+    xpath &lt;- &quot;//div[@id=&#39;des_subject&#39;]/text()&quot;
+    node &lt;- getNodeSet(doc, xpath)
+    metabolic[t] &lt;- xmlValue(node[[1]])
+
+  }
+
+  spec[[i]] &lt;- species
+  path.class[[i]] &lt;- metabolic
+
+}</code></pre>
+<p>对爬取到的代谢通路进行筛选。</p>
+<pre><code>save(path.name, file = &quot;path.name&quot;)
+save(metabolite.id, file = &quot;metabolite.id&quot;)
+save(spec, file = &quot;spec&quot;)
+save(path.class, file = &quot;path.class&quot;)
+
+
+pathway.name &lt;- NULL
+metabolite.ID &lt;- list()
+species &lt;- NULL
+pathway.class &lt;- NULL
+for (i in 1:length(path.name)) {
+  pathway.name &lt;- c(pathway.name, path.name[[i]])
+  metabolite.ID &lt;- c(metabolite.ID, metabolite.id[[i]])
+  species &lt;- c(species, spec[[i]])
+  pathway.class &lt;- c(pathway.class, path.class[[i]])
+}
+
+
+pathway.class &lt;- substr(x = pathway.class, 1, regexpr(&quot;\\\n&quot;, pathway.class)-1)
+
+metabolite.name &lt;- list()
+for (i in 1:length(metabolite.ID)) {
+  id &lt;- metabolite.ID[[i]]
+  idx &lt;- match(id, hmdbdatabase[,1])
+  name &lt;- hmdbdatabase[idx,2]
+  metabolite.name[[i]] &lt;- name
+}
+
+a &lt;- unlist(lapply(metabolite.name, function(x) {paste(x, collapse = &quot;;&quot;)}))
+b &lt;- unlist(lapply(metabolite.ID, function(x) {paste(x, collapse = &quot;;&quot;)}))
+
+idx &lt;- grep(&quot;Metabolic&quot;, pathway.class)
+
+metabolite.name &lt;- metabolite.name[idx]
+metabolite.ID &lt;- metabolite.ID[idx]
+pathway.name &lt;- pathway.name[idx]
+pathway.class &lt;- pathway.class[idx]
+species &lt;- species[idx]
+
+hmdb.pathway &lt;- data.frame(pathway.name, pathway.class,a, b)[idx,]
+write.csv(hmdb.pathway, &quot;hmdb.pathway.csv&quot;)
+
+a &lt;- list()
+for (i in 1:length(pathway.name)) {
+  a[[i]] &lt;- pathway.name[i]
+}
+
+pathway.name &lt;- a
+
+hmdb.met &lt;- list(gs = metabolite.name, pathwaynames = pathway.name, id = metabolite.ID)
+save(hmdb.met, file = &quot;hmdb.met&quot;)</code></pre>
+</div>
+<div id="爬取hmdb代谢物信息" class="section level2">
+<h2><span class="header-section-number">0.4</span> <strong>爬取HMDB代谢物信息</strong></h2>
+<hr />
+<p>首先，获得所有代谢物的页面链接。</p>
+<pre><code>###抓取HMDB代谢物信息
+library(XML)
+library(RCurl)
+
+hmdb.main &lt;- &quot;http://www.hmdb.ca/metabolites?c=hmdb_id&amp;d=up&amp;page=&quot;
+hmdb.main &lt;- paste(hmdb.main, c(2:1681), sep = &quot;&quot;)
+hmdb.main &lt;- c(&quot;http://www.hmdb.ca/metabolites&quot;, hmdb.main)
+
+##从HMDB主页上抓取代谢物的url
+url &lt;- NULL
+for (i in 1:length(hmdb.main)) {
+  cat(i)
+  cat(&quot; &quot;)
+  URL = getURL(hmdb.main[i])
+  doc&lt;-htmlParse(URL,encoding=&quot;utf-8&quot;)
+  xpath &lt;- &quot;//a[@href]/@href&quot;
+  node&lt;-getNodeSet(doc, xpath)
+  url1 &lt;- sapply(node, as.character)
+  url1 &lt;- url1[grep(&quot;metabolites/HMDB&quot;, url1)]
+  url1 &lt;- unique(url1)
+  url &lt;- c(url, url1)
+}
+
+url1 &lt;- paste(&quot;http://www.hmdb.ca/&quot;,url, sep = &quot;&quot;)
+save(url1, file = &quot;url1&quot;)</code></pre>
+<p>下面开始进行代谢物信息爬取。</p>
+<pre><code>library(mailR)
+for (i in 1:400) {
+  cat(paste((i-1)*100+1,&quot;-&quot;,i*100,&quot;/&quot;, length(url1), sep = &quot;&quot;))
+  cat(&quot;\n&quot;)
+  URL &lt;- getURL(url1[((i-1)*100+1):(i*100)])
+  doc &lt;- htmlParse(URL, encoding=&quot;utf-8&quot;)
+  xpath1 &lt;- &quot;//tr&quot;
+  node1 &lt;- getNodeSet(doc, xpath1)
+  node1 &lt;- sapply(node1, xmlValue)
+
+  HMDB_ID[((i-1)*100+1):(i*100)] &lt;-
+    gsub(pattern = &quot;HMDB ID&quot;, replacement = &quot;&quot;,node1[grep(&quot;HMDB ID&quot;, node1)])
+
+  Common_Name[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;Common Name&quot;, &quot;&quot;,node1[grep(&quot;Common Name&quot;, node1)])
+
+  temp &lt;- gsub(&quot;SynonymsValueSource&quot;, &quot;&quot;,node1[grep(&quot;Synonyms&quot;, node1)])
+  temp &lt;- gsub(&quot;Generator&quot;, &quot;;&quot;,temp)
+  temp &lt;- gsub(&quot;ChEMBL&quot;, &quot;;&quot;,temp)
+  temp &lt;- gsub(&quot;ChEBI&quot;, &quot;;&quot;,temp)
+  Synonyms[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;HMDB&quot;, &quot;;&quot;,temp)
+
+  Chemical_Formula[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;Chemical Formula&quot;, &quot;&quot;,node1[grep(&quot;Chemical Formula&quot;, node1)])
+
+  Monoisotopic_Molecular_Weight[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;Monoisotopic Molecular Weight&quot;, &quot;&quot;,node1[grep(&quot;Monoisotopic Molecular Weight&quot;, node1)])
+
+  IUPAC_Name[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;IUPAC Name&quot;, &quot;&quot;,node1[grep(&quot;IUPAC Name&quot;, node1)])
+
+  Traditional_Name[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;Traditional Name&quot;, &quot;&quot;,node1[grep(&quot;Traditional Name&quot;, node1)])
+
+  CAS_Registry_Number[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;CAS Registry Number&quot;, &quot;&quot;,node1[grep(&quot;CAS Registry Number&quot;, node1)])
+
+  Origin[((i-1)*100+1):(i*100)] &lt;-
+    gsub(&quot;Origin&quot;, &quot;&quot;,node1[grep(&quot;Origin&quot;, node1)])
+
+  path &lt;- gsub(&quot;PathwaysNameSMPDB LinkKEGG Link&quot;, &quot;&quot;,node1[grep(&quot;Pathways&quot;, node1)])
+  Pathways[((i-1)*100+1):(i*100)] &lt;-
+    substr(path, 1, stop = regexpr(&quot;SMP&quot;, path)-1)
+
+  ##每100次保存一次
+  if (i*100 %in% seq(100, 60000, by = 100)) {
+    cat(&quot;save data...\n&quot;)
+    save(HMDB_ID,
+         Common_Name,
+         Synonyms,
+         Chemical_Formula,
+         Monoisotopic_Molecular_Weight,
+         IUPAC_Name,
+         Traditional_Name,
+         CAS_Registry_Number,
+         Origin,
+         Pathways,
+         file = paste(&quot;hmdb.data&quot;,i*100))
+
+    send.mail(from = &quot;yourmail1@163.com&quot;,
+              to = c(&quot;youmail20@163.com&quot;),
+              subject = paste(&quot;WZZ GO ON:&quot;, i),
+              body = paste(&quot;WZZ still go on&quot;, i),
+              smtp = list(host.name = &quot;smtp.163.com&quot;, port = 465, user.name = &quot;yourmail1&quot;, passwd = &quot;passward&quot;, ssl = TRUE),
+              authenticate = TRUE,
+              send = TRUE)
+  }
+
+}
+</code></pre>
+<p>因为代谢物信息比较大，可能需要一晚上，因此想到了没爬取100个，就给自己发一封邮件，来对程序进行监控。</p>
+<p>写的比较粗糙，有时间再好好修改一下。</p>
+</div>

@@ -1,0 +1,47 @@
+---
+title: R语言常见统计预测模型
+author: Xiaotao Shen
+date: '2019-10-16'
+slug: r-ml-model
+categories:
+  - R
+tags:
+  - Blog
+  - Academic
+  - Statistical analysis
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+### lasso模型
+
+LASSO回归的特点是在拟合广义线性模型的同时进行变量筛选(variable selection)和复杂度调整(regularization).因此,不论因变量(dependent/response varaible)是连续的(continuous),还是二元或者多元离散的（discrete）,都可以用LASSO回归建模然后预测.这里的变量筛选是指不把所有的变量都放入模型中进行拟合,而是有选择的把变量放入模型从而得到更好的性能参数. 复杂度调整是指通过一系列参数控制模型的复杂度,从而避免过拟合(overfitting). 对于线性模型来说,复杂度与模型的变量数有直接关系,变量数越多,模型复杂度就越高. 更多的变量在拟合时往往可以给出一个看似更好的模型,但是同时也面临过度拟合的危险.此时如果用全新的数据去验证模型(validation),通常效果很差. 一般来说,变量数大于数据点数量很多,或者某一个离散变量有太多独特值时,都有可能过度拟合.
+
+LASSO回归的复杂度主要由参数$\lambda$(lambda)来控制.lambda越大,对变量较多的线性模型的惩罚力度就越大.最终获得一个变量较少的模型.
+
+另外还有一个参数$\alpha$(alpha)用来控制高度相关性模型的性状.LASSO回归时,alpha设置为1.
+
+使用`glmnet`包可以进行LASSO回归.它可以对一系列不同的lambda值进行拟合,每次拟合都用到上一个lambda拟合的结果,从而大大提高了运行效率.
+
+#### 常用参数如下:
+
+* `x`: 自变量数据集,需要为matrix格式,行为观测列为变量.  
+* `y`: 因变量数据集,需要为matrix格式,只有一列.
+* `family`: 应变量类型.如果时连续性变量(也就是要做回归分析),`family`应该为`gussian`(高斯分布/正态分布)或者`poisson`(泊松分布).如果为两分类不连续变量(factor类型,且只有两个levels),应设置为`binomial`.如果时多分类不连续变量(factor类型,且多个levels),则应设置为`multinomial`.如果设置为`cox`,则y应当为一个两列的matrix,列名分别为`time`和`status`,`tiem`为存活时间,`status`为结局状态(1代表死亡,0代表还未死亡).
+* `alpha`: 在LASSO回归中,将其设置为1.
+* `nlambda`: 选取多少个lambda进行优化,默认为100.也就是使用100个lambda值拟合出100个系数不同的模型.
+* `lambda`: 提供lambda值,如果设置该值(一个或者多个),则会覆盖掉自动选择的lambda值.
+* `standardize`: 是否对数据进行标准化(scale),默认为TRUE.推荐自己对数据进行标准化,如果自己做过sca了,这里需要设置为FALSE.
+
+#### 构建模型
+
+构建模型之后,可以将其打印出来观察具体信息.
+
+### References
+
+* https://cosx.org/2016/10/data-mining-1-lasso/

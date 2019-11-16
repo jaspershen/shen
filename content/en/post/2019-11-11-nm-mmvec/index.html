@@ -1,0 +1,80 @@
+---
+title: Learning representations of microbe–metabolite interactions文献总结
+author: Xiaotao Shen
+date: '2019-11-11'
+slug: ''
+categories:
+  - literature
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#abstract"><span class="toc-section-number">1</span> Abstract</a></li>
+<li><a href="#results"><span class="toc-section-number">2</span> Results</a></li>
+<li><a href="#reference"><span class="toc-section-number">3</span> Reference</a></li>
+</ul>
+</div>
+
+<p>文章题目:</p>
+<p>Learning representations of microbe–metabolite interactions</p>
+<p>文章Supplementary</p>
+<p><a href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41592-019-0616-3/MediaObjects/41592_2019_616_MOESM1_ESM.pdf" class="uri">https://static-content.springer.com/esm/art%3A10.1038%2Fs41592-019-0616-3/MediaObjects/41592_2019_616_MOESM1_ESM.pdf</a></p>
+<p>这篇文章中的interactions across omics就是指在统计学意义上的两个变量的关系,如相关性.</p>
+<p>microbe-metabolite relationship就是指微生物和metabolite的相关性.</p>
+<div id="abstract" class="section level1">
+<h1><span class="header-section-number">1</span> Abstract</h1>
+<p>Previous work has been able to predict metabolite abundance profiles from microbe abundance profiles<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. However, because conventional correlation techniques have unacceptably high false-discovery rates, finding meaningful relationships between genes within complex microbiomes and their products in the metabolome is challenging.</p>
+<p>传统的correlation计算方法有着非常大的错误发现率,因此发现microbe和他们的product metabolite还是非常具有挑战性的.</p>
+<p>Relative abundances of thousands of microbes and metabolites can be measured using sequencing technology and mass spectrometry, respectively, resulting in the generation of high-dimensional microbiome and metabolomics datasets.</p>
+<p>microbiome得到的定量信息也是relative abundance.对于metabolome数据,能够测到的metabolite依赖于提取的方法以及分析方法,因此其实我们得到的metabolome是a partial snapshot of the metabolome.并不完全的完整的.</p>
+<p>Quantifying microbe–metabolite interactions from these abundances requires estimating a distribution across all possible microbe–metabolite interactions.</p>
+<p>从相对定量的数据中得到microbe-metabolite interactions需要得到所有的microbe–metabolite interactions的分布.是否可以理解为需要由NULL分布,然后才能知道某个interaction是不是真的interaction?</p>
+<p>Pearson’s and Spearman’s correlations assume independence between interactions.</p>
+<p>我们常用的correlation方法假设两个变量之间的关系和其他的变量是独立的,这是不一定的.所以还有一种办法叫做偏相关性.</p>
+<p>作者举了例子来说明,为什么使用传统的correlation数据会早成错误发现(假阳性或者假阴性).</p>
+<div class="figure">
+<img src="figure1.png" alt="Supplementary Figure 1" />
+<p class="caption">Supplementary Figure 1</p>
+</div>
+<p>我并没有看懂他是什么意思?</p>
+<p>在microbome和metabolite中会有使用某个变量占所有变量的比例来表示这个变量的吗?</p>
+<p>好像并没有啊.</p>
+<p><strong>scale invariance</strong>什么意思?标度不变.</p>
+<p>An alternative approach is to consider co-occurrence probabilities instead of correlations.</p>
+<p>一个可替代的方法是考虑共出现的概率而不是相关性.</p>
+<p>Here, co-occurrence probabilities refer to the conditional probability of observing a metabolite given that a microbe was observed, thereby allowing us to identify the most likely microbe–metabolite interactions.</p>
+<p>共出现概率是指当一个microbe(细菌)在的时候,观察到某个代谢物的条件概率.从而能够鉴定到真正的microbe-metabolite interaction.</p>
+<p>To do this, we propose ‘mmvec’, (microbe–metabolite vecors), a neural network that predicts an entire metabolite abundance profile from a single microbe sequence.</p>
+<p>因此作者提出了<code>mmvec</code>(microbe–metabolite vecors)概念.利用neural network从一个single microbe的sequence来预测整个的metabolite abundance.</p>
+<div class="figure">
+<img src="figure2.png" alt="Figure 1" />
+<p class="caption">Figure 1</p>
+</div>
+<p>这幅图是指如何使用microbe sequence去预测metabolite abundance.</p>
+<p>Through iterative training, mmvec can learn the co-occurrence probabilities between microbes and metabolites. The microbe–metabolite interactions can be ranked and visualized through standard dimensionality reduction interfaces, enabling interpretable findings.</p>
+<p>其实就是给定microbe的中的一个sequnce之后,预测所有metabolite abundance.</p>
+</div>
+<div id="results" class="section level1">
+<h1><span class="header-section-number">2</span> Results</h1>
+</div>
+<div id="reference" class="section level1">
+<h1><span class="header-section-number">3</span> Reference</h1>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Noecker, C. et al. Metabolic model-based integration of microbiome taxonomic and metabolomic profiles elucidates mechanistic links between ecological and metabolic variation. MSystems 1, e00013–e00015 (2016).<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Mallick, H. et al. Predictive metabolomic profiling of microbial communities using amplicon or metagenomic sequences. Nat. Commun. 10, 3136 (2019).<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>

@@ -1,0 +1,52 @@
+---
+title: 使用rayshader包将ggplot2转换为3D图像
+author: Xiaotao Shen
+date: '2019-11-11'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#安装"><span class="toc-section-number">1</span> 安装</a></li>
+<li><a href="#使用"><span class="toc-section-number">2</span> 使用</a></li>
+</ul>
+</div>
+
+<p><code>rayshader</code>包可以将<code>ggplot2</code>图片转换为3D.</p>
+<p>参考原作者帖子:</p>
+<p><a href="https://www.tylermw.com/3d-ggplots-with-rayshader/" class="uri">https://www.tylermw.com/3d-ggplots-with-rayshader/</a></p>
+<div id="安装" class="section level1">
+<h1><span class="header-section-number">1</span> 安装</h1>
+<pre class="r"><code>devtools::install_github(&quot;tylermorganwall/rayshader&quot;)</code></pre>
+</div>
+<div id="使用" class="section level1">
+<h1><span class="header-section-number">2</span> 使用</h1>
+<pre class="r"><code>library(rayshader)
+library(ggplot2)
+library(tidyverse)
+
+gg &lt;- ggplot(diamonds, aes(x, depth)) +
+  stat_density_2d(aes(fill = stat(nlevel)), 
+                  geom = &quot;polygon&quot;,
+                  n = 100,bins = 10,contour = TRUE) +
+  facet_wrap(clarity~.) +
+  scale_fill_viridis_c(option = &quot;A&quot;)
+rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)</code></pre>
+<pre class="r"><code>blogdown::shortcode(&quot;video&quot;, src = &quot;./test.mp4&quot;)</code></pre>
+{{% video src="./test.mp4" %}}
+<pre class="r"><code>blogdown::shortcode(&quot;youtube&quot;, &quot;p4liifrbK8w&quot;)</code></pre>
+{{% youtube "p4liifrbK8w" %}}
+</div>

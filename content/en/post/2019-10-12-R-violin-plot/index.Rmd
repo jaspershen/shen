@@ -1,0 +1,107 @@
+---
+title: R可视化之小提琴图
+author: Xiaotao Shen
+date: '2019-10-12'
+slug: r-violin
+categories:
+  - R
+tags:
+  - Academic
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+> 本文翻译自"The graph gallery"网站,原帖文地址链接:https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html.
+
+## 基础小提琴图绘制
+
+### 使用`ggplot2`包中的`geom_violin()`函数.
+
+```{r}
+library(ggplot2)
+#构建数据
+data <- data.frame(
+  name = c( rep("A",500), rep("B",500), rep("B",500), rep("C",20), rep('D', 100)),
+  value = c( rnorm(500, 10, 5), rnorm(500, 13, 1), rnorm(500, 18, 1), rnorm(20, 25, 4), rnorm(100, 12, 1) )
+)
+
+head(data)
+
+# Most basic violin chart
+p <- 
+  ggplot(data, aes(x = name, y = value, fill = name)) + 
+  geom_violin() +
+  theme_bw()
+
+p
+```
+
+#### 数据格式
+
+注意在使用`geom_violin()`函数构建小提琴图时,数据格式为长数据(long format).每一行时一个观测.一共需要两列:
+
+* 一个分类变量,用于X轴.需要为`factor`格式.   
+* 数值型变量,用于Y轴.
+
+#### 数据转换
+
+如果数据为宽数据格式,需要对其进行转变.可以使用`tidyr`中的`pivot_longer()`函数将其转变为长数据格式.
+
+```{r}
+data_wide <- 
+  iris[ , 1:4]
+library(tidyverse)
+data_long <- 
+  data_wide %>% 
+  tidyr::pivot_longer(cols = everything(), 
+                      names_to = "variable", values_to = "value")
+head(data_long)
+
+library(ggplot2)
+
+data_long %>% 
+  ggplot(., aes(variable, value)) +
+  geom_violin(aes(fill = variable)) +
+  theme_bw()
+
+```
+
+
+## 将小提琴图水平展示
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+  iris[ , 1:4] %>% 
+  tidyr::pivot_longer(cols = everything(), 
+                      names_to = "variable",
+                      values_to = "value") %>% 
+  ggplot(., aes(variable, value)) +
+  geom_violin(aes(fill = variable, colour = variable)) +
+  theme_bw() +
+    theme(legend.position = "none") +
+    coord_flip()
+```
+
+## 小提琴图与箱型图同时展示
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+  iris[ , 1:4] %>% 
+  tidyr::pivot_longer(cols = everything(), 
+                      names_to = "variable",
+                      values_to = "value") %>% 
+  ggplot(., aes(variable, value)) +
+  geom_violin(aes(fill = variable, colour = variable), width = 1.4) +
+    geom_boxplot(fill = NA, width = 0.1, colour = "grey") +
+  theme_bw() +
+    theme(legend.position = "none") +
+    coord_flip()
+```
+

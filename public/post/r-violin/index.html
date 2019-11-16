@@ -564,7 +564,7 @@
             
             <li class="dropdown-item my-0 py-0 mx-0 px-0">
               <a href="/zh/post/r-violin/">
-                <span>中文 (简体)</span>
+                <span>中文</span>
               </a>
             </li>
             
@@ -754,12 +754,12 @@ data &lt;- data.frame(
 
 head(data)</code></pre>
 <pre><code>##   name     value
-## 1    A 13.442412
-## 2    A 24.408517
-## 3    A 11.533638
-## 4    A 13.432713
-## 5    A  7.944787
-## 6    A  5.563351</code></pre>
+## 1    A 14.586213
+## 2    A  8.547782
+## 3    A 17.655333
+## 4    A  5.494113
+## 5    A 15.576023
+## 6    A 12.404492</code></pre>
 <pre class="r"><code># Most basic violin chart
 p &lt;- 
   ggplot(data, aes(x = name, y = value, fill = name)) + 
@@ -767,7 +767,7 @@ p &lt;-
   theme_bw()
 
 p</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <div id="数据格式" class="section level4">
 <h4><span class="header-section-number">0.1.1.1</span> 数据格式</h4>
 <p>注意在使用<code>geom_violin()</code>函数构建小提琴图时,数据格式为长数据(long format).每一行时一个观测.一共需要两列:</p>
@@ -784,7 +784,7 @@ p</code></pre>
   iris[ , 1:4]
 library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ---------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v tibble  2.1.3     v purrr   0.3.2
 ## v tidyr   1.0.0     v dplyr   0.8.3
 ## v readr   1.3.1     v stringr 1.4.0
@@ -792,7 +792,7 @@ library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>data_long &lt;- 
@@ -815,7 +815,7 @@ data_long %&gt;%
   ggplot(., aes(variable, value)) +
   geom_violin(aes(fill = variable)) +
   theme_bw()</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -832,7 +832,7 @@ library(tidyverse)
   theme_bw() +
     theme(legend.position = &quot;none&quot;) +
     coord_flip()</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="小提琴图与箱型图同时展示" class="section level2">
 <h2><span class="header-section-number">0.3</span> 小提琴图与箱型图同时展示</h2>
@@ -849,7 +849,7 @@ library(tidyverse)
     theme(legend.position = &quot;none&quot;) +
     coord_flip()</code></pre>
 <pre><code>## Warning: position_dodge requires non-overlapping x intervals</code></pre>
-<p><img src="/post/2019-10-12-r_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 
     </div>
@@ -905,23 +905,6 @@ library(tidyverse)
             
           
           <li>
-            <a itemprop="sameAs" href="https://www.shenxt.info/files/wechat_QR.jpg" target="_blank" rel="noopener">
-              <i class="fab fa-weixin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
             <a itemprop="sameAs" href="/#contact" >
               <i class="fas fa-envelope"></i>
             </a>
@@ -941,23 +924,6 @@ library(tidyverse)
           <li>
             <a itemprop="sameAs" href="https://www.linkedin.com/in/shenxt/" target="_blank" rel="noopener">
               <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
-              <i class="fab fa-twitter"></i>
             </a>
           </li>
         
@@ -990,6 +956,125 @@ library(tidyverse)
           <li>
             <a itemprop="sameAs" href="https://github.com/jaspershen" target="_blank" rel="noopener">
               <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.researchgate.net/profile/Xiaotao_Shen" target="_blank" rel="noopener">
+              <i class="fab fa-researchgate"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://stackoverflow.com/users/7579484/jasper-shen" target="_blank" rel="noopener">
+              <i class="fab fa-stack-overflow"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.zhihu.com/people/shen-zu-tao-73/activities" target="_blank" rel="noopener">
+              <i class="fab fa-zhihu"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.shenxt.info/files/wechat_QR.jpg" target="_blank" rel="noopener">
+              <i class="fab fa-weixin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.shenxt.info/files/qq_QR.jpg" target="_blank" rel="noopener">
+              <i class="fab fa-qq"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.facebook.com/xiaotao.shen.3" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
             </a>
           </li>
         

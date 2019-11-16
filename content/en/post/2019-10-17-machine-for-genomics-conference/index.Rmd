@@ -1,0 +1,46 @@
+---
+title: Machine for genomics conference
+author: Xiaotao Shen
+date: '2019-10-17'
+slug: machine-for-genomics-conference
+categories:
+  - omics
+tags:
+  - Academic
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+freenome
+
+freenome intergateing innovative science to develop a blood-based cancer test starting with CRC.
+
+cfDNA (cell free DNA).
+
+Interpreting deep learning models of regulatory DNA
+
+Anshul Kundaje
+
+decoding genome function
+
+control elements gene 
+
+ATAC-seq/DNase-seq
+
+ChIP-seq
+
+prediCtive model of regularity DNA
+
+
+Just transform DNA sequence to dummy matrxi.
+
+### Machine learning for biomedical information
+
+hierarchical latent variable models?
+
+

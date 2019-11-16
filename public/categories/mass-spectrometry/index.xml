@@ -13,16 +13,26 @@
       <guid>/post/ms-summary/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ms&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; MS&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#forevacuum-presure-too-high.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Forevacuum presure too high.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;ms&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;MS&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; MS&lt;/h1&gt;
 &lt;div id=&#34;forevacuum-presure-too-high.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Forevacuum presure too high.&lt;/h2&gt;
-&lt;p&gt;两个原因:&lt;/p&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Forevacuum presure too high.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;error1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;几个原因:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;ion transfer tube堵了,洗一下试试.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ion transfer tube堵了,洗一下试试.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;大概率是needle堵了,一般只能重新换个新的needle.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;温度太低,比如320度就不行,温度太低导致离子化程度不够.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;能够做的都做了,还是解决不了,然后冲了大概几个小时,自己变好了….&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;2)大概率是needle堵了,一般只能重新换个新的needle.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

@@ -1,0 +1,58 @@
+---
+title: 使用rayshader包将ggplot2转换为3D图像
+author: Xiaotao Shen
+date: '2019-11-11'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+`rayshader`包可以将`ggplot2`图片转换为3D.
+
+参考原作者帖子:
+
+https://www.tylermw.com/3d-ggplots-with-rayshader/
+
+# 安装
+
+```{r, eval=FALSE}
+devtools::install_github("tylermorganwall/rayshader")
+```
+
+# 使用
+
+```{r, eval=FALSE}
+library(rayshader)
+library(ggplot2)
+library(tidyverse)
+
+gg <- ggplot(diamonds, aes(x, depth)) +
+  stat_density_2d(aes(fill = stat(nlevel)), 
+                  geom = "polygon",
+                  n = 100,bins = 10,contour = TRUE) +
+  facet_wrap(clarity~.) +
+  scale_fill_viridis_c(option = "A")
+rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)
+```
+
+```{r, eval=TRUE}
+blogdown::shortcode("video", src = "./test.mp4")
+```
+
+```{r, eval=TRUE}
+blogdown::shortcode("youtube", "p4liifrbK8w")
+```
+
+
+
+

@@ -5,7 +5,61 @@
     <link>/categories/study/</link>
       <atom:link href="/categories/study/index.xml" rel="self" type="application/rss+xml" />
     <description>Study</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Windows使用Summary</title>
+      <link>/post/2019-11-08-windows-summary/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-08-windows-summary/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#如何在两台电脑间共享文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 如何在两台电脑间共享文件夹?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;如何在两台电脑间共享文件夹&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 如何在两台电脑间共享文件夹?&lt;/h1&gt;
+&lt;p&gt;参考帖子:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jingyan.baidu.com/article/93f9803f3e9788e0e46f55c8.html&#34; class=&#34;uri&#34;&gt;https://jingyan.baidu.com/article/93f9803f3e9788e0e46f55c8.html&lt;/a&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;保证两台电脑在同一个网络中.对于Stanford来说,如果在其他地方,需要连接VPN.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在workstation(电脑B)上打开网络设置.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;figure1.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;选择&lt;code&gt;Sharing options&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;figure2.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;Private&lt;/code&gt;按照下面进行设置.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;figure3.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;All network按照下面设置&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;figure4.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;选择要共享的文件夹,然后右键打开属性.然后选择&lt;code&gt;Share&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;figure5.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;选择&lt;code&gt;Everyone&lt;/code&gt;,然后点击&lt;code&gt;Share&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;figure6.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;8.然后再点击第6步中的&lt;code&gt;Advanced Sharing&lt;/code&gt;.按照下图设置.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure7.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;9.快捷键&lt;code&gt;win + R&lt;/code&gt;打开&lt;code&gt;run&lt;/code&gt;.然后输入B电脑的IPV4地址.然后需要登录,注意,使用的是你在B电脑上的账号和密码登录,有时候注意登录名前需要添加&lt;code&gt;win\&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure8.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;10&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;最终效果如下图.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;figure9.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Markdown cookbook</title>
       <link>/post/markdown-cookbook/</link>
@@ -14,7 +68,30 @@
       <description>
 
 
-
+&lt;div id=&#34;markdown通用技巧&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Markdown通用技巧&lt;/h1&gt;
+&lt;div id=&#34;如何在markdown中使用font&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;如何在markdown中使用font?&lt;/h2&gt;
+&lt;p&gt;参考文档:&lt;a href=&#34;https://sspai.com/post/45217&#34; class=&#34;uri&#34;&gt;https://sspai.com/post/45217&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在markdown文档任意地方插入下面的代码:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt; 
+    &amp;lt;script defer src=&amp;quot;https://use.fontawesome.com/releases/v5.0.13/js/all.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 
+    &amp;lt;script defer src=&amp;quot;https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 
+&amp;lt;/head&amp;gt; 
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://use.fontawesome.com/releases/v5.0.13/css/all.css&amp;quot;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后使用下列语句插入font:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i class=&amp;quot;fa fa-weixin&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示:&lt;i class=&#34;fa fa-weixin&#34;&gt;&lt;/i&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rmarkdown&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Rmarkdown&lt;/h1&gt;
+&lt;head&gt;
+&lt;script defer src=&#34;https://use.fontawesome.com/releases/v5.0.13/js/all.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js&#34;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://use.fontawesome.com/releases/v5.0.13/css/all.css&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

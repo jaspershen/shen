@@ -564,7 +564,7 @@
             
             <li class="dropdown-item my-0 py-0 mx-0 px-0">
               <a href="/zh/post/ggplot2-square-legend/">
-                <span>中文 (简体)</span>
+                <span>中文</span>
               </a>
             </li>
             
@@ -734,30 +734,30 @@
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))</code></pre>
-<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>使用<code>legend.key.height</code>参数来设置:</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl))) +
   theme(legend.key.height = unit(4, &quot;line&quot;))</code></pre>
-<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>可以看到每个key变高了,但是距离并没有变化.我们试试其他类型的legend,比如point.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
   geom_point(aes(colour = factor(cyl)), stat = &quot;count&quot;)</code></pre>
-<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
   geom_point(aes(colour = factor(cyl)), stat = &quot;count&quot;) +
   theme(legend.key.height = unit(10, &quot;mm&quot;))</code></pre>
-<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p><img src="/zh/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <p>从这幅图看的就非常的清楚了,每个legend的图像元素是由<code>key</code>(背景)和指示元素组成的.<code>legend.key.height</code>参数可以改变<code>key</code>的高度,而指示元素则处在key的中间,对于square legend来说,他们其实是和<code>key</code>背景重合的,所以<code>legend.key.height</code>没有办法改变他们之间的距离.</p>
 <p>那如果确实有需要更改这个距离,怎么做呢?想到一个办法只能更改square指示元素的line的宽度(line颜色为白色),从而间接修改他们之间的距离.</p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))</code></pre>
-<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/zh/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl))) +
   theme(legend.key.size = unit(2, &quot;line&quot;)) +
   guides(fill = guide_legend(override.aes = list(size = 3, colour = &quot;white&quot;)))</code></pre>
-<p><img src="/post/2019-09-04-ggplot2-square-legend_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="/zh/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <p>欢迎大家由其他办法的留言讨论.</p>
 
     </div>
@@ -813,23 +813,6 @@
             
           
           <li>
-            <a itemprop="sameAs" href="https://www.shenxt.info/files/wechat_QR.jpg" target="_blank" rel="noopener">
-              <i class="fab fa-weixin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
             <a itemprop="sameAs" href="/#contact" >
               <i class="fas fa-envelope"></i>
             </a>
@@ -849,23 +832,6 @@
           <li>
             <a itemprop="sameAs" href="https://www.linkedin.com/in/shenxt/" target="_blank" rel="noopener">
               <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
-              <i class="fab fa-twitter"></i>
             </a>
           </li>
         
@@ -901,6 +867,125 @@
             </a>
           </li>
         
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.researchgate.net/profile/Xiaotao_Shen" target="_blank" rel="noopener">
+              <i class="fab fa-researchgate"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://stackoverflow.com/users/7579484/jasper-shen" target="_blank" rel="noopener">
+              <i class="fab fa-stack-overflow"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.zhihu.com/people/shen-zu-tao-73/activities" target="_blank" rel="noopener">
+              <i class="fab fa-zhihu"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.shenxt.info/files/wechat_QR.jpg" target="_blank" rel="noopener">
+              <i class="fab fa-weixin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.shenxt.info/files/qq_QR.jpg" target="_blank" rel="noopener">
+              <i class="fab fa-qq"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.facebook.com/xiaotao.shen.3" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -914,13 +999,15 @@
         <h3>Related</h3>
         <ul>
           
-          <li><a href="/post/2019-08-31-/"> 生物统计学学习:逻辑回归</a></li>
+          <li><a href="/post/2019-08-31-logistic-regression/">生物统计学学习:逻辑回归</a></li>
           
-          <li><a href="/post/2019-08-26-/">生物统计学习:简单线性回归模型</a></li>
+          <li><a href="/post/2019-08-26-liner-regression/">生物统计学习:简单线性回归模型</a></li>
           
-          <li><a href="/post/2019-08-25-markdown/">Markdown中输入数学公式</a></li>
+          <li><a href="/post/2019-08-25-math-markdown/">Markdown中输入数学公式</a></li>
           
-          <li><a href="/post/2017-09-09-github-blog/">使用Github和Hexo建独立博客</a></li>
+          <li><a href="/post/2017-02-12-firstblog2017/">2017年的第一篇博客</a></li>
+          
+          <li><a href="/post/2016-11-25-metcleaning/">MetCleaning instruction</a></li>
           
         </ul>
       </div>

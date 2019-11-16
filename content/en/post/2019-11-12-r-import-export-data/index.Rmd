@@ -1,0 +1,42 @@
+---
+title: R读取和输出数据
+author: Xiaotao Shen
+date: '2019-11-11'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# `CSV`文件
+
+## 读取
+
+### `readr`包
+
+`readr`包中有几个函数可以读取`csv`文件.其中第一个就是`read_csv()`函数.另外还有一个与其非常类似的`read_csv2()`函数,唯一区别在于`read_csv()`读取的`csv`文件分隔符是逗号(,),而`read_csv2()`读取的分隔符是分号(;),这在某些欧洲国家会比较常见.需要注意一下.
+
+第一个参数`file`用来指定要读取的文件的路径和名称.
+
+使用`readr`自带的示例数据.
+
+```{r}
+library(readr)
+test <- readr_example(path = "mtcars.csv")
+test
+test <- read_csv(file = test)
+```
+
+可以看到读取数据的时候,显示出了每一列类型,他就按照这个类型对每一列进行解析.
+
+`readr()`默认读取前1000行,并对其类型进行猜测,然后按照猜测的类型对所有数据进行读取解析.
+

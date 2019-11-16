@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="R语言爬虫 虽然相对于python来说，R语言爬虫并不是那么流行，但是对于比较小的数据爬取量，使用R还是很方便的。R的数据爬取比较流行的是利用">
+  <meta name="description" content="0.1 R语言爬虫 0.2 爬取KEGG通路信息 0.3 爬取HMDB通路信息 0.4 爬取HMDB代谢物信息 0.1 R语言爬虫 虽然相对于python来说，R语言爬虫并不是那么">
 
   
   <link rel="alternate" hreflang="zh" href="/zh/post/2016-12-03-keggandhmdb/">
@@ -139,11 +139,12 @@
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/2016-12-03-keggandhmdb/">
   <meta property="og:title" content="使用R爬取HMDB和KEGG数据库 | Xiaotao Shen">
-  <meta property="og:description" content="R语言爬虫 虽然相对于python来说，R语言爬虫并不是那么流行，但是对于比较小的数据爬取量，使用R还是很方便的。R的数据爬取比较流行的是利用"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:description" content="0.1 R语言爬虫 0.2 爬取KEGG通路信息 0.3 爬取HMDB通路信息 0.4 爬取HMDB代谢物信息 0.1 R语言爬虫 虽然相对于python来说，R语言爬虫并不是那么"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
+  <meta property="article:published_time" content="2016-11-25T00:00:00&#43;00:00">
   
-  
+  <meta property="article:modified_time" content="2016-11-25T00:00:00&#43;00:00">
   
 
   
@@ -563,7 +564,7 @@
             
             <li class="dropdown-item my-0 py-0 mx-0 px-0">
               <a href="/zh/post/2016-12-03-keggandhmdb/">
-                <span>中文 (简体)</span>
+                <span>中文</span>
               </a>
             </li>
             
@@ -614,8 +615,8 @@
 
 
 
-<meta content="" itemprop="datePublished">
-<meta content="" itemprop="dateModified">
+<meta content="2016-11-25 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2016-11-25 00:00:00 &#43;0000 UTC" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -628,7 +629,7 @@
     
       
     
-    <time>Jan 1, 0001</time>
+    <time>Nov 25, 2016</time>
   </span>
   
 
@@ -648,6 +649,11 @@
   
 
   
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/r/">R</a></span>
   
 
   
@@ -721,18 +727,24 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<h2 id="r语言爬虫"><strong>R语言爬虫</strong></h2>
+<div id="TOC">
+<ul>
+<li><a href="#r语言爬虫"><span class="toc-section-number">0.1</span> <strong>R语言爬虫</strong></a></li>
+<li><a href="#爬取kegg通路信息"><span class="toc-section-number">0.2</span> <strong>爬取KEGG通路信息</strong></a></li>
+<li><a href="#爬取hmdb通路信息"><span class="toc-section-number">0.3</span> <strong>爬取HMDB通路信息</strong></a></li>
+<li><a href="#爬取hmdb代谢物信息"><span class="toc-section-number">0.4</span> <strong>爬取HMDB代谢物信息</strong></a></li>
+</ul>
+</div>
 
+<div id="r语言爬虫" class="section level2">
+<h2><span class="header-section-number">0.1</span> <strong>R语言爬虫</strong></h2>
 <hr />
-
 <p>虽然相对于python来说，R语言爬虫并不是那么流行，但是对于比较小的数据爬取量，使用R还是很方便的。R的数据爬取比较流行的是利用XML和RCurl包进行爬取，在这篇博客里面，我就利用XML和RCurl包进行KEGG和HMDB的数据爬取。</p>
-
-<h2 id="爬取kegg通路信息"><strong>爬取KEGG通路信息</strong></h2>
-
+</div>
+<div id="爬取kegg通路信息" class="section level2">
+<h2><span class="header-section-number">0.2</span> <strong>爬取KEGG通路信息</strong></h2>
 <hr />
-
 <p>因为我需要的信息是KEGG的通路信息，比较简单，也就是每个通路包含哪些代谢物，只要人的metaboloic pathway，因此，我需要先将KEGG中的通路的网页链接拿到。</p>
-
 <pre><code>library(XML)
 library(RCurl)
 ##从kegg主页上抓取代谢通路的url
@@ -760,7 +772,7 @@ for (i in 1:length(url3)) {
   URL &lt;- paste(&quot;http://www.genome.jp&quot;, url3[i], sep = &quot;&quot;)
   URL = getURL(URL)
   doc&lt;-htmlParse(URL,encoding=&quot;utf-8&quot;)
-  xpath &lt;- &quot;//option[@value='hsa']&quot;
+  xpath &lt;- &quot;//option[@value=&#39;hsa&#39;]&quot;
   node&lt;-getNodeSet(doc, xpath)
   if (length(node) ==0 ) {
     cat(&quot;No human pathwat.&quot;)
@@ -774,17 +786,14 @@ for (i in 1:length(url3)) {
     pathway.name[i] &lt;- xmlValue(node[[1]])
     pathway.name[i] &lt;- substr(pathway.name[i], start = 2, stop = nchar(pathway.name[i])-1)
 
-    xpath2 &lt;- &quot;//area[@shape='circle']/@title&quot;
+    xpath2 &lt;- &quot;//area[@shape=&#39;circle&#39;]/@title&quot;
     node&lt;-getNodeSet(doc, xpath2)
     metabolite &lt;- lapply(node, function(x) as.character(x))
     metabolite.name[[i]] &lt;- substr(metabolite, start = 9, nchar(metabolite)-1)
     metabolite.id[[i]] &lt;- substr(metabolite, start = 1, stop = 6)
   }
-}
-</code></pre>
-
+}</code></pre>
 <p>下面对爬取到的代谢通路进行筛选。</p>
-
 <pre><code>idx &lt;- which(!is.na(pathway.name))
 pathway.name1 &lt;- pathway.name[idx]
 metabolite.id1 &lt;- metabolite.id[idx]
@@ -792,11 +801,8 @@ metabolite.name1 &lt;- metabolite.name[idx]
 
 pathway.name2 &lt;- pathway.name1[-c(83,84)]
 metabolite.id2 &lt;- metabolite.id1[-c(83,84)]
-metabolite.name2 &lt;- metabolite.name1[-c(83,84)]
-</code></pre>
-
+metabolite.name2 &lt;- metabolite.name1[-c(83,84)]</code></pre>
 <p>将爬取到的信息保存输出。</p>
-
 <pre><code>met.name &lt;- NULL
 met.id &lt;- NULL
 path.name &lt;- NULL
@@ -822,15 +828,12 @@ kegg.met[[3]] &lt;- metabolite.id2
 
 names(kegg.met) &lt;- c(&quot;gs&quot;, &quot;pathwaynames&quot;, &quot;metid&quot;)
 
-save(kegg.met, file = &quot;kegg.met&quot;)
-</code></pre>
-
-<h2 id="爬取hmdb通路信息"><strong>爬取HMDB通路信息</strong></h2>
-
+save(kegg.met, file = &quot;kegg.met&quot;)</code></pre>
+</div>
+<div id="爬取hmdb通路信息" class="section level2">
+<h2><span class="header-section-number">0.3</span> <strong>爬取HMDB通路信息</strong></h2>
 <hr />
-
 <p>首先爬取HMDB的通路信息。</p>
-
 <pre><code>##抓取HMDB通路信息
 library(XML)
 library(RCurl)
@@ -849,7 +852,7 @@ for (i in 40:length(hmdb.main)) {
   cat(&quot;:&quot;)
   URL = getURL(hmdb.main[i])
   doc&lt;-htmlParse(URL,encoding=&quot;utf-8&quot;)
-  xpath1 &lt;- &quot;//div[@class='panel-heading']&quot;
+  xpath1 &lt;- &quot;//div[@class=&#39;panel-heading&#39;]&quot;
   node1 &lt;- getNodeSet(doc, xpath1)
   pathway.name &lt;- sapply(node1, xmlValue)
 
@@ -858,7 +861,7 @@ for (i in 40:length(hmdb.main)) {
 
   path.name[[i]] &lt;- pathway.name
 
-  xpath2 &lt;- &quot;//div[@class='panel-body']&quot;
+  xpath2 &lt;- &quot;//div[@class=&#39;panel-body&#39;]&quot;
   node2 &lt;- getNodeSet(doc, xpath2)
 
   metabolite &lt;- sapply(node2, xmlValue)
@@ -877,7 +880,7 @@ for (i in 40:length(hmdb.main)) {
 
   metabolite.id[[i]] &lt;- met.id
 
-  xpath.a &lt;- &quot;//a[@class='link-out']/@href&quot;
+  xpath.a &lt;- &quot;//a[@class=&#39;link-out&#39;]/@href&quot;
   node&lt;-getNodeSet(doc, xpath.a)
 
   url1 &lt;- sapply(node, as.character)
@@ -892,11 +895,11 @@ for (i in 40:length(hmdb.main)) {
     cat(paste(&quot;t:&quot;,t));cat(&quot; &quot;)
     URL = getURL(url1[t])
     doc &lt;- htmlParse(URL,encoding=&quot;utf-8&quot;)
-    xpath &lt;- &quot;//div[@class='species']/text()&quot;
+    xpath &lt;- &quot;//div[@class=&#39;species&#39;]/text()&quot;
     node &lt;- getNodeSet(doc, xpath)
     species[t] &lt;- xmlValue(node[[1]])
 
-    xpath &lt;- &quot;//div[@id='des_subject']/text()&quot;
+    xpath &lt;- &quot;//div[@id=&#39;des_subject&#39;]/text()&quot;
     node &lt;- getNodeSet(doc, xpath)
     metabolic[t] &lt;- xmlValue(node[[1]])
 
@@ -905,11 +908,8 @@ for (i in 40:length(hmdb.main)) {
   spec[[i]] &lt;- species
   path.class[[i]] &lt;- metabolic
 
-}
-</code></pre>
-
+}</code></pre>
 <p>对爬取到的代谢通路进行筛选。</p>
-
 <pre><code>save(path.name, file = &quot;path.name&quot;)
 save(metabolite.id, file = &quot;metabolite.id&quot;)
 save(spec, file = &quot;spec&quot;)
@@ -960,15 +960,12 @@ for (i in 1:length(pathway.name)) {
 pathway.name &lt;- a
 
 hmdb.met &lt;- list(gs = metabolite.name, pathwaynames = pathway.name, id = metabolite.ID)
-save(hmdb.met, file = &quot;hmdb.met&quot;)
-</code></pre>
-
-<h2 id="爬取hmdb代谢物信息"><strong>爬取HMDB代谢物信息</strong></h2>
-
+save(hmdb.met, file = &quot;hmdb.met&quot;)</code></pre>
+</div>
+<div id="爬取hmdb代谢物信息" class="section level2">
+<h2><span class="header-section-number">0.4</span> <strong>爬取HMDB代谢物信息</strong></h2>
 <hr />
-
 <p>首先，获得所有代谢物的页面链接。</p>
-
 <pre><code>###抓取HMDB代谢物信息
 library(XML)
 library(RCurl)
@@ -993,11 +990,8 @@ for (i in 1:length(hmdb.main)) {
 }
 
 url1 &lt;- paste(&quot;http://www.hmdb.ca/&quot;,url, sep = &quot;&quot;)
-save(url1, file = &quot;url1&quot;)
-</code></pre>
-
+save(url1, file = &quot;url1&quot;)</code></pre>
 <p>下面开始进行代谢物信息爬取。</p>
-
 <pre><code>library(mailR)
 for (i in 1:400) {
   cat(paste((i-1)*100+1,&quot;-&quot;,i*100,&quot;/&quot;, length(url1), sep = &quot;&quot;))
@@ -1068,16 +1062,22 @@ for (i in 1:400) {
   }
 
 }
-
 </code></pre>
-
 <p>因为代谢物信息比较大，可能需要一晚上，因此想到了没爬取100个，就给自己发一封邮件，来对程序进行监控。</p>
-
 <p>写的比较粗糙，有时间再好好修改一下。</p>
+</div>
 
     </div>
 
     
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/blog/">Blog</a>
+  
+  <a class="badge badge-light" href="/tags/chinese/">Chinese</a>
+  
+</div>
 
 
 
@@ -1122,23 +1122,6 @@ for (i in 1:400) {
             
           
           <li>
-            <a itemprop="sameAs" href="https://www.shenxt.info/files/wechat_QR.jpg" target="_blank" rel="noopener">
-              <i class="fab fa-weixin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
             <a itemprop="sameAs" href="/#contact" >
               <i class="fas fa-envelope"></i>
             </a>
@@ -1158,23 +1141,6 @@ for (i in 1:400) {
           <li>
             <a itemprop="sameAs" href="https://www.linkedin.com/in/shenxt/" target="_blank" rel="noopener">
               <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
-              <i class="fab fa-twitter"></i>
             </a>
           </li>
         
@@ -1210,6 +1176,125 @@ for (i in 1:400) {
             </a>
           </li>
         
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.researchgate.net/profile/Xiaotao_Shen" target="_blank" rel="noopener">
+              <i class="fab fa-researchgate"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://stackoverflow.com/users/7579484/jasper-shen" target="_blank" rel="noopener">
+              <i class="fab fa-stack-overflow"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.zhihu.com/people/shen-zu-tao-73/activities" target="_blank" rel="noopener">
+              <i class="fab fa-zhihu"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.shenxt.info/files/wechat_QR.jpg" target="_blank" rel="noopener">
+              <i class="fab fa-weixin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.shenxt.info/files/qq_QR.jpg" target="_blank" rel="noopener">
+              <i class="fab fa-qq"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/JasperShen1990" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.facebook.com/xiaotao.shen.3" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -1217,6 +1302,22 @@ for (i in 1:400) {
 
 
       
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/2016-11-25-metcleaning/">MetCleaning instruction</a></li>
+          
+          <li><a href="/post/2017-09-09-github-blog/">使用Github和Hexo建独立博客</a></li>
+          
+          <li><a href="/post/2016-11-25-first-blog/">我的第一篇博客</a></li>
+          
+          <li><a href="/post/2012-02-22-github-pages/">使用Github Pages建独立博客</a></li>
+          
+        </ul>
+      </div>
       
     
 

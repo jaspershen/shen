@@ -5,7 +5,1404 @@
     <link>/tags/chinese/</link>
       <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
     <description>Chinese</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>KEGG数据库总结</title>
+      <link>/post/2019-11-14-kegg/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-14-kegg/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#kegg-pathway数据库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; KEGG Pathway数据库&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#背景&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 背景&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#kgml的overview&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; &lt;code&gt;KGML&lt;/code&gt;的overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何获得某个pathwaykgml文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; 如何获得某个pathway&lt;code&gt;KGML&lt;/code&gt;文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pathway&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4&lt;/span&gt; Pathway&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#pathway-element&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4.1&lt;/span&gt; Pathway element&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#entry条目&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.5&lt;/span&gt; Entry(条目)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#entry-element&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.5.1&lt;/span&gt; Entry element&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#relation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.6&lt;/span&gt; Relation&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#relation元素&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.6.1&lt;/span&gt; relation元素&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reaction反应&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.7&lt;/span&gt; Reaction反应&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;kegg-pathway数据库&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; KEGG Pathway数据库&lt;/h1&gt;
+&lt;p&gt;KEGG pathway的数据是使用&lt;code&gt;KGML&lt;/code&gt;(KEGG Markup Language)格式存储下来的.详细的信息可以阅读官方文档.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.kegg.jp/kegg/xml/docs/&#34; class=&#34;uri&#34;&gt;https://www.kegg.jp/kegg/xml/docs/&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;背景&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 背景&lt;/h2&gt;
+&lt;p&gt;KEGG pathway有两个类型.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;reference pathways&lt;/strong&gt;: 手动画的.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;organism-specific pathways&lt;/strong&gt;: 使用计算方法自动从reference pathway得到的.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在&lt;code&gt;KGML&lt;/code&gt;文件中,&lt;code&gt;entry&lt;/code&gt;指的是node,而&lt;code&gt;relation&lt;/code&gt;和&lt;code&gt;reaction&lt;/code&gt;指的是整个网络的边.在KEGG pathway中,矩形表示基因(也可以认为是gene的产物蛋白质),而circle代表的是metabolite.&lt;/p&gt;
+&lt;p&gt;如果网络中只有&lt;code&gt;entry&lt;/code&gt;和&lt;code&gt;relation&lt;/code&gt;,则该网络称为&lt;code&gt;protein network&lt;/code&gt;.如果只有&lt;code&gt;entry&lt;/code&gt;和&lt;code&gt;reaction&lt;/code&gt;,则称为&lt;code&gt;chemical network&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;所以一般来说,可以用两种方式来表示metabolic pathway:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;metabolic pathways viewed as both protein networks and chemical networks and&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;regulatory pathways viewed as protein networks only.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;kgml的overview&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; &lt;code&gt;KGML&lt;/code&gt;的overview&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;overview.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这幅图是整个&lt;code&gt;KGML&lt;/code&gt;的总览.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;如何获得某个pathwaykgml文件&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; 如何获得某个pathway&lt;code&gt;KGML&lt;/code&gt;文件&lt;/h2&gt;
+&lt;p&gt;使用R包&lt;code&gt;KEGGlincs&lt;/code&gt;可以下载pathway的&lt;code&gt;KGML&lt;/code&gt;文件.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(KEGGREST)
+library(KEGGlincs)
+###
+#获得所有has的pathway ID
+path_id &amp;lt;- KEGGREST::keggList(database = &amp;quot;pathway&amp;quot;, 
+                              organism = &amp;quot;hsa&amp;quot;)
+head(path_id)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                                                     path:hsa00010 
+##             &amp;quot;Glycolysis / Gluconeogenesis - Homo sapiens (human)&amp;quot; 
+##                                                     path:hsa00020 
+##                &amp;quot;Citrate cycle (TCA cycle) - Homo sapiens (human)&amp;quot; 
+##                                                     path:hsa00030 
+##                &amp;quot;Pentose phosphate pathway - Homo sapiens (human)&amp;quot; 
+##                                                     path:hsa00040 
+## &amp;quot;Pentose and glucuronate interconversions - Homo sapiens (human)&amp;quot; 
+##                                                     path:hsa00051 
+##          &amp;quot;Fructose and mannose metabolism - Homo sapiens (human)&amp;quot; 
+##                                                     path:hsa00052 
+##                     &amp;quot;Galactose metabolism - Homo sapiens (human)&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;path_id &amp;lt;- 
+  path_id %&amp;gt;% 
+  names() %&amp;gt;% 
+  unique() %&amp;gt;% 
+  stringr::str_replace(&amp;quot;path:&amp;quot;, &amp;quot;&amp;quot;)
+head(path_id)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;hsa00010&amp;quot; &amp;quot;hsa00020&amp;quot; &amp;quot;hsa00030&amp;quot; &amp;quot;hsa00040&amp;quot; &amp;quot;hsa00051&amp;quot; &amp;quot;hsa00052&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##下载kgml文件并进行解析
+temp_kgml &amp;lt;- 
+  KEGGlincs::get_KGML(pathwayid = path_id[1])
+class(temp_kgml)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;KEGGPathway&amp;quot;
+## attr(,&amp;quot;package&amp;quot;)
+## [1] &amp;quot;KEGGgraph&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## KEGG Pathway
+## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## ------------------------------------------------------------
+## Statistics:
+##  100 node(s)
+##  89 edge(s)
+##  35 reaction(s)
+## ------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;get_KGML()&lt;/code&gt;函数其实分别使用了&lt;code&gt;KEGGREST&lt;/code&gt;包中的&lt;code&gt;keggGet()&lt;/code&gt;函数来下载的,然后使用&lt;code&gt;KEGGgraph&lt;/code&gt;包中的&lt;code&gt;paraseKGML()&lt;/code&gt;函数来解析.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml2 &amp;lt;-
+  KEGGREST::keggGet(dbentries = path_id[1], option = &amp;quot;kgml&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## No encoding supplied: defaulting to UTF-8.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;class(temp_kgml2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;character&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml2 &amp;lt;- 
+  KEGGgraph::parseKGML(file = temp_kgml2)
+temp_kgml2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## KEGG Pathway
+## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## ------------------------------------------------------------
+## Statistics:
+##  100 node(s)
+##  89 edge(s)
+##  35 reaction(s)
+## ------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pathway&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4&lt;/span&gt; Pathway&lt;/h2&gt;
+&lt;div id=&#34;pathway-element&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4.1&lt;/span&gt; Pathway element&lt;/h3&gt;
+&lt;p&gt;一共有六个属性.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Attribute.name
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Explanation
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+name
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Pathway ID
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+org
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ko/ec/org ID
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+number
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pathway ID numebr
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+title
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pathway title
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+image
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pathway figure link
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+link
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pathway link
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;我们可以下载pathway的图片.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;image_link &amp;lt;- slot(slot(temp_kgml, &amp;quot;pathwayInfo&amp;quot;), &amp;quot;image&amp;quot;)
+image_link&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;download.file(url = image_link, 
+              destfile = basename(image_link), 
+              mode = &amp;quot;wb&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;hsa00010.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;entry条目&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.5&lt;/span&gt; Entry(条目)&lt;/h2&gt;
+&lt;div id=&#34;entry-element&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.5.1&lt;/span&gt; Entry element&lt;/h3&gt;
+&lt;p&gt;包括了网络中的node的属性.属性包括以下内容.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Attribute.name
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Explanation
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+id
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ID of the entry
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+name
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+KEGG ID of the entry
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+type
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Type of the entry
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+link
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Link of the entry
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reaction
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+The KEGG ID of corresponding reaction
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#整体信息
+temp_kgml@pathwayInfo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#分别的属性
+temp_kgml@pathwayInfo@name&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;path:hsa00010&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@pathwayInfo@org&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;hsa&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@pathwayInfo@number&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;00010&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@pathwayInfo@title&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Glycolysis / Gluconeogenesis&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@pathwayInfo@image&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@pathwayInfo@link&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;http://www.kegg.jp/kegg-bin/show_pathway?hsa00010&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;图片下载链接:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;pathway详细信息链接:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.kegg.jp/kegg-bin/show_pathway?hsa00010&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我们下面看看pathwa中node的信息.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## KEGG Pathway
+## [ Title ]: Glycolysis / Gluconeogenesis
+## [ Name ]: path:hsa00010
+## [ Organism ]: hsa
+## [ Number ] :00010
+## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## ------------------------------------------------------------
+## Statistics:
+##  100 node(s)
+##  89 edge(s)
+##  35 reaction(s)
+## ------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到这个pathway含有node,edge还有reaction.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# node
+temp_kgml@nodes$`18`&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## KEGG Node (Entry &amp;#39;18&amp;#39;):
+## ------------------------------------------------------------
+## [ displayName ]: ALDOA, ALDA, GSD12, HEL-S-87p...
+## [ Name ]: hsa:226,hsa:229,hsa:230
+## [ Type ]: gene
+## [ Link ]: http://www.kegg.jp/dbget-bin/www_bget?hsa:226+hsa:229+hsa:230
+## ------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#edge
+temp_kgml@edges[[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   KEGG Edge (Type: ECrel):
+## ------------------------------------------------------------
+## [ Entry 1 ID ]: 73
+## [ Entry 2 ID ]: 75
+## [ Subtype ]: 
+##   [ Subtype name ]: compound
+##   [ Subtype value ]: 90
+## ------------------------------------------------------------&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#reaction
+temp_kgml@reactions[[1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## KEGG Reaction(rn:R00710)
+## ------------------------------------------------------------
+## [ Name ]: rn:R00710
+## [ Type ]: reversible
+## [ Substrate Name ]: cpd:C00084
+## [ Product Name ]: cpd:C00033&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;type属性的详细解释&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.5.1.1&lt;/span&gt; Type属性的详细解释&lt;/h4&gt;
+&lt;p&gt;在pathway中,如果一个pathway链接到另外一个pathway,那么pathway也是会被作为一个node展示出来.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Attribute.name
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Explanation
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ortholog
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is a KO (ortholog group)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+enzyme
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is an enzyme
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+reaction
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is a reaction
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+gene
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is a gene product (mostly a protein)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+group
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is a complex of gene products (mostly a protein complex)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+compound
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is a chemical compound (including a glycan)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+map
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is a linked pathway map
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+brite
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is a linked brite hierarchy
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+other
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the node is an unclassified type
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;relation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.6&lt;/span&gt; Relation&lt;/h2&gt;
+&lt;div id=&#34;relation元素&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.6.1&lt;/span&gt; relation元素&lt;/h3&gt;
+&lt;p&gt;这里面的relation不包括我们所知道的酶催化代谢物的联系.只包括两个proteins(gene products)或者两个KOs(ortholog groups)或者protein和compound&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Attribute.name
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Explanation
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+entry1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the first (from) entry that defines this relation
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+entry2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the second (to) entry that defines this relation
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+type
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+the type of this relation
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div id=&#34;type属性&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.6.1.1&lt;/span&gt; Type属性&lt;/h4&gt;
+&lt;p&gt;relation的type一共有5个,分别是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;ECrel&lt;/strong&gt;: enzyme-enzyme relation, indicating two enzymes catalyzing successive reaction steps.代表的是两个酶之间的联系,比如enzyme1-metabolite1-enzyme2-metabolite2.那么enzyme1-enzyme2之间的关系realtion就是&lt;code&gt;ECrel&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;PPrel&lt;/strong&gt;: protein-protein interaction, such as binding and modification.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;GErel&lt;/strong&gt;: gene expression interaction, indicating relation of transcription factor and target gene product.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;PCrel&lt;/strong&gt;: protein-compound interaction,注意这个关系不是enzyme催化的关系.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;maplink&lt;/strong&gt;: 跟另外一个pathway的联系.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;subtype-element&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.6.1.2&lt;/span&gt; subtype element&lt;/h4&gt;
+&lt;p&gt;每个relatio还有一个subtype属性.这个属性用来对relation做进一步的说明.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;: interation/relation的信息.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;包含以下几种信息.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;其中&lt;code&gt;compound&lt;/code&gt;是指这个relation其实是两个enzyme.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@edges[[1]]@entry1ID&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;73&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@edges[[1]]@entry2ID&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;75&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@edges[[1]]@type&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;ECrel&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@edges[[1]]@subtype&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $subtype
+##   [ Subtype name ]: compound
+##   [ Subtype value ]: 90&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个relation就是两个enzyme连接起来的.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reaction反应&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.7&lt;/span&gt; Reaction反应&lt;/h2&gt;
+&lt;p&gt;reaction和relation很类似.不一样的是type属性.&lt;/p&gt;
+&lt;p&gt;type属性包括&lt;code&gt;reversible&lt;/code&gt;和&lt;code&gt;irreversible&lt;/code&gt;.分别表示可逆反应和不可逆反映.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@reactions[[1]]@name&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;rn:R00710&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@reactions[[1]]@type&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;reversible&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@reactions[[1]]@substrateName&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;cpd:C00084&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;temp_kgml@reactions[[1]]@productName&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;cpd:C00033&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Learning representations of microbe–metabolite interactions文献总结</title>
+      <link>/post/2019-11-11-nm-mmvec/</link>
+      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-11-nm-mmvec/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#abstract&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Abstract&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#results&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Results&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reference&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;文章题目:&lt;/p&gt;
+&lt;p&gt;Learning representations of microbe–metabolite interactions&lt;/p&gt;
+&lt;p&gt;文章Supplementary&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://static-content.springer.com/esm/art%3A10.1038%2Fs41592-019-0616-3/MediaObjects/41592_2019_616_MOESM1_ESM.pdf&#34; class=&#34;uri&#34;&gt;https://static-content.springer.com/esm/art%3A10.1038%2Fs41592-019-0616-3/MediaObjects/41592_2019_616_MOESM1_ESM.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这篇文章中的interactions across omics就是指在统计学意义上的两个变量的关系,如相关性.&lt;/p&gt;
+&lt;p&gt;microbe-metabolite relationship就是指微生物和metabolite的相关性.&lt;/p&gt;
+&lt;div id=&#34;abstract&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Abstract&lt;/h1&gt;
+&lt;p&gt;Previous work has been able to predict metabolite abundance profiles from microbe abundance profiles&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; &lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;. However, because conventional correlation techniques have unacceptably high false-discovery rates, finding meaningful relationships between genes within complex microbiomes and their products in the metabolome is challenging.&lt;/p&gt;
+&lt;p&gt;传统的correlation计算方法有着非常大的错误发现率,因此发现microbe和他们的product metabolite还是非常具有挑战性的.&lt;/p&gt;
+&lt;p&gt;Relative abundances of thousands of microbes and metabolites can be measured using sequencing technology and mass spectrometry, respectively, resulting in the generation of high-dimensional microbiome and metabolomics datasets.&lt;/p&gt;
+&lt;p&gt;microbiome得到的定量信息也是relative abundance.对于metabolome数据,能够测到的metabolite依赖于提取的方法以及分析方法,因此其实我们得到的metabolome是a partial snapshot of the metabolome.并不完全的完整的.&lt;/p&gt;
+&lt;p&gt;Quantifying microbe–metabolite interactions from these abundances requires estimating a distribution across all possible microbe–metabolite interactions.&lt;/p&gt;
+&lt;p&gt;从相对定量的数据中得到microbe-metabolite interactions需要得到所有的microbe–metabolite interactions的分布.是否可以理解为需要由NULL分布,然后才能知道某个interaction是不是真的interaction?&lt;/p&gt;
+&lt;p&gt;Pearson’s and Spearman’s correlations assume independence between interactions.&lt;/p&gt;
+&lt;p&gt;我们常用的correlation方法假设两个变量之间的关系和其他的变量是独立的,这是不一定的.所以还有一种办法叫做偏相关性.&lt;/p&gt;
+&lt;p&gt;作者举了例子来说明,为什么使用传统的correlation数据会早成错误发现(假阳性或者假阴性).&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;figure1.png&#34; alt=&#34;Supplementary Figure 1&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Supplementary Figure 1&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;我并没有看懂他是什么意思?&lt;/p&gt;
+&lt;p&gt;在microbome和metabolite中会有使用某个变量占所有变量的比例来表示这个变量的吗?&lt;/p&gt;
+&lt;p&gt;好像并没有啊.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;scale invariance&lt;/strong&gt;什么意思?标度不变.&lt;/p&gt;
+&lt;p&gt;An alternative approach is to consider co-occurrence probabilities instead of correlations.&lt;/p&gt;
+&lt;p&gt;一个可替代的方法是考虑共出现的概率而不是相关性.&lt;/p&gt;
+&lt;p&gt;Here, co-occurrence probabilities refer to the conditional probability of observing a metabolite given that a microbe was observed, thereby allowing us to identify the most likely microbe–metabolite interactions.&lt;/p&gt;
+&lt;p&gt;共出现概率是指当一个microbe(细菌)在的时候,观察到某个代谢物的条件概率.从而能够鉴定到真正的microbe-metabolite interaction.&lt;/p&gt;
+&lt;p&gt;To do this, we propose ‘mmvec’, (microbe–metabolite vecors), a neural network that predicts an entire metabolite abundance profile from a single microbe sequence.&lt;/p&gt;
+&lt;p&gt;因此作者提出了&lt;code&gt;mmvec&lt;/code&gt;(microbe–metabolite vecors)概念.利用neural network从一个single microbe的sequence来预测整个的metabolite abundance.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;figure2.png&#34; alt=&#34;Figure 1&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure 1&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;这幅图是指如何使用microbe sequence去预测metabolite abundance.&lt;/p&gt;
+&lt;p&gt;Through iterative training, mmvec can learn the co-occurrence probabilities between microbes and metabolites. The microbe–metabolite interactions can be ranked and visualized through standard dimensionality reduction interfaces, enabling interpretable findings.&lt;/p&gt;
+&lt;p&gt;其实就是给定microbe的中的一个sequnce之后,预测所有metabolite abundance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Results&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reference&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Reference&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Noecker, C. et al. Metabolic model-based integration of microbiome taxonomic and metabolomic profiles elucidates mechanistic links between ecological and metabolic variation. MSystems 1, e00013–e00015 (2016).&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Mallick, H. et al. Predictive metabolomic profiling of microbial communities using amplicon or metagenomic sequences. Nat. Commun. 10, 3136 (2019).&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R读取和输出数据</title>
+      <link>/post/2019-11-12-r-import-export-data/</link>
+      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-12-r-import-export-data/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#csv文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; &lt;code&gt;CSV&lt;/code&gt;文件&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#读取&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 读取&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#readr包&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; &lt;code&gt;readr&lt;/code&gt;包&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;csv文件&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; &lt;code&gt;CSV&lt;/code&gt;文件&lt;/h1&gt;
+&lt;div id=&#34;读取&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 读取&lt;/h2&gt;
+&lt;div id=&#34;readr包&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; &lt;code&gt;readr&lt;/code&gt;包&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;readr&lt;/code&gt;包中有几个函数可以读取&lt;code&gt;csv&lt;/code&gt;文件.其中第一个就是&lt;code&gt;read_csv()&lt;/code&gt;函数.另外还有一个与其非常类似的&lt;code&gt;read_csv2()&lt;/code&gt;函数,唯一区别在于&lt;code&gt;read_csv()&lt;/code&gt;读取的&lt;code&gt;csv&lt;/code&gt;文件分隔符是逗号(,),而&lt;code&gt;read_csv2()&lt;/code&gt;读取的分隔符是分号(;),这在某些欧洲国家会比较常见.需要注意一下.&lt;/p&gt;
+&lt;p&gt;第一个参数&lt;code&gt;file&lt;/code&gt;用来指定要读取的文件的路径和名称.&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;readr&lt;/code&gt;自带的示例数据.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(readr)
+test &amp;lt;- readr_example(path = &amp;quot;mtcars.csv&amp;quot;)
+test&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;D:/software/R/R-3.6.0/library/readr/extdata/mtcars.csv&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test &amp;lt;- read_csv(file = test)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Parsed with column specification:
+## cols(
+##   mpg = col_double(),
+##   cyl = col_double(),
+##   disp = col_double(),
+##   hp = col_double(),
+##   drat = col_double(),
+##   wt = col_double(),
+##   qsec = col_double(),
+##   vs = col_double(),
+##   am = col_double(),
+##   gear = col_double(),
+##   carb = col_double()
+## )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到读取数据的时候,显示出了每一列类型,他就按照这个类型对每一列进行解析.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;readr()&lt;/code&gt;默认读取前1000行,并对其类型进行猜测,然后按照猜测的类型对所有数据进行读取解析.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用rayshader包将ggplot2转换为3D图像</title>
+      <link>/post/2019-11-11-ggpot2-3d/</link>
+      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-11-ggpot2-3d/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 使用&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;rayshader&lt;/code&gt;包可以将&lt;code&gt;ggplot2&lt;/code&gt;图片转换为3D.&lt;/p&gt;
+&lt;p&gt;参考原作者帖子:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.tylermw.com/3d-ggplots-with-rayshader/&#34; class=&#34;uri&#34;&gt;https://www.tylermw.com/3d-ggplots-with-rayshader/&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;安装&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::install_github(&amp;quot;tylermorganwall/rayshader&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 使用&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rayshader)
+library(ggplot2)
+library(tidyverse)
+
+gg &amp;lt;- ggplot(diamonds, aes(x, depth)) +
+  stat_density_2d(aes(fill = stat(nlevel)), 
+                  geom = &amp;quot;polygon&amp;quot;,
+                  n = 100,bins = 10,contour = TRUE) +
+  facet_wrap(clarity~.) +
+  scale_fill_viridis_c(option = &amp;quot;A&amp;quot;)
+rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::shortcode(&amp;quot;video&amp;quot;, src = &amp;quot;./test.mp4&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+&lt;video autoplay loop &gt;
+  &lt;source src=&#34;./test.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::shortcode(&amp;quot;youtube&amp;quot;, &amp;quot;p4liifrbK8w&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/p4liifrbK8w&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>在美国购买车险</title>
+      <link>/post/2019-11-10-car-insurance/</link>
+      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-10-car-insurance/</guid>
+      <description>
+
+
+&lt;p&gt;美国车必须购买车险,否则不能上路,有非常多的公司,可以直接在网上quote(报价),可以根据自己的需要选择不同的套餐,然后直接在网上购买就好了.我刚来美国的时候,在网上买的是progressive公司的,然后买了半年,马上就要到期了,因此需要再购买.&lt;/p&gt;
+&lt;p&gt;比较奇怪的是,我当时只在progressive买了半年,从5.12-11.12,网站上显示的也是.但是很奇怪,他仍然给我提醒,还要接着再扣半年,并且我也找不到如何取消掉.&lt;/p&gt;
+&lt;p&gt;我需要重新quote,因为我已经呆了大半年了,应该能够拿到一个更便宜的.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>tibble cookbook</title>
+      <link>/post/2019-10-09-tibble-cookbook/</link>
+      <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-10-09-tibble-cookbook/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建一个tibble&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 创建一个tibble&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#tibble函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; &lt;code&gt;tibble()&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#as_tibble函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; &lt;code&gt;as_tibble()&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tribble函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; &lt;code&gt;tribble()&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#enframe函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4&lt;/span&gt; &lt;code&gt;enframe()&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tibble显示控制&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; tibble显示控制&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#使用print函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 使用&lt;code&gt;print()&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改options默认参数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 修改&lt;code&gt;options()&lt;/code&gt;默认参数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tibble切片操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; tibble切片操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tibble添加新的列或者行&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; tibble添加新的列或者行&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#添加新的行&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; 添加新的行&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#添加新的列&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; 添加新的列&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tibble对列名和行名的操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; tibble对列名和行名的操作&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#判断是否有行名&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; 判断是否有行名&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#行名和某一列互相转换&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; 行名和某一列互相转换&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;创建一个tibble&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 创建一个tibble&lt;/h1&gt;
+&lt;div id=&#34;tibble函数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; &lt;code&gt;tibble()&lt;/code&gt;函数&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;tibble()&lt;/code&gt;可以创建新的&lt;code&gt;tibble&lt;/code&gt;对象,但是一般用来创建比较简单的tibble。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages ------------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Conflicts ---------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- 1
+b &amp;lt;- 2:6
+tibble(a, b)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 2
+##       a     b
+##   &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;
+## 1     1     2
+## 2     1     3
+## 3     1     4
+## 4     1     5
+## 5     1     6&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 使用下列方法修改列名
+tibble(column1 = a, column2 = b)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 2
+##   column1 column2
+##     &amp;lt;dbl&amp;gt;   &amp;lt;int&amp;gt;
+## 1       1       2
+## 2       1       3
+## 3       1       4
+## 4       1       5
+## 5       1       6&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意的是,如果输入的vector长度不一致,只有其中某一个长度为1,才会循环补齐,否则报错.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;tibble()&lt;/code&gt;函数有一个参数可以注意一下:&lt;code&gt;.name_repair&lt;/code&gt;,用来控制对那些不如何规矩的列名如何处理.常用的一共有4个选项:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;minimal&lt;/strong&gt; 对列名不做任何处理,既不做列名检查,也不做处理.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;unique&lt;/strong&gt; 保证列名都是唯一的并且不能为空.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#如果列名是重复的,会在列名后加入不同的序号.
+try(
+ tibble(a = 1:3, a = 1:3, 1:3, .name_repair = &amp;quot;unique&amp;quot;) 
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## New names:
+## * a -&amp;gt; a...1
+## * a -&amp;gt; a...2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 3
+##   a...1 a...2 `1:3`
+##   &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;
+## 1     1     1     1
+## 2     2     2     2
+## 3     3     3     3&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;check_unique&lt;/strong&gt; 这是默认的参数设置,不对列名做修改,只做列名检查.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#如果列名是重复的,则会报错
+try(
+ tibble(a = 1:3, a = 1:3) 
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error : Column name `a` must not be duplicated.
+## Use .name_repair to specify repair.
+## Backtrace:
+##      x
+##   1. +-base::local(...)
+##   2. | \-base::eval.parent(substitute(eval(quote(expr), envir)))
+##   3. |   \-base::eval(expr, p)
+##   4. |     \-base::eval(expr, p)
+##   5. +-base::eval(...)
+##   6. | \-base::eval(...)
+##   7. |   \-rmarkdown::render(...)
+##   8. |     \-knitr::knit(...)
+##   9. |       \-knitr:::process_file(text, output)
+##  10. |         +-base::withCallingHandlers(...)
+##  11. |         +-knitr:::process_group(group)
+##  12. |         \-knitr:::process_group.block(group)
+##  13. |           \-knitr:::call_block(x)
+##  14. |             \-knitr:::block_exec(params)
+##  15. |               +-knitr:::in_dir(...)
+##  16. |               \-knitr:::evaluate(...)
+##  17. |                 \-evaluate::evaluate(...)
+##  18. |                   \-evaluate:::evaluate_call(...)
+##  19. |                     +-evaluate:::timing_fn(...)
+##  20. |                     +-base:::handle(...)
+##  21. |                     +-base::withCallingHandlers(...)
+##  22. |                     +-base::withVisible(eval(expr, envir, enclos))
+##  23. |                     \-base::eval(expr, envir, enclos)
+##  24. |                       \-base::eval(expr, envir, enclos)
+##  25. +-base::try(tibble(a = 1:3, a = 1:3))
+##  26. | \-base::tryCatch(...)
+##  27. |   \-base:::tryCatchList(expr, classes, parentenv, handlers)
+##  28. |     \-base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
+##  29. |       \-base:::doTryCatch(return(expr), name, parentenv, handler)
+##  30. \-tibble::tibble(a = 1:3, a = 1:3)
+##  31.   \-tibble:::lst_to_tibble(xlq$output, .rows, .name_repair, lengths = xlq$lengths)
+##  32.     \-tibble:::set_repaired_names(x, .name_repair)
+##  33.       +-rlang::set_names(x, repaired_names(names(x), .name_repair = .name_repair))
+##  34.       | \-rlang:::set_names_impl(x, x, nm, ...)
+##  35.       |   \-rlang::is_function(nm)
+##  36.       |     \-rlang::is_closure(x)
+##  37.       \-tibble:::repaired_names(names(x), .name_repair = .name_repair)
+##  38.         \-tibble:::check_unique(new_name)&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;universal&lt;/strong&gt; 保证列名都是唯一的并且符合R语言语法.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果有相同的列名,会在列名后加入不同的序号.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#如果列名是重复的,则会报错
+try(
+ tibble(a = 1:3, a = 1:3, .name_repair = &amp;quot;universal&amp;quot;) 
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## New names:
+## * a -&amp;gt; a...1
+## * a -&amp;gt; a...2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 2
+##   a...1 a...2
+##   &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;
+## 1     1     1
+## 2     2     2
+## 3     3     3&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;as_tibble函数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; &lt;code&gt;as_tibble()&lt;/code&gt;函数&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;as_tibble()&lt;/code&gt;函数可以将已有的matrix和data.frame转变为tibble对象.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test1 &amp;lt;- 
+  matrix(1:6, ncol = 2)
+tibble::as_tibble(test1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: `as_tibble.matrix()` requires a matrix with column names or a `.name_repair` argument. Using compatibility `.name_repair`.
+## This warning is displayed once per session.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 2
+##      V1    V2
+##   &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;
+## 1     1     4
+## 2     2     5
+## 3     3     6&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test2 &amp;lt;- 
+  data.frame(a = 1:3, b = 2:4, stringsAsFactors = FALSE)
+tibble::as_tibble(test2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 2
+##       a     b
+##   &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;
+## 1     1     2
+## 2     2     3
+## 3     3     4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;as_tibble()&lt;/code&gt;函数的参数与&lt;code&gt;tibble()&lt;/code&gt;大概相同,另外一个需要注意的的参数是:&lt;strong&gt;rownames&lt;/strong&gt;,用来控制如何处理原有的行名.如果设置为NULL,则去除掉行名(默认),如果设置为NA,则保留原来的列名.设置为一个string vector,则将其设置为新的列名.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tribble函数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; &lt;code&gt;tribble()&lt;/code&gt;函数&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;tribble()&lt;/code&gt;函数可以用另外一种方法来创建tibble对象.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tibble::tribble(
+  ~colA, ~colB,
+  ## two columns
+  &amp;quot;a&amp;quot;,   1,
+  &amp;quot;b&amp;quot;,   2,
+  &amp;quot;c&amp;quot;,   3
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 2
+##   colA   colB
+##   &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 a         1
+## 2 b         2
+## 3 c         3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意的是,tibble和data.frame一样,他们中的元素也可以是list.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tribble(
+  ~x,  ~y,
+  &amp;quot;a&amp;quot;, 1:3,
+  &amp;quot;b&amp;quot;, 4:6
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 2
+##   x     y        
+##   &amp;lt;chr&amp;gt; &amp;lt;list&amp;gt;   
+## 1 a     &amp;lt;int [3]&amp;gt;
+## 2 b     &amp;lt;int [3]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;enframe函数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4&lt;/span&gt; &lt;code&gt;enframe()&lt;/code&gt;函数&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;enframe()&lt;/code&gt;可以将vector转换为tibble,另外有一个相反的函数,&lt;code&gt;deframe()&lt;/code&gt;函数,将tibble/data.frame转变为vector.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;enframe(x = 1:3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 2
+##    name value
+##   &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;
+## 1     1     1
+## 2     2     2
+## 3     3     3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;enframe(c(a = 5, b = 7))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 x 2
+##   name  value
+##   &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 a         5
+## 2 b         7&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;enframe(list(one = 1, two = 2:3, three = 4:6))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 2
+##   name  value    
+##   &amp;lt;chr&amp;gt; &amp;lt;list&amp;gt;   
+## 1 one   &amp;lt;dbl [1]&amp;gt;
+## 2 two   &amp;lt;int [2]&amp;gt;
+## 3 three &amp;lt;int [3]&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;enframe()&lt;/code&gt;的第一个参数是&lt;code&gt;x&lt;/code&gt;,必须是一个vector或者list,他会将他的每一个元素的名字组成第一列,而其内容作为第二列转变为一个tibble.也就是说其只能用来创建两列的tibble.两列的列名默认为name和value如果想要修改,可以更改两个参数(name和value).&lt;/p&gt;
+&lt;p&gt;使用&lt;code&gt;deframe()&lt;/code&gt;函数将一个一列或者两列的tibble转变为vector或者list.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;deframe(enframe(1:3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1 2 3 
+## 1 2 3&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tibble显示控制&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; tibble显示控制&lt;/h1&gt;
+&lt;p&gt;tibble默认情况下只输出前十行内容,列自动适应屏幕宽度,如果想要输出比默认更多的数据,有以下几种方法.&lt;/p&gt;
+&lt;div id=&#34;使用print函数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 使用&lt;code&gt;print()&lt;/code&gt;函数&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;print()&lt;/code&gt;函数,可以控制行数和列数.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+# 默认显示
+nycflights13::flights&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 336,776 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time
+##    &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;    &amp;lt;int&amp;gt;          &amp;lt;int&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;int&amp;gt;
+##  1  2013     1     1      517            515         2      830
+##  2  2013     1     1      533            529         4      850
+##  3  2013     1     1      542            540         2      923
+##  4  2013     1     1      544            545        -1     1004
+##  5  2013     1     1      554            600        -6      812
+##  6  2013     1     1      554            558        -4      740
+##  7  2013     1     1      555            600        -5      913
+##  8  2013     1     1      557            600        -3      709
+##  9  2013     1     1      557            600        -3      838
+## 10  2013     1     1      558            600        -2      753
+## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &amp;lt;int&amp;gt;,
+## #   arr_delay &amp;lt;dbl&amp;gt;, carrier &amp;lt;chr&amp;gt;, flight &amp;lt;int&amp;gt;, tailnum &amp;lt;chr&amp;gt;,
+## #   origin &amp;lt;chr&amp;gt;, dest &amp;lt;chr&amp;gt;, air_time &amp;lt;dbl&amp;gt;, distance &amp;lt;dbl&amp;gt;, hour &amp;lt;dbl&amp;gt;,
+## #   minute &amp;lt;dbl&amp;gt;, time_hour &amp;lt;dttm&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 输出15行及所有列数
+nycflights13::flights %&amp;gt;% 
+  print(n = 15, width = Inf)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 336,776 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time
+##    &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;    &amp;lt;int&amp;gt;          &amp;lt;int&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;int&amp;gt;
+##  1  2013     1     1      517            515         2      830
+##  2  2013     1     1      533            529         4      850
+##  3  2013     1     1      542            540         2      923
+##  4  2013     1     1      544            545        -1     1004
+##  5  2013     1     1      554            600        -6      812
+##  6  2013     1     1      554            558        -4      740
+##  7  2013     1     1      555            600        -5      913
+##  8  2013     1     1      557            600        -3      709
+##  9  2013     1     1      557            600        -3      838
+## 10  2013     1     1      558            600        -2      753
+## 11  2013     1     1      558            600        -2      849
+## 12  2013     1     1      558            600        -2      853
+## 13  2013     1     1      558            600        -2      924
+## 14  2013     1     1      558            600        -2      923
+## 15  2013     1     1      559            600        -1      941
+##    sched_arr_time arr_delay carrier flight tailnum origin dest  air_time
+##             &amp;lt;int&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;    &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;   &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;
+##  1            819        11 UA        1545 N14228  EWR    IAH        227
+##  2            830        20 UA        1714 N24211  LGA    IAH        227
+##  3            850        33 AA        1141 N619AA  JFK    MIA        160
+##  4           1022       -18 B6         725 N804JB  JFK    BQN        183
+##  5            837       -25 DL         461 N668DN  LGA    ATL        116
+##  6            728        12 UA        1696 N39463  EWR    ORD        150
+##  7            854        19 B6         507 N516JB  EWR    FLL        158
+##  8            723       -14 EV        5708 N829AS  LGA    IAD         53
+##  9            846        -8 B6          79 N593JB  JFK    MCO        140
+## 10            745         8 AA         301 N3ALAA  LGA    ORD        138
+## 11            851        -2 B6          49 N793JB  JFK    PBI        149
+## 12            856        -3 B6          71 N657JB  JFK    TPA        158
+## 13            917         7 UA         194 N29129  JFK    LAX        345
+## 14            937       -14 UA        1124 N53441  EWR    SFO        361
+## 15            910        31 AA         707 N3DUAA  LGA    DFW        257
+##    distance  hour minute time_hour          
+##       &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;dttm&amp;gt;             
+##  1     1400     5     15 2013-01-01 05:00:00
+##  2     1416     5     29 2013-01-01 05:00:00
+##  3     1089     5     40 2013-01-01 05:00:00
+##  4     1576     5     45 2013-01-01 05:00:00
+##  5      762     6      0 2013-01-01 06:00:00
+##  6      719     5     58 2013-01-01 05:00:00
+##  7     1065     6      0 2013-01-01 06:00:00
+##  8      229     6      0 2013-01-01 06:00:00
+##  9      944     6      0 2013-01-01 06:00:00
+## 10      733     6      0 2013-01-01 06:00:00
+## 11     1028     6      0 2013-01-01 06:00:00
+## 12     1005     6      0 2013-01-01 06:00:00
+## 13     2475     6      0 2013-01-01 06:00:00
+## 14     2565     6      0 2013-01-01 06:00:00
+## 15     1389     6      0 2013-01-01 06:00:00
+## # ... with 3.368e+05 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改options默认参数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 修改&lt;code&gt;options()&lt;/code&gt;默认参数&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;options(tibble.print_max = n, tibble.pring_min = m)&lt;/code&gt;:如果多于m行,则只打印出n
+行.&lt;code&gt;options(tibble.print_min = Inf)&lt;/code&gt;表示总是打印所有行.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;options(tibble.width = Inf)&lt;/code&gt;表示总是打印所有列,不考虑屏幕的宽度.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;options()&lt;/code&gt;中所有和&lt;code&gt;tibble&lt;/code&gt;相关的参数:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tibble.print_max&lt;/code&gt;:Row number threshold: Maximum number of rows printed. Set to Inf to always print all rows. Default: 20.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tibble.print_min&lt;/code&gt;: 如果设置为m,意思即为如果行数大于m,则只打印出前n行.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tibble.width&lt;/code&gt;: 打印列的宽度.默认为NULL,也就是适应屏幕宽度.设置为&lt;code&gt;Inf&lt;/code&gt;,则打印出全部列.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tibble.max_extra_cols&lt;/code&gt;: Number of extra columns printed in reduced form. Default: 100.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;pillar.bold&lt;/code&gt;: pillar是柱子的意思.如果设置为TRUE,则列名为粗体,默认为FALSE,因为在terminal中很多字体对粗体支持不够.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;pillar.subtle&lt;/code&gt;: 是否打印出其他详细的信息,比如总的行和列数.默认为TRUE.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;pillar.subtle_num&lt;/code&gt;: Use subtle style for insignificant digits? Default: FALSE, is also affected by the pillar.subtle option.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;pillar.neg&lt;/code&gt;: 是否高亮负值.默认为TRUE.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;pillar.sigfig&lt;/code&gt;: 高亮那些数字,比如如果设置为3,则会高亮数字3.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;pillar.min_title_chars&lt;/code&gt;: 列名打印时最小的字符数,默认为15.意味着如果某些列名大于15,则会被截断.设置为&lt;code&gt;Inf&lt;/code&gt;,打印出完整的列名.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tibble切片操作&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; tibble切片操作&lt;/h1&gt;
+&lt;p&gt;如何取出一个tibble的一列或者几列.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test &amp;lt;- as_tibble(mtcars)
+test[,1, drop = TRUE]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars[,1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tibble如果使用&lt;code&gt;[&lt;/code&gt;函数来进行选择某一列,则默认出来的还是一个tibble,当然可以使用&lt;code&gt;drop&lt;/code&gt;参数来设置为TRUE,让其转变成一个vector.而对于data.frame,则取出一列,默认为vector.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test$mpg&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test[[&amp;quot;mpg&amp;quot;]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然还可以使用&lt;code&gt;$&lt;/code&gt;和&lt;code&gt;[[&lt;/code&gt;函数,这两个函数取出来的都是vector.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+test %&amp;gt;% 
+  pull(mpg)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然,还可以使用&lt;code&gt;dplyr&lt;/code&gt;中的&lt;code&gt;pull()&lt;/code&gt;函数,取出来的也是vector.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tibble添加新的列或者行&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; tibble添加新的列或者行&lt;/h1&gt;
+&lt;div id=&#34;添加新的行&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; 添加新的行&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;add_row()&lt;/code&gt;函数可以给已有的tibble对象添加新的行.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- tibble(x = 1:3, y = 3:1)
+add_row(df, x = 4, y = 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1     3
+## 2     2     2
+## 3     3     1
+## 4     4     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以通过设置&lt;code&gt;.before&lt;/code&gt;和&lt;code&gt;.after&lt;/code&gt;参数来指定插入的位置.默认都是NULL,插入到最后的位置.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;add_row(df, x = 4, y = 0, .before = 1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     4     0
+## 2     1     3
+## 3     2     2
+## 4     3     1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;add_row(df, x = 4, y = 0, .before = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1     3
+## 2     4     0
+## 3     2     2
+## 4     3     1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;add_row(df, x = 4, y = 0, .before = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1     3
+## 2     2     2
+## 3     4     0
+## 4     3     1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;.before&lt;/code&gt;设置为n,则是指从原来的第n行的前一行开始添加.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;add_row(df, x = 4, y = 0, .after = 1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1     3
+## 2     4     0
+## 3     2     2
+## 4     3     1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;add_row(df, x = 4, y = 0, .after = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1     3
+## 2     2     2
+## 3     4     0
+## 4     3     1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;add_row(df, x = 4, y = 0, .after = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1     3
+## 2     2     2
+## 3     3     1
+## 4     4     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;.after&lt;/code&gt;设置为m,则是指从原来的第m行的后面一行开始添加.&lt;/p&gt;
+&lt;p&gt;如果某些行不提供新的元素,则会变为NA.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;add_row(df, x = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 2
+##       x     y
+##   &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;
+## 1     1     3
+## 2     2     2
+## 3     3     1
+## 4     4    NA&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;添加新的列&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; 添加新的列&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;add_column()&lt;/code&gt;函数可以给已有的tibble对象添加新的列.跟&lt;code&gt;add_column()&lt;/code&gt;一样的.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# add_column ---------------------------------
+df &amp;lt;- tibble(x = 1:3, y = 3:1)
+add_column(df, z = -1:1, w = 0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 4
+##       x     y     z     w
+##   &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt;
+## 1     1     3    -1     0
+## 2     2     2     0     0
+## 3     3     1     1     0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意的是,并不能覆盖原来的列以及和原来的行数不一样的新的列.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# You can&amp;#39;t overwrite existing columns
+try(
+add_column(df, x = 4:6)  
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error : Can&amp;#39;t add duplicate columns with `add_column()`:
+## * Column `x` already exists in `.data`.
+## Backtrace:
+##      x
+##   1. +-base::local(...)
+##   2. | \-base::eval.parent(substitute(eval(quote(expr), envir)))
+##   3. |   \-base::eval(expr, p)
+##   4. |     \-base::eval(expr, p)
+##   5. +-base::eval(...)
+##   6. | \-base::eval(...)
+##   7. |   \-rmarkdown::render(...)
+##   8. |     \-knitr::knit(...)
+##   9. |       \-knitr:::process_file(text, output)
+##  10. |         +-base::withCallingHandlers(...)
+##  11. |         +-knitr:::process_group(group)
+##  12. |         \-knitr:::process_group.block(group)
+##  13. |           \-knitr:::call_block(x)
+##  14. |             \-knitr:::block_exec(params)
+##  15. |               +-knitr:::in_dir(...)
+##  16. |               \-knitr:::evaluate(...)
+##  17. |                 \-evaluate::evaluate(...)
+##  18. |                   \-evaluate:::evaluate_call(...)
+##  19. |                     +-evaluate:::timing_fn(...)
+##  20. |                     +-base:::handle(...)
+##  21. |                     +-base::withCallingHandlers(...)
+##  22. |                     +-base::withVisible(eval(expr, envir, enclos))
+##  23. |                     \-base::eval(expr, envir, enclos)
+##  24. |                       \-base::eval(expr, envir, enclos)
+##  25. +-base::try(add_column(df, x = 4:6))
+##  26. | \-base::tryCatch(...)
+##  27. |   \-base:::tryCatchList(expr, classes, parentenv, handlers)
+##  28. |     \-base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
+##  29. |       \-base:::doTryCatch(return(expr), name, parentenv, handler)
+##  30. \-tibble::add_column(df, x = 4:6)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# You can&amp;#39;t create new observations
+try(
+ add_column(df, z = 1:5) 
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error : New columns in `add_column()` must be consistent with `.data`:
+## * `.data` has 3 rows
+## * New column contributes 5 rows
+## Backtrace:
+##      x
+##   1. +-base::local(...)
+##   2. | \-base::eval.parent(substitute(eval(quote(expr), envir)))
+##   3. |   \-base::eval(expr, p)
+##   4. |     \-base::eval(expr, p)
+##   5. +-base::eval(...)
+##   6. | \-base::eval(...)
+##   7. |   \-rmarkdown::render(...)
+##   8. |     \-knitr::knit(...)
+##   9. |       \-knitr:::process_file(text, output)
+##  10. |         +-base::withCallingHandlers(...)
+##  11. |         +-knitr:::process_group(group)
+##  12. |         \-knitr:::process_group.block(group)
+##  13. |           \-knitr:::call_block(x)
+##  14. |             \-knitr:::block_exec(params)
+##  15. |               +-knitr:::in_dir(...)
+##  16. |               \-knitr:::evaluate(...)
+##  17. |                 \-evaluate::evaluate(...)
+##  18. |                   \-evaluate:::evaluate_call(...)
+##  19. |                     +-evaluate:::timing_fn(...)
+##  20. |                     +-base:::handle(...)
+##  21. |                     +-base::withCallingHandlers(...)
+##  22. |                     +-base::withVisible(eval(expr, envir, enclos))
+##  23. |                     \-base::eval(expr, envir, enclos)
+##  24. |                       \-base::eval(expr, envir, enclos)
+##  25. +-base::try(add_column(df, z = 1:5))
+##  26. | \-base::tryCatch(...)
+##  27. |   \-base:::tryCatchList(expr, classes, parentenv, handlers)
+##  28. |     \-base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
+##  29. |       \-base:::doTryCatch(return(expr), name, parentenv, handler)
+##  30. \-tibble::add_column(df, z = 1:5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以其实并不方便,还是使用&lt;code&gt;dplyr&lt;/code&gt;更方便.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tibble对列名和行名的操作&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; tibble对列名和行名的操作&lt;/h1&gt;
+&lt;div id=&#34;判断是否有行名&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; 判断是否有行名&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rownames(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;Mazda RX4&amp;quot;           &amp;quot;Mazda RX4 Wag&amp;quot;       &amp;quot;Datsun 710&amp;quot;         
+##  [4] &amp;quot;Hornet 4 Drive&amp;quot;      &amp;quot;Hornet Sportabout&amp;quot;   &amp;quot;Valiant&amp;quot;            
+##  [7] &amp;quot;Duster 360&amp;quot;          &amp;quot;Merc 240D&amp;quot;           &amp;quot;Merc 230&amp;quot;           
+## [10] &amp;quot;Merc 280&amp;quot;            &amp;quot;Merc 280C&amp;quot;           &amp;quot;Merc 450SE&amp;quot;         
+## [13] &amp;quot;Merc 450SL&amp;quot;          &amp;quot;Merc 450SLC&amp;quot;         &amp;quot;Cadillac Fleetwood&amp;quot; 
+## [16] &amp;quot;Lincoln Continental&amp;quot; &amp;quot;Chrysler Imperial&amp;quot;   &amp;quot;Fiat 128&amp;quot;           
+## [19] &amp;quot;Honda Civic&amp;quot;         &amp;quot;Toyota Corolla&amp;quot;      &amp;quot;Toyota Corona&amp;quot;      
+## [22] &amp;quot;Dodge Challenger&amp;quot;    &amp;quot;AMC Javelin&amp;quot;         &amp;quot;Camaro Z28&amp;quot;         
+## [25] &amp;quot;Pontiac Firebird&amp;quot;    &amp;quot;Fiat X1-9&amp;quot;           &amp;quot;Porsche 914-2&amp;quot;      
+## [28] &amp;quot;Lotus Europa&amp;quot;        &amp;quot;Ford Pantera L&amp;quot;      &amp;quot;Ferrari Dino&amp;quot;       
+## [31] &amp;quot;Maserati Bora&amp;quot;       &amp;quot;Volvo 142E&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;has_rownames(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(iris)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rownames(iris)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   [1] &amp;quot;1&amp;quot;   &amp;quot;2&amp;quot;   &amp;quot;3&amp;quot;   &amp;quot;4&amp;quot;   &amp;quot;5&amp;quot;   &amp;quot;6&amp;quot;   &amp;quot;7&amp;quot;   &amp;quot;8&amp;quot;   &amp;quot;9&amp;quot;   &amp;quot;10&amp;quot;  &amp;quot;11&amp;quot; 
+##  [12] &amp;quot;12&amp;quot;  &amp;quot;13&amp;quot;  &amp;quot;14&amp;quot;  &amp;quot;15&amp;quot;  &amp;quot;16&amp;quot;  &amp;quot;17&amp;quot;  &amp;quot;18&amp;quot;  &amp;quot;19&amp;quot;  &amp;quot;20&amp;quot;  &amp;quot;21&amp;quot;  &amp;quot;22&amp;quot; 
+##  [23] &amp;quot;23&amp;quot;  &amp;quot;24&amp;quot;  &amp;quot;25&amp;quot;  &amp;quot;26&amp;quot;  &amp;quot;27&amp;quot;  &amp;quot;28&amp;quot;  &amp;quot;29&amp;quot;  &amp;quot;30&amp;quot;  &amp;quot;31&amp;quot;  &amp;quot;32&amp;quot;  &amp;quot;33&amp;quot; 
+##  [34] &amp;quot;34&amp;quot;  &amp;quot;35&amp;quot;  &amp;quot;36&amp;quot;  &amp;quot;37&amp;quot;  &amp;quot;38&amp;quot;  &amp;quot;39&amp;quot;  &amp;quot;40&amp;quot;  &amp;quot;41&amp;quot;  &amp;quot;42&amp;quot;  &amp;quot;43&amp;quot;  &amp;quot;44&amp;quot; 
+##  [45] &amp;quot;45&amp;quot;  &amp;quot;46&amp;quot;  &amp;quot;47&amp;quot;  &amp;quot;48&amp;quot;  &amp;quot;49&amp;quot;  &amp;quot;50&amp;quot;  &amp;quot;51&amp;quot;  &amp;quot;52&amp;quot;  &amp;quot;53&amp;quot;  &amp;quot;54&amp;quot;  &amp;quot;55&amp;quot; 
+##  [56] &amp;quot;56&amp;quot;  &amp;quot;57&amp;quot;  &amp;quot;58&amp;quot;  &amp;quot;59&amp;quot;  &amp;quot;60&amp;quot;  &amp;quot;61&amp;quot;  &amp;quot;62&amp;quot;  &amp;quot;63&amp;quot;  &amp;quot;64&amp;quot;  &amp;quot;65&amp;quot;  &amp;quot;66&amp;quot; 
+##  [67] &amp;quot;67&amp;quot;  &amp;quot;68&amp;quot;  &amp;quot;69&amp;quot;  &amp;quot;70&amp;quot;  &amp;quot;71&amp;quot;  &amp;quot;72&amp;quot;  &amp;quot;73&amp;quot;  &amp;quot;74&amp;quot;  &amp;quot;75&amp;quot;  &amp;quot;76&amp;quot;  &amp;quot;77&amp;quot; 
+##  [78] &amp;quot;78&amp;quot;  &amp;quot;79&amp;quot;  &amp;quot;80&amp;quot;  &amp;quot;81&amp;quot;  &amp;quot;82&amp;quot;  &amp;quot;83&amp;quot;  &amp;quot;84&amp;quot;  &amp;quot;85&amp;quot;  &amp;quot;86&amp;quot;  &amp;quot;87&amp;quot;  &amp;quot;88&amp;quot; 
+##  [89] &amp;quot;89&amp;quot;  &amp;quot;90&amp;quot;  &amp;quot;91&amp;quot;  &amp;quot;92&amp;quot;  &amp;quot;93&amp;quot;  &amp;quot;94&amp;quot;  &amp;quot;95&amp;quot;  &amp;quot;96&amp;quot;  &amp;quot;97&amp;quot;  &amp;quot;98&amp;quot;  &amp;quot;99&amp;quot; 
+## [100] &amp;quot;100&amp;quot; &amp;quot;101&amp;quot; &amp;quot;102&amp;quot; &amp;quot;103&amp;quot; &amp;quot;104&amp;quot; &amp;quot;105&amp;quot; &amp;quot;106&amp;quot; &amp;quot;107&amp;quot; &amp;quot;108&amp;quot; &amp;quot;109&amp;quot; &amp;quot;110&amp;quot;
+## [111] &amp;quot;111&amp;quot; &amp;quot;112&amp;quot; &amp;quot;113&amp;quot; &amp;quot;114&amp;quot; &amp;quot;115&amp;quot; &amp;quot;116&amp;quot; &amp;quot;117&amp;quot; &amp;quot;118&amp;quot; &amp;quot;119&amp;quot; &amp;quot;120&amp;quot; &amp;quot;121&amp;quot;
+## [122] &amp;quot;122&amp;quot; &amp;quot;123&amp;quot; &amp;quot;124&amp;quot; &amp;quot;125&amp;quot; &amp;quot;126&amp;quot; &amp;quot;127&amp;quot; &amp;quot;128&amp;quot; &amp;quot;129&amp;quot; &amp;quot;130&amp;quot; &amp;quot;131&amp;quot; &amp;quot;132&amp;quot;
+## [133] &amp;quot;133&amp;quot; &amp;quot;134&amp;quot; &amp;quot;135&amp;quot; &amp;quot;136&amp;quot; &amp;quot;137&amp;quot; &amp;quot;138&amp;quot; &amp;quot;139&amp;quot; &amp;quot;140&amp;quot; &amp;quot;141&amp;quot; &amp;quot;142&amp;quot; &amp;quot;143&amp;quot;
+## [144] &amp;quot;144&amp;quot; &amp;quot;145&amp;quot; &amp;quot;146&amp;quot; &amp;quot;147&amp;quot; &amp;quot;148&amp;quot; &amp;quot;149&amp;quot; &amp;quot;150&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;has_rownames(iris)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以使用&lt;code&gt;remove_rownames()&lt;/code&gt;函数去除掉行名.当然也可以使用将行名设置为NULL打到目的&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;has_rownames(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars2 &amp;lt;- 
+  remove_rownames(mtcars)
+has_rownames(mtcars2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;行名和某一列互相转换&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; 行名和某一列互相转换&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;rownames_to_column()&lt;/code&gt;函数可以将tibble的行名转变为某一列,并且删除掉行名.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars2 &amp;lt;- 
+rownames_to_column(mtcars, var = &amp;quot;test&amp;quot;)
+mtcars2 %&amp;gt;% 
+  as_tibble()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 32 x 12
+##    test     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    &amp;lt;chr&amp;gt;  &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+##  1 Mazda~  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2 Mazda~  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3 Datsu~  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4 Horne~  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5 Horne~  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6 Valia~  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7 Duste~  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8 Merc ~  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9 Merc ~  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10 Merc ~  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # ... with 22 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;另外一个函数,&lt;code&gt;rowid_to_column()&lt;/code&gt;可以去除掉行名,并在最开始添加一列rowid,从1开始.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rowid_to_column(mtcars) %&amp;gt;% 
+  as_tibble()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 32 x 12
+##    rowid   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+##  1     1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2     2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3     3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4     4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5     5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6     6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7     7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8     8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9     9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10    10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # ... with 22 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然也可以将某一列变为行名:&lt;code&gt;column_to_rownames()&lt;/code&gt;.注意必须要求tibble没有行名,且新的行名是没有重复元素的.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;column_to_rownames(mtcars2, var = &amp;quot;test&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Markdown cookbook</title>
       <link>/post/markdown-cookbook/</link>
@@ -14,7 +1411,60 @@
       <description>
 
 
+&lt;div id=&#34;markdown通用技巧&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Markdown通用技巧&lt;/h1&gt;
+&lt;div id=&#34;如何在markdown中使用font&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;如何在markdown中使用font?&lt;/h2&gt;
+&lt;p&gt;参考文档:&lt;a href=&#34;https://sspai.com/post/45217&#34; class=&#34;uri&#34;&gt;https://sspai.com/post/45217&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在markdown文档任意地方插入下面的代码:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt; 
+    &amp;lt;script defer src=&amp;quot;https://use.fontawesome.com/releases/v5.0.13/js/all.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 
+    &amp;lt;script defer src=&amp;quot;https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 
+&amp;lt;/head&amp;gt; 
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://use.fontawesome.com/releases/v5.0.13/css/all.css&amp;quot;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后使用下列语句插入font:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i class=&amp;quot;fa fa-weixin&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示:&lt;i class=&#34;fa fa-weixin&#34;&gt;&lt;/i&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rmarkdown&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Rmarkdown&lt;/h1&gt;
+&lt;head&gt;
+&lt;script defer src=&#34;https://use.fontawesome.com/releases/v5.0.13/js/all.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js&#34;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://use.fontawesome.com/releases/v5.0.13/css/all.css&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R cookbook</title>
+      <link>/post/2019-11-10-r-cookbook/</link>
+      <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-10-r-cookbook/</guid>
+      <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#r一些常用小命令&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; R一些常用小命令&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#系统相关&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 系统相关&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#重启r-session&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 重启R session&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;r一些常用小命令&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; R一些常用小命令&lt;/h1&gt;
+&lt;div id=&#34;系统相关&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 系统相关&lt;/h2&gt;
+&lt;div id=&#34;重启r-session&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; 重启R session&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;.rs.restartR()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     
@@ -25,23 +1475,33 @@
       <guid>/post/ms-summary/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ms&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; MS&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#forevacuum-presure-too-high.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Forevacuum presure too high.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;ms&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;MS&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; MS&lt;/h1&gt;
 &lt;div id=&#34;forevacuum-presure-too-high.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Forevacuum presure too high.&lt;/h2&gt;
-&lt;p&gt;两个原因:&lt;/p&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Forevacuum presure too high.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;error1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;几个原因:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;ion transfer tube堵了,洗一下试试.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ion transfer tube堵了,洗一下试试.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;大概率是needle堵了,一般只能重新换个新的needle.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;温度太低,比如320度就不行,温度太低导致离子化程度不够.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;能够做的都做了,还是解决不了,然后冲了大概几个小时,自己变好了….&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;2)大概率是needle堵了,一般只能重新换个新的needle.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>20191014一点感想</title>
+      <title>一点感想</title>
       <link>/post/20191014/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
       <guid>/post/20191014/</guid>
@@ -91,239 +1551,1140 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
     </item>
     
     <item>
+      <title>2017年的第一篇博客</title>
+      <link>/post/2017-02-12-firstblog2017/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>/post/2017-02-12-firstblog2017/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#我的2016年&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; &lt;strong&gt;我的2016年&lt;/strong&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#效率低下&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 效率低下&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#懒惰&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 懒惰&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#没有明确的目标&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; 没有明确的目标&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#我的2017年计划&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; &lt;strong&gt;我的2017年计划&lt;/strong&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文章&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 文章&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#统计&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 统计&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; R&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#python&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#健身&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 健身&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;我的2016年&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; &lt;strong&gt;我的2016年&lt;/strong&gt;&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;p&gt;现在想想，其实整个2016年真的是没什么收获，科研上没什么进展，技能上也没有什么提升，原本准备要学习的python，也在1-2个月之后，彻底的放弃了。现在可能只记得一点点皮毛了。那么2016年的问题到底在哪里呢？总结来说，可以分为下面几部分。&lt;/p&gt;
+&lt;div id=&#34;效率低下&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 效率低下&lt;/h2&gt;
+&lt;p&gt;不得不承认，我的学习效率真的是出奇的低下，从我上高中以来其实都是这样了，做什么事情都不能够专心致志。用高中同学利弟的话来说，是“玩的时候没有好好玩，学习的时候没有好好学习”，用最近学到的一句话是“用战术上的勤奋来掩饰战略上的懒惰”。具体表现就是精神不集中，开小车。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;懒惰&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 懒惰&lt;/h2&gt;
+&lt;p&gt;现在真的是越来越懒惰了，很多事情都没有以前有激情了，可能是我老了？&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;没有明确的目标&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; 没有明确的目标&lt;/h2&gt;
+&lt;p&gt;上半年其实还是挺有目标的，但是到了下半年，目标突然就失焦了。定下一个目标，努力去实现，或者定下一个计划，努力去完成。&lt;/p&gt;
+&lt;p&gt;上面就是我2016年的一个简短的总结了，当然不是只有这些问题，还有很多其他的问题，但是可能都是一些细节的问题，就不过多去写了。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;我的2017年计划&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; &lt;strong&gt;我的2017年计划&lt;/strong&gt;&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;div id=&#34;文章&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 文章&lt;/h2&gt;
+&lt;p&gt;很幸运的是自己还是发了两篇文章，但是都是很低分的，虽然够我毕业，但是其实自己知道并不足够，因此2017年的主要任务就是好好看文献，做实验，寻找思路，争取能够再发一篇高质量的你文章。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;统计&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 统计&lt;/h2&gt;
+&lt;p&gt;毕竟我的课题和统计关系很大，自己的统计数据功底很差，希望可以在看文献以及资料的同时，好好学习一下统计，机器学习等知识，再课题中能够真正运用到。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; R&lt;/h2&gt;
+&lt;p&gt;R是一个好东西，需要再深入的学习，主要是结合着统计去学习，并及时做好总计，以有道笔记和博客作为平台去记录自己的学习，即作为笔记也作为总结。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;python&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; python&lt;/h1&gt;
+&lt;p&gt;这个放到最后，是因为可能很难有很多时间去学习了，希望前面几条比较顺利，才会有时间去做。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;健身&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 健身&lt;/h1&gt;
+&lt;p&gt;经过别人的提醒，还有这一项，确实自己看起来太瘦了，尤其是上半身，连衬衫和西装都撑不起来，等天气开始暖和了，就开始跑步，然后等中期答辩结束之后，考虑办一张健身卡，去健身！&lt;/p&gt;
+&lt;p&gt;最后的最后，提醒自己，最后一年，加油！&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MetCleaning instruction</title>
+      <link>/post/2016-11-25-metcleaning/</link>
+      <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>/post/2016-11-25-metcleaning/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; &lt;strong&gt;Introduction&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installation-and-help&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; &lt;strong&gt;Installation and help&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-cleaning&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; &lt;strong&gt;Data cleaning&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#statistical-analysis&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4&lt;/span&gt; &lt;strong&gt;Statistical analysis&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; &lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;MetCleaning&lt;/em&gt; provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, &lt;em&gt;MetClean&lt;/em&gt; and &lt;em&gt;MetStat&lt;/em&gt; in &lt;em&gt;MetCleaning&lt;/em&gt; utilizing demo data.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/workflow%20for%20instruction.jpg&#34; alt=&#34;Figure1 Workflow of MetCleaning&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure1 Workflow of &lt;em&gt;MetCleaning&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;installation-and-help&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2&lt;/span&gt; &lt;strong&gt;Installation and help&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;MetCleaning&lt;/em&gt; is published in github &lt;a href=&#34;https://github.com/jaspershen/MetCleaning&#34;&gt;(link)&lt;/a&gt;. So you can install it via to github.&lt;/p&gt;
+&lt;p&gt;code 1: Installation of &lt;em&gt;MetCleaning&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##pcaMethods and impute should be installed form bioconductor
+##pcaMethos
+source(&amp;quot;http://bioconductor.org/biocLite.R&amp;quot;)
+    biocLite(&amp;quot;pcaMethods&amp;quot;)
+##impute
+source(&amp;quot;http://bioconductor.org/biocLite.R&amp;quot;)
+    biocLite(&amp;quot;impute&amp;quot;)
+ if(!require(devtools)) {
+  install.packages(&amp;quot;devtools&amp;quot;)
+ }
+ library(devtools)
+ install_github(&amp;quot;jaspershen/MetCleaning&amp;quot;)
+ library(MetCleaning)
+ help(package = &amp;quot;MetCleaning&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleaning&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; &lt;strong&gt;Data cleaning&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;Data cleaning is integrated as a function named as &lt;em&gt;MetClean&lt;/em&gt; in &lt;em&gt;MetCleaning&lt;/em&gt;. We use the demo data as the example. Copy the code below and paste in you R console.&lt;/p&gt;
+&lt;p&gt;code 2: Demo data of &lt;em&gt;MetClean&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##demo data
+data(data, package = &amp;quot;MetCleaning&amp;quot;)
+data(sample.information, package = &amp;quot;MetCleaning&amp;quot;)
+##demo work directory
+dir.create(&amp;quot;Demo for MetCleaning&amp;quot;)
+setwd(&amp;quot;Demo for MetCleaning&amp;quot;)
+##write files
+write.csv(data, &amp;quot;data.csv&amp;quot;, row.names = FALSE)
+write.csv(sample.information , &amp;quot;sample.information.csv&amp;quot;, row.names = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The demo data have been added in your work directory and organized in you work directory as Figure 2 shows. It contains two files, “data.csv” and “sample.information.csv”.
+1. “data.csv” is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain “name” (feature name), “mz” (mass to change ratio) and “rt” (retention time). Other information of features are optional, for example “isotopes” and “adducts”. The name of sample can contain “.”, but cannot contain “-” and space. And the start of sample name cannot be number. &lt;strong&gt;For example, “A210.a” and “A210a” are valid, and “210a” or “210-a” are invalid.&lt;/strong&gt;
+2. “sample.information.csv” is sample information for metabolomic dataset. Column 1 is “sample.name” which is the names of subject and QC samples. Please confirm that the sample names in “sample.information.csv” and “data.csv” are completely same. Column 2 is “injection.order” which is the injection order of QC and subject samples. Column 3 is “class”, which is used to distinguish “QC” and “Subject” samples. Column 4 is “batch” to provide acquisition batch information for samples. Column 5 is “group”, which is used to label the group of subject sample, for example, “control” and “case”. The “group” of QC samples is labeled as “QC”.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/data%20organisation.jpg&#34; alt=&#34;Figure2 Data organisation of MetCleaning&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure2 Data organisation of MetCleaning&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Then you can run &lt;em&gt;MetClean&lt;/em&gt; function to do data cleaning of data. All the arguments of &lt;em&gt;MetClean&lt;/em&gt; can be found in the other functions in &lt;em&gt;MetCleaning&lt;/em&gt;. You can use &lt;em&gt;help(package = “MetCleaning”)&lt;/em&gt; to see the help page of &lt;em&gt;MetCleaning&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;code 3: Running of &lt;em&gt;MetClean&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##demo data
+MetClean(polarity = &amp;quot;positive&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running results of &lt;em&gt;MetClean&lt;/em&gt;
+1.Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/mv%20filter.jpg&#34; alt=&#34;Figure3 Missing or zero value filtering&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure3 Missing or zero value filtering&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;2.Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don’t recommend to remove them as Figure 4 shows, because they should be consired combined other information.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/sample%20filter.jpg&#34; alt=&#34;Figure4 Sample filtering&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure4 Sample filtering&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;3.Output files. Output files of &lt;em&gt;MetClean&lt;/em&gt; are listed as Figure 5 shows.
+(1) “1MV overview”, “2MV filter”, “3Zero overview” and “4Zero filter” are missing and zero values filtering information.
+(2) “5QC outlier filter” and “6Subject outlier filter” are sample filtering based on PCA information.
+(3) “7Normalization result” is the data normalization information for each batch.
+(4) “8Batch effect” is the batch effect both in before and after data cleaning.
+(5) “9metabolite plot” is the scatter plot for each feature.
+(6) “10Data overview” is the overview of data.
+(7) “11RSD overview” is the RSD distribution for each batch both before and after data cleaning.
+(8) &lt;strong&gt;“data_after_pre.csv”, “qc.info.csv” and “subject.info”&lt;/strong&gt; are the data and sample information after data cleaning.
+(9) “intermediate” is the intermediate data during processing.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/output%20files%20of%20MetClean.jpg&#34; alt=&#34;Figure5 Output files of MetClean&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure5 Output files of &lt;em&gt;MetClean&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;statistical-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4&lt;/span&gt; &lt;strong&gt;Statistical analysis&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;Data statistical analysis is integrated as a function named as &lt;em&gt;MetStat&lt;/em&gt; in &lt;em&gt;MetCleaning&lt;/em&gt;. We use the demo data as the example. &lt;strong&gt;Please note that now &lt;em&gt;MetStat&lt;/em&gt; can only process two class data.&lt;/strong&gt; Copy the code below and paste in you R console.&lt;/p&gt;
+&lt;p&gt;code 4: Demo data of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;data(&amp;quot;met.data.after.pre&amp;quot;, package = &amp;quot;MetCleaning&amp;quot;)
+data(new.group, package = &amp;quot;MetCleaning&amp;quot;)
+##create a folder for MetStat demo
+dir.create(&amp;quot;Demo for MetStat&amp;quot;)
+setwd(&amp;quot;Demo for MetStat&amp;quot;)
+## export the demo data as csv
+write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The demo data have been added in your work directory. “new.group.csv” is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don’t want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/new.group.jpg&#34; alt=&#34;Figure6 new group information&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure6 new group information&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;code 5: Running of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Running results of &lt;em&gt;MetStat&lt;/em&gt;
+1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/sample%20remove.jpg&#34; alt=&#34;Figure7 sample removing confirmation&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure7 sample removing confirmation&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;2.Number of component selection in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the Console show “How many comps do you want to see?”, you can type 10 and enter “Enter” key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and enter “Enter” key.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/PLS%20analysis.jpg&#34; alt=&#34;Figure8 Number of component selection in PLS-DA analysis&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure8 Number of component selection in PLS-DA analysis&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;3.Output files. Output files of &lt;em&gt;MetStat&lt;/em&gt; are listed as Figure 9 shows.
+(1) “12PCA analysis” is the PCA score plot.
+(2) “13PLS analysis” contains the PLS-DA results.
+(3) “14heatmap” is the heatmap.
+(4) “15marker selection” contains the information of markers, volcano plot and boxplots of markers.
+(5) &lt;strong&gt;“data_after_stat.csv”, “qc.info.csv” and “subject.info”&lt;/strong&gt; are the data and sample information after statistical analysis.
+(6) “intermediate” is the intermediate data during processing.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/images/metcleaning/output%20files%20of%20MetStat.jpg&#34; alt=&#34;Figure9 Output files of MetStat&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure9 Output files of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>使用Github和Hexo建独立博客</title>
       <link>/post/2017-09-09-github-blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
       <guid>/post/2017-09-09-github-blog/</guid>
       <description>
 
-&lt;p&gt;参考了一篇&lt;a href=&#34;https://github.com/limedroid/HexoLearning#42-直接方式&#34; target=&#34;_blank&#34;&gt;非常好的文章&lt;/a&gt;，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。&lt;/p&gt;
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#hexo介绍&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; 1. Hexo介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#环境准备&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; 2. 环境准备&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装node.js&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.1&lt;/span&gt; 2.1 安装node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装hexo&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.2&lt;/span&gt; 2.2 安装hexo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#利用hexo搭建一个博客&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; 3. 利用Hexo搭建一个博客&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建博客目录shenxtgithub.io&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3.1&lt;/span&gt; 3.1 &lt;span&gt;创建博客目录shenxt@github.io&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#生成静态页面&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3.2&lt;/span&gt; 3.2 生成静态页面&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#运行&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3.3&lt;/span&gt; 3.3 运行&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#发一篇文章试试&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4&lt;/span&gt; 4 发一篇文章试试&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#穿件一个新的博客&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4.1&lt;/span&gt; 4.1 穿件一个新的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#配置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.5&lt;/span&gt; 5 配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#更换主题&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.6&lt;/span&gt; 6 更换主题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#部署到github上&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.7&lt;/span&gt; 7 部署到github上&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在github网页版上创建和自己账户名相同的仓库比如我的账户为shenxt因此创建的仓库为shenxt.github.io&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.7.1&lt;/span&gt; 7.1 在github网页版上创建和自己账户名相同的仓库，比如我的账户为shenxt，因此，创建的仓库为shenxt.github.io。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装hexo-deployer-git&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.7.2&lt;/span&gt; 7.2 安装hexo-deployer-git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#网站配置git&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.7.3&lt;/span&gt; 7.3 网站配置git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#部署&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.7.4&lt;/span&gt; 7.4 部署&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#贴标签方便搜索&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.8&lt;/span&gt; 贴标签，方便搜索&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#两个确认&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.8.1&lt;/span&gt; 8.1 两个确认&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#新建tags页面&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.8.2&lt;/span&gt; 8.2 新建tags页面&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改sourcetagsindex.md&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.8.3&lt;/span&gt; 8.3 修改source/tags/index.md&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#在文章中添加tags&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.8.4&lt;/span&gt; 8.4 在文章中添加tags&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分类给文章归档&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.9&lt;/span&gt; 9 分类，给文章归档&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#两个确认-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.9.1&lt;/span&gt; 9.1 两个确认&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#新建categories文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.9.2&lt;/span&gt; 9.2 新建categories文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改categoriesindex.md&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.9.3&lt;/span&gt; 9.3 修改categories/index.md&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#在文章中添加categories&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.9.4&lt;/span&gt; 9.4 在文章中添加categories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#添加评论功能&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.10&lt;/span&gt; 10 添加评论功能&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
-&lt;h2 id=&#34;1-hexo介绍&#34;&gt;1. Hexo介绍&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-cn/&#34; target=&#34;_blank&#34;&gt;Hexo&lt;/a&gt;是基于NodeJs的静态博客框架，简单、轻量，其生成的静态网页可以托管在Github和Heroku上。&lt;/p&gt;
-
+&lt;p&gt;参考了一篇&lt;a href=&#34;https://github.com/limedroid/HexoLearning#42-直接方式&#34;&gt;非常好的文章&lt;/a&gt;，然后结合自己的实际问题，讲解如何使用github结合hexo建立个人的独立博客。&lt;/p&gt;
+&lt;div id=&#34;hexo介绍&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; 1. Hexo介绍&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-cn/&#34;&gt;Hexo&lt;/a&gt;是基于NodeJs的静态博客框架，简单、轻量，其生成的静态网页可以托管在Github和Heroku上。&lt;/p&gt;
 &lt;p&gt;. 超快速度
 . 支持MarkDown
 . 一键部署
 . 丰富的插件&lt;/p&gt;
-
-&lt;p&gt;下面以我的博客为例，&lt;a href=&#34;https://shenxt.github.io/&#34; target=&#34;_blank&#34;&gt;shenxt.github.io&lt;/a&gt;为例，讲解如何部署自己的博客。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-环境准备&#34;&gt;2. 环境准备&lt;/h2&gt;
-
-&lt;h3 id=&#34;2-1-安装node-js&#34;&gt;2.1 安装node.js&lt;/h3&gt;
-
-&lt;p&gt;去&lt;a href=&#34;https://nodejs.org/en/download/&#34; target=&#34;_blank&#34;&gt;nodejs&lt;/a&gt;官网下载对应系统的安装包，按提示安装。&lt;/p&gt;
-
+&lt;p&gt;下面以我的博客为例，&lt;a href=&#34;https://shenxt.github.io/&#34;&gt;shenxt.github.io&lt;/a&gt;为例，讲解如何部署自己的博客。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;环境准备&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2&lt;/span&gt; 2. 环境准备&lt;/h2&gt;
+&lt;div id=&#34;安装node.js&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1&lt;/span&gt; 2.1 安装node.js&lt;/h3&gt;
+&lt;p&gt;去&lt;a href=&#34;https://nodejs.org/en/download/&#34;&gt;nodejs&lt;/a&gt;官网下载对应系统的安装包，按提示安装。&lt;/p&gt;
 &lt;p&gt;检验安装成功，在git shell中输入一下代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ node -v
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;2-2-安装hexo&#34;&gt;2.2 安装hexo&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ npm install hexo-cli -g
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre&gt;&lt;code&gt;$ node -v&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;安装hexo&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.2&lt;/span&gt; 2.2 安装hexo&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install hexo-cli -g&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如果是mac，则需要输入：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo npm install hexo-cli -g
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;3-利用hexo搭建一个博客&#34;&gt;3. 利用Hexo搭建一个博客&lt;/h2&gt;
-
-&lt;h3 id=&#34;3-1-创建博客目录shenxt-github-io&#34;&gt;3.1 创建博客目录shenxt@github.io&lt;/h3&gt;
-
+&lt;pre&gt;&lt;code&gt;$ sudo npm install hexo-cli -g&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;利用hexo搭建一个博客&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 3. 利用Hexo搭建一个博客&lt;/h2&gt;
+&lt;div id=&#34;创建博客目录shenxtgithub.io&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3.1&lt;/span&gt; 3.1 &lt;a href=&#34;mailto:创建博客目录shenxt@github.io&#34; class=&#34;email&#34;&gt;创建博客目录shenxt@github.io&lt;/a&gt;&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;$ hexo init shenxt.github.io
 $ cd limedroid.github.io
-$ npm install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;3-2-生成静态页面&#34;&gt;3.2 生成静态页面&lt;/h3&gt;
-
+$ npm install&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;生成静态页面&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3.2&lt;/span&gt; 3.2 生成静态页面&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;$ hexo clean
-$ hexo g # g is generate
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;3-3-运行&#34;&gt;3.3 运行&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hexo s -p3600# is server
-&lt;/code&gt;&lt;/pre&gt;
-
+$ hexo g # g is generate&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;运行&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3.3&lt;/span&gt; 3.3 运行&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ hexo s -p3600# is server&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。&lt;/p&gt;
-
-&lt;h2 id=&#34;4-发一篇文章试试&#34;&gt;4 发一篇文章试试&lt;/h2&gt;
-
-&lt;h3 id=&#34;4-1-穿件一个新的博客&#34;&gt;4.1 穿件一个新的博客&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hexo new test
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;发一篇文章试试&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4&lt;/span&gt; 4 发一篇文章试试&lt;/h2&gt;
+&lt;div id=&#34;穿件一个新的博客&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1&lt;/span&gt; 4.1 穿件一个新的博客&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ hexo new test&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;此时会在source/posts目录下生成test.md文件，输入一些内容，然后保存。&lt;/p&gt;
-
 &lt;p&gt;然后看一下效果:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;$ hexo clean
 $ hexo g
-$ hexo s -p3600# is server
-&lt;/code&gt;&lt;/pre&gt;
-
+$ hexo s -p3600# is server&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后可以打开浏览器，输入地址 localhost:3600 即可看到效果。&lt;/p&gt;
-
-&lt;h2 id=&#34;5-配置&#34;&gt;5 配置&lt;/h2&gt;
-
-&lt;p&gt;网站的设置大部分都在_config.yml文件夹中，详细配置可以查看&lt;a href=&#34;https://hexo.io/zh-cn/docs/configuration.html&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
-
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;配置&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.5&lt;/span&gt; 5 配置&lt;/h2&gt;
+&lt;p&gt;网站的设置大部分都在_config.yml文件夹中，详细配置可以查看&lt;a href=&#34;https://hexo.io/zh-cn/docs/configuration.html&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;下面只列出简单常用配置:&lt;/p&gt;
-
 &lt;p&gt;.title -&amp;gt; 网站标题
 .subtitle -&amp;gt; 网站副标题
 .description -&amp;gt; 网站描述
 .author -&amp;gt; 您的名字
 .language -&amp;gt; 网站使用的语言&lt;/p&gt;
-
 &lt;p&gt;注意：进行配置时，需要在冒号:后加一个英文空格。&lt;/p&gt;
-
-&lt;h2 id=&#34;6-更换主题&#34;&gt;6 更换主题&lt;/h2&gt;
-
+&lt;/div&gt;
+&lt;div id=&#34;更换主题&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.6&lt;/span&gt; 6 更换主题&lt;/h2&gt;
 &lt;p&gt;在网站配置文件_config.yml中，配置theme。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;theme: next
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;next是主题的名字。Hexo有不同的人贡献主题，可以到其&lt;a href=&#34;https://hexo.io/themes/index.html&#34; target=&#34;_blank&#34;&gt;官方网站&lt;/a&gt;上下载不同主题。看中某一主题之后，直接点击其名字，进入到其github界面，然后复制其网址，使用下面代码，即可下载主题到本地。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/fi3ework/hexo-theme-archer
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre&gt;&lt;code&gt;theme: next&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;next是主题的名字。Hexo有不同的人贡献主题，可以到其&lt;a href=&#34;https://hexo.io/themes/index.html&#34;&gt;官方网站&lt;/a&gt;上下载不同主题。看中某一主题之后，直接点击其名字，进入到其github界面，然后复制其网址，使用下面代码，即可下载主题到本地。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/fi3ework/hexo-theme-archer&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后将博客的配置文件theme修改为archer即可。&lt;/p&gt;
-
 &lt;p&gt;观察效果：&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;$ hexo clean
 $ hexo g
-$ hexo s -p3600# is server
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;7-部署到github上&#34;&gt;7 部署到github上&lt;/h2&gt;
-
-&lt;h3 id=&#34;7-1-在github网页版上创建和自己账户名相同的仓库-比如我的账户为shenxt-因此-创建的仓库为shenxt-github-io&#34;&gt;7.1 在github网页版上创建和自己账户名相同的仓库，比如我的账户为shenxt，因此，创建的仓库为shenxt.github.io。&lt;/h3&gt;
-
-&lt;h3 id=&#34;7-2-安装hexo-deployer-git&#34;&gt;7.2 安装hexo-deployer-git&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ npm install hexo-deployer-git --save
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;7-3-网站配置git&#34;&gt;7.3 网站配置git&lt;/h3&gt;
-
+$ hexo s -p3600# is server&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;部署到github上&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.7&lt;/span&gt; 7 部署到github上&lt;/h2&gt;
+&lt;div id=&#34;在github网页版上创建和自己账户名相同的仓库比如我的账户为shenxt因此创建的仓库为shenxt.github.io&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.7.1&lt;/span&gt; 7.1 在github网页版上创建和自己账户名相同的仓库，比如我的账户为shenxt，因此，创建的仓库为shenxt.github.io。&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;安装hexo-deployer-git&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.7.2&lt;/span&gt; 7.2 安装hexo-deployer-git&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install hexo-deployer-git --save&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;网站配置git&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.7.3&lt;/span&gt; 7.3 网站配置git&lt;/h3&gt;
 &lt;p&gt;在网上的配置文件_config.yml中配置deploy。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-deploy:&#34;&gt;  type: git
+&lt;pre class=&#34;deploy:&#34;&gt;&lt;code&gt;  type: git
   repo: https://github.com/shenxt/shenxt.github.io
-  branch: master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;7-4-部署&#34;&gt;7.4 部署&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hexo d# d is deploy
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;贴标签-方便搜索&#34;&gt;贴标签，方便搜索&lt;/h2&gt;
-
-&lt;h3 id=&#34;8-1-两个确认&#34;&gt;8.1 两个确认&lt;/h3&gt;
-
+  branch: master&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;部署&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.7.4&lt;/span&gt; 7.4 部署&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ hexo d# d is deploy&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;贴标签方便搜索&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.8&lt;/span&gt; 贴标签，方便搜索&lt;/h2&gt;
+&lt;div id=&#34;两个确认&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.8.1&lt;/span&gt; 8.1 两个确认&lt;/h3&gt;
 &lt;p&gt;. 首先确认博客的配置文件中有：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tag_dir: tags
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre&gt;&lt;code&gt;tag_dir: tags&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;. 然后确认主题的配置文件有：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tags: tags
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;8-2-新建tags页面&#34;&gt;8.2 新建tags页面&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hexo new page tags
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre&gt;&lt;code&gt;tags: tags&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;新建tags页面&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.8.2&lt;/span&gt; 8.2 新建tags页面&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ hexo new page tags&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;此时会在source/下生成tags/index.md文件。&lt;/p&gt;
-
-&lt;h3 id=&#34;8-3-修改source-tags-index-md&#34;&gt;8.3 修改source/tags/index.md&lt;/h3&gt;
-
+&lt;/div&gt;
+&lt;div id=&#34;修改sourcetagsindex.md&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.8.3&lt;/span&gt; 8.3 修改source/tags/index.md&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;title: tags
 date: 2015-10-20 06:49:50
 type: &amp;quot;tags&amp;quot;
-comments: false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;8-4-在文章中添加tags&#34;&gt;8.4 在文章中添加tags&lt;/h3&gt;
-
+comments: false&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;在文章中添加tags&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.8.4&lt;/span&gt; 8.4 在文章中添加tags&lt;/h3&gt;
 &lt;p&gt;在你的文章中添加：&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;tags:
-	- Tag1
-	- Tag2
-	- Tag3
-&lt;/code&gt;&lt;/pre&gt;
-
+    - Tag1
+    - Tag2
+    - Tag3&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;其文件头部类似于：&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;title: TagEditText
 date: 2016-11-19 10:44:25
 tags:
-	- Tag1
-	- Tag2
-	- Tag3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;9-分类-给文章归档&#34;&gt;9 分类，给文章归档&lt;/h2&gt;
-
-&lt;h3 id=&#34;9-1-两个确认&#34;&gt;9.1 两个确认&lt;/h3&gt;
-
+    - Tag1
+    - Tag2
+    - Tag3&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分类给文章归档&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.9&lt;/span&gt; 9 分类，给文章归档&lt;/h2&gt;
+&lt;div id=&#34;两个确认-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.9.1&lt;/span&gt; 9.1 两个确认&lt;/h3&gt;
 &lt;p&gt;. 确认博客配置文件打开了&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;category_dir: categories
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;pre&gt;&lt;code&gt;category_dir: categories&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;. 确认主题配置文件打开了&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;categories: /categories
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;9-2-新建categories文件&#34;&gt;9.2 新建categories文件&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;hexo new page categories
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;9-3-修改categories-index-md&#34;&gt;9.3 修改categories/index.md&lt;/h3&gt;
-
+&lt;pre&gt;&lt;code&gt;categories: /categories&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;新建categories文件&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.9.2&lt;/span&gt; 9.2 新建categories文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;hexo new page categories&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改categoriesindex.md&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.9.3&lt;/span&gt; 9.3 修改categories/index.md&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;title: categories
 date: 2015-10-20 06:49:50
 type: &amp;quot;categories&amp;quot;
-comments: false
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;9-4-在文章中添加categories&#34;&gt;9.4 在文章中添加categories&lt;/h3&gt;
-
+comments: false&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;在文章中添加categories&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.9.4&lt;/span&gt; 9.4 在文章中添加categories&lt;/h3&gt;
 &lt;p&gt;在文章中添加：&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;categories:
-	- cate
-&lt;/code&gt;&lt;/pre&gt;
-
+    - cate&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;其文件头部类似：&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;title: TagEditText
 date: 2016-11-19 10:44:25
 categories:
-	- cate
+    - cate&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;添加评论功能&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.10&lt;/span&gt; 10 添加评论功能&lt;/h2&gt;
+&lt;p&gt;这里推荐使用韩国的来必力系统。参考&lt;a href=&#34;https://www.drixn.com/2017/LiveReCommentsSystem/&#34;&gt;这个博客&lt;/a&gt;进行设置。&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用R爬取HMDB和KEGG数据库</title>
+      <link>/post/2016-12-03-keggandhmdb/</link>
+      <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>/post/2016-12-03-keggandhmdb/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#r语言爬虫&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; &lt;strong&gt;R语言爬虫&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#爬取kegg通路信息&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; &lt;strong&gt;爬取KEGG通路信息&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#爬取hmdb通路信息&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; &lt;strong&gt;爬取HMDB通路信息&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#爬取hmdb代谢物信息&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4&lt;/span&gt; &lt;strong&gt;爬取HMDB代谢物信息&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;r语言爬虫&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; &lt;strong&gt;R语言爬虫&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;虽然相对于python来说，R语言爬虫并不是那么流行，但是对于比较小的数据爬取量，使用R还是很方便的。R的数据爬取比较流行的是利用XML和RCurl包进行爬取，在这篇博客里面，我就利用XML和RCurl包进行KEGG和HMDB的数据爬取。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;爬取kegg通路信息&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2&lt;/span&gt; &lt;strong&gt;爬取KEGG通路信息&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;因为我需要的信息是KEGG的通路信息，比较简单，也就是每个通路包含哪些代谢物，只要人的metaboloic pathway，因此，我需要先将KEGG中的通路的网页链接拿到。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(XML)
+library(RCurl)
+##从kegg主页上抓取代谢通路的url
+URL = getURL(&amp;quot;http://www.genome.jp/kegg/pathway.html#global&amp;quot;)
+doc &amp;lt;- htmlParse(URL,encoding=&amp;quot;utf-8&amp;quot;)
+xpath.a &amp;lt;- &amp;quot;//a/@href&amp;quot;
+node &amp;lt;- getNodeSet(doc, xpath.a)
+url1 &amp;lt;- sapply(node, as.character)
+
+xpath.b &amp;lt;- &amp;quot;//a[@href]&amp;quot;
+name &amp;lt;- getNodeSet(doc, xpath.b)
+name &amp;lt;- sapply(name, xmlValue)
+
+name2 &amp;lt;- name[59:247]
+url2 &amp;lt;- url1[59:247]
+
+url3 &amp;lt;- url2[grep(&amp;quot;show&amp;quot;, url2)]
+
+pathwat.name &amp;lt;- NULL
+metabolite.id &amp;lt;- list()
+metabolite.name &amp;lt;- list()
+for (i in 1:length(url3)) {
+  cat(paste(i,&amp;quot;/&amp;quot;,length(url3)))
+  cat(&amp;quot;\n&amp;quot;)
+  URL &amp;lt;- paste(&amp;quot;http://www.genome.jp&amp;quot;, url3[i], sep = &amp;quot;&amp;quot;)
+  URL = getURL(URL)
+  doc&amp;lt;-htmlParse(URL,encoding=&amp;quot;utf-8&amp;quot;)
+  xpath &amp;lt;- &amp;quot;//option[@value=&amp;#39;hsa&amp;#39;]&amp;quot;
+  node&amp;lt;-getNodeSet(doc, xpath)
+  if (length(node) ==0 ) {
+    cat(&amp;quot;No human pathwat.&amp;quot;)
+    next()
+  }else{
+    URL &amp;lt;- paste(&amp;quot;http://www.genome.jp&amp;quot;, url3[i], sep = &amp;quot;&amp;quot;)
+    URL &amp;lt;- gsub(pattern = &amp;quot;map=map&amp;quot;, replacement = &amp;quot;map=hsa&amp;quot;, x = URL)
+    doc&amp;lt;-htmlParse(URL,encoding=&amp;quot;utf-8&amp;quot;)
+    xpath1 &amp;lt;- &amp;quot;//title&amp;quot;
+    node&amp;lt;-getNodeSet(doc, xpath1)
+    pathway.name[i] &amp;lt;- xmlValue(node[[1]])
+    pathway.name[i] &amp;lt;- substr(pathway.name[i], start = 2, stop = nchar(pathway.name[i])-1)
+
+    xpath2 &amp;lt;- &amp;quot;//area[@shape=&amp;#39;circle&amp;#39;]/@title&amp;quot;
+    node&amp;lt;-getNodeSet(doc, xpath2)
+    metabolite &amp;lt;- lapply(node, function(x) as.character(x))
+    metabolite.name[[i]] &amp;lt;- substr(metabolite, start = 9, nchar(metabolite)-1)
+    metabolite.id[[i]] &amp;lt;- substr(metabolite, start = 1, stop = 6)
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面对爬取到的代谢通路进行筛选。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;idx &amp;lt;- which(!is.na(pathway.name))
+pathway.name1 &amp;lt;- pathway.name[idx]
+metabolite.id1 &amp;lt;- metabolite.id[idx]
+metabolite.name1 &amp;lt;- metabolite.name[idx]
+
+pathway.name2 &amp;lt;- pathway.name1[-c(83,84)]
+metabolite.id2 &amp;lt;- metabolite.id1[-c(83,84)]
+metabolite.name2 &amp;lt;- metabolite.name1[-c(83,84)]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将爬取到的信息保存输出。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;met.name &amp;lt;- NULL
+met.id &amp;lt;- NULL
+path.name &amp;lt;- NULL
+for(i in 1:length(pathway.name2)) {
+  met.name[i] &amp;lt;- paste(metabolite.name2[[i]], collapse = &amp;quot;;&amp;quot;)
+  met.id[i] &amp;lt;- paste(metabolite.id2[[i]], collapse = &amp;quot;;&amp;quot;)
+  path.name[i] &amp;lt;- gsub(pattern = &amp;quot;KEGG PATHWAY: &amp;quot;, &amp;quot;&amp;quot;, pathway.name2[i])
+  path.name[i] &amp;lt;- substr(path.name[i], start = 1, stop = nchar(path.name[i])-23)
+}
+
+
+kegg &amp;lt;- data.frame(path.name, met.name, met.id)
+write.csv(kegg, &amp;quot;kegg.csv&amp;quot;, row.names = F)
+
+save(path.name, file = &amp;quot;path.name&amp;quot;)
+save(met.name, file = &amp;quot;met.name&amp;quot;)
+save(met.id, file = &amp;quot;met.id&amp;quot;)
+
+kegg.met &amp;lt;- list()
+kegg.met[[2]] &amp;lt;- sapply(path.name, list)
+kegg.met[[1]] &amp;lt;- metabolite.name2
+kegg.met[[3]] &amp;lt;- metabolite.id2
+
+names(kegg.met) &amp;lt;- c(&amp;quot;gs&amp;quot;, &amp;quot;pathwaynames&amp;quot;, &amp;quot;metid&amp;quot;)
+
+save(kegg.met, file = &amp;quot;kegg.met&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;爬取hmdb通路信息&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; &lt;strong&gt;爬取HMDB通路信息&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;首先爬取HMDB的通路信息。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##抓取HMDB通路信息
+library(XML)
+library(RCurl)
+
+hmdb.main &amp;lt;- &amp;quot;http://www.hmdb.ca/pathways?page=&amp;quot;
+hmdb.main &amp;lt;- paste(hmdb.main, c(2:46), sep = &amp;quot;&amp;quot;)
+hmdb.main &amp;lt;- c(&amp;quot;http://www.hmdb.ca/pathways&amp;quot;, hmdb.main)
+
+##从HMDB主页上抓取代谢通路的url
+path.name &amp;lt;- list()
+metabolite.id &amp;lt;- list()
+spec &amp;lt;- list()
+path.class &amp;lt;- list()
+for (i in 40:length(hmdb.main)) {
+  cat(paste(&amp;quot;page&amp;quot;,i))
+  cat(&amp;quot;:&amp;quot;)
+  URL = getURL(hmdb.main[i])
+  doc&amp;lt;-htmlParse(URL,encoding=&amp;quot;utf-8&amp;quot;)
+  xpath1 &amp;lt;- &amp;quot;//div[@class=&amp;#39;panel-heading&amp;#39;]&amp;quot;
+  node1 &amp;lt;- getNodeSet(doc, xpath1)
+  pathway.name &amp;lt;- sapply(node1, xmlValue)
+
+  cat(paste(length(pathway.name), &amp;quot;pathways&amp;quot;))
+  cat(&amp;quot;\n&amp;quot;)
+
+  path.name[[i]] &amp;lt;- pathway.name
+
+  xpath2 &amp;lt;- &amp;quot;//div[@class=&amp;#39;panel-body&amp;#39;]&amp;quot;
+  node2 &amp;lt;- getNodeSet(doc, xpath2)
+
+  metabolite &amp;lt;- sapply(node2, xmlValue)
+  metabolite &amp;lt;- unname(sapply(metabolite, function(x) {gsub(&amp;quot;Show&amp;quot;, &amp;quot; &amp;quot;, x)}))
+
+  idx &amp;lt;- sapply(metabolite, function(x) {gregexpr(&amp;quot;HMDB[0-9]{5}&amp;quot;, x)})
+
+  met.id &amp;lt;- list()
+  for (j in 1:length(idx)) {
+    id &amp;lt;- NULL
+    for (k in 1:length(idx[[j]])) {
+      id[k] &amp;lt;- substr(metabolite[j], idx[[j]][k], idx[[j]][k]+8)
+    }
+    met.id[[j]] &amp;lt;- id
+  }
+
+  metabolite.id[[i]] &amp;lt;- met.id
+
+  xpath.a &amp;lt;- &amp;quot;//a[@class=&amp;#39;link-out&amp;#39;]/@href&amp;quot;
+  node&amp;lt;-getNodeSet(doc, xpath.a)
+
+  url1 &amp;lt;- sapply(node, as.character)
+  url1 &amp;lt;- substr(url1, start = 1, stop = 29)
+  url1 &amp;lt;- url1[!duplicated(url1)]
+
+
+  ###获取通路的人种和类别
+  species &amp;lt;- NULL
+  metabolic &amp;lt;- NULL
+  for (t in 1:length(url1)) {
+    cat(paste(&amp;quot;t:&amp;quot;,t));cat(&amp;quot; &amp;quot;)
+    URL = getURL(url1[t])
+    doc &amp;lt;- htmlParse(URL,encoding=&amp;quot;utf-8&amp;quot;)
+    xpath &amp;lt;- &amp;quot;//div[@class=&amp;#39;species&amp;#39;]/text()&amp;quot;
+    node &amp;lt;- getNodeSet(doc, xpath)
+    species[t] &amp;lt;- xmlValue(node[[1]])
+
+    xpath &amp;lt;- &amp;quot;//div[@id=&amp;#39;des_subject&amp;#39;]/text()&amp;quot;
+    node &amp;lt;- getNodeSet(doc, xpath)
+    metabolic[t] &amp;lt;- xmlValue(node[[1]])
+
+  }
+
+  spec[[i]] &amp;lt;- species
+  path.class[[i]] &amp;lt;- metabolic
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对爬取到的代谢通路进行筛选。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;save(path.name, file = &amp;quot;path.name&amp;quot;)
+save(metabolite.id, file = &amp;quot;metabolite.id&amp;quot;)
+save(spec, file = &amp;quot;spec&amp;quot;)
+save(path.class, file = &amp;quot;path.class&amp;quot;)
+
+
+pathway.name &amp;lt;- NULL
+metabolite.ID &amp;lt;- list()
+species &amp;lt;- NULL
+pathway.class &amp;lt;- NULL
+for (i in 1:length(path.name)) {
+  pathway.name &amp;lt;- c(pathway.name, path.name[[i]])
+  metabolite.ID &amp;lt;- c(metabolite.ID, metabolite.id[[i]])
+  species &amp;lt;- c(species, spec[[i]])
+  pathway.class &amp;lt;- c(pathway.class, path.class[[i]])
+}
+
+
+pathway.class &amp;lt;- substr(x = pathway.class, 1, regexpr(&amp;quot;\\\n&amp;quot;, pathway.class)-1)
+
+metabolite.name &amp;lt;- list()
+for (i in 1:length(metabolite.ID)) {
+  id &amp;lt;- metabolite.ID[[i]]
+  idx &amp;lt;- match(id, hmdbdatabase[,1])
+  name &amp;lt;- hmdbdatabase[idx,2]
+  metabolite.name[[i]] &amp;lt;- name
+}
+
+a &amp;lt;- unlist(lapply(metabolite.name, function(x) {paste(x, collapse = &amp;quot;;&amp;quot;)}))
+b &amp;lt;- unlist(lapply(metabolite.ID, function(x) {paste(x, collapse = &amp;quot;;&amp;quot;)}))
+
+idx &amp;lt;- grep(&amp;quot;Metabolic&amp;quot;, pathway.class)
+
+metabolite.name &amp;lt;- metabolite.name[idx]
+metabolite.ID &amp;lt;- metabolite.ID[idx]
+pathway.name &amp;lt;- pathway.name[idx]
+pathway.class &amp;lt;- pathway.class[idx]
+species &amp;lt;- species[idx]
+
+hmdb.pathway &amp;lt;- data.frame(pathway.name, pathway.class,a, b)[idx,]
+write.csv(hmdb.pathway, &amp;quot;hmdb.pathway.csv&amp;quot;)
+
+a &amp;lt;- list()
+for (i in 1:length(pathway.name)) {
+  a[[i]] &amp;lt;- pathway.name[i]
+}
+
+pathway.name &amp;lt;- a
+
+hmdb.met &amp;lt;- list(gs = metabolite.name, pathwaynames = pathway.name, id = metabolite.ID)
+save(hmdb.met, file = &amp;quot;hmdb.met&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;爬取hmdb代谢物信息&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4&lt;/span&gt; &lt;strong&gt;爬取HMDB代谢物信息&lt;/strong&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;首先，获得所有代谢物的页面链接。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;###抓取HMDB代谢物信息
+library(XML)
+library(RCurl)
+
+hmdb.main &amp;lt;- &amp;quot;http://www.hmdb.ca/metabolites?c=hmdb_id&amp;amp;d=up&amp;amp;page=&amp;quot;
+hmdb.main &amp;lt;- paste(hmdb.main, c(2:1681), sep = &amp;quot;&amp;quot;)
+hmdb.main &amp;lt;- c(&amp;quot;http://www.hmdb.ca/metabolites&amp;quot;, hmdb.main)
+
+##从HMDB主页上抓取代谢物的url
+url &amp;lt;- NULL
+for (i in 1:length(hmdb.main)) {
+  cat(i)
+  cat(&amp;quot; &amp;quot;)
+  URL = getURL(hmdb.main[i])
+  doc&amp;lt;-htmlParse(URL,encoding=&amp;quot;utf-8&amp;quot;)
+  xpath &amp;lt;- &amp;quot;//a[@href]/@href&amp;quot;
+  node&amp;lt;-getNodeSet(doc, xpath)
+  url1 &amp;lt;- sapply(node, as.character)
+  url1 &amp;lt;- url1[grep(&amp;quot;metabolites/HMDB&amp;quot;, url1)]
+  url1 &amp;lt;- unique(url1)
+  url &amp;lt;- c(url, url1)
+}
+
+url1 &amp;lt;- paste(&amp;quot;http://www.hmdb.ca/&amp;quot;,url, sep = &amp;quot;&amp;quot;)
+save(url1, file = &amp;quot;url1&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面开始进行代谢物信息爬取。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(mailR)
+for (i in 1:400) {
+  cat(paste((i-1)*100+1,&amp;quot;-&amp;quot;,i*100,&amp;quot;/&amp;quot;, length(url1), sep = &amp;quot;&amp;quot;))
+  cat(&amp;quot;\n&amp;quot;)
+  URL &amp;lt;- getURL(url1[((i-1)*100+1):(i*100)])
+  doc &amp;lt;- htmlParse(URL, encoding=&amp;quot;utf-8&amp;quot;)
+  xpath1 &amp;lt;- &amp;quot;//tr&amp;quot;
+  node1 &amp;lt;- getNodeSet(doc, xpath1)
+  node1 &amp;lt;- sapply(node1, xmlValue)
+
+  HMDB_ID[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(pattern = &amp;quot;HMDB ID&amp;quot;, replacement = &amp;quot;&amp;quot;,node1[grep(&amp;quot;HMDB ID&amp;quot;, node1)])
+
+  Common_Name[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;Common Name&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;Common Name&amp;quot;, node1)])
+
+  temp &amp;lt;- gsub(&amp;quot;SynonymsValueSource&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;Synonyms&amp;quot;, node1)])
+  temp &amp;lt;- gsub(&amp;quot;Generator&amp;quot;, &amp;quot;;&amp;quot;,temp)
+  temp &amp;lt;- gsub(&amp;quot;ChEMBL&amp;quot;, &amp;quot;;&amp;quot;,temp)
+  temp &amp;lt;- gsub(&amp;quot;ChEBI&amp;quot;, &amp;quot;;&amp;quot;,temp)
+  Synonyms[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;HMDB&amp;quot;, &amp;quot;;&amp;quot;,temp)
+
+  Chemical_Formula[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;Chemical Formula&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;Chemical Formula&amp;quot;, node1)])
+
+  Monoisotopic_Molecular_Weight[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;Monoisotopic Molecular Weight&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;Monoisotopic Molecular Weight&amp;quot;, node1)])
+
+  IUPAC_Name[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;IUPAC Name&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;IUPAC Name&amp;quot;, node1)])
+
+  Traditional_Name[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;Traditional Name&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;Traditional Name&amp;quot;, node1)])
+
+  CAS_Registry_Number[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;CAS Registry Number&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;CAS Registry Number&amp;quot;, node1)])
+
+  Origin[((i-1)*100+1):(i*100)] &amp;lt;-
+    gsub(&amp;quot;Origin&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;Origin&amp;quot;, node1)])
+
+  path &amp;lt;- gsub(&amp;quot;PathwaysNameSMPDB LinkKEGG Link&amp;quot;, &amp;quot;&amp;quot;,node1[grep(&amp;quot;Pathways&amp;quot;, node1)])
+  Pathways[((i-1)*100+1):(i*100)] &amp;lt;-
+    substr(path, 1, stop = regexpr(&amp;quot;SMP&amp;quot;, path)-1)
+
+  ##每100次保存一次
+  if (i*100 %in% seq(100, 60000, by = 100)) {
+    cat(&amp;quot;save data...\n&amp;quot;)
+    save(HMDB_ID,
+         Common_Name,
+         Synonyms,
+         Chemical_Formula,
+         Monoisotopic_Molecular_Weight,
+         IUPAC_Name,
+         Traditional_Name,
+         CAS_Registry_Number,
+         Origin,
+         Pathways,
+         file = paste(&amp;quot;hmdb.data&amp;quot;,i*100))
+
+    send.mail(from = &amp;quot;yourmail1@163.com&amp;quot;,
+              to = c(&amp;quot;youmail20@163.com&amp;quot;),
+              subject = paste(&amp;quot;WZZ GO ON:&amp;quot;, i),
+              body = paste(&amp;quot;WZZ still go on&amp;quot;, i),
+              smtp = list(host.name = &amp;quot;smtp.163.com&amp;quot;, port = 465, user.name = &amp;quot;yourmail1&amp;quot;, passwd = &amp;quot;passward&amp;quot;, ssl = TRUE),
+              authenticate = TRUE,
+              send = TRUE)
+  }
+
+}
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为代谢物信息比较大，可能需要一晚上，因此想到了没爬取100个，就给自己发一封邮件，来对程序进行监控。&lt;/p&gt;
+&lt;p&gt;写的比较粗糙，有时间再好好修改一下。&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>我的第一篇博客</title>
+      <link>/post/2016-11-25-first-blog/</link>
+      <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>/post/2016-11-25-first-blog/</guid>
+      <description>
 
-&lt;h2 id=&#34;10-添加评论功能&#34;&gt;10 添加评论功能&lt;/h2&gt;
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#我的博客&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 我的博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
-&lt;p&gt;这里推荐使用韩国的来必力系统。参考&lt;a href=&#34;https://www.drixn.com/2017/LiveReCommentsSystem/&#34; target=&#34;_blank&#34;&gt;这个博客&lt;/a&gt;进行设置。&lt;/p&gt;
+&lt;div id=&#34;我的博客&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 我的博客&lt;/h1&gt;
+&lt;p&gt;我的博客使用markdown编写，使用的编辑器是ATOM，使用起来还是非常方便的。以后有时间，就用博客来记录我的学习，生活和工作。&lt;/p&gt;
+&lt;p&gt;申祖涛于上海&lt;/p&gt;
+&lt;p&gt;2016年11月25日晚8点十分&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用Github Pages建独立博客</title>
+      <link>/post/2012-02-22-github-pages/</link>
+      <pubDate>Wed, 22 Feb 2012 00:00:00 +0000</pubDate>
+      <guid>/post/2012-02-22-github-pages/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#购买绑定独立域名&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; 购买、绑定独立域名&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#配置和使用github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; 配置和使用Github&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#检查ssh-keys的设置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.1&lt;/span&gt; 1、检查SSH keys的设置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#备份和移除原来的ssh-key设置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.2&lt;/span&gt; 2、备份和移除原来的ssh key设置：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#生成新的ssh-key&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.3&lt;/span&gt; 3、生成新的SSH Key：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#添加ssh-key到github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.4&lt;/span&gt; 4、添加SSH Key到GitHub：&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#测试一下&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.5&lt;/span&gt; 5、测试一下&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置你的账号信息&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.6&lt;/span&gt; 6、设置你的账号信息&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#成功了&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.7&lt;/span&gt; 成功了&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用github-pages建立博客&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; 使用GitHub Pages建立博客&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#user-organization-pages&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3.1&lt;/span&gt; User &amp;amp; Organization Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#绑定域名&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3.2&lt;/span&gt; 绑定域名&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#jekyll模板系统&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4&lt;/span&gt; Jekyll模板系统&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#jekyll基本结构&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4.1&lt;/span&gt; Jekyll基本结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#jekyll的配置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4.2&lt;/span&gt; Jekyll的配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#yaml-front-matter和模板变量&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.4.3&lt;/span&gt; YAML Front Matter和模板变量&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用disqus管理评论&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.5&lt;/span&gt; 使用Disqus管理评论&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#代码高亮插件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.6&lt;/span&gt; 代码高亮插件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#搭建本地jekyll环境&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.7&lt;/span&gt; 搭建本地jekyll环境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#结语&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.8&lt;/span&gt; 结语&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://github.com&#34; title=&#34;Github&#34;&gt;Github&lt;/a&gt;很好的将代码和社区联系在了一起，于是发生了很多有趣的事情，世界也因为他美好了一点点。Github作为现在最流行的代码仓库，已经得到很多大公司和项目的青睐，比如&lt;a href=&#34;https://github.com/jquery/jquery&#34; title=&#34;jQuery@github&#34;&gt;jQuery&lt;/a&gt;、&lt;a href=&#34;https://github.com/twitter/bootstrap&#34; title=&#34;Twitter@github&#34;&gt;Twitter&lt;/a&gt;等。为使项目更方便的被人理解，介绍页面少不了，甚至会需要完整的文档站，Github替你想到了这一点，他提供了&lt;a href=&#34;http://pages.github.com/&#34; title=&#34;Github Pages&#34;&gt;Github Pages&lt;/a&gt;的服务，不仅可以方便的为项目建立介绍站点，也可以用来建立个人博客。&lt;/p&gt;
+&lt;p&gt;Github Pages有以下几个优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+轻量级的博客系统，没有麻烦的配置
+&lt;/li&gt;
+&lt;li&gt;
+使用标记语言，比如&lt;a href=&#34;http://markdown.tw&#34;&gt;Markdown&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+无需自己搭建服务器
+&lt;/li&gt;
+&lt;li&gt;
+根据Github的限制，对应的每个站有300MB空间
+&lt;/li&gt;
+&lt;li&gt;
+可以绑定自己的域名
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然他也有缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&lt;a href=&#34;https://github.com/mojombo/jekyll&#34; title=&#34;Jekyll&#34;&gt;Jekyll&lt;/a&gt;模板系统，相当于静态页发布，适合博客，文档介绍等。&lt;/li&gt;
+&lt;li&gt;动态程序的部分相当局限，比如没有评论，不过还好我们有解决方案。&lt;/li&gt;
+&lt;li&gt;基于Git，很多东西需要动手，不像Wordpress有强大的后台&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大致介绍到此，作为个人博客来说，简洁清爽的表达自己的工作、心得，就已达目标，所以Github Pages是我认为此需求最完美的解决方案了。&lt;/p&gt;
+&lt;div id=&#34;购买绑定独立域名&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; 购买、绑定独立域名&lt;/h2&gt;
+&lt;p&gt;虽说&lt;a href=&#34;http://www.godaddy.com/&#34; title=&#34;Godaddy&#34;&gt;Godaddy&lt;/a&gt;曾支持过SOPA，并且首页放着极其不专业的大胸美女，但是作为域名服务商他做的还不赖，选择它最重要的原因是他支持支付宝，没有信用卡有时真的很难过。&lt;/p&gt;
+&lt;p&gt;域名的购买不用多讲，注册、选域名、支付，有网购经验的都毫无压力，优惠码也遍地皆是。域名的配置需要提醒一下，因为伟大英明的GFW的存在，我们必须多做些事情。&lt;/p&gt;
+&lt;p&gt;流传Godaddy的域名解析服务器被墙掉，导致域名无法访问，后来这个事情在&lt;a href=&#34;http://beiyuu.com&#34; title=&#34;BeiYuu&#34;&gt;BeiYuu&lt;/a&gt;也发生了，不得已需要把域名解析服务迁移到国内比较稳定的服务商处，这个迁移对于域名来说没有什么风险，最终的控制权还是在Godaddy那里，你随时都可以改回去。&lt;/p&gt;
+&lt;p&gt;我们选择&lt;a href=&#34;https://www.dnspod.cn/&#34; title=&#34;DNSPod&#34;&gt;DNSPod&lt;/a&gt;的服务，他们的产品做得不错，易用、免费，收费版有更高端的功能，暂不需要。注册登录之后，按照DNSPod的说法，只需三步（我们插入一步）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+首先添加域名记录，可参考DNSPod的帮助文档：&lt;a href=&#34;https://www.dnspod.cn/Support&#34;&gt;https://www.dnspod.cn/Support&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+在DNSPod自己的域名下添加一条&lt;a href=&#34;http://baike.baidu.com/view/65575.htm&#34;&gt;A记录&lt;/a&gt;，地址就是Github Pages的服务IP地址：207.97.227.245
+&lt;/li&gt;
+&lt;li&gt;
+在域名注册商处修改DNS服务:去Godaddy修改Nameservers为这两个地址：f1g1ns1.dnspod.net、f1g1ns2.dnspod.net。如果你不明白在哪里修改，可以参考这里：&lt;a href=&#34;https://www.dnspod.cn/support/index/fid/119&#34;&gt;Godaddy注册的域名如何使用DNSPod&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+等待域名解析生效
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;域名的配置部分完成，跪谢方校长。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;配置和使用github&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2&lt;/span&gt; 配置和使用Github&lt;/h2&gt;
+&lt;p&gt;Git是版本管理的未来，他的优点我不再赘述，相关资料很多。推荐这本&lt;a href=&#34;http://progit.org/book/zh/&#34; title=&#34;Pro Git中文版&#34;&gt;Git中文教程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;要使用Git，需要安装它的客户端，推荐在Linux下使用Git，会比较方便。Windows版的下载地址在这里：&lt;a href=&#34;http://code.google.com/p/msysgit/downloads/list&#34; title=&#34;Windows版Git客户端&#34;&gt;http://code.google.com/p/msysgit/downloads/list&lt;/a&gt;。其他系统的安装也可以参考官方的&lt;a href=&#34;http://help.github.com/mac-set-up-git/&#34; title=&#34;Mac下Git安装&#34;&gt;安装教程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;下载安装客户端之后，各个系统的配置就类似了，我们使用windows作为例子，Linux和Mac与此类似。&lt;/p&gt;
+&lt;p&gt;在Windows下，打开Git Bash，其他系统下面则打开终端（Terminal）：
+&lt;img src=&#34;/images/githubpages/bootcamp_1_win_gitbash.jpg&#34; alt=&#34;Git Bash&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;检查ssh-keys的设置&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1&lt;/span&gt; 1、检查SSH keys的设置&lt;/h3&gt;
+&lt;p&gt;首先我们需要检查你电脑上现有的ssh key：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd ~/.ssh&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果显示“No such file or directory”，跳到第三步，否则继续。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;备份和移除原来的ssh-key设置&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.2&lt;/span&gt; 2、备份和移除原来的ssh key设置：&lt;/h3&gt;
+&lt;p&gt;因为已经存在key文件，所以需要备份旧的数据并删除：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ls
+config  id_rsa  id_rsa.pub  known_hosts
+$ mkdir key_backup
+$ cp id_rsa* key_backup
+$ rm id_rsa*&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;生成新的ssh-key&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.3&lt;/span&gt; 3、生成新的SSH Key：&lt;/h3&gt;
+&lt;p&gt;输入下面的代码，就可以生成新的key文件，我们只需要默认设置就好，所以当需要输入文件名的时候，回车就好。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh-keygen -t rsa -C &amp;quot;邮件地址@youremail.com&amp;quot;
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):&amp;lt;回车就好&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后系统会要你输入加密串（&lt;a href=&#34;http://help.github.com/ssh-key-passphrases/&#34;&gt;Passphrase&lt;/a&gt;）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Enter passphrase (empty for no passphrase):&amp;lt;输入加密串&amp;gt;
+Enter same passphrase again:&amp;lt;再次输入加密串&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;最后看到这样的界面，就成功设置ssh key了：
+&lt;img src=&#34;/images/githubpages/ssh-key-set.png&#34; alt=&#34;ssh key success&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;添加ssh-key到github&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.4&lt;/span&gt; 4、添加SSH Key到GitHub：&lt;/h3&gt;
+&lt;p&gt;在本机设置SSH Key之后，需要添加到GitHub上，以完成SSH链接的设置。&lt;/p&gt;
+&lt;p&gt;用文本编辑工具打开id_rsa.pub文件，如果看不到这个文件，你需要设置显示隐藏文件。准确的复制这个文件的内容，才能保证设置的成功。&lt;/p&gt;
+&lt;p&gt;在GitHub的主页上点击设置按钮：
+&lt;img src=&#34;/images/githubpages/github-account-setting.png&#34; alt=&#34;github account setting&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;选择SSH Keys项，把复制的内容粘贴进去，然后点击Add Key按钮即可：
+&lt;img src=&#34;/images/githubpages/bootcamp_1_ssh.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;PS：如果需要配置多个GitHub账号，可以参看这个&lt;a href=&#34;http://omiga.org/blog/archives/2269&#34;&gt;多个github帐号的SSH key切换&lt;/a&gt;，不过需要提醒一下的是，如果你只是通过这篇文章中所述配置了Host，那么你多个账号下面的提交用户会是一个人，所以需要通过命令&lt;code&gt;git config --global --unset user.email&lt;/code&gt;删除用户账户设置，在每一个repo下面使用&lt;code&gt;git config --local user.email &#39;你的github邮箱@mail.com&#39;&lt;/code&gt; 命令单独设置用户账户信息&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;测试一下&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.5&lt;/span&gt; 5、测试一下&lt;/h3&gt;
+&lt;p&gt;可以输入下面的命令，看看设置是否成功，&lt;code&gt;git@github.com&lt;/code&gt;的部分不要修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh -T git@github.com&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果是下面的反应：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;The authenticity of host &amp;#39;github.com (207.97.227.239)&amp;#39; can&amp;#39;t be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)?&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不要紧张，输入&lt;code&gt;yes&lt;/code&gt;就好，然后会看到：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Hi &amp;lt;em&amp;gt;username&amp;lt;/em&amp;gt;! You&amp;#39;ve successfully authenticated, but GitHub does not provide shell access.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置你的账号信息&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.6&lt;/span&gt; 6、设置你的账号信息&lt;/h3&gt;
+&lt;p&gt;现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。&lt;/p&gt;
+&lt;p&gt;Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是GitHub的昵称。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global user.name &amp;quot;你的名字&amp;quot;
+$ git config --global user.email &amp;quot;your_email@youremail.com&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;设置github的token&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.6.1&lt;/span&gt; 设置GitHub的token&lt;/h4&gt;
+&lt;p&gt;2012-4-28补充：新版的接口已经不需要配置token了，所以下面这段可以跳过了&lt;/p&gt;
+&lt;p&gt;有些工具没有通过SSH来链接GitHub。如果要使用这类工具，你需要找到然后设置你的API Token。&lt;/p&gt;
+&lt;p&gt;在GitHub上，你可以点击&lt;em&gt;Account Setting &amp;gt; Account Admin&lt;/em&gt;：
+&lt;img src=&#34;/images/githubpages/bootcamp_1_token.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后在你的命令行中，输入下面的命令，把token添加进去：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global user.name &amp;quot;你的名字&amp;quot;
+$ git config --global user.token 0123456789your123456789token&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果你改了GitHub的密码，需要重新设置token。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;成功了&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.7&lt;/span&gt; 成功了&lt;/h3&gt;
+&lt;p&gt;好了，你已经可以成功连接GitHub了。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用github-pages建立博客&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 使用GitHub Pages建立博客&lt;/h2&gt;
+&lt;p&gt;与GitHub建立好链接之后，就可以方便的使用它提供的Pages服务，GitHub Pages分两种，一种是你的GitHub用户名建立的&lt;code&gt;username.github.io&lt;/code&gt;这样的用户&amp;amp;组织页（站），另一种是依附项目的pages。&lt;/p&gt;
+&lt;div id=&#34;user-organization-pages&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3.1&lt;/span&gt; User &amp;amp; Organization Pages&lt;/h3&gt;
+&lt;p&gt;想建立个人博客是用的第一种，形如&lt;code&gt;beiyuu.github.io&lt;/code&gt;这样的可访问的站，每个用户名下面只能建立一个，创建之后点击&lt;code&gt;Admin&lt;/code&gt;进入项目管理，可以看到是这样的：
+&lt;img src=&#34;/images/githubpages/user-pages.png&#34; alt=&#34;user pages&#34; /&gt;
+而普通的项目是这样的，即使你也是用的&lt;code&gt;othername.github.io&lt;/code&gt;：
+&lt;img src=&#34;/images/githubpages/other-pages.png&#34; alt=&#34;other pages&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;创建好&lt;code&gt;username.github.io&lt;/code&gt;项目之后，提交一个&lt;code&gt;index.html&lt;/code&gt;文件，然后&lt;code&gt;push&lt;/code&gt;到GitHub的&lt;code&gt;master&lt;/code&gt;分支（也就是普通意义上的主干）。第一次页面生效需要一些时间，大概10分钟左右。&lt;/p&gt;
+&lt;p&gt;生效之后，访问&lt;code&gt;username.github.io&lt;/code&gt;就可以看到你上传的页面了，&lt;a href=&#34;http://beiyuu.github.io&#34;&gt;beiyuu.github.io&lt;/a&gt;就是一个例子。&lt;/p&gt;
+&lt;p&gt;关于第二种项目&lt;code&gt;pages&lt;/code&gt;，简单提一下，他和用户pages使用的后台程序是同一套，只不过它的目的是项目的帮助文档等跟项目绑定的内容，所以需要在项目的&lt;code&gt;gh-pages&lt;/code&gt;分支上去提交相应的文件，GitHub会自动帮你生成项目pages。具体的使用帮助可以参考&lt;a href=&#34;http://pages.github.com/&#34; title=&#34;Github Pages&#34;&gt;Github Pages&lt;/a&gt;的官方文档：&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;绑定域名&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3.2&lt;/span&gt; 绑定域名&lt;/h3&gt;
+&lt;p&gt;我们在第一部分就提到了在DNS部分的设置，再来看在GitHub的配置，要想让&lt;code&gt;username.github.io&lt;/code&gt;能通过你自己的域名来访问，需要在项目的根目录下新建一个名为&lt;code&gt;CNAME&lt;/code&gt;的文件，文件内容形如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beiyuu.com&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;你也可以绑定在二级域名上：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;blog.beiyuu.com&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要提醒的一点是，如果你使用形如&lt;code&gt;beiyuu.com&lt;/code&gt;这样的一级域名的话，需要在DNS处设置A记录到&lt;code&gt;207.97.227.245&lt;/code&gt;（&lt;strong&gt;这个地址会有变动，&lt;a href=&#34;https://help.github.com/articles/my-custom-domain-isn-t-working&#34;&gt;这里&lt;/a&gt;查看&lt;/strong&gt;），而不是在DNS处设置为CNAME的形式，否则可能会对其他服务（比如email）造成影响。&lt;/p&gt;
+&lt;p&gt;设置成功后，根据DNS的情况，最长可能需要一天才能生效，耐心等待吧。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;jekyll模板系统&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4&lt;/span&gt; Jekyll模板系统&lt;/h2&gt;
+&lt;p&gt;GitHub Pages为了提供对HTML内容的支持，选择了&lt;a href=&#34;https://github.com/mojombo/jekyll&#34; title=&#34;Jekyll&#34;&gt;Jekyll&lt;/a&gt;作为模板系统，Jekyll是一个强大的静态模板系统，作为个人博客使用，基本上可以满足要求，也能保持管理的方便，你可以查看&lt;a href=&#34;https://github.com/mojombo/jekyll/blob/master/README.textile&#34;&gt;Jekyll官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;你可以直接fork&lt;a href=&#34;https://github.com/beiyuu/Github-Pages-Example&#34;&gt;我的项目&lt;/a&gt;，然后改名，就有了你自己的满足Jekyll要求的文档了，当然你也可以按照下面的介绍自己创建。&lt;/p&gt;
+&lt;div id=&#34;jekyll基本结构&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1&lt;/span&gt; Jekyll基本结构&lt;/h3&gt;
+&lt;p&gt;Jekyll的核心其实就是一个文本的转换引擎，用你最喜欢的标记语言写文档，可以是Markdown、Textile或者HTML等等，再通过&lt;code&gt;layout&lt;/code&gt;将文档拼装起来，根据你设置的URL规则来展现，这些都是通过严格的配置文件来定义，最终的产出就是web页面。&lt;/p&gt;
+&lt;p&gt;基本的Jekyll结构如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;|-- _config.yml
+|-- _includes
+|-- _layouts
+|   |-- default.html
+|   `-- post.html
+|-- _posts
+|   |-- 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   `-- 2009-04-26-barcamp-boston-4-roundup.textile
+|-- _site
+`-- index.html&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;简单介绍一下他们的作用：&lt;/p&gt;
+&lt;div id=&#34;config.yml&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1.1&lt;/span&gt; _config.yml&lt;/h4&gt;
+&lt;p&gt;配置文件，用来定义你想要的效果，设置之后就不用关心了。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;includes-可以用来存放一些小的可复用的模块方便通过-include-file.ext-去掉前两个中或者与中的空格下同灵活的调用这条命令会调用_includesfile.ext文件&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1.2&lt;/span&gt; _includes
+可以用来存放一些小的可复用的模块，方便通过&lt;code&gt;{ % include file.ext %}&lt;/code&gt;（去掉前两个{中或者{与%中的空格，下同）灵活的调用。这条命令会调用_includes/file.ext文件。&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div id=&#34;layouts-这是模板文件存放的位置模板需要通过yaml-front-matter9来定义后面会讲到-content-标记用来将数据插入到这些模板中来&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1.3&lt;/span&gt; _layouts
+这是模板文件存放的位置。模板需要通过&lt;a href=&#34;https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter&#34;&gt;YAML front matter&lt;/a&gt;来定义，后面会讲到，&lt;code&gt;{ { content }}&lt;/code&gt;标记用来将数据插入到这些模板中来。&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div id=&#34;posts-你的动态内容一般来说就是你的博客正文存放的文件夹他的命名有严格的规定必须是2012-02-22-artical-title.markup这样的形式markup是你所使用标记语言的文件后缀名根据_config.yml中设定的链接规则可以根据你的文件名灵活调整文章的日期和标记语言后缀与文章的标题的独立的&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1.4&lt;/span&gt; _posts
+你的动态内容，一般来说就是你的博客正文存放的文件夹。他的命名有严格的规定，必须是&lt;code&gt;2012-02-22-artical-title.MARKUP&lt;/code&gt;这样的形式，MARKUP是你所使用标记语言的文件后缀名，根据_config.yml中设定的链接规则，可以根据你的文件名灵活调整，文章的日期和标记语言后缀与文章的标题的独立的。&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div id=&#34;site-这个是jekyll生成的最终的文档不用去关心最好把他放在你的.gitignore文件中忽略它&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1.5&lt;/span&gt; _site
+这个是Jekyll生成的最终的文档，不用去关心。最好把他放在你的&lt;code&gt;.gitignore&lt;/code&gt;文件中忽略它。&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div id=&#34;其他文件夹&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.1.6&lt;/span&gt; 其他文件夹&lt;/h4&gt;
+&lt;p&gt;你可以创建任何的文件夹，在根目录下面也可以创建任何文件，假设你创建了&lt;code&gt;project&lt;/code&gt;文件夹，下面有一个&lt;code&gt;github-pages.md&lt;/code&gt;的文件，那么你就可以通过&lt;code&gt;yoursite.com/project/github-pages&lt;/code&gt;访问的到，如果你是使用一级域名的话。文件后缀可以是&lt;code&gt;.html&lt;/code&gt;或者&lt;code&gt;markdown&lt;/code&gt;或者&lt;code&gt;textile&lt;/code&gt;。这里还有很多的例子：&lt;a href=&#34;https://github.com/mojombo/jekyll/wiki/Sites&#34;&gt;https://github.com/mojombo/jekyll/wiki/Sites&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;jekyll的配置&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.2&lt;/span&gt; Jekyll的配置&lt;/h3&gt;
+&lt;p&gt;Jekyll的配置写在_config.yml文件中，可配置项有很多，我们不去一一追究了，很多配置虽有用但是一般不需要去关心，&lt;a href=&#34;https://github.com/mojombo/jekyll/wiki/configuration&#34;&gt;官方配置文档&lt;/a&gt;有很详细的说明，确实需要了可以去这里查，我们主要说两个比较重要的东西，一个是&lt;code&gt;Permalink&lt;/code&gt;，还有就是自定义项。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Permalink&lt;/code&gt;项用来定义你最终的文章链接是什么形式，他有下面几个变量：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;year&lt;/code&gt; 文件名中的年份&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;month&lt;/code&gt; 文件名中的月份&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;day&lt;/code&gt; 文件名中的日期&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;title&lt;/code&gt; 文件名中的文章标题&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;categories&lt;/code&gt; 文章的分类，如果文章没有分类，会忽略&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i-month&lt;/code&gt; 文件名中的除去前缀0的月份&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i-day&lt;/code&gt; 文件名中的除去前缀0的日期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;看看最终的配置效果：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;permalink: pretty&lt;/code&gt; /2009/04/29/slap-chop/index.html&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;permalink: /:month-:day-:year/:title.html&lt;/code&gt; /04-29-2009/slap-chop.html&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;permalink: /blog/:year/:month/:day/:title&lt;/code&gt; /blog/2009/04/29/slap-chop/index.html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我使用的是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;permalink: /:title&lt;/code&gt; /github-pages&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;自定义项的内容，例如我们定义了&lt;code&gt;title:BeiYuu的博客&lt;/code&gt;这样一项，那么你就可以在文章中使用&lt;code&gt;{ { site.title }}&lt;/code&gt;来引用这个变量了，非常方便定义些全局变量。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;yaml-front-matter和模板变量&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.4.3&lt;/span&gt; YAML Front Matter和模板变量&lt;/h3&gt;
+&lt;p&gt;对于使用YAML定义格式的文章，Jekyll会特别对待，他的格式要求比较严格，必须是这样的形式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+layout: post
+title: Blogging Like a Hacker
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;前后的&lt;code&gt;---&lt;/code&gt;不能省略，在这之间，你可以定一些你需要的变量，layout就是调用&lt;code&gt;_layouts&lt;/code&gt;下面的某一个模板，他还有一些其他的变量可以使用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;permalink&lt;/code&gt; 你可以对某一篇文章使用通用设置之外的永久链接&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;published&lt;/code&gt; 可以单独设置某一篇文章是否需要发布&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;category&lt;/code&gt; 设置文章的分类&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tags&lt;/code&gt; 设置文章的tag&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上面的&lt;code&gt;title&lt;/code&gt;就是自定义的内容，你也可以设置其他的内容，在文章中可以通过&lt;code&gt;{ { page.title }}&lt;/code&gt;这样的形式调用。&lt;/p&gt;
+&lt;p&gt;模板变量，我们之前也涉及了不少了，还有其他需要的变量，可以参考官方的文档：&lt;a href=&#34;https://github.com/mojombo/jekyll/wiki/template-data&#34; title=&#34;Jekyll Template Data&#34;&gt;https://github.com/mojombo/jekyll/wiki/template-data&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用disqus管理评论&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.5&lt;/span&gt; 使用Disqus管理评论&lt;/h2&gt;
+&lt;p&gt;模板部分到此就算是配置完毕了，但是Jekyll只是个静态页面的发布系统，想做到关爽场倒是很容易，如果想要评论呢？也很简单。&lt;/p&gt;
+&lt;p&gt;现在专做评论模块的产品有很多，比如&lt;a href=&#34;http://disqus.com/&#34;&gt;Disqus&lt;/a&gt;，还有国产的&lt;a href=&#34;http://duoshuo.com/&#34;&gt;多说&lt;/a&gt;，Disqus对现在各种系统的支持都比较全面，到写博客为止，多说现在仅是WordPress的一个插件，所以我这里暂时也使用不了，多说与国内的社交网络紧密结合，还是有很多亮点的，值得期待一下。我先选择了Disqus。&lt;/p&gt;
+&lt;p&gt;注册账号什么的就不提了，Disqus支持很多的博客平台，参见下图：
+&lt;img src=&#34;/images/githubpages/disqus-site.jpg&#34; alt=&#34;Disqus sites&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们选择最下面的&lt;code&gt;Universal Code&lt;/code&gt;就好，然后会看到一个介绍页面，把下面这段代码复制到你的模板里面，可以只复制到显示文章的模板中：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;disqus_thread&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = &amp;#39;example&amp;#39;; // required: replace example with your forum shortname 这个地方需要改成你配置的网站名
+
+    /* * * DON&amp;#39;T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement(&amp;#39;script&amp;#39;); dsq.type = &amp;#39;text/javascript&amp;#39;; dsq.async = true;
+        dsq.src = &amp;#39;http://&amp;#39; + disqus_shortname + &amp;#39;.disqus.com/embed.js&amp;#39;;
+        (document.getElementsByTagName(&amp;#39;head&amp;#39;)[0] || document.getElementsByTagName(&amp;#39;body&amp;#39;)[0]).appendChild(dsq);
+    })();
+&amp;lt;/script&amp;gt;
+&amp;lt;noscript&amp;gt;Please enable JavaScript to view the &amp;lt;a href=&amp;quot;http://disqus.com/?ref_noscript&amp;quot;&amp;gt;comments powered by Disqus.&amp;lt;/a&amp;gt;&amp;lt;/noscript&amp;gt;
+&amp;lt;a href=&amp;quot;http://disqus.com&amp;quot; class=&amp;quot;dsq-brlink&amp;quot;&amp;gt;blog comments powered by &amp;lt;span class=&amp;quot;logo-disqus&amp;quot;&amp;gt;Disqus&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置完之后，你也可以做一些异步加载的处理，提高性能，比如我就在最开始页面打开的时候不显示评论，当你想看评论的时候，点击“显示评论”再加载Disqus的模块。代码很简单，你可以参考我的写法。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(&amp;#39;#disqus_container .comment&amp;#39;).on(&amp;#39;click&amp;#39;,function(){
+        $(this).html(&amp;#39;加载中...&amp;#39;);
+        var disqus_shortname = &amp;#39;beiyuu&amp;#39;;
+        var that = this;
+        BYB.includeScript(&amp;#39;http://&amp;#39; + disqus_shortname + &amp;#39;.disqus.com/embed.js&amp;#39;,function(){$(that).remove()}); //这是一个加载js的函数
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果你不喜欢Disqus的样式，你也可以根据他生成的HTML结构，自己改写样式覆盖它的，Disqus现在也提供每个页面的评论数接口，&lt;a href=&#34;http://docs.disqus.com/developers/universal/&#34;&gt;帮助文档&lt;/a&gt;在这里可以看到。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;代码高亮插件&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.6&lt;/span&gt; 代码高亮插件&lt;/h2&gt;
+&lt;p&gt;如果写技术博客，代码高亮少不了，有两个可选插件&lt;a href=&#34;http://mihai.bazon.net/projects/javascript-syntax-highlighting-engine&#34;&gt;DlHightLight代码高亮组件&lt;/a&gt;和&lt;a href=&#34;http://code.google.com/p/google-code-prettify/&#34;&gt;Google Code Prettify&lt;/a&gt;。DLHightLight支持的语言相对较少一些，有js、css、xml和html，Google的高亮插件基本上任何语言都支持，也可以自定义语言，也支持自动识别，也有行号的特别支持。&lt;/p&gt;
+&lt;p&gt;Google的高亮插件使用也比较方便，只需要在&lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;的标签上加入&lt;code&gt;prettyprint&lt;/code&gt;即可。所以我选择了Google Code Prettify。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;搭建本地jekyll环境&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.7&lt;/span&gt; 搭建本地jekyll环境&lt;/h2&gt;
+&lt;p&gt;这里主要介绍一下在Mac OS X下面的安装过程，其他操作系统可以参考官方的&lt;a href=&#34;https://github.com/mojombo/jekyll/wiki/Install&#34;&gt;jekyll安装&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;作为生活在水深火热的墙内人民，有必要进行下面一步修改gem的源，方便我们更快的下载所需组建：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo gem sources --remove http://rubygems.org/
+sudo gem sources -a http://ruby.taobao.org/&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后用Gem安装jekyll&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gem install jekyll&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不过一般如果有出错提示，你可能需要这样安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo gem install jekyll&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我到了这一步的时候总是提示错误&lt;code&gt;Failed to build gem native extension&lt;/code&gt;，很可能的一个原因是没有安装rvm，&lt;a href=&#34;https://rvm.io/rvm/install/&#34;&gt;rvm的安装&lt;/a&gt;可以参考这里，或者敲入下面的命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -L https://get.rvm.io | bash -s stable --ruby&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后还需要安装Markdown的解释器，这个需要在你的_config.yml里面设置&lt;code&gt;markdown:rdiscount&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gem install jekyll rdiscount&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;好了，如果一切顺利的话，本地环境就基本搭建完成了，进入之前我们建立的博客目录，运行下面的命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ jekyll serve --watch&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个时候，你就可以通过&lt;code&gt;localhost:4000&lt;/code&gt;来访问了。还有关于&lt;a href=&#34;http://jekyllbootstrap.com/&#34;&gt;jekyll bootstrap&lt;/a&gt;的资料，需要自己修改调试的，可以研究一下。&lt;/p&gt;
+&lt;p&gt;我在这个过程中还遇到两个诡异的没有解决的问题，一个是我放在根目录下面的blog.md等文件，在GitHub的pages服务上一切正常，可以通过&lt;code&gt;beiyuu.com/blog&lt;/code&gt;访问的到，但是在本地环境下，总是&lt;code&gt;not found&lt;/code&gt;，很是让人郁闷，看生成的&lt;code&gt;_site&lt;/code&gt;目录下面的文件，也是正常的&lt;code&gt;blog.html&lt;/code&gt;，但就是找不到，只有当我把URL改为&lt;code&gt;localhost:4000/blog.html&lt;/code&gt;的时候，才能访问的到，环境不同真糟糕。&lt;/p&gt;
+&lt;p&gt;还有一个是关于&lt;code&gt;category&lt;/code&gt;的问题，根据&lt;code&gt;YAML&lt;/code&gt;的语法，我们在文章头部可以定义文章所属的类别，也可以定义为&lt;code&gt;category:[blog,rss]&lt;/code&gt;这样子的多类别，我在本地试一切正常，但是push到GitHub之后，就无法读取了，真让人着急，没有办法，只能采用别的办法满足我的需求了。这里还有一篇&lt;a href=&#34;http://chxt6896.github.com/blog/2012/02/13/blog-jekyll-native.html&#34;&gt;Jekyll 本地调试之若干问题&lt;/a&gt;，安装中如果有其他问题，也可以对照参考一下。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;结语&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.8&lt;/span&gt; 结语&lt;/h2&gt;
+&lt;p&gt;如果你跟着这篇不那么详尽的教程，成功搭建了自己的博客，恭喜你！剩下的就是保持热情的去写自己的文章吧。&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
