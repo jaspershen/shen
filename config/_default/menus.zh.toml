@@ -55,7 +55,7 @@
  [[main]]
   name = "简历"
   #url = "files/cv.pdf"
-  url = "files/cv.pdf"
+  url = "files/cv.html"
   weight = 9
   
   
