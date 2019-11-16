@@ -72,6 +72,8 @@ user_groups:
 
 主要出没在博客和知乎.如果想要联系我,请根据我的联系方式与我联系.
 
+:floppy_disk: [下载我的简历](https://www.shenxt.info/files/cv.pdf)
+
 :dog: :octocat: :school: :u7533: :smile: :facepunch: :fist: :family: :panda_face: :earth_asia: :tada: :cn:
 
 
