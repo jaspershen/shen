@@ -15,7 +15,7 @@ Aside
 ![Xiaotao Shen](https://www.shenxt.info/files/offical-sxt.jpg){width=80%}
 
 
-Contact Info {#contact}
+Contact Infor {#contact}
 --------------------------------------------------------------------------------
 
 - <i class="fa fa-envelope"></i> shenxt@stanford.edu
@@ -23,6 +23,9 @@ Contact Info {#contact}
 - <i class="fa fa-github"></i> [github.com/jaspershen](https://github.com/jaspershen)
 - <i class="fa fa-phone"></i> +1 571-267-9283
 - <i class="fa fa-linkedin"></i> [linkedin.com/in/shenxt/](https://www.linkedin.com/in/shenxt/)
+
+<br/>
+
 - For more information, please contact me via email.
 
 
@@ -49,7 +52,7 @@ Main
 Xiatao Shen Ph.D. {#title}
 --------------------------------------------------------------------------------
 
-### A Postdoc Research Fellow at Stanford University.
+### A Postdoc Research Fellow at Stanford University
 
 I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
 
@@ -57,7 +60,7 @@ I am now a postdoctoral research fellow at Stanford University. I am broadly int
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
-### Chinese Academy of Sciences (CAS)
+### Chinese Academy of Sciences
 
 Ph.D. Student in Metabolomics and Bioinformatics
 
@@ -84,7 +87,7 @@ Research Experience {data-icon=laptop}
 
 Stanford University School of Medicine
 
-Palo Alto, California, USA
+Palo Alto, USA
 
 Apr. 2019.4 - Present
 
@@ -109,6 +112,79 @@ N/A
 N/A
 
 N/A
+
+
+HONORS AND AWARDS {data-icon=award}
+--------------------------------------------------------------------------------
+
+### Student Travel Award for Oral Presentation
+
+The International Metabolomics Society
+
+Seattle, USA
+
+Jun. 2018
+
+### International Conference Travel Award
+
+The Metabolites Journal
+
+Seattle, USA
+
+Jun. 2018
+
+### China National Scholarship
+
+Ministry of Education of the People’s Republic of China
+
+Shanghai, China
+
+Dec. 2017
+
+
+### Award for Outstanding Youth Report
+
+The 3<sup>th</sup> China Mass Spectrometry Analysis Conference
+
+Xiamen, China
+
+Dec. 2017
+
+
+### Merit Student
+
+University of Chinese Academy of Sciences
+
+Shanghai, China
+
+Jun. 2016
+
+### Award for Outstanding Youth Report
+
+The 34<sup>th</sup> China Mass Spectrometry Society Conference
+
+Xining, China
+
+Sep. 2016
+
+
+### Inner Mongolia Outstanding Graduate
+
+Inner Mongolia Autonomous Region
+
+Hohhot, China
+
+Jun. 2013
+
+### National Encouragement Scholarship
+
+Inner Mongolia University
+
+Hohhot, China
+
+Jun. 2011
+
+
 <!-- ### Bioinformatican -->
 
 <!-- My Health Gene Technology Co., Ltd. -->
@@ -188,7 +264,7 @@ N/A
 Publications {data-icon=file}
 --------------------------------------------------------------------------------
 
-### Development of A Correlative Strategy to Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics.
+### Development of A Correlative Strategy to Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics
 
 Analytical Chemistry, 2019, 91, 3, 2401-2408.
 
@@ -200,7 +276,7 @@ Z. Wang, B. Cui, F. Zhang, Y. Yang, **X. Shen**, Z. Li, W. Zhao, Y. Zhang, K. De
 Yang, X. Yu, K. Li, P. Han, and Z.-J. Zhu.
 
 
-### Large-scale Metabolite Identification for Untargeted Metabolomics Using Metabolic Reaction Network.
+### Large-scale Metabolite Identification for Untargeted Metabolomics Using Metabolic Reaction Network
 
 Nature Communications, 2019, 10:1516.
 
@@ -210,7 +286,7 @@ N/A
 
 **X. Shen**, R. Wang, X. Xiong, Y. Yin, Y. Cai, J. Ma, N. Liu and Z.-J. Zhu.
 
-### MetFlow: An interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery.
+### MetFlow: An interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery
 
 Bioinformatics, Volume 35, Issue 16, 15 August 2019, Pages 2870–2872.
 
@@ -220,9 +296,9 @@ N/A
 
 **X. Shen** and Z.-J. Zhu.
 
-### LipidIMMS Analyzer: Integrating Multi-dimensional Information to Support Lipid Identification in Ion Mobility–Mass Spectrometry based Lipidomics. 
+### LipidIMMS Analyzer: Integrating Multi-dimensional Information to Support Lipid Identification in Ion Mobility–Mass Spectrometry based Lipidomics
 
-Bioinformatics, 2018, in press, https://doi.org/10.1093/bioinformatics/bty661.
+Bioinformatics, Volume 35, Issue 4, 15 February 2019, Pages 698–700.
 
 N/A
 
@@ -231,7 +307,7 @@ N/A
 Z. Zhou, **X. Shen**, X. Chen, J. Tu, X. Xiong, and Z.-J. Zhu.
 
 
-### Assessment of The Response to Neoadjuvant Chemo-Radiation in Rectal Cancer Patients based on A Metabolomics Approach.
+### Assessment of The Response to Neoadjuvant Chemo-Radiation in Rectal Cancer Patients based on A Metabolomics Approach
 
 Radiotherapy and Oncology, 2018, 128, 548-556.
 
@@ -241,7 +317,7 @@ N/A
 
 H. Jia, X. **Shen (Co-first author)**, Y. Guan, M. Xu, M. Mo, J. Zhu and Z.-J. Zhu.
 
-### LipidCCS: Prediction of Collision CrossSection Values for Lipids with High Precision to Support Ion Mobility-Mass Spectrometry based Lipidomics.
+### LipidCCS: Prediction of Collision CrossSection Values for Lipids with High Precision to Support Ion Mobility-Mass Spectrometry based Lipidomics
 
 Analytical Chemistry, 2017, 89, 9559–9566.
 
@@ -252,7 +328,7 @@ N/A
 Z. Zhou, J. Tu, X. Xiong, **X. Shen**, and Z.-J. Zhu.
 
 
-### Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility - Mass Spectrometry.
+### Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility - Mass Spectrometry
 
 Analytical Chemistry, 2016, 88, 11084-11091.
 
@@ -262,7 +338,7 @@ N/A
 
 Z. Zhou, **X. Shen**, J. Tu, and Z.-J. Zhu.
 
-### Serum Metabolomics for Early Diagnosis of Esophageal Squamous Cell Carcinoma by UHPLC-QTOF/MS.
+### Serum Metabolomics for Early Diagnosis of Esophageal Squamous Cell Carcinoma by UHPLC-QTOF/MS
 
 Metabolomics, 2016, 12: 116.
 
@@ -272,7 +348,7 @@ N/A
 
 J. Wang, T. Zhang, **X. Shen (Co-first author)**, J. Liu, D. Zhao, Y. Sun, L. Wang, Y. Liu, X. Gong, Y. Liu, Z.-J. Zhu, F. Xue.
 
-### Normalization and Integration of Large-Scale Metabolomics Data Using Support Vector Regression.
+### Normalization and Integration of Large-Scale Metabolomics Data Using Support Vector Regression
 
 Metabolomics, 2016, 12: 89.
 
@@ -288,7 +364,7 @@ N/A
 ORAL PRESENTATIONS {data-icon=tv}
 --------------------------------------------------------------------------------
 
-### Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics.
+### Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics
 
 The 14<sup>th</sup> International Conference of the Metabolomics Society
 
@@ -299,38 +375,39 @@ Jun. 2018
 
 ### Assessment of the Response to Neoadjuvant Chemo-Radiation in Rectal Cancer Patients based on a Metabolomics Approach. 
 
-The 3<sup>th</sup> China Mass Spectrometry Analysis Conference.
+The 3<sup>th</sup> China Mass Spectrometry Analysis Conference
 
 Xiamen, China
 
 Dec. 2017
 
 
-### Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression. 
+### Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression
 
-The 34<sup>th</sup> China Mass Spectrometry Society Conference.
+The 34<sup>th</sup> China Mass Spectrometry Society Conference
 
 Xining, Qinghai
 
 Sep. 2016
 
-### Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression. 
+### Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression
 
-The 64<sup>th</sup> American Society for Mass Spectrometry Conference.
+The 64<sup>th</sup> American Society for Mass Spectrometry Conference
 
-San Antonio, Texas, USA
+San Antonio, USA
 
 Jun. 2016
 
 POSTERS PRESENTATION {data-icon=image}
 --------------------------------------------------------------------------------
 
-### Metabolic Reaction Network based Metabolite Annotation in Untargeted Metabolomics.
+### Metabolic Reaction Network based Metabolite Annotation in Untargeted Metabolomics
 
-The 13<sup>th</sup> International Conference of the Metabolomics Society.
+The 13<sup>th</sup> International Conference of the Metabolomics Society
 
 Brisbane, Austria
 
 Jun. 2017
+
 
 
