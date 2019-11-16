@@ -19,20 +19,21 @@ Contact Info {#contact}
 --------------------------------------------------------------------------------
 
 - <i class="fa fa-envelope"></i> shenxt@stanford.edu
+- <i class="fa fa-home"></i> [www.shenxt.info](https://www.shenxt.info/)
 - <i class="fa fa-github"></i> [github.com/jaspershen](https://github.com/jaspershen)
 - <i class="fa fa-phone"></i> +1 571-267-9283
-- <i class="fa fa-linkedin"></i> [shenxt](https://www.linkedin.com/in/shenxt/)
+- <i class="fa fa-linkedin"></i> [linkedin.com/in/shenxt/](https://www.linkedin.com/in/shenxt/)
 - For more information, please contact me via email.
 
 
 Skills {#skills}
 --------------------------------------------------------------------------------
 
-- Experienced in statistical analysis, statistical learning models, and optimization methods.
+- **Languages:** Mandarin (Very fluent), English (Fluent).
 
-- Full experience with next generation sequencing data analysis.
+- **Programming Languages:** R, Python.
 
-- Highly skilled in R, Bash, Perl, Python, LaTeX
+- **Other Skills:** Markdown, Photoshop, Illustrator, Linux (Ubuntu and CentOS), GitHub, Shiny.
 
 
 Disclaimer {#disclaimer}
@@ -42,155 +43,294 @@ Disclaimer {#disclaimer}
 
 Last updated on `r Sys.Date()`.
 
-
-
 Main
 ================================================================================
 
 Xiatao Shen Ph.D. {#title}
 --------------------------------------------------------------------------------
 
-### Currently searching for a PhD student position
+### A Postdoc Research Fellow at Stanford University.
 
-Please note that this is a *real* resume, and I'm really looking for a PhD
-student position at the moment. I made this resume because Yihui asked me
-if I'd like to test the **pagedown** package with my resume. If you are
-interested in my background and skills, please feel free to contact me.
+I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
 
 
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
-### Beijing University of Chemical Technology
+### Chinese Academy of Sciences (CAS)
 
-B.S. in Information and Computing Sciences
+Ph.D. Student in Metabolomics and Bioinformatics
 
-Beijing, China
+Shanghai, China
 
-2010
+Sep. 2013 - Dec. 2018
 
-Thesis: Dyadic wavelet and its application in edge detection
+Advisor: [Dr. Zheng-Jiang Zhu](http://www.zhulab.cn/members_show.php?id=1)
 
-### University of Chinese Academy of Sciences
+###  Inner Mongolia University
 
-M.S. in Bioinformatics
+B.S. in Biotechnology
 
-Beijing, China
+Hohhot, China
 
-2014
+Sep. 2009 - Jun. 2013
 
-Thesis: A multi-omics study for intra-individual divergence of the distributions between mRNA isoforms in mammals
-
+Advisor: Dr. Pengxia Liu
 
 Research Experience {data-icon=laptop}
 --------------------------------------------------------------------------------
 
-### Graduate Research Assistant
+### Postdoctoral Research Fellow
 
-Beijing Institute of Genomics, Chinese Academy of Sciences
+Stanford University School of Medicine
 
-Beijing, China
+Palo Alto, California, USA
 
-2011 - 2014
+Apr. 2019.4 - Present
 
-- Performed computational biology research towards understanding regulation of alternative splicing in human and mouse transcriptome.
-- Found EGFR pathway related mutations, aimed to understand the impacts of cancer mutations on EGFR signaling pathway.
+Advisor: [Dr. Michael Snyder](http://snyderlab.stanford.edu/Snyder.html)
 
-### Bioinformatican
 
-My Health Gene Technology Co., Ltd.
-
-Beijing, China
-
-2015 - 2016
-
-- Investigated how cancer cells spread to other parts of the body at the single cell level.
-
-### Visiting Scientist
-
-University of Alabama at Birmingham
-
-AL, USA
-
-2016 - 2018
-
-- Investigated the role of mitochondria in development of cancer.
-- Investigated the evolution of genome architecture and its role in important evolutionary events.
-- Detected thrombotic thrombocytopenic purpura related mutations in mutiple patients' blood genome.
-  
-
-Professional Experience {data-icon=suitcase}
+Research interset {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
-### Data Scientist, intern
-
-SupStat Inc.
-
-Beijing, China
-
-2014
-
-::: concise
-- Taught R language to beginners. 
-- Wrote Shiny app demos.
-- Converted statistical tutorials from SPSS to R language.
-:::
-
-### Bioinformatician
-
-My Health Gene Technology Co., Ltd.
-
-Beijing, China
-
-2015 - 2016
-
-::: concise
-- Analyzed whole-exome sequencing data. 
-- Wrote analysis pipelines of ChIP-seq, single cell DNA-seq and single cell RNA-seq.
-- Studied tumor metastasis and wrote research reports. 
-- Also did case studies to identify the genetic defect causing rare disease.
-:::
-
-
-Teaching Experience {data-icon=chalkboard-teacher}
---------------------------------------------------------------------------------
-
-### Introduction to R Language for Beginners.
-
-Instructor of R and Data Mining Training Courses at SupStat Inc.
-
-Beijing, China
-
-2014
-
-### Computational Biology and Bioinformatics.
-
-Teaching assistant of GBS CB2-201 courses at UAB
-
-AL, USA
-
-2016 - 2017
-
-
-Selected Publications and Posters {data-icon=file}
---------------------------------------------------------------------------------
-
-### Genetic and epigenetic signals are found predictive to the distribution of intra-individual divergence of alternative splicing.
-
-Poster for 2013 International Conference of Genomics
-
-Qingdao, China
-
-2014
-
-**Yu L**, Chen B, Zhang Z.
-
-### ESCRT-0 complex modulates Rbf mutant cell survival by regulating Rhomboid endosomal trafficking and EGFR signaling.
-
-J Cell Sci. 2016 May 15;129(10):2075-84.
+### Metabolomics Data Processing Methods and Software Development.
 
 N/A
 
-2016 
+N/A
 
-Sheng Z, **Yu L**, Zhang T, Pei X, Li X, Zhang Z and Du W. 
+N/A
+
+### Multi-omics Data Analysis for Biomarker Discovery for Diseases.
+
+N/A
+
+N/A
+
+N/A
+<!-- ### Bioinformatican -->
+
+<!-- My Health Gene Technology Co., Ltd. -->
+
+<!-- Beijing, China -->
+
+<!-- 2015 - 2016 -->
+
+<!-- - Investigated how cancer cells spread to other parts of the body at the single cell level. -->
+
+<!-- ### Visiting Scientist -->
+
+<!-- University of Alabama at Birmingham -->
+
+<!-- AL, USA -->
+
+<!-- 2016 - 2018 -->
+
+<!-- - Investigated the role of mitochondria in development of cancer. -->
+<!-- - Investigated the evolution of genome architecture and its role in important evolutionary events. -->
+<!-- - Detected thrombotic thrombocytopenic purpura related mutations in mutiple patients' blood genome. -->
+  
+
+<!-- Professional Experience {data-icon=suitcase} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- ### Data Scientist, intern -->
+
+<!-- SupStat Inc. -->
+
+<!-- Beijing, China -->
+
+<!-- 2014 -->
+
+<!-- ::: concise -->
+<!-- - Taught R language to beginners.  -->
+<!-- - Wrote Shiny app demos. -->
+<!-- - Converted statistical tutorials from SPSS to R language. -->
+<!-- ::: -->
+
+<!-- ### Bioinformatician -->
+
+<!-- My Health Gene Technology Co., Ltd. -->
+
+<!-- Beijing, China -->
+
+<!-- 2015 - 2016 -->
+
+<!-- ::: concise -->
+<!-- - Analyzed whole-exome sequencing data.  -->
+<!-- - Wrote analysis pipelines of ChIP-seq, single cell DNA-seq and single cell RNA-seq. -->
+<!-- - Studied tumor metastasis and wrote research reports.  -->
+<!-- - Also did case studies to identify the genetic defect causing rare disease. -->
+<!-- ::: -->
+
+
+<!-- Teaching Experience {data-icon=chalkboard-teacher} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- ### Introduction to R Language for Beginners. -->
+
+<!-- Instructor of R and Data Mining Training Courses at SupStat Inc. -->
+
+<!-- Beijing, China -->
+
+<!-- 2014 -->
+
+<!-- ### Computational Biology and Bioinformatics. -->
+
+<!-- Teaching assistant of GBS CB2-201 courses at UAB -->
+
+<!-- AL, USA -->
+
+<!-- 2016 - 2017 -->
+
+
+Publications {data-icon=file}
+--------------------------------------------------------------------------------
+
+### Development of A Correlative Strategy to Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics.
+
+Analytical Chemistry, 2019, 91, 3, 2401-2408.
+
+N/A
+
+2019
+
+Z. Wang, B. Cui, F. Zhang, Y. Yang, **X. Shen**, Z. Li, W. Zhao, Y. Zhang, K. Deng, Z. Rong, K.
+Yang, X. Yu, K. Li, P. Han, and Z.-J. Zhu.
+
+
+### Large-scale Metabolite Identification for Untargeted Metabolomics Using Metabolic Reaction Network.
+
+Nature Communications, 2019, 10:1516.
+
+N/A
+
+2019
+
+**X. Shen**, R. Wang, X. Xiong, Y. Yin, Y. Cai, J. Ma, N. Liu and Z.-J. Zhu.
+
+### MetFlow: An interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery.
+
+Bioinformatics, Volume 35, Issue 16, 15 August 2019, Pages 2870–2872.
+
+N/A
+
+2019
+
+**X. Shen** and Z.-J. Zhu.
+
+### LipidIMMS Analyzer: Integrating Multi-dimensional Information to Support Lipid Identification in Ion Mobility–Mass Spectrometry based Lipidomics. 
+
+Bioinformatics, 2018, in press, https://doi.org/10.1093/bioinformatics/bty661.
+
+N/A
+
+2018
+
+Z. Zhou, **X. Shen**, X. Chen, J. Tu, X. Xiong, and Z.-J. Zhu.
+
+
+### Assessment of The Response to Neoadjuvant Chemo-Radiation in Rectal Cancer Patients based on A Metabolomics Approach.
+
+Radiotherapy and Oncology, 2018, 128, 548-556.
+
+N/A
+
+2018
+
+H. Jia, X. **Shen (Co-first author)**, Y. Guan, M. Xu, M. Mo, J. Zhu and Z.-J. Zhu.
+
+### LipidCCS: Prediction of Collision CrossSection Values for Lipids with High Precision to Support Ion Mobility-Mass Spectrometry based Lipidomics.
+
+Analytical Chemistry, 2017, 89, 9559–9566.
+
+N/A
+
+2018
+
+Z. Zhou, J. Tu, X. Xiong, **X. Shen**, and Z.-J. Zhu.
+
+
+### Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility - Mass Spectrometry.
+
+Analytical Chemistry, 2016, 88, 11084-11091.
+
+N/A
+
+2016
+
+Z. Zhou, **X. Shen**, J. Tu, and Z.-J. Zhu.
+
+### Serum Metabolomics for Early Diagnosis of Esophageal Squamous Cell Carcinoma by UHPLC-QTOF/MS.
+
+Metabolomics, 2016, 12: 116.
+
+N/A
+
+2016
+
+J. Wang, T. Zhang, **X. Shen (Co-first author)**, J. Liu, D. Zhao, Y. Sun, L. Wang, Y. Liu, X. Gong, Y. Liu, Z.-J. Zhu, F. Xue.
+
+### Normalization and Integration of Large-Scale Metabolomics Data Using Support Vector Regression.
+
+Metabolomics, 2016, 12: 89.
+
+N/A
+
+2016
+
+**X. Shen**, X. Gong, Y. Cai, Y. Guo, J. Tu, H. Li, T. Zhang, J. Wang, F. Xue, and Z.-J. Zhu.                                                                                                                                                        
+<br/>
+
+<br/>
+
+ORAL PRESENTATIONS {data-icon=tv}
+--------------------------------------------------------------------------------
+
+### Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics.
+
+The 14<sup>th</sup> International Conference of the Metabolomics Society
+
+Seattle, USA
+
+Jun. 2018
+
+
+### Assessment of the Response to Neoadjuvant Chemo-Radiation in Rectal Cancer Patients based on a Metabolomics Approach. 
+
+The 3<sup>th</sup> China Mass Spectrometry Analysis Conference.
+
+Xiamen, China
+
+Dec. 2017
+
+
+### Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression. 
+
+The 34<sup>th</sup> China Mass Spectrometry Society Conference.
+
+Xining, Qinghai
+
+Sep. 2016
+
+### Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression. 
+
+The 64<sup>th</sup> American Society for Mass Spectrometry Conference.
+
+San Antonio, Texas, USA
+
+Jun. 2016
+
+POSTERS PRESENTATION {data-icon=image}
+--------------------------------------------------------------------------------
+
+### Metabolic Reaction Network based Metabolite Annotation in Untargeted Metabolomics.
+
+The 13<sup>th</sup> International Conference of the Metabolomics Society.
+
+Brisbane, Austria
+
+Jun. 2017
+
+
