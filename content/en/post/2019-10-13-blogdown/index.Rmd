@@ -224,3 +224,35 @@ blogdown::shortcode("video", src = "./test.mp4")
 ```{r, eval=TRUE}
 blogdown::shortcode("youtube", "p4liifrbK8w")
 ```
+
+# 如何在post中插入icon?
+
+直接使用HTML语句即可.
+
+```
+<i class="fab fa-weixin"></i>
+```
+
+显示:
+
+<i class="fab fa-weixin"></i>
+
+其中fab是这个网站:
+
+https://fontawesome.com/icons?d=gallery
+
+找到你想要的icon之后,复制名字,替换掉即可.
+
+如果该网站没有,还可以使用下面的网站:
+
+https://getbootstrap.com/docs/3.3/components/
+
+输入:
+
+```
+<i class="fas fa-adobe"></i>
+```
+
+显示:
+
+<i class="fas fa-hourglass"></i>
