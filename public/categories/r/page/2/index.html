@@ -145,7 +145,7 @@
   <meta property="og:description" content="Share"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-11-14T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2019-11-16T00:00:00&#43;00:00">
   
 
   
@@ -622,6 +622,15 @@
   
   
   <div>
+    <h2><a href="/post/download-kegg-database/">下载KEGG数据库</a></h2>
+    <div class="article-style">
+      
+      记录使用一些R语言包下载KEGG数据库. #get the ID of all hsa pathways KEGGREST::listDatabases() path_ID &lt;- KEGGREST::keggList(organism = &quot;hsa&quot;, database = &quot;pathway&quot;) %&gt;% names() %&gt;% unique() %&gt;% stringr::str_replace_all(., &quot;path:&quot;, &quot;&quot;) dir.create(path = &quot;kegg_pathway&quot;) setwd(&quot;kegg_pathway/&quot;) node_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) edge_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) for(i in i:length(path_ID)){ cat(i, &quot; &quot;)
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/post/ggplot2-cookbook/">ggplot2 cookbook</a></h2>
     <div class="article-style">
       
@@ -698,15 +707,6 @@
     <div class="article-style">
       
       0.0.1 离散变量(discrete data)的生成模型 是斯坦福大学统计系教授Susan Holmes 0.0.1 离散变量(discrete data)的生成模型 在分子生物
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/2019-10-10-data-analysis-omics/">组学数据分析常见方法总结</a></h2>
-    <div class="article-style">
-      
-      0.0.1 Correlation analysis 0.0.1 Correlation analysis 将组学变量(gene,protein,metabolite,clinical factor)进行相关性分析,得到他们之间的相关性,
       
     </div>
   </div>
