@@ -32,7 +32,6 @@ subtitle = "Technology is the tool, no the aim."
   name = "Github"
   description = "50%"  
   
-  
 [[feature]]
   icon = "dna"
   icon_pack = "fas"

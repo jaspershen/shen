@@ -23,6 +23,7 @@ Contact Infor {#contact}
 - <i class="fa fa-github"></i> [github.com/jaspershen](https://github.com/jaspershen)
 - <i class="fa fa-phone"></i> +1 571-267-9283
 - <i class="fa fa-linkedin"></i> [linkedin.com/in/shenxt/](https://www.linkedin.com/in/shenxt/)
+- <i class="fa fa-weixin"></i> [shenzutao1990](https://www.shenxt.info/files/wechat_QR.jpg)
 
 <br/>
 
