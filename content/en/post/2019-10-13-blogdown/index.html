@@ -38,15 +38,16 @@ output:
 </ul></li>
 <li><a href="#如何在postmarkdown中插入emojis"><span class="toc-section-number">9</span> 如何在post(markdown)中插入Emojis</a></li>
 <li><a href="#如何在post中插入视频"><span class="toc-section-number">10</span> 如何在post中插入视频?</a><ul>
-<li><a href="#在markdown中"><span class="toc-section-number">10.1</span> 在markdown中</a><ul>
-<li><a href="#a-video-from-your-staticimg-media-library"><span class="toc-section-number">10.1.1</span> A video from your static/img/ media library:</a></li>
-<li><a href="#a-video-within-a-pages-folder-e.g.-contentposthello"><span class="toc-section-number">10.1.2</span> A video within a page’s folder (e.g. content/post/hello/):</a></li>
-<li><a href="#youtube"><span class="toc-section-number">10.1.3</span> Youtube:</a></li>
-<li><a href="#vimeo"><span class="toc-section-number">10.1.4</span> Vimeo:</a></li>
+<li><a href="#如何插入b站视频"><span class="toc-section-number">10.1</span> 如何插入B站视频?</a></li>
+<li><a href="#在markdown中"><span class="toc-section-number">10.2</span> 在markdown中</a><ul>
+<li><a href="#a-video-from-your-staticimg-media-library"><span class="toc-section-number">10.2.1</span> A video from your static/img/ media library:</a></li>
+<li><a href="#a-video-within-a-pages-folder-e.g.-contentposthello"><span class="toc-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</a></li>
+<li><a href="#youtube"><span class="toc-section-number">10.2.3</span> Youtube:</a></li>
+<li><a href="#vimeo"><span class="toc-section-number">10.2.4</span> Vimeo:</a></li>
 </ul></li>
-<li><a href="#在rmarkdown中"><span class="toc-section-number">10.2</span> 在Rmarkdown中</a><ul>
-<li><a href="#本地视频"><span class="toc-section-number">10.2.1</span> 本地视频</a></li>
-<li><a href="#youtube视频"><span class="toc-section-number">10.2.2</span> Youtube视频</a></li>
+<li><a href="#在rmarkdown中"><span class="toc-section-number">10.3</span> 在Rmarkdown中</a><ul>
+<li><a href="#本地视频"><span class="toc-section-number">10.3.1</span> 本地视频</a></li>
+<li><a href="#youtube视频"><span class="toc-section-number">10.3.2</span> Youtube视频</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#如何在post中插入icon"><span class="toc-section-number">11</span> 如何在post中插入icon?</a></li>
@@ -206,39 +207,58 @@ output:
 </div>
 <div id="如何在post中插入视频" class="section level1">
 <h1><span class="header-section-number">10</span> 如何在post中插入视频?</h1>
+<div id="如何插入b站视频" class="section level2">
+<h2><span class="header-section-number">10.1</span> 如何插入B站视频?</h2>
+<p>参考下面帖子.</p>
+<p><a href="https://fengxiao.ml/2018/12/27/133.html" class="uri">https://fengxiao.ml/2018/12/27/133.html</a>.</p>
+<p>点开想要插入的视频,点击分享.然后点击<code>嵌入代码</code>,复制代码,插入到markdown文件中即可.</p>
+<p><img src="bilibili.png" /></p>
+<p>但是直接嵌入的视频长宽不太好,所以需要手动调整.</p>
+<p>首先需要设置宽度位100%.并给其设置一个id.如下面我就设置ID位<code>test</code>.</p>
+<pre><code>&lt;iframe id=&quot;test&quot; src=&quot;//player.bilibili.com/player.html?aid=23877090&amp;cid=39940519&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; width=100%&gt; &lt;/iframe&gt;</code></pre>
+<p>然后需要在markdown中插入下面的JS代码:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+document.getElementById(&quot;test&quot;).style.height=document.getElementById(&quot;test&quot;).scrollWidth*0.76+&quot;px&quot;;
+&lt;/script&gt;</code></pre>
+<iframe id="test" src="//player.bilibili.com/player.html?aid=23877090&amp;cid=39940519&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%">
+</iframe>
+<script type="text/javascript">
+document.getElementById("test").style.height=document.getElementById("test").scrollWidth*0.76+"px";
+</script>
+</div>
 <div id="在markdown中" class="section level2">
-<h2><span class="header-section-number">10.1</span> 在markdown中</h2>
+<h2><span class="header-section-number">10.2</span> 在markdown中</h2>
 <p>直接使用下面语句,插入到markdown中即可.</p>
 <div id="a-video-from-your-staticimg-media-library" class="section level3">
-<h3><span class="header-section-number">10.1.1</span> A video from your static/img/ media library:</h3>
+<h3><span class="header-section-number">10.2.1</span> A video from your static/img/ media library:</h3>
 <pre><code>{{&lt; video library=&quot;1&quot; src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}</code></pre>
 </div>
 <div id="a-video-within-a-pages-folder-e.g.-contentposthello" class="section level3">
-<h3><span class="header-section-number">10.1.2</span> A video within a page’s folder (e.g. content/post/hello/):</h3>
+<h3><span class="header-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</h3>
 <pre><code>{{&lt; video src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}
 </code></pre>
 </div>
 <div id="youtube" class="section level3">
-<h3><span class="header-section-number">10.1.3</span> Youtube:</h3>
+<h3><span class="header-section-number">10.2.3</span> Youtube:</h3>
 <pre><code>{{&lt; youtube w7Ft2ymGmfc &gt;}}</code></pre>
 </div>
 <div id="vimeo" class="section level3">
-<h3><span class="header-section-number">10.1.4</span> Vimeo:</h3>
+<h3><span class="header-section-number">10.2.4</span> Vimeo:</h3>
 <pre><code>{{&lt; vimeo 146022717 &gt;}}</code></pre>
 </div>
 </div>
 <div id="在rmarkdown中" class="section level2">
-<h2><span class="header-section-number">10.2</span> 在Rmarkdown中</h2>
+<h2><span class="header-section-number">10.3</span> 在Rmarkdown中</h2>
 <p>使用<code>shortcode()</code>函数.</p>
 <div id="本地视频" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> 本地视频</h3>
+<h3><span class="header-section-number">10.3.1</span> 本地视频</h3>
 <p>将视频放入在与post相同的文件夹中.</p>
 <p>然后插入下面语句(注意是要放在r代码框中):</p>
 <pre class="r"><code>blogdown::shortcode(&quot;video&quot;, src = &quot;./test.mp4&quot;)</code></pre>
 {{% video src="./test.mp4" %}}
 </div>
 <div id="youtube视频" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> Youtube视频</h3>
+<h3><span class="header-section-number">10.3.2</span> Youtube视频</h3>
 <p>使用下面语句可以插入视频.第二个是youtube视频ID.</p>
 <pre class="r"><code>blogdown::shortcode(&quot;youtube&quot;, &quot;p4liifrbK8w&quot;)</code></pre>
 {{% youtube "p4liifrbK8w" %}}
