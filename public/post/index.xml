@@ -5,7 +5,108 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 16 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 18 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Python forbioinformatics课程</title>
+      <link>/post/2019-11-18-python-for-bioinformatics/</link>
+      <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-18-python-for-bioinformatics/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#第一次课程&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 第一次课程&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#前期准备&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 前期准备&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装anaconda&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 安装&lt;code&gt;Anaconda&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装atom和hydrogen&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 安装&lt;code&gt;Atom&lt;/code&gt;和&lt;code&gt;Hydrogen&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#下载第一天课件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.3&lt;/span&gt; 下载第一天课件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装mobaxterm&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.4&lt;/span&gt; 安装&lt;code&gt;MobaXterm&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;第一次课程&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 第一次课程&lt;/h1&gt;
+&lt;p&gt;收到老师邮件,如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The first class of the BIOS274 mini-course is on Monday at 9:30a in room M112 (the room is entered from Alway building courtyard).&lt;br /&gt;
+There is software that you need to install before this first class.&lt;br /&gt;
+1. Anaconda (this has Python 3, jupyter, and much more)&lt;br /&gt;
+2. Atom and Hydrogen&lt;br /&gt;
+3. Karel the Robot [also available from the canvas Files &amp;gt; Lectures &amp;gt; Day1 folder]&lt;br /&gt;
+4. Only if you have a Windows computer, MobaXterm&lt;br /&gt;
+The syllabus has details on where to find these tools and how to test the install:&lt;br /&gt;
+&lt;a href=&#34;https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs&#34; class=&#34;uri&#34;&gt;https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs&lt;/a&gt;&lt;br /&gt;
+Be sure your laptop has a full charge, there are very few electrical outlets in M112.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;前期准备&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 前期准备&lt;/h2&gt;
+&lt;div id=&#34;安装anaconda&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; 安装&lt;code&gt;Anaconda&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;这个已经安装.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;安装atom和hydrogen&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.2&lt;/span&gt; 安装&lt;code&gt;Atom&lt;/code&gt;和&lt;code&gt;Hydrogen&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Atom&lt;/code&gt;我以前就安装过.&lt;/p&gt;
+&lt;p&gt;Hydrogen是一个能在Atom中模拟Jupyter编辑方式的插件,安装教程参考如下帖子:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/simplehouse/article/details/78348298&#34; class=&#34;uri&#34;&gt;https://blog.csdn.net/simplehouse/article/details/78348298&lt;/a&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;首先安装&lt;code&gt;IJavascript&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打开&lt;code&gt;terminal&lt;/code&gt;,这是微软新开发的类似于linux终端的应用.&lt;/p&gt;
+&lt;p&gt;输入下列代码:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm install -g ijavascript&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;安装&lt;code&gt;Jupyter&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用pip工具安装,仍然在terminal下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install --upgrade pip
+pip install jupyter&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;全局安装&lt;code&gt;IJavascript&lt;/code&gt;内核&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ijsinstall --install=global&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;在&lt;code&gt;Atom&lt;/code&gt;中安装&lt;code&gt;Hydrogen&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;直接输入下列代码,在terminal中:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apm install hydrogen&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;更新&lt;code&gt;Hydrogen&lt;/code&gt;的内核&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;IJavascript&lt;/code&gt;内核安装完毕,并不意味着&lt;code&gt;Hydrogen&lt;/code&gt;就能开始使用,需使用&lt;code&gt;Hydrogen: Update Kernels&lt;/code&gt;命令更新内核.(通过&lt;code&gt;cmd/ctl +shift + P&lt;/code&gt;打开&lt;code&gt;Atom&lt;/code&gt;的&lt;code&gt;Command Palette&lt;/code&gt;执行),或者重新启动一次&lt;code&gt;Atom&lt;/code&gt;也可以更新其内核.&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打开Atom,然后新建一个文件,保存位&lt;code&gt;py&lt;/code&gt;文件,然后使用快捷键&lt;code&gt;ctl/cmd + Enter&lt;/code&gt;可以执行&lt;code&gt;Hydrogen&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;下载第一天课件&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3&lt;/span&gt; 下载第一天课件&lt;/h3&gt;
+&lt;p&gt;地址如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;D:\study\python class\karel_the_robot&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;安装mobaxterm&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.4&lt;/span&gt; 安装&lt;code&gt;MobaXterm&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;老师给了介绍链接:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs/edit&#34; class=&#34;uri&#34;&gt;https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs/edit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;只有windows的电脑才需要安装该软件.&lt;/p&gt;
+&lt;p&gt;查了以下,这个其实跟&lt;code&gt;Xshell&lt;/code&gt;很像,用来连接Linux的工具.&lt;/p&gt;
+&lt;p&gt;参考帖子如下:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/weixin_35353187/article/details/81355088&#34; class=&#34;uri&#34;&gt;https://blog.csdn.net/weixin_35353187/article/details/81355088&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;官网下载:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mobaxterm.mobatek.net/&#34; class=&#34;uri&#34;&gt;https://mobaxterm.mobatek.net/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载之后,直接解压缩安装即可.&lt;/p&gt;
+&lt;p&gt;安装结束之后,打开如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;mobaxterm.png&#34; /&gt;
+这个软件的好处是可以模拟terminal,所以其实也可以代替微软自带的terminal.&lt;/p&gt;
+&lt;p&gt;到这里,就已经准备好了老师的课前要求.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>ggplot2做蝴蝶图</title>
       <link>/post/2019-11-16-butterfly-plot/</link>
