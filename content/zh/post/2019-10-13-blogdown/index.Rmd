@@ -176,6 +176,38 @@ I :heart: Academic :smile:
 
 # 如何在post中插入视频?
 
+## 如何插入B站视频?
+
+参考下面帖子.
+
+https://fengxiao.ml/2018/12/27/133.html.
+
+点开想要插入的视频,点击分享.然后点击`嵌入代码`,复制代码,插入到markdown文件中即可.
+
+![](./bilibili.png)
+
+但是直接嵌入的视频长宽不太好,所以需要手动调整.
+
+首先需要设置宽度位100%.并给其设置一个id.如下面我就设置ID位`test`.
+
+```
+<iframe id="test" src="//player.bilibili.com/player.html?aid=23877090&cid=39940519&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width=100%> </iframe>
+```
+
+然后需要在markdown中插入下面的JS代码:
+
+```
+<script type="text/javascript">
+document.getElementById("test").style.height=document.getElementById("test").scrollWidth*0.76+"px";
+</script>
+```
+
+<iframe id="test" src="//player.bilibili.com/player.html?aid=23877090&cid=39940519&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width=100%> </iframe>
+
+<script type="text/javascript">
+document.getElementById("test").style.height=document.getElementById("test").scrollWidth*0.76+"px";
+</script>
+
 ## 在markdown中
 
 直接使用下面语句,插入到markdown中即可.
