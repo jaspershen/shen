@@ -17,7 +17,7 @@ output:
     number_sections: true
 ---
 
-# 第一次课程
+# 第一次课程 (Day 01)
 
 收到老师邮件,如下:
 
@@ -123,6 +123,14 @@ https://mobaxterm.mobatek.net/
 
 
 ## 课程
+
+# 第二次课程 (Day 02)
+
+这次有事没去.
+
+# 第三次课程 (Day 03)
+
+
 
 
 

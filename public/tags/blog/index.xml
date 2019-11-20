@@ -5,7 +5,183 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 18 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 20 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>blogdown创建post模板文件夹</title>
+      <link>/post/2019-11-20-blogdown-creat-post/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-20-blogdown-creat-post/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt;好像并没有自动创建post模板文件夹的函数,要达到的目的是,自动在&lt;code&gt;content/en/post&lt;/code&gt;中创建文件夹,然后文件夹中有一个&lt;code&gt;index.Rmd&lt;/code&gt;文件.代码如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;new_post &amp;lt;- 
+  function(
+  post.name = &amp;quot;python for genomics class day03&amp;quot;,
+  date = Sys.Date(),
+  post.title = &amp;quot;Python for genomics class day03&amp;quot;,
+  author = &amp;quot;Xiaotao Shen&amp;quot;,
+  categories = c(&amp;quot;Python&amp;quot;),
+  tags = c(&amp;quot;Blog&amp;quot;, &amp;quot;Chinese&amp;quot;),
+  path = &amp;quot;D:/my github/shen/content/en/post&amp;quot;){
+  post.name &amp;lt;- stringr::str_replace_all(post.name, &amp;quot; &amp;quot;, &amp;quot;-&amp;quot;)
+  file.name &amp;lt;- paste(date, post.name, sep = &amp;quot;-&amp;quot;)
+ 
+  dir.create(file.path(path, file.name))
+  
+  file &amp;lt;- &amp;quot;---&amp;quot;
+  write.table(file, 
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = FALSE)
+  
+  write.table(paste(&amp;quot;title:&amp;quot;, post.title),
+    file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+  row.names = FALSE, col.names = FALSE, 
+  quote = FALSE, append = TRUE
+  )
+  
+  write.table(paste(&amp;quot;author:&amp;quot;, author),
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(paste(&amp;quot;date:&amp;quot;, date),
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(&amp;quot;slug: &amp;#39;&amp;#39;&amp;quot;,
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(&amp;quot;categories:&amp;quot;,
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  for(i in 1:length(categories)){
+    write.table(paste(&amp;quot; - &amp;quot;, categories[i]),
+                file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+                row.names = FALSE, col.names = FALSE, 
+                quote = FALSE, append = TRUE
+    )
+  }
+    
+    write.table(&amp;quot;tags:&amp;quot;,
+                file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+                row.names = FALSE, col.names = FALSE, 
+                quote = FALSE, append = TRUE
+    )
+    
+    for(i in 1:length(tags)){
+      write.table(paste(&amp;quot; - &amp;quot;, tags[i]),
+                  file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+                  row.names = FALSE, col.names = FALSE, 
+                  quote = FALSE, append = TRUE
+      )
+    }
+      
+      end &amp;lt;- 
+&amp;quot;image:
+  caption: &amp;#39;&amp;#39;
+  focal_point: &amp;#39;&amp;#39;
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---&amp;quot;
+      write.table(
+        end,
+        file.path(path, file.name, &amp;quot;index.txt&amp;quot;),
+        row.names = FALSE,
+        col.names = FALSE,
+        quote = FALSE,
+        append = TRUE
+      )
+      
+ file.rename(from = file.path(path, file.name, &amp;quot;index.txt&amp;quot;),
+             to = file.path(path, file.name, &amp;quot;index.Rmd&amp;quot;))
+ 
+  }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python for genomics class day03</title>
+      <link>/post/2019-11-20-python-for-genomics-class-day03/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-20-python-for-genomics-class-day03/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Python Cookbook</title>
+      <link>/post/2019-11-18-python-summary/</link>
+      <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-18-python-summary/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#基础&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 基础&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#pycharm-cookbook&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Pycharm cookbook&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#如何更改每个项目的解释器版本&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 创建文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#运行代码&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.3&lt;/span&gt; 运行代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改默认的快捷键&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.4&lt;/span&gt; 修改默认的快捷键&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编码设置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.5&lt;/span&gt; 编码设置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;基础&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 基础&lt;/h1&gt;
+&lt;div id=&#34;pycharm-cookbook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Pycharm cookbook&lt;/h2&gt;
+&lt;div id=&#34;如何更改每个项目的解释器版本&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/h3&gt;
+&lt;p&gt;File -&amp;gt; Settings -&amp;gt;project -&amp;gt; Project Interpreter&lt;/p&gt;
+&lt;p&gt;然后选择即可.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建文件&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.2&lt;/span&gt; 创建文件&lt;/h3&gt;
+&lt;p&gt;File -&amp;gt; new&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;运行代码&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3&lt;/span&gt; 运行代码&lt;/h3&gt;
+&lt;p&gt;可以一行行的运行代码,修改默认快捷键位&lt;code&gt;ctl+enter&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改默认的快捷键&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.4&lt;/span&gt; 修改默认的快捷键&lt;/h3&gt;
+&lt;p&gt;在File -&amp;gt;keymap下&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编码设置&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.5&lt;/span&gt; 编码设置&lt;/h3&gt;
+&lt;p&gt;需要将pycharm的所有编码设置为&lt;code&gt;UTF-8&lt;/code&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;File -&amp;gt; Setting -&amp;gt; Editor -&amp;gt; File Encoding&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;./pycharm_encoding&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;同时在每个文件的开头添加:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#-*- coding: utf-8 -*&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python forbioinformatics课程</title>
       <link>/post/2019-11-18-python-for-bioinformatics/</link>
@@ -15,19 +191,22 @@
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#第一次课程&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 第一次课程&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#第一次课程-day-01&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 第一次课程 (Day 01)&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#前期准备&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 前期准备&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#安装anaconda&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 安装&lt;code&gt;Anaconda&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#安装atom和hydrogen&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 安装&lt;code&gt;Atom&lt;/code&gt;和&lt;code&gt;Hydrogen&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#下载第一天课件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.3&lt;/span&gt; 下载第一天课件&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#安装mobaxterm&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.4&lt;/span&gt; 安装&lt;code&gt;MobaXterm&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#课程&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 课程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第二次课程-day-02&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 第二次课程 (Day 02)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第三次课程-day-03&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 第三次课程 (Day 03)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;第一次课程&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 第一次课程&lt;/h1&gt;
+&lt;div id=&#34;第一次课程-day-01&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 第一次课程 (Day 01)&lt;/h1&gt;
 &lt;p&gt;收到老师邮件,如下:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The first class of the BIOS274 mini-course is on Monday at 9:30a in room M112 (the room is entered from Alway building courtyard).&lt;br /&gt;
@@ -103,6 +282,16 @@ pip install jupyter&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;到这里,就已经准备好了老师的课前要求.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;课程&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 课程&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第二次课程-day-02&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 第二次课程 (Day 02)&lt;/h1&gt;
+&lt;p&gt;这次有事没去.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第三次课程-day-03&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 第三次课程 (Day 03)&lt;/h1&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -3509,6 +3698,7 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#常用功能总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.2&lt;/span&gt; 常用功能总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#从data-frame转变为igraph对象&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.3&lt;/span&gt; 从data frame转变为``igraph对象&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -3519,8 +3709,46 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/div&gt;
 &lt;div id=&#34;常用功能总结&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; 常用功能总结&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;从data-frame转变为igraph对象&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3&lt;/span&gt; 从data frame转变为``igraph对象&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;graph_from_data_frame()&lt;/code&gt;函数.一共三个参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;d&lt;/code&gt;:&lt;code&gt;data.frame&lt;/code&gt;,前两列必须是一条边的两个顶点,比如第一列为&lt;code&gt;from&lt;/code&gt;,第二列为&lt;code&gt;to&lt;/code&gt;.其余的列会作为edge的属性.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;directed&lt;/code&gt;:是否为有向图,默认为TRUE.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vertices&lt;/code&gt;:需要是一个data.frame.第一列是vertex的名字,然后其他列是vertex的属性.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(igraph)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;igraph&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
+## 
+##     decompose, spectrum&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:base&amp;#39;:
+## 
+##     union&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;actors &amp;lt;- data.frame(name=c(&amp;quot;Alice&amp;quot;, &amp;quot;Bob&amp;quot;, &amp;quot;Cecil&amp;quot;, &amp;quot;David&amp;quot;,
+                            &amp;quot;Esmeralda&amp;quot;),
+                     age=c(48,33,45,34,21),
+                     gender=c(&amp;quot;F&amp;quot;,&amp;quot;M&amp;quot;,&amp;quot;F&amp;quot;,&amp;quot;M&amp;quot;,&amp;quot;F&amp;quot;))
+
+relations &amp;lt;- data.frame(from=c(&amp;quot;Bob&amp;quot;, &amp;quot;Cecil&amp;quot;, &amp;quot;Cecil&amp;quot;, &amp;quot;David&amp;quot;,
+                               &amp;quot;David&amp;quot;, &amp;quot;Esmeralda&amp;quot;),
+                        to=c(&amp;quot;Alice&amp;quot;, &amp;quot;Bob&amp;quot;, &amp;quot;Alice&amp;quot;, &amp;quot;Alice&amp;quot;, &amp;quot;Bob&amp;quot;, &amp;quot;Alice&amp;quot;),
+                        same.dept=c(FALSE,FALSE,TRUE,FALSE,FALSE,TRUE),
+                        friendship=c(4,5,5,2,1,1), advice=c(4,5,5,4,2,3))
+g &amp;lt;- graph_from_data_frame(relations, directed = TRUE, vertices = actors)
+g&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## IGRAPH 9e0c0ea DN-- 5 6 -- 
+## + attr: name (v/c), age (v/n), gender (v/c), same.dept (e/l),
+## | friendship (e/n), advice (e/n)
+## + edges from 9e0c0ea (vertex names):
+## [1] Bob      -&amp;gt;Alice Cecil    -&amp;gt;Bob   Cecil    -&amp;gt;Alice David    -&amp;gt;Alice
+## [5] David    -&amp;gt;Bob   Esmeralda-&amp;gt;Alice&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-10-15-igraph/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;寻找某个vertex的neighbor&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.1&lt;/span&gt; 寻找某个vertex的neighbor&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3.1&lt;/span&gt; 寻找某个vertex的neighbor&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;neighbors()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -3531,7 +3759,7 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;设置graph中vertex的属性&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.2&lt;/span&gt; 设置graph中vertex的属性&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3.2&lt;/span&gt; 设置graph中vertex的属性&lt;/h4&gt;
 &lt;p&gt;如果需要给graph中的vertex增加或者修改属性,可以使用&lt;code&gt;ste_vertex_attr()&lt;/code&gt;函数.一共四个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -3543,11 +3771,11 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;将igraph对象转变为data.frame格式&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.3&lt;/span&gt; 将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3.3&lt;/span&gt; 将&lt;code&gt;igraph&lt;/code&gt;对象转变为data.frame格式&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;as_long_data_frame()&lt;/code&gt;函数可以将&lt;code&gt;igraph&lt;/code&gt;转换为data.frame格式.只有一个参数,就是&lt;code&gt;graph&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;从一个graph提取子graphsubgraph&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.4&lt;/span&gt; 从一个graph提取子graph(subgraph)&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3.4&lt;/span&gt; 从一个graph提取子graph(subgraph)&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;subgraph()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;
@@ -3556,7 +3784,7 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;获取vertex属性&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2.5&lt;/span&gt; 获取vertex属性&lt;/h4&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3.5&lt;/span&gt; 获取vertex属性&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;vertex_attr()&lt;/code&gt;函数.一共4个参数.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph&lt;/code&gt;:&lt;code&gt;igraph&lt;/code&gt;类对象.&lt;br /&gt;

@@ -1,5 +1,5 @@
 ---
-title: Python forbioinformatics课程
+title: Python Cookbook
 author: Xiaotao Shen
 date: '2019-11-18'
 slug: ''
@@ -20,92 +20,48 @@ output:
 
 <div id="TOC">
 <ul>
-<li><a href="#第一次课程"><span class="toc-section-number">1</span> 第一次课程</a><ul>
-<li><a href="#前期准备"><span class="toc-section-number">1.1</span> 前期准备</a><ul>
-<li><a href="#安装anaconda"><span class="toc-section-number">1.1.1</span> 安装<code>Anaconda</code></a></li>
-<li><a href="#安装atom和hydrogen"><span class="toc-section-number">1.1.2</span> 安装<code>Atom</code>和<code>Hydrogen</code></a></li>
-<li><a href="#下载第一天课件"><span class="toc-section-number">1.1.3</span> 下载第一天课件</a></li>
-<li><a href="#安装mobaxterm"><span class="toc-section-number">1.1.4</span> 安装<code>MobaXterm</code></a></li>
+<li><a href="#基础"><span class="toc-section-number">1</span> 基础</a><ul>
+<li><a href="#pycharm-cookbook"><span class="toc-section-number">1.1</span> Pycharm cookbook</a><ul>
+<li><a href="#如何更改每个项目的解释器版本"><span class="toc-section-number">1.1.1</span> 如何更改每个项目的解释器版本?</a></li>
+<li><a href="#创建文件"><span class="toc-section-number">1.1.2</span> 创建文件</a></li>
+<li><a href="#运行代码"><span class="toc-section-number">1.1.3</span> 运行代码</a></li>
+<li><a href="#修改默认的快捷键"><span class="toc-section-number">1.1.4</span> 修改默认的快捷键</a></li>
+<li><a href="#编码设置"><span class="toc-section-number">1.1.5</span> 编码设置</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="第一次课程" class="section level1">
-<h1><span class="header-section-number">1</span> 第一次课程</h1>
-<p>收到老师邮件,如下:</p>
-<blockquote>
-<p>The first class of the BIOS274 mini-course is on Monday at 9:30a in room M112 (the room is entered from Alway building courtyard).<br />
-There is software that you need to install before this first class.<br />
-1. Anaconda (this has Python 3, jupyter, and much more)<br />
-2. Atom and Hydrogen<br />
-3. Karel the Robot [also available from the canvas Files &gt; Lectures &gt; Day1 folder]<br />
-4. Only if you have a Windows computer, MobaXterm<br />
-The syllabus has details on where to find these tools and how to test the install:<br />
-<a href="https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs" class="uri">https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs</a><br />
-Be sure your laptop has a full charge, there are very few electrical outlets in M112.</p>
-</blockquote>
-<div id="前期准备" class="section level2">
-<h2><span class="header-section-number">1.1</span> 前期准备</h2>
-<div id="安装anaconda" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> 安装<code>Anaconda</code></h3>
-<p>这个已经安装.</p>
+<div id="基础" class="section level1">
+<h1><span class="header-section-number">1</span> 基础</h1>
+<div id="pycharm-cookbook" class="section level2">
+<h2><span class="header-section-number">1.1</span> Pycharm cookbook</h2>
+<div id="如何更改每个项目的解释器版本" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> 如何更改每个项目的解释器版本?</h3>
+<p>File -&gt; Settings -&gt;project -&gt; Project Interpreter</p>
+<p>然后选择即可.</p>
 </div>
-<div id="安装atom和hydrogen" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> 安装<code>Atom</code>和<code>Hydrogen</code></h3>
-<p><code>Atom</code>我以前就安装过.</p>
-<p>Hydrogen是一个能在Atom中模拟Jupyter编辑方式的插件,安装教程参考如下帖子:</p>
-<p><a href="https://blog.csdn.net/simplehouse/article/details/78348298" class="uri">https://blog.csdn.net/simplehouse/article/details/78348298</a></p>
+<div id="创建文件" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> 创建文件</h3>
+<p>File -&gt; new</p>
+</div>
+<div id="运行代码" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> 运行代码</h3>
+<p>可以一行行的运行代码,修改默认快捷键位<code>ctl+enter</code></p>
+</div>
+<div id="修改默认的快捷键" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> 修改默认的快捷键</h3>
+<p>在File -&gt;keymap下</p>
+</div>
+<div id="编码设置" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> 编码设置</h3>
+<p>需要将pycharm的所有编码设置为<code>UTF-8</code>.</p>
 <ol style="list-style-type: decimal">
-<li>首先安装<code>IJavascript</code></li>
+<li>File -&gt; Setting -&gt; Editor -&gt; File Encoding</li>
 </ol>
-<p>打开<code>terminal</code>,这是微软新开发的类似于linux终端的应用.</p>
-<p>输入下列代码:</p>
-<pre><code>npm install -g ijavascript</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>安装<code>Jupyter</code></li>
-</ol>
-<p>使用pip工具安装,仍然在terminal下:</p>
-<pre><code>pip install --upgrade pip
-pip install jupyter</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>全局安装<code>IJavascript</code>内核</li>
-</ol>
-<pre><code>ijsinstall --install=global</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>在<code>Atom</code>中安装<code>Hydrogen</code></li>
-</ol>
-<p>直接输入下列代码,在terminal中:</p>
-<pre><code>apm install hydrogen</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>更新<code>Hydrogen</code>的内核</li>
-</ol>
-<p><code>IJavascript</code>内核安装完毕,并不意味着<code>Hydrogen</code>就能开始使用,需使用<code>Hydrogen: Update Kernels</code>命令更新内核.(通过<code>cmd/ctl +shift + P</code>打开<code>Atom</code>的<code>Command Palette</code>执行),或者重新启动一次<code>Atom</code>也可以更新其内核.</p>
-<ol start="6" style="list-style-type: decimal">
-<li>使用</li>
-</ol>
-<p>打开Atom,然后新建一个文件,保存位<code>py</code>文件,然后使用快捷键<code>ctl/cmd + Enter</code>可以执行<code>Hydrogen</code>.</p>
-</div>
-<div id="下载第一天课件" class="section level3">
-<h3><span class="header-section-number">1.1.3</span> 下载第一天课件</h3>
-<p>地址如下:</p>
-<pre><code>D:\study\python class\karel_the_robot</code></pre>
-</div>
-<div id="安装mobaxterm" class="section level3">
-<h3><span class="header-section-number">1.1.4</span> 安装<code>MobaXterm</code></h3>
-<p>老师给了介绍链接:</p>
-<p><a href="https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs/edit" class="uri">https://docs.google.com/document/d/140OLR6tMPTvYwmHBREiDRIvTA1cXoXWzfVP-px9IlEs/edit</a></p>
-<p>只有windows的电脑才需要安装该软件.</p>
-<p>查了以下,这个其实跟<code>Xshell</code>很像,用来连接Linux的工具.</p>
-<p>参考帖子如下:</p>
-<p><a href="https://blog.csdn.net/weixin_35353187/article/details/81355088" class="uri">https://blog.csdn.net/weixin_35353187/article/details/81355088</a></p>
-<p>官网下载:</p>
-<p><a href="https://mobaxterm.mobatek.net/" class="uri">https://mobaxterm.mobatek.net/</a></p>
-<p>下载之后,直接解压缩安装即可.</p>
-<p>安装结束之后,打开如下:</p>
-<p><img src="mobaxterm.png" />
-这个软件的好处是可以模拟terminal,所以其实也可以代替微软自带的terminal.</p>
-<p>到这里,就已经准备好了老师的课前要求.</p>
+<p><img src="./pycharm_encoding" /></p>
+<p>同时在每个文件的开头添加:</p>
+<pre><code>#-*- coding: utf-8 -*</code></pre>
 </div>
 </div>
 </div>

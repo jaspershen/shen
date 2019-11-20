@@ -23,6 +23,7 @@ output:
 <ul>
 <li><a href="#安装"><span class="toc-section-number">0.0.1</span> 安装</a></li>
 <li><a href="#常用功能总结"><span class="toc-section-number">0.0.2</span> 常用功能总结</a></li>
+<li><a href="#从data-frame转变为igraph对象"><span class="toc-section-number">0.0.3</span> 从data frame转变为``igraph对象</a></li>
 </ul>
 </div>
 
@@ -33,8 +34,46 @@ output:
 </div>
 <div id="常用功能总结" class="section level3">
 <h3><span class="header-section-number">0.0.2</span> 常用功能总结</h3>
+</div>
+<div id="从data-frame转变为igraph对象" class="section level3">
+<h3><span class="header-section-number">0.0.3</span> 从data frame转变为``igraph对象</h3>
+<p>使用<code>graph_from_data_frame()</code>函数.一共三个参数:</p>
+<ul>
+<li><p><code>d</code>:<code>data.frame</code>,前两列必须是一条边的两个顶点,比如第一列为<code>from</code>,第二列为<code>to</code>.其余的列会作为edge的属性.</p></li>
+<li><p><code>directed</code>:是否为有向图,默认为TRUE.</p></li>
+<li><p><code>vertices</code>:需要是一个data.frame.第一列是vertex的名字,然后其他列是vertex的属性.</p></li>
+</ul>
+<pre class="r"><code>library(igraph)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;igraph&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     decompose, spectrum</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     union</code></pre>
+<pre class="r"><code>actors &lt;- data.frame(name=c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Cecil&quot;, &quot;David&quot;,
+                            &quot;Esmeralda&quot;),
+                     age=c(48,33,45,34,21),
+                     gender=c(&quot;F&quot;,&quot;M&quot;,&quot;F&quot;,&quot;M&quot;,&quot;F&quot;))
+
+relations &lt;- data.frame(from=c(&quot;Bob&quot;, &quot;Cecil&quot;, &quot;Cecil&quot;, &quot;David&quot;,
+                               &quot;David&quot;, &quot;Esmeralda&quot;),
+                        to=c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Alice&quot;, &quot;Alice&quot;, &quot;Bob&quot;, &quot;Alice&quot;),
+                        same.dept=c(FALSE,FALSE,TRUE,FALSE,FALSE,TRUE),
+                        friendship=c(4,5,5,2,1,1), advice=c(4,5,5,4,2,3))
+g &lt;- graph_from_data_frame(relations, directed = TRUE, vertices = actors)
+g</code></pre>
+<pre><code>## IGRAPH 9e0c0ea DN-- 5 6 -- 
+## + attr: name (v/c), age (v/n), gender (v/c), same.dept (e/l),
+## | friendship (e/n), advice (e/n)
+## + edges from 9e0c0ea (vertex names):
+## [1] Bob      -&gt;Alice Cecil    -&gt;Bob   Cecil    -&gt;Alice David    -&gt;Alice
+## [5] David    -&gt;Bob   Esmeralda-&gt;Alice</code></pre>
+<pre class="r"><code>plot(g)</code></pre>
+<p><img src="/en/post/2019-10-15-igraph/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <div id="寻找某个vertex的neighbor" class="section level4">
-<h4><span class="header-section-number">0.0.2.1</span> 寻找某个vertex的neighbor</h4>
+<h4><span class="header-section-number">0.0.3.1</span> 寻找某个vertex的neighbor</h4>
 <p>使用<code>neighbors()</code>函数.一共两个参数:</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />
@@ -45,7 +84,7 @@ output:
 </ul>
 </div>
 <div id="设置graph中vertex的属性" class="section level4">
-<h4><span class="header-section-number">0.0.2.2</span> 设置graph中vertex的属性</h4>
+<h4><span class="header-section-number">0.0.3.2</span> 设置graph中vertex的属性</h4>
 <p>如果需要给graph中的vertex增加或者修改属性,可以使用<code>ste_vertex_attr()</code>函数.一共四个参数:</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />
@@ -57,11 +96,11 @@ output:
 </ul>
 </div>
 <div id="将igraph对象转变为data.frame格式" class="section level4">
-<h4><span class="header-section-number">0.0.2.3</span> 将<code>igraph</code>对象转变为data.frame格式</h4>
+<h4><span class="header-section-number">0.0.3.3</span> 将<code>igraph</code>对象转变为data.frame格式</h4>
 <p>使用<code>as_long_data_frame()</code>函数可以将<code>igraph</code>转换为data.frame格式.只有一个参数,就是<code>graph</code>.</p>
 </div>
 <div id="从一个graph提取子graphsubgraph" class="section level4">
-<h4><span class="header-section-number">0.0.2.4</span> 从一个graph提取子graph(subgraph)</h4>
+<h4><span class="header-section-number">0.0.3.4</span> 从一个graph提取子graph(subgraph)</h4>
 <p>使用<code>subgraph()</code>函数.一共两个参数:</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />
@@ -70,7 +109,7 @@ output:
 </ul>
 </div>
 <div id="获取vertex属性" class="section level4">
-<h4><span class="header-section-number">0.0.2.5</span> 获取vertex属性</h4>
+<h4><span class="header-section-number">0.0.3.5</span> 获取vertex属性</h4>
 <p>使用<code>vertex_attr()</code>函数.一共4个参数.</p>
 <ul>
 <li><code>graph</code>:<code>igraph</code>类对象.<br />

@@ -5,7 +5,183 @@
     <link>/tags/chinese/</link>
       <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
     <description>Chinese</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 18 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 20 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>blogdown创建post模板文件夹</title>
+      <link>/post/2019-11-20-blogdown-creat-post/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-20-blogdown-creat-post/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;code&gt;blogdown&lt;/code&gt;好像并没有自动创建post模板文件夹的函数,要达到的目的是,自动在&lt;code&gt;content/en/post&lt;/code&gt;中创建文件夹,然后文件夹中有一个&lt;code&gt;index.Rmd&lt;/code&gt;文件.代码如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;new_post &amp;lt;- 
+  function(
+  post.name = &amp;quot;python for genomics class day03&amp;quot;,
+  date = Sys.Date(),
+  post.title = &amp;quot;Python for genomics class day03&amp;quot;,
+  author = &amp;quot;Xiaotao Shen&amp;quot;,
+  categories = c(&amp;quot;Python&amp;quot;),
+  tags = c(&amp;quot;Blog&amp;quot;, &amp;quot;Chinese&amp;quot;),
+  path = &amp;quot;D:/my github/shen/content/en/post&amp;quot;){
+  post.name &amp;lt;- stringr::str_replace_all(post.name, &amp;quot; &amp;quot;, &amp;quot;-&amp;quot;)
+  file.name &amp;lt;- paste(date, post.name, sep = &amp;quot;-&amp;quot;)
+ 
+  dir.create(file.path(path, file.name))
+  
+  file &amp;lt;- &amp;quot;---&amp;quot;
+  write.table(file, 
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = FALSE)
+  
+  write.table(paste(&amp;quot;title:&amp;quot;, post.title),
+    file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+  row.names = FALSE, col.names = FALSE, 
+  quote = FALSE, append = TRUE
+  )
+  
+  write.table(paste(&amp;quot;author:&amp;quot;, author),
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(paste(&amp;quot;date:&amp;quot;, date),
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(&amp;quot;slug: &amp;#39;&amp;#39;&amp;quot;,
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(&amp;quot;categories:&amp;quot;,
+              file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  for(i in 1:length(categories)){
+    write.table(paste(&amp;quot; - &amp;quot;, categories[i]),
+                file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+                row.names = FALSE, col.names = FALSE, 
+                quote = FALSE, append = TRUE
+    )
+  }
+    
+    write.table(&amp;quot;tags:&amp;quot;,
+                file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+                row.names = FALSE, col.names = FALSE, 
+                quote = FALSE, append = TRUE
+    )
+    
+    for(i in 1:length(tags)){
+      write.table(paste(&amp;quot; - &amp;quot;, tags[i]),
+                  file.path(path, file.name, &amp;quot;index.txt&amp;quot;), 
+                  row.names = FALSE, col.names = FALSE, 
+                  quote = FALSE, append = TRUE
+      )
+    }
+      
+      end &amp;lt;- 
+&amp;quot;image:
+  caption: &amp;#39;&amp;#39;
+  focal_point: &amp;#39;&amp;#39;
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---&amp;quot;
+      write.table(
+        end,
+        file.path(path, file.name, &amp;quot;index.txt&amp;quot;),
+        row.names = FALSE,
+        col.names = FALSE,
+        quote = FALSE,
+        append = TRUE
+      )
+      
+ file.rename(from = file.path(path, file.name, &amp;quot;index.txt&amp;quot;),
+             to = file.path(path, file.name, &amp;quot;index.Rmd&amp;quot;))
+ 
+  }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python for genomics class day03</title>
+      <link>/post/2019-11-20-python-for-genomics-class-day03/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-20-python-for-genomics-class-day03/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Python Cookbook</title>
+      <link>/post/2019-11-18-python-summary/</link>
+      <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-18-python-summary/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#基础&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 基础&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#pycharm-cookbook&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Pycharm cookbook&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#如何更改每个项目的解释器版本&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 创建文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#运行代码&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.3&lt;/span&gt; 运行代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改默认的快捷键&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.4&lt;/span&gt; 修改默认的快捷键&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编码设置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.5&lt;/span&gt; 编码设置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;基础&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 基础&lt;/h1&gt;
+&lt;div id=&#34;pycharm-cookbook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Pycharm cookbook&lt;/h2&gt;
+&lt;div id=&#34;如何更改每个项目的解释器版本&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/h3&gt;
+&lt;p&gt;File -&amp;gt; Settings -&amp;gt;project -&amp;gt; Project Interpreter&lt;/p&gt;
+&lt;p&gt;然后选择即可.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建文件&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.2&lt;/span&gt; 创建文件&lt;/h3&gt;
+&lt;p&gt;File -&amp;gt; new&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;运行代码&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3&lt;/span&gt; 运行代码&lt;/h3&gt;
+&lt;p&gt;可以一行行的运行代码,修改默认快捷键位&lt;code&gt;ctl+enter&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改默认的快捷键&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.4&lt;/span&gt; 修改默认的快捷键&lt;/h3&gt;
+&lt;p&gt;在File -&amp;gt;keymap下&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编码设置&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.5&lt;/span&gt; 编码设置&lt;/h3&gt;
+&lt;p&gt;需要将pycharm的所有编码设置为&lt;code&gt;UTF-8&lt;/code&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;File -&amp;gt; Setting -&amp;gt; Editor -&amp;gt; File Encoding&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;./pycharm_encoding&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;同时在每个文件的开头添加:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#-*- coding: utf-8 -*&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python forbioinformatics课程</title>
       <link>/post/2019-11-18-python-for-bioinformatics/</link>
@@ -15,19 +191,22 @@
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#第一次课程&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 第一次课程&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#第一次课程-day-01&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 第一次课程 (Day 01)&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#前期准备&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 前期准备&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#安装anaconda&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 安装&lt;code&gt;Anaconda&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#安装atom和hydrogen&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 安装&lt;code&gt;Atom&lt;/code&gt;和&lt;code&gt;Hydrogen&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#下载第一天课件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.3&lt;/span&gt; 下载第一天课件&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#安装mobaxterm&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.4&lt;/span&gt; 安装&lt;code&gt;MobaXterm&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#课程&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 课程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第二次课程-day-02&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 第二次课程 (Day 02)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第三次课程-day-03&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 第三次课程 (Day 03)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;第一次课程&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 第一次课程&lt;/h1&gt;
+&lt;div id=&#34;第一次课程-day-01&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 第一次课程 (Day 01)&lt;/h1&gt;
 &lt;p&gt;收到老师邮件,如下:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The first class of the BIOS274 mini-course is on Monday at 9:30a in room M112 (the room is entered from Alway building courtyard).&lt;br /&gt;
@@ -103,6 +282,16 @@ pip install jupyter&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;到这里,就已经准备好了老师的课前要求.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;课程&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 课程&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第二次课程-day-02&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 第二次课程 (Day 02)&lt;/h1&gt;
+&lt;p&gt;这次有事没去.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第三次课程-day-03&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 第三次课程 (Day 03)&lt;/h1&gt;
 &lt;/div&gt;
 </description>
     </item>
