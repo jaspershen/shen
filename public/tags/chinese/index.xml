@@ -120,8 +120,18 @@ output:
       <guid>/post/2019-11-20-python-for-genomics-class-day03/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#bios-274-november-20-class-3&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; BIOS-274 : November 20 : Class 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
-
+&lt;div id=&#34;bios-274-november-20-class-3&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; BIOS-274 : November 20 : Class 3&lt;/h1&gt;
+&lt;p&gt;Data types and manipulations: dictionary, set&lt;/p&gt;
+&lt;p&gt;Conditional statements: if, elif, else, break, continue&lt;/p&gt;
+&lt;p&gt;Comments and style: [&lt;a href=&#34;https://realpython.com/python-pep8/&#34; class=&#34;uri&#34;&gt;https://realpython.com/python-pep8/&lt;/a&gt;]&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

@@ -16,3 +16,18 @@ output:
     toc: true
     number_sections: true
 ---
+
+
+# BIOS-274 : November 20 : Class 3
+
+Data types and manipulations: dictionary, set
+
+Conditional statements: if, elif, else, break, continue
+
+Comments and style: [https://realpython.com/python-pep8/]
+
+
+```{python}
+
+```
+
