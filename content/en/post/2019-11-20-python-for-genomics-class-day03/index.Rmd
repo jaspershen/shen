@@ -97,7 +97,7 @@ test[0]
 
 ### 列表通用的操作
 
-有几种操作适用于所有序列，包括索引、切片、相加、相乘和成员资格检查。另外，Python还提供了一些内置函数，可用于确定序列的长度以及找出序列中最大和最小的元素。
+有几种操作适用于所有序列,包括索引,切片,相加,相乘和成员资格检查.另外,Python还提供了一些内置函数,可用于确定序列的长度以及找出序列中最大和最小的元素.
 
 #### 索引(index)
 
@@ -141,7 +141,7 @@ test[-3:0]
 test[-3:]
 ```
 
-可以看到如果执行切片操作时，第一个索引指定的元素位于第二个索引指定的元素后面,结果就为空序列.
+可以看到如果执行切片操作时,第一个索引指定的元素位于第二个索引指定的元素后面,结果就为空序列.
 
 #### 序列相加
 
@@ -165,7 +165,7 @@ test[-3:]
 
 **None,空列表和初始化**
 
-空列表是使用不包含任何内容的两个方括号([])表示的.如果要创建一个可包含10个元素的列表,但没有任何有用的内容,可像前面那样使用`[42]*10`。但更准确的做法是使用`[0]*10`,这将创建一个包含10个零的列表.但是更为准确合适的作发是使用`None`,在python中,`None`代表什么都没有.
+空列表是使用不包含任何内容的两个方括号([])表示的.如果要创建一个可包含10个元素的列表,但没有任何有用的内容,可像前面那样使用`[42]*10`.但更准确的做法是使用`[0]*10`,这将创建一个包含10个零的列表.但是更为准确合适的作发是使用`None`,在python中,`None`代表什么都没有.
 
 ```{python}
 None
@@ -496,7 +496,7 @@ tuple("shen")
 
 1. 它们用作映射中的键(以及集合的成员),而列表不行.
 
-2. 有些内置函数和方法返回元组,这意味着必须跟它们打交道.只要不尝试修改元组,与元组打交道通常意味着像处理列表一样处理它们(需要使用元组没有的index和count等方法时例外)。
+2. 有些内置函数和方法返回元组,这意味着必须跟它们打交道.只要不尝试修改元组,与元组打交道通常意味着像处理列表一样处理它们(需要使用元组没有的index和count等方法时例外).
 
 ### 总结
 
@@ -529,5 +529,201 @@ remove|用于删除第一个为指定值的元素
 reverse|按相反的顺序排列列表中的元素
 sort|对列表进行排序
 
+## 字符串
+
+### 字符串的基本操作
+
+所有的标准序列操作(索引,切片,乘法,成员资格检查,长度,最小值和最大值)都适用于字符串.但是注意字符串是不可变的.
+
+#### 字符串方法
+
+字符串的方法要多得多,很多都是从模块string那继承过来的.
+
+介绍一些比较常用的.
+
+##### `center`
+
+通过在两边添加填充字符(默认为空格)让字符串居中.
+
+```{python}
+"The Middle by Jimmy Eat World".center(40)
+"The Middle by Jimmy Eat World".center(40, "*")
+```
+
+##### `find`
+
+在字符串中查找子串,如果找到,就返回字串的第一个字符的索引,否则返回-1.
+
+```{python}
+'With a moo-moo here, and a moo-moo there'.find('moo')
+'With a moo-moo here, and a moo-moo there'.find('shen')
+```
+
+你还可指定搜索的起点和终点.
+
+```{python}
+subject = '$$$ Get rich now!!! $$$'
+subject
+subject.find('$$$')
+subject.find('$$$', 1) # 只指定了起点
+subject.find('!!!', 0, 16) # 同时指定了起点和终点
+```
+
+请注意,起点和终点值(第二个和第三个参数)指定的搜索范围包含起点,但不包含终点.这是Python惯常的做法.
+
+另外的和`find`相关的方法还包括:
+
+`rfind`,`index`,`rindex`,`count`,`startswith`和`endswith`.
+
+##### `join`
+
+`join`是一个非常重要的字符串方法,其作用与split相反,用于合并序列的元素.
 
 
+```{python}
+seq = list("shen")
+seq
+sep = '+'
+sep
+sep.join(seq)
+```
+
+这个方法跟R中的`paste`函数非常类似.
+
+注意,所合并序列的元素必须都是字符串.如果list元素都是数字,是会报错的.
+
+##### `lower`
+
+返回字符串的小写版本.
+
+```{python}
+'Trondheim Hammer Dance'.lower()
+```
+
+类似或者同一类方法还有:
+
+`islower`,`istitle`,`isupper`,`translate`,`capitalize`,`casefold`,`swapcase`,`title`,`upper`.
+
+##### `replace`
+
+将指定子串都替换为另一个字符串,并返回替换后的结果.
+
+```{python}
+'This is a test'.replace('is', 'eez')
+```
+一共两个参数,第一个是需要替换的内容,第二个是替换之后的内容.
+
+到这里应该发现,其实这就是R中的`stringr`包所要做的工作.
+
+另外还需要参考的函数:
+
+`tranlate`和`expandtabs`.
+
+##### `split`
+
+其和`join`作用相反,用于将字符串拆分为序列.
+
+```{python}
+'1+2+3+4+5'.split('+')
+'Using the default'.split()
+```
+
+可以看到,默认拆分的标识符是空格( ).
+
+##### `strip`
+
+用于将字符串的开头和末尾的空白删除.
+
+```{python}
+' internal whitespace is kept '.strip()
+```
+
+当然,还可以通过设置参数,来指定删除的字符类型.
+
+```{python}
+'*** SPAM * for * everyone!!! ***'.strip(' *!')
+```
+
+但是还是只能删除开头和末尾.
+
+相似函数或者方法:
+
+`lstrip`和`rstrip`.
+
+##### `translate`
+
+方法`translate`与`replace`一样替换字符串的特定部分,但不同的是它只能进行单字符替换.这个方法的优势在于能够同时替换多个字符,因此效率比replace高.
+
+使用`translate`前必须创建一个转换表.这个转换表指出了不同`Unicode`码点之间的转换关系.要创建转换表,可对字符串类型`str`调用方法`maketrans`,这个方法接受两个参数:两个长度相同的字符串,它们指定要将第一个字符串中的每个字符都替换为第二个字符串中的相应字
+符.
+
+```{python}
+table = str.maketrans('cs', 'kz')
+table
+type(table)
+```
+
+可以看到,转换表是一个字典类型.
+
+```{python}
+'this is an incredible test'.translate(table)
+```
+
+##### 判断字符串是否满足某些特定的条件
+
+很多字符串方法都以is打头,如`isspace`,`isdigit`和`isupper`,它们判断字符串是否具有特定的性质(如包含的字符全为空白,数字或大写).如果字符串具备特定的性质,这些方法就返回True,否则返回False.
+
+参考其他函数:
+
+`isalnum`,`isalpha`,`isdecimal`,`isdigit`,`isidentifier`,`islower`,`isnumeric`,`isprintable`,`isspace`,`istitle`,`isupper`.
+
+#### 总结
+
+将字符串的方法总结如下:
+
+Method|Meanings
+------|--------
+`string.capitalize()`|返回字符串的副本,但将第一个字符大写.
+`string.casefold()`|返回经过标准化后的字符串,标准化类似于转换为小写,但更适合用于对Unicode字符串进行不区分大小写的比较
+string.center(width[, fillchar])|返回一个长度为(len(string), width)的字符串.这个字符串的中间包含当前字符串,但两端用`fillchar`指定的字符(默认为空格)填充
+string.count(sub[, start[, end]])|计算子串sub出现的次数,可搜索范围限定为string[start:end]
+string.encode([encoding[,errors]])|返回使用指定编码和errors指定的错误处理方式对字符串进行编码的结果,参数errors的可能取值包含'strict','ignore','replace'等
+string.endswith(suffix[,start[,end]])|检查字符串是否以suffix结尾,还可使用索引start和end来指定匹配范围
+string.expandtabs([tabsize])|返回将字符串中的制表符展开为空格后的结果,可指定可选参数tabsize(默认为8)
+string.find(sub[, start[, end]])|返回找到的第一个子串sub的索引,如果没有找到这样的子串,就返回-1;还可将搜索范围限制为string[start:end]
+string.format(...)|实现了标准的Python字符串格式设置.将字符串中用大括号分隔的字段替换为相应的参数,再返回结果
+string.format_map(mapping)|类似于使用关键字参数调用format,只是参数是以映射的方式提供的
+string.index(sub[, start[, end]])|返回找到的第一个子串sub的索引,如果没有找到这样的子串,将引发ValueError异常;还可将搜索范围限制为string[start:end]
+string.isalnum()|检查字符串中的字符是否都是字母或数
+string.isalpha()|检查字符串中的字符是否都是字母
+string.isdecimal()|检查字符串中的字符是否都是十进制数
+string.isdigit()|检查字符串中的字符是否都是数字
+string.isidentifier()|检查字符串是否可用作Python标识符
+string.islower()|检查字符串中的所有字母都是小写的
+string.isnumeric()|检查字符串中的所有字符是否都是数字字符
+string.isprintable()|检查字符串中的字符是否都是可打印的
+string.isspace()|检查字符串中的字符是否都是空白字符
+string.istitle()|检查字符串中位于非字母后面的字母都是大写的,且其他所有字母都是小写的
+string.isupper()|检查字符串中的字母是否都是大写的
+string.join(sequence)|将string与sequence中的所有字符串元素合并,并返回结果
+string.ljust(width[, fillchar])|返回一个长度为max(len(string), width)的字符串,其开头是当前字符串的副本,而末尾是使用fillchar指定的字符(默认为空格)填充的
+string.lower()|将字符串中所有的字母都转换为小写,并返回结果
+string.lstrip([chars])|将字符串开头所有的chars(默认为所有的空白字符,如空格,制表符和换行符)都删除,并返回结果
+str.maketrans(x[,y[,z]])|一个静态方法,它创建一个供translate使用的转换表.如果只指定了参数x,它必须是从字符或序数到Unicode序数或None(用于删除)的映射;也可使用两个表示源字符和目标字符的字符串调用它;还可提供第三个参数,它指定要删除的字符
+string.partition(sep)|在字符串中搜索sep,并返回元组(sep前面的部分, sep, sep后面的部分)
+string.replace(old,new[,max])|将字符串中的子串old替换为new,并返回结果;还可将最大替换次数限制为max
+string.rfind(sub[,start[,end]])|返回找到的最后一个子串的索引,如果没有找到这样的子串,就返回-1;还可将搜索范围限定为string[start:end]
+string.rindex(sub[,start[,end]])|返回找到的最后一个子串sub的索引,如果没有找到这样的子串,就引发ValueError异常;还可将搜索范围限定为string[start:end]
+string.rjust(width[,fillchar])|返回一个长度为max(len(string),width)的字符串,其末尾为当前字符串的拷贝,而开头是使用fillchar指定的字符(默认为空格)填充的
+string.rpartition(sep)|与partition相同,但从右往左搜索
+string.rstrip([chars])|将字符串末尾所有的chars字符(默认为所有的空白字符,如空格,制表符和换行符)都删除,并返回结果
+string.rsplit([sep[, maxsplit]])|与split相同,但指定了参数maxsplit,从右往左计算划分次数
+string.split([sep[, maxsplit]])|返回一个列表,其中包含以sep为分隔符对字符串进行划分得到的结果(如果没有指定参数sep,将以所有空白字符为分隔符进行划分);还可将最大划分次数限制为maxsplit
+string.splitlines([keepends])|返回一个列表,其中包含字符串中的所有行;如果参数keepends为True,将包含换行符
+string.startswith(prefix[,start[,end]])|检查字符串是否以prefix打头;还可将匹配范围限制在索引start和end之间
+string.strip([chars])|将字符串开头和结尾的所有chars字符(默认为所有空白字符,如空格,制表符和换行符)都删除,并返回结果
+string.swapcase() 将字符串中所有字母的大小写都反转,并返回结果
+string.title()|将字符串中所有单词的首字母都大写,并返回结果
+string.translate(table)|根据转换表table(这是使用maketrans创建的)对字符串中的所有字符都进行转换,并返回结果
+string.upper() 将字符串中所有的字母都转换为大写,并返回结果
+string.zfill(width)|在字符串左边填充0(但将原来打头的+或-移到开头),使其长度为width

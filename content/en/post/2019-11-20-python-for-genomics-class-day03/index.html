@@ -27,6 +27,9 @@ output:
 <li><a href="#列表python的主力"><span class="toc-section-number">1.1.3</span> 列表,Python的主力</a></li>
 <li><a href="#总结"><span class="toc-section-number">1.1.4</span> 总结</a></li>
 </ul></li>
+<li><a href="#字符串"><span class="toc-section-number">1.2</span> 字符串</a><ul>
+<li><a href="#字符串的基本操作"><span class="toc-section-number">1.2.1</span> 字符串的基本操作</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -98,7 +101,7 @@ type(test)</code></pre>
 </div>
 <div id="列表通用的操作" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> 列表通用的操作</h3>
-<p>有几种操作适用于所有序列，包括索引、切片、相加、相乘和成员资格检查。另外，Python还提供了一些内置函数，可用于确定序列的长度以及找出序列中最大和最小的元素。</p>
+<p>有几种操作适用于所有序列,包括索引,切片,相加,相乘和成员资格检查.另外,Python还提供了一些内置函数,可用于确定序列的长度以及找出序列中最大和最小的元素.</p>
 <div id="索引index" class="section level4">
 <h4><span class="header-section-number">1.1.2.1</span> 索引(index)</h4>
 <p>与R类型,列表都有序号,但是需要注意的是,python中的序号都是从0开始的.</p>
@@ -135,7 +138,7 @@ test[-3:-1]</code></pre>
 <pre><code>## []</code></pre>
 <pre class="python"><code>test[-3:]</code></pre>
 <pre><code>## [3, 4, 5]</code></pre>
-<p>可以看到如果执行切片操作时，第一个索引指定的元素位于第二个索引指定的元素后面,结果就为空序列.</p>
+<p>可以看到如果执行切片操作时,第一个索引指定的元素位于第二个索引指定的元素后面,结果就为空序列.</p>
 </div>
 <div id="序列相加" class="section level4">
 <h4><span class="header-section-number">1.1.2.3</span> 序列相加</h4>
@@ -154,7 +157,7 @@ test[-3:-1]</code></pre>
 <pre class="python"><code>[1,2,3] * 5</code></pre>
 <pre><code>## [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]</code></pre>
 <p><strong>None,空列表和初始化</strong></p>
-<p>空列表是使用不包含任何内容的两个方括号([])表示的.如果要创建一个可包含10个元素的列表,但没有任何有用的内容,可像前面那样使用<code>[42]*10</code>。但更准确的做法是使用<code>[0]*10</code>,这将创建一个包含10个零的列表.但是更为准确合适的作发是使用<code>None</code>,在python中,<code>None</code>代表什么都没有.</p>
+<p>空列表是使用不包含任何内容的两个方括号([])表示的.如果要创建一个可包含10个元素的列表,但没有任何有用的内容,可像前面那样使用<code>[42]*10</code>.但更准确的做法是使用<code>[0]*10</code>,这将创建一个包含10个零的列表.但是更为准确合适的作发是使用<code>None</code>,在python中,<code>None</code>代表什么都没有.</p>
 <pre class="python"><code>None
 [None]</code></pre>
 <pre><code>## [None]</code></pre>
@@ -450,7 +453,7 @@ y</code></pre>
 <p>那为什么要单独出来一个元组类型呢?有两个原因:</p>
 <ol style="list-style-type: decimal">
 <li><p>它们用作映射中的键(以及集合的成员),而列表不行.</p></li>
-<li><p>有些内置函数和方法返回元组,这意味着必须跟它们打交道.只要不尝试修改元组,与元组打交道通常意味着像处理列表一样处理它们(需要使用元组没有的index和count等方法时例外)。</p></li>
+<li><p>有些内置函数和方法返回元组,这意味着必须跟它们打交道.只要不尝试修改元组,与元组打交道通常意味着像处理列表一样处理它们(需要使用元组没有的index和count等方法时例外).</p></li>
 </ol>
 </div>
 </div>
@@ -551,6 +554,299 @@ y</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div id="字符串" class="section level2">
+<h2><span class="header-section-number">1.2</span> 字符串</h2>
+<div id="字符串的基本操作" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> 字符串的基本操作</h3>
+<p>所有的标准序列操作(索引,切片,乘法,成员资格检查,长度,最小值和最大值)都适用于字符串.但是注意字符串是不可变的.</p>
+<div id="字符串方法" class="section level4">
+<h4><span class="header-section-number">1.2.1.1</span> 字符串方法</h4>
+<p>字符串的方法要多得多,很多都是从模块string那继承过来的.</p>
+<p>介绍一些比较常用的.</p>
+<div id="center" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.1</span> <code>center</code></h5>
+<p>通过在两边添加填充字符(默认为空格)让字符串居中.</p>
+<pre class="python"><code>&quot;The Middle by Jimmy Eat World&quot;.center(40)</code></pre>
+<pre><code>## &#39;     The Middle by Jimmy Eat World      &#39;</code></pre>
+<pre class="python"><code>&quot;The Middle by Jimmy Eat World&quot;.center(40, &quot;*&quot;)</code></pre>
+<pre><code>## &#39;*****The Middle by Jimmy Eat World******&#39;</code></pre>
+</div>
+<div id="find" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.2</span> <code>find</code></h5>
+<p>在字符串中查找子串,如果找到,就返回字串的第一个字符的索引,否则返回-1.</p>
+<pre class="python"><code>&#39;With a moo-moo here, and a moo-moo there&#39;.find(&#39;moo&#39;)</code></pre>
+<pre><code>## 7</code></pre>
+<pre class="python"><code>&#39;With a moo-moo here, and a moo-moo there&#39;.find(&#39;shen&#39;)</code></pre>
+<pre><code>## -1</code></pre>
+<p>你还可指定搜索的起点和终点.</p>
+<pre class="python"><code>subject = &#39;$$$ Get rich now!!! $$$&#39;
+subject</code></pre>
+<pre><code>## &#39;$$$ Get rich now!!! $$$&#39;</code></pre>
+<pre class="python"><code>subject.find(&#39;$$$&#39;)</code></pre>
+<pre><code>## 0</code></pre>
+<pre class="python"><code>subject.find(&#39;$$$&#39;, 1) # 只指定了起点</code></pre>
+<pre><code>## 20</code></pre>
+<pre class="python"><code>subject.find(&#39;!!!&#39;, 0, 16) # 同时指定了起点和终点</code></pre>
+<pre><code>## -1</code></pre>
+<p>请注意,起点和终点值(第二个和第三个参数)指定的搜索范围包含起点,但不包含终点.这是Python惯常的做法.</p>
+<p>另外的和<code>find</code>相关的方法还包括:</p>
+<p><code>rfind</code>,<code>index</code>,<code>rindex</code>,<code>count</code>,<code>startswith</code>和<code>endswith</code>.</p>
+</div>
+<div id="join" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.3</span> <code>join</code></h5>
+<p><code>join</code>是一个非常重要的字符串方法,其作用与split相反,用于合并序列的元素.</p>
+<pre class="python"><code>seq = list(&quot;shen&quot;)
+seq</code></pre>
+<pre><code>## [&#39;s&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;]</code></pre>
+<pre class="python"><code>sep = &#39;+&#39;
+sep</code></pre>
+<pre><code>## &#39;+&#39;</code></pre>
+<pre class="python"><code>sep.join(seq)</code></pre>
+<pre><code>## &#39;s+h+e+n&#39;</code></pre>
+<p>这个方法跟R中的<code>paste</code>函数非常类似.</p>
+<p>注意,所合并序列的元素必须都是字符串.如果list元素都是数字,是会报错的.</p>
+</div>
+<div id="lower" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.4</span> <code>lower</code></h5>
+<p>返回字符串的小写版本.</p>
+<pre class="python"><code>&#39;Trondheim Hammer Dance&#39;.lower()</code></pre>
+<pre><code>## &#39;trondheim hammer dance&#39;</code></pre>
+<p>类似或者同一类方法还有:</p>
+<p><code>islower</code>,<code>istitle</code>,<code>isupper</code>,<code>translate</code>,<code>capitalize</code>,<code>casefold</code>,<code>swapcase</code>,<code>title</code>,<code>upper</code>.</p>
+</div>
+<div id="replace" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.5</span> <code>replace</code></h5>
+<p>将指定子串都替换为另一个字符串,并返回替换后的结果.</p>
+<pre class="python"><code>&#39;This is a test&#39;.replace(&#39;is&#39;, &#39;eez&#39;)</code></pre>
+<pre><code>## &#39;Theez eez a test&#39;</code></pre>
+<p>一共两个参数,第一个是需要替换的内容,第二个是替换之后的内容.</p>
+<p>到这里应该发现,其实这就是R中的<code>stringr</code>包所要做的工作.</p>
+<p>另外还需要参考的函数:</p>
+<p><code>tranlate</code>和<code>expandtabs</code>.</p>
+</div>
+<div id="split" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.6</span> <code>split</code></h5>
+<p>其和<code>join</code>作用相反,用于将字符串拆分为序列.</p>
+<pre class="python"><code>&#39;1+2+3+4+5&#39;.split(&#39;+&#39;)</code></pre>
+<pre><code>## [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;]</code></pre>
+<pre class="python"><code>&#39;Using the default&#39;.split()</code></pre>
+<pre><code>## [&#39;Using&#39;, &#39;the&#39;, &#39;default&#39;]</code></pre>
+<p>可以看到,默认拆分的标识符是空格( ).</p>
+</div>
+<div id="strip" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.7</span> <code>strip</code></h5>
+<p>用于将字符串的开头和末尾的空白删除.</p>
+<pre class="python"><code>&#39; internal whitespace is kept &#39;.strip()</code></pre>
+<pre><code>## &#39;internal whitespace is kept&#39;</code></pre>
+<p>当然,还可以通过设置参数,来指定删除的字符类型.</p>
+<pre class="python"><code>&#39;*** SPAM * for * everyone!!! ***&#39;.strip(&#39; *!&#39;)</code></pre>
+<pre><code>## &#39;SPAM * for * everyone&#39;</code></pre>
+<p>但是还是只能删除开头和末尾.</p>
+<p>相似函数或者方法:</p>
+<p><code>lstrip</code>和<code>rstrip</code>.</p>
+</div>
+<div id="translate" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.8</span> <code>translate</code></h5>
+<p>方法<code>translate</code>与<code>replace</code>一样替换字符串的特定部分,但不同的是它只能进行单字符替换.这个方法的优势在于能够同时替换多个字符,因此效率比replace高.</p>
+<p>使用<code>translate</code>前必须创建一个转换表.这个转换表指出了不同<code>Unicode</code>码点之间的转换关系.要创建转换表,可对字符串类型<code>str</code>调用方法<code>maketrans</code>,这个方法接受两个参数:两个长度相同的字符串,它们指定要将第一个字符串中的每个字符都替换为第二个字符串中的相应字
+符.</p>
+<pre class="python"><code>table = str.maketrans(&#39;cs&#39;, &#39;kz&#39;)
+table</code></pre>
+<pre><code>## {99: 107, 115: 122}</code></pre>
+<pre class="python"><code>type(table)</code></pre>
+<pre><code>## &lt;class &#39;dict&#39;&gt;</code></pre>
+<p>可以看到,转换表是一个字典类型.</p>
+<pre class="python"><code>&#39;this is an incredible test&#39;.translate(table)</code></pre>
+<pre><code>## &#39;thiz iz an inkredible tezt&#39;</code></pre>
+</div>
+<div id="判断字符串是否满足某些特定的条件" class="section level5">
+<h5><span class="header-section-number">1.2.1.1.9</span> 判断字符串是否满足某些特定的条件</h5>
+<p>很多字符串方法都以is打头,如<code>isspace</code>,<code>isdigit</code>和<code>isupper</code>,它们判断字符串是否具有特定的性质(如包含的字符全为空白,数字或大写).如果字符串具备特定的性质,这些方法就返回True,否则返回False.</p>
+<p>参考其他函数:</p>
+<p><code>isalnum</code>,<code>isalpha</code>,<code>isdecimal</code>,<code>isdigit</code>,<code>isidentifier</code>,<code>islower</code>,<code>isnumeric</code>,<code>isprintable</code>,<code>isspace</code>,<code>istitle</code>,<code>isupper</code>.</p>
+</div>
+</div>
+<div id="总结-1" class="section level4">
+<h4><span class="header-section-number">1.2.1.2</span> 总结</h4>
+<p>将字符串的方法总结如下:</p>
+<table>
+<colgroup>
+<col width="42%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Meanings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>string.capitalize()</code></td>
+<td>返回字符串的副本,但将第一个字符大写.</td>
+</tr>
+<tr class="even">
+<td><code>string.casefold()</code></td>
+<td>返回经过标准化后的字符串,标准化类似于转换为小写,但更适合用于对Unicode字符串进行不区分大小写的比较</td>
+</tr>
+<tr class="odd">
+<td>string.center(width[, fillchar])</td>
+<td>返回一个长度为(len(string), width)的字符串.这个字符串的中间包含当前字符串,但两端用<code>fillchar</code>指定的字符(默认为空格)填充</td>
+</tr>
+<tr class="even">
+<td>string.count(sub[, start[, end]])</td>
+<td>计算子串sub出现的次数,可搜索范围限定为string[start:end]</td>
+</tr>
+<tr class="odd">
+<td>string.encode([encoding[,errors]])</td>
+<td>返回使用指定编码和errors指定的错误处理方式对字符串进行编码的结果,参数errors的可能取值包含’strict’,‘ignore’,’replace’等</td>
+</tr>
+<tr class="even">
+<td>string.endswith(suffix[,start[,end]])</td>
+<td>检查字符串是否以suffix结尾,还可使用索引start和end来指定匹配范围</td>
+</tr>
+<tr class="odd">
+<td>string.expandtabs([tabsize])</td>
+<td>返回将字符串中的制表符展开为空格后的结果,可指定可选参数tabsize(默认为8)</td>
+</tr>
+<tr class="even">
+<td>string.find(sub[, start[, end]])</td>
+<td>返回找到的第一个子串sub的索引,如果没有找到这样的子串,就返回-1;还可将搜索范围限制为string[start:end]</td>
+</tr>
+<tr class="odd">
+<td>string.format(…)</td>
+<td>实现了标准的Python字符串格式设置.将字符串中用大括号分隔的字段替换为相应的参数,再返回结果</td>
+</tr>
+<tr class="even">
+<td>string.format_map(mapping)</td>
+<td>类似于使用关键字参数调用format,只是参数是以映射的方式提供的</td>
+</tr>
+<tr class="odd">
+<td>string.index(sub[, start[, end]])</td>
+<td>返回找到的第一个子串sub的索引,如果没有找到这样的子串,将引发ValueError异常;还可将搜索范围限制为string[start:end]</td>
+</tr>
+<tr class="even">
+<td>string.isalnum()</td>
+<td>检查字符串中的字符是否都是字母或数</td>
+</tr>
+<tr class="odd">
+<td>string.isalpha()</td>
+<td>检查字符串中的字符是否都是字母</td>
+</tr>
+<tr class="even">
+<td>string.isdecimal()</td>
+<td>检查字符串中的字符是否都是十进制数</td>
+</tr>
+<tr class="odd">
+<td>string.isdigit()</td>
+<td>检查字符串中的字符是否都是数字</td>
+</tr>
+<tr class="even">
+<td>string.isidentifier()</td>
+<td>检查字符串是否可用作Python标识符</td>
+</tr>
+<tr class="odd">
+<td>string.islower()</td>
+<td>检查字符串中的所有字母都是小写的</td>
+</tr>
+<tr class="even">
+<td>string.isnumeric()</td>
+<td>检查字符串中的所有字符是否都是数字字符</td>
+</tr>
+<tr class="odd">
+<td>string.isprintable()</td>
+<td>检查字符串中的字符是否都是可打印的</td>
+</tr>
+<tr class="even">
+<td>string.isspace()</td>
+<td>检查字符串中的字符是否都是空白字符</td>
+</tr>
+<tr class="odd">
+<td>string.istitle()</td>
+<td>检查字符串中位于非字母后面的字母都是大写的,且其他所有字母都是小写的</td>
+</tr>
+<tr class="even">
+<td>string.isupper()</td>
+<td>检查字符串中的字母是否都是大写的</td>
+</tr>
+<tr class="odd">
+<td>string.join(sequence)</td>
+<td>将string与sequence中的所有字符串元素合并,并返回结果</td>
+</tr>
+<tr class="even">
+<td>string.ljust(width[, fillchar])</td>
+<td>返回一个长度为max(len(string), width)的字符串,其开头是当前字符串的副本,而末尾是使用fillchar指定的字符(默认为空格)填充的</td>
+</tr>
+<tr class="odd">
+<td>string.lower()</td>
+<td>将字符串中所有的字母都转换为小写,并返回结果</td>
+</tr>
+<tr class="even">
+<td>string.lstrip([chars])</td>
+<td>将字符串开头所有的chars(默认为所有的空白字符,如空格,制表符和换行符)都删除,并返回结果</td>
+</tr>
+<tr class="odd">
+<td>str.maketrans(x[,y[,z]])</td>
+<td>一个静态方法,它创建一个供translate使用的转换表.如果只指定了参数x,它必须是从字符或序数到Unicode序数或None(用于删除)的映射;也可使用两个表示源字符和目标字符的字符串调用它;还可提供第三个参数,它指定要删除的字符</td>
+</tr>
+<tr class="even">
+<td>string.partition(sep)</td>
+<td>在字符串中搜索sep,并返回元组(sep前面的部分, sep, sep后面的部分)</td>
+</tr>
+<tr class="odd">
+<td>string.replace(old,new[,max])</td>
+<td>将字符串中的子串old替换为new,并返回结果;还可将最大替换次数限制为max</td>
+</tr>
+<tr class="even">
+<td>string.rfind(sub[,start[,end]])</td>
+<td>返回找到的最后一个子串的索引,如果没有找到这样的子串,就返回-1;还可将搜索范围限定为string[start:end]</td>
+</tr>
+<tr class="odd">
+<td>string.rindex(sub[,start[,end]])</td>
+<td>返回找到的最后一个子串sub的索引,如果没有找到这样的子串,就引发ValueError异常;还可将搜索范围限定为string[start:end]</td>
+</tr>
+<tr class="even">
+<td>string.rjust(width[,fillchar])</td>
+<td>返回一个长度为max(len(string),width)的字符串,其末尾为当前字符串的拷贝,而开头是使用fillchar指定的字符(默认为空格)填充的</td>
+</tr>
+<tr class="odd">
+<td>string.rpartition(sep)</td>
+<td>与partition相同,但从右往左搜索</td>
+</tr>
+<tr class="even">
+<td>string.rstrip([chars])</td>
+<td>将字符串末尾所有的chars字符(默认为所有的空白字符,如空格,制表符和换行符)都删除,并返回结果</td>
+</tr>
+<tr class="odd">
+<td>string.rsplit([sep[, maxsplit]])</td>
+<td>与split相同,但指定了参数maxsplit,从右往左计算划分次数</td>
+</tr>
+<tr class="even">
+<td>string.split([sep[, maxsplit]])</td>
+<td>返回一个列表,其中包含以sep为分隔符对字符串进行划分得到的结果(如果没有指定参数sep,将以所有空白字符为分隔符进行划分);还可将最大划分次数限制为maxsplit</td>
+</tr>
+<tr class="odd">
+<td>string.splitlines([keepends])</td>
+<td>返回一个列表,其中包含字符串中的所有行;如果参数keepends为True,将包含换行符</td>
+</tr>
+<tr class="even">
+<td>string.startswith(prefix[,start[,end]])</td>
+<td>检查字符串是否以prefix打头;还可将匹配范围限制在索引start和end之间</td>
+</tr>
+<tr class="odd">
+<td>string.strip([chars])</td>
+<td>将字符串开头和结尾的所有chars字符(默认为所有空白字符,如空格,制表符和换行符)都删除,并返回结果</td>
+</tr>
+</tbody>
+</table>
+<p>string.swapcase() 将字符串中所有字母的大小写都反转,并返回结果
+string.title()|将字符串中所有单词的首字母都大写,并返回结果
+string.translate(table)|根据转换表table(这是使用maketrans创建的)对字符串中的所有字符都进行转换,并返回结果
+string.upper() 将字符串中所有的字母都转换为大写,并返回结果
+string.zfill(width)|在字符串左边填充0(但将原来打头的+或-移到开头),使其长度为width</p>
+</div>
 </div>
 </div>
 </div>
