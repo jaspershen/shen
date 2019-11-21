@@ -20,13 +20,297 @@ output:
 
 <div id="TOC">
 <ul>
-<li><a href="#bios-274-november-20-class-3"><span class="toc-section-number">1</span> BIOS-274 : November 20 : Class 3</a></li>
+<li><a href="#数据类型"><span class="toc-section-number">1</span> 数据类型</a><ul>
+<li><a href="#列表list和元组tuple"><span class="toc-section-number">1.1</span> 列表(list)和元组(tuple)</a><ul>
+<li><a href="#创建列表"><span class="toc-section-number">1.1.1</span> 创建列表</a></li>
+<li><a href="#列表通用的操作"><span class="toc-section-number">1.1.2</span> 列表通用的操作</a></li>
+<li><a href="#列表python的主力"><span class="toc-section-number">1.1.3</span> 列表,Python的主力</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 
-<div id="bios-274-november-20-class-3" class="section level1">
-<h1><span class="header-section-number">1</span> BIOS-274 : November 20 : Class 3</h1>
+<div id="数据类型" class="section level1">
+<h1><span class="header-section-number">1</span> 数据类型</h1>
 <p>Data types and manipulations: dictionary, set</p>
 <p>Conditional statements: if, elif, else, break, continue</p>
 <p>Comments and style: [<a href="https://realpython.com/python-pep8/" class="uri">https://realpython.com/python-pep8/</a>]</p>
+<pre class="python"><code>
+# Python style
+#
+# PEP8
+# https://realpython.com/python-pep8/
+# https://www.python.org/dev/peps/pep-0008/
+#
+# Python history
+#
+# Guido van Rossum, creator in 1989. He retired last month. Final job was with Dropbox.
+# https://en.wikipedia.org/wiki/Python_(programming_language)
+
+a = 1
+b = 1.0
+c = &#39;1&#39;
+d = [1, 2]
+e = (1, 2)
+f = { &#39;x&#39;: 1, &#39;y&#39;: 2}
+g = {1, 2}
+
+#a是int整数型
+print(&#39;a =&#39;, type(a))
+#b是浮点型(float)</code></pre>
+<pre><code>## a = &lt;class &#39;int&#39;&gt;</code></pre>
+<pre class="python"><code>print(&#39;b =&#39;, type(b))
+#c是字符串型(str)</code></pre>
+<pre><code>## b = &lt;class &#39;float&#39;&gt;</code></pre>
+<pre class="python"><code>print(&#39;c =&#39;, type(c))
+#d是列表,可以看到列表使用中括号创建</code></pre>
+<pre><code>## c = &lt;class &#39;str&#39;&gt;</code></pre>
+<pre class="python"><code>print(&#39;d =&#39;, type(d))
+#e是元组(tuple),使用小括号创建</code></pre>
+<pre><code>## d = &lt;class &#39;list&#39;&gt;</code></pre>
+<pre class="python"><code>print(&#39;e =&#39;, type(e))
+#f是字典类型(dict),使用大括号创建</code></pre>
+<pre><code>## e = &lt;class &#39;tuple&#39;&gt;</code></pre>
+<pre class="python"><code>print(&#39;f =&#39;, type(f))
+#g是集合类型,也是使用大括号创建,但是没有key</code></pre>
+<pre><code>## f = &lt;class &#39;dict&#39;&gt;</code></pre>
+<pre class="python"><code>print(&#39;g =&#39;, type(g))</code></pre>
+<pre><code>## g = &lt;class &#39;set&#39;&gt;</code></pre>
+<p>对几个重要的类型做一个详细解释.具体内容参考<code>Python基础教程这本书</code></p>
+<div id="列表list和元组tuple" class="section level2">
+<h2><span class="header-section-number">1.1</span> 列表(list)和元组(tuple)</h2>
+<p>列表和元组是非常类似的,不同点在于<code>列表可以修改而元组不可以</code>.</p>
+<div id="创建列表" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> 创建列表</h3>
+<p>可以使用中括号<code>[]</code>来创建列表</p>
+<pre class="python"><code>edward = [&#39;Edward Gumby&#39;, 42]
+john = [&#39;John Smith&#39;, 50]
+database = [edward, john]
+database</code></pre>
+<pre><code>## [[&#39;Edward Gumby&#39;, 42], [&#39;John Smith&#39;, 50]]</code></pre>
+<p>同样的,列表中的元素也可以是列表,就像上面的例子所展示的.</p>
+<pre class="python"><code>test = [&quot;shen&quot;]
+type(test)</code></pre>
+<pre><code>## &lt;class &#39;list&#39;&gt;</code></pre>
+<pre class="python"><code>test[0]</code></pre>
+<pre><code>## &#39;shen&#39;</code></pre>
+</div>
+<div id="列表通用的操作" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> 列表通用的操作</h3>
+<p>有几种操作适用于所有序列，包括索引、切片、相加、相乘和成员资格检查。另外，Python还提供了一些内置函数，可用于确定序列的长度以及找出序列中最大和最小的元素。</p>
+<div id="索引index" class="section level4">
+<h4><span class="header-section-number">1.1.2.1</span> 索引(index)</h4>
+<p>与R类型,列表都有序号,但是需要注意的是,python中的序号都是从0开始的.</p>
+<pre class="python"><code>greeting = &#39;Hello&#39;
+greeting[0]</code></pre>
+<pre><code>## &#39;H&#39;</code></pre>
+<pre class="python"><code>greeting[1]</code></pre>
+<pre><code>## &#39;e&#39;</code></pre>
+<p>注意上面例子中<code>greeting</code>的类型是<code>str</code>,也就是说python中的str也可以通过序号进行提取某个字符.</p>
+<p>这就称之为索引,其中使用<code>-1</code>代表最后一个元素.</p>
+<pre class="python"><code>greeting[-1]</code></pre>
+<pre><code>## &#39;o&#39;</code></pre>
+</div>
+<div id="切片slicing" class="section level4">
+<h4><span class="header-section-number">1.1.2.2</span> 切片(slicing)</h4>
+<p>切片是用来访问特定范围内的元素.为此,可使用两个索引,并用冒号分隔.</p>
+<pre class="python"><code>test = [&quot;shen&quot;, &quot;wang&quot;, &quot;zhao&quot;, &quot;qian&quot;, &quot;sun&quot;]
+test[0]</code></pre>
+<pre><code>## &#39;shen&#39;</code></pre>
+<pre class="python"><code>test[0:1]</code></pre>
+<pre><code>## [&#39;shen&#39;]</code></pre>
+<pre class="python"><code>test[1:3]</code></pre>
+<pre><code>## [&#39;wang&#39;, &#39;zhao&#39;]</code></pre>
+<pre class="python"><code>test[1:-1]</code></pre>
+<pre><code>## [&#39;wang&#39;, &#39;zhao&#39;, &#39;qian&#39;]</code></pre>
+<pre class="python"><code>test[1:]</code></pre>
+<pre><code>## [&#39;wang&#39;, &#39;zhao&#39;, &#39;qian&#39;, &#39;sun&#39;]</code></pre>
+<p>通过上面例子可以看到,对于切片的两个索引,出来的结果包含左边索引的结果,而不包含右边index的结果.如果需要包含某一边的所有结果,则只需要将冒号的某一边空出来即可.</p>
+<p>当然也可以使用负数来进行索引,因为我们知道-1是最后一个元素,-2是倒数第二个元素.</p>
+<pre class="python"><code>test = [1,2,3,4,5]
+test[-3:-1]</code></pre>
+<pre><code>## [3, 4]</code></pre>
+<pre class="python"><code>test[-3:0]</code></pre>
+<pre><code>## []</code></pre>
+<pre class="python"><code>test[-3:]</code></pre>
+<pre><code>## [3, 4, 5]</code></pre>
+<p>可以看到如果执行切片操作时，第一个索引指定的元素位于第二个索引指定的元素后面,结果就为空序列.</p>
+</div>
+<div id="序列相加" class="section level4">
+<h4><span class="header-section-number">1.1.2.3</span> 序列相加</h4>
+<p>可以使用加法运算符来拼接序列.</p>
+<pre class="python"><code>[1, 2, 3] + [4, 5, 6]</code></pre>
+<pre><code>## [1, 2, 3, 4, 5, 6]</code></pre>
+<pre class="python"><code>&#39;Hello,&#39; + &#39;world!&#39;</code></pre>
+<pre><code>## &#39;Hello,world!&#39;</code></pre>
+<p>从错误消息可知,不能拼接列表和字符串,,虽然它们都是序列.一般而言,不能拼接不同类型的序列.</p>
+</div>
+<div id="乘法" class="section level4">
+<h4><span class="header-section-number">1.1.2.4</span> 乘法</h4>
+<p>将序列与数x相乘时,将重复这个序列x次来创建一个新序列:</p>
+<pre class="python"><code>&#39;python&#39; * 5</code></pre>
+<pre><code>## &#39;pythonpythonpythonpythonpython&#39;</code></pre>
+<pre class="python"><code>[1,2,3] * 5</code></pre>
+<pre><code>## [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]</code></pre>
+<p><strong>None,空列表和初始化</strong></p>
+<p>空列表是使用不包含任何内容的两个方括号([])表示的.如果要创建一个可包含10个元素的列表,但没有任何有用的内容,可像前面那样使用<code>[42]*10</code>。但更准确的做法是使用<code>[0]*10</code>,这将创建一个包含10个零的列表.但是更为准确合适的作发是使用<code>None</code>,在python中,<code>None</code>代表什么都没有.</p>
+<pre class="python"><code>None
+[None]</code></pre>
+<pre><code>## [None]</code></pre>
+<pre class="python"><code>sequence = [None] * 10
+sequence</code></pre>
+<pre><code>## [None, None, None, None, None, None, None, None, None, None]</code></pre>
+</div>
+<div id="成员资格" class="section level4">
+<h4><span class="header-section-number">1.1.2.5</span> 成员资格</h4>
+<p>要检查特定的值是否存在与序列中,可以使用判断运算符<code>in</code>.返回值为逻辑值,满足时返回为<code>True</code>,不满足时返回<code>False</code>.</p>
+<pre class="python"><code>permisions = &quot;rw&quot;
+
+&#39;w&#39; in permisions</code></pre>
+<pre><code>## True</code></pre>
+<pre class="python"><code>&#39;T&#39; in permisions</code></pre>
+<pre><code>## False</code></pre>
+<pre class="python"><code>users = [&quot;shen&quot;, &quot;wang&quot;]#一个列表
+&#39;wang&#39; in users</code></pre>
+<pre><code>## True</code></pre>
+<pre class="python"><code>&#39;tao&#39; in users</code></pre>
+<pre><code>## False</code></pre>
+</div>
+<div id="长度最大值和最小值" class="section level4">
+<h4><span class="header-section-number">1.1.2.6</span> 长度,最大值和最小值</h4>
+<p>使用内置函数可以得到一个列表的长度,最大值及最小值.</p>
+<pre class="python"><code>number = [1,2,3,4]#列表
+len(number)</code></pre>
+<pre><code>## 4</code></pre>
+<pre class="python"><code>max(number)</code></pre>
+<pre><code>## 4</code></pre>
+<pre class="python"><code>min(number)</code></pre>
+<pre><code>## 1</code></pre>
+<pre class="python"><code>string = [&quot;a&quot;, 1 ,2,3]
+string
+# len(string)
+# max(string)</code></pre>
+<pre><code>## [&#39;a&#39;, 1, 2, 3]</code></pre>
+<pre class="python"><code>len(&quot;shen&quot;)</code></pre>
+<pre><code>## 4</code></pre>
+<pre class="python"><code>len([&quot;shen&quot;])</code></pre>
+<pre><code>## 1</code></pre>
+</div>
+</div>
+<div id="列表python的主力" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> 列表,Python的主力</h3>
+<p>列表是Python中使用非常广泛的类型.</p>
+<div id="list函数" class="section level4">
+<h4><span class="header-section-number">1.1.3.1</span> <code>list()</code>函数</h4>
+<p><code>list()</code>函数可以用来简历列表.</p>
+<pre class="python"><code>list(&quot;shen&quot;)</code></pre>
+<pre><code>## [&#39;s&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;]</code></pre>
+<pre class="python"><code>list([1,2,3])</code></pre>
+<pre><code>## [1, 2, 3]</code></pre>
+<p>列表是可以改变的.</p>
+</div>
+<div id="列表的基本操作" class="section level4">
+<h4><span class="header-section-number">1.1.3.2</span> 列表的基本操作</h4>
+<p>列表的最大有点在于它是可以修改的.</p>
+<div id="修改列表给元素赋值" class="section level5">
+<h5><span class="header-section-number">1.1.3.2.1</span> 修改列表:给元素赋值</h5>
+<pre class="python"><code>x = [1,2,3]
+x</code></pre>
+<pre><code>## [1, 2, 3]</code></pre>
+<pre class="python"><code>x[2] = 5
+x</code></pre>
+<pre><code>## [1, 2, 5]</code></pre>
+</div>
+<div id="删除列表中的元素" class="section level5">
+<h5><span class="header-section-number">1.1.3.2.2</span> 删除列表中的元素</h5>
+<p>使用<code>del</code>语句可以删除列表中的某个元素.</p>
+<pre class="python"><code>names = [&quot;alice&quot;, &quot;beth&quot;, &quot;cecil&quot;]
+del names[1]
+names</code></pre>
+<pre><code>## [&#39;alice&#39;, &#39;cecil&#39;]</code></pre>
+</div>
+<div id="使用切片对多个元素进行修改" class="section level5">
+<h5><span class="header-section-number">1.1.3.2.3</span> 使用切片对多个元素进行修改</h5>
+<pre class="python"><code>name = list(&quot;name&quot;)
+name</code></pre>
+<pre><code>## [&#39;n&#39;, &#39;a&#39;, &#39;m&#39;, &#39;e&#39;]</code></pre>
+<pre class="python"><code>name[2:] = list(&quot;shen&quot;)
+name</code></pre>
+<pre><code>## [&#39;n&#39;, &#39;a&#39;, &#39;s&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;]</code></pre>
+<pre class="python"><code>name[4:] = list(&quot;wa&quot;)
+name</code></pre>
+<pre><code>## [&#39;n&#39;, &#39;a&#39;, &#39;s&#39;, &#39;h&#39;, &#39;w&#39;, &#39;a&#39;]</code></pre>
+<p>需要注意的是,使用切片进行赋值或者修改,是可以将其替换为不同长度的东西的.</p>
+<pre class="python"><code>test = list(&quot;wang&quot;)
+test</code></pre>
+<pre><code>## [&#39;w&#39;, &#39;a&#39;, &#39;n&#39;, &#39;g&#39;]</code></pre>
+<pre class="python"><code>test[2:] = list(&quot;shen&quot;)
+test</code></pre>
+<pre><code>## [&#39;w&#39;, &#39;a&#39;, &#39;s&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;]</code></pre>
+<pre class="python"><code>test[2:3]</code></pre>
+<pre><code>## [&#39;s&#39;]</code></pre>
+<pre class="python"><code>test[2:3] = list(&quot;shen&quot;)
+test</code></pre>
+<pre><code>## [&#39;w&#39;, &#39;a&#39;, &#39;s&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;]</code></pre>
+<p>还可以使用这个特性进行元素的插入:</p>
+<pre class="python"><code>numbers = [1, 5]
+numbers</code></pre>
+<pre><code>## [1, 5]</code></pre>
+<pre class="python"><code>numbers[1:1]##这是一个空列表</code></pre>
+<pre><code>## []</code></pre>
+<pre class="python"><code>numbers[1:1] = [2, 3, 4]#在第二个位置开始,插入新的list
+numbers</code></pre>
+<pre><code>## [1, 2, 3, 4, 5]</code></pre>
+<p>当然,还可以利用这个特性删除切片.</p>
+<pre class="python"><code>numbers</code></pre>
+<pre><code>## [1, 2, 3, 4, 5]</code></pre>
+<pre class="python"><code>numbers[1:4]</code></pre>
+<pre><code>## [2, 3, 4]</code></pre>
+<pre class="python"><code>numbers[1:4] = []
+numbers</code></pre>
+<pre><code>## [1, 5]</code></pre>
+<p>当然,删除仍然可以使用<code>del</code>语句实现,最后结果是一致的.</p>
+</div>
+<div id="列表方法" class="section level5">
+<h5><span class="header-section-number">1.1.3.2.4</span> 列表方法</h5>
+<p>方法是与某列对象联系紧密的函数,一般使用下列方法进行调用:</p>
+<pre><code>object.method(arguments)</code></pre>
+<p>这也是跟R不同的一点,R中并没有这类方法.</p>
+<ol style="list-style-type: decimal">
+<li><code>append</code></li>
+</ol>
+<p>用于将一个对象添加到列表末尾.</p>
+<pre class="python"><code>test = [1,2,3]
+test</code></pre>
+<pre><code>## [1, 2, 3]</code></pre>
+<pre class="python"><code>test.append(2)
+test</code></pre>
+<pre><code>## [1, 2, 3, 2]</code></pre>
+<pre class="python"><code>test.append([5,6,7])
+test</code></pre>
+<pre><code>## [1, 2, 3, 2, [5, 6, 7]]</code></pre>
+<pre class="python"><code>test.append(10)
+test</code></pre>
+<pre><code>## [1, 2, 3, 2, [5, 6, 7], 10]</code></pre>
+<pre class="python"><code>test + [20]</code></pre>
+<pre><code>## [1, 2, 3, 2, [5, 6, 7], 10, 20]</code></pre>
+<pre class="python"><code>test + [10,20]</code></pre>
+<pre><code>## [1, 2, 3, 2, [5, 6, 7], 10, 10, 20]</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><code>clear</code></li>
+</ol>
+<p>用来清空列表的内容.</p>
+<pre class="python"><code>test = [1,2,3]
+test.clear()
+test</code></pre>
+<pre><code>## []</code></pre>
+<p>完全清空所有的内容.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><code>copy</code></li>
+</ol>
+<p>用来复制列表.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
