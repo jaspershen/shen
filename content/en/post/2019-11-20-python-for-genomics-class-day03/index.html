@@ -25,6 +25,7 @@ output:
 <li><a href="#创建列表"><span class="toc-section-number">1.1.1</span> 创建列表</a></li>
 <li><a href="#列表通用的操作"><span class="toc-section-number">1.1.2</span> 列表通用的操作</a></li>
 <li><a href="#列表python的主力"><span class="toc-section-number">1.1.3</span> 列表,Python的主力</a></li>
+<li><a href="#总结"><span class="toc-section-number">1.1.4</span> 总结</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -308,9 +309,248 @@ test</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><code>copy</code></li>
 </ol>
-<p>用来复制列表.</p>
+<p>用来复制列表.在Python中,直接使用<code>=</code>将一个列表赋值给另外一个对象名,其实只是关联而已,也就是说其实同一个列表关联到了两个名字而已.</p>
+<pre class="python"><code>a = [1,2,3]
+b = a
+b[1] = 10
+b</code></pre>
+<pre><code>## [1, 10, 3]</code></pre>
+<pre class="python"><code>a##a也会改变,和b保持一致</code></pre>
+<pre><code>## [1, 10, 3]</code></pre>
+<p>想要把a和b指向两个独立的不同的列表,需要使用<code>copy</code>,将b关联到a的副本.</p>
+<pre class="python"><code>a = [1,2,3]
+b = a.copy()
+b[1] = 10
+b</code></pre>
+<pre><code>## [1, 10, 3]</code></pre>
+<pre class="python"><code>a</code></pre>
+<pre><code>## [1, 2, 3]</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><code>count</code></li>
+</ol>
+<p>用来统计指定的元素在列表中出现的次数.</p>
+<pre class="python"><code>a = [1,2,3,4,4]
+a.count(1)</code></pre>
+<pre><code>## 1</code></pre>
+<pre class="python"><code>a.count(4)</code></pre>
+<pre><code>## 2</code></pre>
+<p><code>count()</code>一共有两个参数,第一个参数为’self’,也就是前面的对象,后买你的参数为<code>value</code>指定要统计的元素.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><code>extend</code></li>
+</ol>
+<p>这个方法跟<code>append</code>的区别在于,它可以将一个独立的列表添加到列表后面.</p>
+<pre class="python"><code>a = [1,2,3]
+b = [4,5,6]
+a.extend(b)
+a</code></pre>
+<pre><code>## [1, 2, 3, 4, 5, 6]</code></pre>
+<pre class="python"><code>a.append(b)
+a</code></pre>
+<pre><code>## [1, 2, 3, 4, 5, 6, [4, 5, 6]]</code></pre>
+<pre class="python"><code>a + b</code></pre>
+<pre><code>## [1, 2, 3, 4, 5, 6, [4, 5, 6], 4, 5, 6]</code></pre>
+<pre class="python"><code>a</code></pre>
+<pre><code>## [1, 2, 3, 4, 5, 6, [4, 5, 6]]</code></pre>
+<p>需要注意这几种方法的区别.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><code>index</code></li>
+</ol>
+<p>用于查找列表中指定值第一次出现的索引.</p>
+<pre class="python"><code>test = list(&quot;shen&quot;)
+test</code></pre>
+<pre><code>## [&#39;s&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;]</code></pre>
+<pre class="python"><code>test.index(&quot;h&quot;)</code></pre>
+<pre><code>## 1</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li><code>insert</code></li>
+</ol>
+<p>将一个对象插入到列表中.</p>
+<pre class="python"><code>a = [1,2,3]
+a</code></pre>
+<pre><code>## [1, 2, 3]</code></pre>
+<pre class="python"><code>a.insert(1, &quot;four&quot;)
+a</code></pre>
+<pre><code>## [1, &#39;four&#39;, 2, 3]</code></pre>
+<pre class="python"><code>a.insert(0, [1, &quot;shen&quot;])
+a</code></pre>
+<pre><code>## [[1, &#39;shen&#39;], 1, &#39;four&#39;, 2, 3]</code></pre>
+<p><code>insert</code>第一个参数用来指定需要插入的位置(索引),第二个参数用来指定需要插入的内容.插入的内容可以是单个元素,也可以是列表.</p>
+<ol start="8" style="list-style-type: decimal">
+<li><code>pop</code></li>
+</ol>
+<p>删除一个元素,默认为最后一个.修改原列表,并返回删除的元素.</p>
+<pre class="python"><code>x = [1,2,3]
+x.pop()</code></pre>
+<pre><code>## 3</code></pre>
+<pre class="python"><code>x</code></pre>
+<pre><code>## [1, 2]</code></pre>
+<p>当然,也可以使用<code>index'</code>参数,指定需要删除的元素.</p>
+<ol start="9" style="list-style-type: decimal">
+<li><code>remove</code></li>
+</ol>
+<p>用于删除第一个为指定值的元素.</p>
+<pre class="python"><code>test = list(&quot;shen&quot;)
+test.remove(&quot;h&quot;)
+test</code></pre>
+<pre><code>## [&#39;s&#39;, &#39;e&#39;, &#39;n&#39;]</code></pre>
+<p>需要注意的是,只删除第一个符合要求的元素,其他的不会删除.</p>
+<ol start="10" style="list-style-type: decimal">
+<li><code>reverse</code></li>
+</ol>
+<p>将元素顺序按相反顺序重新排列.</p>
+<ol start="11" style="list-style-type: decimal">
+<li><code>sort</code></li>
+</ol>
+<p>对列表元素重新进行排列.</p>
+<pre class="python"><code>x = [&#39;aardvark&#39;, &#39;abalone&#39;, &#39;acme&#39;, &#39;add&#39;, &#39;aerate&#39;, &quot;shen&quot;, &quot;wang&quot;, &quot;china&quot;, &quot;us&quot;]
+x.sort()
+x</code></pre>
+<pre><code>## [&#39;aardvark&#39;, &#39;abalone&#39;, &#39;acme&#39;, &#39;add&#39;, &#39;aerate&#39;, &#39;china&#39;, &#39;shen&#39;, &#39;us&#39;, &#39;wang&#39;]</code></pre>
+<p><code>sort</code>函数还可以通过设置<code>key</code>参数来自定义排列规则,如可以将<code>key</code>设置为函数<code>len</code>,从而将列表按照元素的擦汗高长度进行排序.</p>
+<pre class="python"><code>x.sort(key = len)
+x</code></pre>
+<pre><code>## [&#39;us&#39;, &#39;add&#39;, &#39;acme&#39;, &#39;shen&#39;, &#39;wang&#39;, &#39;china&#39;, &#39;aerate&#39;, &#39;abalone&#39;, &#39;aardvark&#39;]</code></pre>
 </div>
 </div>
+<div id="元组tuple不可修改的序列" class="section level4">
+<h4><span class="header-section-number">1.1.3.3</span> 元组(tuple):不可修改的序列</h4>
+<p>元组也是序列,但是跟列表不同的是,<strong>元组是不能修改的.</strong></p>
+<div id="创建元组" class="section level5">
+<h5><span class="header-section-number">1.1.3.3.1</span> 创建元组</h5>
+<p>使用小括号(())可以创建元组.</p>
+<pre class="python"><code>x = (1,2,3)
+x</code></pre>
+<pre><code>## (1, 2, 3)</code></pre>
+<pre class="python"><code>type(x)</code></pre>
+<pre><code>## &lt;class &#39;tuple&#39;&gt;</code></pre>
+<pre class="python"><code>()#空元组</code></pre>
+<pre><code>## ()</code></pre>
+<p>创建只含有一个元素的元组比较特殊,需要在元素后面加上逗号.如果不加逗号,不能常见元组.</p>
+<pre class="python"><code>x = (42)
+x</code></pre>
+<pre><code>## 42</code></pre>
+<pre class="python"><code>type(x)</code></pre>
+<pre><code>## &lt;class &#39;int&#39;&gt;</code></pre>
+<pre class="python"><code>y = (x, )
+y</code></pre>
+<pre><code>## (42,)</code></pre>
+<pre class="python"><code>type(y)</code></pre>
+<pre><code>## &lt;class &#39;tuple&#39;&gt;</code></pre>
+<pre class="python"><code>3 * (10+3)</code></pre>
+<pre><code>## 39</code></pre>
+<pre class="python"><code>3 * (10+3,)</code></pre>
+<pre><code>## (13, 13, 13)</code></pre>
+<p>看了上面的例子,可以很好的明白为什么需要加上逗号,因为小括号在数学运算中还表示运算优先级的意思,所以需要使用逗号来区分是进行数学运算,还是要创建元组.</p>
+<p>当然,和列表一样,我们还可以使用<code>tuple()</code>函数来创建元组.</p>
+<pre class="python"><code>tuple([1, 2, 3])</code></pre>
+<pre><code>## (1, 2, 3)</code></pre>
+<pre class="python"><code>tuple(&quot;shen&quot;)</code></pre>
+<pre><code>## (&#39;s&#39;, &#39;h&#39;, &#39;e&#39;, &#39;n&#39;)</code></pre>
+<p>你可能意识到了,元组并不太复杂,而且除创建和访问其元素外,可对元组执行的操作不多.元组的创建及其元素的访问方式与其他序列相同.</p>
+<p>那为什么要单独出来一个元组类型呢?有两个原因:</p>
+<ol style="list-style-type: decimal">
+<li><p>它们用作映射中的键(以及集合的成员),而列表不行.</p></li>
+<li><p>有些内置函数和方法返回元组,这意味着必须跟它们打交道.只要不尝试修改元组,与元组打交道通常意味着像处理列表一样处理它们(需要使用元组没有的index和count等方法时例外)。</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="总结" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> 总结</h3>
+<p>新的函数:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>len(seq)</td>
+<td>返回序列长度</td>
+</tr>
+<tr class="even">
+<td>list(seq)</td>
+<td>将序列转换为列表</td>
+</tr>
+<tr class="odd">
+<td>max(args)</td>
+<td>返回序列或者一组参数中的最大值</td>
+</tr>
+<tr class="even">
+<td>min(args)</td>
+<td>返回序列或者一组参数中的最小值</td>
+</tr>
+<tr class="odd">
+<td>reversed(seq)</td>
+<td>反向排列序列</td>
+</tr>
+<tr class="even">
+<td>sorted(seq)</td>
+<td>对列表或者序列进行排序</td>
+</tr>
+<tr class="odd">
+<td>tuple(seq)</td>
+<td>将序列转换为元组</td>
+</tr>
+</tbody>
+</table>
+<p>列表(list)的方法</p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>append</td>
+<td>将一个对象附加到列表末尾</td>
+</tr>
+<tr class="even">
+<td>clear</td>
+<td>清空列表的内容</td>
+</tr>
+<tr class="odd">
+<td>copy</td>
+<td>复制列表</td>
+</tr>
+<tr class="even">
+<td>count</td>
+<td>计算指定的元素在列表中出现了多少次</td>
+</tr>
+<tr class="odd">
+<td>extend</td>
+<td>同时将多个值附加到列表末尾</td>
+</tr>
+<tr class="even">
+<td>index</td>
+<td>在列表中查找指定值第一次出现的索引</td>
+</tr>
+<tr class="odd">
+<td>insert</td>
+<td>将一个对象插入列表</td>
+</tr>
+<tr class="even">
+<td>pop</td>
+<td>从列表中删除一个元素(默认为最后一个元素)</td>
+</tr>
+<tr class="odd">
+<td>remove</td>
+<td>用于删除第一个为指定值的元素</td>
+</tr>
+<tr class="even">
+<td>reverse</td>
+<td>按相反的顺序排列列表中的元素</td>
+</tr>
+<tr class="odd">
+<td>sort</td>
+<td>对列表进行排序</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

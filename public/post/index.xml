@@ -127,6 +127,7 @@ output:
 &lt;li&gt;&lt;a href=&#34;#创建列表&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 创建列表&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#列表通用的操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 列表通用的操作&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#列表python的主力&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.3&lt;/span&gt; 列表,Python的主力&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.4&lt;/span&gt; 总结&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -410,9 +411,248 @@ test&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;code&gt;copy&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;用来复制列表.&lt;/p&gt;
+&lt;p&gt;用来复制列表.在Python中,直接使用&lt;code&gt;=&lt;/code&gt;将一个列表赋值给另外一个对象名,其实只是关联而已,也就是说其实同一个列表关联到了两个名字而已.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a = [1,2,3]
+b = a
+b[1] = 10
+b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 10, 3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a##a也会改变,和b保持一致&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 10, 3]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;想要把a和b指向两个独立的不同的列表,需要使用&lt;code&gt;copy&lt;/code&gt;,将b关联到a的副本.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a = [1,2,3]
+b = a.copy()
+b[1] = 10
+b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 10, 3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2, 3]&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;count&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用来统计指定的元素在列表中出现的次数.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a = [1,2,3,4,4]
+a.count(1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a.count(4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;count()&lt;/code&gt;一共有两个参数,第一个参数为’self’,也就是前面的对象,后买你的参数为&lt;code&gt;value&lt;/code&gt;指定要统计的元素.&lt;/p&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;extend&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这个方法跟&lt;code&gt;append&lt;/code&gt;的区别在于,它可以将一个独立的列表添加到列表后面.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a = [1,2,3]
+b = [4,5,6]
+a.extend(b)
+a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2, 3, 4, 5, 6]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a.append(b)
+a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2, 3, 4, 5, 6, [4, 5, 6]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a + b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2, 3, 4, 5, 6, [4, 5, 6], 4, 5, 6]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2, 3, 4, 5, 6, [4, 5, 6]]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意这几种方法的区别.&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;index&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用于查找列表中指定值第一次出现的索引.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test = list(&amp;quot;shen&amp;quot;)
+test&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [&amp;#39;s&amp;#39;, &amp;#39;h&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;n&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test.index(&amp;quot;h&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;insert&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;将一个对象插入到列表中.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a = [1,2,3]
+a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2, 3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a.insert(1, &amp;quot;four&amp;quot;)
+a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, &amp;#39;four&amp;#39;, 2, 3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a.insert(0, [1, &amp;quot;shen&amp;quot;])
+a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1, &amp;#39;shen&amp;#39;], 1, &amp;#39;four&amp;#39;, 2, 3]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;insert&lt;/code&gt;第一个参数用来指定需要插入的位置(索引),第二个参数用来指定需要插入的内容.插入的内容可以是单个元素,也可以是列表.&lt;/p&gt;
+&lt;ol start=&#34;8&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;pop&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;删除一个元素,默认为最后一个.修改原列表,并返回删除的元素.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = [1,2,3]
+x.pop()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然,也可以使用&lt;code&gt;index&#39;&lt;/code&gt;参数,指定需要删除的元素.&lt;/p&gt;
+&lt;ol start=&#34;9&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;remove&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用于删除第一个为指定值的元素.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test = list(&amp;quot;shen&amp;quot;)
+test.remove(&amp;quot;h&amp;quot;)
+test&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [&amp;#39;s&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;n&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意的是,只删除第一个符合要求的元素,其他的不会删除.&lt;/p&gt;
+&lt;ol start=&#34;10&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;reverse&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;将元素顺序按相反顺序重新排列.&lt;/p&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;sort&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对列表元素重新进行排列.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = [&amp;#39;aardvark&amp;#39;, &amp;#39;abalone&amp;#39;, &amp;#39;acme&amp;#39;, &amp;#39;add&amp;#39;, &amp;#39;aerate&amp;#39;, &amp;quot;shen&amp;quot;, &amp;quot;wang&amp;quot;, &amp;quot;china&amp;quot;, &amp;quot;us&amp;quot;]
+x.sort()
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [&amp;#39;aardvark&amp;#39;, &amp;#39;abalone&amp;#39;, &amp;#39;acme&amp;#39;, &amp;#39;add&amp;#39;, &amp;#39;aerate&amp;#39;, &amp;#39;china&amp;#39;, &amp;#39;shen&amp;#39;, &amp;#39;us&amp;#39;, &amp;#39;wang&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;sort&lt;/code&gt;函数还可以通过设置&lt;code&gt;key&lt;/code&gt;参数来自定义排列规则,如可以将&lt;code&gt;key&lt;/code&gt;设置为函数&lt;code&gt;len&lt;/code&gt;,从而将列表按照元素的擦汗高长度进行排序.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x.sort(key = len)
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [&amp;#39;us&amp;#39;, &amp;#39;add&amp;#39;, &amp;#39;acme&amp;#39;, &amp;#39;shen&amp;#39;, &amp;#39;wang&amp;#39;, &amp;#39;china&amp;#39;, &amp;#39;aerate&amp;#39;, &amp;#39;abalone&amp;#39;, &amp;#39;aardvark&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;元组tuple不可修改的序列&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3.3&lt;/span&gt; 元组(tuple):不可修改的序列&lt;/h4&gt;
+&lt;p&gt;元组也是序列,但是跟列表不同的是,&lt;strong&gt;元组是不能修改的.&lt;/strong&gt;&lt;/p&gt;
+&lt;div id=&#34;创建元组&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3.3.1&lt;/span&gt; 创建元组&lt;/h5&gt;
+&lt;p&gt;使用小括号(())可以创建元组.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = (1,2,3)
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;tuple&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;()#空元组&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建只含有一个元素的元组比较特殊,需要在元素后面加上逗号.如果不加逗号,不能常见元组.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = (42)
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 42&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;int&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;y = (x, )
+y&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (42,)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(y)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;tuple&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;3 * (10+3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 39&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;3 * (10+3,)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (13, 13, 13)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看了上面的例子,可以很好的明白为什么需要加上逗号,因为小括号在数学运算中还表示运算优先级的意思,所以需要使用逗号来区分是进行数学运算,还是要创建元组.&lt;/p&gt;
+&lt;p&gt;当然,和列表一样,我们还可以使用&lt;code&gt;tuple()&lt;/code&gt;函数来创建元组.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;tuple([1, 2, 3])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;tuple(&amp;quot;shen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (&amp;#39;s&amp;#39;, &amp;#39;h&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;n&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;你可能意识到了,元组并不太复杂,而且除创建和访问其元素外,可对元组执行的操作不多.元组的创建及其元素的访问方式与其他序列相同.&lt;/p&gt;
+&lt;p&gt;那为什么要单独出来一个元组类型呢?有两个原因:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;它们用作映射中的键(以及集合的成员),而列表不行.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有些内置函数和方法返回元组,这意味着必须跟它们打交道.只要不尝试修改元组,与元组打交道通常意味着像处理列表一样处理它们(需要使用元组没有的index和count等方法时例外)。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;总结&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.4&lt;/span&gt; 总结&lt;/h3&gt;
+&lt;p&gt;新的函数:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;len(seq)&lt;/td&gt;
+&lt;td&gt;返回序列长度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;list(seq)&lt;/td&gt;
+&lt;td&gt;将序列转换为列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;max(args)&lt;/td&gt;
+&lt;td&gt;返回序列或者一组参数中的最大值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;min(args)&lt;/td&gt;
+&lt;td&gt;返回序列或者一组参数中的最小值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;reversed(seq)&lt;/td&gt;
+&lt;td&gt;反向排列序列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;sorted(seq)&lt;/td&gt;
+&lt;td&gt;对列表或者序列进行排序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;tuple(seq)&lt;/td&gt;
+&lt;td&gt;将序列转换为元组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;列表(list)的方法&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Method&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;append&lt;/td&gt;
+&lt;td&gt;将一个对象附加到列表末尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;clear&lt;/td&gt;
+&lt;td&gt;清空列表的内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;copy&lt;/td&gt;
+&lt;td&gt;复制列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;count&lt;/td&gt;
+&lt;td&gt;计算指定的元素在列表中出现了多少次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;extend&lt;/td&gt;
+&lt;td&gt;同时将多个值附加到列表末尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;index&lt;/td&gt;
+&lt;td&gt;在列表中查找指定值第一次出现的索引&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;insert&lt;/td&gt;
+&lt;td&gt;将一个对象插入列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;pop&lt;/td&gt;
+&lt;td&gt;从列表中删除一个元素(默认为最后一个元素)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;remove&lt;/td&gt;
+&lt;td&gt;用于删除第一个为指定值的元素&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;reverse&lt;/td&gt;
+&lt;td&gt;按相反的顺序排列列表中的元素&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;sort&lt;/td&gt;
+&lt;td&gt;对列表进行排序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
