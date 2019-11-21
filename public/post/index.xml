@@ -139,7 +139,9 @@ output:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#day03作业&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Day03作业&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#fasta文件的格式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; &lt;code&gt;fasta&lt;/code&gt;文件的格式&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#read_fasta函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; &lt;code&gt;read_fasta&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#read_fasta函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; &lt;code&gt;read_fasta&lt;/code&gt;函数&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#open函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2.1&lt;/span&gt; &lt;code&gt;open&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -1342,6 +1344,9 @@ TAGACCATTCAAAAGCTTCCAGACAGTCTAGCTCGAAGAAATTT&lt;/code&gt;&lt;/pre&gt;
             else:
                 sequences[currSeqName] += line
     return(sequences)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;open函数&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2.1&lt;/span&gt; &lt;code&gt;open&lt;/code&gt;函数&lt;/h3&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

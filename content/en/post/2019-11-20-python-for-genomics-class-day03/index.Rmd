@@ -1070,3 +1070,6 @@ def read_fasta(fasta_filename):
                 sequences[currSeqName] += line
     return(sequences)
 ```
+
+### `open`函数
+
