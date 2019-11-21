@@ -56,6 +56,20 @@ File -> new
 
 
 
+# Pycharm
+
+## 注释快捷键
+
+`ctl+/`
+
+
+## 将project上传到github
+
+参考下面帖子:
+
+https://www.cnblogs.com/feixuelove1009/p/5955332.html
+
+
 
 
 
