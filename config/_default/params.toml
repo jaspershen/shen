@@ -52,7 +52,7 @@ time_format = "3:04 PM"
 # Enter contact details (optional). To hide a field, clear it to "".
 email = "shenxt@stanford.edu"
 phone = "571-267-9283"
-address = "Alway Building, Cooper Lane, Palo Alto, CA, USA"
+address = "M339, Alway Building, Cooper Lane, Palo Alto, CA 94304, USA"
 
 # Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
 office_hours = """Monday-Friday 9:00 to 18:00<br>
