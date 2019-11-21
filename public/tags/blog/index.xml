@@ -131,7 +131,15 @@ output:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#字符串&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 字符串&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#字符串的基本操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.1&lt;/span&gt; 字符串的基本操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#字典&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2.2&lt;/span&gt; 字典&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#条件循环及其他语句&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 条件、循环及其他语句&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#条件和条件语句&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 条件和条件语句&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#day03作业&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Day03作业&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#fasta文件的格式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; &lt;code&gt;fasta&lt;/code&gt;文件的格式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#read_fasta函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; &lt;code&gt;read_fasta&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -946,10 +954,394 @@ table&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;string.swapcase() 将字符串中所有字母的大小写都反转,并返回结果
 string.title()|将字符串中所有单词的首字母都大写,并返回结果
 string.translate(table)|根据转换表table(这是使用maketrans创建的)对字符串中的所有字符都进行转换,并返回结果
-string.upper() 将字符串中所有的字母都转换为大写,并返回结果
+string.upper()|将字符串中所有的字母都转换为大写,并返回结果
 string.zfill(width)|在字符串左边填充0(但将原来打头的+或-移到开头),使其长度为width&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;字典&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2&lt;/span&gt; 字典&lt;/h3&gt;
+&lt;p&gt;需要将一系列值组合成数据结构并通过编号来访问各个值时，列表很有用。本章介绍一种可通过名称来访问其各个值的数据结构。这种数据结构称为映射（mapping）。字典是Python中唯一的内置映射类型，其中的值不按顺序排列，而是存储在键下。键可能是数、字符串或元组。&lt;/p&gt;
+&lt;p&gt;在很多情况下，使用字典都比使用列表更合适.下面是一些字典的用途:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;表示棋盘的状态，其中每个键都是由坐标组成的元组；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;存储文件修改时间，其中的键为文件名；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;数字电话/地址簿。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;创建和使用字典&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2.1&lt;/span&gt; 创建和使用字典&lt;/h4&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;phonebook = {&amp;#39;Alice&amp;#39;: &amp;#39;2341&amp;#39;, &amp;#39;Beth&amp;#39;: &amp;#39;9102&amp;#39;, &amp;#39;Cecil&amp;#39;: &amp;#39;3258&amp;#39;}
+phonebook&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;Alice&amp;#39;: &amp;#39;2341&amp;#39;, &amp;#39;Beth&amp;#39;: &amp;#39;9102&amp;#39;, &amp;#39;Cecil&amp;#39;: &amp;#39;3258&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字典由键(key)及其相应的值(value)组成，这种键-值对称为项（item）。在前面的示例中，键为名字，而值为电话号码。每个键与其值之间都用冒号（:）分隔，项之间用逗号分隔，而整个字典放在花括号内。空字典（没有任何项）用两个花括号表示，类似于下面这样：{}。&lt;/p&gt;
+&lt;p&gt;注意:&lt;/p&gt;
+&lt;p&gt;在字典（以及其他映射类型）中，键必须是独一无二的，而字典中的值无需如此。&lt;/p&gt;
+&lt;div id=&#34;使用dict函数&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2.1.1&lt;/span&gt; 使用&lt;code&gt;dict&lt;/code&gt;函数&lt;/h5&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;items = [(&amp;#39;name&amp;#39;, &amp;#39;Gumby&amp;#39;), (&amp;#39;age&amp;#39;, 42)]
+items&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [(&amp;#39;name&amp;#39;, &amp;#39;Gumby&amp;#39;), (&amp;#39;age&amp;#39;, 42)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(items)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;list&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = dict(items)
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;Gumby&amp;#39;, &amp;#39;age&amp;#39;: 42}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(d)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;dict&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d[&amp;quot;name&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;Gumby&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d[&amp;quot;age&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 42&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;items&lt;/code&gt;是一个列表,然后包含两个元组,每个元组都包含两个元素,然后每个元组的第一个元素作为键,第二个元素作为值.&lt;/p&gt;
+&lt;p&gt;还可以使用另外一种形式,使用&lt;code&gt;dict&lt;/code&gt;创建字典.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = dict(name=&amp;#39;Gumby&amp;#39;, age=42)
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;Gumby&amp;#39;, &amp;#39;age&amp;#39;: 42}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;len(d)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;字典的基本操作&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2.1.2&lt;/span&gt; 字典的基本操作&lt;/h5&gt;
+&lt;p&gt;字典的基本行为在很多方面都类似于序列。&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;len(d)&lt;/code&gt;返回字典d包含的项（键-值对）数。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d[k]&lt;/code&gt;返回与键k相关联的值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d[k] = v&lt;/code&gt;将值v关联到键k。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;del d[k]&lt;/code&gt;删除键为k的项。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;虽然字典和列表有多个相同之处，但也有一些重要的不同之处。&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;strong&gt;键的类型&lt;/strong&gt;：字典中的键可以是整数，但并非必须是整数。字典中的键可以是任何不可变的类型，如浮点数（实数）、字符串或元组。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动添加&lt;/strong&gt;：即便是字典中原本没有的键，也可以给它赋值，这将在字典中创建一个新项。然而，如果不使用append或其他类似的方法，就不能给列表中没有的元素赋值。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = dict(name=&amp;#39;Gumby&amp;#39;, age=42)
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;Gumby&amp;#39;, &amp;#39;age&amp;#39;: 42}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d[&amp;quot;sex&amp;quot;] = &amp;quot;male&amp;quot;
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;Gumby&amp;#39;, &amp;#39;age&amp;#39;: 42, &amp;#39;sex&amp;#39;: &amp;#39;male&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;成员资格&lt;/strong&gt;:表达式&lt;code&gt;k in d&lt;/code&gt;（其中d是一个字典）查找的是键而不是值，而表达式v in l（其中l是一个列表）查找的是值而不是索引。这看似不太一致，但你习惯后就会觉得相当自然。毕竟如果字典包含指定的键，检查相应的值就很容易。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;k in d&lt;/code&gt;检查字典d是否包含键为k的项。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;创建空的字典,使用大括号进行.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = {}
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x[&amp;#39;name&amp;#39;] = &amp;quot;shen&amp;quot;
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;shen&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = {&amp;quot;name&amp;quot;:&amp;quot;shen&amp;quot;, &amp;quot;age&amp;quot;:29}
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;shen&amp;#39;, &amp;#39;age&amp;#39;: 29}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;适用于字典的方法&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2.1.3&lt;/span&gt; 适用于字典的方法&lt;/h5&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;clear&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;clear&lt;/code&gt;删除所有的字典项，这种操作是就地执行的（就像&lt;code&gt;list.sort&lt;/code&gt;一样），因此什么都不返回（或者说返回&lt;code&gt;None&lt;/code&gt;）。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = {}
+d[&amp;#39;name&amp;#39;] = &amp;#39;Gumby&amp;#39;
+d[&amp;#39;age&amp;#39;] = 42
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;Gumby&amp;#39;, &amp;#39;age&amp;#39;: 42}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.clear()
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {}&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;copy&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;copy&lt;/code&gt;返回一个新字典，其包含的键-值对与原来的字典相同（这个方法执行的是浅复制，因为值本身是原件，而非副本）。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = {&amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;, &amp;#39;machines&amp;#39;: [&amp;#39;foo&amp;#39;, &amp;#39;bar&amp;#39;, &amp;#39;baz&amp;#39;]}
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;, &amp;#39;machines&amp;#39;: [&amp;#39;foo&amp;#39;, &amp;#39;bar&amp;#39;, &amp;#39;baz&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;y = x.copy()
+y&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;, &amp;#39;machines&amp;#39;: [&amp;#39;foo&amp;#39;, &amp;#39;bar&amp;#39;, &amp;#39;baz&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;y[&amp;#39;username&amp;#39;] = &amp;#39;mlh&amp;#39;
+y[&amp;#39;machines&amp;#39;].remove(&amp;#39;bar&amp;#39;)
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;, &amp;#39;machines&amp;#39;: [&amp;#39;foo&amp;#39;, &amp;#39;baz&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;y&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;username&amp;#39;: &amp;#39;mlh&amp;#39;, &amp;#39;machines&amp;#39;: [&amp;#39;foo&amp;#39;, &amp;#39;baz&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如你所见，当替换副本中的值时，原件不受影响。然而，如果修改副本中的值（就地修改而不是替换），原件也将发生变化，因为原件指向的也是被修改的值（如这个示例中的’machines’列表所示）。&lt;/p&gt;
+&lt;p&gt;为避免这种问题，一种办法是执行深复制，即同时复制值及其包含的所有值，等等。为此，可使用模块copy中的函数deepcopy。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from copy import deepcopy
+d = {}
+d[&amp;#39;names&amp;#39;] = [&amp;#39;Alfred&amp;#39;, &amp;#39;Bertrand&amp;#39;]
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;names&amp;#39;: [&amp;#39;Alfred&amp;#39;, &amp;#39;Bertrand&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;c = d.copy()
+dc = deepcopy(d)
+d[&amp;#39;names&amp;#39;].append(&amp;#39;Clive&amp;#39;)
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;names&amp;#39;: [&amp;#39;Alfred&amp;#39;, &amp;#39;Bertrand&amp;#39;, &amp;#39;Clive&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;c&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;names&amp;#39;: [&amp;#39;Alfred&amp;#39;, &amp;#39;Bertrand&amp;#39;, &amp;#39;Clive&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;dc&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;names&amp;#39;: [&amp;#39;Alfred&amp;#39;, &amp;#39;Bertrand&amp;#39;]}&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;fromkeys&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;fromkeys&lt;/code&gt;创建一个新字典，其中包含指定的键，且每个键对应的值都是&lt;code&gt;None&lt;/code&gt;。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;{}.fromkeys([&amp;#39;name&amp;#39;, &amp;#39;age&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: None, &amp;#39;age&amp;#39;: None}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个示例首先创建了一个空字典，再对其调用方法&lt;code&gt;fromkeys&lt;/code&gt;来创建另一个字典.&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;get&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;get&lt;/code&gt;为访问字典项提供了宽松的环境。通常，如果你试图访问字典中没有的项，将引发错误。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;d = {}
+print(d[&amp;#39;name&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;而使用get不会这样：&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(d.get(&amp;#39;name&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## None&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.get(&amp;#39;name&amp;#39;, &amp;#39;N/A&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;N/A&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;items&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;items&lt;/code&gt;返回一个包含所有字典项的&lt;strong&gt;列表&lt;/strong&gt;，其中每个元素都为&lt;code&gt;(key, value)&lt;/code&gt;的形式。字典项在列表中的排列顺序不确定。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = {&amp;#39;title&amp;#39;: &amp;#39;Python Web Site&amp;#39;, &amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;spam&amp;#39;: 0}
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;title&amp;#39;: &amp;#39;Python Web Site&amp;#39;, &amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;spam&amp;#39;: 0}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.items()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## dict_items([(&amp;#39;title&amp;#39;, &amp;#39;Python Web Site&amp;#39;), (&amp;#39;url&amp;#39;, &amp;#39;http://www.python.org&amp;#39;), (&amp;#39;spam&amp;#39;, 0)])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test = d.items()
+test&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## dict_items([(&amp;#39;title&amp;#39;, &amp;#39;Python Web Site&amp;#39;), (&amp;#39;url&amp;#39;, &amp;#39;http://www.python.org&amp;#39;), (&amp;#39;spam&amp;#39;, 0)])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(test)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;dict_items&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;返回值属于一种名为&lt;strong&gt;字典视图&lt;/strong&gt;的特殊类型。字典视图可用于迭代。另外，你还可确定其长度以及对其执行成员资格检查。其中每一个元素都是一个元组.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;it = d.items()
+it&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## dict_items([(&amp;#39;title&amp;#39;, &amp;#39;Python Web Site&amp;#39;), (&amp;#39;url&amp;#39;, &amp;#39;http://www.python.org&amp;#39;), (&amp;#39;spam&amp;#39;, 0)])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;len(d)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;len(it)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;kyes&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;keys&lt;/code&gt;返回一个字典视图，其中包含指定字典中的键。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;title&amp;#39;: &amp;#39;Python Web Site&amp;#39;, &amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;spam&amp;#39;: 0}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.items()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## dict_items([(&amp;#39;title&amp;#39;, &amp;#39;Python Web Site&amp;#39;), (&amp;#39;url&amp;#39;, &amp;#39;http://www.python.org&amp;#39;), (&amp;#39;spam&amp;#39;, 0)])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.keys()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## dict_keys([&amp;#39;title&amp;#39;, &amp;#39;url&amp;#39;, &amp;#39;spam&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;pop&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;pop&lt;/code&gt;可用于获取与指定键相关联的值，并将该键-值对从字典中删除。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = {&amp;#39;x&amp;#39;: 1, &amp;#39;y&amp;#39;: 2}
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;x&amp;#39;: 1, &amp;#39;y&amp;#39;: 2}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.pop(&amp;#39;x&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;y&amp;#39;: 2}&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;8&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;popitem&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;popitem&lt;/code&gt;类似于&lt;code&gt;list.pop&lt;/code&gt;，但&lt;code&gt;list.pop&lt;/code&gt;弹出列表中的最后一个元素，而&lt;code&gt;popitem&lt;/code&gt;随机地弹出一个字典项，因为字典项的顺序是不确定的，没有“最后一个元素”的概念。如果你要以高效地方式逐个删除并处理所有字典项，这可能很有用，因为这样无需先获取键列表。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = {&amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;spam&amp;#39;: 0, &amp;#39;title&amp;#39;: &amp;#39;Python Web Site&amp;#39;}
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;spam&amp;#39;: 0, &amp;#39;title&amp;#39;: &amp;#39;Python Web Site&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.popitem()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (&amp;#39;title&amp;#39;, &amp;#39;Python Web Site&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;spam&amp;#39;: 0}&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;9&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;setdefault&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;setdefault&lt;/code&gt;有点像&lt;code&gt;get&lt;/code&gt;，因为它也获取与指定键相关联的值，但除此之外，&lt;code&gt;setdefault&lt;/code&gt;还在字典不包含指定的键时，在字典中添加指定的键-值对。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = {}
+d.setdefault(&amp;#39;name&amp;#39;, &amp;#39;N/A&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;N/A&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;N/A&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d[&amp;#39;name&amp;#39;] = &amp;#39;Gumby&amp;#39;
+d.setdefault(&amp;#39;name&amp;#39;, &amp;#39;N/A&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;Gumby&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;name&amp;#39;: &amp;#39;Gumby&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;10&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;update&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;update&lt;/code&gt;使用一个字典中的项来更新另一个字典。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = {
+ &amp;#39;title&amp;#39;: &amp;#39;Python Web Site&amp;#39;,
+ &amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;,
+ &amp;#39;changed&amp;#39;: &amp;#39;Mar 14 22:09:15 MET 2016&amp;#39;
+}
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;title&amp;#39;: &amp;#39;Python Web Site&amp;#39;, &amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;changed&amp;#39;: &amp;#39;Mar 14 22:09:15 MET 2016&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = {&amp;#39;title&amp;#39;: &amp;#39;Python Language Website&amp;#39;}
+d.update(x)
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;title&amp;#39;: &amp;#39;Python Language Website&amp;#39;, &amp;#39;url&amp;#39;: &amp;#39;http://www.python.org&amp;#39;, &amp;#39;changed&amp;#39;: &amp;#39;Mar 14 22:09:15 MET 2016&amp;#39;}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于通过参数提供的字典，将其项添加到当前字典中。如果当前字典包含键相同的项，就替换它。&lt;/p&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;values&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;方法&lt;code&gt;values&lt;/code&gt;返回一个由字典中的值组成的字典视图。不同于方法&lt;code&gt;keys&lt;/code&gt;，方法&lt;code&gt;values&lt;/code&gt;返回的视图可能包含重复的值。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d = {&amp;quot;a&amp;quot;:1, &amp;quot;b&amp;quot;:2, &amp;quot;c&amp;quot;:3}
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;a&amp;#39;: 1, &amp;#39;b&amp;#39;: 2, &amp;#39;c&amp;#39;: 3}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;d.values()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## dict_values([1, 2, 3])&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;总结-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2.2&lt;/span&gt; 总结&lt;/h4&gt;
+&lt;div id=&#34;新的函数&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2.2.1&lt;/span&gt; 新的函数&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;dict(seq)&lt;/td&gt;
+&lt;td&gt;从键-值对、映射或关键字参数创建字典&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;适用于字典的方法-1&#34; class=&#34;section level5&#34;&gt;
+&lt;h5&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2.2.2.2&lt;/span&gt; 适用于字典的方法&lt;/h5&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;53%&#34; /&gt;
+&lt;col width=&#34;46%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Method&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;clear&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除所有的字典项,是就地执行的,不返回任何值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;copy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回一个新字典，其包含的键值对与原来的字典相同（这个方法执行的是浅复制，因为值本身是原件，而非副本.如果想要深复制，即同时复制值及其包含的所有值，可使用模块&lt;code&gt;copy&lt;/code&gt;中的函数&lt;code&gt;deepcopy&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;fromkeys&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;创建一个新字典，其中包含指定的键，且每个键对应的值都是None。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;get&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;获得字典种的值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;items&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回一个包含所有字典项的列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;keys&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回一个字典视图，其中包含指定字典中的键。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;pop&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;用于获取与指定键相关联的值，并将该键值对从字典中删除。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;setdefault&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;有点像&lt;code&gt;get&lt;/code&gt;，因为它也获取与指定键相关联的值，但除此之外，&lt;code&gt;setdefault&lt;/code&gt;还在字典不包含指定的键时，在字典中添加指定的键-值对。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;update&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;使用一个字典中的项来更新另一个字典。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;values&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回一个由字典中的值组成的字典视图。不同于方法&lt;code&gt;keys&lt;/code&gt;，方法&lt;code&gt;values&lt;/code&gt;返回的视图可能包含重复的值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;条件循环及其他语句&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 条件、循环及其他语句&lt;/h1&gt;
+&lt;div id=&#34;条件和条件语句&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 条件和条件语句&lt;/h2&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# test which values are True and False
+# The rule: What is True? Anything that is not False!
+values = [False, None, 0, 0.0, &amp;quot;&amp;quot;, &amp;#39;&amp;#39;, [], {}, (), True, &amp;#39;str&amp;#39;, &amp;quot;0&amp;quot;, -1, 3, 1000, &amp;#39;\&amp;#39;\&amp;#39;&amp;#39;]
+
+for v in values:
+    if (v):
+        print(&amp;quot;True : &amp;quot;, v)
+    else:
+        print(&amp;quot;False: &amp;quot;, v)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## False:  False
+## False:  None
+## False:  0
+## False:  0.0
+## False:  
+## False:  
+## False:  []
+## False:  {}
+## False:  ()
+## True :  True
+## True :  str
+## True :  0
+## True :  -1
+## True :  3
+## True :  1000
+## True :  &amp;#39;&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;day03作业&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Day03作业&lt;/h1&gt;
+&lt;p&gt;读取&lt;code&gt;fasta&lt;/code&gt;文件.&lt;/p&gt;
+&lt;div id=&#34;fasta文件的格式&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; &lt;code&gt;fasta&lt;/code&gt;文件的格式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;Example_Sequence-1
+TCGGGACAGCTTGTTGCCCCATCCATGGGGGTCTGCTCTAAGACCCTTTAATAATAGCGG
+TTATTTTCGCAGGCAGGCACTGATCCTTAATACGGAAGCTACAACCCACAATCTGCCTAG
+CCGTGATAAACCTTCGCCCCGTGCCTGGTCTACCATCTACTCAGGAAGTTGACCGGTCGG
+TTACCTACCTCATGGCGTATGATTGTCCCGGACAGTGCTCCTATGGCTTGGAACCTAACG
+CTCACGGGTTGCTAT
+&amp;gt;Example_Sequence-2
+CTACCGAGAGGTGCCGTCAAATTCTGCCTTTAACCCCCACATGTAGCTCAGTAACTGAGC
+GGCTTGACGGCCCAGGTGCAGAGACGTACGATGCGTGAGCCTGCACAATAACCCACCATT
+TAGACCATTCAAAAGCTTCCAGACAGTCTAGCTCGAAGAAATTT&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到&lt;code&gt;fasta&lt;/code&gt;文件每个sequence都是以&lt;code&gt;&amp;gt;&lt;/code&gt;开头,所以这可以作为识别每个sequence的标志.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;read_fasta函数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; &lt;code&gt;read_fasta&lt;/code&gt;函数&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;def read_fasta(fasta_filename):
+    &amp;#39;&amp;#39;&amp;#39;
+    Go through file, reading one line at a time, using a
+    dictionary to store the DNA sequence for each of the FASTA
+    entries (Gavin Sherlock, November 28, 2019)
+    &amp;#39;&amp;#39;&amp;#39;    
+    with open(fasta_filename, mode=&amp;#39;r&amp;#39;) as fasta_file:
+
+        sequences = {}#创建一个空字典
+        
+        for line in fasta_file:#对每一行进行读取
+            line = line.rstrip()#除去每行的右边的空格
+            if line.startswith(&amp;#39;&amp;gt;&amp;#39;): # 如果这一行是以`&amp;gt;`开头,则是一个新的sequence
+                line = line.lstrip(&amp;#39;&amp;gt;&amp;#39;)#将这行的`&amp;gt;`标志去除掉
+                sequences[line] = &amp;#39;&amp;#39; # intialize dictionary for this entry
+                currSeqName = line
+            else:
+                sequences[currSeqName] += line
+    return(sequences)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

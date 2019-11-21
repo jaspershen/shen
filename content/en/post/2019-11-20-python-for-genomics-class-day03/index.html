@@ -29,7 +29,15 @@ output:
 </ul></li>
 <li><a href="#字符串"><span class="toc-section-number">1.2</span> 字符串</a><ul>
 <li><a href="#字符串的基本操作"><span class="toc-section-number">1.2.1</span> 字符串的基本操作</a></li>
+<li><a href="#字典"><span class="toc-section-number">1.2.2</span> 字典</a></li>
 </ul></li>
+</ul></li>
+<li><a href="#条件循环及其他语句"><span class="toc-section-number">2</span> 条件、循环及其他语句</a><ul>
+<li><a href="#条件和条件语句"><span class="toc-section-number">2.1</span> 条件和条件语句</a></li>
+</ul></li>
+<li><a href="#day03作业"><span class="toc-section-number">3</span> Day03作业</a><ul>
+<li><a href="#fasta文件的格式"><span class="toc-section-number">3.1</span> <code>fasta</code>文件的格式</a></li>
+<li><a href="#read_fasta函数"><span class="toc-section-number">3.2</span> <code>read_fasta</code>函数</a></li>
 </ul></li>
 </ul>
 </div>
@@ -844,9 +852,393 @@ table</code></pre>
 <p>string.swapcase() 将字符串中所有字母的大小写都反转,并返回结果
 string.title()|将字符串中所有单词的首字母都大写,并返回结果
 string.translate(table)|根据转换表table(这是使用maketrans创建的)对字符串中的所有字符都进行转换,并返回结果
-string.upper() 将字符串中所有的字母都转换为大写,并返回结果
+string.upper()|将字符串中所有的字母都转换为大写,并返回结果
 string.zfill(width)|在字符串左边填充0(但将原来打头的+或-移到开头),使其长度为width</p>
 </div>
 </div>
+<div id="字典" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> 字典</h3>
+<p>需要将一系列值组合成数据结构并通过编号来访问各个值时，列表很有用。本章介绍一种可通过名称来访问其各个值的数据结构。这种数据结构称为映射（mapping）。字典是Python中唯一的内置映射类型，其中的值不按顺序排列，而是存储在键下。键可能是数、字符串或元组。</p>
+<p>在很多情况下，使用字典都比使用列表更合适.下面是一些字典的用途:</p>
+<ol style="list-style-type: decimal">
+<li><p>表示棋盘的状态，其中每个键都是由坐标组成的元组；</p></li>
+<li><p>存储文件修改时间，其中的键为文件名；</p></li>
+<li><p>数字电话/地址簿。</p></li>
+</ol>
+<div id="创建和使用字典" class="section level4">
+<h4><span class="header-section-number">1.2.2.1</span> 创建和使用字典</h4>
+<pre class="python"><code>phonebook = {&#39;Alice&#39;: &#39;2341&#39;, &#39;Beth&#39;: &#39;9102&#39;, &#39;Cecil&#39;: &#39;3258&#39;}
+phonebook</code></pre>
+<pre><code>## {&#39;Alice&#39;: &#39;2341&#39;, &#39;Beth&#39;: &#39;9102&#39;, &#39;Cecil&#39;: &#39;3258&#39;}</code></pre>
+<p>字典由键(key)及其相应的值(value)组成，这种键-值对称为项（item）。在前面的示例中，键为名字，而值为电话号码。每个键与其值之间都用冒号（:）分隔，项之间用逗号分隔，而整个字典放在花括号内。空字典（没有任何项）用两个花括号表示，类似于下面这样：{}。</p>
+<p>注意:</p>
+<p>在字典（以及其他映射类型）中，键必须是独一无二的，而字典中的值无需如此。</p>
+<div id="使用dict函数" class="section level5">
+<h5><span class="header-section-number">1.2.2.1.1</span> 使用<code>dict</code>函数</h5>
+<pre class="python"><code>items = [(&#39;name&#39;, &#39;Gumby&#39;), (&#39;age&#39;, 42)]
+items</code></pre>
+<pre><code>## [(&#39;name&#39;, &#39;Gumby&#39;), (&#39;age&#39;, 42)]</code></pre>
+<pre class="python"><code>type(items)</code></pre>
+<pre><code>## &lt;class &#39;list&#39;&gt;</code></pre>
+<pre class="python"><code>d = dict(items)
+d</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;Gumby&#39;, &#39;age&#39;: 42}</code></pre>
+<pre class="python"><code>type(d)</code></pre>
+<pre><code>## &lt;class &#39;dict&#39;&gt;</code></pre>
+<pre class="python"><code>d[&quot;name&quot;]</code></pre>
+<pre><code>## &#39;Gumby&#39;</code></pre>
+<pre class="python"><code>d[&quot;age&quot;]</code></pre>
+<pre><code>## 42</code></pre>
+<p><code>items</code>是一个列表,然后包含两个元组,每个元组都包含两个元素,然后每个元组的第一个元素作为键,第二个元素作为值.</p>
+<p>还可以使用另外一种形式,使用<code>dict</code>创建字典.</p>
+<pre class="python"><code>d = dict(name=&#39;Gumby&#39;, age=42)
+d</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;Gumby&#39;, &#39;age&#39;: 42}</code></pre>
+<pre class="python"><code>len(d)</code></pre>
+<pre><code>## 2</code></pre>
+</div>
+<div id="字典的基本操作" class="section level5">
+<h5><span class="header-section-number">1.2.2.1.2</span> 字典的基本操作</h5>
+<p>字典的基本行为在很多方面都类似于序列。</p>
+<ol style="list-style-type: decimal">
+<li><code>len(d)</code>返回字典d包含的项（键-值对）数。</li>
+<li><code>d[k]</code>返回与键k相关联的值。</li>
+<li><code>d[k] = v</code>将值v关联到键k。</li>
+<li><code>del d[k]</code>删除键为k的项。</li>
+</ol>
+<p>虽然字典和列表有多个相同之处，但也有一些重要的不同之处。</p>
+<ol style="list-style-type: decimal">
+<li><strong>键的类型</strong>：字典中的键可以是整数，但并非必须是整数。字典中的键可以是任何不可变的类型，如浮点数（实数）、字符串或元组。</li>
+<li><strong>自动添加</strong>：即便是字典中原本没有的键，也可以给它赋值，这将在字典中创建一个新项。然而，如果不使用append或其他类似的方法，就不能给列表中没有的元素赋值。</li>
+</ol>
+<pre class="python"><code>d = dict(name=&#39;Gumby&#39;, age=42)
+d</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;Gumby&#39;, &#39;age&#39;: 42}</code></pre>
+<pre class="python"><code>d[&quot;sex&quot;] = &quot;male&quot;
+d</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;Gumby&#39;, &#39;age&#39;: 42, &#39;sex&#39;: &#39;male&#39;}</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p><strong>成员资格</strong>:表达式<code>k in d</code>（其中d是一个字典）查找的是键而不是值，而表达式v in l（其中l是一个列表）查找的是值而不是索引。这看似不太一致，但你习惯后就会觉得相当自然。毕竟如果字典包含指定的键，检查相应的值就很容易。</p></li>
+<li><p><code>k in d</code>检查字典d是否包含键为k的项。</p></li>
+</ol>
+<p>创建空的字典,使用大括号进行.</p>
+<pre class="python"><code>x = {}
+x</code></pre>
+<pre><code>## {}</code></pre>
+<pre class="python"><code>x[&#39;name&#39;] = &quot;shen&quot;
+x</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;shen&#39;}</code></pre>
+<pre class="python"><code>x = {&quot;name&quot;:&quot;shen&quot;, &quot;age&quot;:29}
+x</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;shen&#39;, &#39;age&#39;: 29}</code></pre>
+</div>
+<div id="适用于字典的方法" class="section level5">
+<h5><span class="header-section-number">1.2.2.1.3</span> 适用于字典的方法</h5>
+<ol style="list-style-type: decimal">
+<li><code>clear</code></li>
+</ol>
+<p>方法<code>clear</code>删除所有的字典项，这种操作是就地执行的（就像<code>list.sort</code>一样），因此什么都不返回（或者说返回<code>None</code>）。</p>
+<pre class="python"><code>d = {}
+d[&#39;name&#39;] = &#39;Gumby&#39;
+d[&#39;age&#39;] = 42
+d</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;Gumby&#39;, &#39;age&#39;: 42}</code></pre>
+<pre class="python"><code>d.clear()
+d</code></pre>
+<pre><code>## {}</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><code>copy</code></li>
+</ol>
+<p>方法<code>copy</code>返回一个新字典，其包含的键-值对与原来的字典相同（这个方法执行的是浅复制，因为值本身是原件，而非副本）。</p>
+<pre class="python"><code>x = {&#39;username&#39;: &#39;admin&#39;, &#39;machines&#39;: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]}
+x</code></pre>
+<pre><code>## {&#39;username&#39;: &#39;admin&#39;, &#39;machines&#39;: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]}</code></pre>
+<pre class="python"><code>y = x.copy()
+y</code></pre>
+<pre><code>## {&#39;username&#39;: &#39;admin&#39;, &#39;machines&#39;: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]}</code></pre>
+<pre class="python"><code>y[&#39;username&#39;] = &#39;mlh&#39;
+y[&#39;machines&#39;].remove(&#39;bar&#39;)
+x</code></pre>
+<pre><code>## {&#39;username&#39;: &#39;admin&#39;, &#39;machines&#39;: [&#39;foo&#39;, &#39;baz&#39;]}</code></pre>
+<pre class="python"><code>y</code></pre>
+<pre><code>## {&#39;username&#39;: &#39;mlh&#39;, &#39;machines&#39;: [&#39;foo&#39;, &#39;baz&#39;]}</code></pre>
+<p>如你所见，当替换副本中的值时，原件不受影响。然而，如果修改副本中的值（就地修改而不是替换），原件也将发生变化，因为原件指向的也是被修改的值（如这个示例中的’machines’列表所示）。</p>
+<p>为避免这种问题，一种办法是执行深复制，即同时复制值及其包含的所有值，等等。为此，可使用模块copy中的函数deepcopy。</p>
+<pre class="python"><code>from copy import deepcopy
+d = {}
+d[&#39;names&#39;] = [&#39;Alfred&#39;, &#39;Bertrand&#39;]
+d</code></pre>
+<pre><code>## {&#39;names&#39;: [&#39;Alfred&#39;, &#39;Bertrand&#39;]}</code></pre>
+<pre class="python"><code>c = d.copy()
+dc = deepcopy(d)
+d[&#39;names&#39;].append(&#39;Clive&#39;)
+d</code></pre>
+<pre><code>## {&#39;names&#39;: [&#39;Alfred&#39;, &#39;Bertrand&#39;, &#39;Clive&#39;]}</code></pre>
+<pre class="python"><code>c</code></pre>
+<pre><code>## {&#39;names&#39;: [&#39;Alfred&#39;, &#39;Bertrand&#39;, &#39;Clive&#39;]}</code></pre>
+<pre class="python"><code>dc</code></pre>
+<pre><code>## {&#39;names&#39;: [&#39;Alfred&#39;, &#39;Bertrand&#39;]}</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><code>fromkeys</code></li>
+</ol>
+<p>方法<code>fromkeys</code>创建一个新字典，其中包含指定的键，且每个键对应的值都是<code>None</code>。</p>
+<pre class="python"><code>{}.fromkeys([&#39;name&#39;, &#39;age&#39;])</code></pre>
+<pre><code>## {&#39;name&#39;: None, &#39;age&#39;: None}</code></pre>
+<p>这个示例首先创建了一个空字典，再对其调用方法<code>fromkeys</code>来创建另一个字典.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><code>get</code></li>
+</ol>
+<p>方法<code>get</code>为访问字典项提供了宽松的环境。通常，如果你试图访问字典中没有的项，将引发错误。</p>
+<pre><code>d = {}
+print(d[&#39;name&#39;])</code></pre>
+<p>而使用get不会这样：</p>
+<pre class="python"><code>print(d.get(&#39;name&#39;))</code></pre>
+<pre><code>## None</code></pre>
+<pre class="python"><code>d.get(&#39;name&#39;, &#39;N/A&#39;)</code></pre>
+<pre><code>## &#39;N/A&#39;</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><code>items</code></li>
+</ol>
+<p>方法<code>items</code>返回一个包含所有字典项的<strong>列表</strong>，其中每个元素都为<code>(key, value)</code>的形式。字典项在列表中的排列顺序不确定。</p>
+<pre class="python"><code>d = {&#39;title&#39;: &#39;Python Web Site&#39;, &#39;url&#39;: &#39;http://www.python.org&#39;, &#39;spam&#39;: 0}
+d</code></pre>
+<pre><code>## {&#39;title&#39;: &#39;Python Web Site&#39;, &#39;url&#39;: &#39;http://www.python.org&#39;, &#39;spam&#39;: 0}</code></pre>
+<pre class="python"><code>d.items()</code></pre>
+<pre><code>## dict_items([(&#39;title&#39;, &#39;Python Web Site&#39;), (&#39;url&#39;, &#39;http://www.python.org&#39;), (&#39;spam&#39;, 0)])</code></pre>
+<pre class="python"><code>test = d.items()
+test</code></pre>
+<pre><code>## dict_items([(&#39;title&#39;, &#39;Python Web Site&#39;), (&#39;url&#39;, &#39;http://www.python.org&#39;), (&#39;spam&#39;, 0)])</code></pre>
+<pre class="python"><code>type(test)</code></pre>
+<pre><code>## &lt;class &#39;dict_items&#39;&gt;</code></pre>
+<p>返回值属于一种名为<strong>字典视图</strong>的特殊类型。字典视图可用于迭代。另外，你还可确定其长度以及对其执行成员资格检查。其中每一个元素都是一个元组.</p>
+<pre class="python"><code>it = d.items()
+it</code></pre>
+<pre><code>## dict_items([(&#39;title&#39;, &#39;Python Web Site&#39;), (&#39;url&#39;, &#39;http://www.python.org&#39;), (&#39;spam&#39;, 0)])</code></pre>
+<pre class="python"><code>len(d)</code></pre>
+<pre><code>## 3</code></pre>
+<pre class="python"><code>len(it)</code></pre>
+<pre><code>## 3</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li><code>kyes</code></li>
+</ol>
+<p>方法<code>keys</code>返回一个字典视图，其中包含指定字典中的键。</p>
+<pre class="python"><code>d</code></pre>
+<pre><code>## {&#39;title&#39;: &#39;Python Web Site&#39;, &#39;url&#39;: &#39;http://www.python.org&#39;, &#39;spam&#39;: 0}</code></pre>
+<pre class="python"><code>d.items()</code></pre>
+<pre><code>## dict_items([(&#39;title&#39;, &#39;Python Web Site&#39;), (&#39;url&#39;, &#39;http://www.python.org&#39;), (&#39;spam&#39;, 0)])</code></pre>
+<pre class="python"><code>d.keys()</code></pre>
+<pre><code>## dict_keys([&#39;title&#39;, &#39;url&#39;, &#39;spam&#39;])</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li><code>pop</code></li>
+</ol>
+<p>方法<code>pop</code>可用于获取与指定键相关联的值，并将该键-值对从字典中删除。</p>
+<pre class="python"><code>d = {&#39;x&#39;: 1, &#39;y&#39;: 2}
+d</code></pre>
+<pre><code>## {&#39;x&#39;: 1, &#39;y&#39;: 2}</code></pre>
+<pre class="python"><code>d.pop(&#39;x&#39;)</code></pre>
+<pre><code>## 1</code></pre>
+<pre class="python"><code>d</code></pre>
+<pre><code>## {&#39;y&#39;: 2}</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li><code>popitem</code></li>
+</ol>
+<p>方法<code>popitem</code>类似于<code>list.pop</code>，但<code>list.pop</code>弹出列表中的最后一个元素，而<code>popitem</code>随机地弹出一个字典项，因为字典项的顺序是不确定的，没有“最后一个元素”的概念。如果你要以高效地方式逐个删除并处理所有字典项，这可能很有用，因为这样无需先获取键列表。</p>
+<pre class="python"><code>d = {&#39;url&#39;: &#39;http://www.python.org&#39;, &#39;spam&#39;: 0, &#39;title&#39;: &#39;Python Web Site&#39;}
+d</code></pre>
+<pre><code>## {&#39;url&#39;: &#39;http://www.python.org&#39;, &#39;spam&#39;: 0, &#39;title&#39;: &#39;Python Web Site&#39;}</code></pre>
+<pre class="python"><code>d.popitem()</code></pre>
+<pre><code>## (&#39;title&#39;, &#39;Python Web Site&#39;)</code></pre>
+<pre class="python"><code>d</code></pre>
+<pre><code>## {&#39;url&#39;: &#39;http://www.python.org&#39;, &#39;spam&#39;: 0}</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li><code>setdefault</code></li>
+</ol>
+<p>方法<code>setdefault</code>有点像<code>get</code>，因为它也获取与指定键相关联的值，但除此之外，<code>setdefault</code>还在字典不包含指定的键时，在字典中添加指定的键-值对。</p>
+<pre class="python"><code>d = {}
+d.setdefault(&#39;name&#39;, &#39;N/A&#39;)</code></pre>
+<pre><code>## &#39;N/A&#39;</code></pre>
+<pre class="python"><code>d</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;N/A&#39;}</code></pre>
+<pre class="python"><code>d[&#39;name&#39;] = &#39;Gumby&#39;
+d.setdefault(&#39;name&#39;, &#39;N/A&#39;)</code></pre>
+<pre><code>## &#39;Gumby&#39;</code></pre>
+<pre class="python"><code>d</code></pre>
+<pre><code>## {&#39;name&#39;: &#39;Gumby&#39;}</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li><code>update</code></li>
+</ol>
+<p>方法<code>update</code>使用一个字典中的项来更新另一个字典。</p>
+<pre class="python"><code>d = {
+ &#39;title&#39;: &#39;Python Web Site&#39;,
+ &#39;url&#39;: &#39;http://www.python.org&#39;,
+ &#39;changed&#39;: &#39;Mar 14 22:09:15 MET 2016&#39;
+}
+d</code></pre>
+<pre><code>## {&#39;title&#39;: &#39;Python Web Site&#39;, &#39;url&#39;: &#39;http://www.python.org&#39;, &#39;changed&#39;: &#39;Mar 14 22:09:15 MET 2016&#39;}</code></pre>
+<pre class="python"><code>x = {&#39;title&#39;: &#39;Python Language Website&#39;}
+d.update(x)
+d</code></pre>
+<pre><code>## {&#39;title&#39;: &#39;Python Language Website&#39;, &#39;url&#39;: &#39;http://www.python.org&#39;, &#39;changed&#39;: &#39;Mar 14 22:09:15 MET 2016&#39;}</code></pre>
+<p>对于通过参数提供的字典，将其项添加到当前字典中。如果当前字典包含键相同的项，就替换它。</p>
+<ol start="11" style="list-style-type: decimal">
+<li><code>values</code></li>
+</ol>
+<p>方法<code>values</code>返回一个由字典中的值组成的字典视图。不同于方法<code>keys</code>，方法<code>values</code>返回的视图可能包含重复的值。</p>
+<pre class="python"><code>d = {&quot;a&quot;:1, &quot;b&quot;:2, &quot;c&quot;:3}
+d</code></pre>
+<pre><code>## {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</code></pre>
+<pre class="python"><code>d.values()</code></pre>
+<pre><code>## dict_values([1, 2, 3])</code></pre>
+</div>
+</div>
+<div id="总结-2" class="section level4">
+<h4><span class="header-section-number">1.2.2.2</span> 总结</h4>
+<div id="新的函数" class="section level5">
+<h5><span class="header-section-number">1.2.2.2.1</span> 新的函数</h5>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dict(seq)</td>
+<td>从键-值对、映射或关键字参数创建字典</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="适用于字典的方法-1" class="section level5">
+<h5><span class="header-section-number">1.2.2.2.2</span> 适用于字典的方法</h5>
+<table>
+<colgroup>
+<col width="53%" />
+<col width="46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>clear</code></td>
+<td>删除所有的字典项,是就地执行的,不返回任何值</td>
+</tr>
+<tr class="even">
+<td><code>copy</code></td>
+<td>返回一个新字典，其包含的键值对与原来的字典相同（这个方法执行的是浅复制，因为值本身是原件，而非副本.如果想要深复制，即同时复制值及其包含的所有值，可使用模块<code>copy</code>中的函数<code>deepcopy</code></td>
+</tr>
+<tr class="odd">
+<td><code>fromkeys</code></td>
+<td>创建一个新字典，其中包含指定的键，且每个键对应的值都是None。</td>
+</tr>
+<tr class="even">
+<td><code>get</code></td>
+<td>获得字典种的值</td>
+</tr>
+<tr class="odd">
+<td><code>items</code></td>
+<td>返回一个包含所有字典项的列表</td>
+</tr>
+<tr class="even">
+<td><code>keys</code></td>
+<td>返回一个字典视图，其中包含指定字典中的键。</td>
+</tr>
+<tr class="odd">
+<td><code>pop</code></td>
+<td>用于获取与指定键相关联的值，并将该键值对从字典中删除。</td>
+</tr>
+<tr class="even">
+<td><code>setdefault</code></td>
+<td>有点像<code>get</code>，因为它也获取与指定键相关联的值，但除此之外，<code>setdefault</code>还在字典不包含指定的键时，在字典中添加指定的键-值对。</td>
+</tr>
+<tr class="odd">
+<td><code>update</code></td>
+<td>使用一个字典中的项来更新另一个字典。</td>
+</tr>
+<tr class="even">
+<td><code>values</code></td>
+<td>返回一个由字典中的值组成的字典视图。不同于方法<code>keys</code>，方法<code>values</code>返回的视图可能包含重复的值。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="条件循环及其他语句" class="section level1">
+<h1><span class="header-section-number">2</span> 条件、循环及其他语句</h1>
+<div id="条件和条件语句" class="section level2">
+<h2><span class="header-section-number">2.1</span> 条件和条件语句</h2>
+<pre class="python"><code># test which values are True and False
+# The rule: What is True? Anything that is not False!
+values = [False, None, 0, 0.0, &quot;&quot;, &#39;&#39;, [], {}, (), True, &#39;str&#39;, &quot;0&quot;, -1, 3, 1000, &#39;\&#39;\&#39;&#39;]
+
+for v in values:
+    if (v):
+        print(&quot;True : &quot;, v)
+    else:
+        print(&quot;False: &quot;, v)</code></pre>
+<pre><code>## False:  False
+## False:  None
+## False:  0
+## False:  0.0
+## False:  
+## False:  
+## False:  []
+## False:  {}
+## False:  ()
+## True :  True
+## True :  str
+## True :  0
+## True :  -1
+## True :  3
+## True :  1000
+## True :  &#39;&#39;</code></pre>
+</div>
+</div>
+<div id="day03作业" class="section level1">
+<h1><span class="header-section-number">3</span> Day03作业</h1>
+<p>读取<code>fasta</code>文件.</p>
+<div id="fasta文件的格式" class="section level2">
+<h2><span class="header-section-number">3.1</span> <code>fasta</code>文件的格式</h2>
+<pre><code>&gt;Example_Sequence-1
+TCGGGACAGCTTGTTGCCCCATCCATGGGGGTCTGCTCTAAGACCCTTTAATAATAGCGG
+TTATTTTCGCAGGCAGGCACTGATCCTTAATACGGAAGCTACAACCCACAATCTGCCTAG
+CCGTGATAAACCTTCGCCCCGTGCCTGGTCTACCATCTACTCAGGAAGTTGACCGGTCGG
+TTACCTACCTCATGGCGTATGATTGTCCCGGACAGTGCTCCTATGGCTTGGAACCTAACG
+CTCACGGGTTGCTAT
+&gt;Example_Sequence-2
+CTACCGAGAGGTGCCGTCAAATTCTGCCTTTAACCCCCACATGTAGCTCAGTAACTGAGC
+GGCTTGACGGCCCAGGTGCAGAGACGTACGATGCGTGAGCCTGCACAATAACCCACCATT
+TAGACCATTCAAAAGCTTCCAGACAGTCTAGCTCGAAGAAATTT</code></pre>
+<p>可以看到<code>fasta</code>文件每个sequence都是以<code>&gt;</code>开头,所以这可以作为识别每个sequence的标志.</p>
+</div>
+<div id="read_fasta函数" class="section level2">
+<h2><span class="header-section-number">3.2</span> <code>read_fasta</code>函数</h2>
+<pre><code>def read_fasta(fasta_filename):
+    &#39;&#39;&#39;
+    Go through file, reading one line at a time, using a
+    dictionary to store the DNA sequence for each of the FASTA
+    entries (Gavin Sherlock, November 28, 2019)
+    &#39;&#39;&#39;    
+    with open(fasta_filename, mode=&#39;r&#39;) as fasta_file:
+
+        sequences = {}#创建一个空字典
+        
+        for line in fasta_file:#对每一行进行读取
+            line = line.rstrip()#除去每行的右边的空格
+            if line.startswith(&#39;&gt;&#39;): # 如果这一行是以`&gt;`开头,则是一个新的sequence
+                line = line.lstrip(&#39;&gt;&#39;)#将这行的`&gt;`标志去除掉
+                sequences[line] = &#39;&#39; # intialize dictionary for this entry
+                currSeqName = line
+            else:
+                sequences[currSeqName] += line
+    return(sequences)</code></pre>
 </div>
 </div>
