@@ -572,12 +572,36 @@ y</code></pre>
 <div id="字符串的基本操作" class="section level3">
 <h3><span class="header-section-number">1.2.1</span> 字符串的基本操作</h3>
 <p>所有的标准序列操作(索引,切片,乘法,成员资格检查,长度,最小值和最大值)都适用于字符串.但是注意字符串是不可变的.</p>
+<div id="字符串格式" class="section level4">
+<h4><span class="header-section-number">1.2.1.1</span> 字符串格式</h4>
+<p>将值转换为字符串并设置其格式是一个重要的操作,需要考虑众多不同的需求,因此随着时间的流逝,Python提供了多种字符串格式设置方法.以前,主要的解决方案是使用字符串格式设置运算符——百分号.这个运算符的行为类似于C语言中的经典函数printf：在%左边指定一个字符串(格式字符串),并在右边指定要设置其格式的值.指定要设置其格式的值时,可使用单个值(如字符串或数字),可使用元组(如果要设置多个值的格式),还可使用字典,其中最常见的是元组.</p>
+<pre class="python"><code>format = &quot;Hello, %s. %s enough for ya?&quot;
+format</code></pre>
+<pre><code>## &#39;Hello, %s. %s enough for ya?&#39;</code></pre>
+<pre class="python"><code>values = (&#39;world&#39;, &#39;Hot&#39;)
+values</code></pre>
+<pre><code>## (&#39;world&#39;, &#39;Hot&#39;)</code></pre>
+<pre class="python"><code>format % values</code></pre>
+<pre><code>## &#39;Hello, world. Hot enough for ya?&#39;</code></pre>
+<p>上述格式字符串中的<code>%s</code>称为<code>转换说明符</code>,指出了要将值插入什么地方.<code>s</code>意味着将值视为字符串进行格式设置.如果指定的值不是字符串,将使用<code>str()</code>将其转换为字符串.其他说明符将导致其他形式的转换.例如,<code>%.3f</code>将值的格式设置为包含3位小数的浮点数.</p>
+<p>更为常用的是使用字符串方法<code>format</code>.使用这种方法时,每个替换字段都用花括号括起,其中可能包含名称,还可能包含有关如何对相应的值进行转换和格式设置的信息.</p>
+<pre class="python"><code>&quot;{}, {} and {}&quot;.format(&quot;first&quot;, &quot;second&quot;, &quot;third&quot;)</code></pre>
+<pre><code>## &#39;first, second and third&#39;</code></pre>
+<pre class="python"><code>&quot;{0}, {1} and {2}&quot;.format(&quot;first&quot;, &quot;second&quot;, &quot;third&quot;)</code></pre>
+<pre><code>## &#39;first, second and third&#39;</code></pre>
+<pre class="python"><code>&quot;{3} {0} {2} {1} {3} {0}&quot;.format(&quot;be&quot;, &quot;not&quot;, &quot;or&quot;, &quot;to&quot;)</code></pre>
+<pre><code>## &#39;to be or not to be&#39;</code></pre>
+<p>在大括号中的数字代表着<code>format</code>中的内容的索引,如果不写,则默认按照先后顺序替换.</p>
+<p>当然,也可以使用命名的方法来提示如何替换.</p>
+<pre class="python"><code>&quot;{name} is a {position:s}.&quot;.format(position=&quot;postdoc&quot;, name=&quot;Japser Shen&quot;)</code></pre>
+<pre><code>## &#39;Japser Shen is a postdoc.&#39;</code></pre>
+</div>
 <div id="字符串方法" class="section level4">
-<h4><span class="header-section-number">1.2.1.1</span> 字符串方法</h4>
+<h4><span class="header-section-number">1.2.1.2</span> 字符串方法</h4>
 <p>字符串的方法要多得多,很多都是从模块string那继承过来的.</p>
 <p>介绍一些比较常用的.</p>
 <div id="center" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.1</span> <code>center</code></h5>
+<h5><span class="header-section-number">1.2.1.2.1</span> <code>center</code></h5>
 <p>通过在两边添加填充字符(默认为空格)让字符串居中.</p>
 <pre class="python"><code>&quot;The Middle by Jimmy Eat World&quot;.center(40)</code></pre>
 <pre><code>## &#39;     The Middle by Jimmy Eat World      &#39;</code></pre>
@@ -585,7 +609,7 @@ y</code></pre>
 <pre><code>## &#39;*****The Middle by Jimmy Eat World******&#39;</code></pre>
 </div>
 <div id="find" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.2</span> <code>find</code></h5>
+<h5><span class="header-section-number">1.2.1.2.2</span> <code>find</code></h5>
 <p>在字符串中查找子串,如果找到,就返回字串的第一个字符的索引,否则返回-1.</p>
 <pre class="python"><code>&#39;With a moo-moo here, and a moo-moo there&#39;.find(&#39;moo&#39;)</code></pre>
 <pre><code>## 7</code></pre>
@@ -606,7 +630,7 @@ subject</code></pre>
 <p><code>rfind</code>,<code>index</code>,<code>rindex</code>,<code>count</code>,<code>startswith</code>和<code>endswith</code>.</p>
 </div>
 <div id="join" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.3</span> <code>join</code></h5>
+<h5><span class="header-section-number">1.2.1.2.3</span> <code>join</code></h5>
 <p><code>join</code>是一个非常重要的字符串方法,其作用与split相反,用于合并序列的元素.</p>
 <pre class="python"><code>seq = list(&quot;shen&quot;)
 seq</code></pre>
@@ -620,7 +644,7 @@ sep</code></pre>
 <p>注意,所合并序列的元素必须都是字符串.如果list元素都是数字,是会报错的.</p>
 </div>
 <div id="lower" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.4</span> <code>lower</code></h5>
+<h5><span class="header-section-number">1.2.1.2.4</span> <code>lower</code></h5>
 <p>返回字符串的小写版本.</p>
 <pre class="python"><code>&#39;Trondheim Hammer Dance&#39;.lower()</code></pre>
 <pre><code>## &#39;trondheim hammer dance&#39;</code></pre>
@@ -628,7 +652,7 @@ sep</code></pre>
 <p><code>islower</code>,<code>istitle</code>,<code>isupper</code>,<code>translate</code>,<code>capitalize</code>,<code>casefold</code>,<code>swapcase</code>,<code>title</code>,<code>upper</code>.</p>
 </div>
 <div id="replace" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.5</span> <code>replace</code></h5>
+<h5><span class="header-section-number">1.2.1.2.5</span> <code>replace</code></h5>
 <p>将指定子串都替换为另一个字符串,并返回替换后的结果.</p>
 <pre class="python"><code>&#39;This is a test&#39;.replace(&#39;is&#39;, &#39;eez&#39;)</code></pre>
 <pre><code>## &#39;Theez eez a test&#39;</code></pre>
@@ -638,7 +662,7 @@ sep</code></pre>
 <p><code>tranlate</code>和<code>expandtabs</code>.</p>
 </div>
 <div id="split" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.6</span> <code>split</code></h5>
+<h5><span class="header-section-number">1.2.1.2.6</span> <code>split</code></h5>
 <p>其和<code>join</code>作用相反,用于将字符串拆分为序列.</p>
 <pre class="python"><code>&#39;1+2+3+4+5&#39;.split(&#39;+&#39;)</code></pre>
 <pre><code>## [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;]</code></pre>
@@ -647,7 +671,7 @@ sep</code></pre>
 <p>可以看到,默认拆分的标识符是空格( ).</p>
 </div>
 <div id="strip" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.7</span> <code>strip</code></h5>
+<h5><span class="header-section-number">1.2.1.2.7</span> <code>strip</code></h5>
 <p>用于将字符串的开头和末尾的空白删除.</p>
 <pre class="python"><code>&#39; internal whitespace is kept &#39;.strip()</code></pre>
 <pre><code>## &#39;internal whitespace is kept&#39;</code></pre>
@@ -659,7 +683,7 @@ sep</code></pre>
 <p><code>lstrip</code>和<code>rstrip</code>.</p>
 </div>
 <div id="translate" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.8</span> <code>translate</code></h5>
+<h5><span class="header-section-number">1.2.1.2.8</span> <code>translate</code></h5>
 <p>方法<code>translate</code>与<code>replace</code>一样替换字符串的特定部分,但不同的是它只能进行单字符替换.这个方法的优势在于能够同时替换多个字符,因此效率比replace高.</p>
 <p>使用<code>translate</code>前必须创建一个转换表.这个转换表指出了不同<code>Unicode</code>码点之间的转换关系.要创建转换表,可对字符串类型<code>str</code>调用方法<code>maketrans</code>,这个方法接受两个参数:两个长度相同的字符串,它们指定要将第一个字符串中的每个字符都替换为第二个字符串中的相应字
 符.</p>
@@ -673,14 +697,14 @@ table</code></pre>
 <pre><code>## &#39;thiz iz an inkredible tezt&#39;</code></pre>
 </div>
 <div id="判断字符串是否满足某些特定的条件" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.9</span> 判断字符串是否满足某些特定的条件</h5>
+<h5><span class="header-section-number">1.2.1.2.9</span> 判断字符串是否满足某些特定的条件</h5>
 <p>很多字符串方法都以is打头,如<code>isspace</code>,<code>isdigit</code>和<code>isupper</code>,它们判断字符串是否具有特定的性质(如包含的字符全为空白,数字或大写).如果字符串具备特定的性质,这些方法就返回True,否则返回False.</p>
 <p>参考其他函数:</p>
 <p><code>isalnum</code>,<code>isalpha</code>,<code>isdecimal</code>,<code>isdigit</code>,<code>isidentifier</code>,<code>islower</code>,<code>isnumeric</code>,<code>isprintable</code>,<code>isspace</code>,<code>istitle</code>,<code>isupper</code>.</p>
 </div>
 </div>
 <div id="总结-1" class="section level4">
-<h4><span class="header-section-number">1.2.1.2</span> 总结</h4>
+<h4><span class="header-section-number">1.2.1.3</span> 总结</h4>
 <p>将字符串的方法总结如下:</p>
 <table>
 <colgroup>

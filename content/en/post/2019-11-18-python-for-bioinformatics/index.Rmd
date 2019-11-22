@@ -17,6 +17,10 @@ output:
     number_sections: true
 ---
 
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
 # 第一次课程 (Day 01)
 
 收到老师邮件,如下:
@@ -124,11 +128,57 @@ https://mobaxterm.mobatek.net/
 
 ## 课程
 
-# 第二次课程 (Day 02)
+跟R不同,python中有不同的对象来执行命令,常见的有语句,函数(function)和方法(method).我们简单来介绍一下他们.
 
-这次有事没去.
+### 函数(function)
 
-# 第三次课程 (Day 03)
+这是跟R最像也是一致的东西,所以比较好理解.函数是封装了多条语句用来完成特定任务的一段代码.
+
+```
+function(object, arg1, arg2,...)
+```
+
+函数执行的时候,第一个参数一般是要处理的对象.然后是其他的一些形参.
+
+```{python}
+a = [1 ,2 ,3]
+sum(a)
+a
+str(a)
+a
+```
+
+可以看到,跟R一样,对一个对象用某个R数处理之后,一般会返回处理结果,并且对原来的对象并没有做任何处理,原来的对象没有发生任何变化,如果想要得到处理之后的结果,需要将其赋值给某个对象.
+
+```{python}
+a = [1,2,3]
+b = str(a)
+a
+b
+type(a)
+type(b)
+```
+
+### 方法(method)
+
+R中好像没有方法?方法一般是对某些特殊类型的对象进行处理,比如对于字符串,就有很多可以用于字符串处理的方法.方法的调用是使用下列语法:
+
+```
+object.method(arg1, arg2,...)
+```
+
+```{python}
+test = "Jasper Shen is a postdoc at Stanford University."
+type(test)
+test.find("S")
+test.count("S")
+```
+
+方法和函数有一点最不一样的,如果实对对象进行处理,那么不需要赋值,很多时候是对对象`就地改变的`.
+
+### 语句
+
+语句是一段可执行的代码,常见的有赋值语句(`=`),`if`,`for`,`while`,`import`,`return`,`break`,`pass`,`with`语句等.
 
 
 
