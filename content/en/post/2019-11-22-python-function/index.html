@@ -1,0 +1,159 @@
+---
+title: Python中如何创建函数
+author: Xiaotao Shen
+date: 2019-11-22
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#自定义函数"><span class="toc-section-number">1</span> 自定义函数</a><ul>
+<li><a href="#给函数编写文档"><span class="toc-section-number">1.1</span> 给函数编写文档</a></li>
+<li><a href="#作用域"><span class="toc-section-number">1.2</span> 作用域</a></li>
+<li><a href="#关键字参数和默认值"><span class="toc-section-number">1.3</span> 关键字参数和默认值</a></li>
+<li><a href="#收集参数"><span class="toc-section-number">1.4</span> 收集参数</a></li>
+<li><a href="#分配参数"><span class="toc-section-number">1.5</span> 分配参数</a></li>
+<li><a href="#作用域-1"><span class="toc-section-number">1.6</span> 作用域</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="自定义函数" class="section level1">
+<h1><span class="header-section-number">1</span> 自定义函数</h1>
+<p>Python中使用<code>def</code>语句来创建自定义函数.</p>
+<pre class="python"><code>def hello(name):
+  print(&quot;hello&quot;, name)
+#hello()  
+hello(&quot;shenxiaotao&quot;)</code></pre>
+<pre><code>## hello shenxiaotao</code></pre>
+<p>和R一样,可以给参数默认值.</p>
+<pre class="python"><code>def hello(name = &quot;xiaotao&quot;):
+  print(&quot;hello&quot;, name)
+#hello()  
+hello()</code></pre>
+<pre><code>## hello xiaotao</code></pre>
+<div id="给函数编写文档" class="section level2">
+<h2><span class="header-section-number">1.1</span> 给函数编写文档</h2>
+<p>在<code>def</code>语句后面,就可以添加该函数的文档说明.称之为<strong>文档字符串</strong>(docstring).</p>
+<pre class="python"><code>def square(x):
+  &#39;Calculates the square of the number x.&#39;
+  return x * x</code></pre>
+<p>文档字符串如果只有一行,可以使用引号括起来,如果有多行,需要使用三引号括起来.</p>
+<p>通过下列语句访问文档字符串.</p>
+<pre class="python"><code>square.__doc__</code></pre>
+<pre><code>## &#39;Calculates the square of the number x.&#39;</code></pre>
+<p><code>_doc_</code>其实时函数一个方法.双下划线代表他是函数的一个特殊属性.</p>
+<p>也可以使用<code>help()</code>函数获得信息.</p>
+<pre class="python"><code>help(square)</code></pre>
+<pre><code>## Help on function square in module __main__:
+## 
+## square(x)
+##     Calculates the square of the number x.</code></pre>
+<p>一个特殊的语句,<code>return</code>跟R中一样,也是可以提前结束函数的.</p>
+<pre class="python"><code>def test():
+  print(&quot;test&quot;)
+  return
+  print(&quot;test2&quot;)
+  
+test()</code></pre>
+<pre><code>## test</code></pre>
+<blockquote>
+<p>在def语句中，位于函数名后面的变量通常称为形参，而调用函数时提供的值称为实参，但本书基本不对此做严格的区分。在很重要的情况下，我会将实参称为值，以便将其与类似于变量的形参区分开来。</p>
+</blockquote>
+</div>
+<div id="作用域" class="section level2">
+<h2><span class="header-section-number">1.2</span> 作用域</h2>
+<p>跟R一样,python中也是存在局部和全局作用域,在函数内部对变量进行操作都是在该函数的局部作用域进行操作的,不会对函数外部的其他局部作用域以及全局作用域造成影响.</p>
+<blockquote>
+<p>使用切片可以对列表等创建符本,这样可以避免在修改某一个变量时,对该变量关联的列表也发生了变化.</p>
+</blockquote>
+<blockquote>
+<p>函数内的局部名称（包括参数）会与函数外的名称（即全局名称）冲突吗？答案是不会。</p>
+</blockquote>
+</div>
+<div id="关键字参数和默认值" class="section level2">
+<h2><span class="header-section-number">1.3</span> 关键字参数和默认值</h2>
+<p>使用名称指定的参数称为关键字参数，主要优点是有助于澄清各个参数的作用。关键字参数最大的优点在于，可以指定默认值。</p>
+</div>
+<div id="收集参数" class="section level2">
+<h2><span class="header-section-number">1.4</span> 收集参数</h2>
+<p>在R中,我们知道,有时候需要用户提供长度不同的参数,这在R中,是通过使用<code>...</code>来实现的,那再python中呢?是通过在参数名字前加一个<code>*</code>实现的.</p>
+<pre class="python"><code>def print_params(*params):
+  print(params)
+
+print_params(&quot;shen&quot;)</code></pre>
+<pre><code>## (&#39;shen&#39;,)</code></pre>
+<pre class="python"><code>print_params(&quot;shen&quot;, &quot;wang&quot;)</code></pre>
+<pre><code>## (&#39;shen&#39;, &#39;wang&#39;)</code></pre>
+<pre class="python"><code>print_params(1, 2, 3)</code></pre>
+<pre><code>## (1, 2, 3)</code></pre>
+<p>如果某个参数前面加了星号,那么该参数下的所有实参,会被放在一个元组中.</p>
+<pre class="python"><code>def print_params_2(title, *params):
+  print(title)
+  print(params)
+  
+print_params_2(&#39;Params:&#39;, 1, 2, 3)</code></pre>
+<pre><code>## Params:
+## (1, 2, 3)</code></pre>
+<p>带星号的参数将会收集之后的所有输入的参数.</p>
+<p>如果需要将带星号参数放在中间,那么其后面的参数在调用时,必须指明形参.</p>
+<pre class="python"><code>def in_the_middle(x, *y, z):
+  print(x, y, z)
+
+in_the_middle(1,2,3, z = 4)</code></pre>
+<pre><code>## 1 (2, 3) 4</code></pre>
+<p>型号时不会收集关键字参数的,如果要收集,可以使用两个星号.</p>
+<pre class="python"><code>def print_params_3(**params):
+  print(params)
+  
+print_params_3(x = 1, y = 2, z = 3)</code></pre>
+<pre><code>## {&#39;x&#39;: 1, &#39;y&#39;: 2, &#39;z&#39;: 3}</code></pre>
+<p>可以看到,这时候将其作为字典使用.</p>
+</div>
+<div id="分配参数" class="section level2">
+<h2><span class="header-section-number">1.5</span> 分配参数</h2>
+<p>前面介绍了如何将参数收集到元组和字典中，但用同样的两个运算符（<code>*和**</code>）也可执行相反的操作。</p>
+<pre class="python"><code>def add(x, y):
+  return x + y
+  
+params = (1, 2)
+
+add(*params)</code></pre>
+<pre><code>## 3</code></pre>
+</div>
+<div id="作用域-1" class="section level2">
+<h2><span class="header-section-number">1.6</span> 作用域</h2>
+<p>变量到底是什么呢？可将其视为指向值的名称。因此，执行赋值语句x=1后，名称x指向值1。这几乎与使用字典时一样（字典中的键指向值），只是你使用的是“看不见”的字典。</p>
+<p>这种“看不见的字典”称为命名空间或作用域。那么有多少个命名空间呢？除全局作用域外，每个函数调用都将创建一个。</p>
+<p>在函数内使用的变量称为局部变量（与之相对的是全局变量）。参数类似于局部变量，因此参数与全局变量同名不会有任何问题。</p>
+<p>到目前为止一切顺利。但如果要在函数中访问全局变量呢？如果只是想读取这种变量的值（不重新关联它），通常不会有任何问题。</p>
+<blockquote>
+<p>但是,在函数中访问全局变量是众多bug的根源。务必慎用全局变量。</p>
+</blockquote>
+<p>读取全局变量的值通常不会有问题，但还是存在出现问题的可能性。如果有一个局部变量或参数与你要访问的全局变量同名，就无法直接访问全局变量，因为它被局部变量遮住了。</p>
+<p>如果需要，可使用函数<code>globals</code>来访问全局变量。这个函数类似于<code>vars</code>，返回一个包含全局变量的字典。（<code>locals</code>返回一个包含局部变量的字典。）</p>
+<p>重新关联全局变量（使其指向新值）是另一码事。在函数内部给变量赋值时，该变量默认为局部变量，除非你明确地告诉Python它是全局变量。那么如何将这一点告知Python呢？</p>
+<pre class="python"><code>x = 1
+def change_global():
+  global x
+  x = x + 1
+
+change_global()
+x</code></pre>
+<pre><code>## 2</code></pre>
+<p>可以看到,需要使用<code>global</code>语句来申明,从而改变全局变量.</p>
+</div>
+</div>

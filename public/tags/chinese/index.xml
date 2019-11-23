@@ -5,7 +5,156 @@
     <link>/tags/chinese/</link>
       <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
     <description>Chinese</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Python中如何创建函数</title>
+      <link>/post/2019-11-22-python-function/</link>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-22-python-function/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#自定义函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 自定义函数&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#给函数编写文档&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 给函数编写文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#作用域&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 作用域&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#关键字参数和默认值&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; 关键字参数和默认值&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#收集参数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4&lt;/span&gt; 收集参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分配参数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.5&lt;/span&gt; 分配参数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#作用域-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.6&lt;/span&gt; 作用域&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;自定义函数&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 自定义函数&lt;/h1&gt;
+&lt;p&gt;Python中使用&lt;code&gt;def&lt;/code&gt;语句来创建自定义函数.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def hello(name):
+  print(&amp;quot;hello&amp;quot;, name)
+#hello()  
+hello(&amp;quot;shenxiaotao&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## hello shenxiaotao&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;和R一样,可以给参数默认值.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def hello(name = &amp;quot;xiaotao&amp;quot;):
+  print(&amp;quot;hello&amp;quot;, name)
+#hello()  
+hello()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## hello xiaotao&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;给函数编写文档&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 给函数编写文档&lt;/h2&gt;
+&lt;p&gt;在&lt;code&gt;def&lt;/code&gt;语句后面,就可以添加该函数的文档说明.称之为&lt;strong&gt;文档字符串&lt;/strong&gt;(docstring).&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def square(x):
+  &amp;#39;Calculates the square of the number x.&amp;#39;
+  return x * x&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文档字符串如果只有一行,可以使用引号括起来,如果有多行,需要使用三引号括起来.&lt;/p&gt;
+&lt;p&gt;通过下列语句访问文档字符串.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;square.__doc__&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;Calculates the square of the number x.&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;_doc_&lt;/code&gt;其实时函数一个方法.双下划线代表他是函数的一个特殊属性.&lt;/p&gt;
+&lt;p&gt;也可以使用&lt;code&gt;help()&lt;/code&gt;函数获得信息.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;help(square)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Help on function square in module __main__:
+## 
+## square(x)
+##     Calculates the square of the number x.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一个特殊的语句,&lt;code&gt;return&lt;/code&gt;跟R中一样,也是可以提前结束函数的.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def test():
+  print(&amp;quot;test&amp;quot;)
+  return
+  print(&amp;quot;test2&amp;quot;)
+  
+test()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## test&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在def语句中，位于函数名后面的变量通常称为形参，而调用函数时提供的值称为实参，但本书基本不对此做严格的区分。在很重要的情况下，我会将实参称为值，以便将其与类似于变量的形参区分开来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;作用域&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 作用域&lt;/h2&gt;
+&lt;p&gt;跟R一样,python中也是存在局部和全局作用域,在函数内部对变量进行操作都是在该函数的局部作用域进行操作的,不会对函数外部的其他局部作用域以及全局作用域造成影响.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用切片可以对列表等创建符本,这样可以避免在修改某一个变量时,对该变量关联的列表也发生了变化.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;函数内的局部名称（包括参数）会与函数外的名称（即全局名称）冲突吗？答案是不会。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;关键字参数和默认值&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; 关键字参数和默认值&lt;/h2&gt;
+&lt;p&gt;使用名称指定的参数称为关键字参数，主要优点是有助于澄清各个参数的作用。关键字参数最大的优点在于，可以指定默认值。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;收集参数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4&lt;/span&gt; 收集参数&lt;/h2&gt;
+&lt;p&gt;在R中,我们知道,有时候需要用户提供长度不同的参数,这在R中,是通过使用&lt;code&gt;...&lt;/code&gt;来实现的,那再python中呢?是通过在参数名字前加一个&lt;code&gt;*&lt;/code&gt;实现的.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def print_params(*params):
+  print(params)
+
+print_params(&amp;quot;shen&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (&amp;#39;shen&amp;#39;,)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print_params(&amp;quot;shen&amp;quot;, &amp;quot;wang&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (&amp;#39;shen&amp;#39;, &amp;#39;wang&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print_params(1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果某个参数前面加了星号,那么该参数下的所有实参,会被放在一个元组中.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def print_params_2(title, *params):
+  print(title)
+  print(params)
+  
+print_params_2(&amp;#39;Params:&amp;#39;, 1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Params:
+## (1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;带星号的参数将会收集之后的所有输入的参数.&lt;/p&gt;
+&lt;p&gt;如果需要将带星号参数放在中间,那么其后面的参数在调用时,必须指明形参.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def in_the_middle(x, *y, z):
+  print(x, y, z)
+
+in_the_middle(1,2,3, z = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1 (2, 3) 4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;型号时不会收集关键字参数的,如果要收集,可以使用两个星号.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def print_params_3(**params):
+  print(params)
+  
+print_params_3(x = 1, y = 2, z = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;x&amp;#39;: 1, &amp;#39;y&amp;#39;: 2, &amp;#39;z&amp;#39;: 3}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到,这时候将其作为字典使用.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分配参数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.5&lt;/span&gt; 分配参数&lt;/h2&gt;
+&lt;p&gt;前面介绍了如何将参数收集到元组和字典中，但用同样的两个运算符（&lt;code&gt;*和**&lt;/code&gt;）也可执行相反的操作。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def add(x, y):
+  return x + y
+  
+params = (1, 2)
+
+add(*params)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;作用域-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.6&lt;/span&gt; 作用域&lt;/h2&gt;
+&lt;p&gt;变量到底是什么呢？可将其视为指向值的名称。因此，执行赋值语句x=1后，名称x指向值1。这几乎与使用字典时一样（字典中的键指向值），只是你使用的是“看不见”的字典。&lt;/p&gt;
+&lt;p&gt;这种“看不见的字典”称为命名空间或作用域。那么有多少个命名空间呢？除全局作用域外，每个函数调用都将创建一个。&lt;/p&gt;
+&lt;p&gt;在函数内使用的变量称为局部变量（与之相对的是全局变量）。参数类似于局部变量，因此参数与全局变量同名不会有任何问题。&lt;/p&gt;
+&lt;p&gt;到目前为止一切顺利。但如果要在函数中访问全局变量呢？如果只是想读取这种变量的值（不重新关联它），通常不会有任何问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;但是,在函数中访问全局变量是众多bug的根源。务必慎用全局变量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;读取全局变量的值通常不会有问题，但还是存在出现问题的可能性。如果有一个局部变量或参数与你要访问的全局变量同名，就无法直接访问全局变量，因为它被局部变量遮住了。&lt;/p&gt;
+&lt;p&gt;如果需要，可使用函数&lt;code&gt;globals&lt;/code&gt;来访问全局变量。这个函数类似于&lt;code&gt;vars&lt;/code&gt;，返回一个包含全局变量的字典。（&lt;code&gt;locals&lt;/code&gt;返回一个包含局部变量的字典。）&lt;/p&gt;
+&lt;p&gt;重新关联全局变量（使其指向新值）是另一码事。在函数内部给变量赋值时，该变量默认为局部变量，除非你明确地告诉Python它是全局变量。那么如何将这一点告知Python呢？&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = 1
+def change_global():
+  global x
+  x = x + 1
+
+change_global()
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到,需要使用&lt;code&gt;global&lt;/code&gt;语句来申明,从而改变全局变量.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python for genomics class day04</title>
       <link>/post/2019-11-21-python-for-genomics-class-day04/</link>
@@ -2136,57 +2285,27 @@ TAGACCATTCAAAAGCTTCCAGACAGTCTAGCTCGAAGAAATTT&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#基础&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 基础&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#pycharm-cookbook&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Pycharm cookbook&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#如何更改每个项目的解释器版本&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#创建文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 创建文件&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#运行代码&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.3&lt;/span&gt; 运行代码&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#修改默认的快捷键&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.4&lt;/span&gt; 修改默认的快捷键&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#编码设置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.5&lt;/span&gt; 编码设置&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pycharm&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Pycharm&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#基础&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 基础&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pycharm-cookbook&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Pycharm cookbook&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#注释快捷键&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 注释快捷键&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#将project上传到github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 将project上传到github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何更改每个项目的解释器版本&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4&lt;/span&gt; 创建文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#运行代码&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5&lt;/span&gt; 运行代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改默认的快捷键&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.6&lt;/span&gt; 修改默认的快捷键&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编码设置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.7&lt;/span&gt; 编码设置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#jupyter-notbook&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8&lt;/span&gt; Jupyter notbook&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#修改工作路径&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8.1&lt;/span&gt; 修改工作路径&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
 &lt;div id=&#34;基础&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 基础&lt;/h1&gt;
-&lt;div id=&#34;pycharm-cookbook&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Pycharm cookbook&lt;/h2&gt;
-&lt;div id=&#34;如何更改每个项目的解释器版本&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/h3&gt;
-&lt;p&gt;File -&amp;gt; Settings -&amp;gt;project -&amp;gt; Project Interpreter&lt;/p&gt;
-&lt;p&gt;然后选择即可.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;创建文件&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.2&lt;/span&gt; 创建文件&lt;/h3&gt;
-&lt;p&gt;File -&amp;gt; new&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;运行代码&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.3&lt;/span&gt; 运行代码&lt;/h3&gt;
-&lt;p&gt;可以一行行的运行代码,修改默认快捷键位&lt;code&gt;ctl+enter&lt;/code&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;修改默认的快捷键&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.4&lt;/span&gt; 修改默认的快捷键&lt;/h3&gt;
-&lt;p&gt;在File -&amp;gt;keymap下&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;编码设置&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.5&lt;/span&gt; 编码设置&lt;/h3&gt;
-&lt;p&gt;需要将pycharm的所有编码设置为&lt;code&gt;UTF-8&lt;/code&gt;.&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;File -&amp;gt; Setting -&amp;gt; Editor -&amp;gt; File Encoding&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;./pycharm_encoding&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;同时在每个文件的开头添加:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#-*- coding: utf-8 -*&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;pycharm&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Pycharm&lt;/h1&gt;
+&lt;div id=&#34;pycharm-cookbook&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Pycharm cookbook&lt;/h1&gt;
 &lt;div id=&#34;注释快捷键&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 注释快捷键&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;ctl+/&lt;/code&gt;&lt;/p&gt;
@@ -2195,6 +2314,44 @@ TAGACCATTCAAAAGCTTCCAGACAGTCTAGCTCGAAGAAATTT&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 将project上传到github&lt;/h2&gt;
 &lt;p&gt;参考下面帖子:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/feixuelove1009/p/5955332.html&#34; class=&#34;uri&#34;&gt;https://www.cnblogs.com/feixuelove1009/p/5955332.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;如何更改每个项目的解释器版本&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 如何更改每个项目的解释器版本?&lt;/h2&gt;
+&lt;p&gt;File -&amp;gt; Settings -&amp;gt;project -&amp;gt; Project Interpreter&lt;/p&gt;
+&lt;p&gt;然后选择即可.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建文件&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4&lt;/span&gt; 创建文件&lt;/h2&gt;
+&lt;p&gt;File -&amp;gt; new&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;运行代码&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5&lt;/span&gt; 运行代码&lt;/h2&gt;
+&lt;p&gt;可以一行行的运行代码,修改默认快捷键位&lt;code&gt;ctl+enter&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改默认的快捷键&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.6&lt;/span&gt; 修改默认的快捷键&lt;/h2&gt;
+&lt;p&gt;在File -&amp;gt;keymap下&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编码设置&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.7&lt;/span&gt; 编码设置&lt;/h2&gt;
+&lt;p&gt;需要将pycharm的所有编码设置为&lt;code&gt;UTF-8&lt;/code&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;File -&amp;gt; Setting -&amp;gt; Editor -&amp;gt; File Encoding&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;./pycharm_encoding&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;同时在每个文件的开头添加:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#-*- coding: utf-8 -*&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;jupyter-notbook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8&lt;/span&gt; Jupyter notbook&lt;/h2&gt;
+&lt;div id=&#34;修改工作路径&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8.1&lt;/span&gt; 修改工作路径&lt;/h3&gt;
+&lt;p&gt;打开默认时C盘.在Win中可以按照下面方法修改路径.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;D:
+cd ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后使用下列命令启动&lt;code&gt;jupyter notebook&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;jupyter notebook&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
