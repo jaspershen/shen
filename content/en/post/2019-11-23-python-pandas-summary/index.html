@@ -1,0 +1,94 @@
+---
+title: Python pandas包总结
+author: Xiaotao Shen
+date: 2019-11-23
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#安装pandas"><span class="toc-section-number">1</span> 安装<code>pandas</code></a></li>
+<li><a href="#导入数据"><span class="toc-section-number">2</span> 导入数据</a></li>
+</ul>
+</div>
+
+<p>umpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。</p>
+<div id="安装pandas" class="section level1">
+<h1><span class="header-section-number">1</span> 安装<code>pandas</code></h1>
+<p>使用<code>pip</code>可以快速的安装<code>pandas</code>.</p>
+<p>在终端进行操作.</p>
+<pre><code>pip install pandas</code></pre>
+<pre class="python"><code>import pandas as pd</code></pre>
+</div>
+<div id="导入数据" class="section level1">
+<h1><span class="header-section-number">2</span> 导入数据</h1>
+<p>和R类似,可以使用pandas读取不同格式的本地的数据.函数总结如下:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read_csv()</code></td>
+<td>从CSV文件导入数据</td>
+</tr>
+<tr class="even">
+<td><code>pd.read_table(filename)</code></td>
+<td>从限定分隔符的文本文件导入数据</td>
+</tr>
+<tr class="odd">
+<td><code>pd.read_excel(filename)</code></td>
+<td>从Excel文件导入数据</td>
+</tr>
+<tr class="even">
+<td><code>pd.read_sql(query, connection_object)</code></td>
+<td>从SQL表/库导入数据</td>
+</tr>
+<tr class="odd">
+<td><code>pd.read_json(json_string)</code></td>
+<td>从JSON格式的字符串导入数据</td>
+</tr>
+<tr class="even">
+<td><code>pd.read_html(url)</code></td>
+<td>解析URL、字符串或者HTML文件，抽取其中的tables表格</td>
+</tr>
+<tr class="odd">
+<td><code>pd.read_clipboard()</code></td>
+<td>从你的粘贴板获取内容，并传给read_table()</td>
+</tr>
+<tr class="even">
+<td><code>pd.DataFrame(dict)</code></td>
+<td>从字典对象导入数据，Key是列名，Value是数据</td>
+</tr>
+</tbody>
+</table>
+<p>和R中函数一样,如果想要知道每个函数的所有参数及含义,可以使用<code>help()</code>函数来获得.</p>
+<pre class="python"><code>import os as os
+os.getcwd()</code></pre>
+<pre><code>## &#39;D:\\my github\\shen\\content\\en\\post\\2019-11-23-python-pandas-summary&#39;</code></pre>
+<pre class="python"><code>test = {&quot;a&quot;:1, &quot;b&quot;:2}
+test</code></pre>
+<pre><code>## {&#39;a&#39;: 1, &#39;b&#39;: 2}</code></pre>
+<pre class="python"><code>test2 = pd.DataFrame(test, index = [1,2])
+# help(pd.DataFrame)
+test2</code></pre>
+<pre><code>##    a  b
+## 1  1  2
+## 2  1  2</code></pre>
+</div>

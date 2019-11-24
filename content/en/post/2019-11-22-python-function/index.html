@@ -26,8 +26,13 @@ output:
 <li><a href="#关键字参数和默认值"><span class="toc-section-number">1.3</span> 关键字参数和默认值</a></li>
 <li><a href="#收集参数"><span class="toc-section-number">1.4</span> 收集参数</a></li>
 <li><a href="#分配参数"><span class="toc-section-number">1.5</span> 分配参数</a></li>
-<li><a href="#作用域-1"><span class="toc-section-number">1.6</span> 作用域</a></li>
 </ul></li>
+<li><a href="#作用域-1"><span class="toc-section-number">2</span> 作用域</a></li>
+<li><a href="#函数式编程"><span class="toc-section-number">3</span> 函数式编程</a><ul>
+<li><a href="#lambda表达式"><span class="toc-section-number">3.1</span> lambda表达式</a></li>
+<li><a href="#redunce函数会对参数序列中元素进行累积"><span class="toc-section-number">3.2</span> <code>redunce()</code>函数会对参数序列中元素进行累积。</a></li>
+</ul></li>
+<li><a href="#总结"><span class="toc-section-number">4</span> 总结</a></li>
 </ul>
 </div>
 
@@ -134,8 +139,9 @@ params = (1, 2)
 add(*params)</code></pre>
 <pre><code>## 3</code></pre>
 </div>
-<div id="作用域-1" class="section level2">
-<h2><span class="header-section-number">1.6</span> 作用域</h2>
+</div>
+<div id="作用域-1" class="section level1">
+<h1><span class="header-section-number">2</span> 作用域</h1>
 <p>变量到底是什么呢？可将其视为指向值的名称。因此，执行赋值语句x=1后，名称x指向值1。这几乎与使用字典时一样（字典中的键指向值），只是你使用的是“看不见”的字典。</p>
 <p>这种“看不见的字典”称为命名空间或作用域。那么有多少个命名空间呢？除全局作用域外，每个函数调用都将创建一个。</p>
 <p>在函数内使用的变量称为局部变量（与之相对的是全局变量）。参数类似于局部变量，因此参数与全局变量同名不会有任何问题。</p>
@@ -156,4 +162,110 @@ x</code></pre>
 <pre><code>## 2</code></pre>
 <p>可以看到,需要使用<code>global</code>语句来申明,从而改变全局变量.</p>
 </div>
+<div id="函数式编程" class="section level1">
+<h1><span class="header-section-number">3</span> 函数式编程</h1>
+<p>至此，你可能习惯了像使用其他对象（字符串、数、序列等）一样使用函数：将其赋给变量，将其作为参数进行传递，以及从函数返回它们。在有些语言（如scheme和Lisp）中，几乎所有的任务都是以这种方式使用函数来完成的。在Python 中，通常不会如此倚重函数（而是创建自定义对象，这将在下一章详细介绍），但完全可以这样做。Python提供了一些有助于进行这种函数式编程的函数：<code>map</code>、<code>filter</code>和<code>reduce</code>。在较新的Python版本中，函数map和filter的用途并不大，应该使用列表推导来替代它们。你可使用map将序列的所有元素传递给函数。</p>
+<p>其中<code>map()</code>函数和R中的<code>apply</code>家族或者<code>purrr</code>的<code>map()</code>家族函数非常像,有点是向量化处理的感觉.</p>
+<p>举个例子.</p>
+<pre class="python"><code>[str(i) for i in range(10)]</code></pre>
+<pre><code>## [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]</code></pre>
+<p>还可以写作:</p>
+<pre class="python"><code>map(str, range(10))</code></pre>
+<pre><code>## &lt;map object at 0x00000000525EBF08&gt;</code></pre>
+<pre class="python"><code>list(map(str, range(10)))</code></pre>
+<pre><code>## [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]</code></pre>
+<p><code>map()</code>函数直接返回的是一个迭代器,因此需要使用<code>list()</code>函数将他转变为list.使用R可以这么写.</p>
+<pre class="r"><code>sapply(c(0:9), as.character)</code></pre>
+<pre><code>##  [1] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot; &quot;8&quot; &quot;9&quot;</code></pre>
+<pre class="r"><code>unlist(purrr::map(c(0:9), as.character))</code></pre>
+<pre><code>##  [1] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot; &quot;8&quot; &quot;9&quot;</code></pre>
+<p><code>filter()</code>函数非常好用,是一个用来筛选的函数.用于过滤序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表。</p>
+<p>使用方法:</p>
+<pre><code>filter(function, iterable)</code></pre>
+<ul>
+<li><p><strong>function</strong>:函数.</p></li>
+<li><p><strong>iterable</strong>:可迭代的对象.</p></li>
+</ul>
+<p>举个例子:</p>
+<pre class="python"><code>def biggerThan10(x):
+  if x &gt; 10:
+    return(True)
+  else:
+    return(False)
+  
+biggerThan10(10)</code></pre>
+<pre><code>## False</code></pre>
+<pre class="python"><code>filter(biggerThan10, range(0,15,1))</code></pre>
+<pre><code>## &lt;filter object at 0x00000000525F1508&gt;</code></pre>
+<pre class="python"><code>list(filter(biggerThan10, range(0,15,1)))</code></pre>
+<pre><code>## [11, 12, 13, 14]</code></pre>
+<p><code>filter()</code>返回的也是一个迭代器,需要将其转变为list.</p>
+<p>当然,也可以使用列表推导,这样就不要自定义函数了.</p>
+<pre class="python"><code>[x for x in range(0,15,1) if x &gt;10]</code></pre>
+<pre><code>## [11, 12, 13, 14]</code></pre>
+<p>代码看起来更为简洁,并且也更加清晰.</p>
+<div id="lambda表达式" class="section level2">
+<h2><span class="header-section-number">3.1</span> lambda表达式</h2>
+<p>Python提供了一种名为lambda表达式的功能，让你能够创建内嵌的简单函数（主要供map、filter和reduce使用）。</p>
+<p>比如上面的<code>map()</code>和<code>filter()</code>函数的例子就可以改为下面:</p>
+<pre class="python"><code>list(filter(lambda x: x &gt; 10, range(0, 15,1)))</code></pre>
+<pre><code>## [11, 12, 13, 14]</code></pre>
+<p>可以看到使用lambda表达式,其实是创建了一个简单的匿名函数,起到的作用和匿名函数是相同的,只不过更加简洁易读而已.</p>
+<p>当然,其实大部分情况下,使用列表推导也非常简洁,所以很多情况下可以使用列表推导就可以了.但是特殊例子在函数<code>reduce()</code>中.</p>
+</div>
+<div id="redunce函数会对参数序列中元素进行累积" class="section level2">
+<h2><span class="header-section-number">3.2</span> <code>redunce()</code>函数会对参数序列中元素进行累积。</h2>
+<p>函数将一个数据集合（链表，元组等）中的所有数据进行下列操作：用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2个元素进行操作，得到的结果再与第三个数据用function 函数运算，最后得到一个结果。</p>
+<p>使用方法:</p>
+<pre><code>reduce(function, iterable[, initializer])</code></pre>
+<p>参数:</p>
+<ul>
+<li><p><strong>function</strong>: 函数.</p></li>
+<li><p><strong>iterable</strong>: 可迭代对象.</p></li>
+<li><p><strong>initializer</strong>: 可选,初始参数.</p></li>
+</ul>
+<p>例子:</p>
+<pre class="python"><code>numbers = [72, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100, 33]
+from functools import reduce
+reduce(lambda x, y: x + y, numbers)</code></pre>
+<pre><code>## 1161</code></pre>
+</div>
+</div>
+<div id="总结" class="section level1">
+<h1><span class="header-section-number">4</span> 总结</h1>
+<p>新的函数:</p>
+<table>
+<colgroup>
+<col width="53%" />
+<col width="46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>map(func, seq[, seq, ...])</code></td>
+<td>对序列中的所有元素执行函数</td>
+</tr>
+<tr class="even">
+<td><code>filter(func, seq)</code></td>
+<td>返回一个列表，其中包含对其执行函数时结果为真的所有元素</td>
+</tr>
+<tr class="odd">
+<td><code>reduce(func, seq[, initial])</code></td>
+<td>等价于func(func(func(seq[0], seq[1]), seq[2]), …)</td>
+</tr>
+<tr class="even">
+<td><code>sum(seq)</code></td>
+<td>返回seq 中所有元素的和</td>
+</tr>
+<tr class="odd">
+<td><code>apply(func[, args[, kwargs]])</code></td>
+<td>调用函数（还提供要传递给函数的参数）</td>
+</tr>
+</tbody>
+</table>
 </div>

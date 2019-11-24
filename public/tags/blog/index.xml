@@ -5,7 +5,286 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Python pandas包总结</title>
+      <link>/post/2019-11-23-python-pandas-summary/</link>
+      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-23-python-pandas-summary/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装pandas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;code&gt;pandas&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#导入数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 导入数据&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;umpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。&lt;/p&gt;
+&lt;div id=&#34;安装pandas&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;code&gt;pandas&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;使用&lt;code&gt;pip&lt;/code&gt;可以快速的安装&lt;code&gt;pandas&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;在终端进行操作.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install pandas&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;导入数据&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 导入数据&lt;/h1&gt;
+&lt;p&gt;和R类似,可以使用pandas读取不同格式的本地的数据.函数总结如下:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;read_csv()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从CSV文件导入数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;pd.read_table(filename)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从限定分隔符的文本文件导入数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;pd.read_excel(filename)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从Excel文件导入数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;pd.read_sql(query, connection_object)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从SQL表/库导入数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;pd.read_json(json_string)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从JSON格式的字符串导入数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;pd.read_html(url)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;解析URL、字符串或者HTML文件，抽取其中的tables表格&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;pd.read_clipboard()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从你的粘贴板获取内容，并传给read_table()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;pd.DataFrame(dict)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从字典对象导入数据，Key是列名，Value是数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;和R中函数一样,如果想要知道每个函数的所有参数及含义,可以使用&lt;code&gt;help()&lt;/code&gt;函数来获得.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import os as os
+os.getcwd()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;D:\\my github\\shen\\content\\en\\post\\2019-11-23-python-pandas-summary&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test = {&amp;quot;a&amp;quot;:1, &amp;quot;b&amp;quot;:2}
+test&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## {&amp;#39;a&amp;#39;: 1, &amp;#39;b&amp;#39;: 2}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test2 = pd.DataFrame(test, index = [1,2])
+# help(pd.DataFrame)
+test2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    a  b
+## 1  1  2
+## 2  1  2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python中如何创建自定义对象</title>
+      <link>/post/2019-11-23-python-object/</link>
+      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-23-python-object/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#对象&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 对象&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#多态polymorphism&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 多态(polymorphism)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#多态和方法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 多态和方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#封装encapsulation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; 封装(encapsulation)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#继承&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4&lt;/span&gt; 继承&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#类&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 类&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#类到底是什么&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 类到底是什么?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建自定义类&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 创建自定义类&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#属性函数和方法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 属性,函数和方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#隐藏&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4&lt;/span&gt; 隐藏&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#类的命名空间&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5&lt;/span&gt; 类的命名空间&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#指定超类&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.6&lt;/span&gt; 指定超类&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#深入探讨继承&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.7&lt;/span&gt; 深入探讨继承&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在本文中，学习如何创建对象，还将学习多态、封装、方法、属性、超类和继承。&lt;/p&gt;
+&lt;div id=&#34;对象&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 对象&lt;/h1&gt;
+&lt;p&gt;对象大致意味着一系列数据（属性）以及一套访问和操作这些数据的方法。使用对象而非全局变量和函数的原因有多个，下面列出了使用对象的最重要的好处。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;多态&lt;/strong&gt;:可对不同类型的对象执行相同的操作，而这些操作就像“被施了魔法”一样能够正常运行。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;封装&lt;/strong&gt;:对外部隐藏有关对象工作原理的细节。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;继承&lt;/strong&gt;:可基于通用类创建出专用类。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;多态polymorphism&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 多态(polymorphism)&lt;/h2&gt;
+&lt;p&gt;这大致意味着即便你不知道变量指向的是哪种对象，也能够对其执行操作，且操作的行为将随对象所属的类型（类）而异。这跟R中的对象是一致的,比如通用函数&lt;code&gt;plot()&lt;/code&gt;可以对多种不同种类的对象进行操作.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;多态和方法&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 多态和方法&lt;/h2&gt;
+&lt;p&gt;与对象属性相关联的函数称为方法.比如对于字符串,列表和字典都有很多饭囊发.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;#39;abc&amp;#39;.count(&amp;#39;a&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;[1, 2, &amp;#39;a&amp;#39;].count(&amp;#39;a&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;方法&lt;code&gt;count&lt;/code&gt;既可以用用于字符串对象,也可以用于列表对象.&lt;/p&gt;
+&lt;p&gt;同样的,如果我们创建了一个包含&lt;code&gt;count&lt;/code&gt;方法的对象,我们也可以像字符串和列表一样使用&lt;code&gt;count&lt;/code&gt;方法.&lt;/p&gt;
+&lt;p&gt;还有,比如运算符&lt;code&gt;+&lt;/code&gt;,既可以用于整数也可以用于字符串.另外像函数&lt;code&gt;len()&lt;/code&gt;,也都可以用于不同的对象.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;新的函数: &lt;code&gt;repr&lt;/code&gt;: 将对象转换为供解释器读取的形式.参考下面连接:&lt;a href=&#34;https://www.runoob.com/python/python-func-repr.html&#34; class=&#34;uri&#34;&gt;https://www.runoob.com/python/python-func-repr.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;封装encapsulation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; 封装(encapsulation)&lt;/h2&gt;
+&lt;p&gt;封装（encapsulation）指的是向外部隐藏不必要的细节。&lt;/p&gt;
+&lt;p&gt;一个简单的例子:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;o = OpenObject() # 对象就是这样创建的
+o.set_name(&amp;#39;Sir Lancelot&amp;#39;)
+o.get_name()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如何将名称“封装”在对象中呢？没问题，将其作为一个属性即可。属性是归属于对象的变量，就像方法一样。实际上，方法差不多就是与函数相关联的属性.&lt;/p&gt;
+&lt;p&gt;对象的方法可能修改这些属性，因此对象将一系列函数（方法）组合起来，并赋予它们访问一些变量（属性）的权限，而属性可用于在两次函数调用之间存储值。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;继承&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4&lt;/span&gt; 继承&lt;/h2&gt;
+&lt;p&gt;如果你已经有了一个类，并要创建一个与之很像的类（可能只是新增了几个方法），该如何办呢？创建这个新类时，你不想复制旧类的代码，将其粘贴到新类中。&lt;/p&gt;
+&lt;p&gt;例如，你可能已经有了一个名为Shape的类，它知道如何将自己绘制到屏幕上。现在你想创建一个名为Rectangle的类，但它不仅知道如何将自己绘制到屏幕上，而且还知道如何计算其面积。你不想重新编写方法draw，因为Shape已经有一个这样的方法，且效果很好。那么该如何办呢？让Rectangle继承Shape的方法，使得对Rectangle对象调用方法draw时，将自动调用Shape类的这个方法.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;类&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 类&lt;/h1&gt;
+&lt;div id=&#34;类到底是什么&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 类到底是什么?&lt;/h2&gt;
+&lt;p&gt;本书前面反复提到了类，并将其用作类型的同义词。从很多方面来说，这正是类的定义–一种对象。每个对象都属于特定的类，并被称为该类的实例。&lt;/p&gt;
+&lt;p&gt;例如，如果你在窗外看到一只鸟，这只鸟就是“鸟类”的一个实例。鸟类是一个非常通用（抽象）的类，它有多个子类：你看到的那只鸟可能属于子类“云雀”。你可将“鸟类”视为由所有鸟组成的集合，而“云雀”是其一个子集。一个类的对象为另一个类的对象的子集时，前者就是后者的子类。因此“云雀”为“鸟类”的子类，而“鸟类”为“云雀”的超类。&lt;/p&gt;
+&lt;p&gt;通过这样的陈述，子类和超类就很容易理解。但在面向对象编程中，子类关系意味深长，因为类是由其支持的方法定义的。类的所有实例都有该类的所有方法，因此子类的所有实例都有超类的所有方法。有鉴于此，要定义子类，只需定义多出来的方法（还可能重写一些既有的方法）。
+例如，Bird类可能提供方法fly，而Penguin类（Bird的一个子类）可能新增方法eat_fish。创建Penguin类时，你还可能想重写超类的方法，即方法fly。鉴于企鹅不能飞，因此在Penguin的实例中，方法fly应什么都不做或引发异常（参见第8章）。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建自定义类&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 创建自定义类&lt;/h2&gt;
+&lt;p&gt;一个简单的例子.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;__metaclass__ = type # 如果你使用的是Python 2，请包含这行代码
+class Person:
+  def set_name(self, name):
+    self.name = name
+  def get_name(self):
+    return self.name
+  def greet(self):
+    print(&amp;quot;Hello, world! I&amp;#39;m {}.&amp;quot;.format(self.name))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个示例包含三个方法定义，它们类似于函数定义，但位于class语句内。Person当然是类的名称.使用&lt;code&gt;class&lt;/code&gt;语句来创建自定义类,并且创建了独立的命名空间,用于在其中定义函数.&lt;/p&gt;
+&lt;p&gt;那么参数&lt;code&gt;self&lt;/code&gt;是什么呢?他指向对象本身.那么那个是对象呢?&lt;/p&gt;
+&lt;p&gt;下面通过创建两个实例来说明这一点.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;foo = Person()
+bar = Person()
+foo.set_name(&amp;#39;Luke Skywalker&amp;#39;)
+bar.set_name(&amp;#39;Anakin Skywalker&amp;#39;)
+foo.greet()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Hello, world! I&amp;#39;m Luke Skywalker.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;bar.greet()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Hello, world! I&amp;#39;m Anakin Skywalker.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对foo调用set_name和greet时，foo都会作为第一个参数自动传递给它们。我将这个参数命名为self，这非常贴切。实际上，可以随便给这个
+参数命名，但鉴于它总是指向对象本身，因此习惯上将其命名为self。&lt;/p&gt;
+&lt;p&gt;显然，self很有用，甚至必不可少。如果没有它，所有的方法都无法访问对象本身——要操作的属性所属的对象。与以前一样，也可以从外部访问这些属性。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;foo.name&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;Luke Skywalker&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;bar.name&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;Anakin Skywalker&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;属性函数和方法&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 属性,函数和方法&lt;/h2&gt;
+&lt;p&gt;实际上，&lt;strong&gt;方法和函数的区别表现在前一节提到的参数self上&lt;/strong&gt;。方法（更准确地说是关联的方法）将其第一个参数关联到它所属的实例，因此无需提供这个参数。无疑可以将属性关联到一个普通函数，但这样就没有特殊的self参数了。&lt;/p&gt;
+&lt;p&gt;我们再看一个简单的例子:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;class Class:
+  def method(self):
+    print(&amp;#39;I have a self!&amp;#39;)
+
+def function():
+  print(&amp;quot;I don&amp;#39;t...&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们首先创建了一个叫做&lt;code&gt;Class&lt;/code&gt;的类,然后给其创建了一个叫做&lt;code&gt;method&lt;/code&gt;的方法.另外,我们还创建了一个函数,叫做&lt;code&gt;function&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;instance = Class()
+instance.method()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## I have a self!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后创建一个该类的实例,然后调用&lt;code&gt;method&lt;/code&gt;方法.&lt;/p&gt;
+&lt;p&gt;我们还可以把该实例的方法修改为另外的方法.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;instance.method = function
+instance.method()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## I don&amp;#39;t...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;隐藏&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4&lt;/span&gt; 隐藏&lt;/h2&gt;
+&lt;p&gt;默认情况下，可从外部访问对象的属性.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;class Bird:
+  name = &amp;#39;Bird&amp;#39;
+  song = &amp;#39;Squaawk!&amp;#39;
+  def sing(self):
+    print(self.song)
+
+
+test = Bird()    
+test.name&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;Bird&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test.song&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;Squaawk!&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到,在class下面,可以通过上面的方式来定义类的属性.那么如何将类的属性定义为&lt;strong&gt;私有&lt;/strong&gt;,从而在外部无法访问呢?私有属性不能从对象外部访问，而只能通过存取器方法（如get_name和set_name）来访问。&lt;/p&gt;
+&lt;p&gt;要让方法或属性成为私有的（不能从外部访问），只需让其名称以两个下划线打头即可。&lt;/p&gt;
+&lt;p&gt;举个简单例子:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;class Secretive:
+  def __inaccessible(self):
+    print(&amp;quot;Bet you can&amp;#39;t see me ...&amp;quot;)
+  def accessible(self):
+    print(&amp;quot;The secret message is:&amp;quot;)
+    self.__inaccessible()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在从外部不能访问&lt;code&gt;__inaccessible&lt;/code&gt;，但在类中（如&lt;code&gt;accessible&lt;/code&gt;中）依然可以使用它。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;s = Secretive()
+s.accessible()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The secret message is:
+## Bet you can&amp;#39;t see me ...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;s._Secretive__inaccessible()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Bet you can&amp;#39;t see me ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;总之，你无法禁止别人访问对象的私有方法和属性，但这种名称修改方式发出了强烈的信号，让他们不要这样做。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;类的命名空间&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5&lt;/span&gt; 类的命名空间&lt;/h2&gt;
+&lt;p&gt;下面两条语句大致等价：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def foo(x): return x * x
+foo = lambda x: x * x&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;它们都创建一个返回参数平方的函数，并将这个函数关联到变量foo。可以在全局（模块）作用域内定义名称foo，也可以在函数或方法内定义。定义类时情况亦如此：在class语句中定义的代码都是在一个特殊的命名空间（类的命名空间）内执行的，而类的所有成员都可访问这个命
+名空间。类定义其实就是要执行的代码段，并非所有的Python程序员都知道这一点，但知道这一点很有帮助。&lt;/p&gt;
+&lt;p&gt;每个实例都可访问这个类作用域内的变量，就像方法一样。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;指定超类&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.6&lt;/span&gt; 指定超类&lt;/h2&gt;
+&lt;p&gt;本章前面讨论过，子类扩展了超类的定义。要指定超类，可在class语句中的类名后加上超类名，并将其用圆括号括起。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Filter:
+  def init(self):
+    self.blocked = []
+  def filter(self, sequence):
+    return [x for x in sequence if x not in self.blocked]
+
+class SPAMFilter(Filter): # SPAMFilter是Filter的子类
+  def init(self): # 重写超类Filter的方法init
+    self.blocked = [&amp;#39;SPAM&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;深入探讨继承&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.7&lt;/span&gt; 深入探讨继承&lt;/h2&gt;
+&lt;p&gt;要确定一个类是否是另一个类的子类，可使用内置函数&lt;code&gt;issubclass&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果你有一个类，并想知道它的基类，可访问其特殊属性&lt;code&gt;__bases__&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;同样，要确定对象是否是特定类的实例，可使用&lt;code&gt;isinstance&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果你要获悉对象属于哪个类，可使用属性&lt;code&gt;__class__&lt;/code&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python中如何创建函数</title>
       <link>/post/2019-11-22-python-function/</link>
@@ -21,8 +300,13 @@
 &lt;li&gt;&lt;a href=&#34;#关键字参数和默认值&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; 关键字参数和默认值&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#收集参数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4&lt;/span&gt; 收集参数&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#分配参数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.5&lt;/span&gt; 分配参数&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#作用域-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.6&lt;/span&gt; 作用域&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#作用域-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 作用域&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#函数式编程&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 函数式编程&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#lambda表达式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; lambda表达式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#redunce函数会对参数序列中元素进行累积&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; &lt;code&gt;redunce()&lt;/code&gt;函数会对参数序列中元素进行累积。&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 总结&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -129,8 +413,9 @@ params = (1, 2)
 add(*params)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 3&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;作用域-1&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.6&lt;/span&gt; 作用域&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;作用域-1&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 作用域&lt;/h1&gt;
 &lt;p&gt;变量到底是什么呢？可将其视为指向值的名称。因此，执行赋值语句x=1后，名称x指向值1。这几乎与使用字典时一样（字典中的键指向值），只是你使用的是“看不见”的字典。&lt;/p&gt;
 &lt;p&gt;这种“看不见的字典”称为命名空间或作用域。那么有多少个命名空间呢？除全局作用域外，每个函数调用都将创建一个。&lt;/p&gt;
 &lt;p&gt;在函数内使用的变量称为局部变量（与之相对的是全局变量）。参数类似于局部变量，因此参数与全局变量同名不会有任何问题。&lt;/p&gt;
@@ -151,6 +436,112 @@ x&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;可以看到,需要使用&lt;code&gt;global&lt;/code&gt;语句来申明,从而改变全局变量.&lt;/p&gt;
 &lt;/div&gt;
+&lt;div id=&#34;函数式编程&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 函数式编程&lt;/h1&gt;
+&lt;p&gt;至此，你可能习惯了像使用其他对象（字符串、数、序列等）一样使用函数：将其赋给变量，将其作为参数进行传递，以及从函数返回它们。在有些语言（如scheme和Lisp）中，几乎所有的任务都是以这种方式使用函数来完成的。在Python 中，通常不会如此倚重函数（而是创建自定义对象，这将在下一章详细介绍），但完全可以这样做。Python提供了一些有助于进行这种函数式编程的函数：&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;filter&lt;/code&gt;和&lt;code&gt;reduce&lt;/code&gt;。在较新的Python版本中，函数map和filter的用途并不大，应该使用列表推导来替代它们。你可使用map将序列的所有元素传递给函数。&lt;/p&gt;
+&lt;p&gt;其中&lt;code&gt;map()&lt;/code&gt;函数和R中的&lt;code&gt;apply&lt;/code&gt;家族或者&lt;code&gt;purrr&lt;/code&gt;的&lt;code&gt;map()&lt;/code&gt;家族函数非常像,有点是向量化处理的感觉.&lt;/p&gt;
+&lt;p&gt;举个例子.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;[str(i) for i in range(10)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [&amp;#39;0&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;4&amp;#39;, &amp;#39;5&amp;#39;, &amp;#39;6&amp;#39;, &amp;#39;7&amp;#39;, &amp;#39;8&amp;#39;, &amp;#39;9&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;还可以写作:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;map(str, range(10))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;map object at 0x00000000525EBF08&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;list(map(str, range(10)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [&amp;#39;0&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;4&amp;#39;, &amp;#39;5&amp;#39;, &amp;#39;6&amp;#39;, &amp;#39;7&amp;#39;, &amp;#39;8&amp;#39;, &amp;#39;9&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;map()&lt;/code&gt;函数直接返回的是一个迭代器,因此需要使用&lt;code&gt;list()&lt;/code&gt;函数将他转变为list.使用R可以这么写.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sapply(c(0:9), as.character)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;0&amp;quot; &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; &amp;quot;5&amp;quot; &amp;quot;6&amp;quot; &amp;quot;7&amp;quot; &amp;quot;8&amp;quot; &amp;quot;9&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;unlist(purrr::map(c(0:9), as.character))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;0&amp;quot; &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; &amp;quot;5&amp;quot; &amp;quot;6&amp;quot; &amp;quot;7&amp;quot; &amp;quot;8&amp;quot; &amp;quot;9&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;filter()&lt;/code&gt;函数非常好用,是一个用来筛选的函数.用于过滤序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表。&lt;/p&gt;
+&lt;p&gt;使用方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filter(function, iterable)&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;function&lt;/strong&gt;:函数.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;iterable&lt;/strong&gt;:可迭代的对象.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;举个例子:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def biggerThan10(x):
+  if x &amp;gt; 10:
+    return(True)
+  else:
+    return(False)
+  
+biggerThan10(10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## False&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;filter(biggerThan10, range(0,15,1))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;filter object at 0x00000000525F1508&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;list(filter(biggerThan10, range(0,15,1)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [11, 12, 13, 14]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;filter()&lt;/code&gt;返回的也是一个迭代器,需要将其转变为list.&lt;/p&gt;
+&lt;p&gt;当然,也可以使用列表推导,这样就不要自定义函数了.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;[x for x in range(0,15,1) if x &amp;gt;10]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [11, 12, 13, 14]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;代码看起来更为简洁,并且也更加清晰.&lt;/p&gt;
+&lt;div id=&#34;lambda表达式&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; lambda表达式&lt;/h2&gt;
+&lt;p&gt;Python提供了一种名为lambda表达式的功能，让你能够创建内嵌的简单函数（主要供map、filter和reduce使用）。&lt;/p&gt;
+&lt;p&gt;比如上面的&lt;code&gt;map()&lt;/code&gt;和&lt;code&gt;filter()&lt;/code&gt;函数的例子就可以改为下面:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;list(filter(lambda x: x &amp;gt; 10, range(0, 15,1)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [11, 12, 13, 14]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到使用lambda表达式,其实是创建了一个简单的匿名函数,起到的作用和匿名函数是相同的,只不过更加简洁易读而已.&lt;/p&gt;
+&lt;p&gt;当然,其实大部分情况下,使用列表推导也非常简洁,所以很多情况下可以使用列表推导就可以了.但是特殊例子在函数&lt;code&gt;reduce()&lt;/code&gt;中.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;redunce函数会对参数序列中元素进行累积&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; &lt;code&gt;redunce()&lt;/code&gt;函数会对参数序列中元素进行累积。&lt;/h2&gt;
+&lt;p&gt;函数将一个数据集合（链表，元组等）中的所有数据进行下列操作：用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2个元素进行操作，得到的结果再与第三个数据用function 函数运算，最后得到一个结果。&lt;/p&gt;
+&lt;p&gt;使用方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reduce(function, iterable[, initializer])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;function&lt;/strong&gt;: 函数.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;iterable&lt;/strong&gt;: 可迭代对象.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;initializer&lt;/strong&gt;: 可选,初始参数.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例子:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;numbers = [72, 101, 108, 108, 111, 44, 32, 119, 111, 114, 108, 100, 33]
+from functools import reduce
+reduce(lambda x, y: x + y, numbers)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1161&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;总结&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 总结&lt;/h1&gt;
+&lt;p&gt;新的函数:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;53%&#34; /&gt;
+&lt;col width=&#34;46%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;map(func, seq[, seq, ...])&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;对序列中的所有元素执行函数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;filter(func, seq)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回一个列表，其中包含对其执行函数时结果为真的所有元素&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;reduce(func, seq[, initial])&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;等价于func(func(func(seq[0], seq[1]), seq[2]), …)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;sum(seq)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回seq 中所有元素的和&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;apply(func[, args[, kwargs]])&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;调用函数（还提供要传递给函数的参数）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;/div&gt;
 </description>
     </item>

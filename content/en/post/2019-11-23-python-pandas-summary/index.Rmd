@@ -1,0 +1,69 @@
+---
+title: Python pandas包总结
+author: Xiaotao Shen
+date: 2019-11-23
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+umpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。
+
+# 安装`pandas`
+
+使用`pip`可以快速的安装`pandas`.
+
+在终端进行操作.
+
+```
+pip install pandas
+```
+
+```{python}
+import pandas as pd
+```
+
+# 导入数据
+
+和R类似,可以使用pandas读取不同格式的本地的数据.函数总结如下:
+
+Function|Meaning
+--------|-------
+`read_csv()`|从CSV文件导入数据
+`pd.read_table(filename)`|从限定分隔符的文本文件导入数据
+`pd.read_excel(filename)`|从Excel文件导入数据
+`pd.read_sql(query, connection_object)`|从SQL表/库导入数据
+`pd.read_json(json_string)`|从JSON格式的字符串导入数据
+`pd.read_html(url)`|解析URL、字符串或者HTML文件，抽取其中的tables表格
+`pd.read_clipboard()`|从你的粘贴板获取内容，并传给read_table()
+`pd.DataFrame(dict)`|从字典对象导入数据，Key是列名，Value是数据
+
+和R中函数一样,如果想要知道每个函数的所有参数及含义,可以使用`help()`函数来获得.
+
+
+```{python}
+import os as os
+os.getcwd()
+
+test = {"a":1, "b":2}
+test
+test2 = pd.DataFrame(test, index = [1,2])
+# help(pd.DataFrame)
+test2
+```
+
+
