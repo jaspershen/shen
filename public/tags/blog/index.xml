@@ -16,20 +16,524 @@
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#安装pandas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;code&gt;pandas&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#导入数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 导入数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pandas数据结构介绍&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Pandas数据结构介绍&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#series&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; series&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dataframe数据框&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; DataFrame(数据框)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#数据框的索引和切片操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.1&lt;/span&gt; 数据框的索引和切片操作&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#索引index对象&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 索引(index)对象&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#index-as-immutable-array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3.1&lt;/span&gt; Index as immutable array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#index作为一个有顺序的set&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3.2&lt;/span&gt; index作为一个有顺序的set&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#索引和选择&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 索引和选择&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#series中的数据选择&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Series中的数据选择&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#series作为字典&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1.1&lt;/span&gt; series作为字典&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#series作为一维的array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1.2&lt;/span&gt; series作为一维的array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#索引器indexerslociloc和ix&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1.3&lt;/span&gt; 索引器(indexers):&lt;code&gt;loc&lt;/code&gt;,&lt;code&gt;iloc&lt;/code&gt;和&lt;code&gt;ix&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#数据框中的数据选择&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 数据框中的数据选择&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#将数据库看作字典&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2.1&lt;/span&gt; 将数据库看作字典&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将数据框作为二维的array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2.2&lt;/span&gt; 将数据框作为二维的array&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#导入数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 导入数据&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p&gt;umpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。&lt;/p&gt;
+&lt;p&gt;numpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。&lt;/p&gt;
 &lt;div id=&#34;安装pandas&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;code&gt;pandas&lt;/code&gt;&lt;/h1&gt;
 &lt;p&gt;使用&lt;code&gt;pip&lt;/code&gt;可以快速的安装&lt;code&gt;pandas&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;在终端进行操作.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;pip install pandas&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要同时安装&lt;code&gt;numpy&lt;/code&gt;包.&lt;/p&gt;
+&lt;p&gt;而已查看每个包的版本.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;pd.__version__&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;0.24.2&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pandas数据结构介绍&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Pandas数据结构介绍&lt;/h1&gt;
+&lt;div id=&#34;series&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; series&lt;/h2&gt;
+&lt;p&gt;series是一维数组,类似于R中的向量.可以使用&lt;code&gt;Series()&lt;/code&gt;函数构建.可以将列表或者字典转变为series.在字典中,键是没有顺序的,但是转变为series之后,就是有顺序的了.不仅可以按照名字来索引,也可以按照顺序来索引了.这样跟R中的向量更加类似了.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data = pd.Series([1,2,3,4])
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0    1
+## 1    2
+## 2    3
+## 3    4
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;population_dict = {&amp;#39;California&amp;#39;: 38332521,
+&amp;#39;Texas&amp;#39;: 26448193,
+&amp;#39;New York&amp;#39;: 19651127,
+&amp;#39;Florida&amp;#39;: 19552860,
+&amp;#39;Illinois&amp;#39;: 12882135}
+data3 = pd.Series(population_dict)
+data3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    38332521
+## Texas         26448193
+## New York      19651127
+## Florida       19552860
+## Illinois      12882135
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data3[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 38332521&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;他是自带索引的.第一“列”是索引,第二列是value.分别都是他的属性.因此可以访问.&lt;/p&gt;
+&lt;p&gt;默认的索引是数字索引,从0开始,当然也可以自定义索引.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data2 = pd.Series([0,1,2,3], index=[&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;])
+data2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a    0
+## b    1
+## c    2
+## d    3
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;index = data.index
+value = data.values
+index&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## RangeIndex(start=0, stop=4, step=1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([1, 2, 3, 4], dtype=int64)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(index)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.indexes.range.RangeIndex&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(value)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;numpy.ndarray&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;跟R中的向量一样,可以通过中括号,来索引,切片series.对于索引为文字的,还支持文字连续索引.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[1:3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1    2
+## 2    3
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data2[&amp;#39;a&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data3[&amp;#39;California&amp;#39;:&amp;#39;Illinois&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    38332521
+## Texas         26448193
+## New York      19651127
+## Florida       19552860
+## Illinois      12882135
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dataframe数据框&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; DataFrame(数据框)&lt;/h2&gt;
+&lt;p&gt;数据框就跟R中的数据框或者说matrix就更像了.是二维数据.&lt;/p&gt;
+&lt;p&gt;创建数据框.可以从字典转变而来.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;area_dict = {&amp;#39;California&amp;#39;: 423967, &amp;#39;Texas&amp;#39;: 695662, &amp;#39;New York&amp;#39;: 141297,
+&amp;#39;Florida&amp;#39;: 170312, &amp;#39;Illinois&amp;#39;: 149995}
+area = pd.Series(area_dict)
+area&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    38332521
+## Texas         26448193
+## New York      19651127
+## Florida       19552860
+## Illinois      12882135
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;area&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(data3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.series.Series&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(area)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.series.Series&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states = pd.DataFrame({&amp;#39;population&amp;#39;: data3,
+&amp;#39;area&amp;#39;: area})
+
+states&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             population    area
+## California    38332521  423967
+## Texas         26448193  695662
+## New York      19651127  141297
+## Florida       19552860  170312
+## Illinois      12882135  149995&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这是一个两列的数据框,其中列名就是原来字典的键.&lt;/p&gt;
+&lt;p&gt;数据框也有index和value属性.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.index&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Index([&amp;#39;California&amp;#39;, &amp;#39;Texas&amp;#39;, &amp;#39;New York&amp;#39;, &amp;#39;Florida&amp;#39;, &amp;#39;Illinois&amp;#39;], dtype=&amp;#39;object&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[38332521,   423967],
+##        [26448193,   695662],
+##        [19651127,   141297],
+##        [19552860,   170312],
+##        [12882135,   149995]], dtype=int64)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.columns&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Index([&amp;#39;population&amp;#39;, &amp;#39;area&amp;#39;], dtype=&amp;#39;object&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;columns&lt;/code&gt;属性可以看作是数据框的列名,而&lt;code&gt;index&lt;/code&gt;属性可以看作是其行名.&lt;/p&gt;
+&lt;div id=&#34;数据框的索引和切片操作&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.1&lt;/span&gt; 数据框的索引和切片操作&lt;/h3&gt;
+&lt;p&gt;如何对数据框进行索引和操作呢?&lt;/p&gt;
+&lt;p&gt;取出数据框的行.&lt;/p&gt;
+&lt;p&gt;直接用中括号然后用数字加冒号即可.和python其他部分一样,包括左半部分,不包括右半部分.取出行之后,还是一个数据框.不会存在降维.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states[0:1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             population    area
+## California    38332521  423967&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states[0:2]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             population    area
+## California    38332521  423967
+## Texas         26448193  695662&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states[0:1])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.frame.DataFrame&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;取出数据框的列.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states[&amp;quot;area&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states[&amp;quot;area&amp;quot;])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.series.Series&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果取出某一列,需要使用列名进行提取,并且提取之后,直接降维,变成了series.&lt;/p&gt;
+&lt;p&gt;跟为复杂的切片操作,需要使用数据框的属性,&lt;code&gt;loc&lt;/code&gt;和&lt;code&gt;iloc&lt;/code&gt;.
+&lt;code&gt;loc&lt;/code&gt;和&lt;code&gt;iloc&lt;/code&gt;的不同在于前者用列名和行名来进行切片和索引,而后者则使用index.
+&lt;code&gt;loc&lt;/code&gt;后面需要跟着中括号,然后第一个参数用来描述.&lt;/p&gt;
+&lt;p&gt;如果只选择一行或者一列,或者是连续的切片(中间用冒号),是可以不写为列表格式,但是如果是多个话,需要用列表形式.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.loc&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;pandas.core.indexing._LocIndexer object at 0x00000000533ED4F8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.loc[&amp;quot;California&amp;quot;, [&amp;quot;area&amp;quot;]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## area    423967
+## Name: California, dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states.loc[&amp;quot;California&amp;quot;, [&amp;quot;area&amp;quot;]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.series.Series&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.loc[&amp;quot;California&amp;quot;:&amp;quot;Texas&amp;quot;, [&amp;quot;area&amp;quot;]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               area
+## California  423967
+## Texas       695662&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states.loc[&amp;quot;California&amp;quot;:&amp;quot;Texas&amp;quot;, [&amp;quot;area&amp;quot;]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.frame.DataFrame&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.iloc&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;pandas.core.indexing._iLocIndexer object at 0x00000000533F84A8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.iloc[0,0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 38332521&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states.iloc[0,0])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;numpy.int64&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.iloc[0:1,0:1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             population
+## California    38332521&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.iloc[[0,2],[0,1]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             population    area
+## California    38332521  423967
+## New York      19651127  141297&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states.iloc[[0,2],[0,1]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.frame.DataFrame&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;索引index对象&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 索引(index)对象&lt;/h2&gt;
+&lt;p&gt;series和数据框格式都有一个index对象,用来指示数据,对于数据框来说其实是行名.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;ind = pd.Index([2, 3, 5, 7, 11])
+ind&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Int64Index([2, 3, 5, 7, 11], dtype=&amp;#39;int64&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(ind)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.indexes.numeric.Int64Index&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;index-as-immutable-array&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3.1&lt;/span&gt; Index as immutable array&lt;/h3&gt;
+&lt;p&gt;索引对象可以像一个array一样操作.比如索引和切片.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;ind&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Int64Index([2, 3, 5, 7, 11], dtype=&amp;#39;int64&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;ind[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;ind[:2]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Int64Index([2, 3], dtype=&amp;#39;int64&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;index对象还有很多array的属性.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(ind.size, ind.shape, ind.ndim, ind.dtype)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 5 (5,) 1 int64&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中&lt;code&gt;ndim&lt;/code&gt;可以用来看数据框的行数和列数.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是index对象的值不能够改变.&lt;/strong&gt;这一点跟array是不同的.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;index作为一个有顺序的set&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3.2&lt;/span&gt; index作为一个有顺序的set&lt;/h3&gt;
+&lt;p&gt;index对象很多时候跟python内置的&lt;code&gt;set&lt;/code&gt;对象很类似.可以做并集,交集以及查找不同等操作.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;indA = pd.Index([1, 3, 5, 7, 9])
+indB = pd.Index([2, 3, 5, 7, 11])
+indA &amp;amp; indB # 交集&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Int64Index([3, 5, 7], dtype=&amp;#39;int64&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;indA | indB # 并集&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Int64Index([1, 2, 3, 5, 7, 9, 11], dtype=&amp;#39;int64&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;indA ^ indB # 两个集合中互不相同的部分&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Int64Index([1, 2, 9, 11], dtype=&amp;#39;int64&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;索引和选择&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 索引和选择&lt;/h1&gt;
+&lt;p&gt;对pandas中的series和数据框数据做索引和选择.上面简单介绍一些,这里做详细的系统介绍.比如索引(indexing),切片(slcing),筛选(masking)等.&lt;/p&gt;
+&lt;div id=&#34;series中的数据选择&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Series中的数据选择&lt;/h2&gt;
+&lt;p&gt;series跟python内置的字典非常的类似.也跟Numpy中的array非常像.&lt;/p&gt;
+&lt;div id=&#34;series作为字典&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1.1&lt;/span&gt; series作为字典&lt;/h3&gt;
+&lt;p&gt;可以使用&lt;code&gt;键&lt;/code&gt;进行选择.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd
+data = pd.Series([0.25, 0.5, 0.75, 1.0],
+index=[&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;])
+
+data[&amp;quot;a&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0.25&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然其他的一些操作也可以用于series.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;&amp;#39;a&amp;#39; in data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## True&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.keys()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Index([&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;], dtype=&amp;#39;object&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;list(data.items())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [(&amp;#39;a&amp;#39;, 0.25), (&amp;#39;b&amp;#39;, 0.5), (&amp;#39;c&amp;#39;, 0.75), (&amp;#39;d&amp;#39;, 1.0)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[&amp;quot;e&amp;quot;] = 1.25
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a    0.25
+## b    0.50
+## c    0.75
+## d    1.00
+## e    1.25
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;series作为一维的array&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1.2&lt;/span&gt; series作为一维的array&lt;/h3&gt;
+&lt;p&gt;可以按照array的办法对series进行切片.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[&amp;#39;a&amp;#39;:&amp;#39;c&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a    0.25
+## b    0.50
+## c    0.75
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[0:2]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a    0.25
+## b    0.50
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data &amp;gt; 0.3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a    False
+## b     True
+## c     True
+## d     True
+## e     True
+## dtype: bool&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data &amp;lt; 0.8&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a     True
+## b     True
+## c     True
+## d    False
+## e    False
+## dtype: bool&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data + 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a    1.25
+## b    1.50
+## c    1.75
+## d    2.00
+## e    2.25
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[(data &amp;gt; 0.3) &amp;amp; (data &amp;lt; 0.8)]
+##不连续切片&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## b    0.50
+## c    0.75
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[[&amp;#39;a&amp;#39;, &amp;#39;e&amp;#39;]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a    0.25
+## e    1.25
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;需要注意的是,如果使用&lt;code&gt;键&lt;/code&gt;进行切片操作,最后一个是包括在最终结果中的,而如果使用数字位置进行切片,最后不包括在结果中&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;索引器indexerslociloc和ix&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1.3&lt;/span&gt; 索引器(indexers):&lt;code&gt;loc&lt;/code&gt;,&lt;code&gt;iloc&lt;/code&gt;和&lt;code&gt;ix&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;series中有一点需要注意的是,也是比较让人困惑的是,如果index是数字,那么索引的时候,给出数字,是按照index名字进行索引的,但是如果使用数字切片,则是按照位置进行的.举个例子:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data = pd.Series([&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;], index=[1, 3, 5])
+data
+# explicit index when indexing&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1    a
+## 3    b
+## 5    c
+## dtype: object&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;a&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[1:3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3    b
+## 5    c
+## dtype: object&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;为了避免在选取数据时造成误差,所以series也提供了属性:索引器来进行切片.&lt;/p&gt;
+&lt;p&gt;对于&lt;code&gt;loc&lt;/code&gt;属性,里面都是按照index名字来索引的,不是位置.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.loc[1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;a&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.loc[1:3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1    a
+## 3    b
+## dtype: object&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.loc[[1,3]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1    a
+## 3    b
+## dtype: object&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于&lt;code&gt;iloc&lt;/code&gt;属性,则里面都是按照位置来进行索引和切片的.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.iloc[1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;b&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.iloc[1:3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3    b
+## 5    c
+## dtype: object&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第三个属性,&lt;code&gt;ix&lt;/code&gt;,他是上面两种属性的混合,对于series对象来说,&lt;code&gt;idx&lt;/code&gt;属性是和&lt;code&gt;iloc&lt;/code&gt;一样的,他主要是用于数据框对象的.&lt;/p&gt;
+&lt;p&gt;python推荐大家还是使用名字进行索引和切片(explicit is better than implicit).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;数据框中的数据选择&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; 数据框中的数据选择&lt;/h2&gt;
+&lt;p&gt;大多数情况下,数据框更像是一个二维的array,有时候也可以看作是字典.&lt;/p&gt;
+&lt;div id=&#34;将数据库看作字典&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2.1&lt;/span&gt; 将数据库看作字典&lt;/h3&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;area = pd.Series({&amp;#39;California&amp;#39;: 423967, &amp;#39;Texas&amp;#39;: 695662,
+&amp;#39;New York&amp;#39;: 141297, &amp;#39;Florida&amp;#39;: 170312,
+&amp;#39;Illinois&amp;#39;: 149995})
+pop = pd.Series({&amp;#39;California&amp;#39;: 38332521, &amp;#39;Texas&amp;#39;: 26448193,
+&amp;#39;New York&amp;#39;: 19651127, &amp;#39;Florida&amp;#39;: 19552860,
+&amp;#39;Illinois&amp;#39;: 12882135})
+data = pd.DataFrame({&amp;#39;area&amp;#39;:area, &amp;#39;pop&amp;#39;:pop})
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127
+## Florida     170312  19552860
+## Illinois    149995  12882135&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.ndim&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.columns&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Index([&amp;#39;area&amp;#39;, &amp;#39;pop&amp;#39;], dtype=&amp;#39;object&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.index&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Index([&amp;#39;California&amp;#39;, &amp;#39;Texas&amp;#39;, &amp;#39;New York&amp;#39;, &amp;#39;Florida&amp;#39;, &amp;#39;Illinois&amp;#39;], dtype=&amp;#39;object&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以直接使用列名来获得某一列.得到的是series对象.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[&amp;#39;area&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(data[&amp;#39;area&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.series.Series&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;还可以使用属性格式(attribute-style)格式来获得某列.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.area&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(data.area)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.series.Series&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;得到的也是series对象.&lt;/p&gt;
+&lt;p&gt;两者得到的是完全一样的.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.area is data[&amp;#39;area&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## True&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是这种方法还是不太好,比如:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;列名不是string,而是数字.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;列名和数据框自带方法或者属性重名.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果列名和方法有冲突,那么使用&lt;code&gt;.&lt;/code&gt;得到的就是方法而不是列.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.pop is data[&amp;#39;pop&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## False&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[&amp;#39;density&amp;#39;] = data[&amp;#39;pop&amp;#39;] / data[&amp;#39;area&amp;#39;]
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               area       pop     density
+## California  423967  38332521   90.413926
+## Texas       695662  26448193   38.018740
+## New York    141297  19651127  139.076746
+## Florida     170312  19552860  114.806121
+## Illinois    149995  12882135   85.883763&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将数据框作为二维的array&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2.2&lt;/span&gt; 将数据框作为二维的array&lt;/h3&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.values&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[4.23967000e+05, 3.83325210e+07, 9.04139261e+01],
+##        [6.95662000e+05, 2.64481930e+07, 3.80187404e+01],
+##        [1.41297000e+05, 1.96511270e+07, 1.39076746e+02],
+##        [1.70312000e+05, 1.95528600e+07, 1.14806121e+02],
+##        [1.49995000e+05, 1.28821350e+07, 8.58837628e+01]])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们可以对数据框进行类似于array的操作,比如倒置:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.T&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            California         Texas      New York       Florida      Illinois
+## area     4.239670e+05  6.956620e+05  1.412970e+05  1.703120e+05  1.499950e+05
+## pop      3.833252e+07  2.644819e+07  1.965113e+07  1.955286e+07  1.288214e+07
+## density  9.041393e+01  3.801874e+01  1.390767e+02  1.148061e+02  8.588376e+01&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;T&lt;/code&gt;是一个属性,而不是方法,所以后面不需要使用括号.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.values[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([4.23967000e+05, 3.83325210e+07, 9.04139261e+01])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(data.values[0])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;numpy.ndarray&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data[&amp;#39;area&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(data[&amp;#39;area&amp;#39;])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.series.Series&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;还是使用&lt;code&gt;loc&lt;/code&gt;,&lt;code&gt;iloc&lt;/code&gt;和&lt;code&gt;ix&lt;/code&gt;属性进行选择更加高校.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.iloc[:3, :2]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.loc[:&amp;#39;Illinois&amp;#39;, :&amp;#39;pop&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127
+## Florida     170312  19552860
+## Illinois    149995  12882135&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;ix&lt;/code&gt;属性允许进行混合切片,也就是列和行分别使用数字位置和名字进行切片.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.ix[:3, :&amp;#39;pop&amp;#39;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127
+## 
+## D:\software\python\python.exe:1: DeprecationWarning: 
+## .ix is deprecated. Please use
+## .loc for label based indexing or
+## .iloc for positional indexing
+## 
+## See the documentation here:
+## http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.density&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California     90.413926
+## Texas          38.018740
+## New York      139.076746
+## Florida       114.806121
+## Illinois       85.883763
+## Name: density, dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.density &amp;gt; 100&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## California    False
+## Texas         False
+## New York       True
+## Florida        True
+## Illinois      False
+## Name: density, dtype: bool&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.loc[data.density &amp;gt; 100, [&amp;#39;pop&amp;#39;, &amp;#39;density&amp;#39;]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                pop     density
+## New York  19651127  139.076746
+## Florida   19552860  114.806121&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以修改数据框.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;data.iloc[0, 2] = 90
+data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               area       pop     density
+## California  423967  38332521   90.000000
+## Texas       695662  26448193   38.018740
+## New York    141297  19651127  139.076746
+## Florida     170312  19552860  114.806121
+## Illinois    149995  12882135   85.883763&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;导入数据&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 导入数据&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 导入数据&lt;/h1&gt;
 &lt;p&gt;和R类似,可以使用pandas读取不同格式的本地的数据.函数总结如下:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;

@@ -21,7 +21,7 @@ output:
 library(reticulate)
 ```
 
-umpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。
+numpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。
 
 # 安装`pandas`
 
@@ -36,6 +36,382 @@ pip install pandas
 ```{python}
 import pandas as pd
 ```
+
+需要同时安装`numpy`包.
+
+而已查看每个包的版本.
+
+```{python}
+pd.__version__
+```
+
+# Pandas数据结构介绍
+
+## series
+
+series是一维数组,类似于R中的向量.可以使用`Series()`函数构建.可以将列表或者字典转变为series.在字典中,键是没有顺序的,但是转变为series之后,就是有顺序的了.不仅可以按照名字来索引,也可以按照顺序来索引了.这样跟R中的向量更加类似了.
+
+```{python}
+data = pd.Series([1,2,3,4])
+data
+population_dict = {'California': 38332521,
+'Texas': 26448193,
+'New York': 19651127,
+'Florida': 19552860,
+'Illinois': 12882135}
+data3 = pd.Series(population_dict)
+data3
+data3[0]
+```
+
+他是自带索引的.第一"列"是索引,第二列是value.分别都是他的属性.因此可以访问.
+
+默认的索引是数字索引,从0开始,当然也可以自定义索引.
+
+```{python}
+data2 = pd.Series([0,1,2,3], index=['a', 'b', 'c', 'd'])
+data2
+```
+
+
+
+
+```{python}
+index = data.index
+value = data.values
+index
+value
+type(index)
+type(value)
+```
+
+跟R中的向量一样,可以通过中括号,来索引,切片series.对于索引为文字的,还支持文字连续索引.
+
+```{python}
+data[0]
+data[1:3]
+data2['a']
+data3['California':'Illinois']
+```
+
+## DataFrame(数据框)
+
+数据框就跟R中的数据框或者说matrix就更像了.是二维数据.
+```{python}
+
+```
+
+创建数据框.可以从字典转变而来.
+
+```{python}
+area_dict = {'California': 423967, 'Texas': 695662, 'New York': 141297,
+'Florida': 170312, 'Illinois': 149995}
+area = pd.Series(area_dict)
+area
+```
+
+```{python}
+data3
+area
+type(data3)
+type(area)
+states = pd.DataFrame({'population': data3,
+'area': area})
+
+states
+```
+
+这是一个两列的数据框,其中列名就是原来字典的键.
+
+数据框也有index和value属性.
+
+```{python}
+states.index
+states.values
+states.columns
+```
+
+`columns`属性可以看作是数据框的列名,而`index`属性可以看作是其行名.
+
+### 数据框的索引和切片操作
+
+如何对数据框进行索引和操作呢?
+
+取出数据框的行.
+
+直接用中括号然后用数字加冒号即可.和python其他部分一样,包括左半部分,不包括右半部分.取出行之后,还是一个数据框.不会存在降维.
+
+```{python}
+states[0:1]
+states[0:2]
+type(states[0:1])
+```
+
+取出数据框的列.
+
+```{python}
+states["area"]
+type(states["area"])
+```
+
+如果取出某一列,需要使用列名进行提取,并且提取之后,直接降维,变成了series.
+
+跟为复杂的切片操作,需要使用数据框的属性,`loc`和`iloc`.
+`loc`和`iloc`的不同在于前者用列名和行名来进行切片和索引,而后者则使用index.
+`loc`后面需要跟着中括号,然后第一个参数用来描述.
+
+如果只选择一行或者一列,或者是连续的切片(中间用冒号),是可以不写为列表格式,但是如果是多个话,需要用列表形式.
+
+```{python}
+states.loc
+states.loc["California", ["area"]]
+type(states.loc["California", ["area"]])
+
+states.loc["California":"Texas", ["area"]]
+type(states.loc["California":"Texas", ["area"]])
+```
+
+```{python}
+states.iloc
+states.iloc[0,0]
+type(states.iloc[0,0])
+states.iloc[0:1,0:1]
+
+states.iloc[[0,2],[0,1]]
+type(states.iloc[[0,2],[0,1]])
+```
+
+
+## 索引(index)对象
+
+series和数据框格式都有一个index对象,用来指示数据,对于数据框来说其实是行名.
+
+```{python}
+ind = pd.Index([2, 3, 5, 7, 11])
+ind
+type(ind)
+```
+
+### Index as immutable array
+
+索引对象可以像一个array一样操作.比如索引和切片.
+
+```{python}
+ind
+ind[0]
+ind[:2]
+```
+
+index对象还有很多array的属性.
+
+```{python}
+print(ind.size, ind.shape, ind.ndim, ind.dtype)
+```
+
+其中`ndim`可以用来看数据框的行数和列数.
+
+**但是index对象的值不能够改变.**这一点跟array是不同的.
+
+### index作为一个有顺序的set
+
+index对象很多时候跟python内置的`set`对象很类似.可以做并集,交集以及查找不同等操作.
+
+```{python}
+indA = pd.Index([1, 3, 5, 7, 9])
+indB = pd.Index([2, 3, 5, 7, 11])
+indA & indB # 交集
+indA | indB # 并集
+indA ^ indB # 两个集合中互不相同的部分
+
+```
+
+# 索引和选择
+
+ 对pandas中的series和数据框数据做索引和选择.上面简单介绍一些,这里做详细的系统介绍.比如索引(indexing),切片(slcing),筛选(masking)等.
+ 
+## Series中的数据选择
+ 
+ series跟python内置的字典非常的类似.也跟Numpy中的array非常像.
+ 
+### series作为字典
+ 
+ 可以使用`键`进行选择.
+ 
+```{python}
+import pandas as pd
+data = pd.Series([0.25, 0.5, 0.75, 1.0],
+index=['a', 'b', 'c', 'd'])
+
+data["a"]
+```
+ 
+ 当然其他的一些操作也可以用于series.
+ 
+```{python}
+'a' in data
+data.keys()
+list(data.items())
+data["e"] = 1.25
+data
+```
+ 
+### series作为一维的array
+
+可以按照array的办法对series进行切片.
+
+```{python}
+data['a':'c']
+data[0:2]
+data > 0.3
+data < 0.8
+data + 1
+data[(data > 0.3) & (data < 0.8)]
+##不连续切片
+data[['a', 'e']]
+```
+
+
+**需要注意的是,如果使用`键`进行切片操作,最后一个是包括在最终结果中的,而如果使用数字位置进行切片,最后不包括在结果中**
+
+### 索引器(indexers):`loc`,`iloc`和`ix`
+
+series中有一点需要注意的是,也是比较让人困惑的是,如果index是数字,那么索引的时候,给出数字,是按照index名字进行索引的,但是如果使用数字切片,则是按照位置进行的.举个例子:
+
+```{python}
+data = pd.Series(['a', 'b', 'c'], index=[1, 3, 5])
+data
+# explicit index when indexing
+data[1]
+data[1:3]
+```
+
+为了避免在选取数据时造成误差,所以series也提供了属性:索引器来进行切片.
+
+对于`loc`属性,里面都是按照index名字来索引的,不是位置.
+
+```{python}
+data.loc[1]
+data.loc[1:3]
+data.loc[[1,3]]
+```
+
+对于`iloc`属性,则里面都是按照位置来进行索引和切片的.
+
+```{python}
+data.iloc[1]
+data.iloc[1:3]
+```
+
+第三个属性,`ix`,他是上面两种属性的混合,对于series对象来说,`idx`属性是和`iloc`一样的,他主要是用于数据框对象的.
+
+python推荐大家还是使用名字进行索引和切片(explicit is better than implicit). 
+
+## 数据框中的数据选择
+
+大多数情况下,数据框更像是一个二维的array,有时候也可以看作是字典.
+
+### 将数据库看作字典
+
+```{python}
+area = pd.Series({'California': 423967, 'Texas': 695662,
+'New York': 141297, 'Florida': 170312,
+'Illinois': 149995})
+pop = pd.Series({'California': 38332521, 'Texas': 26448193,
+'New York': 19651127, 'Florida': 19552860,
+'Illinois': 12882135})
+data = pd.DataFrame({'area':area, 'pop':pop})
+data
+data.ndim
+data.columns
+data.index
+```
+
+可以直接使用列名来获得某一列.得到的是series对象.
+
+```{python}
+data['area']
+type(data['area'])
+```
+
+还可以使用属性格式(attribute-style)格式来获得某列.
+
+```{python}
+data.area
+type(data.area)
+```
+
+得到的也是series对象.
+
+两者得到的是完全一样的.
+
+```{python}
+data.area is data['area']
+```
+
+但是这种方法还是不太好,比如:
+
+1. 列名不是string,而是数字.
+
+2. 列名和数据框自带方法或者属性重名.
+
+如果列名和方法有冲突,那么使用`.`得到的就是方法而不是列.
+
+```{python}
+data.pop is data['pop']
+data['density'] = data['pop'] / data['area']
+data
+```
+
+### 将数据框作为二维的array
+
+```{python}
+data.values
+```
+
+我们可以对数据框进行类似于array的操作,比如倒置:
+
+```{python}
+data.T
+```
+
+`T`是一个属性,而不是方法,所以后面不需要使用括号.
+
+```{python}
+data.values[0]
+type(data.values[0])
+data['area']
+type(data['area'])
+```
+
+还是使用`loc`,`iloc`和`ix`属性进行选择更加高校.
+
+
+```{python}
+data.iloc[:3, :2]
+data.loc[:'Illinois', :'pop']
+```
+
+`ix`属性允许进行混合切片,也就是列和行分别使用数字位置和名字进行切片.
+
+```{python}
+data.ix[:3, :'pop']
+```
+
+```{python}
+data.density
+data.density > 100
+data.loc[data.density > 100, ['pop', 'density']]
+```
+
+也可以修改数据框.
+
+```{python}
+data.iloc[0, 2] = 90
+data
+```
+
+
+
 
 # 导入数据
 
