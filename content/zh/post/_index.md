@@ -7,8 +7,8 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
-title = "博客"
-subtitle = "这是申小涛的博客."
+title = "Blog"
+subtitle = "This is my Blog."
 
 [content]
   # Page type to display. E.g. post, talk, or publication.

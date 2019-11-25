@@ -1,0 +1,133 @@
+---
+title: Python NumPy包总结
+author: Xiaotao Shen
+date: 2019-11-24
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#安装"><span class="toc-section-number">1</span> 安装</a></li>
+<li><a href="#numpy中的数据格式"><span class="toc-section-number">2</span> Numpy中的数据格式</a></li>
+<li><a href="#numpy-array基础"><span class="toc-section-number">3</span> Numpy array基础</a></li>
+</ul>
+</div>
+
+<div id="安装" class="section level1">
+<h1><span class="header-section-number">1</span> 安装</h1>
+<p>在终端中输入:</p>
+<pre><code>pip install numpy</code></pre>
+<p>调用numpy</p>
+<pre class="python"><code>import numpy as np
+np.__version__</code></pre>
+<pre><code>## &#39;1.16.4&#39;</code></pre>
+</div>
+<div id="numpy中的数据格式" class="section level1">
+<h1><span class="header-section-number">2</span> Numpy中的数据格式</h1>
+<table>
+<colgroup>
+<col width="45%" />
+<col width="54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bool_ Boolean</td>
+<td>(True or False) stored as a byte</td>
+</tr>
+<tr class="even">
+<td>int_ Default</td>
+<td>integer type (same as C long; normally either int64 or int32)</td>
+</tr>
+<tr class="odd">
+<td>intc</td>
+<td>Identical to C int (normally int32 or int64)</td>
+</tr>
+<tr class="even">
+<td>intp</td>
+<td>Integer used for indexing (same as C ssize_t; normally either int32 or int64)</td>
+</tr>
+<tr class="odd">
+<td>int8</td>
+<td>Byte (–128 to 127)</td>
+</tr>
+<tr class="even">
+<td>int16</td>
+<td>Integer (–32768 to 32767)</td>
+</tr>
+<tr class="odd">
+<td>int32</td>
+<td>Integer (–2147483648 to 2147483647)</td>
+</tr>
+<tr class="even">
+<td>int64</td>
+<td>Integer (–9223372036854775808 to 9223372036854775807)</td>
+</tr>
+<tr class="odd">
+<td>uint8</td>
+<td>Unsigned integer (0 to 255)</td>
+</tr>
+<tr class="even">
+<td>uint16</td>
+<td>Unsigned integer (0 to 65535)</td>
+</tr>
+<tr class="odd">
+<td>uint32</td>
+<td>Unsigned integer (0 to 4294967295)</td>
+</tr>
+<tr class="even">
+<td>uint64</td>
+<td>Unsigned integer (0 to 18446744073709551615)</td>
+</tr>
+<tr class="odd">
+<td>float_</td>
+<td>Shorthand for float64</td>
+</tr>
+<tr class="even">
+<td>float16</td>
+<td>Half-precision float: sign bit, 5 bits exponent, 10 bits mantissa</td>
+</tr>
+<tr class="odd">
+<td>float32</td>
+<td>Single-precision float: sign bit, 8 bits exponent, 23 bits mantissa</td>
+</tr>
+<tr class="even">
+<td>float64</td>
+<td>Double-precision float: sign bit, 11 bits exponent, 52 bits mantissa</td>
+</tr>
+<tr class="odd">
+<td>complex_</td>
+<td>Shorthand for complex128</td>
+</tr>
+<tr class="even">
+<td>complex64</td>
+<td>Complex number, represented by two 32-bit floats</td>
+</tr>
+<tr class="odd">
+<td>complex128</td>
+<td>Complex number, represented by two 64-bit floats</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="numpy-array基础" class="section level1">
+<h1><span class="header-section-number">3</span> Numpy array基础</h1>
+</div>

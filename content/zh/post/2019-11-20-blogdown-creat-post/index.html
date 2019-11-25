@@ -1,0 +1,117 @@
+---
+title: blogdown创建post模板文件夹
+author: Xiaotao Shen
+date: 2019-11-20
+slug: ''
+categories:
+ -  R
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+
+<p><code>blogdown</code>好像并没有自动创建post模板文件夹的函数,要达到的目的是,自动在<code>content/en/post</code>中创建文件夹,然后文件夹中有一个<code>index.Rmd</code>文件.代码如下:</p>
+<pre><code>new_post &lt;- 
+  function(
+  post.name = &quot;python for genomics class day03&quot;,
+  date = Sys.Date(),
+  post.title = &quot;Python for genomics class day03&quot;,
+  author = &quot;Xiaotao Shen&quot;,
+  categories = c(&quot;Python&quot;),
+  tags = c(&quot;Blog&quot;, &quot;Chinese&quot;),
+  path = &quot;D:/my github/shen/content/en/post&quot;){
+  post.name &lt;- stringr::str_replace_all(post.name, &quot; &quot;, &quot;-&quot;)
+  file.name &lt;- paste(date, post.name, sep = &quot;-&quot;)
+ 
+  dir.create(file.path(path, file.name))
+  
+  file &lt;- &quot;---&quot;
+  write.table(file, 
+              file.path(path, file.name, &quot;index.txt&quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = FALSE)
+  
+  write.table(paste(&quot;title:&quot;, post.title),
+    file.path(path, file.name, &quot;index.txt&quot;), 
+  row.names = FALSE, col.names = FALSE, 
+  quote = FALSE, append = TRUE
+  )
+  
+  write.table(paste(&quot;author:&quot;, author),
+              file.path(path, file.name, &quot;index.txt&quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(paste(&quot;date:&quot;, date),
+              file.path(path, file.name, &quot;index.txt&quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(&quot;slug: &#39;&#39;&quot;,
+              file.path(path, file.name, &quot;index.txt&quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  write.table(&quot;categories:&quot;,
+              file.path(path, file.name, &quot;index.txt&quot;), 
+              row.names = FALSE, col.names = FALSE, 
+              quote = FALSE, append = TRUE
+  )
+  
+  for(i in 1:length(categories)){
+    write.table(paste(&quot; - &quot;, categories[i]),
+                file.path(path, file.name, &quot;index.txt&quot;), 
+                row.names = FALSE, col.names = FALSE, 
+                quote = FALSE, append = TRUE
+    )
+  }
+    
+    write.table(&quot;tags:&quot;,
+                file.path(path, file.name, &quot;index.txt&quot;), 
+                row.names = FALSE, col.names = FALSE, 
+                quote = FALSE, append = TRUE
+    )
+    
+    for(i in 1:length(tags)){
+      write.table(paste(&quot; - &quot;, tags[i]),
+                  file.path(path, file.name, &quot;index.txt&quot;), 
+                  row.names = FALSE, col.names = FALSE, 
+                  quote = FALSE, append = TRUE
+      )
+    }
+      
+      end &lt;- 
+&quot;image:
+  caption: &#39;&#39;
+  focal_point: &#39;&#39;
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---&quot;
+      write.table(
+        end,
+        file.path(path, file.name, &quot;index.txt&quot;),
+        row.names = FALSE,
+        col.names = FALSE,
+        quote = FALSE,
+        append = TRUE
+      )
+      
+ file.rename(from = file.path(path, file.name, &quot;index.txt&quot;),
+             to = file.path(path, file.name, &quot;index.Rmd&quot;))
+ 
+  }
+</code></pre>

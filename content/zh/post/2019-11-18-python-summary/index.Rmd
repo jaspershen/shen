@@ -1,0 +1,91 @@
+---
+title: Python Cookbook
+author: Xiaotao Shen
+date: '2019-11-18'
+slug: ''
+categories:
+  - Python
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# 基础
+
+# Pycharm cookbook
+
+## 注释快捷键
+
+`ctl+/`
+
+
+## 将project上传到github
+
+参考下面帖子:
+
+https://www.cnblogs.com/feixuelove1009/p/5955332.html
+
+
+## 如何更改每个项目的解释器版本?
+
+File -> Settings ->project -> Project Interpreter
+
+然后选择即可.
+
+## 创建文件
+
+File -> new
+
+## 运行代码
+
+可以一行行的运行代码,修改默认快捷键位`ctl+enter`
+
+## 修改默认的快捷键
+
+在File ->keymap下
+
+## 编码设置
+
+需要将pycharm的所有编码设置为`UTF-8`.
+
+1. File -> Setting -> Editor -> File Encoding
+
+![](./pycharm_encoding)
+
+
+同时在每个文件的开头添加:
+
+```
+#-*- coding: utf-8 -*
+```
+
+## Jupyter notbook
+
+### 修改工作路径
+
+打开默认时C盘.在Win中可以按照下面方法修改路径.
+
+```
+D:
+cd ...
+```
+
+然后使用下列命令启动`jupyter notebook`
+
+```
+jupyter notebook
+```
+
+
+
+
+
+
+

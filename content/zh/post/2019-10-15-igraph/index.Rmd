@@ -27,6 +27,34 @@ https://igraph.org/r/doc/plot.common.html
 
 ### 常用功能总结
 
+### 从data frame转变为``igraph对象
+
+使用`graph_from_data_frame()`函数.一共三个参数:
+
+* `d`:`data.frame`,前两列必须是一条边的两个顶点,比如第一列为`from`,第二列为`to`.其余的列会作为edge的属性.
+
+* `directed`:是否为有向图,默认为TRUE.
+
+* `vertices`:需要是一个data.frame.第一列是vertex的名字,然后其他列是vertex的属性.
+
+```{r}
+library(igraph)
+actors <- data.frame(name=c("Alice", "Bob", "Cecil", "David",
+                            "Esmeralda"),
+                     age=c(48,33,45,34,21),
+                     gender=c("F","M","F","M","F"))
+
+relations <- data.frame(from=c("Bob", "Cecil", "Cecil", "David",
+                               "David", "Esmeralda"),
+                        to=c("Alice", "Bob", "Alice", "Alice", "Bob", "Alice"),
+                        same.dept=c(FALSE,FALSE,TRUE,FALSE,FALSE,TRUE),
+                        friendship=c(4,5,5,2,1,1), advice=c(4,5,5,4,2,3))
+g <- graph_from_data_frame(relations, directed = TRUE, vertices = actors)
+g
+plot(g)
+```
+
+
 #### 寻找某个vertex的neighbor
 
 使用`neighbors()`函数.一共两个参数:

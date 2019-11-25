@@ -5,7 +5,130 @@
     <link>/tags/chinese/</link>
       <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
     <description>Chinese</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sun, 24 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Python NumPy包总结</title>
+      <link>/post/2019-11-24-python-numpy-summary/</link>
+      <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-24-python-numpy-summary/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#numpy中的数据格式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Numpy中的数据格式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#numpy-array基础&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Numpy array基础&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;安装&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/h1&gt;
+&lt;p&gt;在终端中输入:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install numpy&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;调用numpy&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import numpy as np
+np.__version__&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;1.16.4&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;numpy中的数据格式&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Numpy中的数据格式&lt;/h1&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;45%&#34; /&gt;
+&lt;col width=&#34;54%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Data type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;bool_ Boolean&lt;/td&gt;
+&lt;td&gt;(True or False) stored as a byte&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;int_ Default&lt;/td&gt;
+&lt;td&gt;integer type (same as C long; normally either int64 or int32)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;intc&lt;/td&gt;
+&lt;td&gt;Identical to C int (normally int32 or int64)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;intp&lt;/td&gt;
+&lt;td&gt;Integer used for indexing (same as C ssize_t; normally either int32 or int64)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;int8&lt;/td&gt;
+&lt;td&gt;Byte (–128 to 127)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;int16&lt;/td&gt;
+&lt;td&gt;Integer (–32768 to 32767)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;int32&lt;/td&gt;
+&lt;td&gt;Integer (–2147483648 to 2147483647)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;int64&lt;/td&gt;
+&lt;td&gt;Integer (–9223372036854775808 to 9223372036854775807)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;uint8&lt;/td&gt;
+&lt;td&gt;Unsigned integer (0 to 255)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;uint16&lt;/td&gt;
+&lt;td&gt;Unsigned integer (0 to 65535)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;uint32&lt;/td&gt;
+&lt;td&gt;Unsigned integer (0 to 4294967295)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;uint64&lt;/td&gt;
+&lt;td&gt;Unsigned integer (0 to 18446744073709551615)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;float_&lt;/td&gt;
+&lt;td&gt;Shorthand for float64&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;float16&lt;/td&gt;
+&lt;td&gt;Half-precision float: sign bit, 5 bits exponent, 10 bits mantissa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;float32&lt;/td&gt;
+&lt;td&gt;Single-precision float: sign bit, 8 bits exponent, 23 bits mantissa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;float64&lt;/td&gt;
+&lt;td&gt;Double-precision float: sign bit, 11 bits exponent, 52 bits mantissa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;complex_&lt;/td&gt;
+&lt;td&gt;Shorthand for complex128&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;complex64&lt;/td&gt;
+&lt;td&gt;Complex number, represented by two 32-bit floats&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;complex128&lt;/td&gt;
+&lt;td&gt;Complex number, represented by two 64-bit floats&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;numpy-array基础&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Numpy array基础&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python pandas包总结</title>
       <link>/post/2019-11-23-python-pandas-summary/</link>
@@ -37,7 +160,12 @@
 &lt;li&gt;&lt;a href=&#34;#将数据框作为二维的array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2.2&lt;/span&gt; 将数据框作为二维的array&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#导入数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 导入数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pandas中的数据操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Pandas中的数据操作&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#index-alignment-in-series&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Index alignment in Series&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#index-alignment-in-dataframe&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Index alignment in DataFrame&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#数据框和series之间的操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; 数据框和series之间的操作&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#导入数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 导入数据&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -201,7 +329,7 @@ states&lt;/code&gt;&lt;/pre&gt;
 &lt;code&gt;loc&lt;/code&gt;后面需要跟着中括号,然后第一个参数用来描述.&lt;/p&gt;
 &lt;p&gt;如果只选择一行或者一列,或者是连续的切片(中间用冒号),是可以不写为列表格式,但是如果是多个话,需要用列表形式.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.loc&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;pandas.core.indexing._LocIndexer object at 0x00000000533ED4F8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;pandas.core.indexing._LocIndexer object at 0x00000000521F5318&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.loc[&amp;quot;California&amp;quot;, [&amp;quot;area&amp;quot;]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## area    423967
 ## Name: California, dtype: int64&lt;/code&gt;&lt;/pre&gt;
@@ -214,7 +342,7 @@ states&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states.loc[&amp;quot;California&amp;quot;:&amp;quot;Texas&amp;quot;, [&amp;quot;area&amp;quot;]])&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;pandas.core.frame.DataFrame&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.iloc&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;lt;pandas.core.indexing._iLocIndexer object at 0x00000000533F84A8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;pandas.core.indexing._iLocIndexer object at 0x00000000533D84A8&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;states.iloc[0,0]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 38332521&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(states.iloc[0,0])&lt;/code&gt;&lt;/pre&gt;
@@ -532,8 +660,160 @@ data&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;pandas中的数据操作&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Pandas中的数据操作&lt;/h1&gt;
+&lt;div id=&#34;index-alignment-in-series&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Index alignment in Series&lt;/h2&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import numpy as np
+import pandas as pd
+area = pd.Series({&amp;#39;Alaska&amp;#39;: 1723337, &amp;#39;Texas&amp;#39;: 695662,
+&amp;#39;California&amp;#39;: 423967}, name=&amp;#39;area&amp;#39;)
+population = pd.Series({&amp;#39;California&amp;#39;: 38332521, &amp;#39;Texas&amp;#39;: 26448193,
+&amp;#39;New York&amp;#39;: 19651127}, name=&amp;#39;population&amp;#39;)
+population / area&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Alaska              NaN
+## California    90.413926
+## New York            NaN
+## Texas         38.018740
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;area.index | population.index&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Index([&amp;#39;Alaska&amp;#39;, &amp;#39;California&amp;#39;, &amp;#39;New York&amp;#39;, &amp;#39;Texas&amp;#39;], dtype=&amp;#39;object&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;series还可以相加.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A = pd.Series([2, 4, 6], index=[0, 1, 2])
+B = pd.Series([1, 3, 5], index=[1, 2, 3])
+A + B&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0    NaN
+## 1    5.0
+## 2    9.0
+## 3    NaN
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相加的时候,按照名字相同的进行加法运算,如果只有其中一方有,那么会返回0值.&lt;/p&gt;
+&lt;p&gt;还可以使用方法来代替运算符.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A.add(B, fill_value=0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0    2.0
+## 1    5.0
+## 2    9.0
+## 3    5.0
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;index-alignment-in-dataframe&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Index alignment in DataFrame&lt;/h2&gt;
+&lt;p&gt;同样的,数据框也可以相加,按照行名和列名.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;rng = np.random.RandomState(42)
+ser = pd.Series(rng.randint(0, 10, 4))
+A = pd.DataFrame(rng.randint(0, 20, (2, 2)),
+columns=list(&amp;#39;AB&amp;#39;))
+A&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     A   B
+## 0   6  18
+## 1  10  10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;B = pd.DataFrame(rng.randint(0, 10, (3, 3)),
+columns=list(&amp;#39;BAC&amp;#39;))
+B&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    B  A  C
+## 0  7  4  3
+## 1  7  7  2
+## 2  5  4  1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A + B&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       A     B   C
+## 0  10.0  25.0 NaN
+## 1  17.0  17.0 NaN
+## 2   NaN   NaN NaN&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同样可以使用&lt;code&gt;add&lt;/code&gt;方法.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A.stack()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0  A     6
+##    B    18
+## 1  A    10
+##    B    10
+## dtype: int32&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     A   B
+## 0   6  18
+## 1  10  10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;fill = A.stack().mean()
+fill&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 11.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A.add(B, fill_value=fill)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       A     B     C
+## 0  10.0  25.0  14.0
+## 1  17.0  17.0  13.0
+## 2  15.0  16.0  12.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;lists Python operators and their equivalent Pandas object methods&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Python operator&lt;/th&gt;
+&lt;th&gt;Pandas method(s)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;+&lt;/td&gt;
+&lt;td&gt;add()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;sub(), subtract()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;mul(), multiply()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;/&lt;/td&gt;
+&lt;td&gt;truediv(), div(), divide()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;//&lt;/td&gt;
+&lt;td&gt;floordiv()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;%&lt;/td&gt;
+&lt;td&gt;mod()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;**&lt;/td&gt;
+&lt;td&gt;pow()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;数据框和series之间的操作&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; 数据框和series之间的操作&lt;/h2&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A = rng.randint(10, size=(3, 4))
+A&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[7, 5, 1, 4],
+##        [0, 9, 5, 8],
+##        [0, 9, 2, 6]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;type(A)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;class &amp;#39;numpy.ndarray&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([7, 5, 1, 4])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;A - A[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[ 0,  0,  0,  0],
+##        [-7,  4,  4,  4],
+##        [-7,  4,  1,  2]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;df = pd.DataFrame(A, columns=list(&amp;#39;QRST&amp;#39;))
+df&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Q  R  S  T
+## 0  7  5  1  4
+## 1  0  9  5  8
+## 2  0  9  2  6&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;df.iloc[0]##第一行&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Q    7
+## R    5
+## S    1
+## T    4
+## Name: 0, dtype: int32&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;df - df.iloc[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Q  R  S  T
+## 0  0  0  0  0
+## 1 -7  4  4  4
+## 2 -7  4  1  2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div id=&#34;导入数据&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 导入数据&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 导入数据&lt;/h1&gt;
 &lt;p&gt;和R类似,可以使用pandas读取不同格式的本地的数据.函数总结如下:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
