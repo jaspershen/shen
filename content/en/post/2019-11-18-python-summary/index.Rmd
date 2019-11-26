@@ -57,7 +57,7 @@ File -> new
 
 1. File -> Setting -> Editor -> File Encoding
 
-![](./pycharm_encoding)
+![](./pycharm_encoding.png)
 
 
 同时在每个文件的开头添加:
@@ -66,9 +66,9 @@ File -> new
 #-*- coding: utf-8 -*
 ```
 
-## Jupyter notbook
+# Jupyter notbook
 
-### 修改工作路径
+## 修改工作路径
 
 打开默认时C盘.在Win中可以按照下面方法修改路径.
 
