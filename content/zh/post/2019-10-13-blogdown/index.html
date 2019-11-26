@@ -1,0 +1,283 @@
+---
+title: blogdown创建博客总结
+author: Xiaotao Shen
+date: '2019-10-13'
+slug: blogdown
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#如何修改网站icon"><span class="toc-section-number">1</span> 如何修改网站icon?</a></li>
+<li><a href="#如何将个人网站作为图床使用"><span class="toc-section-number">2</span> 如何将个人网站作为图床使用?</a></li>
+<li><a href="#如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page"><span class="toc-section-number">3</span> 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</a></li>
+<li><a href="#如何添加新的页面"><span class="toc-section-number">4</span> 如何添加新的页面?</a></li>
+<li><a href="#如何在post中添加本地图片"><span class="toc-section-number">5</span> 如何在post中添加本地图片?</a></li>
+<li><a href="#如何在rmarkdown中添加table-of-contents"><span class="toc-section-number">6</span> 如何在Rmarkdown中添加table of contents?</a></li>
+<li><a href="#netlify自动部署deployfailed的问题"><span class="toc-section-number">7</span> netlify自动部署(deploy)failed的问题</a><ul>
+<li><a href="#打开netlify网站"><span class="toc-section-number">7.1</span> 打开netlify网站:</a></li>
+<li><a href="#点击site-settings"><span class="toc-section-number">7.2</span> 点击<code>Site settings</code></a></li>
+<li><a href="#点击build-deploy"><span class="toc-section-number">7.3</span> 点击<code>Build &amp; deploy</code></a></li>
+<li><a href="#修改hugo-version"><span class="toc-section-number">7.4</span> 修改<code>Hugo version</code></a></li>
+</ul></li>
+<li><a href="#将网站改为中英双文之后新建post报错"><span class="toc-section-number">8</span> 将网站改为中英双文之后,新建<code>post</code>报错</a><ul>
+<li><a href="#新建blog的yaml如下"><span class="toc-section-number">8.1</span> 新建blog的<code>YAML</code>如下:</a></li>
+<li><a href="#常用的categories"><span class="toc-section-number">8.2</span> 常用的categories:</a></li>
+<li><a href="#常用的tags"><span class="toc-section-number">8.3</span> 常用的tags:</a></li>
+</ul></li>
+<li><a href="#如何在postmarkdown中插入emojis"><span class="toc-section-number">9</span> 如何在post(markdown)中插入Emojis</a></li>
+<li><a href="#如何在post中插入视频"><span class="toc-section-number">10</span> 如何在post中插入视频?</a><ul>
+<li><a href="#如何插入b站视频"><span class="toc-section-number">10.1</span> 如何插入B站视频?</a></li>
+<li><a href="#在markdown中"><span class="toc-section-number">10.2</span> 在markdown中</a><ul>
+<li><a href="#a-video-from-your-staticimg-media-library"><span class="toc-section-number">10.2.1</span> A video from your static/img/ media library:</a></li>
+<li><a href="#a-video-within-a-pages-folder-e.g.-contentposthello"><span class="toc-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</a></li>
+<li><a href="#youtube"><span class="toc-section-number">10.2.3</span> Youtube:</a></li>
+<li><a href="#vimeo"><span class="toc-section-number">10.2.4</span> Vimeo:</a></li>
+</ul></li>
+<li><a href="#在rmarkdown中"><span class="toc-section-number">10.3</span> 在Rmarkdown中</a><ul>
+<li><a href="#本地视频"><span class="toc-section-number">10.3.1</span> 本地视频</a></li>
+<li><a href="#youtube视频"><span class="toc-section-number">10.3.2</span> Youtube视频</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#如何在post中插入icon"><span class="toc-section-number">11</span> 如何在post中插入icon?</a></li>
+</ul>
+</div>
+
+<div id="如何修改网站icon" class="section level1">
+<h1><span class="header-section-number">1</span> 如何修改网站icon?</h1>
+<p>将自己的logo图片截取为192x192像素(长款分别为0.21cm).然后将其命名为’icon-192.png’放置于<code>static/img</code>文件夹中即可.</p>
+</div>
+<div id="如何将个人网站作为图床使用" class="section level1">
+<h1><span class="header-section-number">2</span> 如何将个人网站作为图床使用?</h1>
+<p>将图片放置于<code>static/files</code>文件夹中即可.使用如下路径访问:</p>
+<p><code>shenxt.info/files/figure.name</code></p>
+<p>如: <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="uri">https://www.shenxt.info/files/wechat_QR.jpg</a></p>
+</div>
+<div id="如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page" class="section level1">
+<h1><span class="header-section-number">3</span> 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</h1>
+<p>以blog为例(posts).</p>
+<ol style="list-style-type: decimal">
+<li>首先需要将 <code>content/home</code>中的<code>posts.md</code>中的active设置为false.这样,这一部分就不会在home主页显示.</li>
+</ol>
+<p><img src="change-active.png" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>然后将<code>content/home</code>中的<code>posts.md</code>拷贝到<code>content/post</code>中,并改名为<code>index.md</code>.</p></li>
+<li><p>打开<code>config/_default/menus.toml</code>,然后将Blog的url修改为文件夹的名称.</p></li>
+</ol>
+<p><img src="change-url.png" /></p>
+</div>
+<div id="如何添加新的页面" class="section level1">
+<h1><span class="header-section-number">4</span> 如何添加新的页面?</h1>
+<p>以在我的网页添加新的中文入口为例.</p>
+<p>在<code>conternt</code>文件夹下面创建新的<code>chinese</code>文件夹.在该文件夹下面创建<code>_index.md</code>文件.</p>
+</div>
+<div id="如何在post中添加本地图片" class="section level1">
+<h1><span class="header-section-number">5</span> 如何在post中添加本地图片?</h1>
+<p>首先在<code>content/post/</code>建立和post名z字去除掉数字之后的的文件夹(比如post名字为<code>2019-10-25-test</code>,则文件夹命名为<code>test</code>),然后再在该文件夹下建立和post同名的文件夹(<code>2019-10-25-test</code>),然后将图片(如<code>test.png</code>)放入该文件夹下.在post中,使用:</p>
+<p><code>![](test/2019-10-25-test/test.png)</code>语句插入图片.</p>
+</div>
+<div id="如何在rmarkdown中添加table-of-contents" class="section level1">
+<h1><span class="header-section-number">6</span> 如何在Rmarkdown中添加table of contents?</h1>
+<p>在每篇<code>Rmarkdown</code>的<code>YAML</code>添加如下内容:</p>
+<pre><code>output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true</code></pre>
+</div>
+<div id="netlify自动部署deployfailed的问题" class="section level1">
+<h1><span class="header-section-number">7</span> netlify自动部署(deploy)failed的问题</h1>
+<p>发现自动部署总是失败.查了一下,应该是本地的<code>Hugo</code>和netlify上的版本不一致,解决方法如下:</p>
+<p>首先,在R console输入下列语句,查看本地<code>Hugo</code>版本:</p>
+<pre class="r"><code>blogdown::hugo_version()</code></pre>
+<pre><code>## [1] &#39;0.58.3&#39;</code></pre>
+<p>然后修改netlify上的<code>Hugo</code>的版本.</p>
+<div id="打开netlify网站" class="section level2">
+<h2><span class="header-section-number">7.1</span> 打开netlify网站:</h2>
+<p>点击下面网站:</p>
+<p><a href="https://app.netlify.com/teams/jaspershen/sites" class="uri">https://app.netlify.com/teams/jaspershen/sites</a></p>
+<p>然后点击托管的自己的网站.</p>
+<p><img src="netlify.png" /></p>
+</div>
+<div id="点击site-settings" class="section level2">
+<h2><span class="header-section-number">7.2</span> 点击<code>Site settings</code></h2>
+<p><img src="site_setting.png" /></p>
+</div>
+<div id="点击build-deploy" class="section level2">
+<h2><span class="header-section-number">7.3</span> 点击<code>Build &amp; deploy</code></h2>
+<p><img src="build_deploy.png" /></p>
+</div>
+<div id="修改hugo-version" class="section level2">
+<h2><span class="header-section-number">7.4</span> 修改<code>Hugo version</code></h2>
+<p>然后点击<code>Environment</code>,将HUGO_VERSION版本修改为和本地一致的版本.</p>
+<p><img src="hugo_version.png" /></p>
+</div>
+</div>
+<div id="将网站改为中英双文之后新建post报错" class="section level1">
+<h1><span class="header-section-number">8</span> 将网站改为中英双文之后,新建<code>post</code>报错</h1>
+<p>暂时没有找到好的解决办法.现在的问题是,使用<code>new_post()</code>创建新的博客,默认的根路径就在<code>content\en</code>中,但是默认的打开路径又在<code>content\zh</code>中.所以无法解决.现在只能使用copy其他博客新建来解决了.</p>
+<div id="新建blog的yaml如下" class="section level2">
+<h2><span class="header-section-number">8.1</span> 新建blog的<code>YAML</code>如下:</h2>
+<pre><code>---
+title: test
+author: Xiaotao Shen
+date: &#39;2019-10-13&#39;
+slug: &#39;&#39;
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: &#39;&#39;
+  focal_point: &#39;&#39;
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---</code></pre>
+</div>
+<div id="常用的categories" class="section level2">
+<h2><span class="header-section-number">8.2</span> 常用的categories:</h2>
+<ol style="list-style-type: decimal">
+<li>docker<br />
+</li>
+<li>life<br />
+</li>
+<li>literature<br />
+</li>
+<li>Mass Spectrometry<br />
+</li>
+<li>omics<br />
+</li>
+<li>R<br />
+</li>
+<li>Study</li>
+</ol>
+</div>
+<div id="常用的tags" class="section level2">
+<h2><span class="header-section-number">8.3</span> 常用的tags:</h2>
+<ol style="list-style-type: decimal">
+<li>Academic<br />
+</li>
+<li>Biomarker discovery<br />
+</li>
+<li>Blog<br />
+</li>
+<li>Chinese<br />
+</li>
+<li>Data cleaning<br />
+</li>
+<li>Data processing<br />
+</li>
+<li>Github<br />
+</li>
+<li>life<br />
+</li>
+<li>Lipidomics<br />
+</li>
+<li>Metabolomics<br />
+</li>
+<li>Software<br />
+</li>
+<li>Source Thermes<br />
+</li>
+<li>Statistical analysis</li>
+</ol>
+</div>
+</div>
+<div id="如何在postmarkdown中插入emojis" class="section level1">
+<h1><span class="header-section-number">9</span> 如何在post(markdown)中插入Emojis</h1>
+<p>完整的emoji名单在这:</p>
+<p><a href="https://www.webfx.com/tools/emoji-cheat-sheet/" class="uri">https://www.webfx.com/tools/emoji-cheat-sheet/</a></p>
+<p>输入:</p>
+<pre><code>I : heart : Academic : smile :</code></pre>
+<p>注意需要把emoji文字和两边的冒号之间的空格去除掉.</p>
+<p>显示:</p>
+<p>I :heart: Academic :smile:</p>
+</div>
+<div id="如何在post中插入视频" class="section level1">
+<h1><span class="header-section-number">10</span> 如何在post中插入视频?</h1>
+<div id="如何插入b站视频" class="section level2">
+<h2><span class="header-section-number">10.1</span> 如何插入B站视频?</h2>
+<p>参考下面帖子.</p>
+<p><a href="https://fengxiao.ml/2018/12/27/133.html" class="uri">https://fengxiao.ml/2018/12/27/133.html</a>.</p>
+<p>点开想要插入的视频,点击分享.然后点击<code>嵌入代码</code>,复制代码,插入到markdown文件中即可.</p>
+<p><img src="bilibili.png" /></p>
+<p>但是直接嵌入的视频长宽不太好,所以需要手动调整.</p>
+<p>首先需要设置宽度位100%.并给其设置一个id.如下面我就设置ID位<code>test</code>.</p>
+<pre><code>&lt;iframe id=&quot;test&quot; src=&quot;//player.bilibili.com/player.html?aid=23877090&amp;cid=39940519&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; width=100%&gt; &lt;/iframe&gt;</code></pre>
+<p>然后需要在markdown中插入下面的JS代码:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+document.getElementById(&quot;test&quot;).style.height=document.getElementById(&quot;test&quot;).scrollWidth*0.76+&quot;px&quot;;
+&lt;/script&gt;</code></pre>
+<iframe id="test" src="//player.bilibili.com/player.html?aid=23877090&amp;cid=39940519&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%">
+</iframe>
+<script type="text/javascript">
+document.getElementById("test").style.height=document.getElementById("test").scrollWidth*0.76+"px";
+</script>
+</div>
+<div id="在markdown中" class="section level2">
+<h2><span class="header-section-number">10.2</span> 在markdown中</h2>
+<p>直接使用下面语句,插入到markdown中即可.</p>
+<div id="a-video-from-your-staticimg-media-library" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> A video from your static/img/ media library:</h3>
+<pre><code>{{&lt; video library=&quot;1&quot; src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}</code></pre>
+</div>
+<div id="a-video-within-a-pages-folder-e.g.-contentposthello" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</h3>
+<pre><code>{{&lt; video src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}
+</code></pre>
+</div>
+<div id="youtube" class="section level3">
+<h3><span class="header-section-number">10.2.3</span> Youtube:</h3>
+<pre><code>{{&lt; youtube w7Ft2ymGmfc &gt;}}</code></pre>
+</div>
+<div id="vimeo" class="section level3">
+<h3><span class="header-section-number">10.2.4</span> Vimeo:</h3>
+<pre><code>{{&lt; vimeo 146022717 &gt;}}</code></pre>
+</div>
+</div>
+<div id="在rmarkdown中" class="section level2">
+<h2><span class="header-section-number">10.3</span> 在Rmarkdown中</h2>
+<p>使用<code>shortcode()</code>函数.</p>
+<div id="本地视频" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> 本地视频</h3>
+<p>将视频放入在与post相同的文件夹中.</p>
+<p>然后插入下面语句(注意是要放在r代码框中):</p>
+<pre class="r"><code>blogdown::shortcode(&quot;video&quot;, src = &quot;./test.mp4&quot;)</code></pre>
+{{% video src="./test.mp4" %}}
+</div>
+<div id="youtube视频" class="section level3">
+<h3><span class="header-section-number">10.3.2</span> Youtube视频</h3>
+<p>使用下面语句可以插入视频.第二个是youtube视频ID.</p>
+<pre class="r"><code>blogdown::shortcode(&quot;youtube&quot;, &quot;p4liifrbK8w&quot;)</code></pre>
+{{% youtube "p4liifrbK8w" %}}
+</div>
+</div>
+</div>
+<div id="如何在post中插入icon" class="section level1">
+<h1><span class="header-section-number">11</span> 如何在post中插入icon?</h1>
+<p>直接使用HTML语句即可.</p>
+<pre><code>&lt;i class=&quot;fab fa-weixin&quot;&gt;&lt;/i&gt;</code></pre>
+<p>显示:</p>
+<p><i class="fab fa-weixin"></i></p>
+<p>其中fab是这个网站:</p>
+<p><a href="https://fontawesome.com/icons?d=gallery" class="uri">https://fontawesome.com/icons?d=gallery</a></p>
+<p>找到你想要的icon之后,复制名字,替换掉即可.</p>
+<p>如果该网站没有,还可以使用下面的网站:</p>
+<p><a href="https://getbootstrap.com/docs/3.3/components/" class="uri">https://getbootstrap.com/docs/3.3/components/</a></p>
+<p>输入:</p>
+<pre><code>&lt;i class=&quot;fas fa-adobe&quot;&gt;&lt;/i&gt;</code></pre>
+<p>显示:</p>
+<p><i class="fas fa-hourglass"></i></p>
+</div>

@@ -1,0 +1,356 @@
+---
+title: Python NumPy包总结
+author: Xiaotao Shen
+date: 2019-11-24
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#安装"><span class="toc-section-number">1</span> 安装</a></li>
+<li><a href="#numpy中的数据格式"><span class="toc-section-number">2</span> Numpy中的数据格式</a></li>
+<li><a href="#numpy-array基础"><span class="toc-section-number">3</span> Numpy array基础</a><ul>
+<li><a href="#array的属性"><span class="toc-section-number">3.1</span> Array的属性</a></li>
+<li><a href="#array索引获得其中单个元素"><span class="toc-section-number">3.2</span> Array索引:获得其中单个元素</a></li>
+<li><a href="#array切片获得一个subarray"><span class="toc-section-number">3.3</span> Array切片:获得一个subarray</a><ul>
+<li><a href="#一维array"><span class="toc-section-number">3.3.1</span> 一维array</a></li>
+<li><a href="#多维array"><span class="toc-section-number">3.3.2</span> 多维array</a></li>
+</ul></li>
+<li><a href="#重塑array的形状"><span class="toc-section-number">3.4</span> 重塑array的形状</a></li>
+<li><a href="#array的合并和分裂concatenation-and-splitting"><span class="toc-section-number">3.5</span> Array的合并和分裂(Concatenation and Splitting)</a><ul>
+<li><a href="#合并array"><span class="toc-section-number">3.5.1</span> 合并array</a></li>
+<li><a href="#分割array"><span class="toc-section-number">3.5.2</span> 分割array</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="安装" class="section level1">
+<h1><span class="header-section-number">1</span> 安装</h1>
+<p>在终端中输入:</p>
+<pre><code>pip install numpy</code></pre>
+<p>调用numpy</p>
+<pre class="python"><code>import numpy as np
+np.__version__</code></pre>
+<pre><code>## &#39;1.16.4&#39;</code></pre>
+</div>
+<div id="numpy中的数据格式" class="section level1">
+<h1><span class="header-section-number">2</span> Numpy中的数据格式</h1>
+<table>
+<colgroup>
+<col width="45%" />
+<col width="54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bool_ Boolean</td>
+<td>(True or False) stored as a byte</td>
+</tr>
+<tr class="even">
+<td>int_ Default</td>
+<td>integer type (same as C long; normally either int64 or int32)</td>
+</tr>
+<tr class="odd">
+<td>intc</td>
+<td>Identical to C int (normally int32 or int64)</td>
+</tr>
+<tr class="even">
+<td>intp</td>
+<td>Integer used for indexing (same as C ssize_t; normally either int32 or int64)</td>
+</tr>
+<tr class="odd">
+<td>int8</td>
+<td>Byte (–128 to 127)</td>
+</tr>
+<tr class="even">
+<td>int16</td>
+<td>Integer (–32768 to 32767)</td>
+</tr>
+<tr class="odd">
+<td>int32</td>
+<td>Integer (–2147483648 to 2147483647)</td>
+</tr>
+<tr class="even">
+<td>int64</td>
+<td>Integer (–9223372036854775808 to 9223372036854775807)</td>
+</tr>
+<tr class="odd">
+<td>uint8</td>
+<td>Unsigned integer (0 to 255)</td>
+</tr>
+<tr class="even">
+<td>uint16</td>
+<td>Unsigned integer (0 to 65535)</td>
+</tr>
+<tr class="odd">
+<td>uint32</td>
+<td>Unsigned integer (0 to 4294967295)</td>
+</tr>
+<tr class="even">
+<td>uint64</td>
+<td>Unsigned integer (0 to 18446744073709551615)</td>
+</tr>
+<tr class="odd">
+<td>float_</td>
+<td>Shorthand for float64</td>
+</tr>
+<tr class="even">
+<td>float16</td>
+<td>Half-precision float: sign bit, 5 bits exponent, 10 bits mantissa</td>
+</tr>
+<tr class="odd">
+<td>float32</td>
+<td>Single-precision float: sign bit, 8 bits exponent, 23 bits mantissa</td>
+</tr>
+<tr class="even">
+<td>float64</td>
+<td>Double-precision float: sign bit, 11 bits exponent, 52 bits mantissa</td>
+</tr>
+<tr class="odd">
+<td>complex_</td>
+<td>Shorthand for complex128</td>
+</tr>
+<tr class="even">
+<td>complex64</td>
+<td>Complex number, represented by two 32-bit floats</td>
+</tr>
+<tr class="odd">
+<td>complex128</td>
+<td>Complex number, represented by two 64-bit floats</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="numpy-array基础" class="section level1">
+<h1><span class="header-section-number">3</span> Numpy array基础</h1>
+<div id="array的属性" class="section level2">
+<h2><span class="header-section-number">3.1</span> Array的属性</h2>
+<p>先生成三个不同的array,一维,二维和三维array.</p>
+<pre class="python"><code>import numpy as np
+np.random.seed(0)#设置seed,保证重复性
+
+x1 = np.random.randint(10, size = 6)#一维
+x2 = np.random.randint(10, size = (3, 4))#二维
+x3 = np.random.randint(10, size = (3, 4, 5))#三维
+x1</code></pre>
+<pre><code>## array([5, 0, 3, 3, 7, 9])</code></pre>
+<pre class="python"><code>x2</code></pre>
+<pre><code>## array([[3, 5, 2, 4],
+##        [7, 6, 8, 8],
+##        [1, 6, 7, 7]])</code></pre>
+<pre class="python"><code>x3</code></pre>
+<pre><code>## array([[[8, 1, 5, 9, 8],
+##         [9, 4, 3, 0, 3],
+##         [5, 0, 2, 3, 8],
+##         [1, 3, 3, 3, 7]],
+## 
+##        [[0, 1, 9, 9, 0],
+##         [4, 7, 3, 2, 7],
+##         [2, 0, 0, 4, 5],
+##         [5, 6, 8, 4, 1]],
+## 
+##        [[4, 9, 8, 1, 1],
+##         [7, 9, 9, 3, 6],
+##         [7, 2, 0, 3, 5],
+##         [9, 4, 4, 6, 4]]])</code></pre>
+<p>每一个array都有<code>ndim</code>,<code>shape</code>和<code>size</code>属性.</p>
+<pre class="python"><code>print(x1.ndim, x1.shape, x1.size)</code></pre>
+<pre><code>## 1 (6,) 6</code></pre>
+<pre class="python"><code>print(x2.ndim, x2.shape, x2.size)</code></pre>
+<pre><code>## 2 (3, 4) 12</code></pre>
+<pre class="python"><code>print(x3.ndim, x3.shape, x3.size)</code></pre>
+<pre><code>## 3 (3, 4, 5) 60</code></pre>
+<p>从上面例子可以看出来这三个属性分别代表什么意思.</p>
+<ul>
+<li><p><code>ndim</code>属性:该数据是几维数据.</p></li>
+<li><p><code>shape</code>属性:该数据每个维度的大小,这个可以看作是R中的<code>dim()</code>函数得到的内容.</p></li>
+<li><p><code>size</code>属性:该数据的总的cell数目.</p></li>
+</ul>
+<p><code>dtype</code>属性是指array的数据类型.</p>
+<pre class="python"><code>print(x1.dtype, x2.dtype, x3.dtype)</code></pre>
+<pre><code>## int32 int32 int32</code></pre>
+</div>
+<div id="array索引获得其中单个元素" class="section level2">
+<h2><span class="header-section-number">3.2</span> Array索引:获得其中单个元素</h2>
+<p>array的索引跟python中内置的列表非常像,可以使用位置索引,但是同样注意从0开始算起.</p>
+<pre class="python"><code>x1</code></pre>
+<pre><code>## array([5, 0, 3, 3, 7, 9])</code></pre>
+<pre class="python"><code>x1[0]</code></pre>
+<pre><code>## 5</code></pre>
+<pre class="python"><code>x1[-1]#倒数第一个元素</code></pre>
+<pre><code>## 9</code></pre>
+<p>对于多维,比如二维array,则跟R中的数据框类似,使用逗号分开行和列的索引.</p>
+<pre class="python"><code>x2</code></pre>
+<pre><code>## array([[3, 5, 2, 4],
+##        [7, 6, 8, 8],
+##        [1, 6, 7, 7]])</code></pre>
+<pre class="python"><code>x2[0,0]</code></pre>
+<pre><code>## 3</code></pre>
+<pre class="python"><code>x2[0,0] = 10
+x2</code></pre>
+<pre><code>## array([[10,  5,  2,  4],
+##        [ 7,  6,  8,  8],
+##        [ 1,  6,  7,  7]])</code></pre>
+<pre class="python"><code>x2[0,0]</code></pre>
+<pre><code>## 10</code></pre>
+</div>
+<div id="array切片获得一个subarray" class="section level2">
+<h2><span class="header-section-number">3.3</span> Array切片:获得一个subarray</h2>
+<p>类似于列表,可以这样切片:</p>
+<pre><code>list[start:end:step]</code></pre>
+<p>需要强调一次再,取出的subarray不包括end.</p>
+<div id="一维array" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> 一维array</h3>
+<pre class="python"><code>x = np.arange(10)
+x</code></pre>
+<pre><code>## array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
+<pre class="python"><code>x[:5]#前五个元素</code></pre>
+<pre><code>## array([0, 1, 2, 3, 4])</code></pre>
+<pre class="python"><code>x[4:7]#前五个元素</code></pre>
+<pre><code>## array([4, 5, 6])</code></pre>
+<pre class="python"><code>x[::2]#前五个元素</code></pre>
+<pre><code>## array([0, 2, 4, 6, 8])</code></pre>
+<pre class="python"><code>x[::-1]#将array反向排列</code></pre>
+<pre><code>## array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])</code></pre>
+</div>
+<div id="多维array" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> 多维array</h3>
+<p>多维数组跟一致数组一样,只是需要使用逗号把不同维度的切片分开即可.</p>
+<pre><code>array[start:end:step,start:end;step]</code></pre>
+<pre class="python"><code>x2</code></pre>
+<pre><code>## array([[10,  5,  2,  4],
+##        [ 7,  6,  8,  8],
+##        [ 1,  6,  7,  7]])</code></pre>
+<pre class="python"><code>x2[1:3, 1:3]</code></pre>
+<pre><code>## array([[6, 8],
+##        [6, 7]])</code></pre>
+<pre class="python"><code>x2[::-1, ::-1]</code></pre>
+<pre><code>## array([[ 7,  7,  6,  1],
+##        [ 8,  8,  6,  7],
+##        [ 4,  2,  5, 10]])</code></pre>
+<p>如果对于行或者列只取出一个,会出现什么情况呢?</p>
+<pre class="python"><code>x2</code></pre>
+<pre><code>## array([[10,  5,  2,  4],
+##        [ 7,  6,  8,  8],
+##        [ 1,  6,  7,  7]])</code></pre>
+<pre class="python"><code>x2[1:3, 0]</code></pre>
+<pre><code>## array([7, 1])</code></pre>
+<pre class="python"><code>x2[1:3, 0].ndim</code></pre>
+<pre><code>## 1</code></pre>
+<p>可以看到,降维了.</p>
+</div>
+</div>
+<div id="重塑array的形状" class="section level2">
+<h2><span class="header-section-number">3.4</span> 重塑array的形状</h2>
+<p>array的形状,上面简单介绍了,指的就是数组的各个维度的大小.比较常用的是<code>reshape</code>方法.</p>
+<pre class="python"><code>grid = np.arange(1, 10)
+grid</code></pre>
+<pre><code>## array([1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
+<pre class="python"><code>grid.reshape((3,3))</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [7, 8, 9]])</code></pre>
+</div>
+<div id="array的合并和分裂concatenation-and-splitting" class="section level2">
+<h2><span class="header-section-number">3.5</span> Array的合并和分裂(Concatenation and Splitting)</h2>
+<div id="合并array" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> 合并array</h3>
+<p>将两个array合并为一个array,可以使用函数<code>concatenate</code>,是<code>numpy</code>中的函数.</p>
+<pre class="python"><code>x = np.array([1, 2, 3])
+y = np.array([3, 2, 1])
+z = [99, 99, 99]
+np.concatenate([x, y, z])</code></pre>
+<pre><code>## array([ 1,  2,  3,  3,  2,  1, 99, 99, 99])</code></pre>
+<p>可以看到,需要将array放在一个<code>list</code>(中括号)中.</p>
+<p>还可以用于二维array的合并.</p>
+<pre class="python"><code>grid = np.array([[1, 2, 3],
+[4, 5, 6]])
+grid</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6]])</code></pre>
+<pre class="python"><code>np.concatenate([grid, grid])</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [1, 2, 3],
+##        [4, 5, 6]])</code></pre>
+<p>可以看到,这样类似于R中的数据库的<code>rbind</code>功能,将array按照列进行合并.</p>
+<p>那么如何实现<code>cbind</code>效果呢?</p>
+<pre class="python"><code>np.concatenate([grid, grid], axis=1)</code></pre>
+<pre><code>## array([[1, 2, 3, 1, 2, 3],
+##        [4, 5, 6, 4, 5, 6]])</code></pre>
+<p>其实还可以使用更为形象的函数,<code>np.vstack</code>(相当于R中的<code>rbind</code>),和<code>np.hstack</code>(相当于R中的<code>cbind</code>).</p>
+<pre class="python"><code>x = np.array([1, 2, 3])
+grid = np.array([[9, 8, 7],
+[6, 5, 4]])
+np.vstack([x, grid])</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [9, 8, 7],
+##        [6, 5, 4]])</code></pre>
+<pre class="python"><code>y = np.array([[99],
+[99]])
+np.hstack([grid, y])</code></pre>
+<pre><code>## array([[ 9,  8,  7, 99],
+##        [ 6,  5,  4, 99]])</code></pre>
+</div>
+<div id="分割array" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> 分割array</h3>
+<p>分割array有几个函数.</p>
+<p><code>np.split</code>,<code>np.hsplit</code>,和<code>np.vsplit</code>.看几个例子就明白了.</p>
+<pre class="python"><code>x = [1, 2, 3, 99, 99, 3, 2, 1]
+x</code></pre>
+<pre><code>## [1, 2, 3, 99, 99, 3, 2, 1]</code></pre>
+<pre class="python"><code>x1, x2, x3 = np.split(x, [3, 5])
+x1</code></pre>
+<pre><code>## array([1, 2, 3])</code></pre>
+<pre class="python"><code>x2</code></pre>
+<pre><code>## array([99, 99])</code></pre>
+<pre class="python"><code>x3</code></pre>
+<pre><code>## array([3, 2, 1])</code></pre>
+<p>对于函数<code>split</code>,第一参数是要分割的列表,第二个参数需要是一个list,代表从哪分割,比如这里面的<code>[3,5]</code>,就代表着将列表分割为三段,分别是[:3],[3:5],[5:].</p>
+<p>同样对于<code>hsplit</code>和<code>vsplit</code>也就比较好理解了,分别是对多维array进行垂直和水平切割.</p>
+<pre class="python"><code>grid = np.arange(16).reshape((4, 4))
+grid</code></pre>
+<pre><code>## array([[ 0,  1,  2,  3],
+##        [ 4,  5,  6,  7],
+##        [ 8,  9, 10, 11],
+##        [12, 13, 14, 15]])</code></pre>
+<pre class="python"><code>upper, lower = np.vsplit(grid, [2])
+print(upper)</code></pre>
+<pre><code>## [[0 1 2 3]
+##  [4 5 6 7]]</code></pre>
+<pre class="python"><code>print(lower)</code></pre>
+<pre><code>## [[ 8  9 10 11]
+##  [12 13 14 15]]</code></pre>
+<pre class="python"><code>left, right = np.hsplit(grid, [2])
+print(left)</code></pre>
+<pre><code>## [[ 0  1]
+##  [ 4  5]
+##  [ 8  9]
+##  [12 13]]</code></pre>
+<pre class="python"><code>print(right)</code></pre>
+<pre><code>## [[ 2  3]
+##  [ 6  7]
+##  [10 11]
+##  [14 15]]</code></pre>
+</div>
+</div>
+</div>

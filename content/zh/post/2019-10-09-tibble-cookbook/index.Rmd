@@ -1,0 +1,313 @@
+---
+title: tibble cookbook
+author: Xiaotao Shen
+date: '2019-11-09'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# 创建一个tibble
+
+## `tibble()`函数
+
+使用`tibble()`可以创建新的`tibble`对象,但是一般用来创建比较简单的tibble。
+
+```{r}
+library(tidyverse)
+a <- 1
+b <- 2:6
+tibble(a, b)
+# 使用下列方法修改列名
+tibble(column1 = a, column2 = b)
+```
+
+需要注意的是,如果输入的vector长度不一致,只有其中某一个长度为1,才会循环补齐,否则报错.
+
+`tibble()`函数有一个参数可以注意一下:`.name_repair`,用来控制对那些不如何规矩的列名如何处理.常用的一共有4个选项:
+
+* **minimal** 对列名不做任何处理,既不做列名检查,也不做处理.
+
+* **unique** 保证列名都是唯一的并且不能为空.
+
+```{r}
+#如果列名是重复的,会在列名后加入不同的序号.
+try(
+ tibble(a = 1:3, a = 1:3, 1:3, .name_repair = "unique") 
+)
+```
+
+
+* **check_unique** 这是默认的参数设置,不对列名做修改,只做列名检查.
+
+```{r}
+#如果列名是重复的,则会报错
+try(
+ tibble(a = 1:3, a = 1:3) 
+)
+```
+
+* **universal** 保证列名都是唯一的并且符合R语言语法.
+
+如果有相同的列名,会在列名后加入不同的序号.
+
+```{r}
+#如果列名是重复的,则会报错
+try(
+ tibble(a = 1:3, a = 1:3, .name_repair = "universal") 
+)
+```
+
+
+## `as_tibble()`函数
+
+使用`as_tibble()`函数可以将已有的matrix和data.frame转变为tibble对象.
+
+```{r}
+test1 <- 
+  matrix(1:6, ncol = 2)
+tibble::as_tibble(test1)
+test2 <- 
+  data.frame(a = 1:3, b = 2:4, stringsAsFactors = FALSE)
+tibble::as_tibble(test2)
+```
+
+`as_tibble()`函数的参数与`tibble()`大概相同,另外一个需要注意的的参数是:**rownames**,用来控制如何处理原有的行名.如果设置为NULL,则去除掉行名(默认),如果设置为NA,则保留原来的列名.设置为一个string vector,则将其设置为新的列名.
+
+## `tribble()`函数
+
+使用`tribble()`函数可以用另外一种方法来创建tibble对象.
+
+```{r}
+tibble::tribble(
+  ~colA, ~colB,
+  ## two columns
+  "a",   1,
+  "b",   2,
+  "c",   3
+)
+```
+
+需要注意的是,tibble和data.frame一样,他们中的元素也可以是list.
+
+```{r}
+tribble(
+  ~x,  ~y,
+  "a", 1:3,
+  "b", 4:6
+)
+```
+
+## `enframe()`函数
+
+`enframe()`可以将vector转换为tibble,另外有一个相反的函数,`deframe()`函数,将tibble/data.frame转变为vector.
+
+```{r}
+enframe(x = 1:3)
+enframe(c(a = 5, b = 7))
+enframe(list(one = 1, two = 2:3, three = 4:6))
+```
+
+`enframe()`的第一个参数是`x`,必须是一个vector或者list,他会将他的每一个元素的名字组成第一列,而其内容作为第二列转变为一个tibble.也就是说其只能用来创建两列的tibble.两列的列名默认为name和value如果想要修改,可以更改两个参数(name和value).
+
+使用`deframe()`函数将一个一列或者两列的tibble转变为vector或者list.
+
+```{r}
+deframe(enframe(1:3))
+```
+
+--------
+
+# tibble显示控制
+
+tibble默认情况下只输出前十行内容,列自动适应屏幕宽度,如果想要输出比默认更多的数据,有以下几种方法.
+
+## 使用`print()`函数
+
+使用`print()`函数,可以控制行数和列数.
+
+```{r}
+library(tidyverse)
+# 默认显示
+nycflights13::flights
+
+# 输出15行及所有列数
+nycflights13::flights %>% 
+  print(n = 15, width = Inf)
+```
+
+## 修改`options()`默认参数 
+
+* `options(tibble.print_max = n, tibble.pring_min = m)`:如果多于m行,则只打印出n
+行.`options(tibble.print_min = Inf)`表示总是打印所有行.
+
+* `options(tibble.width = Inf)`表示总是打印所有列,不考虑屏幕的宽度.
+
+`options()`中所有和`tibble`相关的参数:
+
+1. `tibble.print_max`:Row number threshold: Maximum number of rows printed. Set to Inf to always print all rows. Default: 20.
+
+2. `tibble.print_min`: 如果设置为m,意思即为如果行数大于m,则只打印出前n行.
+
+3. `tibble.width`: 打印列的宽度.默认为NULL,也就是适应屏幕宽度.设置为`Inf`,则打印出全部列.
+
+4. `tibble.max_extra_cols`: Number of extra columns printed in reduced form. Default: 100.
+
+5. `pillar.bold`: pillar是柱子的意思.如果设置为TRUE,则列名为粗体,默认为FALSE,因为在terminal中很多字体对粗体支持不够.
+
+6. `pillar.subtle`: 是否打印出其他详细的信息,比如总的行和列数.默认为TRUE.
+
+7. `pillar.subtle_num`: Use subtle style for insignificant digits? Default: FALSE, is also affected by the pillar.subtle option.
+
+8. `pillar.neg`: 是否高亮负值.默认为TRUE.
+
+9. `pillar.sigfig`: 高亮那些数字,比如如果设置为3,则会高亮数字3.
+
+10. `pillar.min_title_chars`: 列名打印时最小的字符数,默认为15.意味着如果某些列名大于15,则会被截断.设置为`Inf`,打印出完整的列名.
+
+--------
+
+# tibble切片操作
+
+如何取出一个tibble的一列或者几列.
+
+```{r}
+test <- as_tibble(mtcars)
+test[,1, drop = TRUE]
+mtcars[,1]
+```
+
+tibble如果使用`[`函数来进行选择某一列,则默认出来的还是一个tibble,当然可以使用`drop`参数来设置为TRUE,让其转变成一个vector.而对于data.frame,则取出一列,默认为vector.
+
+```{r}
+test$mpg
+test[["mpg"]]
+```
+
+当然还可以使用`$`和`[[`函数,这两个函数取出来的都是vector.
+
+```{r}
+library(tidyverse)
+test %>% 
+  pull(mpg)
+  
+```
+
+当然,还可以使用`dplyr`中的`pull()`函数,取出来的也是vector.
+
+# tibble添加新的列或者行
+
+## 添加新的行
+
+使用`add_row()`函数可以给已有的tibble对象添加新的行.
+
+```{r}
+df <- tibble(x = 1:3, y = 3:1)
+add_row(df, x = 4, y = 0)
+```
+
+可以通过设置`.before`和`.after`参数来指定插入的位置.默认都是NULL,插入到最后的位置.
+
+```{r}
+add_row(df, x = 4, y = 0, .before = 1)
+add_row(df, x = 4, y = 0, .before = 2)
+add_row(df, x = 4, y = 0, .before = 3)
+```
+
+`.before`设置为n,则是指从原来的第n行的前一行开始添加.
+
+```{r}
+add_row(df, x = 4, y = 0, .after = 1)
+add_row(df, x = 4, y = 0, .after = 2)
+add_row(df, x = 4, y = 0, .after = 3)
+```
+
+`.after`设置为m,则是指从原来的第m行的后面一行开始添加.
+
+如果某些行不提供新的元素,则会变为NA.
+
+```{r}
+add_row(df, x = 4)
+```
+
+## 添加新的列
+
+使用`add_column()`函数可以给已有的tibble对象添加新的列.跟`add_column()`一样的.
+
+```{r}
+# add_column ---------------------------------
+df <- tibble(x = 1:3, y = 3:1)
+add_column(df, z = -1:1, w = 0)
+```
+需要注意的是,并不能覆盖原来的列以及和原来的行数不一样的新的列.
+
+```{r}
+# You can't overwrite existing columns
+try(
+add_column(df, x = 4:6)  
+)
+# You can't create new observations
+try(
+ add_column(df, z = 1:5) 
+)
+```
+
+所以其实并不方便,还是使用`dplyr`更方便.
+
+# tibble对列名和行名的操作
+
+## 判断是否有行名
+
+```{r}
+head(mtcars)
+rownames(mtcars)
+has_rownames(mtcars)
+
+head(iris)
+rownames(iris)
+has_rownames(iris)
+```
+
+可以使用`remove_rownames()`函数去除掉行名.当然也可以使用将行名设置为NULL打到目的
+```{r}
+has_rownames(mtcars)
+mtcars2 <- 
+  remove_rownames(mtcars)
+has_rownames(mtcars2)
+```
+
+## 行名和某一列互相转换
+
+`rownames_to_column()`函数可以将tibble的行名转变为某一列,并且删除掉行名.
+
+```{r}
+mtcars2 <- 
+rownames_to_column(mtcars, var = "test")
+mtcars2 %>% 
+  as_tibble()
+```
+
+另外一个函数,`rowid_to_column()`可以去除掉行名,并在最开始添加一列rowid,从1开始.
+
+```{r}
+rowid_to_column(mtcars) %>% 
+  as_tibble()
+```
+
+
+当然也可以将某一列变为行名:`column_to_rownames()`.注意必须要求tibble没有行名,且新的行名是没有重复元素的.
+
+```{r}
+column_to_rownames(mtcars2, var = "test")
+```
+

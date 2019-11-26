@@ -1,0 +1,85 @@
+---
+title: Windows使用Summary
+author: Xiaotao Shen
+date: '2019-11-08'
+slug: ''
+categories:
+  - Study
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#如何在两台电脑间共享文件夹"><span class="toc-section-number">1</span> 如何在两台电脑间共享文件夹?</a></li>
+<li><a href="#cmd命令"><span class="toc-section-number">2</span> CMD命令</a><ul>
+<li><a href="#如何使用cmd修改路径"><span class="toc-section-number">2.1</span> 如何使用CMD修改路径?</a></li>
+<li><a href="#查看当前路径"><span class="toc-section-number">2.2</span> 查看当前路径</a></li>
+<li><a href="#查看当前路径下文件"><span class="toc-section-number">2.3</span> 查看当前路径下文件</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="如何在两台电脑间共享文件夹" class="section level1">
+<h1><span class="header-section-number">1</span> 如何在两台电脑间共享文件夹?</h1>
+<p>参考帖子:</p>
+<p><a href="https://jingyan.baidu.com/article/93f9803f3e9788e0e46f55c8.html" class="uri">https://jingyan.baidu.com/article/93f9803f3e9788e0e46f55c8.html</a></p>
+<ol style="list-style-type: decimal">
+<li><p>保证两台电脑在同一个网络中.对于Stanford来说,如果在其他地方,需要连接VPN.</p></li>
+<li><p>在workstation(电脑B)上打开网络设置.</p></li>
+</ol>
+<p><img src="figure1.png" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>选择<code>Sharing options</code></li>
+</ol>
+<p><img src="figure2.png" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li><code>Private</code>按照下面进行设置.</li>
+</ol>
+<p><img src="figure3.png" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li><code>All network按照下面设置</code></li>
+</ol>
+<p><img src="figure4.png" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li>选择要共享的文件夹,然后右键打开属性.然后选择<code>Share</code>.</li>
+</ol>
+<p><img src="figure5.png" /></p>
+<ol start="7" style="list-style-type: decimal">
+<li>选择<code>Everyone</code>,然后点击<code>Share</code>.</li>
+</ol>
+<p><img src="figure6.png" /></p>
+<p>8.然后再点击第6步中的<code>Advanced Sharing</code>.按照下图设置.</p>
+<p><img src="figure7.png" /></p>
+<p>9.快捷键<code>win + R</code>打开<code>run</code>.然后输入B电脑的IPV4地址.然后需要登录,注意,使用的是你在B电脑上的账号和密码登录,有时候注意登录名前需要添加<code>win\</code></p>
+<p><img src="figure8.png" /></p>
+<ol start="10" style="list-style-type: decimal">
+<li>最终效果如下图.</li>
+</ol>
+<p><img src="figure9.png" /></p>
+</div>
+<div id="cmd命令" class="section level1">
+<h1><span class="header-section-number">2</span> CMD命令</h1>
+<div id="如何使用cmd修改路径" class="section level2">
+<h2><span class="header-section-number">2.1</span> 如何使用CMD修改路径?</h2>
+<p>如果修改某个盘,先直接打盘名加冒号即可,不需要使用<code>cd</code>命令.</p>
+<pre><code>D:</code></pre>
+<p>然后进入到某个盘的子目录下,才需要使用<code>cd</code>命令.</p>
+</div>
+<div id="查看当前路径" class="section level2">
+<h2><span class="header-section-number">2.2</span> 查看当前路径</h2>
+<pre><code>cd</code></pre>
+</div>
+<div id="查看当前路径下文件" class="section level2">
+<h2><span class="header-section-number">2.3</span> 查看当前路径下文件</h2>
+<pre><code>dir</code></pre>
+</div>
+</div>

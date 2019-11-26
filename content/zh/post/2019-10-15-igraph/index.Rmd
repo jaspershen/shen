@@ -1,0 +1,96 @@
+---
+title: 网络分析之igraph
+author: Xiaotao Shen
+date: '2019-10-15'
+slug: igraph
+categories:
+  - R
+tags:
+  - Blog
+  - Academic
+  - Software
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+`igraph`是一些列网络分析工具的集合.开源且免费,拥有R, Python以及C/C++等语言接口.我们主要介绍R语言中的`igraph`包.其官网如下:
+https://igraph.org/r/doc/plot.common.html
+
+
+### 安装
+
+### 常用功能总结
+
+### 从data frame转变为``igraph对象
+
+使用`graph_from_data_frame()`函数.一共三个参数:
+
+* `d`:`data.frame`,前两列必须是一条边的两个顶点,比如第一列为`from`,第二列为`to`.其余的列会作为edge的属性.
+
+* `directed`:是否为有向图,默认为TRUE.
+
+* `vertices`:需要是一个data.frame.第一列是vertex的名字,然后其他列是vertex的属性.
+
+```{r}
+library(igraph)
+actors <- data.frame(name=c("Alice", "Bob", "Cecil", "David",
+                            "Esmeralda"),
+                     age=c(48,33,45,34,21),
+                     gender=c("F","M","F","M","F"))
+
+relations <- data.frame(from=c("Bob", "Cecil", "Cecil", "David",
+                               "David", "Esmeralda"),
+                        to=c("Alice", "Bob", "Alice", "Alice", "Bob", "Alice"),
+                        same.dept=c(FALSE,FALSE,TRUE,FALSE,FALSE,TRUE),
+                        friendship=c(4,5,5,2,1,1), advice=c(4,5,5,4,2,3))
+g <- graph_from_data_frame(relations, directed = TRUE, vertices = actors)
+g
+plot(g)
+```
+
+
+#### 寻找某个vertex的neighbor
+
+使用`neighbors()`函数.一共两个参数:
+
+* `graph`:`igraph`类对象.   
+* `V`:某vertex的名字(name).   
+* `mode`: 对于有向图来说,是寻找从该vertex出发的neighbors('out'),还是指向该vertex的neighbors('in'),还是两种都寻找('both').
+
+#### 设置graph中vertex的属性
+
+如果需要给graph中的vertex增加或者修改属性,可以使用`ste_vertex_attr()`函数.一共四个参数:
+
+* `graph`:`igraph`类对象.    
+* `name`:设置的新的属性的名字.   
+* `index`:设置vertex属性时的vertex的index.默认按照graph中vertex的默认index(V(graph))来设置.
+* `value`:设置的属性的值.需要和vertex的长度一致.
+
+#### 将`igraph`对象转变为data.frame格式
+
+使用`as_long_data_frame()`函数可以将`igraph`转换为data.frame格式.只有一个参数,就是`graph`.
+
+#### 从一个graph提取子graph(subgraph)
+
+使用`subgraph()`函数.一共两个参数:
+
+* `graph`:`igraph`类对象.   
+* `V`:要提取的subgraph的所有的vertex的名字(name). 
+
+#### 获取vertex属性
+
+使用`vertex_attr()`函数.一共4个参数.
+
+* `graph`:`igraph`类对象.    
+* `name`:需要获取的属性的名字,默认提取所有属性.
+* index:需要获取那些vertex的属性,默认提取所有的vertex.
+
+
+
+

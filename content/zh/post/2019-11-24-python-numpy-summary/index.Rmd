@@ -1,0 +1,252 @@
+---
+title: Python NumPy包总结
+author: Xiaotao Shen
+date: 2019-11-24
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+# 安装
+
+在终端中输入:
+
+```
+pip install numpy
+```
+调用numpy
+
+```{python}
+import numpy as np
+np.__version__
+```
+
+# Numpy中的数据格式
+
+Data type | Description
+----------|------------
+bool_ Boolean | (True or False) stored as a byte
+int_ Default | integer type (same as C long; normally either int64 or int32)
+intc | Identical to C int (normally int32 or int64)
+intp | Integer used for indexing (same as C ssize_t; normally either int32 or int64)
+int8 | Byte (–128 to 127)
+int16 | Integer (–32768 to 32767)
+int32 | Integer (–2147483648 to 2147483647)
+int64 | Integer (–9223372036854775808 to 9223372036854775807)
+uint8 | Unsigned integer (0 to 255)
+uint16 |  Unsigned integer (0 to 65535)
+uint32 | Unsigned integer (0 to 4294967295)
+uint64 | Unsigned integer (0 to 18446744073709551615)
+float_ | Shorthand for float64
+float16 | Half-precision float: sign bit, 5 bits exponent, 10 bits mantissa
+float32 | Single-precision float: sign bit, 8 bits exponent, 23 bits mantissa
+float64 | Double-precision float: sign bit, 11 bits exponent, 52 bits mantissa
+complex_ | Shorthand for complex128
+complex64 | Complex number, represented by two 32-bit floats
+complex128 | Complex number, represented by two 64-bit floats
+
+
+# Numpy array基础
+
+## Array的属性
+
+先生成三个不同的array,一维,二维和三维array.
+
+```{python}
+import numpy as np
+np.random.seed(0)#设置seed,保证重复性
+
+x1 = np.random.randint(10, size = 6)#一维
+x2 = np.random.randint(10, size = (3, 4))#二维
+x3 = np.random.randint(10, size = (3, 4, 5))#三维
+x1
+x2
+x3
+```
+每一个array都有`ndim`,`shape`和`size`属性.
+
+```{python}
+print(x1.ndim, x1.shape, x1.size)
+print(x2.ndim, x2.shape, x2.size)
+print(x3.ndim, x3.shape, x3.size)
+```
+
+从上面例子可以看出来这三个属性分别代表什么意思.
+
+* `ndim`属性:该数据是几维数据.
+
+* `shape`属性:该数据每个维度的大小,这个可以看作是R中的`dim()`函数得到的内容.
+
+* `size`属性:该数据的总的cell数目.
+
+`dtype`属性是指array的数据类型.
+
+```{python}
+print(x1.dtype, x2.dtype, x3.dtype)
+```
+
+## Array索引:获得其中单个元素
+
+array的索引跟python中内置的列表非常像,可以使用位置索引,但是同样注意从0开始算起.
+
+```{python}
+x1
+x1[0]
+x1[-1]#倒数第一个元素
+```
+
+对于多维,比如二维array,则跟R中的数据框类似,使用逗号分开行和列的索引.
+
+```{python}
+x2
+x2[0,0]
+x2[0,0] = 10
+x2
+x2[0,0]
+```
+
+## Array切片:获得一个subarray
+
+类似于列表,可以这样切片:
+
+```
+list[start:end:step]
+```
+
+需要强调一次再,取出的subarray不包括end.
+
+### 一维array
+
+```{python}
+x = np.arange(10)
+x
+x[:5]#前五个元素
+x[4:7]#前五个元素
+x[::2]#前五个元素
+x[::-1]#将array反向排列
+```
+
+
+### 多维array
+
+多维数组跟一致数组一样,只是需要使用逗号把不同维度的切片分开即可.
+
+```
+array[start:end:step,start:end;step]
+```
+
+```{python}
+x2
+x2[1:3, 1:3]
+x2[::-1, ::-1]
+```
+
+如果对于行或者列只取出一个,会出现什么情况呢?
+
+```{python}
+x2
+x2[1:3, 0]
+x2[1:3, 0].ndim
+```
+
+可以看到,降维了.
+
+## 重塑array的形状
+
+array的形状,上面简单介绍了,指的就是数组的各个维度的大小.比较常用的是`reshape`方法.
+
+```{python}
+grid = np.arange(1, 10)
+grid
+grid.reshape((3,3))
+```
+
+## Array的合并和分裂(Concatenation and Splitting)
+
+### 合并array
+
+将两个array合并为一个array,可以使用函数`concatenate`,是`numpy`中的函数.
+
+```{python}
+x = np.array([1, 2, 3])
+y = np.array([3, 2, 1])
+z = [99, 99, 99]
+np.concatenate([x, y, z])
+```
+
+可以看到,需要将array放在一个`list`(中括号)中.
+
+还可以用于二维array的合并.
+
+```{python}
+grid = np.array([[1, 2, 3],
+[4, 5, 6]])
+grid
+
+np.concatenate([grid, grid])
+```
+
+可以看到,这样类似于R中的数据库的`rbind`功能,将array按照列进行合并.
+
+那么如何实现`cbind`效果呢?
+
+```{python}
+np.concatenate([grid, grid], axis=1)
+```
+
+其实还可以使用更为形象的函数,`np.vstack`(相当于R中的`rbind`),和`np.hstack`(相当于R中的`cbind`).
+
+```{python}
+x = np.array([1, 2, 3])
+grid = np.array([[9, 8, 7],
+[6, 5, 4]])
+np.vstack([x, grid])
+y = np.array([[99],
+[99]])
+np.hstack([grid, y])
+```
+
+### 分割array
+
+分割array有几个函数.
+
+`np.split`,`np.hsplit`,和`np.vsplit`.看几个例子就明白了.
+
+```{python}
+x = [1, 2, 3, 99, 99, 3, 2, 1]
+x
+x1, x2, x3 = np.split(x, [3, 5])
+x1
+x2
+x3
+```
+
+对于函数`split`,第一参数是要分割的列表,第二个参数需要是一个list,代表从哪分割,比如这里面的`[3,5]`,就代表着将列表分割为三段,分别是[:3],[3:5],[5:].
+
+同样对于`hsplit`和`vsplit`也就比较好理解了,分别是对多维array进行垂直和水平切割.
+
+```{python}
+grid = np.arange(16).reshape((4, 4))
+grid
+upper, lower = np.vsplit(grid, [2])
+print(upper)
+print(lower)
+left, right = np.hsplit(grid, [2])
+print(left)
+print(right)
+```
+

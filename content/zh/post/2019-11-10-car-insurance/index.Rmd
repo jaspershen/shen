@@ -1,0 +1,27 @@
+---
+title: 在美国购买车险
+author: Xiaotao Shen
+date: '2019-11-10'
+slug: ''
+categories:
+  - life
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+美国车必须购买车险,否则不能上路,有非常多的公司,可以直接在网上quote(报价),可以根据自己的需要选择不同的套餐,然后直接在网上购买就好了.我刚来美国的时候,在网上买的是progressive公司的,然后买了半年,马上就要到期了,因此需要再购买.
+
+比较奇怪的是,我当时只在progressive买了半年,从5.12-11.12,网站上显示的也是.但是很奇怪,他仍然给我提醒,还要接着再扣半年,并且我也找不到如何取消掉.
+
+我需要重新quote,因为我已经呆了大半年了,应该能够拿到一个更便宜的.
+
+
+

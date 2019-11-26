@@ -1,0 +1,41 @@
+---
+title: dplyr cookbook
+author: Xiaotao Shen
+date: '2019-10-28'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+# 对行进行筛选:`filter_xxx()`系列函数
+
+## `filter_all()`函数
+
+`filter_all()`函数可以对所有的列进行判断从而对行进行筛选.
+
+比如我想对`mtcars`数据集进行筛选,对于每一行,只有每一行的值都大于150才保留下来.
+
+```{r}
+library(tidyverse)
+filter_all(mtcars, all_vars(. > 150))
+```
+
+如果只要任意一行大于150,就保留下来,那么可以这么写:
+
+
+```{r}
+filter_all(mtcars, any_vars(. > 150))
+```
+
+可以看到,`ffilter_all()`经常和`all_vars()`和`any_vals()`函数搭配使用.
+

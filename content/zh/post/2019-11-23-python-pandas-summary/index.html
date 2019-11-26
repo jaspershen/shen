@@ -1,0 +1,755 @@
+---
+title: Python pandas包总结
+author: Xiaotao Shen
+date: 2019-11-23
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#安装pandas"><span class="toc-section-number">1</span> 安装<code>pandas</code></a></li>
+<li><a href="#pandas数据结构介绍"><span class="toc-section-number">2</span> Pandas数据结构介绍</a><ul>
+<li><a href="#series"><span class="toc-section-number">2.1</span> series</a></li>
+<li><a href="#dataframe数据框"><span class="toc-section-number">2.2</span> DataFrame(数据框)</a><ul>
+<li><a href="#数据框的索引和切片操作"><span class="toc-section-number">2.2.1</span> 数据框的索引和切片操作</a></li>
+</ul></li>
+<li><a href="#索引index对象"><span class="toc-section-number">2.3</span> 索引(index)对象</a><ul>
+<li><a href="#index-as-immutable-array"><span class="toc-section-number">2.3.1</span> Index as immutable array</a></li>
+<li><a href="#index作为一个有顺序的set"><span class="toc-section-number">2.3.2</span> index作为一个有顺序的set</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#索引和选择"><span class="toc-section-number">3</span> 索引和选择</a><ul>
+<li><a href="#series中的数据选择"><span class="toc-section-number">3.1</span> Series中的数据选择</a><ul>
+<li><a href="#series作为字典"><span class="toc-section-number">3.1.1</span> series作为字典</a></li>
+<li><a href="#series作为一维的array"><span class="toc-section-number">3.1.2</span> series作为一维的array</a></li>
+<li><a href="#索引器indexerslociloc和ix"><span class="toc-section-number">3.1.3</span> 索引器(indexers):<code>loc</code>,<code>iloc</code>和<code>ix</code></a></li>
+</ul></li>
+<li><a href="#数据框中的数据选择"><span class="toc-section-number">3.2</span> 数据框中的数据选择</a><ul>
+<li><a href="#将数据库看作字典"><span class="toc-section-number">3.2.1</span> 将数据库看作字典</a></li>
+<li><a href="#将数据框作为二维的array"><span class="toc-section-number">3.2.2</span> 将数据框作为二维的array</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#pandas中的数据操作"><span class="toc-section-number">4</span> Pandas中的数据操作</a><ul>
+<li><a href="#index-alignment-in-series"><span class="toc-section-number">4.1</span> Index alignment in Series</a></li>
+<li><a href="#index-alignment-in-dataframe"><span class="toc-section-number">4.2</span> Index alignment in DataFrame</a></li>
+<li><a href="#数据框和series之间的操作"><span class="toc-section-number">4.3</span> 数据框和series之间的操作</a></li>
+</ul></li>
+<li><a href="#导入数据"><span class="toc-section-number">5</span> 导入数据</a></li>
+</ul>
+</div>
+
+<p>numpy和pandas是使用python进行数据分析的两个基本工具。numpy在线性代数中运用较多，而pandas则更多的用来分析表结构的数据。numpy与pandas都有一维和二维数据结构。</p>
+<div id="安装pandas" class="section level1">
+<h1><span class="header-section-number">1</span> 安装<code>pandas</code></h1>
+<p>使用<code>pip</code>可以快速的安装<code>pandas</code>.</p>
+<p>在终端进行操作.</p>
+<pre><code>pip install pandas</code></pre>
+<pre class="python"><code>import pandas as pd</code></pre>
+<p>需要同时安装<code>numpy</code>包.</p>
+<p>而已查看每个包的版本.</p>
+<pre class="python"><code>pd.__version__</code></pre>
+<pre><code>## &#39;0.24.2&#39;</code></pre>
+</div>
+<div id="pandas数据结构介绍" class="section level1">
+<h1><span class="header-section-number">2</span> Pandas数据结构介绍</h1>
+<div id="series" class="section level2">
+<h2><span class="header-section-number">2.1</span> series</h2>
+<p>series是一维数组,类似于R中的向量.可以使用<code>Series()</code>函数构建.可以将列表或者字典转变为series.在字典中,键是没有顺序的,但是转变为series之后,就是有顺序的了.不仅可以按照名字来索引,也可以按照顺序来索引了.这样跟R中的向量更加类似了.</p>
+<pre class="python"><code>data = pd.Series([1,2,3,4])
+data</code></pre>
+<pre><code>## 0    1
+## 1    2
+## 2    3
+## 3    4
+## dtype: int64</code></pre>
+<pre class="python"><code>population_dict = {&#39;California&#39;: 38332521,
+&#39;Texas&#39;: 26448193,
+&#39;New York&#39;: 19651127,
+&#39;Florida&#39;: 19552860,
+&#39;Illinois&#39;: 12882135}
+data3 = pd.Series(population_dict)
+data3</code></pre>
+<pre><code>## California    38332521
+## Texas         26448193
+## New York      19651127
+## Florida       19552860
+## Illinois      12882135
+## dtype: int64</code></pre>
+<pre class="python"><code>data3[0]</code></pre>
+<pre><code>## 38332521</code></pre>
+<p>他是自带索引的.第一“列”是索引,第二列是value.分别都是他的属性.因此可以访问.</p>
+<p>默认的索引是数字索引,从0开始,当然也可以自定义索引.</p>
+<pre class="python"><code>data2 = pd.Series([0,1,2,3], index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])
+data2</code></pre>
+<pre><code>## a    0
+## b    1
+## c    2
+## d    3
+## dtype: int64</code></pre>
+<pre class="python"><code>index = data.index
+value = data.values
+index</code></pre>
+<pre><code>## RangeIndex(start=0, stop=4, step=1)</code></pre>
+<pre class="python"><code>value</code></pre>
+<pre><code>## array([1, 2, 3, 4], dtype=int64)</code></pre>
+<pre class="python"><code>type(index)</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.indexes.range.RangeIndex&#39;&gt;</code></pre>
+<pre class="python"><code>type(value)</code></pre>
+<pre><code>## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
+<p>跟R中的向量一样,可以通过中括号,来索引,切片series.对于索引为文字的,还支持文字连续索引.</p>
+<pre class="python"><code>data[0]</code></pre>
+<pre><code>## 1</code></pre>
+<pre class="python"><code>data[1:3]</code></pre>
+<pre><code>## 1    2
+## 2    3
+## dtype: int64</code></pre>
+<pre class="python"><code>data2[&#39;a&#39;]</code></pre>
+<pre><code>## 0</code></pre>
+<pre class="python"><code>data3[&#39;California&#39;:&#39;Illinois&#39;]</code></pre>
+<pre><code>## California    38332521
+## Texas         26448193
+## New York      19651127
+## Florida       19552860
+## Illinois      12882135
+## dtype: int64</code></pre>
+</div>
+<div id="dataframe数据框" class="section level2">
+<h2><span class="header-section-number">2.2</span> DataFrame(数据框)</h2>
+<p>数据框就跟R中的数据框或者说matrix就更像了.是二维数据.</p>
+<p>创建数据框.可以从字典转变而来.</p>
+<pre class="python"><code>area_dict = {&#39;California&#39;: 423967, &#39;Texas&#39;: 695662, &#39;New York&#39;: 141297,
+&#39;Florida&#39;: 170312, &#39;Illinois&#39;: 149995}
+area = pd.Series(area_dict)
+area</code></pre>
+<pre><code>## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## dtype: int64</code></pre>
+<pre class="python"><code>data3</code></pre>
+<pre><code>## California    38332521
+## Texas         26448193
+## New York      19651127
+## Florida       19552860
+## Illinois      12882135
+## dtype: int64</code></pre>
+<pre class="python"><code>area</code></pre>
+<pre><code>## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## dtype: int64</code></pre>
+<pre class="python"><code>type(data3)</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<pre class="python"><code>type(area)</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<pre class="python"><code>states = pd.DataFrame({&#39;population&#39;: data3,
+&#39;area&#39;: area})
+
+states</code></pre>
+<pre><code>##             population    area
+## California    38332521  423967
+## Texas         26448193  695662
+## New York      19651127  141297
+## Florida       19552860  170312
+## Illinois      12882135  149995</code></pre>
+<p>这是一个两列的数据框,其中列名就是原来字典的键.</p>
+<p>数据框也有index和value属性.</p>
+<pre class="python"><code>states.index</code></pre>
+<pre><code>## Index([&#39;California&#39;, &#39;Texas&#39;, &#39;New York&#39;, &#39;Florida&#39;, &#39;Illinois&#39;], dtype=&#39;object&#39;)</code></pre>
+<pre class="python"><code>states.values</code></pre>
+<pre><code>## array([[38332521,   423967],
+##        [26448193,   695662],
+##        [19651127,   141297],
+##        [19552860,   170312],
+##        [12882135,   149995]], dtype=int64)</code></pre>
+<pre class="python"><code>states.columns</code></pre>
+<pre><code>## Index([&#39;population&#39;, &#39;area&#39;], dtype=&#39;object&#39;)</code></pre>
+<p><code>columns</code>属性可以看作是数据框的列名,而<code>index</code>属性可以看作是其行名.</p>
+<div id="数据框的索引和切片操作" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> 数据框的索引和切片操作</h3>
+<p>如何对数据框进行索引和操作呢?</p>
+<p>取出数据框的行.</p>
+<p>直接用中括号然后用数字加冒号即可.和python其他部分一样,包括左半部分,不包括右半部分.取出行之后,还是一个数据框.不会存在降维.</p>
+<pre class="python"><code>states[0:1]</code></pre>
+<pre><code>##             population    area
+## California    38332521  423967</code></pre>
+<pre class="python"><code>states[0:2]</code></pre>
+<pre><code>##             population    area
+## California    38332521  423967
+## Texas         26448193  695662</code></pre>
+<pre class="python"><code>type(states[0:1])</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+<p>取出数据框的列.</p>
+<pre class="python"><code>states[&quot;area&quot;]</code></pre>
+<pre><code>## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64</code></pre>
+<pre class="python"><code>type(states[&quot;area&quot;])</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<p>如果取出某一列,需要使用列名进行提取,并且提取之后,直接降维,变成了series.</p>
+<p>跟为复杂的切片操作,需要使用数据框的属性,<code>loc</code>和<code>iloc</code>.
+<code>loc</code>和<code>iloc</code>的不同在于前者用列名和行名来进行切片和索引,而后者则使用index.
+<code>loc</code>后面需要跟着中括号,然后第一个参数用来描述.</p>
+<p>如果只选择一行或者一列,或者是连续的切片(中间用冒号),是可以不写为列表格式,但是如果是多个话,需要用列表形式.</p>
+<pre class="python"><code>states.loc</code></pre>
+<pre><code>## &lt;pandas.core.indexing._LocIndexer object at 0x00000000521F5318&gt;</code></pre>
+<pre class="python"><code>states.loc[&quot;California&quot;, [&quot;area&quot;]]</code></pre>
+<pre><code>## area    423967
+## Name: California, dtype: int64</code></pre>
+<pre class="python"><code>type(states.loc[&quot;California&quot;, [&quot;area&quot;]])</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<pre class="python"><code>states.loc[&quot;California&quot;:&quot;Texas&quot;, [&quot;area&quot;]]</code></pre>
+<pre><code>##               area
+## California  423967
+## Texas       695662</code></pre>
+<pre class="python"><code>type(states.loc[&quot;California&quot;:&quot;Texas&quot;, [&quot;area&quot;]])</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+<pre class="python"><code>states.iloc</code></pre>
+<pre><code>## &lt;pandas.core.indexing._iLocIndexer object at 0x00000000533D84A8&gt;</code></pre>
+<pre class="python"><code>states.iloc[0,0]</code></pre>
+<pre><code>## 38332521</code></pre>
+<pre class="python"><code>type(states.iloc[0,0])</code></pre>
+<pre><code>## &lt;class &#39;numpy.int64&#39;&gt;</code></pre>
+<pre class="python"><code>states.iloc[0:1,0:1]</code></pre>
+<pre><code>##             population
+## California    38332521</code></pre>
+<pre class="python"><code>states.iloc[[0,2],[0,1]]</code></pre>
+<pre><code>##             population    area
+## California    38332521  423967
+## New York      19651127  141297</code></pre>
+<pre class="python"><code>type(states.iloc[[0,2],[0,1]])</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+</div>
+</div>
+<div id="索引index对象" class="section level2">
+<h2><span class="header-section-number">2.3</span> 索引(index)对象</h2>
+<p>series和数据框格式都有一个index对象,用来指示数据,对于数据框来说其实是行名.</p>
+<pre class="python"><code>ind = pd.Index([2, 3, 5, 7, 11])
+ind</code></pre>
+<pre><code>## Int64Index([2, 3, 5, 7, 11], dtype=&#39;int64&#39;)</code></pre>
+<pre class="python"><code>type(ind)</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.indexes.numeric.Int64Index&#39;&gt;</code></pre>
+<div id="index-as-immutable-array" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Index as immutable array</h3>
+<p>索引对象可以像一个array一样操作.比如索引和切片.</p>
+<pre class="python"><code>ind</code></pre>
+<pre><code>## Int64Index([2, 3, 5, 7, 11], dtype=&#39;int64&#39;)</code></pre>
+<pre class="python"><code>ind[0]</code></pre>
+<pre><code>## 2</code></pre>
+<pre class="python"><code>ind[:2]</code></pre>
+<pre><code>## Int64Index([2, 3], dtype=&#39;int64&#39;)</code></pre>
+<p>index对象还有很多array的属性.</p>
+<pre class="python"><code>print(ind.size, ind.shape, ind.ndim, ind.dtype)</code></pre>
+<pre><code>## 5 (5,) 1 int64</code></pre>
+<p>其中<code>ndim</code>可以用来看数据框的行数和列数.</p>
+<p><strong>但是index对象的值不能够改变.</strong>这一点跟array是不同的.</p>
+</div>
+<div id="index作为一个有顺序的set" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> index作为一个有顺序的set</h3>
+<p>index对象很多时候跟python内置的<code>set</code>对象很类似.可以做并集,交集以及查找不同等操作.</p>
+<pre class="python"><code>indA = pd.Index([1, 3, 5, 7, 9])
+indB = pd.Index([2, 3, 5, 7, 11])
+indA &amp; indB # 交集</code></pre>
+<pre><code>## Int64Index([3, 5, 7], dtype=&#39;int64&#39;)</code></pre>
+<pre class="python"><code>indA | indB # 并集</code></pre>
+<pre><code>## Int64Index([1, 2, 3, 5, 7, 9, 11], dtype=&#39;int64&#39;)</code></pre>
+<pre class="python"><code>indA ^ indB # 两个集合中互不相同的部分</code></pre>
+<pre><code>## Int64Index([1, 2, 9, 11], dtype=&#39;int64&#39;)</code></pre>
+</div>
+</div>
+</div>
+<div id="索引和选择" class="section level1">
+<h1><span class="header-section-number">3</span> 索引和选择</h1>
+<p>对pandas中的series和数据框数据做索引和选择.上面简单介绍一些,这里做详细的系统介绍.比如索引(indexing),切片(slcing),筛选(masking)等.</p>
+<div id="series中的数据选择" class="section level2">
+<h2><span class="header-section-number">3.1</span> Series中的数据选择</h2>
+<p>series跟python内置的字典非常的类似.也跟Numpy中的array非常像.</p>
+<div id="series作为字典" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> series作为字典</h3>
+<p>可以使用<code>键</code>进行选择.</p>
+<pre class="python"><code>import pandas as pd
+data = pd.Series([0.25, 0.5, 0.75, 1.0],
+index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])
+
+data[&quot;a&quot;]</code></pre>
+<pre><code>## 0.25</code></pre>
+<p>当然其他的一些操作也可以用于series.</p>
+<pre class="python"><code>&#39;a&#39; in data</code></pre>
+<pre><code>## True</code></pre>
+<pre class="python"><code>data.keys()</code></pre>
+<pre><code>## Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;], dtype=&#39;object&#39;)</code></pre>
+<pre class="python"><code>list(data.items())</code></pre>
+<pre><code>## [(&#39;a&#39;, 0.25), (&#39;b&#39;, 0.5), (&#39;c&#39;, 0.75), (&#39;d&#39;, 1.0)]</code></pre>
+<pre class="python"><code>data[&quot;e&quot;] = 1.25
+data</code></pre>
+<pre><code>## a    0.25
+## b    0.50
+## c    0.75
+## d    1.00
+## e    1.25
+## dtype: float64</code></pre>
+</div>
+<div id="series作为一维的array" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> series作为一维的array</h3>
+<p>可以按照array的办法对series进行切片.</p>
+<pre class="python"><code>data[&#39;a&#39;:&#39;c&#39;]</code></pre>
+<pre><code>## a    0.25
+## b    0.50
+## c    0.75
+## dtype: float64</code></pre>
+<pre class="python"><code>data[0:2]</code></pre>
+<pre><code>## a    0.25
+## b    0.50
+## dtype: float64</code></pre>
+<pre class="python"><code>data &gt; 0.3</code></pre>
+<pre><code>## a    False
+## b     True
+## c     True
+## d     True
+## e     True
+## dtype: bool</code></pre>
+<pre class="python"><code>data &lt; 0.8</code></pre>
+<pre><code>## a     True
+## b     True
+## c     True
+## d    False
+## e    False
+## dtype: bool</code></pre>
+<pre class="python"><code>data + 1</code></pre>
+<pre><code>## a    1.25
+## b    1.50
+## c    1.75
+## d    2.00
+## e    2.25
+## dtype: float64</code></pre>
+<pre class="python"><code>data[(data &gt; 0.3) &amp; (data &lt; 0.8)]
+##不连续切片</code></pre>
+<pre><code>## b    0.50
+## c    0.75
+## dtype: float64</code></pre>
+<pre class="python"><code>data[[&#39;a&#39;, &#39;e&#39;]]</code></pre>
+<pre><code>## a    0.25
+## e    1.25
+## dtype: float64</code></pre>
+<p><strong>需要注意的是,如果使用<code>键</code>进行切片操作,最后一个是包括在最终结果中的,而如果使用数字位置进行切片,最后不包括在结果中</strong></p>
+</div>
+<div id="索引器indexerslociloc和ix" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> 索引器(indexers):<code>loc</code>,<code>iloc</code>和<code>ix</code></h3>
+<p>series中有一点需要注意的是,也是比较让人困惑的是,如果index是数字,那么索引的时候,给出数字,是按照index名字进行索引的,但是如果使用数字切片,则是按照位置进行的.举个例子:</p>
+<pre class="python"><code>data = pd.Series([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], index=[1, 3, 5])
+data
+# explicit index when indexing</code></pre>
+<pre><code>## 1    a
+## 3    b
+## 5    c
+## dtype: object</code></pre>
+<pre class="python"><code>data[1]</code></pre>
+<pre><code>## &#39;a&#39;</code></pre>
+<pre class="python"><code>data[1:3]</code></pre>
+<pre><code>## 3    b
+## 5    c
+## dtype: object</code></pre>
+<p>为了避免在选取数据时造成误差,所以series也提供了属性:索引器来进行切片.</p>
+<p>对于<code>loc</code>属性,里面都是按照index名字来索引的,不是位置.</p>
+<pre class="python"><code>data.loc[1]</code></pre>
+<pre><code>## &#39;a&#39;</code></pre>
+<pre class="python"><code>data.loc[1:3]</code></pre>
+<pre><code>## 1    a
+## 3    b
+## dtype: object</code></pre>
+<pre class="python"><code>data.loc[[1,3]]</code></pre>
+<pre><code>## 1    a
+## 3    b
+## dtype: object</code></pre>
+<p>对于<code>iloc</code>属性,则里面都是按照位置来进行索引和切片的.</p>
+<pre class="python"><code>data.iloc[1]</code></pre>
+<pre><code>## &#39;b&#39;</code></pre>
+<pre class="python"><code>data.iloc[1:3]</code></pre>
+<pre><code>## 3    b
+## 5    c
+## dtype: object</code></pre>
+<p>第三个属性,<code>ix</code>,他是上面两种属性的混合,对于series对象来说,<code>idx</code>属性是和<code>iloc</code>一样的,他主要是用于数据框对象的.</p>
+<p>python推荐大家还是使用名字进行索引和切片(explicit is better than implicit).</p>
+</div>
+</div>
+<div id="数据框中的数据选择" class="section level2">
+<h2><span class="header-section-number">3.2</span> 数据框中的数据选择</h2>
+<p>大多数情况下,数据框更像是一个二维的array,有时候也可以看作是字典.</p>
+<div id="将数据库看作字典" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> 将数据库看作字典</h3>
+<pre class="python"><code>area = pd.Series({&#39;California&#39;: 423967, &#39;Texas&#39;: 695662,
+&#39;New York&#39;: 141297, &#39;Florida&#39;: 170312,
+&#39;Illinois&#39;: 149995})
+pop = pd.Series({&#39;California&#39;: 38332521, &#39;Texas&#39;: 26448193,
+&#39;New York&#39;: 19651127, &#39;Florida&#39;: 19552860,
+&#39;Illinois&#39;: 12882135})
+data = pd.DataFrame({&#39;area&#39;:area, &#39;pop&#39;:pop})
+data</code></pre>
+<pre><code>##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127
+## Florida     170312  19552860
+## Illinois    149995  12882135</code></pre>
+<pre class="python"><code>data.ndim</code></pre>
+<pre><code>## 2</code></pre>
+<pre class="python"><code>data.columns</code></pre>
+<pre><code>## Index([&#39;area&#39;, &#39;pop&#39;], dtype=&#39;object&#39;)</code></pre>
+<pre class="python"><code>data.index</code></pre>
+<pre><code>## Index([&#39;California&#39;, &#39;Texas&#39;, &#39;New York&#39;, &#39;Florida&#39;, &#39;Illinois&#39;], dtype=&#39;object&#39;)</code></pre>
+<p>可以直接使用列名来获得某一列.得到的是series对象.</p>
+<pre class="python"><code>data[&#39;area&#39;]</code></pre>
+<pre><code>## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64</code></pre>
+<pre class="python"><code>type(data[&#39;area&#39;])</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<p>还可以使用属性格式(attribute-style)格式来获得某列.</p>
+<pre class="python"><code>data.area</code></pre>
+<pre><code>## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64</code></pre>
+<pre class="python"><code>type(data.area)</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<p>得到的也是series对象.</p>
+<p>两者得到的是完全一样的.</p>
+<pre class="python"><code>data.area is data[&#39;area&#39;]</code></pre>
+<pre><code>## True</code></pre>
+<p>但是这种方法还是不太好,比如:</p>
+<ol style="list-style-type: decimal">
+<li><p>列名不是string,而是数字.</p></li>
+<li><p>列名和数据框自带方法或者属性重名.</p></li>
+</ol>
+<p>如果列名和方法有冲突,那么使用<code>.</code>得到的就是方法而不是列.</p>
+<pre class="python"><code>data.pop is data[&#39;pop&#39;]</code></pre>
+<pre><code>## False</code></pre>
+<pre class="python"><code>data[&#39;density&#39;] = data[&#39;pop&#39;] / data[&#39;area&#39;]
+data</code></pre>
+<pre><code>##               area       pop     density
+## California  423967  38332521   90.413926
+## Texas       695662  26448193   38.018740
+## New York    141297  19651127  139.076746
+## Florida     170312  19552860  114.806121
+## Illinois    149995  12882135   85.883763</code></pre>
+</div>
+<div id="将数据框作为二维的array" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> 将数据框作为二维的array</h3>
+<pre class="python"><code>data.values</code></pre>
+<pre><code>## array([[4.23967000e+05, 3.83325210e+07, 9.04139261e+01],
+##        [6.95662000e+05, 2.64481930e+07, 3.80187404e+01],
+##        [1.41297000e+05, 1.96511270e+07, 1.39076746e+02],
+##        [1.70312000e+05, 1.95528600e+07, 1.14806121e+02],
+##        [1.49995000e+05, 1.28821350e+07, 8.58837628e+01]])</code></pre>
+<p>我们可以对数据框进行类似于array的操作,比如倒置:</p>
+<pre class="python"><code>data.T</code></pre>
+<pre><code>##            California         Texas      New York       Florida      Illinois
+## area     4.239670e+05  6.956620e+05  1.412970e+05  1.703120e+05  1.499950e+05
+## pop      3.833252e+07  2.644819e+07  1.965113e+07  1.955286e+07  1.288214e+07
+## density  9.041393e+01  3.801874e+01  1.390767e+02  1.148061e+02  8.588376e+01</code></pre>
+<p><code>T</code>是一个属性,而不是方法,所以后面不需要使用括号.</p>
+<pre class="python"><code>data.values[0]</code></pre>
+<pre><code>## array([4.23967000e+05, 3.83325210e+07, 9.04139261e+01])</code></pre>
+<pre class="python"><code>type(data.values[0])</code></pre>
+<pre><code>## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
+<pre class="python"><code>data[&#39;area&#39;]</code></pre>
+<pre><code>## California    423967
+## Texas         695662
+## New York      141297
+## Florida       170312
+## Illinois      149995
+## Name: area, dtype: int64</code></pre>
+<pre class="python"><code>type(data[&#39;area&#39;])</code></pre>
+<pre><code>## &lt;class &#39;pandas.core.series.Series&#39;&gt;</code></pre>
+<p>还是使用<code>loc</code>,<code>iloc</code>和<code>ix</code>属性进行选择更加高校.</p>
+<pre class="python"><code>data.iloc[:3, :2]</code></pre>
+<pre><code>##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127</code></pre>
+<pre class="python"><code>data.loc[:&#39;Illinois&#39;, :&#39;pop&#39;]</code></pre>
+<pre><code>##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127
+## Florida     170312  19552860
+## Illinois    149995  12882135</code></pre>
+<p><code>ix</code>属性允许进行混合切片,也就是列和行分别使用数字位置和名字进行切片.</p>
+<pre class="python"><code>data.ix[:3, :&#39;pop&#39;]</code></pre>
+<pre><code>##               area       pop
+## California  423967  38332521
+## Texas       695662  26448193
+## New York    141297  19651127
+## 
+## D:\software\python\python.exe:1: DeprecationWarning: 
+## .ix is deprecated. Please use
+## .loc for label based indexing or
+## .iloc for positional indexing
+## 
+## See the documentation here:
+## http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated</code></pre>
+<pre class="python"><code>data.density</code></pre>
+<pre><code>## California     90.413926
+## Texas          38.018740
+## New York      139.076746
+## Florida       114.806121
+## Illinois       85.883763
+## Name: density, dtype: float64</code></pre>
+<pre class="python"><code>data.density &gt; 100</code></pre>
+<pre><code>## California    False
+## Texas         False
+## New York       True
+## Florida        True
+## Illinois      False
+## Name: density, dtype: bool</code></pre>
+<pre class="python"><code>data.loc[data.density &gt; 100, [&#39;pop&#39;, &#39;density&#39;]]</code></pre>
+<pre><code>##                pop     density
+## New York  19651127  139.076746
+## Florida   19552860  114.806121</code></pre>
+<p>也可以修改数据框.</p>
+<pre class="python"><code>data.iloc[0, 2] = 90
+data</code></pre>
+<pre><code>##               area       pop     density
+## California  423967  38332521   90.000000
+## Texas       695662  26448193   38.018740
+## New York    141297  19651127  139.076746
+## Florida     170312  19552860  114.806121
+## Illinois    149995  12882135   85.883763</code></pre>
+</div>
+</div>
+</div>
+<div id="pandas中的数据操作" class="section level1">
+<h1><span class="header-section-number">4</span> Pandas中的数据操作</h1>
+<div id="index-alignment-in-series" class="section level2">
+<h2><span class="header-section-number">4.1</span> Index alignment in Series</h2>
+<pre class="python"><code>import numpy as np
+import pandas as pd
+area = pd.Series({&#39;Alaska&#39;: 1723337, &#39;Texas&#39;: 695662,
+&#39;California&#39;: 423967}, name=&#39;area&#39;)
+population = pd.Series({&#39;California&#39;: 38332521, &#39;Texas&#39;: 26448193,
+&#39;New York&#39;: 19651127}, name=&#39;population&#39;)
+population / area</code></pre>
+<pre><code>## Alaska              NaN
+## California    90.413926
+## New York            NaN
+## Texas         38.018740
+## dtype: float64</code></pre>
+<pre class="python"><code>area.index | population.index</code></pre>
+<pre><code>## Index([&#39;Alaska&#39;, &#39;California&#39;, &#39;New York&#39;, &#39;Texas&#39;], dtype=&#39;object&#39;)</code></pre>
+<p>series还可以相加.</p>
+<pre class="python"><code>A = pd.Series([2, 4, 6], index=[0, 1, 2])
+B = pd.Series([1, 3, 5], index=[1, 2, 3])
+A + B</code></pre>
+<pre><code>## 0    NaN
+## 1    5.0
+## 2    9.0
+## 3    NaN
+## dtype: float64</code></pre>
+<p>相加的时候,按照名字相同的进行加法运算,如果只有其中一方有,那么会返回0值.</p>
+<p>还可以使用方法来代替运算符.</p>
+<pre class="python"><code>A.add(B, fill_value=0)</code></pre>
+<pre><code>## 0    2.0
+## 1    5.0
+## 2    9.0
+## 3    5.0
+## dtype: float64</code></pre>
+</div>
+<div id="index-alignment-in-dataframe" class="section level2">
+<h2><span class="header-section-number">4.2</span> Index alignment in DataFrame</h2>
+<p>同样的,数据框也可以相加,按照行名和列名.</p>
+<pre class="python"><code>rng = np.random.RandomState(42)
+ser = pd.Series(rng.randint(0, 10, 4))
+A = pd.DataFrame(rng.randint(0, 20, (2, 2)),
+columns=list(&#39;AB&#39;))
+A</code></pre>
+<pre><code>##     A   B
+## 0   6  18
+## 1  10  10</code></pre>
+<pre class="python"><code>B = pd.DataFrame(rng.randint(0, 10, (3, 3)),
+columns=list(&#39;BAC&#39;))
+B</code></pre>
+<pre><code>##    B  A  C
+## 0  7  4  3
+## 1  7  7  2
+## 2  5  4  1</code></pre>
+<pre class="python"><code>A + B</code></pre>
+<pre><code>##       A     B   C
+## 0  10.0  25.0 NaN
+## 1  17.0  17.0 NaN
+## 2   NaN   NaN NaN</code></pre>
+<p>同样可以使用<code>add</code>方法.</p>
+<pre class="python"><code>A.stack()</code></pre>
+<pre><code>## 0  A     6
+##    B    18
+## 1  A    10
+##    B    10
+## dtype: int32</code></pre>
+<pre class="python"><code>A</code></pre>
+<pre><code>##     A   B
+## 0   6  18
+## 1  10  10</code></pre>
+<pre class="python"><code>fill = A.stack().mean()
+fill</code></pre>
+<pre><code>## 11.0</code></pre>
+<pre class="python"><code>A.add(B, fill_value=fill)</code></pre>
+<pre><code>##       A     B     C
+## 0  10.0  25.0  14.0
+## 1  17.0  17.0  13.0
+## 2  15.0  16.0  12.0</code></pre>
+<p><strong>lists Python operators and their equivalent Pandas object methods</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Python operator</th>
+<th>Pandas method(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+</td>
+<td>add()</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>sub(), subtract()</td>
+</tr>
+<tr class="odd">
+<td>*</td>
+<td>mul(), multiply()</td>
+</tr>
+<tr class="even">
+<td>/</td>
+<td>truediv(), div(), divide()</td>
+</tr>
+<tr class="odd">
+<td>//</td>
+<td>floordiv()</td>
+</tr>
+<tr class="even">
+<td>%</td>
+<td>mod()</td>
+</tr>
+<tr class="odd">
+<td>**</td>
+<td>pow()</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="数据框和series之间的操作" class="section level2">
+<h2><span class="header-section-number">4.3</span> 数据框和series之间的操作</h2>
+<pre class="python"><code>A = rng.randint(10, size=(3, 4))
+A</code></pre>
+<pre><code>## array([[7, 5, 1, 4],
+##        [0, 9, 5, 8],
+##        [0, 9, 2, 6]])</code></pre>
+<pre class="python"><code>type(A)</code></pre>
+<pre><code>## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
+<pre class="python"><code>A[0]</code></pre>
+<pre><code>## array([7, 5, 1, 4])</code></pre>
+<pre class="python"><code>A - A[0]</code></pre>
+<pre><code>## array([[ 0,  0,  0,  0],
+##        [-7,  4,  4,  4],
+##        [-7,  4,  1,  2]])</code></pre>
+<pre class="python"><code>df = pd.DataFrame(A, columns=list(&#39;QRST&#39;))
+df</code></pre>
+<pre><code>##    Q  R  S  T
+## 0  7  5  1  4
+## 1  0  9  5  8
+## 2  0  9  2  6</code></pre>
+<pre class="python"><code>df.iloc[0]##第一行</code></pre>
+<pre><code>## Q    7
+## R    5
+## S    1
+## T    4
+## Name: 0, dtype: int32</code></pre>
+<pre class="python"><code>df - df.iloc[0]</code></pre>
+<pre><code>##    Q  R  S  T
+## 0  0  0  0  0
+## 1 -7  4  4  4
+## 2 -7  4  1  2</code></pre>
+</div>
+</div>
+<div id="导入数据" class="section level1">
+<h1><span class="header-section-number">5</span> 导入数据</h1>
+<p>和R类似,可以使用pandas读取不同格式的本地的数据.函数总结如下:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read_csv()</code></td>
+<td>从CSV文件导入数据</td>
+</tr>
+<tr class="even">
+<td><code>pd.read_table(filename)</code></td>
+<td>从限定分隔符的文本文件导入数据</td>
+</tr>
+<tr class="odd">
+<td><code>pd.read_excel(filename)</code></td>
+<td>从Excel文件导入数据</td>
+</tr>
+<tr class="even">
+<td><code>pd.read_sql(query, connection_object)</code></td>
+<td>从SQL表/库导入数据</td>
+</tr>
+<tr class="odd">
+<td><code>pd.read_json(json_string)</code></td>
+<td>从JSON格式的字符串导入数据</td>
+</tr>
+<tr class="even">
+<td><code>pd.read_html(url)</code></td>
+<td>解析URL、字符串或者HTML文件，抽取其中的tables表格</td>
+</tr>
+<tr class="odd">
+<td><code>pd.read_clipboard()</code></td>
+<td>从你的粘贴板获取内容，并传给read_table()</td>
+</tr>
+<tr class="even">
+<td><code>pd.DataFrame(dict)</code></td>
+<td>从字典对象导入数据，Key是列名，Value是数据</td>
+</tr>
+</tbody>
+</table>
+<p>和R中函数一样,如果想要知道每个函数的所有参数及含义,可以使用<code>help()</code>函数来获得.</p>
+<pre class="python"><code>import os as os
+os.getcwd()</code></pre>
+<pre><code>## &#39;D:\\my github\\shen\\content\\en\\post\\2019-11-23-python-pandas-summary&#39;</code></pre>
+<pre class="python"><code>test = {&quot;a&quot;:1, &quot;b&quot;:2}
+test</code></pre>
+<pre><code>## {&#39;a&#39;: 1, &#39;b&#39;: 2}</code></pre>
+<pre class="python"><code>test2 = pd.DataFrame(test, index = [1,2])
+# help(pd.DataFrame)
+test2</code></pre>
+<pre><code>##    a  b
+## 1  1  2
+## 2  1  2</code></pre>
+</div>
