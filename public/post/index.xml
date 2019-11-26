@@ -17,7 +17,19 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#numpy中的数据格式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Numpy中的数据格式&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#numpy-array基础&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Numpy array基础&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#numpy-array基础&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Numpy array基础&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#array的属性&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Array的属性&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#array索引获得其中单个元素&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Array索引:获得其中单个元素&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#array切片获得一个subarray&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Array切片:获得一个subarray&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#一维array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3.1&lt;/span&gt; 一维array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#多维array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3.2&lt;/span&gt; 多维array&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#重塑array的形状&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; 重塑array的形状&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#array的合并和分裂concatenation-and-splitting&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; Array的合并和分裂(Concatenation and Splitting)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#合并array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.1&lt;/span&gt; 合并array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分割array&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.2&lt;/span&gt; 分割array&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -125,6 +137,217 @@ np.__version__&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;numpy-array基础&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Numpy array基础&lt;/h1&gt;
+&lt;div id=&#34;array的属性&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Array的属性&lt;/h2&gt;
+&lt;p&gt;先生成三个不同的array,一维,二维和三维array.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import numpy as np
+np.random.seed(0)#设置seed,保证重复性
+
+x1 = np.random.randint(10, size = 6)#一维
+x2 = np.random.randint(10, size = (3, 4))#二维
+x3 = np.random.randint(10, size = (3, 4, 5))#三维
+x1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([5, 0, 3, 3, 7, 9])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[3, 5, 2, 4],
+##        [7, 6, 8, 8],
+##        [1, 6, 7, 7]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[[8, 1, 5, 9, 8],
+##         [9, 4, 3, 0, 3],
+##         [5, 0, 2, 3, 8],
+##         [1, 3, 3, 3, 7]],
+## 
+##        [[0, 1, 9, 9, 0],
+##         [4, 7, 3, 2, 7],
+##         [2, 0, 0, 4, 5],
+##         [5, 6, 8, 4, 1]],
+## 
+##        [[4, 9, 8, 1, 1],
+##         [7, 9, 9, 3, 6],
+##         [7, 2, 0, 3, 5],
+##         [9, 4, 4, 6, 4]]])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;每一个array都有&lt;code&gt;ndim&lt;/code&gt;,&lt;code&gt;shape&lt;/code&gt;和&lt;code&gt;size&lt;/code&gt;属性.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(x1.ndim, x1.shape, x1.size)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1 (6,) 6&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(x2.ndim, x2.shape, x2.size)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 2 (3, 4) 12&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(x3.ndim, x3.shape, x3.size)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3 (3, 4, 5) 60&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从上面例子可以看出来这三个属性分别代表什么意思.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;ndim&lt;/code&gt;属性:该数据是几维数据.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;shape&lt;/code&gt;属性:该数据每个维度的大小,这个可以看作是R中的&lt;code&gt;dim()&lt;/code&gt;函数得到的内容.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;size&lt;/code&gt;属性:该数据的总的cell数目.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;dtype&lt;/code&gt;属性是指array的数据类型.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(x1.dtype, x2.dtype, x3.dtype)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## int32 int32 int32&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;array索引获得其中单个元素&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Array索引:获得其中单个元素&lt;/h2&gt;
+&lt;p&gt;array的索引跟python中内置的列表非常像,可以使用位置索引,但是同样注意从0开始算起.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([5, 0, 3, 3, 7, 9])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x1[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 5&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x1[-1]#倒数第一个元素&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于多维,比如二维array,则跟R中的数据框类似,使用逗号分开行和列的索引.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[3, 5, 2, 4],
+##        [7, 6, 8, 8],
+##        [1, 6, 7, 7]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2[0,0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2[0,0] = 10
+x2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[10,  5,  2,  4],
+##        [ 7,  6,  8,  8],
+##        [ 1,  6,  7,  7]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2[0,0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 10&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;array切片获得一个subarray&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Array切片:获得一个subarray&lt;/h2&gt;
+&lt;p&gt;类似于列表,可以这样切片:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;list[start🔚step]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要强调一次再,取出的subarray不包括end.&lt;/p&gt;
+&lt;div id=&#34;一维array&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3.1&lt;/span&gt; 一维array&lt;/h3&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = np.arange(10)
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x[:5]#前五个元素&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([0, 1, 2, 3, 4])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x[4:7]#前五个元素&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([4, 5, 6])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x[::2]#前五个元素&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([0, 2, 4, 6, 8])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x[::-1]#将array反向排列&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;多维array&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3.2&lt;/span&gt; 多维array&lt;/h3&gt;
+&lt;p&gt;多维数组跟一致数组一样,只是需要使用逗号把不同维度的切片分开即可.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;array[start🔚step,start:end;step]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[10,  5,  2,  4],
+##        [ 7,  6,  8,  8],
+##        [ 1,  6,  7,  7]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2[1:3, 1:3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[6, 8],
+##        [6, 7]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2[::-1, ::-1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[ 7,  7,  6,  1],
+##        [ 8,  8,  6,  7],
+##        [ 4,  2,  5, 10]])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果对于行或者列只取出一个,会出现什么情况呢?&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[10,  5,  2,  4],
+##        [ 7,  6,  8,  8],
+##        [ 1,  6,  7,  7]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2[1:3, 0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([7, 1])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2[1:3, 0].ndim&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到,降维了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;重塑array的形状&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 重塑array的形状&lt;/h2&gt;
+&lt;p&gt;array的形状,上面简单介绍了,指的就是数组的各个维度的大小.比较常用的是&lt;code&gt;reshape&lt;/code&gt;方法.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;grid = np.arange(1, 10)
+grid&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([1, 2, 3, 4, 5, 6, 7, 8, 9])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;grid.reshape((3,3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [7, 8, 9]])&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;array的合并和分裂concatenation-and-splitting&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; Array的合并和分裂(Concatenation and Splitting)&lt;/h2&gt;
+&lt;div id=&#34;合并array&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.1&lt;/span&gt; 合并array&lt;/h3&gt;
+&lt;p&gt;将两个array合并为一个array,可以使用函数&lt;code&gt;concatenate&lt;/code&gt;,是&lt;code&gt;numpy&lt;/code&gt;中的函数.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = np.array([1, 2, 3])
+y = np.array([3, 2, 1])
+z = [99, 99, 99]
+np.concatenate([x, y, z])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([ 1,  2,  3,  3,  2,  1, 99, 99, 99])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到,需要将array放在一个&lt;code&gt;list&lt;/code&gt;(中括号)中.&lt;/p&gt;
+&lt;p&gt;还可以用于二维array的合并.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;grid = np.array([[1, 2, 3],
+[4, 5, 6]])
+grid&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[1, 2, 3],
+##        [4, 5, 6]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;np.concatenate([grid, grid])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [1, 2, 3],
+##        [4, 5, 6]])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到,这样类似于R中的数据库的&lt;code&gt;rbind&lt;/code&gt;功能,将array按照列进行合并.&lt;/p&gt;
+&lt;p&gt;那么如何实现&lt;code&gt;cbind&lt;/code&gt;效果呢?&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;np.concatenate([grid, grid], axis=1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[1, 2, 3, 1, 2, 3],
+##        [4, 5, 6, 4, 5, 6]])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其实还可以使用更为形象的函数,&lt;code&gt;np.vstack&lt;/code&gt;(相当于R中的&lt;code&gt;rbind&lt;/code&gt;),和&lt;code&gt;np.hstack&lt;/code&gt;(相当于R中的&lt;code&gt;cbind&lt;/code&gt;).&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = np.array([1, 2, 3])
+grid = np.array([[9, 8, 7],
+[6, 5, 4]])
+np.vstack([x, grid])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[1, 2, 3],
+##        [9, 8, 7],
+##        [6, 5, 4]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;y = np.array([[99],
+[99]])
+np.hstack([grid, y])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[ 9,  8,  7, 99],
+##        [ 6,  5,  4, 99]])&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分割array&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.2&lt;/span&gt; 分割array&lt;/h3&gt;
+&lt;p&gt;分割array有几个函数.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;np.split&lt;/code&gt;,&lt;code&gt;np.hsplit&lt;/code&gt;,和&lt;code&gt;np.vsplit&lt;/code&gt;.看几个例子就明白了.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x = [1, 2, 3, 99, 99, 3, 2, 1]
+x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 2, 3, 99, 99, 3, 2, 1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x1, x2, x3 = np.split(x, [3, 5])
+x1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([1, 2, 3])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([99, 99])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;x3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([3, 2, 1])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于函数&lt;code&gt;split&lt;/code&gt;,第一参数是要分割的列表,第二个参数需要是一个list,代表从哪分割,比如这里面的&lt;code&gt;[3,5]&lt;/code&gt;,就代表着将列表分割为三段,分别是[:3],[3:5],[5:].&lt;/p&gt;
+&lt;p&gt;同样对于&lt;code&gt;hsplit&lt;/code&gt;和&lt;code&gt;vsplit&lt;/code&gt;也就比较好理解了,分别是对多维array进行垂直和水平切割.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;grid = np.arange(16).reshape((4, 4))
+grid&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[ 0,  1,  2,  3],
+##        [ 4,  5,  6,  7],
+##        [ 8,  9, 10, 11],
+##        [12, 13, 14, 15]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;upper, lower = np.vsplit(grid, [2])
+print(upper)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[0 1 2 3]
+##  [4 5 6 7]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(lower)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[ 8  9 10 11]
+##  [12 13 14 15]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;left, right = np.hsplit(grid, [2])
+print(left)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[ 0  1]
+##  [ 4  5]
+##  [ 8  9]
+##  [12 13]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(right)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[ 2  3]
+##  [ 6  7]
+##  [10 11]
+##  [14 15]]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -5816,6 +6039,9 @@ as.Date(z, tz = &amp;quot;NZ&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;#oral-communication&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Oral communication&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#a的发音&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; &lt;code&gt;A&lt;/code&gt;的发音&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#日常用品单词&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 日常用品单词&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#胶带&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 胶带&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -5879,18 +6105,81 @@ Stanford Health Care&lt;/p&gt;
 &lt;p&gt;已知分不清&lt;code&gt;A&lt;/code&gt;什么时候是&lt;code&gt;æ&lt;/code&gt;的发音,什么时候&lt;code&gt;e&lt;/code&gt;的发音.后来问一个朋友,他说&lt;code&gt;一般&lt;/code&gt;长单词是&lt;code&gt;æ&lt;/code&gt;,短单词是&lt;code&gt;e&lt;/code&gt;.比如“Ada”,音标为&lt;code&gt;/e di e/&lt;/code&gt;,读音为&lt;a href=&#34;https://translate.google.com/?source=gtx#view=home&amp;amp;op=translate&amp;amp;sl=en&amp;amp;tl=zh-CN&amp;amp;text=ada&#34;&gt;/e di e/&lt;/a&gt;.而“Apple”,音标为&lt;code&gt;/ˈæpl/&lt;/code&gt;读音为&lt;a href=&#34;https://translate.google.com/?source=gtx#view=home&amp;amp;op=translate&amp;amp;sl=en&amp;amp;tl=zh-CN&amp;amp;text=apple&#34;&gt;/ˈæpl/&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;日常用品单词&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 日常用品单词&lt;/h1&gt;
+&lt;div id=&#34;胶带&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; 胶带&lt;/h2&gt;
+&lt;p&gt;胶带叫做tape,透明胶带叫做Scotch tape.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>dplyr cookbook</title>
-      <link>/post/2019-10-28-dplyr-cookbook/dplyr-cookbook/</link>
+      <link>/post/2019-10-28-dplyr-cookbook/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-28-dplyr-cookbook/dplyr-cookbook/</guid>
+      <guid>/post/2019-10-28-dplyr-cookbook/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#对行进行筛选filter_xxx系列函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 对行进行筛选:&lt;code&gt;filter_xxx()&lt;/code&gt;系列函数&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#filter_all函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; &lt;code&gt;filter_all()&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
-&lt;p&gt;test&lt;/p&gt;
+&lt;div id=&#34;对行进行筛选filter_xxx系列函数&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 对行进行筛选:&lt;code&gt;filter_xxx()&lt;/code&gt;系列函数&lt;/h1&gt;
+&lt;div id=&#34;filter_all函数&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; &lt;code&gt;filter_all()&lt;/code&gt;函数&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;filter_all()&lt;/code&gt;函数可以对所有的列进行判断从而对行进行筛选.&lt;/p&gt;
+&lt;p&gt;比如我想对&lt;code&gt;mtcars&lt;/code&gt;数据集进行筛选,对于每一行,只有每一行的值都大于150才保留下来.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages ------------------------------------------------------------------------------------ tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Conflicts --------------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;filter_all(mtcars, all_vars(. &amp;gt; 150))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] mpg  cyl  disp hp   drat wt   qsec vs   am   gear carb
+## &amp;lt;0 rows&amp;gt; (or 0-length row.names)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果只要任意一行大于150,就保留下来,那么可以这么写:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;filter_all(mtcars, any_vars(. &amp;gt; 150))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## 3  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## 4  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## 5  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## 6  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## 7  19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## 8  17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## 9  16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## 10 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## 11 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## 12 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## 13 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## 14 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## 15 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## 16 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## 17 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## 18 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## 19 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## 20 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## 21 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到,&lt;code&gt;ffilter_all()&lt;/code&gt;经常和&lt;code&gt;all_vars()&lt;/code&gt;和&lt;code&gt;any_vals()&lt;/code&gt;函数搭配使用.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     
