@@ -14,9 +14,7 @@
       <description>
 
 
-&lt;p&gt;参考文献[^1][^2].&lt;/p&gt;
-&lt;p&gt;[^1] Uses and misuses of the fudge factor in quantitative discovery proteomics&lt;/p&gt;
-&lt;p&gt;[^2] Significance analysis of microarrays applied to the ionizing radiation response&lt;/p&gt;
+&lt;p&gt;参考文献&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;,&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;示例代码:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Function to compute the smooth threshold curve
 smooth.threshold=function(x,ta,s0,df){
@@ -154,6 +152,13 @@ plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
 # Display the human proteins which should be identified as differentially abundant
 points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Organism==&amp;quot;human&amp;quot;)],col=2,pch=3);&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Uses and misuses of the fudge factor in quantitative discovery proteomics&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Significance analysis of microarrays applied to the ionizing radiation response&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
