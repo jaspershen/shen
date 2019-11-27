@@ -35,6 +35,15 @@ output:
 <li><a href="#分割array"><span class="toc-section-number">3.5.2</span> 分割array</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#在numpy-array上进行运算"><span class="toc-section-number">4</span> 在Numpy array上进行运算</a><ul>
+<li><a href="#universal-functionsufuncs"><span class="toc-section-number">4.1</span> Universal Functions(UFuncs)</a></li>
+</ul></li>
+<li><a href="#总结"><span class="toc-section-number">5</span> 总结</a><ul>
+<li><a href="#新的函数"><span class="toc-section-number">5.1</span> 新的函数</a><ul>
+<li><a href="#np.empty创建一个任意值的array"><span class="toc-section-number">5.1.1</span> <code>np.empty()</code>:创建一个任意值的array</a></li>
+</ul></li>
+<li><a href="#numpy的ufuncs"><span class="toc-section-number">5.2</span> Numpy的<code>UFuncs</code></a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -352,5 +361,82 @@ print(left)</code></pre>
 ##  [10 11]
 ##  [14 15]]</code></pre>
 </div>
+</div>
+</div>
+<div id="在numpy-array上进行运算" class="section level1">
+<h1><span class="header-section-number">4</span> 在Numpy array上进行运算</h1>
+<p>对array进行运算有一点非常重要,就是进行向量化操作(vectorized operations),跟R一样.这样的好处时可以提高运算速度.</p>
+<div id="universal-functionsufuncs" class="section level2">
+<h2><span class="header-section-number">4.1</span> Universal Functions(UFuncs)</h2>
+<p>举一个简单的例子,给定一组数,计算每个数的倒数.如果用以前的思维,那么应该对每一个数分别计算倒数,然后循环.但是其实大可不必.</p>
+<pre class="python"><code>import numpy as np
+values = np.arange(1,10)
+values</code></pre>
+<pre><code>## array([1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
+<pre class="python"><code>1/values</code></pre>
+<pre><code>## array([1.        , 0.5       , 0.33333333, 0.25      , 0.2       ,
+##        0.16666667, 0.14285714, 0.125     , 0.11111111])</code></pre>
+<p>这在R中的基础数据格式,向量中就可以运行的,但是对python的基础数据格式,列表和tuple是不可以的.</p>
+<pre class="python"><code>list(range(1,10))
+# 1/list(range(1,10))</code></pre>
+<pre><code>## [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+<p>也就是说列表是不支持向量化操作的,只有在numpy的array上才可以.</p>
+<p>所以,可以将numpy中的一维array想象成是R中的向量,这样就好记住多了.</p>
+<p>那么,同样的,两个一维array也可以像R向量一样,做向量化的操作.比如+,÷等.但是两个array的长度必须相等,否则报错.</p>
+<pre class="python"><code>np.arange(1,10)/np.arange(2,11)</code></pre>
+<pre><code>## array([0.5       , 0.66666667, 0.75      , 0.8       , 0.83333333,
+##        0.85714286, 0.875     , 0.88888889, 0.9       ])</code></pre>
+<pre class="python"><code>np.arange(1,10) + np.arange(2,11)</code></pre>
+<pre><code>## array([ 3,  5,  7,  9, 11, 13, 15, 17, 19])</code></pre>
+<pre class="python"><code>np.arange(1,10) - np.arange(2,11)</code></pre>
+<pre><code>## array([-1, -1, -1, -1, -1, -1, -1, -1, -1])</code></pre>
+<p>当然,向量化的操作并不局限于一维的array,对于二维的array同样适用,只要将其对比为R中的数据框即可.当然,也可以二维和一维操作,这时候是按照每行都对同一个一维array分别操作进行的.</p>
+<pre class="python"><code>test = np.arange(1,10)
+test = test.reshape((3,3))
+test2 = np.arange(2,11).reshape((3,3)) 
+test3 = np.array([1,2,3])
+test</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [7, 8, 9]])</code></pre>
+<pre class="python"><code>test2</code></pre>
+<pre><code>## array([[ 2,  3,  4],
+##        [ 5,  6,  7],
+##        [ 8,  9, 10]])</code></pre>
+<pre class="python"><code>test3</code></pre>
+<pre><code>## array([1, 2, 3])</code></pre>
+<pre class="python"><code>test + test2</code></pre>
+<pre><code>## array([[ 3,  5,  7],
+##        [ 9, 11, 13],
+##        [15, 17, 19]])</code></pre>
+<pre class="python"><code>test/test2</code></pre>
+<pre><code>## array([[0.5       , 0.66666667, 0.75      ],
+##        [0.8       , 0.83333333, 0.85714286],
+##        [0.875     , 0.88888889, 0.9       ]])</code></pre>
+<pre class="python"><code>test/test3</code></pre>
+<pre><code>## array([[1. , 1. , 1. ],
+##        [4. , 2.5, 2. ],
+##        [7. , 4. , 3. ]])</code></pre>
+</div>
+</div>
+<div id="总结" class="section level1">
+<h1><span class="header-section-number">5</span> 总结</h1>
+<div id="新的函数" class="section level2">
+<h2><span class="header-section-number">5.1</span> 新的函数</h2>
+<div id="np.empty创建一个任意值的array" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> <code>np.empty()</code>:创建一个任意值的array</h3>
+<p>这个函数可以用来生成一个随机值的设定长度和形状的array,主要是用来事先生成一个占位符的array,然后在循环或者其他向量化操作中填充值.</p>
+<p>三个参数,具体信息可以参考帮助文档.</p>
+<pre><code>np.empty(shape, dtype, order)</code></pre>
+<pre class="python"><code>import numpy as np
+test = np.empty(10)
+test</code></pre>
+<pre><code>## array([6.69405820e-315, 6.80663782e-315, 6.36138870e-315, 2.64149399e-315,
+##        2.64357112e-315, 6.31959660e-315, 6.80663814e-315, 2.66519744e-315,
+##        6.80663940e-315, 6.80662454e-315])</code></pre>
+</div>
+</div>
+<div id="numpy的ufuncs" class="section level2">
+<h2><span class="header-section-number">5.2</span> Numpy的<code>UFuncs</code></h2>
 </div>
 </div>

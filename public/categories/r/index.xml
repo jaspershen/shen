@@ -5,7 +5,158 @@
     <link>/categories/r/</link>
       <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 20 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 27 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>SAM test用于差异标志物的选择</title>
+      <link>/post/2019-11-27-volcano-plot/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-27-volcano-plot/</guid>
+      <description>
+
+
+&lt;p&gt;参考文献[^1][^2].&lt;/p&gt;
+&lt;p&gt;[^1] Uses and misuses of the fudge factor in quantitative discovery proteomics&lt;/p&gt;
+&lt;p&gt;[^2] Significance analysis of microarrays applied to the ionizing radiation response&lt;/p&gt;
+&lt;p&gt;示例代码:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Function to compute the smooth threshold curve
+smooth.threshold=function(x,ta,s0,df){
+  xp=x[x&amp;gt;(ta*s0)]; xn=x[x&amp;lt;(-ta*s0)]; dp=xp/ta-s0; dn=xn/(-ta)-s0;
+  dp=s0/dp; dp=ta*(1+dp); dn=s0/dn; dn=ta*(1+dn);
+  fp=pt(dp,df=df); fn=pt(dn,df=df); yp=-log10(2*(1-fp)); yn=-log10(2*(1-fn));
+  return(cbind(c(xn,xp),c(yn,yp)));
+}
+
+# Get data
+library(cp4p); data(LFQRatio2); tabl=LFQRatio2;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;cp4p&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: MESS&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;MESS&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: multtest&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: BiocGenerics&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: parallel&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;BiocGenerics&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:parallel&amp;#39;:
+## 
+##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+##     clusterExport, clusterMap, parApply, parCapply, parLapply,
+##     parLapplyLB, parRapply, parSapply, parSapplyLB&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
+## 
+##     IQR, mad, sd, var, xtabs&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
+## 
+##     anyDuplicated, append, as.data.frame, basename, cbind,
+##     colnames, dirname, do.call, duplicated, eval, evalq, Filter,
+##     Find, get, grep, grepl, intersect, is.unsorted, lapply, Map,
+##     mapply, match, mget, order, paste, pmax, pmax.int, pmin,
+##     pmin.int, Position, rank, rbind, Reduce, rownames, sapply,
+##     setdiff, sort, table, tapply, union, unique, unsplit, which,
+##     which.max, which.min&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: Biobase&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     &amp;#39;browseVignettes()&amp;#39;. To cite Bioconductor, see
+##     &amp;#39;citation(&amp;quot;Biobase&amp;quot;)&amp;#39;, and for packages &amp;#39;citation(&amp;quot;pkgname&amp;quot;)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: qvalue&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: limma&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;limma&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:BiocGenerics&amp;#39;:
+## 
+##     plotMA&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Get Fold-Change
+n1=3; n2=3;
+m1=apply(tabl[,1:n1],1,mean); m2=apply(tabl[,(n1+1):(n1+n2)],1,mean);
+FC=m1-m2;
+
+# Get standard deviations for t-test
+sd1=apply(tabl[,1:n1],1,sd)
+sd2=apply(tabl[,(n1+1):(n1+n2)],1,sd)
+sdd=sqrt(((sd1^2)+(sd2^2))/(n1+n2))
+
+# Compute the fudge factor with the method of Tusher, V., Tibshirani, R., and Chu, G. (2001)
+library(siggenes) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: splines&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ff0=fudge2(FC,sdd)$s.zero;
+
+# Get degrees of freedom for significance testing
+df=(n1+n2)-2;
+
+# Get t.stats and p.values 
+t.stat=FC/sdd; p.value=2*(1-pt(abs(t.stat),df=df));
+
+####################################################
+# Prepare displays
+abs.inf=-3.5; abs.sup=3.5;
+
+#################################
+# Figure a
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Organism==&amp;quot;human&amp;quot;)],col=2,pch=3);
+
+confidence_level=0.975
+ff=0.5;
+ht &amp;lt;- -log10(1-confidence_level);
+points(c(-ff,ff), c(10,10), type=&amp;#39;h&amp;#39;, col=&amp;#39;green&amp;#39;,lwd=2);
+lines(c(abs.inf,abs.sup), c(ht,ht), col=&amp;#39;green&amp;#39;,lwd=2);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
+# Figure b
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Organism==&amp;quot;human&amp;quot;)],col=2,pch=3);
+
+confidence_level=0.975; ff=0.5;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),
+                             ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
+# Figure c
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Organism==&amp;quot;human&amp;quot;)],col=2,pch=3);
+
+confidence_level=0.975; ff=0.5; ht &amp;lt;- -log10(1-confidence_level)
+points(c(-ff,ff), c(10,10), type=&amp;#39;h&amp;#39;, col=&amp;#39;black&amp;#39;,lwd=1)
+lines(c(abs.inf,abs.sup), c(ht,ht), col=&amp;#39;black&amp;#39;,lwd=1)
+
+confidence_level=0.9; ff=0.6;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col=&amp;#39;gray&amp;#39;,lwd=1)
+
+confidence_level=0.75; ff=2;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col=&amp;#39;gray&amp;#39;,lwd=1)
+
+confidence_level=0.95; ff=0.6;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col=&amp;#39;gray&amp;#39;,lwd=1)
+
+confidence_level=0.97; ff=0.15;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
+# Figure d
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Organism==&amp;quot;human&amp;quot;)],col=2,pch=3);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>blogdown创建post模板文件夹</title>
       <link>/post/2019-11-20-blogdown-creat-post/</link>
