@@ -5,7 +5,78 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sun, 24 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 26 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Python包及模块的导入</title>
+      <link>/post/2019-11-26-impot-module-package/</link>
+      <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-26-impot-module-package/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#模块module&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 模块(module)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#包package&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 包(package)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#常规导入&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 常规导入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用from语句导入&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 使用&lt;code&gt;from&lt;/code&gt;语句导入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用as语句&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 使用&lt;code&gt;as&lt;/code&gt;语句&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;模块module&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 模块(module)&lt;/h1&gt;
+&lt;p&gt;模块一般是一个python文件(.py),直接使用&lt;code&gt;import&lt;/code&gt;语句就可以导入一个模块.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;包package&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 包(package)&lt;/h1&gt;
+&lt;p&gt;包是一个目录,可以使用&lt;code&gt;import&lt;/code&gt;语句或者&lt;code&gt;from&lt;/code&gt; + &lt;code&gt;import&lt;/code&gt;语句来导入.也可以再后面加上&lt;code&gt;as&lt;/code&gt;语句,将导入的包或者模块重新命名为其他的名字.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;常规导入&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 常规导入&lt;/h1&gt;
+&lt;p&gt;直接使用&lt;code&gt;import&lt;/code&gt;语句&lt;/p&gt;
+&lt;p&gt;例如&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import os
+os.getcwd()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;D:\\my github\\shen\\content\\en\\post\\2019-11-26-impot-module-package&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然,也可以同时导入多个包.每个包中间使用逗号分隔开.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import os,sys,time&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是,这样导入多个包的时候,一方面不能使用&lt;code&gt;as&lt;/code&gt;将包重新命名,另外也不符合python的编程风格指导,python建议一行只导入一个包.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用from语句导入&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 使用&lt;code&gt;from&lt;/code&gt;语句导入&lt;/h1&gt;
+&lt;p&gt;很多时候,可能只想导入包的某个模块.这时候我们可以使用&lt;code&gt;from&lt;/code&gt;语句跟&lt;code&gt;import&lt;/code&gt;语句联合使用&lt;/p&gt;
+&lt;pre class=&#34;(python)&#34;&gt;&lt;code&gt;from functools import lru_cache#只导入lru_cache模块
+import functools#导入functools所有的模块&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样就可以直接使用&lt;code&gt;lru_cache&lt;/code&gt;模块了.&lt;/p&gt;
+&lt;p&gt;当然,也可以导入这个包的所有模块.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from os import *&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样做有一个很大的问题,就是打乱了你的命名空间,因为很有可能你自己定义的函数或者变量跟你导入的包中的模块名时相同的,这时候就有可能发生冲突,所以并不推荐这样做.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用as语句&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 使用&lt;code&gt;as&lt;/code&gt;语句&lt;/h1&gt;
+&lt;p&gt;使用&lt;code&gt;as&lt;/code&gt;语句可以将导入的包或者模块重新命名,对于那些包名字比较长而且不太好打印的包来说,非常有用.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import numpy as np
+import pandas as pd
+np.array([1,2,3])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([1, 2, 3])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test = np.array(np.arange(9))
+test = test.reshape((3,3))
+test&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([[0, 1, 2],
+##        [3, 4, 5],
+##        [6, 7, 8]])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;test2 = pd.DataFrame(test)
+test2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    0  1  2
+## 0  0  1  2
+## 1  3  4  5
+## 2  6  7  8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#我倾向的方式&lt;/p&gt;
+&lt;p&gt;还是使用&lt;code&gt;import&lt;/code&gt; + &lt;code&gt;as&lt;/code&gt;的方式更加可靠,然后使用&lt;code&gt;pkg_name.function()&lt;/code&gt;的方式进行调用.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python NumPy包总结</title>
       <link>/post/2019-11-24-python-numpy-summary/</link>
