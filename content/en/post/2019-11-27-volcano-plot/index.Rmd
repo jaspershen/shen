@@ -17,12 +17,12 @@ output:
     number_sections: true
 ---
 
-参考文献[^1][^2].
+参考文献[^1],[^2].
 
 
-[^1] Uses and misuses of the fudge factor in quantitative discovery proteomics
+[^1]: Uses and misuses of the fudge factor in quantitative discovery proteomics
 
-[^2] Significance analysis of microarrays applied to the ionizing radiation response
+[^2]: Significance analysis of microarrays applied to the ionizing radiation response
 
 
 示例代码:

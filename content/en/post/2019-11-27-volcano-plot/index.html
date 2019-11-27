@@ -19,9 +19,7 @@ output:
 
 
 
-<p>参考文献[^1][^2].</p>
-<p>[^1] Uses and misuses of the fudge factor in quantitative discovery proteomics</p>
-<p>[^2] Significance analysis of microarrays applied to the ionizing radiation response</p>
+<p>参考文献<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 <p>示例代码:</p>
 <pre class="r"><code># Function to compute the smooth threshold curve
 smooth.threshold=function(x,ta,s0,df){
@@ -159,3 +157,10 @@ plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
 # Display the human proteins which should be identified as differentially abundant
 points(FC[(tabl$Organism==&quot;human&quot;)],-log10(p.value)[(tabl$Organism==&quot;human&quot;)],col=2,pch=3);</code></pre>
 <p><img src="/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-4.png" width="672" /></p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Uses and misuses of the fudge factor in quantitative discovery proteomics<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Significance analysis of microarrays applied to the ionizing radiation response<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
