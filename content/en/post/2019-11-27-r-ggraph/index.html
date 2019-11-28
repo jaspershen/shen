@@ -30,6 +30,8 @@ output:
 <li><a href="#基础绘图"><span class="toc-section-number">3.1</span> 基础绘图</a></li>
 <li><a href="#添加文字"><span class="toc-section-number">3.2</span> 添加文字</a></li>
 <li><a href="#使用不同的layout"><span class="toc-section-number">3.3</span> 使用不同的layout</a></li>
+<li><a href="#不同的连接线"><span class="toc-section-number">3.4</span> 不同的连接线</a></li>
+<li><a href="#使用不同的主题"><span class="toc-section-number">3.5</span> 使用不同的主题</a></li>
 </ul></li>
 </ul>
 </div>
@@ -44,7 +46,7 @@ output:
 install.packages(&quot;tidygraph&quot;)</code></pre>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ---------------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
 ## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.0     v stringr 1.4.0
@@ -53,7 +55,7 @@ install.packages(&quot;tidygraph&quot;)</code></pre>
 <pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ---------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(tidygraph)</code></pre>
@@ -81,75 +83,14 @@ edges &lt;- data.frame(from = sample(1:15, 80, replace = TRUE),
                  edge.width = rnorm(n = nrow(edges), mean = 1, sd = 0.5), 
                  edge.colour = rnorm(n = nrow(edges), mean = 0, sd = 0.5),
                  stringsAsFactors = FALSE)
-edges</code></pre>
-<pre><code>##    from to edge.width  edge.colour
-## 1    14  6 0.23821660  0.225093551
-## 2     9  8 1.29697309 -0.009279916
-## 3     4  7 1.16647519 -0.159034187
-## 4     7 11 1.53154992 -0.464681074
-## 5     1  1 0.84790804 -0.743730155
-## 6     2  4 1.18500940 -0.537596148
-## 7    13 13 1.13354940  0.500014402
-## 8     7  8 0.72873998 -0.310633347
-## 9    11  9 1.60393390 -0.692213424
-## 10   14  9 1.58020131  0.934645311
-## 11    2  7 1.35010682  0.212550189
-## 12   11 14 1.79341673 -0.119323550
-## 13    3  4 1.27924321  0.529241524
-## 14    1  7 0.36170390  0.443211326
-## 15    5 13 0.71336729 -0.309621524
-## 16   10 12 0.38769369  1.103051232
-## 17    6  6 0.76329968 -0.127513515
-## 18   14 13 0.68981666 -0.712247325
-## 19    7 12 1.02105794 -0.072199801
-## 20    9  1 0.54453918  0.103769170
-## 21   15 13 1.07901439  1.153989200
-## 22    5  5 0.67270768  0.052901184
-## 23    5 15 1.88364363  0.228499403
-## 24    9  6 1.35835374 -0.038576468
-## 25    5  7 1.45508711 -0.167000421
-## 26    2  3 1.19209268 -0.017363014
-## 27   10  6 1.84108804  0.393819803
-## 28   14  2 0.68213177  1.037622504
-## 29    9 10 0.76917763  0.513696219
-## 30   12 11 1.71614112  0.603954199
-## 31   15 14 0.74597246 -0.615661711
-## 32    1 10 0.89630963  0.491947785
-## 33    4 15 0.80359604  0.109962402
-## 34    3  7 0.84000357 -0.733625015
-## 35    6 12 0.86044335  0.260511371
-## 36   10  3 1.24709417 -0.079377302
-## 37   10 13 0.91133476  0.732293656
-## 38    6  2 0.74702127 -0.383041000
-## 39   15 10 1.67151941 -0.215105877
-## 40    4  1 0.89271030 -0.463054749
-## 41    4 11 0.91022173 -0.088551981
-## 42   10 10 0.94990463  0.201005890
-## 43   12 15 1.35633315 -0.365874087
-## 44    7 13 0.96321780  0.415186584
-## 45    6  8 0.98118291 -0.604041393
-## 46    8  5 0.65916976 -0.523992206
-## 47   12 12 0.83786486  0.720578853
-## 48    9 15 1.03008022 -0.507923733
-## 49    7  7 0.70555276  0.205987356
-## 50    8  8 1.26574810 -0.190538026
-## 51    6  5 0.24080296  0.204700920
-## 52    7  6 1.15327893  0.844436643
-## 53    3  8 0.23177509  0.793294217
-## 54   10  1 0.84951194 -0.165453900
-## 55    6  3 0.73586005 -1.142617768
-## 56    8 10 0.67395261  1.248830795
-## 57   14  3 0.97155161  0.333533083
-## 58    2 11 0.04282029  0.270663668
-## 59   13  1 1.58829166 -0.006699762
-## 60    2 13 0.16751378  0.255054211
-## 61    6 14 0.76823480 -0.082187916
-## 62    1 12 0.44203995  0.210347322
-## 63    3  9 0.62459050 -0.200123372
-## 64    6 13 2.04358327 -0.685103939
-## 65    7 14 1.00869781  0.493919134
-## 66   15  1 0.35684973  0.759872513
-## 67   12  3 0.17969723 -0.154370285</code></pre>
+edges %&gt;% head</code></pre>
+<pre><code>##   from to edge.width  edge.colour
+## 1   14  6  0.2382166  0.225093551
+## 2    9  8  1.2969731 -0.009279916
+## 3    4  7  1.1664752 -0.159034187
+## 4    7 11  1.5315499 -0.464681074
+## 5    1  1  0.8479080 -0.743730155
+## 6    2  4  1.1850094 -0.537596148</code></pre>
 </div>
 <div id="然后构建node的数据" class="section level2">
 <h2><span class="header-section-number">2.2</span> 然后构建node的数据</h2>
@@ -159,23 +100,14 @@ node</code></pre>
 <pre class="r"><code>nodes &lt;- data.frame(node, node.size = rnorm(n = length(node), mean = 1, sd = 0.5),
                     node.colour = sample(c(&quot;Class A&quot;, &quot;Class B&quot;), length(node), replace = TRUE), 
                     stringsAsFactors = FALSE)
-nodes</code></pre>
-<pre><code>##    node  node.size node.colour
-## 1     1  0.3733551     Class A
-## 2     2  1.3211207     Class B
-## 3     3  0.9776454     Class A
-## 4     4  0.1333908     Class B
-## 5     5  1.0010659     Class B
-## 6     6  0.6848498     Class A
-## 7     7  0.8295157     Class B
-## 8     8  0.4217138     Class A
-## 9     9  1.9015710     Class B
-## 10   10  0.8344340     Class B
-## 11   11  0.1972433     Class A
-## 12   12  1.0985967     Class A
-## 13   13  1.1315878     Class A
-## 14   14  0.5070866     Class A
-## 15   15 -0.4444603     Class A</code></pre>
+nodes %&gt;% head</code></pre>
+<pre><code>##   node node.size node.colour
+## 1    1 0.3733551     Class A
+## 2    2 1.3211207     Class B
+## 3    3 0.9776454     Class A
+## 4    4 0.1333908     Class B
+## 5    5 1.0010659     Class B
+## 6    6 0.6848498     Class A</code></pre>
 </div>
 <div id="构建ggraph所需的数据" class="section level2">
 <h2><span class="header-section-number">2.3</span> 构建<code>ggraph</code>所需的数据</h2>
@@ -247,7 +179,7 @@ angle &lt;- ifelse(angle &gt; 180, 90 - angle + 180, 90 - angle)</code></pre>
 <p>然后添加node文字.</p>
 <pre class="r"><code>plot +
   geom_node_text(aes(x = x * 1.05,
-                     y = y * 1.05,
+                     y = y * 1.15,
                      label = node_name), 
                  angle = angle, 
                  hjust = hjust,
@@ -257,7 +189,7 @@ angle &lt;- ifelse(angle &gt; 180, 90 - angle + 180, 90 - angle)</code></pre>
 <p>可以看到有些文字跑到绘图区域外面了,这时候需要将坐标轴进行扩展就行了.</p>
 <pre class="r"><code>plot +
   geom_node_text(aes(x = x * 1.05,
-                     y = y * 1.05,
+                     y = y * 1.15,
                      label = node_name), 
                  angle = angle, 
                  hjust = hjust,
@@ -276,6 +208,64 @@ scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;
   theme_bw()</code></pre>
 <p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>我们将theme设置为<code>theme_bw()</code>就可以清楚的看到原来的坐标体系了.</p>
+<p>可以看到legend的顺序有点乱.可以在<code>guides()</code>函数中设置.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;linear&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+  scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  guides(colour = guide_legend(order = 1),
+         size = guide_legend(order = 2),
+         colour = guide_edge_colourbar(order = 3)) +
+  theme_void()</code></pre>
+<pre><code>## Warning: Duplicated aesthetics after name standardisation: colour</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>添加文字的时候,文字之间,以及文字node之间,会出现覆盖的问题.如下图所示:</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void() +
+      geom_node_text(aes(x = x,
+                     y = y,
+                     label = node_name,
+                     colour = node.colour), 
+                 size = 3.5) </code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>在<code>ggplot2</code>中,我们使用<code>ggrepel</code>包可以解决这个问题.在这里,我们可以设置<code>repel</code>为TRUE.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void() +
+      geom_node_text(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) </code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>当然,也可以使用<code>geom_node_label()</code>来标注.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void() +
+      geom_node_label(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) </code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 <div id="使用不同的layout" class="section level2">
 <h2><span class="header-section-number">3.3</span> 使用不同的layout</h2>
@@ -289,7 +279,7 @@ scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;
   scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
   theme_void()</code></pre>
 <pre><code>## Using `stress` as default layout</code></pre>
-<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <pre class="r"><code>ggraph(graph = graph_data, layout = &quot;linear&quot;, circular = FALSE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
@@ -305,7 +295,7 @@ scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;
                  size = 3.5) +
   expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5)) +
   theme_void()</code></pre>
-<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <pre class="r"><code>ggraph(graph = graph_data, layout = &quot;eigen&quot;, circular = FALSE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
@@ -313,7 +303,94 @@ scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;
   geom_node_point(aes(colour = node.colour, size = node.size)) +
   scale_size_continuous(range = c(5,10)) +
   scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void() +
+    geom_node_text(aes(x = x,
+                     y = y,
+                     label = node_name,
+                     colour = node.colour), 
+                 size = 3.5) </code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="不同的连接线" class="section level2">
+<h2><span class="header-section-number">3.4</span> 不同的连接线</h2>
+<p>上面的例子node之间的连接都是曲线(<code>geom_edge_arc</code>),当然我们也可以使用不同的连接方式,比如直线,这时候需要使用不同的<code>geom_edge_xxx()</code>函数.</p>
+<p>比如直线可以使用<code>geom_edge_link()</code>,有三个不同的函数,暂时没有仔细看差别,详细差别可以使用:<code>?get_edges</code>查看.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_link(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
   theme_void()</code></pre>
-<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_link2(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void()</code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_link0(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void()</code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>画有一定弯度的edge可以使用<code>geom_edge_fan()</code>函数.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_fan(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void()</code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</div>
+<div id="使用不同的主题" class="section level2">
+<h2><span class="header-section-number">3.5</span> 使用不同的主题</h2>
+<p>可以使用暗黑主题,像图片显示的更炫酷一些.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  ggdark::dark_theme_void() +
+      geom_node_text(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) </code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<pre><code>## Inverted geom defaults of fill and color/colour.
+## To change them back, use invert_geom_defaults().</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>因为leged的某些显示颜色为黑色,而主题没有将其修改过来,可以手动进行修改.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+  scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;,
+                              high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2), 
+                              guide = guide_legend(override.aes = list(colour = &quot;white&quot;, alpha =1))) +
+  guides(colour = guide_legend(override.aes = list(size = 5))) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  ggdark::dark_theme_void() +
+      geom_node_text(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) </code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 </div>
