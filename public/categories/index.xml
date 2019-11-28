@@ -7,18 +7,18 @@
     <description>Categories</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 27 Nov 2019 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>R</title>
-      <link>/categories/r/</link>
+      <title>Python</title>
+      <link>/categories/python/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/categories/r/</guid>
+      <guid>/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Python</title>
-      <link>/categories/python/</link>
-      <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/categories/python/</guid>
+      <title>R</title>
+      <link>/categories/r/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/categories/r/</guid>
       <description></description>
     </item>
     

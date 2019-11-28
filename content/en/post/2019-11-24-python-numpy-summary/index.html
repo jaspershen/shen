@@ -37,6 +37,7 @@ output:
 </ul></li>
 <li><a href="#在numpy-array上进行运算"><span class="toc-section-number">4</span> 在Numpy array上进行运算</a><ul>
 <li><a href="#universal-functionsufuncs"><span class="toc-section-number">4.1</span> Universal Functions(UFuncs)</a></li>
+<li><a href="#面向数组的编程"><span class="toc-section-number">4.2</span> 面向数组的编程</a></li>
 </ul></li>
 <li><a href="#总结"><span class="toc-section-number">5</span> 总结</a><ul>
 <li><a href="#新的函数"><span class="toc-section-number">5.1</span> 新的函数</a><ul>
@@ -266,6 +267,7 @@ x</code></pre>
 <pre class="python"><code>x2[1:3, 0].ndim</code></pre>
 <pre><code>## 1</code></pre>
 <p>可以看到,降维了.</p>
+<p><img src="array_slicing.png" /></p>
 </div>
 </div>
 <div id="重塑array的形状" class="section level2">
@@ -417,6 +419,123 @@ test</code></pre>
 <pre><code>## array([[1. , 1. , 1. ],
 ##        [4. , 2.5, 2. ],
 ##        [7. , 4. , 3. ]])</code></pre>
+<p>再来看一个例子:</p>
+<pre class="python"><code>import numpy as np
+x = np.random.randn(8)
+y = np.random.randn(8)
+x</code></pre>
+<pre><code>## array([ 1.25441407,  1.41910204, -0.74385608, -2.5174371 , -1.50709602,
+##         1.14907613, -1.19357825,  1.14104245])</code></pre>
+<pre class="python"><code>y</code></pre>
+<pre><code>## array([ 1.50944508,  1.06777513, -0.68658948,  0.01487332, -0.3756659 ,
+##        -0.03822364,  0.36797447, -0.0447237 ])</code></pre>
+<pre class="python"><code>np.maximum(x, y)</code></pre>
+<pre><code>## array([ 1.50944508,  1.41910204, -0.68658948,  0.01487332, -0.3756659 ,
+##         1.14907613,  0.36797447,  1.14104245])</code></pre>
+<p>可以看到,<code>np.maximum()</code>函数对两个array的同一位置上的数取最大值,返回与输入array长度相同的array.</p>
+<p>如果两个array长度不同,则报错.</p>
+<p>常见的接受一个array的ufuncs:</p>
+<table>
+<colgroup>
+<col width="44%" />
+<col width="55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>abs</code>,<code>fabs</code></td>
+<td>Compute the absolute value element-wise for integer, floating-point, or complex values</td>
+</tr>
+<tr class="even">
+<td><code>sqrt</code></td>
+<td>Compute the square root of each element (equivalent to arr ** 0.5)</td>
+</tr>
+<tr class="odd">
+<td><code>square</code></td>
+<td>Compute the square of each element (equivalent to arr ** 2)</td>
+</tr>
+<tr class="even">
+<td><code>exp</code></td>
+<td>Compute the exponent ex of each element</td>
+</tr>
+<tr class="odd">
+<td><code>log, log10, log2, log1p</code></td>
+<td>Natural logarithm (base e), log base 10, log base 2, and log(1 + x), respectively</td>
+</tr>
+<tr class="even">
+<td><code>sign</code></td>
+<td>Compute the sign of each element: 1 (positive), 0 (zero), or –1 (negative)</td>
+</tr>
+<tr class="odd">
+<td><code>ceil</code></td>
+<td>Compute the ceiling of each element (i.e., the smallest integer greater than or equal to that</td>
+</tr>
+</tbody>
+</table>
+<p>number)
+<code>floor</code> | Compute the floor of each element (i.e., the largest integer less than or equal to each element)
+<code>rint</code> | Round elements to the nearest integer, preserving the dtype
+<code>modf</code> | Return fractional and integral parts of array as a separate array
+<code>isnan</code> | Return boolean array indicating whether each value is NaN (Not a Number)
+<code>isfinite, isinf</code> | Return boolean array indicating whether each element is finite (non-inf, non-NaN) or infinite,
+respectively
+<code>cos</code>, <code>cosh</code>,<code>sin</code>,<code>sinh</code>,<code>tan</code>,<code>tanh</code> | Regular and hyperbolic trigonometric functions
+<code>arccos</code>, <code>arccosh</code>, <code>arcsin</code>, <code>arcsinh</code>, <code>arctan</code>, <code>arctanh</code> | Inverse trigonometric functions logical_not Compute truth value of not x element-wise (equivalent to ~arr).</p>
+<p>常见的接受两个array的ufuncs:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>add</code></td>
+<td>Add corresponding elements in arrays</td>
+</tr>
+<tr class="even">
+<td><code>subtract</code></td>
+<td>Subtract elements in second array from first array</td>
+</tr>
+<tr class="odd">
+<td><code>multiply</code></td>
+<td>Multiply array elements</td>
+</tr>
+<tr class="even">
+<td><code>divide</code>, <code>floor_divide</code></td>
+<td>Divide or floor divide (truncating the remainder)</td>
+</tr>
+<tr class="odd">
+<td><code>power</code></td>
+<td>Raise elements in first array to powers indicated in second array</td>
+</tr>
+<tr class="even">
+<td><code>maximum</code>, <code>fmax</code></td>
+<td>Element-wise maximum; fmax ignores NaN</td>
+</tr>
+<tr class="odd">
+<td><code>minimum</code>, <code>fmin</code></td>
+<td>Element-wise minimum; fmin ignores NaN</td>
+</tr>
+<tr class="even">
+<td><code>mod</code></td>
+<td>Element-wise modulus (remainder of division)</td>
+</tr>
+</tbody>
+</table>
+<p><code>copysign</code> Copy sign of values in second argument to values in first argument
+<code>greater</code>, <code>greater_equal</code>, <code>less</code>, <code>less_equal</code>, <code>equal</code>, <code>not_equal</code> | Perform element-wise comparison, yielding boolean array (equivalent to infix operators &gt;, &gt;=, &lt;, &lt;=, ==, !=)
+<code>logical_and</code>, <code>logical_or</code>, <code>logical_xor</code> | Compute element-wise truth value of logical operation (equivalent to infix operators &amp; |, ^)</p>
+</div>
+<div id="面向数组的编程" class="section level2">
+<h2><span class="header-section-number">4.2</span> 面向数组的编程</h2>
+<p>一般来说,使用向量化操作,会比loop循环至少快上一个数量级.</p>
 </div>
 </div>
 <div id="总结" class="section level1">
@@ -432,8 +551,8 @@ test</code></pre>
 test = np.empty(10)
 test</code></pre>
 <pre><code>## array([6.23042070e-307, 1.69118108e-306, 2.04722549e-306, 6.23054972e-307,
-##        1.06811422e-306, 2.22523004e-307, 6.23059725e-307, 1.11261570e-306,
-##        7.56598449e-307, 9.34595530e-307])</code></pre>
+##        1.06811422e-306, 1.24610383e-306, 1.60217812e-306, 8.45599366e-307,
+##        1.78019082e-306, 1.95820216e-306])</code></pre>
 </div>
 </div>
 <div id="numpy的ufuncs" class="section level2">

@@ -1,0 +1,72 @@
+---
+title: Python模仿ggplot2的绘图包:plotnine
+author: Xiaotao Shen
+date: 2019-11-27
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+Python中有一个模仿R `ggplot2`语法创建的绘图包,plotnine.官网在这:
+
+https://plotnine.readthedocs.io/en/stable/
+
+# 安装
+
+```
+pip install plotinie
+```
+
+# 使用 
+
+```{python}
+from plotnine import *
+from plotnine.data import mtcars
+mtcars.head()
+```
+
+需要注意的是,在python中,`+`要放在每一句的前面而不是后面.
+
+```{python}
+(ggplot(mtcars, aes('wt', 'mpg', color='factor(gear)'))
+ + geom_point()
+ + stat_smooth(method='lm')
+ + facet_wrap('~gear'))
+```
+
+可以看到跟`ggplot2`语法几乎一致,非常方便,大大减小了学习成本.
+
+当然也可以将生成的图片赋值给变量.
+
+```{python}
+plot = (ggplot(mtcars)
++ geom_point(aes(x = "wt", y = "mpg", colour = "gear"))
++ theme_bw()
+)
+plot
+```
+
+**但是需要注意**:
+
+从`ggplot`开始,到绘图代码结束,都需要放在一个小括号里面.
+
+
+语法跟ggplot2几乎是相同的,真的是非常方便了!!
+
+当然,问题也是有的,就是没有像R中一样的,`ggplot2`的扩展包了,比如`ggraph`等.
+
+
