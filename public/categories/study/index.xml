@@ -89,11 +89,20 @@
       <guid>/post/markdown-cookbook/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#markdown通用技巧&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Markdown通用技巧&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#如何在markdown中使用font&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 如何在markdown中使用font?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何在markdown中插入脚注&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 如何在markdown中插入脚注?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rmarkdown&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Rmarkdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;markdown通用技巧&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Markdown通用技巧&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Markdown通用技巧&lt;/h1&gt;
 &lt;div id=&#34;如何在markdown中使用font&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;如何在markdown中使用font?&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 如何在markdown中使用font?&lt;/h2&gt;
 &lt;p&gt;参考文档:&lt;a href=&#34;https://sspai.com/post/45217&#34; class=&#34;uri&#34;&gt;https://sspai.com/post/45217&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在markdown文档任意地方插入下面的代码:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt; 
@@ -106,7 +115,7 @@
 &lt;p&gt;显示:&lt;i class=&#34;fa fa-weixin&#34;&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何在markdown中插入脚注&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;如何在markdown中插入脚注?&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 如何在markdown中插入脚注?&lt;/h2&gt;
 &lt;p&gt;在正文中插入:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;You can create footnotes like this[^footnote].&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后在参考文献地方插入:&lt;/p&gt;
@@ -116,7 +125,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;rmarkdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Rmarkdown&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Rmarkdown&lt;/h1&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;

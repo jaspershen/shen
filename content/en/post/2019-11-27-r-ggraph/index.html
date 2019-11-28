@@ -1,0 +1,319 @@
+---
+title: ggraph画网络图
+author: Xiaotao Shen
+date: '2019-11-11'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#安装"><span class="toc-section-number">1</span> 安装</a></li>
+<li><a href="#构建所需要的数据"><span class="toc-section-number">2</span> 构建所需要的数据</a><ul>
+<li><a href="#构建edges数据"><span class="toc-section-number">2.1</span> 构建edges数据</a></li>
+<li><a href="#然后构建node的数据"><span class="toc-section-number">2.2</span> 然后构建node的数据</a></li>
+<li><a href="#构建ggraph所需的数据"><span class="toc-section-number">2.3</span> 构建<code>ggraph</code>所需的数据</a></li>
+</ul></li>
+<li><a href="#画图"><span class="toc-section-number">3</span> 画图</a><ul>
+<li><a href="#基础绘图"><span class="toc-section-number">3.1</span> 基础绘图</a></li>
+<li><a href="#添加文字"><span class="toc-section-number">3.2</span> 添加文字</a></li>
+<li><a href="#使用不同的layout"><span class="toc-section-number">3.3</span> 使用不同的layout</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p><code>ggraph</code>是Thomas Lin Pedersen开发的网络可视化的包.官方文档在这:<a href="https://ggraph.data-imaginist.com/index.html" class="uri">https://ggraph.data-imaginist.com/index.html</a>.</p>
+<p>它和<code>igraph</code>不同,igraph虽然也有网络可视化,但是更多的还是用于网络分析,可视化并不是太友好.</p>
+<p>大致记录一下如何使用它来进行网络图的构建.</p>
+<div id="安装" class="section level1">
+<h1><span class="header-section-number">1</span> 安装</h1>
+<p>需要安装两个包.</p>
+<pre><code>install.packages(&quot;ggraph&quot;)
+install.packages(&quot;tidygraph&quot;)</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(tidygraph)</code></pre>
+<pre><code>## Warning: package &#39;tidygraph&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## 
+## Attaching package: &#39;tidygraph&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<pre class="r"><code>library(ggraph)</code></pre>
+<pre><code>## Warning: package &#39;ggraph&#39; was built under R version 3.6.1</code></pre>
+</div>
+<div id="构建所需要的数据" class="section level1">
+<h1><span class="header-section-number">2</span> 构建所需要的数据</h1>
+<p>最为简单的办法是使用数据库格式的数据,而且前两行分别为<code>from</code>和<code>to</code>.我们构建一个示例数据:</p>
+<div id="构建edges数据" class="section level2">
+<h2><span class="header-section-number">2.1</span> 构建edges数据</h2>
+<pre class="r"><code>set.seed(0)
+edges &lt;- data.frame(from = sample(1:15, 80, replace = TRUE), 
+                 to = sample(1:15, 80, replace = TRUE), 
+                 stringsAsFactors = FALSE) %&gt;% 
+  distinct()</code></pre>
+<p>这是最简单的一个edge信息,每一行就是一个edge信息,当然,我们也可以给每一条边都加上属性信息.</p>
+<pre class="r"><code>edges &lt;- data.frame(edges, 
+                 edge.width = rnorm(n = nrow(edges), mean = 1, sd = 0.5), 
+                 edge.colour = rnorm(n = nrow(edges), mean = 0, sd = 0.5),
+                 stringsAsFactors = FALSE)
+edges</code></pre>
+<pre><code>##    from to edge.width  edge.colour
+## 1    14  6 0.23821660  0.225093551
+## 2     9  8 1.29697309 -0.009279916
+## 3     4  7 1.16647519 -0.159034187
+## 4     7 11 1.53154992 -0.464681074
+## 5     1  1 0.84790804 -0.743730155
+## 6     2  4 1.18500940 -0.537596148
+## 7    13 13 1.13354940  0.500014402
+## 8     7  8 0.72873998 -0.310633347
+## 9    11  9 1.60393390 -0.692213424
+## 10   14  9 1.58020131  0.934645311
+## 11    2  7 1.35010682  0.212550189
+## 12   11 14 1.79341673 -0.119323550
+## 13    3  4 1.27924321  0.529241524
+## 14    1  7 0.36170390  0.443211326
+## 15    5 13 0.71336729 -0.309621524
+## 16   10 12 0.38769369  1.103051232
+## 17    6  6 0.76329968 -0.127513515
+## 18   14 13 0.68981666 -0.712247325
+## 19    7 12 1.02105794 -0.072199801
+## 20    9  1 0.54453918  0.103769170
+## 21   15 13 1.07901439  1.153989200
+## 22    5  5 0.67270768  0.052901184
+## 23    5 15 1.88364363  0.228499403
+## 24    9  6 1.35835374 -0.038576468
+## 25    5  7 1.45508711 -0.167000421
+## 26    2  3 1.19209268 -0.017363014
+## 27   10  6 1.84108804  0.393819803
+## 28   14  2 0.68213177  1.037622504
+## 29    9 10 0.76917763  0.513696219
+## 30   12 11 1.71614112  0.603954199
+## 31   15 14 0.74597246 -0.615661711
+## 32    1 10 0.89630963  0.491947785
+## 33    4 15 0.80359604  0.109962402
+## 34    3  7 0.84000357 -0.733625015
+## 35    6 12 0.86044335  0.260511371
+## 36   10  3 1.24709417 -0.079377302
+## 37   10 13 0.91133476  0.732293656
+## 38    6  2 0.74702127 -0.383041000
+## 39   15 10 1.67151941 -0.215105877
+## 40    4  1 0.89271030 -0.463054749
+## 41    4 11 0.91022173 -0.088551981
+## 42   10 10 0.94990463  0.201005890
+## 43   12 15 1.35633315 -0.365874087
+## 44    7 13 0.96321780  0.415186584
+## 45    6  8 0.98118291 -0.604041393
+## 46    8  5 0.65916976 -0.523992206
+## 47   12 12 0.83786486  0.720578853
+## 48    9 15 1.03008022 -0.507923733
+## 49    7  7 0.70555276  0.205987356
+## 50    8  8 1.26574810 -0.190538026
+## 51    6  5 0.24080296  0.204700920
+## 52    7  6 1.15327893  0.844436643
+## 53    3  8 0.23177509  0.793294217
+## 54   10  1 0.84951194 -0.165453900
+## 55    6  3 0.73586005 -1.142617768
+## 56    8 10 0.67395261  1.248830795
+## 57   14  3 0.97155161  0.333533083
+## 58    2 11 0.04282029  0.270663668
+## 59   13  1 1.58829166 -0.006699762
+## 60    2 13 0.16751378  0.255054211
+## 61    6 14 0.76823480 -0.082187916
+## 62    1 12 0.44203995  0.210347322
+## 63    3  9 0.62459050 -0.200123372
+## 64    6 13 2.04358327 -0.685103939
+## 65    7 14 1.00869781  0.493919134
+## 66   15  1 0.35684973  0.759872513
+## 67   12  3 0.17969723 -0.154370285</code></pre>
+</div>
+<div id="然后构建node的数据" class="section level2">
+<h2><span class="header-section-number">2.2</span> 然后构建node的数据</h2>
+<pre class="r"><code>node &lt;- unique(c(edges$from, edges$to)) %&gt;% sort()
+node</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
+<pre class="r"><code>nodes &lt;- data.frame(node, node.size = rnorm(n = length(node), mean = 1, sd = 0.5),
+                    node.colour = sample(c(&quot;Class A&quot;, &quot;Class B&quot;), length(node), replace = TRUE), 
+                    stringsAsFactors = FALSE)
+nodes</code></pre>
+<pre><code>##    node  node.size node.colour
+## 1     1  0.3733551     Class A
+## 2     2  1.3211207     Class B
+## 3     3  0.9776454     Class A
+## 4     4  0.1333908     Class B
+## 5     5  1.0010659     Class B
+## 6     6  0.6848498     Class A
+## 7     7  0.8295157     Class B
+## 8     8  0.4217138     Class A
+## 9     9  1.9015710     Class B
+## 10   10  0.8344340     Class B
+## 11   11  0.1972433     Class A
+## 12   12  1.0985967     Class A
+## 13   13  1.1315878     Class A
+## 14   14  0.5070866     Class A
+## 15   15 -0.4444603     Class A</code></pre>
+</div>
+<div id="构建ggraph所需的数据" class="section level2">
+<h2><span class="header-section-number">2.3</span> 构建<code>ggraph</code>所需的数据</h2>
+<p>得到edges和nodes之后,需要将其转为<code>ggraph</code>所需要的格式.</p>
+<pre class="r"><code>graph_data &lt;- tidygraph::tbl_graph(nodes = nodes, edges = edges, 
+                                   directed = FALSE)
+graph_data</code></pre>
+<pre><code>## # A tbl_graph: 15 nodes and 67 edges
+## #
+## # An undirected multigraph with 1 component
+## #
+## # Node Data: 15 x 3 (active)
+##    node node.size node.colour
+##   &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;      
+## 1     1     0.373 Class A    
+## 2     2     1.32  Class B    
+## 3     3     0.978 Class A    
+## 4     4     0.133 Class B    
+## 5     5     1.00  Class B    
+## 6     6     0.685 Class A    
+## # ... with 9 more rows
+## #
+## # Edge Data: 67 x 4
+##    from    to edge.width edge.colour
+##   &lt;int&gt; &lt;int&gt;      &lt;dbl&gt;       &lt;dbl&gt;
+## 1     6    14      0.238     0.225  
+## 2     8     9      1.30     -0.00928
+## 3     4     7      1.17     -0.159  
+## # ... with 64 more rows</code></pre>
+</div>
+</div>
+<div id="画图" class="section level1">
+<h1><span class="header-section-number">3</span> 画图</h1>
+<div id="基础绘图" class="section level2">
+<h2><span class="header-section-number">3.1</span> 基础绘图</h2>
+<p>拿到所需数据之后,可以开始画图了,跟<code>ggplot2</code>一样,也是图层的画法,一层层进行叠加.我们先看一个简单的例子.</p>
+<pre class="r"><code>ggraph(graph = graph_data) +
+  geom_edge_fan() +
+  geom_node_point()</code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>首先可以看到,需要使用<code>ggraph</code>启动一个图像,然后必须的两个geom分别是<code>geom_edge_xx</code>和<code>geom_node_xxx</code>分别用来定义边和node.他们的使用办法跟<code>ggplot2</code>非常类似,参数也都很类似,只是加上了<code>edge</code>和<code>node</code>标签.</p>
+<p>我们下面接着对图片进行美化.</p>
+<pre class="r"><code>plot &lt;- 
+ggraph(graph = graph_data, layout = &quot;linear&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void()
+plot</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>从上面例子可以看到,对于edge的属性的设置,需要使用<code>scale_edge_xxx</code>系列函数,而对于node,则直接使用原来的<code>ggplot2</code>的<code>scale_xxx</code>系列函数就可以了.</p>
+</div>
+<div id="添加文字" class="section level2">
+<h2><span class="header-section-number">3.2</span> 添加文字</h2>
+<p>添加文字可以使用<code>geom_node_text()</code>和<code>geom_node_label()</code>函数.</p>
+<p>对于layout为圆形网状来说,我们需要将node的角度进行一定程度的调整.</p>
+<pre class="r"><code>node_name = paste(&quot;Node&quot;, node, sep = &quot;_&quot;)
+node_name</code></pre>
+<pre><code>##  [1] &quot;Node_1&quot;  &quot;Node_2&quot;  &quot;Node_3&quot;  &quot;Node_4&quot;  &quot;Node_5&quot;  &quot;Node_6&quot;  &quot;Node_7&quot; 
+##  [8] &quot;Node_8&quot;  &quot;Node_9&quot;  &quot;Node_10&quot; &quot;Node_11&quot; &quot;Node_12&quot; &quot;Node_13&quot; &quot;Node_14&quot;
+## [15] &quot;Node_15&quot;</code></pre>
+<pre class="r"><code>angle &lt;- 360 * (c(1:length(node_name)) - 0.5)/length(node_name)
+hjust &lt;- ifelse(angle &gt; 180, 1, 0)
+angle &lt;- ifelse(angle &gt; 180, 90 - angle + 180, 90 - angle)</code></pre>
+<p>然后添加node文字.</p>
+<pre class="r"><code>plot +
+  geom_node_text(aes(x = x * 1.05,
+                     y = y * 1.05,
+                     label = node_name), 
+                 angle = angle, 
+                 hjust = hjust,
+                 colour = &quot;black&quot;,
+                 size = 3.5)</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>可以看到有些文字跑到绘图区域外面了,这时候需要将坐标轴进行扩展就行了.</p>
+<pre class="r"><code>plot +
+  geom_node_text(aes(x = x * 1.05,
+                     y = y * 1.05,
+                     label = node_name), 
+                 angle = angle, 
+                 hjust = hjust,
+                 colour = &quot;black&quot;,
+                 size = 3.5) +
+  expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5))</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>我们可以看看原来的坐标轴是什么样子的.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;linear&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_bw()</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>我们将theme设置为<code>theme_bw()</code>就可以清楚的看到原来的坐标体系了.</p>
+</div>
+<div id="使用不同的layout" class="section level2">
+<h2><span class="header-section-number">3.3</span> 使用不同的layout</h2>
+<p>对网络来说,可以使用不同的layout,layout既可以通过再<code>ggraph</code>中通过设置<code>layout</code>参数实现,也可以通过将<code>graph</code>直接赋予layout属性实现.</p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;auto&quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void()</code></pre>
+<pre><code>## Using `stress` as default layout</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;linear&quot;, circular = FALSE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+      geom_node_text(aes(colour = node.colour),
+                     hjust = 1,
+                     angle = 65,
+                     nudge_y = -0.3,
+                     label = node_name, 
+                 size = 3.5) +
+  expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5)) +
+  theme_void()</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>ggraph(graph = graph_data, layout = &quot;eigen&quot;, circular = FALSE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &quot;#155F83FF&quot;, mid = &quot;white&quot;, high = &quot;#800000FF&quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&quot;Class A&quot; = &quot;#8A9045FF&quot;, &quot;Class B&quot; = &quot;#155F83FF&quot;)) +
+  theme_void()</code></pre>
+<p><img src="/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>

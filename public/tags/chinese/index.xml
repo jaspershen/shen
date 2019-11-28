@@ -656,9 +656,9 @@ test&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import numpy as np
 test = np.empty(10)
 test&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## array([6.69405820e-315, 6.80663782e-315, 6.36138870e-315, 2.64149399e-315,
-##        2.64357112e-315, 6.31959660e-315, 6.80663814e-315, 2.66519744e-315,
-##        6.80663940e-315, 6.80662454e-315])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## array([6.23042070e-307, 1.69118108e-306, 2.04722549e-306, 6.23054972e-307,
+##        1.06811422e-306, 2.22523004e-307, 6.23059725e-307, 1.11261570e-306,
+##        7.56598449e-307, 9.34595530e-307])&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;numpy的ufuncs&#34; class=&#34;section level2&#34;&gt;
@@ -4810,6 +4810,315 @@ the type of this relation
     </item>
     
     <item>
+      <title>ggraph画网络图</title>
+      <link>/post/2019-11-27-r-ggraph/</link>
+      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-27-r-ggraph/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#构建所需要的数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 构建所需要的数据&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#构建edges数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 构建edges数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#然后构建node的数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 然后构建node的数据&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#构建ggraph所需的数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 构建&lt;code&gt;ggraph&lt;/code&gt;所需的数据&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#画图&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 画图&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#基础绘图&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 基础绘图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#添加文字&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 添加文字&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用不同的layout&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; 使用不同的layout&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;ggraph&lt;/code&gt;是Thomas Lin Pedersen开发的网络可视化的包.官方文档在这:&lt;a href=&#34;https://ggraph.data-imaginist.com/index.html&#34; class=&#34;uri&#34;&gt;https://ggraph.data-imaginist.com/index.html&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;它和&lt;code&gt;igraph&lt;/code&gt;不同,igraph虽然也有网络可视化,但是更多的还是用于网络分析,可视化并不是太友好.&lt;/p&gt;
+&lt;p&gt;大致记录一下如何使用它来进行网络图的构建.&lt;/p&gt;
+&lt;div id=&#34;安装&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/h1&gt;
+&lt;p&gt;需要安装两个包.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;ggraph&amp;quot;)
+install.packages(&amp;quot;tidygraph&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyverse&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages ---------------------------------------------------------------------------------------- tidyverse 1.2.1 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tibble&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;dplyr&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Conflicts ------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidygraph)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;tidygraph&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;tidygraph&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:stats&amp;#39;:
+## 
+##     filter&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggraph)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggraph&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;构建所需要的数据&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 构建所需要的数据&lt;/h1&gt;
+&lt;p&gt;最为简单的办法是使用数据库格式的数据,而且前两行分别为&lt;code&gt;from&lt;/code&gt;和&lt;code&gt;to&lt;/code&gt;.我们构建一个示例数据:&lt;/p&gt;
+&lt;div id=&#34;构建edges数据&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 构建edges数据&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(0)
+edges &amp;lt;- data.frame(from = sample(1:15, 80, replace = TRUE), 
+                 to = sample(1:15, 80, replace = TRUE), 
+                 stringsAsFactors = FALSE) %&amp;gt;% 
+  distinct()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这是最简单的一个edge信息,每一行就是一个edge信息,当然,我们也可以给每一条边都加上属性信息.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;edges &amp;lt;- data.frame(edges, 
+                 edge.width = rnorm(n = nrow(edges), mean = 1, sd = 0.5), 
+                 edge.colour = rnorm(n = nrow(edges), mean = 0, sd = 0.5),
+                 stringsAsFactors = FALSE)
+edges&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    from to edge.width  edge.colour
+## 1    14  6 0.23821660  0.225093551
+## 2     9  8 1.29697309 -0.009279916
+## 3     4  7 1.16647519 -0.159034187
+## 4     7 11 1.53154992 -0.464681074
+## 5     1  1 0.84790804 -0.743730155
+## 6     2  4 1.18500940 -0.537596148
+## 7    13 13 1.13354940  0.500014402
+## 8     7  8 0.72873998 -0.310633347
+## 9    11  9 1.60393390 -0.692213424
+## 10   14  9 1.58020131  0.934645311
+## 11    2  7 1.35010682  0.212550189
+## 12   11 14 1.79341673 -0.119323550
+## 13    3  4 1.27924321  0.529241524
+## 14    1  7 0.36170390  0.443211326
+## 15    5 13 0.71336729 -0.309621524
+## 16   10 12 0.38769369  1.103051232
+## 17    6  6 0.76329968 -0.127513515
+## 18   14 13 0.68981666 -0.712247325
+## 19    7 12 1.02105794 -0.072199801
+## 20    9  1 0.54453918  0.103769170
+## 21   15 13 1.07901439  1.153989200
+## 22    5  5 0.67270768  0.052901184
+## 23    5 15 1.88364363  0.228499403
+## 24    9  6 1.35835374 -0.038576468
+## 25    5  7 1.45508711 -0.167000421
+## 26    2  3 1.19209268 -0.017363014
+## 27   10  6 1.84108804  0.393819803
+## 28   14  2 0.68213177  1.037622504
+## 29    9 10 0.76917763  0.513696219
+## 30   12 11 1.71614112  0.603954199
+## 31   15 14 0.74597246 -0.615661711
+## 32    1 10 0.89630963  0.491947785
+## 33    4 15 0.80359604  0.109962402
+## 34    3  7 0.84000357 -0.733625015
+## 35    6 12 0.86044335  0.260511371
+## 36   10  3 1.24709417 -0.079377302
+## 37   10 13 0.91133476  0.732293656
+## 38    6  2 0.74702127 -0.383041000
+## 39   15 10 1.67151941 -0.215105877
+## 40    4  1 0.89271030 -0.463054749
+## 41    4 11 0.91022173 -0.088551981
+## 42   10 10 0.94990463  0.201005890
+## 43   12 15 1.35633315 -0.365874087
+## 44    7 13 0.96321780  0.415186584
+## 45    6  8 0.98118291 -0.604041393
+## 46    8  5 0.65916976 -0.523992206
+## 47   12 12 0.83786486  0.720578853
+## 48    9 15 1.03008022 -0.507923733
+## 49    7  7 0.70555276  0.205987356
+## 50    8  8 1.26574810 -0.190538026
+## 51    6  5 0.24080296  0.204700920
+## 52    7  6 1.15327893  0.844436643
+## 53    3  8 0.23177509  0.793294217
+## 54   10  1 0.84951194 -0.165453900
+## 55    6  3 0.73586005 -1.142617768
+## 56    8 10 0.67395261  1.248830795
+## 57   14  3 0.97155161  0.333533083
+## 58    2 11 0.04282029  0.270663668
+## 59   13  1 1.58829166 -0.006699762
+## 60    2 13 0.16751378  0.255054211
+## 61    6 14 0.76823480 -0.082187916
+## 62    1 12 0.44203995  0.210347322
+## 63    3  9 0.62459050 -0.200123372
+## 64    6 13 2.04358327 -0.685103939
+## 65    7 14 1.00869781  0.493919134
+## 66   15  1 0.35684973  0.759872513
+## 67   12  3 0.17969723 -0.154370285&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;然后构建node的数据&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 然后构建node的数据&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;node &amp;lt;- unique(c(edges$from, edges$to)) %&amp;gt;% sort()
+node&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nodes &amp;lt;- data.frame(node, node.size = rnorm(n = length(node), mean = 1, sd = 0.5),
+                    node.colour = sample(c(&amp;quot;Class A&amp;quot;, &amp;quot;Class B&amp;quot;), length(node), replace = TRUE), 
+                    stringsAsFactors = FALSE)
+nodes&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    node  node.size node.colour
+## 1     1  0.3733551     Class A
+## 2     2  1.3211207     Class B
+## 3     3  0.9776454     Class A
+## 4     4  0.1333908     Class B
+## 5     5  1.0010659     Class B
+## 6     6  0.6848498     Class A
+## 7     7  0.8295157     Class B
+## 8     8  0.4217138     Class A
+## 9     9  1.9015710     Class B
+## 10   10  0.8344340     Class B
+## 11   11  0.1972433     Class A
+## 12   12  1.0985967     Class A
+## 13   13  1.1315878     Class A
+## 14   14  0.5070866     Class A
+## 15   15 -0.4444603     Class A&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;构建ggraph所需的数据&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 构建&lt;code&gt;ggraph&lt;/code&gt;所需的数据&lt;/h2&gt;
+&lt;p&gt;得到edges和nodes之后,需要将其转为&lt;code&gt;ggraph&lt;/code&gt;所需要的格式.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;graph_data &amp;lt;- tidygraph::tbl_graph(nodes = nodes, edges = edges, 
+                                   directed = FALSE)
+graph_data&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tbl_graph: 15 nodes and 67 edges
+## #
+## # An undirected multigraph with 1 component
+## #
+## # Node Data: 15 x 3 (active)
+##    node node.size node.colour
+##   &amp;lt;int&amp;gt;     &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;      
+## 1     1     0.373 Class A    
+## 2     2     1.32  Class B    
+## 3     3     0.978 Class A    
+## 4     4     0.133 Class B    
+## 5     5     1.00  Class B    
+## 6     6     0.685 Class A    
+## # ... with 9 more rows
+## #
+## # Edge Data: 67 x 4
+##    from    to edge.width edge.colour
+##   &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;      &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+## 1     6    14      0.238     0.225  
+## 2     8     9      1.30     -0.00928
+## 3     4     7      1.17     -0.159  
+## # ... with 64 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;画图&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 画图&lt;/h1&gt;
+&lt;div id=&#34;基础绘图&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; 基础绘图&lt;/h2&gt;
+&lt;p&gt;拿到所需数据之后,可以开始画图了,跟&lt;code&gt;ggplot2&lt;/code&gt;一样,也是图层的画法,一层层进行叠加.我们先看一个简单的例子.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data) +
+  geom_edge_fan() +
+  geom_node_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;首先可以看到,需要使用&lt;code&gt;ggraph&lt;/code&gt;启动一个图像,然后必须的两个geom分别是&lt;code&gt;geom_edge_xx&lt;/code&gt;和&lt;code&gt;geom_node_xxx&lt;/code&gt;分别用来定义边和node.他们的使用办法跟&lt;code&gt;ggplot2&lt;/code&gt;非常类似,参数也都很类似,只是加上了&lt;code&gt;edge&lt;/code&gt;和&lt;code&gt;node&lt;/code&gt;标签.&lt;/p&gt;
+&lt;p&gt;我们下面接着对图片进行美化.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot &amp;lt;- 
+ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
+  theme_void()
+plot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;从上面例子可以看到,对于edge的属性的设置,需要使用&lt;code&gt;scale_edge_xxx&lt;/code&gt;系列函数,而对于node,则直接使用原来的&lt;code&gt;ggplot2&lt;/code&gt;的&lt;code&gt;scale_xxx&lt;/code&gt;系列函数就可以了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;添加文字&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; 添加文字&lt;/h2&gt;
+&lt;p&gt;添加文字可以使用&lt;code&gt;geom_node_text()&lt;/code&gt;和&lt;code&gt;geom_node_label()&lt;/code&gt;函数.&lt;/p&gt;
+&lt;p&gt;对于layout为圆形网状来说,我们需要将node的角度进行一定程度的调整.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;node_name = paste(&amp;quot;Node&amp;quot;, node, sep = &amp;quot;_&amp;quot;)
+node_name&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;Node_1&amp;quot;  &amp;quot;Node_2&amp;quot;  &amp;quot;Node_3&amp;quot;  &amp;quot;Node_4&amp;quot;  &amp;quot;Node_5&amp;quot;  &amp;quot;Node_6&amp;quot;  &amp;quot;Node_7&amp;quot; 
+##  [8] &amp;quot;Node_8&amp;quot;  &amp;quot;Node_9&amp;quot;  &amp;quot;Node_10&amp;quot; &amp;quot;Node_11&amp;quot; &amp;quot;Node_12&amp;quot; &amp;quot;Node_13&amp;quot; &amp;quot;Node_14&amp;quot;
+## [15] &amp;quot;Node_15&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;angle &amp;lt;- 360 * (c(1:length(node_name)) - 0.5)/length(node_name)
+hjust &amp;lt;- ifelse(angle &amp;gt; 180, 1, 0)
+angle &amp;lt;- ifelse(angle &amp;gt; 180, 90 - angle + 180, 90 - angle)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后添加node文字.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
+  geom_node_text(aes(x = x * 1.05,
+                     y = y * 1.05,
+                     label = node_name), 
+                 angle = angle, 
+                 hjust = hjust,
+                 colour = &amp;quot;black&amp;quot;,
+                 size = 3.5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;可以看到有些文字跑到绘图区域外面了,这时候需要将坐标轴进行扩展就行了.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
+  geom_node_text(aes(x = x * 1.05,
+                     y = y * 1.05,
+                     label = node_name), 
+                 angle = angle, 
+                 hjust = hjust,
+                 colour = &amp;quot;black&amp;quot;,
+                 size = 3.5) +
+  expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们可以看看原来的坐标轴是什么样子的.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
+  theme_bw()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们将theme设置为&lt;code&gt;theme_bw()&lt;/code&gt;就可以清楚的看到原来的坐标体系了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用不同的layout&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; 使用不同的layout&lt;/h2&gt;
+&lt;p&gt;对网络来说,可以使用不同的layout,layout既可以通过再&lt;code&gt;ggraph&lt;/code&gt;中通过设置&lt;code&gt;layout&lt;/code&gt;参数实现,也可以通过将&lt;code&gt;graph&lt;/code&gt;直接赋予layout属性实现.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
+  theme_void()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = FALSE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
+      geom_node_text(aes(colour = node.colour),
+                     hjust = 1,
+                     angle = 65,
+                     nudge_y = -0.3,
+                     label = node_name, 
+                 size = 3.5) +
+  expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5)) +
+  theme_void()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;eigen&amp;quot;, circular = FALSE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
+  theme_void()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Learning representations of microbe–metabolite interactions文献总结</title>
       <link>/post/2019-11-11-nm-mmvec/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
@@ -5698,11 +6007,20 @@ mtcars2 %&amp;gt;%
       <guid>/post/markdown-cookbook/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#markdown通用技巧&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Markdown通用技巧&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#如何在markdown中使用font&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 如何在markdown中使用font?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何在markdown中插入脚注&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 如何在markdown中插入脚注?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rmarkdown&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Rmarkdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;div id=&#34;markdown通用技巧&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Markdown通用技巧&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Markdown通用技巧&lt;/h1&gt;
 &lt;div id=&#34;如何在markdown中使用font&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;如何在markdown中使用font?&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 如何在markdown中使用font?&lt;/h2&gt;
 &lt;p&gt;参考文档:&lt;a href=&#34;https://sspai.com/post/45217&#34; class=&#34;uri&#34;&gt;https://sspai.com/post/45217&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在markdown文档任意地方插入下面的代码:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt; 
@@ -5715,7 +6033,7 @@ mtcars2 %&amp;gt;%
 &lt;p&gt;显示:&lt;i class=&#34;fa fa-weixin&#34;&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何在markdown中插入脚注&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;如何在markdown中插入脚注?&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 如何在markdown中插入脚注?&lt;/h2&gt;
 &lt;p&gt;在正文中插入:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;You can create footnotes like this[^footnote].&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后在参考文献地方插入:&lt;/p&gt;
@@ -5725,7 +6043,7 @@ mtcars2 %&amp;gt;%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;rmarkdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Rmarkdown&lt;/h1&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Rmarkdown&lt;/h1&gt;
 &lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
