@@ -37,13 +37,13 @@ output:
 </ul></li>
 <li><a href="#在numpy-array上进行运算"><span class="toc-section-number">4</span> 在Numpy array上进行运算</a><ul>
 <li><a href="#universal-functionsufuncs"><span class="toc-section-number">4.1</span> Universal Functions(UFuncs)</a></li>
-<li><a href="#面向数组的编程"><span class="toc-section-number">4.2</span> 面向数组的编程</a></li>
+<li><a href="#面向数组的编程"><span class="toc-section-number">4.2</span> 面向数组的编程</a><ul>
+<li><a href="#expressing-conditional-logic-as-array-operations"><span class="toc-section-number">4.2.1</span> Expressing Conditional Logic as Array Operations</a></li>
+<li><a href="#numpy中的数学和统计方法"><span class="toc-section-number">4.2.2</span> Numpy中的数学和统计方法</a></li>
+<li><a href="#排序sorting"><span class="toc-section-number">4.2.3</span> 排序(sorting)</a></li>
+<li><a href="#unique-and-other-set-logic"><span class="toc-section-number">4.2.4</span> Unique and Other Set Logic</a></li>
+<li><a href="#array数据的输入和的输出"><span class="toc-section-number">4.2.5</span> array数据的输入和的输出</a></li>
 </ul></li>
-<li><a href="#总结"><span class="toc-section-number">5</span> 总结</a><ul>
-<li><a href="#新的函数"><span class="toc-section-number">5.1</span> 新的函数</a><ul>
-<li><a href="#np.empty创建一个任意值的array"><span class="toc-section-number">5.1.1</span> <code>np.empty()</code>:创建一个任意值的array</a></li>
-</ul></li>
-<li><a href="#numpy的ufuncs"><span class="toc-section-number">5.2</span> Numpy的<code>UFuncs</code></a></li>
 </ul></li>
 </ul>
 </div>
@@ -536,26 +536,206 @@ respectively
 <div id="面向数组的编程" class="section level2">
 <h2><span class="header-section-number">4.2</span> 面向数组的编程</h2>
 <p>一般来说,使用向量化操作,会比loop循环至少快上一个数量级.</p>
-</div>
-</div>
-<div id="总结" class="section level1">
-<h1><span class="header-section-number">5</span> 总结</h1>
-<div id="新的函数" class="section level2">
-<h2><span class="header-section-number">5.1</span> 新的函数</h2>
-<div id="np.empty创建一个任意值的array" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> <code>np.empty()</code>:创建一个任意值的array</h3>
-<p>这个函数可以用来生成一个随机值的设定长度和形状的array,主要是用来事先生成一个占位符的array,然后在循环或者其他向量化操作中填充值.</p>
-<p>三个参数,具体信息可以参考帮助文档.</p>
-<pre><code>np.empty(shape, dtype, order)</code></pre>
+<div id="expressing-conditional-logic-as-array-operations" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Expressing Conditional Logic as Array Operations</h3>
 <pre class="python"><code>import numpy as np
-test = np.empty(10)
-test</code></pre>
-<pre><code>## array([6.23042070e-307, 1.69118108e-306, 2.04722549e-306, 6.23054972e-307,
-##        1.06811422e-306, 1.24610383e-306, 1.60217812e-306, 8.45599366e-307,
-##        1.78019082e-306, 1.95820216e-306])</code></pre>
+xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
+yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
+cond = np.array([True, False, True, True, False])
+result = [(x if c else y) for x, y, c in zip(xarr, yarr, cond)]
+result</code></pre>
+<pre><code>## [1.1, 2.2, 1.3, 1.4, 2.5]</code></pre>
+<p>这种办法问题很多.我们可以使用<code>np.where()</code>函数来做.</p>
+<pre class="python"><code>result = np.where(cond, xarr, yarr)
+result</code></pre>
+<pre><code>## array([1.1, 2.2, 1.3, 1.4, 2.5])</code></pre>
+<pre class="python"><code>arr = np.random.randn(4, 4)
+arr</code></pre>
+<pre><code>## array([[-0.30237513, -2.2244036 ,  0.72400636,  0.35900276],
+##        [ 1.07612104,  0.19214083,  0.85292596,  0.01835718],
+##        [ 0.42830357,  0.99627783, -0.49114966,  0.71267817],
+##        [ 1.11334035, -2.15367459, -0.41611148, -1.07089699]])</code></pre>
+<pre class="python"><code>arr &gt; 0</code></pre>
+<pre><code>## array([[False, False,  True,  True],
+##        [ True,  True,  True,  True],
+##        [ True,  True, False,  True],
+##        [ True, False, False, False]])</code></pre>
+<pre class="python"><code>np.where(arr &gt; 2, 2, -2)</code></pre>
+<pre><code>## array([[-2, -2, -2, -2],
+##        [-2, -2, -2, -2],
+##        [-2, -2, -2, -2],
+##        [-2, -2, -2, -2]])</code></pre>
+<pre class="python"><code>np.where(arr &gt; 0, 2, arr)</code></pre>
+<pre><code>## array([[-0.30237513, -2.2244036 ,  2.        ,  2.        ],
+##        [ 2.        ,  2.        ,  2.        ,  2.        ],
+##        [ 2.        ,  2.        , -0.49114966,  2.        ],
+##        [ 2.        , -2.15367459, -0.41611148, -1.07089699]])</code></pre>
+<p><code>np.random.randn()</code>函数用来随机产生二维的array.</p>
 </div>
+<div id="numpy中的数学和统计方法" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Numpy中的数学和统计方法</h3>
+<p>随机产生正态分布数据.</p>
+<pre class="python"><code>arr = np.random.randn(5, 4)
+arr</code></pre>
+<pre><code>## array([[ 0.22113881, -1.12305712, -1.05075796,  1.01207905],
+##        [ 1.54371643, -0.40211489,  0.8647491 , -0.22686923],
+##        [ 0.81116027,  0.28779461, -0.53846816,  1.9084621 ],
+##        [-0.475776  ,  1.44073112, -1.14907568,  0.80571455],
+##        [ 1.75610703,  0.97297991, -1.55111911,  0.19114348]])</code></pre>
+<pre class="python"><code>arr.mean()</code></pre>
+<pre><code>## 0.2649269161929305</code></pre>
+<pre class="python"><code>np.mean(arr)</code></pre>
+<pre><code>## 0.2649269161929305</code></pre>
+<pre class="python"><code>arr.max()</code></pre>
+<pre><code>## 1.9084621003056945</code></pre>
+<pre class="python"><code>np.max(arr)</code></pre>
+<pre><code>## 1.9084621003056945</code></pre>
+<pre class="python"><code>arr.min()</code></pre>
+<pre><code>## -1.5511191116398637</code></pre>
+<pre class="python"><code>np.min(arr)</code></pre>
+<pre><code>## -1.5511191116398637</code></pre>
+<pre class="python"><code>arr.sum()</code></pre>
+<pre><code>## 5.298538323858611</code></pre>
+<pre class="python"><code>np.sum(arr)</code></pre>
+<pre><code>## 5.298538323858611</code></pre>
+<p>对于这些方法,都有一个参数,<code>axis</code>,用来指示是否按行或者按列进行计算.0代表按行,1代表按列.</p>
+<pre class="python"><code>arr.mean(axis=0)</code></pre>
+<pre><code>## array([ 0.77126931,  0.23526673, -0.68493436,  0.73810599])</code></pre>
+<pre class="python"><code>arr.mean(axis=1)</code></pre>
+<pre><code>## array([-0.2351493 ,  0.44487035,  0.61723721,  0.1553985 ,  0.34227783])</code></pre>
+<pre class="python"><code>arr = np.array([0, 1, 2, 3, 4, 5, 6, 7])
+arr</code></pre>
+<pre><code>## array([0, 1, 2, 3, 4, 5, 6, 7])</code></pre>
+<pre class="python"><code>arr.cumsum()#累乘</code></pre>
+<pre><code>## array([ 0,  1,  3,  6, 10, 15, 21, 28], dtype=int32)</code></pre>
+<pre class="python"><code>arr = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+arr</code></pre>
+<pre><code>## array([[0, 1, 2],
+##        [3, 4, 5],
+##        [6, 7, 8]])</code></pre>
+<pre class="python"><code>arr.cumsum(axis=0)</code></pre>
+<pre><code>## array([[ 0,  1,  2],
+##        [ 3,  5,  7],
+##        [ 9, 12, 15]], dtype=int32)</code></pre>
+<pre class="python"><code>arr.cumsum(axis=1)</code></pre>
+<pre><code>## array([[ 0,  1,  3],
+##        [ 3,  7, 12],
+##        [ 6, 13, 21]], dtype=int32)</code></pre>
+<p>array常用统计方法总结</p>
+<table>
+<colgroup>
+<col width="46%" />
+<col width="53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sum</code></td>
+<td>Sum of all the elements in the array or along an axis; zero-length arrays have sum 0</td>
+</tr>
+<tr class="even">
+<td><code>mean</code></td>
+<td>Arithmetic mean; zero-length arrays have NaN mean</td>
+</tr>
+<tr class="odd">
+<td><code>std</code>, <code>var</code></td>
+<td>Standard deviation and variance, respectively, with optional degrees of freedom adjustment (default</td>
+</tr>
+</tbody>
+</table>
+<p>denominator n)
+<code>min</code>, <code>max</code> | Minimum and maximum
+<code>argmin</code>, <code>argmax</code> | Indices of minimum and maximum elements, respectively
+<code>cumsum</code> | Cumulative sum of elements starting from 0
+<code>cumprod</code> | Cumulative product of elements starting from 1</p>
 </div>
-<div id="numpy的ufuncs" class="section level2">
-<h2><span class="header-section-number">5.2</span> Numpy的<code>UFuncs</code></h2>
+<div id="排序sorting" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> 排序(sorting)</h3>
+<p>使用<code>sort</code>方法来对array进行排序.</p>
+<pre class="python"><code>arr = np.random.randn(6)
+arr</code></pre>
+<pre><code>## array([ 1.60477607, -1.42002593, -2.44378268, -2.05633855, -0.99225755,
+##         1.01128532])</code></pre>
+<pre class="python"><code>arr.sort()
+arr</code></pre>
+<pre><code>## array([-2.44378268, -2.05633855, -1.42002593, -0.99225755,  1.01128532,
+##         1.60477607])</code></pre>
+<pre class="python"><code>arr = np.random.randn(5, 3)
+arr</code></pre>
+<pre><code>## array([[ 1.40044008, -0.65499168, -0.25579069],
+##        [-0.71438561, -0.50083877,  0.05564534],
+##        [-0.48896178, -0.37992245,  0.25973465],
+##        [-1.68134864, -0.91679481, -0.1192241 ],
+##        [-0.44627728, -2.14335544,  0.01003777]])</code></pre>
+<pre class="python"><code>arr.sort(axis=0)
+arr.sort(axis=1)</code></pre>
+</div>
+<div id="unique-and-other-set-logic" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> Unique and Other Set Logic</h3>
+<pre class="python"><code>names = np.array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;Joe&#39;, &#39;Joe&#39;])
+names</code></pre>
+<pre><code>## array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;, &#39;Bob&#39;, &#39;Will&#39;, &#39;Joe&#39;, &#39;Joe&#39;], dtype=&#39;&lt;U4&#39;)</code></pre>
+<pre class="python"><code>np.unique(names)</code></pre>
+<pre><code>## array([&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;], dtype=&#39;&lt;U4&#39;)</code></pre>
+<pre class="python"><code>sorted(names)</code></pre>
+<pre><code>## [&#39;Bob&#39;, &#39;Bob&#39;, &#39;Joe&#39;, &#39;Joe&#39;, &#39;Joe&#39;, &#39;Will&#39;, &#39;Will&#39;]</code></pre>
+<pre class="python"><code>sorted(set(names))</code></pre>
+<pre><code>## [&#39;Bob&#39;, &#39;Joe&#39;, &#39;Will&#39;]</code></pre>
+<p>总结</p>
+<table>
+<colgroup>
+<col width="55%" />
+<col width="44%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Functions</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>unique(x)</code></td>
+<td>Compute the sorted, unique elements in x</td>
+</tr>
+<tr class="even">
+<td><code>intersect1d(x, y)</code></td>
+<td>Compute the sorted, common elements in x and y</td>
+</tr>
+<tr class="odd">
+<td><code>union1d(x, y)</code></td>
+<td>Compute the sorted union of elements</td>
+</tr>
+<tr class="even">
+<td><code>in1d(x, y)</code></td>
+<td>Compute a boolean array indicating whether each element of x is contained in y</td>
+</tr>
+<tr class="odd">
+<td><code>setdiff1d(x, y)</code></td>
+<td>Set difference, elements in x that are not in y</td>
+</tr>
+<tr class="even">
+<td><code>setxor1d(x, y)</code></td>
+<td>Set symmetric differences; elements that are in either of the arrays, but not both</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="array数据的输入和的输出" class="section level3">
+<h3><span class="header-section-number">4.2.5</span> array数据的输入和的输出</h3>
+<p>跟R的<code>save</code>和<code>load</code>比较像.</p>
+<pre class="python"><code>arr = np.arange(10)
+arr</code></pre>
+<pre><code>## array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
+<pre class="python"><code>np.save(file=&#39;some_array&#39;, arr=arr)</code></pre>
+<p>默认的后缀民为<code>.npy</code>.然后可以使用<code>np.load()</code>函数load.</p>
+<pre class="python"><code>np.load(&#39;some_array.npy&#39;)</code></pre>
+<pre><code>## array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
+</div>
 </div>
 </div>

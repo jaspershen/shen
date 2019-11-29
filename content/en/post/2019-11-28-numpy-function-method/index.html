@@ -1,0 +1,198 @@
+---
+title: Python Numpy函数和方法完全总结
+author: Xiaotao Shen
+date: 2019-11-28
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#基础"><span class="toc-section-number">1</span> 基础</a><ul>
+<li><a href="#函数functions方法method或者属性attribute"><span class="toc-section-number">1.1</span> 函数(functions),方法(method)或者属性(attribute)</a></li>
+<li><a href="#例子"><span class="toc-section-number">1.2</span> 例子</a></li>
+</ul></li>
+<li><a href="#创建array"><span class="toc-section-number">2</span> 创建array</a></li>
+<li><a href="#基础运算符"><span class="toc-section-number">3</span> 基础运算符</a></li>
+</ul>
+</div>
+
+<p>官网在这.</p>
+<p><a href="https://numpy.org/doc/1.17/user/quickstart.html" class="uri">https://numpy.org/doc/1.17/user/quickstart.html</a></p>
+<div id="基础" class="section level1">
+<h1><span class="header-section-number">1</span> 基础</h1>
+<div id="函数functions方法method或者属性attribute" class="section level2">
+<h2><span class="header-section-number">1.1</span> 函数(functions),方法(method)或者属性(attribute)</h2>
+<p>NumPy’s array class is called ndarray. It is also known by the alias array. Note that numpy.array is not the same as the Standard Python Library class array.array, which only handles one-dimensional arrays and offers less functionality. The more important attributes of an ndarray object are:</p>
+<ul>
+<li><code>ndarray.ndim</code>属性</li>
+</ul>
+<p>array的维度数.</p>
+<ul>
+<li><code>ndarray.shape</code>方法</li>
+</ul>
+<p>array的维度大小.类似于R中的<code>dim()</code>函数</p>
+<ul>
+<li><code>ndarray.size</code>方法</li>
+</ul>
+<p>array的cell(数据点)数目.</p>
+<ul>
+<li><code>ndarray.dtype</code>方法</li>
+</ul>
+<p>array中元素的数据类型.</p>
+<ul>
+<li><code>ndarray.itemsize</code>方法</li>
+</ul>
+<p>The size in bytes of each element of the array. For example, an array of elements of type float64 has itemsize 8 (=64/8), while one of type complex32 has itemsize 4 (=32/8). It is equivalent to <code>ndarray.dtype.itemsize</code>.</p>
+</div>
+<div id="例子" class="section level2">
+<h2><span class="header-section-number">1.2</span> 例子</h2>
+<pre class="python"><code>import numpy as np
+a = np.arange(15).reshape(3, 5)
+a</code></pre>
+<pre><code>## array([[ 0,  1,  2,  3,  4],
+##        [ 5,  6,  7,  8,  9],
+##        [10, 11, 12, 13, 14]])</code></pre>
+<pre class="python"><code>a.ndim</code></pre>
+<pre><code>## 2</code></pre>
+<pre class="python"><code>a.shape</code></pre>
+<pre><code>## (3, 5)</code></pre>
+<pre class="python"><code>a.size</code></pre>
+<pre><code>## 15</code></pre>
+<pre class="python"><code>a.dtype</code></pre>
+<pre><code>## dtype(&#39;int32&#39;)</code></pre>
+<pre class="python"><code>a.itemsize</code></pre>
+<pre><code>## 4</code></pre>
+</div>
+</div>
+<div id="创建array" class="section level1">
+<h1><span class="header-section-number">2</span> 创建array</h1>
+<ul>
+<li><code>array()</code>函数</li>
+</ul>
+<p>创建array.可以将列表,元组等转变为array对象.</p>
+<pre class="python"><code>import numpy as np
+np.array((1,2,3,4))</code></pre>
+<pre><code>## array([1, 2, 3, 4])</code></pre>
+<pre class="python"><code>np.array([1,2,3,4,5])</code></pre>
+<pre><code>## array([1, 2, 3, 4, 5])</code></pre>
+<pre class="python"><code>np.array([(1,2,3), (4,5,6)])</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6]])</code></pre>
+<p>有时候我们需要提前创建一个array,然后再往里面填充内容.比如在一个循环中,每一个循环生成一些数,然后再填充到array中.</p>
+<ul>
+<li><code>np.zeros()</code>,<code>np.ones()</code>和<code>np.empty()</code>函数</li>
+</ul>
+<p>生成一个array,然后其中用0/1或者随机的非常小的数填充.参数<code>shape</code>用来设定array的维度.</p>
+<pre class="python"><code>##zero
+np.zeros(shape = 2)</code></pre>
+<pre><code>## array([0., 0.])</code></pre>
+<pre class="python"><code>np.zeros(shape = (3,4))</code></pre>
+<pre><code>## array([[0., 0., 0., 0.],
+##        [0., 0., 0., 0.],
+##        [0., 0., 0., 0.]])</code></pre>
+<pre class="python"><code>np.zeros(shape = (3,4,5))
+##one</code></pre>
+<pre><code>## array([[[0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.]],
+## 
+##        [[0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.]],
+## 
+##        [[0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.],
+##         [0., 0., 0., 0., 0.]]])</code></pre>
+<pre class="python"><code>np.ones(shape = 2)</code></pre>
+<pre><code>## array([1., 1.])</code></pre>
+<pre class="python"><code>np.ones(shape = (3,4))
+##empty</code></pre>
+<pre><code>## array([[1., 1., 1., 1.],
+##        [1., 1., 1., 1.],
+##        [1., 1., 1., 1.]])</code></pre>
+<pre class="python"><code>np.empty(shape = 2)</code></pre>
+<pre><code>## array([1., 1.])</code></pre>
+<pre class="python"><code>np.empty(shape = (3,4))</code></pre>
+<pre><code>## array([[1., 1., 1., 1.],
+##        [1., 1., 1., 1.],
+##        [1., 1., 1., 1.]])</code></pre>
+<ul>
+<li><code>np.arange()</code>函数</li>
+</ul>
+<p>跟基础函数<code>arange</code>类似,可以生成连续的array.所以同样三个参数,<code>start</code>,<code>stop</code>和<code>step</code>.</p>
+<pre class="python"><code>np.arange(1, 10, 2)</code></pre>
+<pre><code>## array([1, 3, 5, 7, 9])</code></pre>
+<p>这种办法,end参数不一定包含在最后的sequence中.为了让最后的end一定包含再sequence中,然后中间的参数,是使用线性回归得到的,可以使用另外一个参数.</p>
+<ul>
+<li><code>np.linspace()</code>函数</li>
+</ul>
+<p>三个参数,<code>start</code>,<code>stop</code>和<code>num</code>.</p>
+<pre class="python"><code>np.linspace(start=0, stop=10, num=8)</code></pre>
+<pre><code>## array([ 0.        ,  1.42857143,  2.85714286,  4.28571429,  5.71428571,
+##         7.14285714,  8.57142857, 10.        ])</code></pre>
+<ul>
+<li><code>reshape()</code>方法和<code>reshape()</code>函数</li>
+</ul>
+<p>用来将array重新进行shape.</p>
+<pre class="python"><code>arr = np.arange(1,10,1)
+arr</code></pre>
+<pre><code>## array([1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
+<pre class="python"><code>arr.reshape(3,3)</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [7, 8, 9]])</code></pre>
+<pre class="python"><code>arr.reshape(3,3,order=&quot;C&quot;)</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [7, 8, 9]])</code></pre>
+<pre class="python"><code>arr.reshape(3,3,order=&quot;F&quot;)</code></pre>
+<pre><code>## array([[1, 4, 7],
+##        [2, 5, 8],
+##        [3, 6, 9]])</code></pre>
+<pre class="python"><code>arr.reshape(3,3,order=&quot;A&quot;)</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [7, 8, 9]])</code></pre>
+<pre class="python"><code>np.reshape(arr, newshape=(3,3))</code></pre>
+<pre><code>## array([[1, 2, 3],
+##        [4, 5, 6],
+##        [7, 8, 9]])</code></pre>
+</div>
+<div id="基础运算符" class="section level1">
+<h1><span class="header-section-number">3</span> 基础运算符</h1>
+<p>array是支持向量化运算的,所以可以直接对array进行常见的数学运算.注意,如果两个array长度不一致,会报错.</p>
+<pre class="python"><code>a = np.array( [20,30,40,50] )
+b = np.arange(4)
+a</code></pre>
+<pre><code>## array([20, 30, 40, 50])</code></pre>
+<pre class="python"><code>b</code></pre>
+<pre><code>## array([0, 1, 2, 3])</code></pre>
+<pre class="python"><code>a + b</code></pre>
+<pre><code>## array([20, 31, 42, 53])</code></pre>
+<pre class="python"><code>a - b</code></pre>
+<pre><code>## array([20, 29, 38, 47])</code></pre>
+<pre class="python"><code>a * b</code></pre>
+<pre><code>## array([  0,  30,  80, 150])</code></pre>
+<pre class="python"><code>a * 2</code></pre>
+<pre><code>## array([ 40,  60,  80, 100])</code></pre>
+<pre class="python"><code>a / 2</code></pre>
+<pre><code>## array([10., 15., 20., 25.])</code></pre>
+<pre class="python"><code>a &lt; 2</code></pre>
+<pre><code>## array([False, False, False, False])</code></pre>
+</div>
