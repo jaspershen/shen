@@ -5,7 +5,222 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Fri, 29 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Python中与dplyr类似的数据处理包</title>
+      <link>/post/2019-11-29-python-dplyphon/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-11-29-python-dplyphon/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#dplython&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; dplython&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#简单介绍&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 简单介绍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dfply&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; dfply&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#函数概览&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 函数概览&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#和管道操作符&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.1&lt;/span&gt; &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;gt;&amp;gt;=&lt;/code&gt;管道操作符&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#section&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.2&lt;/span&gt; &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;dplython&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; dplython&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;dplython&lt;/code&gt;是python借鉴R中&lt;code&gt;dplyr&lt;/code&gt;包开发的,用于数据tidy的包.基本语法跟R非常像,而且还支持管道函数(操作符&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;).对于我这种从R转python的人来说,用起来会更加熟悉和方便.&lt;/p&gt;
+&lt;p&gt;官网在这.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pythonhosted.org/dplython/&#34; class=&#34;uri&#34;&gt;https://pythonhosted.org/dplython/&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;安装&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 安装&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;pip install dplython&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以从github上安装最新开发版本.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install git+https://github.com/dodger487/dplython.git&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;简单介绍&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 简单介绍&lt;/h2&gt;
+&lt;p&gt;加载所需要的包.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd
+import numpy as np
+import dplython as dply
+from dplython import (DplyFrame, X, diamonds, select, sift,
+  sample_n, sample_frac, head, arrange, mutate, group_by,
+  summarize, DelayFunction)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;支持管道符操作,但是如果要将每一个操作写作一行,需要使用小括号将其括起来.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; head&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Unnamed: 0  carat      cut color clarity  ...  table  price     x     y     z
+## 0           1   0.23    Ideal     E     SI2  ...   55.0    326  3.95  3.98  2.43
+## 1           2   0.21  Premium     E     SI1  ...   61.0    326  3.89  3.84  2.31
+## 2           3   0.23     Good     E     VS1  ...   65.0    327  4.05  4.07  2.31
+## 3           4   0.29  Premium     I     VS2  ...   58.0    334  4.20  4.23  2.63
+## 4           5   0.31     Good     J     SI2  ...   58.0    335  4.34  4.35  2.75
+## 
+## [5 rows x 11 columns]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+head(5)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    Unnamed: 0  carat      cut color clarity  ...  table  price     x     y     z
+## 0           1   0.23    Ideal     E     SI2  ...   55.0    326  3.95  3.98  2.43
+## 1           2   0.21  Premium     E     SI1  ...   61.0    326  3.89  3.84  2.31
+## 2           3   0.23     Good     E     VS1  ...   65.0    327  4.05  4.07  2.31
+## 3           4   0.29  Premium     I     VS2  ...   58.0    334  4.20  4.23  2.63
+## 4           5   0.31     Good     J     SI2  ...   58.0    335  4.34  4.35  2.75
+## 
+## [5 rows x 11 columns]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再&lt;code&gt;dplyr&lt;/code&gt;中,进行行筛选的函数为&lt;code&gt;filter()&lt;/code&gt;,但是在&lt;code&gt;dplython&lt;/code&gt;中,函数名为&lt;code&gt;sift()&lt;/code&gt;,暂时不知道为什么要改名,猜想可能是由于和python自带函数冲突.&lt;/p&gt;
+&lt;p&gt;列名不能直接引用,需要使用dplython中的&lt;code&gt;X&lt;/code&gt;来引用.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;X.foo will refer to the “foo” column of the DataFrame in which it is later applied.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt; 
+sift(X.carat &amp;gt; 4) &amp;gt;&amp;gt; 
+select(X.carat, X.cut, X.depth, X.price)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat      cut  depth  price
+## 25998   4.01  Premium   61.0  15223
+## 25999   4.01  Premium   62.5  15223
+## 27130   4.13     Fair   64.8  17329
+## 27415   5.01     Fair   65.5  18018
+## 27630   4.50     Fair   65.8  18531&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(diamonds &amp;gt;&amp;gt;
+  sample_n(10) &amp;gt;&amp;gt;
+  arrange(X.carat) &amp;gt;&amp;gt;
+  select(X.carat, X.cut, X.depth, X.price))
+  &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat        cut  depth  price
+## 20019   0.30       Good   63.9    421
+## 30966   0.39  Very Good   63.3    746
+## 41006   0.40  Very Good   59.8   1184
+## 37574   0.41      Ideal   61.3    990
+## 29151   0.41  Very Good   63.5    692
+## 37625   0.44    Premium   61.6    990
+## 51397   0.72  Very Good   63.5   2369
+## 18486   1.00  Very Good   62.3   7528
+## 24587   1.58      Ideal   62.0  12897
+## 26067   2.25       Good   62.4  15287&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(diamonds &amp;gt;&amp;gt;
+  mutate(carat_bin=X.carat.round()) &amp;gt;&amp;gt;
+  group_by(X.cut, X.carat_bin) &amp;gt;&amp;gt;
+  summarize(avg_price=X.price.mean()))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           cut  carat_bin     avg_price
+## 0        Fair        0.0   1027.979275
+## 1        Fair        1.0   3305.754579
+## 2        Fair        2.0   9588.269737
+## 3        Fair        3.0  13466.823529
+## 4        Fair        4.0  15842.666667
+## 5        Fair        5.0  18018.000000
+## 6        Good        0.0    786.054191
+## 7        Good        1.0   3815.307879
+## 8        Good        2.0  11096.950321
+## 9        Good        3.0  15924.176471
+## 10      Ideal        0.0    863.908535
+## 11      Ideal        1.0   4213.864948
+## 12      Ideal        2.0  12838.984078
+## 13      Ideal        3.0  16156.681818
+## 14      Ideal        4.0  12587.000000
+## 15    Premium        0.0    863.329085
+## 16    Premium        1.0   4382.906453
+## 17    Premium        2.0  12337.020064
+## 18    Premium        3.0  15636.047619
+## 19    Premium        4.0  16335.000000
+## 20  Very Good        0.0    766.354590
+## 21  Very Good        1.0   4135.271007
+## 22  Very Good        2.0  12281.851661
+## 23  Very Good        3.0  15053.555556
+## 24  Very Good        4.0  15984.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意的是,使用管道函数,第一行为要处理的数据,第二行开始,都要缩进.&lt;/p&gt;
+&lt;p&gt;但是作者已经3年没有维护这个包了,所以感觉有点悬,有可能废掉了,所以还是别用了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dfply&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; dfply&lt;/h1&gt;
+&lt;p&gt;另外一个将&lt;code&gt;dplyr&lt;/code&gt;移植到python的包是&lt;code&gt;dfply&lt;/code&gt;,可能更加可靠一些.&lt;/p&gt;
+&lt;p&gt;官网如下:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/kieferk/dfply#the--and--pipe-operators&#34; class=&#34;uri&#34;&gt;https://github.com/kieferk/dfply#the--and--pipe-operators&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/kieferk/dfply&#34; class=&#34;uri&#34;&gt;https://github.com/kieferk/dfply&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;安装-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 安装&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;pip install dfply&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;函数概览&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 函数概览&lt;/h2&gt;
+&lt;div id=&#34;和管道操作符&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.1&lt;/span&gt; &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;gt;&amp;gt;=&lt;/code&gt;管道操作符&lt;/h3&gt;
+&lt;p&gt;在R中,管道操作符为&lt;code&gt;%&amp;gt;%&lt;/code&gt;,在python中,改为&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from dfply import *
+diamonds &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut color clarity  depth  table  price     x     y     z
+## 0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 1   0.21  Premium     E     SI1   59.8   61.0    326  3.89  3.84  2.31
+## 2   0.23     Good     E     VS1   56.9   65.0    327  4.05  4.07  2.31
+## 3   0.29  Premium     I     VS2   62.4   58.0    334  4.20  4.23  2.63
+## 4   0.31     Good     J     SI2   63.3   58.0    335  4.34  4.35  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+  head(5)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut color clarity  depth  table  price     x     y     z
+## 0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 1   0.21  Premium     E     SI1   59.8   61.0    326  3.89  3.84  2.31
+## 2   0.23     Good     E     VS1   56.9   65.0    327  4.05  4.07  2.31
+## 3   0.29  Premium     I     VS2   62.4   58.0    334  4.20  4.23  2.63
+## 4   0.31     Good     J     SI2   63.3   58.0    335  4.34  4.35  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同样的,如果每一个操作都开始新的一行的话,需要使用小括号将他们括起来.&lt;/p&gt;
+&lt;p&gt;将处理之后的数据框赋予一个新的变量名的时候,需要注意变量名等号和小括号的左半部分需要在同一行.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;new = (
+diamonds &amp;gt;&amp;gt;
+  tail(5)
+)
+new&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat        cut color clarity  depth  table  price     x     y     z
+## 53935   0.72      Ideal     D     SI1   60.8   57.0   2757  5.75  5.76  3.50
+## 53936   0.72       Good     D     SI1   63.1   55.0   2757  5.69  5.75  3.61
+## 53937   0.70  Very Good     D     SI1   62.8   60.0   2757  5.66  5.68  3.56
+## 53938   0.86    Premium     H     SI2   61.0   58.0   2757  6.15  6.12  3.74
+## 53939   0.75      Ideal     D     SI2   62.2   55.0   2757  5.83  5.87  3.64&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;另外一个管道操作符&lt;code&gt;&amp;gt;&amp;gt;=&lt;/code&gt;意味着对原始数据直接进行修改后付给这个变量.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds2 = diamonds.copy()
+diamonds2 &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut color clarity  depth  table  price     x     y     z
+## 0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 1   0.21  Premium     E     SI1   59.8   61.0    326  3.89  3.84  2.31
+## 2   0.23     Good     E     VS1   56.9   65.0    327  4.05  4.07  2.31
+## 3   0.29  Premium     I     VS2   62.4   58.0    334  4.20  4.23  2.63
+## 4   0.31     Good     J     SI2   63.3   58.0    335  4.34  4.35  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds2 &amp;gt;&amp;gt;= head(5)
+diamonds2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut color clarity  depth  table  price     x     y     z
+## 0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 1   0.21  Premium     E     SI1   59.8   61.0    326  3.89  3.84  2.31
+## 2   0.23     Good     E     VS1   56.9   65.0    327  4.05  4.07  2.31
+## 3   0.29  Premium     I     VS2   62.4   58.0    334  4.20  4.23  2.63
+## 4   0.31     Good     J     SI2   63.3   58.0    335  4.34  4.35  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; head(10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat        cut color clarity  depth  table  price     x     y     z
+## 0   0.23      Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 1   0.21    Premium     E     SI1   59.8   61.0    326  3.89  3.84  2.31
+## 2   0.23       Good     E     VS1   56.9   65.0    327  4.05  4.07  2.31
+## 3   0.29    Premium     I     VS2   62.4   58.0    334  4.20  4.23  2.63
+## 4   0.31       Good     J     SI2   63.3   58.0    335  4.34  4.35  2.75
+## 5   0.24  Very Good     J    VVS2   62.8   57.0    336  3.94  3.96  2.48
+## 6   0.24  Very Good     I    VVS1   62.3   57.0    336  3.95  3.98  2.47
+## 7   0.26  Very Good     H     SI1   61.9   55.0    337  4.07  4.11  2.53
+## 8   0.22       Fair     E     VS2   65.1   61.0    337  3.87  3.78  2.49
+## 9   0.23  Very Good     H     VS1   59.4   61.0    338  4.00  4.05  2.39&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.2&lt;/span&gt; &lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python Numpy函数和方法完全总结</title>
       <link>/post/2019-11-28-numpy-function-method/</link>

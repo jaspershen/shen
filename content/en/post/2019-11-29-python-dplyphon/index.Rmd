@@ -1,0 +1,150 @@
+---
+title: Python中与dplyr类似的数据处理包
+author: Xiaotao Shen
+date: 2019-11-29
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+# dplython
+
+`dplython`是python借鉴R中`dplyr`包开发的,用于数据tidy的包.基本语法跟R非常像,而且还支持管道函数(操作符`>>`).对于我这种从R转python的人来说,用起来会更加熟悉和方便.
+
+官网在这.
+
+https://pythonhosted.org/dplython/
+
+
+## 安装
+
+```
+pip install dplython
+```
+
+也可以从github上安装最新开发版本.
+
+```
+pip install git+https://github.com/dodger487/dplython.git
+```
+
+## 简单介绍
+
+加载所需要的包.
+
+```{python}
+import pandas as pd
+import numpy as np
+import dplython as dply
+from dplython import (DplyFrame, X, diamonds, select, sift,
+  sample_n, sample_frac, head, arrange, mutate, group_by,
+  summarize, DelayFunction)
+```
+
+支持管道符操作,但是如果要将每一个操作写作一行,需要使用小括号将其括起来.
+
+```{python}
+diamonds >> head
+(
+diamonds >>
+head(5)
+)
+```
+
+再`dplyr`中,进行行筛选的函数为`filter()`,但是在`dplython`中,函数名为`sift()`,暂时不知道为什么要改名,猜想可能是由于和python自带函数冲突.
+
+列名不能直接引用,需要使用dplython中的`X`来引用.
+
+> X.foo will refer to the "foo" column of the DataFrame in which it is later applied. 
+
+```{python}
+(
+diamonds >> 
+sift(X.carat > 4) >> 
+select(X.carat, X.cut, X.depth, X.price)
+)
+
+(diamonds >>
+  sample_n(10) >>
+  arrange(X.carat) >>
+  select(X.carat, X.cut, X.depth, X.price))
+  
+(diamonds >>
+  mutate(carat_bin=X.carat.round()) >>
+  group_by(X.cut, X.carat_bin) >>
+  summarize(avg_price=X.price.mean()))
+
+```
+
+需要注意的是,使用管道函数,第一行为要处理的数据,第二行开始,都要缩进.
+
+但是作者已经3年没有维护这个包了,所以感觉有点悬,有可能废掉了,所以还是别用了.
+
+# dfply
+
+另外一个将`dplyr`移植到python的包是`dfply`,可能更加可靠一些.
+
+官网如下:
+
+https://github.com/kieferk/dfply#the--and--pipe-operators
+
+https://github.com/kieferk/dfply
+
+## 安装
+
+```
+pip install dfply
+```
+
+## 函数概览
+
+### `>>`和`>>=`管道操作符
+
+在R中,管道操作符为`%>%`,在python中,改为`>>`.
+
+```{python}
+from dfply import *
+diamonds >> head(5)
+(
+diamonds >>
+  head(5)
+)
+```
+
+同样的,如果每一个操作都开始新的一行的话,需要使用小括号将他们括起来.
+
+将处理之后的数据框赋予一个新的变量名的时候,需要注意变量名等号和小括号的左半部分需要在同一行.
+
+```{python}
+new = (
+diamonds >>
+  tail(5)
+)
+new
+```
+
+另外一个管道操作符`>>=`意味着对原始数据直接进行修改后付给这个变量.
+
+```{python}
+diamonds2 = diamonds.copy()
+diamonds2 >> head(5)
+diamonds2 >>= head(5)
+diamonds2
+diamonds >> head(10)
+```
+
+### 
