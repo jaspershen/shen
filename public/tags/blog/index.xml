@@ -23,7 +23,13 @@
 &lt;li&gt;&lt;a href=&#34;#安装-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#函数概览&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 函数概览&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#和管道操作符&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.1&lt;/span&gt; &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;gt;&amp;gt;=&lt;/code&gt;管道操作符&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#section&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.2&lt;/span&gt; &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#数据框标志x&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.2&lt;/span&gt; 数据框标志&lt;code&gt;X&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#选择某列或者删除某列selecting-and-dropping&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.3&lt;/span&gt; 选择某列或者删除某列(selecting and dropping)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#对列进行筛选&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.4&lt;/span&gt; 对列进行筛选&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#数据框转变&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.5&lt;/span&gt; 数据框转变&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分组grouping&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.6&lt;/span&gt; 分组(grouping)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#重塑数据框reshaping&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.7&lt;/span&gt; 重塑数据框(reshaping)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#合并joining&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.8&lt;/span&gt; 合并(joining)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -93,16 +99,16 @@ select(X.carat, X.cut, X.depth, X.price)
   select(X.carat, X.cut, X.depth, X.price))
   &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##        carat        cut  depth  price
-## 20019   0.30       Good   63.9    421
-## 30966   0.39  Very Good   63.3    746
-## 41006   0.40  Very Good   59.8   1184
-## 37574   0.41      Ideal   61.3    990
-## 29151   0.41  Very Good   63.5    692
-## 37625   0.44    Premium   61.6    990
-## 51397   0.72  Very Good   63.5   2369
-## 18486   1.00  Very Good   62.3   7528
-## 24587   1.58      Ideal   62.0  12897
-## 26067   2.25       Good   62.4  15287&lt;/code&gt;&lt;/pre&gt;
+## 34904   0.34    Premium   59.2    880
+## 41186   0.39      Ideal   61.6   1201
+## 40502   0.43  Very Good   60.7   1143
+## 52362   0.54      Ideal   61.1   2502
+## 53392   0.77       Good   63.8   2665
+## 6651    0.90    Premium   62.7   4092
+## 6643    0.90      Ideal   62.7   4091
+## 5532    0.92  Very Good   62.1   3854
+## 9229    1.02    Premium   61.9   4558
+## 27546   2.05    Premium   61.8  18318&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(diamonds &amp;gt;&amp;gt;
   mutate(carat_bin=X.carat.round()) &amp;gt;&amp;gt;
   group_by(X.cut, X.carat_bin) &amp;gt;&amp;gt;
@@ -213,8 +219,420 @@ diamonds2&lt;/code&gt;&lt;/pre&gt;
 ## 8   0.22       Fair     E     VS2   65.1   61.0    337  3.87  3.78  2.49
 ## 9   0.23  Very Good     H     VS1   59.4   61.0    338  4.00  4.05  2.39&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;section&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.2&lt;/span&gt; &lt;/h3&gt;
+&lt;div id=&#34;数据框标志x&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.2&lt;/span&gt; 数据框标志&lt;code&gt;X&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;在管道操作符中,将数据框传到后面的函数中,需要使用&lt;code&gt;X&lt;/code&gt;标志来代表.在R中,我们可以直接使用数据框的列名来引用每一列,在python中,需要使用&lt;code&gt;X&lt;/code&gt;来表示.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; select(X.carat, X.cut) &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut
+## 0   0.23    Ideal
+## 1   0.21  Premium
+## 2   0.23     Good
+## 3   0.29  Premium
+## 4   0.31     Good&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;选择某列或者删除某列selecting-and-dropping&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.3&lt;/span&gt; 选择某列或者删除某列(selecting and dropping)&lt;/h3&gt;
+&lt;p&gt;在R中,使用&lt;code&gt;select&lt;/code&gt;函数可以完成选择和删除,在删除某列时,直接在前面加上减号就可以了.但是在python中,&lt;code&gt;select&lt;/code&gt;也可以完成删除列,只是减号改为&lt;code&gt;~&lt;/code&gt;.但是对于删除列,还有一个专门的函数,&lt;code&gt;drop()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;选择列的时候,既可以使用列的index,也可以使用&lt;code&gt;X&lt;/code&gt;符合以及引号括起来的列名进行选择.可惜的是,暂时看到是不支持切片的.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt; 
+  select(0, X.price, &amp;quot;x&amp;quot;, [&amp;#39;y&amp;#39;, &amp;#39;z&amp;#39;]) &amp;gt;&amp;gt;
+  head(5)
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat  price     x     y     z
+## 0   0.23    326  3.95  3.98  2.43
+## 1   0.21    326  3.89  3.84  2.31
+## 2   0.23    327  4.05  4.07  2.31
+## 3   0.29    334  4.20  4.23  2.63
+## 4   0.31    335  4.34  4.35  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+  select([&amp;#39;carat&amp;#39;,&amp;#39;price&amp;#39;]) &amp;gt;&amp;gt;
+  head(5)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat  price
+## 0   0.23    326
+## 1   0.21    326
+## 2   0.23    327
+## 3   0.29    334
+## 4   0.31    335&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+  drop(1, X.price, [&amp;#39;x&amp;#39;, &amp;#39;y&amp;#39;]) &amp;gt;&amp;gt;
+  head()
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat color clarity  depth  table     z
+## 0   0.23     E     SI2   61.5   55.0  2.43
+## 1   0.21     E     SI1   59.8   61.0  2.31
+## 2   0.23     E     VS1   56.9   65.0  2.31
+## 3   0.29     I     VS2   62.4   58.0  2.63
+## 4   0.31     J     SI2   63.3   58.0  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+  select(~0, ~X.price) &amp;gt;&amp;gt;
+  head(5)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       z
+## 0  2.43
+## 1  2.31
+## 2  2.31
+## 3  2.63
+## 4  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;selection-filter函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.3.1&lt;/span&gt; Selection filter函数&lt;/h4&gt;
+&lt;p&gt;和&lt;code&gt;dplyr&lt;/code&gt;类似,也有很多配合使用的函数.&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;52%&#34; /&gt;
+&lt;col width=&#34;47%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;starts_with(prefix)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;find columns that start with a string prefix.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;ends_with(suffix)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;find columns that end with a string suffix.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;contains(substr)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;find columns that contain a substring in their name.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;everything()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;all columns.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;columns_between(start_col, end_col, inclusive=True)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;find columns between a specified start and end column. The inclusive boolean keyword argument indicates whether the end column should be included or not.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;columns_to(end_col, inclusive=True)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;get columns up to a specified end column. The inclusive argument indicates whether the ending column should be included or not.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;columns_from(start_col)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;get the columns starting at a specified column.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;因为&lt;code&gt;dfply&lt;/code&gt;并不支持切片,所以可以看到,分别提供了三个函数用来代替切片的功能.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+  select(columns_between(&amp;quot;carat&amp;quot;, &amp;quot;color&amp;quot;)) &amp;gt;&amp;gt;
+  head(5)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut color
+## 0   0.23    Ideal     E
+## 1   0.21  Premium     E
+## 2   0.23     Good     E
+## 3   0.29  Premium     I
+## 4   0.31     Good     J&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+  select(columns_to(&amp;quot;color&amp;quot;)) &amp;gt;&amp;gt;
+  head(5)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut
+## 0   0.23    Ideal
+## 1   0.21  Premium
+## 2   0.23     Good
+## 3   0.29  Premium
+## 4   0.31     Good&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(
+diamonds &amp;gt;&amp;gt;
+  select(columns_from(&amp;quot;color&amp;quot;)) &amp;gt;&amp;gt;
+  head(5)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   color clarity  depth  table  price     x     y     z
+## 0     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 1     E     SI1   59.8   61.0    326  3.89  3.84  2.31
+## 2     E     VS1   56.9   65.0    327  4.05  4.07  2.31
+## 3     I     VS2   62.4   58.0    334  4.20  4.23  2.63
+## 4     J     SI2   63.3   58.0    335  4.34  4.35  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; select(columns_to(1, inclusive=True), &amp;#39;depth&amp;#39;, columns_from(-2)) &amp;gt;&amp;gt; head(2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut  depth     y     z
+## 0   0.23    Ideal   61.5  3.98  2.43
+## 1   0.21  Premium   59.8  3.84  2.31&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;对列进行筛选&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.4&lt;/span&gt; 对列进行筛选&lt;/h3&gt;
+&lt;div id=&#34;row_slice&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.4.1&lt;/span&gt; &lt;code&gt;row_slice()&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;与&lt;code&gt;pandas&lt;/code&gt;的&lt;code&gt;iloc&lt;/code&gt;方法类似,使用index对列筛选.&lt;/p&gt;
+&lt;p&gt;问题是,仍然不支持切片.但是可以和&lt;code&gt;group_by&lt;/code&gt;联合使用,从而选出每一组的固定行.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; row_slice([10,15])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     carat      cut color clarity  depth  table  price     x     y     z
+## 10   0.30     Good     J     SI1   64.0   55.0    339  4.25  4.28  2.73
+## 15   0.32  Premium     E      I1   60.9   58.0    345  4.38  4.42  2.68&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; group_by(&amp;#39;cut&amp;#39;) &amp;gt;&amp;gt; row_slice(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      carat        cut color clarity  depth  table  price     x     y     z
+## 128   0.91       Fair     H     SI2   64.4   57.0   2763  6.11  6.09  3.93
+## 20    0.30       Good     I     SI2   63.3   56.0    351  4.26  4.30  2.71
+## 40    0.33      Ideal     I     SI2   61.2   56.0    403  4.49  4.50  2.75
+## 26    0.24    Premium     I     VS1   62.5   57.0    355  3.97  3.94  2.47
+## 21    0.23  Very Good     E     VS2   63.8   55.0    352  3.85  3.92  2.48&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sample函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.4.2&lt;/span&gt; &lt;code&gt;sample()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;和&lt;code&gt;pandas&lt;/code&gt;的&lt;code&gt;.sample()&lt;/code&gt;方法类似,可以用于随机抽取列.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; sample(frac=0.0001, replace=False)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat        cut color clarity  depth  table  price     x     y     z
+## 35971   0.40    Premium     F     SI1   61.7   62.0    920  4.76  4.71  2.92
+## 12741   1.01      Ideal     H     VS2   60.6   57.0   5317  6.54  6.49  3.95
+## 23321   1.03      Ideal     F      IF   61.3   56.0  11365  6.53  6.55  4.01
+## 37784   0.53  Very Good     G     SI2   62.5   55.0   1000  5.14  5.19  3.23
+## 8715    0.37      Ideal     G     SI1   62.0   55.0    586  4.62  4.64  2.87&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; sample(n=3, replace=True)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat        cut color clarity  depth  table  price     x     y     z
+## 4188    0.83      Ideal     F     SI1   62.2   55.0   3560  6.01  6.03  3.74
+## 19620   1.26      Ideal     H     VS1   60.9   57.0   8238  6.97  6.99  4.25
+## 43303   0.61  Very Good     I     VS2   63.4   55.0   1401  5.46  5.42  3.45&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;distinct函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.4.3&lt;/span&gt; &lt;code&gt;distinct()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;只保留唯一不重复的行.传入的参数为列名,可以是多个列.与&lt;code&gt;pandas&lt;/code&gt;的&lt;code&gt;.drop_duolicates()&lt;/code&gt;方法类似.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; distinct(X.color, X.price) &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat        cut color clarity  depth  table  price     x     y     z
+## 0   0.23      Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 2   0.23       Good     E     VS1   56.9   65.0    327  4.05  4.07  2.31
+## 3   0.29    Premium     I     VS2   62.4   58.0    334  4.20  4.23  2.63
+## 4   0.31       Good     J     SI2   63.3   58.0    335  4.34  4.35  2.75
+## 5   0.24  Very Good     J    VVS2   62.8   57.0    336  3.94  3.96  2.48&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mask和filter_by函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.4.4&lt;/span&gt; &lt;code&gt;mask()&lt;/code&gt;和&lt;code&gt;filter_by()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;类似于&lt;code&gt;dplyr&lt;/code&gt;中的&lt;code&gt;filter()&lt;/code&gt;函数.这两个函数是等价的.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; mask(X.cut == &amp;#39;Ideal&amp;#39;) &amp;gt;&amp;gt; head(4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     carat    cut color clarity  depth  table  price     x     y     z
+## 0    0.23  Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 11   0.23  Ideal     J     VS1   62.8   56.0    340  3.93  3.90  2.46
+## 13   0.31  Ideal     J     SI2   62.2   54.0    344  4.35  4.37  2.71
+## 16   0.30  Ideal     I     SI2   62.0   54.0    348  4.31  4.34  2.68&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; mask(X.cut == &amp;#39;Ideal&amp;#39;, X.color == &amp;#39;E&amp;#39;, X.table &amp;lt; 55, X.price &amp;lt; 500)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat    cut color clarity  depth  table  price     x     y     z
+## 26683   0.33  Ideal     E     SI2   62.2   54.0    427  4.44  4.46  2.77
+## 32297   0.34  Ideal     E     SI2   62.4   54.0    454  4.49  4.52  2.81
+## 40928   0.30  Ideal     E     SI1   61.6   54.0    499  4.32  4.35  2.67
+## 50623   0.30  Ideal     E     SI2   62.1   54.0    401  4.32  4.35  2.69
+## 50625   0.30  Ideal     E     SI2   62.0   54.0    401  4.33  4.35  2.69&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; filter_by(X.cut == &amp;#39;Ideal&amp;#39;, X.color == &amp;#39;E&amp;#39;, X.table &amp;lt; 55, X.price &amp;lt; 500)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat    cut color clarity  depth  table  price     x     y     z
+## 26683   0.33  Ideal     E     SI2   62.2   54.0    427  4.44  4.46  2.77
+## 32297   0.34  Ideal     E     SI2   62.4   54.0    454  4.49  4.52  2.81
+## 40928   0.30  Ideal     E     SI1   61.6   54.0    499  4.32  4.35  2.67
+## 50623   0.30  Ideal     E     SI2   62.1   54.0    401  4.32  4.35  2.69
+## 50625   0.30  Ideal     E     SI2   62.0   54.0    401  4.33  4.35  2.69&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pull函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.4.5&lt;/span&gt; &lt;code&gt;pull()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;与&lt;code&gt;dplyr&lt;/code&gt;中函数同名且功能相同.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(diamonds
+ &amp;gt;&amp;gt; filter_by(X.cut == &amp;#39;Ideal&amp;#39;, X.color == &amp;#39;E&amp;#39;, X.table &amp;lt; 55, X.price &amp;lt; 500)
+ &amp;gt;&amp;gt; pull(&amp;#39;carat&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 26683    0.33
+## 32297    0.34
+## 40928    0.30
+## 50623    0.30
+## 50625    0.30
+## Name: carat, dtype: float64
+## 
+## D:\software\python\lib\site-packages\dfply\subset.py:87: DeprecationWarning: 
+## .ix is deprecated. Please use
+## .loc for label based indexing or
+## .iloc for positional indexing
+## 
+## See the documentation here:
+## http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+##   return df.ix[:, column]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;数据框转变&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.5&lt;/span&gt; 数据框转变&lt;/h3&gt;
+&lt;div id=&#34;mutate函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.5.1&lt;/span&gt; &lt;code&gt;mutate()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;添加新的变量(列)&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; mutate(x_plus_y=X.x + X.y) &amp;gt;&amp;gt; select(columns_from(&amp;#39;x&amp;#39;)) &amp;gt;&amp;gt; head(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       x     y     z  x_plus_y
+## 0  3.95  3.98  2.43      7.93
+## 1  3.89  3.84  2.31      7.73
+## 2  4.05  4.07  2.31      8.12&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; mutate(x_plus_y=X.x + X.y, y_div_z=(X.y / X.z)) &amp;gt;&amp;gt; select(columns_from(&amp;#39;x&amp;#39;)) &amp;gt;&amp;gt; head(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       x     y     z  x_plus_y   y_div_z
+## 0  3.95  3.98  2.43      7.93  1.637860
+## 1  3.89  3.84  2.31      7.73  1.662338
+## 2  4.05  4.07  2.31      8.12  1.761905&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transmutate函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.5.2&lt;/span&gt; &lt;code&gt;transmutate()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;只保留下新创建的列(变量).&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; transmute(x_plus_y=X.x + X.y, y_div_z=(X.y / X.z)) &amp;gt;&amp;gt; head(3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    x_plus_y   y_div_z
+## 0      7.93  1.637860
+## 1      7.73  1.662338
+## 2      8.12  1.761905&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分组grouping&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.6&lt;/span&gt; 分组(grouping)&lt;/h3&gt;
+&lt;div id=&#34;group_by和ungroup函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.6.1&lt;/span&gt; &lt;code&gt;group_by()&lt;/code&gt;和&lt;code&gt;ungroup()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;分组非常有用.利用某个或某几个变量将数据框分成不同的部分,然后对每一组分别进行处理.结束之后,需要使用&lt;code&gt;ungroup()&lt;/code&gt;函数结束分组状态.&lt;/p&gt;
+&lt;p&gt;比如,如果想知道对于不同的&lt;code&gt;cut&lt;/code&gt;的钻石的最高价和最低价,可以使用下面的代码.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(diamonds &amp;gt;&amp;gt; group_by(X.cut) &amp;gt;&amp;gt;
+ mutate(price_lead=lead(X.price), price_lag=lag(X.price)) &amp;gt;&amp;gt;
+ head(2) &amp;gt;&amp;gt; select(X.cut, X.price, X.price_lead, X.price_lag))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           cut  price  price_lead  price_lag
+## 8        Fair    337      2757.0        NaN
+## 91       Fair   2757      2759.0      337.0
+## 2        Good    327       335.0        NaN
+## 4        Good    335       339.0      327.0
+## 0       Ideal    326       340.0        NaN
+## 11      Ideal    340       344.0      326.0
+## 1     Premium    326       334.0        NaN
+## 3     Premium    334       342.0      326.0
+## 5   Very Good    336       336.0        NaN
+## 6   Very Good    336       337.0      336.0&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;重塑数据框reshaping&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.7&lt;/span&gt; 重塑数据框(reshaping)&lt;/h3&gt;
+&lt;div id=&#34;arrange函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.7.1&lt;/span&gt; &lt;code&gt;arrange()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;这个函数是用来sort的.跟&lt;code&gt;pandas&lt;/code&gt;的&lt;code&gt;.sort_valiues()&lt;/code&gt;方法是一样的.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; arrange(X.table, ascending=False) &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        carat   cut color clarity  depth  table  price     x     y     z
+## 24932   2.01  Fair     F     SI1   58.6   95.0  13387  8.32  8.31  4.87
+## 50773   0.81  Fair     F     SI2   68.8   79.0   2301  5.26  5.20  3.58
+## 51342   0.79  Fair     G     SI1   65.3   76.0   2362  5.52  5.13  3.35
+## 52860   0.50  Fair     E     VS2   79.0   73.0   2579  5.21  5.18  4.09
+## 49375   0.70  Fair     H     VS1   62.0   73.0   2100  5.65  5.54  3.47&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;(diamonds &amp;gt;&amp;gt; group_by(X.cut) &amp;gt;&amp;gt; arrange(X.price) &amp;gt;&amp;gt;
+ head(3) &amp;gt;&amp;gt; ungroup() &amp;gt;&amp;gt; mask(X.carat &amp;lt; 0.23))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     carat      cut color clarity  depth  table  price     x     y     z
+## 8    0.22     Fair     E     VS2   65.1   61.0    337  3.87  3.78  2.49
+## 1    0.21  Premium     E     SI1   59.8   61.0    326  3.89  3.84  2.31
+## 12   0.22  Premium     F     SI1   60.4   61.0    342  3.88  3.84  2.33&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rename函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.7.2&lt;/span&gt; &lt;code&gt;rename()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;对列进行重新命名.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; rename(CUT=X.cut, COLOR=&amp;#39;color&amp;#39;) &amp;gt;&amp;gt; head(2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      CUT COLOR clarity  depth  table  price     x     y     z
+## 0   0.23    Ideal     E     SI2   61.5   55.0    326  3.95  3.98  2.43
+## 1   0.21  Premium     E     SI1   59.8   61.0    326  3.89  3.84  2.31&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gather函数和spread函数&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.7.3&lt;/span&gt; &lt;code&gt;gather()&lt;/code&gt;函数和&lt;code&gt;spread()&lt;/code&gt;函数&lt;/h4&gt;
+&lt;p&gt;对长宽数据进行转换的函数.&lt;code&gt;gather()&lt;/code&gt;将宽数据转边为长数据,&lt;code&gt;spread()&lt;/code&gt;将长数据转换为宽数据.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;diamonds &amp;gt;&amp;gt; gather(&amp;#39;variable&amp;#39;, &amp;#39;value&amp;#39;, [&amp;#39;price&amp;#39;, &amp;#39;depth&amp;#39;,&amp;#39;x&amp;#39;,&amp;#39;y&amp;#39;,&amp;#39;z&amp;#39;]) &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    carat      cut color clarity  table variable  value
+## 0   0.23    Ideal     E     SI2   55.0    price  326.0
+## 1   0.21  Premium     E     SI1   61.0    price  326.0
+## 2   0.23     Good     E     VS1   65.0    price  327.0
+## 3   0.29  Premium     I     VS2   58.0    price  334.0
+## 4   0.31     Good     J     SI2   58.0    price  335.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;elongated = diamonds &amp;gt;&amp;gt; gather(&amp;#39;variable&amp;#39;, &amp;#39;value&amp;#39;, add_id=True)
+elongated &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    _ID variable value
+## 0    0    carat  0.23
+## 1    1    carat  0.21
+## 2    2    carat  0.23
+## 3    3    carat  0.29
+## 4    4    carat  0.31&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;widened = elongated &amp;gt;&amp;gt; spread(X.variable, X.value)
+widened &amp;gt;&amp;gt; head(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    _ID carat clarity color      cut depth price table     x     y     z
+## 0    0  0.23     SI2     E    Ideal  61.5   326    55  3.95  3.98  2.43
+## 1    1  0.21     SI1     E  Premium  59.8   326    61  3.89  3.84  2.31
+## 2    2  0.23     VS1     E     Good  56.9   327    65  4.05  4.07  2.31
+## 3    3  0.29     VS2     I  Premium  62.4   334    58   4.2  4.23  2.63
+## 4    4  0.31     SI2     J     Good  63.3   335    58  4.34  4.35  2.75&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;合并joining&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.8&lt;/span&gt; 合并(joining)&lt;/h3&gt;
+&lt;p&gt;这个用处非常多.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Funcation&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;inner_join(other, by=‘column’)&lt;/td&gt;
+&lt;td&gt;合并两个数据框共有的部分&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;outer_join(other, by=‘column’)&lt;/td&gt;
+&lt;td&gt;合并两个数据框并集部分&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;full_join(other, by=‘column’)&lt;/td&gt;
+&lt;td&gt;合并两个数据框并集部分&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;right_join(other, by=‘column’)&lt;/td&gt;
+&lt;td&gt;以右边数据框为准进行合并&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;left_join(other, by=‘column’)&lt;/td&gt;
+&lt;td&gt;以左边数据框为准进行合并&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;semi_join(other, by=‘column’)&lt;/td&gt;
+&lt;td&gt;只保留左边数据框能够匹配上右边数据框的行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;anti_join(other, by=‘column’)&lt;/td&gt;
+&lt;td&gt;只保留两个数据框都互不相同的行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a = pd.DataFrame({
+        &amp;#39;x1&amp;#39;:[&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;C&amp;#39;],
+        &amp;#39;x2&amp;#39;:[1,2,3]
+    })
+b = pd.DataFrame({
+    &amp;#39;x1&amp;#39;:[&amp;#39;A&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;D&amp;#39;],
+    &amp;#39;x3&amp;#39;:[True,False,True]
+})
+
+a &amp;gt;&amp;gt; inner_join(b, by=&amp;#39;x1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x1  x2     x3
+## 0  A   1   True
+## 1  B   2  False&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a &amp;gt;&amp;gt; outer_join(b, by=&amp;#39;x1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x1   x2     x3
+## 0  A  1.0   True
+## 1  B  2.0  False
+## 2  C  3.0    NaN
+## 3  D  NaN   True&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a &amp;gt;&amp;gt; full_join(b, by=&amp;#39;x1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x1   x2     x3
+## 0  A  1.0   True
+## 1  B  2.0  False
+## 2  C  3.0    NaN
+## 3  D  NaN   True&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a &amp;gt;&amp;gt; semi_join(b, by=&amp;#39;x1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x1  x2
+## 0  A   1
+## 1  B   2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;a &amp;gt;&amp;gt; anti_join(b, by=&amp;#39;x1&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x1  x2
+## 2  C   3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;未完待续….&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
