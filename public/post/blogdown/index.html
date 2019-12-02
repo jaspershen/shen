@@ -612,7 +612,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    6 min read
   </span>
   
 
@@ -735,6 +735,13 @@
 </ul></li>
 </ul></li>
 <li><a href="#如何在post中插入icon"><span class="toc-section-number">11</span> 如何在post中插入icon?</a></li>
+<li><a href="#如何使用jupyter编辑post"><span class="toc-section-number">12</span> 如何使用jupyter编辑post?</a><ul>
+<li><a href="#打开cmd修改路径到当前post路径下."><span class="toc-section-number">12.1</span> 打开CMD,修改路径到当前post路径下.</a></li>
+<li><a href="#打开jupyter-notebook"><span class="toc-section-number">12.2</span> 打开jupyter notebook</a></li>
+<li><a href="#开始对jupyter进行编辑."><span class="toc-section-number">12.3</span> 开始对jupyter进行编辑.</a></li>
+<li><a href="#另存为markdown文件."><span class="toc-section-number">12.4</span> 另存为<code>markdown</code>文件.</a></li>
+<li><a href="#编辑yaml"><span class="toc-section-number">12.5</span> 编辑YAML</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -985,6 +992,51 @@ document.getElementById("test").style.height=document.getElementById("test").scr
 <pre><code>&lt;i class=&quot;fas fa-adobe&quot;&gt;&lt;/i&gt;</code></pre>
 <p>显示:</p>
 <p><i class="fas fa-hourglass"></i></p>
+</div>
+<div id="如何使用jupyter编辑post" class="section level1">
+<h1><span class="header-section-number">12</span> 如何使用jupyter编辑post?</h1>
+<p>如果是写关于python的博客,那么使用jupyter就要比使用Rmarkdown方便太多了.以windowns系统为例.</p>
+<div id="打开cmd修改路径到当前post路径下." class="section level2">
+<h2><span class="header-section-number">12.1</span> 打开CMD,修改路径到当前post路径下.</h2>
+<p>可以参考本博文的内容.</p>
+</div>
+<div id="打开jupyter-notebook" class="section level2">
+<h2><span class="header-section-number">12.2</span> 打开jupyter notebook</h2>
+<p>输入</p>
+<pre><code>jupyter notebook</code></pre>
+<p>打开jupyter notebook.然后新建一个jupyter文件,命名为<code>index</code>.</p>
+</div>
+<div id="开始对jupyter进行编辑." class="section level2">
+<h2><span class="header-section-number">12.3</span> 开始对jupyter进行编辑.</h2>
+<p>开始在jupyter上进行编辑.</p>
+</div>
+<div id="另存为markdown文件." class="section level2">
+<h2><span class="header-section-number">12.4</span> 另存为<code>markdown</code>文件.</h2>
+<p>如下图操作.</p>
+<p><img src="save_as_markdown.png" /></p>
+</div>
+<div id="编辑yaml" class="section level2">
+<h2><span class="header-section-number">12.5</span> 编辑YAML</h2>
+<p>将index.md打开,然后添加YAML信息.</p>
+<pre><code>---
+authors:
+- admin
+categories: [Python]
+date: &quot;2019-02-05T00:00:00Z&quot;
+draft: false
+featured: true
+image:
+  caption: &quot;&quot;
+  focal_point: &quot;&quot;
+projects: []
+subtitle: Learn how to blog in Academic using Jupyter notebooks
+summary: Learn how to blog in Academic using Jupyter notebooks
+tags: []
+title: Display Jupyter Notebooks with Academic
+---
+</code></pre>
+<p>如果要使用featured figure,需要将<code>featurd</code>设置为true,且在该post目录下添加名字为<code>featured.png</code>的图片.</p>
+</div>
 </div>
 
     </div>
