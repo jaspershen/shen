@@ -9,12 +9,13 @@ image:
   caption: ""
   focal_point: ""
 projects: []
-subtitle: 
-summary: 
+subtitle: Learn how to blog in Academic using Jupyter notebooks
+summary: Learn how to blog in Academic using Jupyter notebooks
 tags: []
 title: Python for genomics day 06
 ---
 
+{{% toc %}}
 
 
 主要介绍了几个基础的模块,函数,以及如何创建自定义函数.

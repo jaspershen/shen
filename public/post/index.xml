@@ -13,6 +13,9 @@
       <guid>/post/2019-12-02-python-for-genomics-class_day05/</guid>
       <description>
 
+&lt;p&gt;&lt;h2&gt;Table of Contents&lt;/h2&gt;
+HAHAHUGOSHORTCODE-TOC0-HBHB&lt;/p&gt;
+
 &lt;p&gt;第五天的知识点总结.&lt;/p&gt;
 
 &lt;h1 id=&#34;fastq格式数据&#34;&gt;FASTQ格式数据&lt;/h1&gt;
@@ -619,6 +622,9 @@ print(&#39;min =&#39;, min_value, &#39;max =&#39;, max_value)
       <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
       <guid>/post/2019-12-02-python-for-genomics-class_day06/</guid>
       <description>
+
+&lt;p&gt;&lt;h2&gt;Table of Contents&lt;/h2&gt;
+HAHAHUGOSHORTCODE-TOC0-HBHB&lt;/p&gt;
 
 &lt;p&gt;主要介绍了几个基础的模块,函数,以及如何创建自定义函数.&lt;/p&gt;
 
