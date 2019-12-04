@@ -5,7 +5,1675 @@
     <link>/authors/admin/</link>
       <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Xiaotao Shen</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 04 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 03 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Python for genomics day 05</title>
+      <link>/post/2019-12-02-python-for-genomics-class_day05/</link>
+      <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-12-02-python-for-genomics-class_day05/</guid>
+      <description>
+
+&lt;p&gt;第五天的知识点总结.&lt;/p&gt;
+
+&lt;h1 id=&#34;fastq格式数据&#34;&gt;FASTQ格式数据&lt;/h1&gt;
+
+&lt;p&gt;Fastq是测序数据下机格式，其中包含测序序列(reads)的序列信息及其对应的测序质量信息。FASTQ格式文件中每个read由四行(name,sequence,comment,quality)描述，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@YJM244_SRR800767.1 1 length=202      
+TGTGAAACTTAGTTTTCTTTTTGTATTGGGGTGTAATTTCTTATTTTCCCTGTATTTCACCGCATGCAA      
++YJM244 : Geographic Location of Isolate: Romania, Source: Clinical      
+CC@FDDFFHHHHHJJJJJJIIIJFHJGJJJJ:DCDDGHIJJG4DGIDGH&amp;lt;9??9=F@))B8-&#39;&#39;557=A)? 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最开始,桑格研究所的FASTQ格式允许序列与质量信息分成多行进行保存,但是一般不推荐采用这种方式,因为第一和第三行开头的@与+符号同样也可能出现在质量信息中,可能会造成信息提取的困难.&lt;/p&gt;
+
+&lt;h2 id=&#34;name&#34;&gt;name&lt;/h2&gt;
+
+&lt;p&gt;其中第一行是该read的name,以“@”开头，随后为Illumina 测序标识符(Sequence Identifiers)和描述文字(选择性部分).不同的公司或者软件不太一样.他是每一条read的唯一标识符,同一份FASTQ文件中不会出现重复,甚至不同的FASTQ的文件中也不会出现重复.&lt;/p&gt;
+
+&lt;p&gt;以下面的为例:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@HWUSI-EAS100R:6:73:941:1973#0/1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Identifier&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;HWUSI-EAS100R&lt;/td&gt;
+&lt;td&gt;the unique instrument name&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;flowcell lane&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;73&lt;/td&gt;
+&lt;td&gt;tile number within the flowcell lane&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;941&lt;/td&gt;
+&lt;td&gt;&amp;lsquo;x&amp;rsquo;-coordinate of the cluster within the tile&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1973&lt;/td&gt;
+&lt;td&gt;&amp;lsquo;y&amp;rsquo;-coordinate of the cluster within the tile&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;#0&lt;/td&gt;
+&lt;td&gt;index number for a multiplexed sample (0 for no indexing)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;/1&lt;/td&gt;
+&lt;td&gt;the member of a pair, /1 or /2 (paired-end or mate-pair reads only)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;sequence&#34;&gt;Sequence&lt;/h2&gt;
+
+&lt;p&gt;第二行是碱基序列.由A,C,T,C.N五个字母组成,这也是我们真正关心的DNA序列,NA代表的是那些无法被识别出来的碱基.&lt;/p&gt;
+
+&lt;h2 id=&#34;comment&#34;&gt;Comment&lt;/h2&gt;
+
+&lt;p&gt;第三行以“+”开头，在旧版的FASTQ文件中,会直接赋值第一行的信息,但是现在一般什么都不加,用以节省存储空间.&lt;/p&gt;
+
+&lt;h2 id=&#34;quality&#34;&gt;Quality&lt;/h2&gt;
+
+&lt;p&gt;第四行是对应序列的测序质量。是和第二行的sequence一一对应的,所以第四行和第二行的长度必须相等.第四行中每个字符对应的ASCII值减去33，即为第二行对应碱基质量。用来描述每个测序碱基的可靠程度,用ASCII码表示.&lt;/p&gt;
+
+&lt;p&gt;FASTQ格式中质量值具有重要的作用，在很多的分析中会用到这个质量值，例如数据质控，数据过滤，序列拼接，短序列比对，变异检测中都要用到这个质量值。
+这个质量值是基于phred质量值体系.&lt;/p&gt;
+
+&lt;p&gt;但是由于单个碱基无法与两位的质量值相匹配，例如A碱基对应的质量值为40，一个A字符对应两个字符40，因此需要将原始质量值加上33或者64，在转换为对应的ASCII码值，为何加33，因为33以下ASCII码无法用键盘字符表示出来。illumina测序1.8版本以上加33，以下加64。&lt;/p&gt;
+
+&lt;p&gt;质量评分(quality score,Q-score)是一个碱基的错误概率的对数值。由phred程序的开发者定义,一般可以称之为phred quality,&lt;/p&gt;
+
+&lt;p&gt;如果测序错误率用e表示，Illumina测序平台的碱基质量值用Qphred表示，则有下列关系：&lt;/p&gt;
+
+&lt;p&gt;$ASCII - 33 = Qphred　=　-10log10(e)$&lt;/p&gt;
+
+&lt;p&gt;此公式可说明，quality score越大测序错误率(e)越低，准确性越高.&lt;/p&gt;
+
+&lt;p&gt;A quality score (or Q-score) expresses an error probability. In particular, it serves as a convenient and compact way to communicate very small error probabilities.&lt;/p&gt;
+
+&lt;p&gt;Given an assertion, A, the quality score, Q(A), expresses the probability that A is not true, P(~A), according to the relationship:&lt;/p&gt;
+
+&lt;p&gt;Q(A) =-10 log10(P(~A))&lt;/p&gt;
+
+&lt;p&gt;where P(~A) is the estimated probability of an assertion A being wrong.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScores_swBS.htm&#34; target=&#34;_blank&#34;&gt;https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/QualityScores_swBS.htm&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;碱基的quality score是怎么来的呢?&lt;/p&gt;
+
+&lt;p&gt;Phred最初是一个从测序仪中产生的荧光记录数据中识别碱基的程序。在早期的荧光染料测序中，每次发生碱基合成时会释放出荧光信号，该信号被CCD图像传感器捕获。记录下荧光信号的峰值，生成一个实时的轨迹数据（chromatogram）。因为不同的碱基用不用的颜色标记，检测这些峰值即可判断出对应的碱基。但由于这些信号的波峰、密度、形状和位置等是不连续或模糊的，有时很难根据波峰判断出正确的碱基。&lt;/p&gt;
+
+&lt;p&gt;Phred计算许多与波峰大小和分辨率相关的参数，根据这些参数，从一个巨大的查询表中找出碱基质量得分。这个查询表是根据对已知序列的测序数据分析得到的（应该是分析得到波峰参数与碱基错误率的关系，再通过公式把错误率转换成质量得分，得到波峰参数与质量得分的直接对应表）。不同的测序试剂和机器用不同的查询表。为了节约磁盘空间，质量得分（可能占用两个字符）按一定规则（Phred+33或Phred+64）被转换为单个字符表示。&lt;/p&gt;
+
+&lt;p&gt;碱基错误率和质量得分的关系由如下两种:&lt;/p&gt;
+
+&lt;p&gt;$Qphred = -10*log10(p)$&lt;/p&gt;
+
+&lt;p&gt;$Qillumina-prior to v.1.4 = -10log10(p/(1-p))$&lt;/p&gt;
+
+&lt;h1 id=&#34;读取fastq数据&#34;&gt;读取FASTQ数据&lt;/h1&gt;
+
+&lt;p&gt;首先定义读取FASTQ数据的函数.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def seq_list_from_fastq_file(filename):
+&#39;&#39;&#39;
+this function only get the sequence and quality informaton
+&#39;&#39;&#39;
+    seq_list = []
+    quality_list = []
+    
+    with open(filename) as FASTQ_INPUT:
+        line_cnt = 0
+        for line in FASTQ_INPUT:
+            line_cnt += 1
+            if line_cnt == 2:
+                seq_list.append(line.strip())
+            if line_cnt % 4 == 0:
+                quality_list.append(line.strip())
+                line_cnt = 0
+
+    return seq_list, quality_list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;读取一个实例数据
+下图是该数据的截图.可以看到comment除了&lt;code&gt;+&lt;/code&gt;意外,没有任何内容.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;fastq.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# FASTQ from ChIP-seq experiment ENCSR784FYS
+# file accession ENCFF733YBM
+fastq_filename = &#39;ENCFF733YBM-trunc.fastq&#39;
+sequence, quality = seq_list_from_fastq_file(fastq_filename)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将读取到的sequence和quality信息打印出来.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# string at index 0 of list
+print(&#39;Length of sequence list = &#39;, len(sequence), &#39;,\tFirst sequence = \&#39;&#39;, \
+      sequence[0], &#39;\&#39;&#39;, sep=&#39;&#39;)
+print(&#39;Length of quality list  = &#39;, len(quality),  &#39;,\tFirst quality  = \&#39;&#39;, \
+      quality[0], &#39;\&#39;&#39;, sep=&#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Length of sequence list = 100,  First sequence = &#39;GGCCGCCGCCCGAGTTCTGCGTACGAGAAGAAAGACGCGG&#39;
+Length of quality list  = 100,  First quality  = &#39;&amp;lt;B/&amp;lt;BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到该文件一共有100条read信息.根据对碱基质量的定义,我们可以把第一个read的每个碱基的quality score打印出来.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# take apart quality value encoding
+for x in range(len(sequence[0])):
+    print(&#39;{}\t{}\t{}\t{}\t{}&#39;.format(sequence[0][x], 
+                                              quality[0][x],
+                                              ord(quality[0][x]) - 33,
+                                              (ord(quality[0][x]) - 33) * -0.1,
+                                              pow(10, (ord(quality[0][x]) - 33) * -0.1 )))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;G   &amp;lt;   27  -2.7    0.001995262314968879
+G   B   33  -3.3000000000000003 0.000501187233627272
+C   /   14  -1.4000000000000001 0.03981071705534971
+C   &amp;lt;   27  -2.7    0.001995262314968879
+G   B   33  -3.3000000000000003 0.000501187233627272
+C   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+T   F   37  -3.7    0.00019952623149688788
+T   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+T   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+T   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+A   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+C   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+G   F   37  -3.7    0.00019952623149688788
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再看一下quality score的计算办法.&lt;/p&gt;
+
+&lt;p&gt;每个碱基的quality score都是使用一个ASCII字符来表示的.
+比如第一个read的质量:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;quality[0]
+quality[0][0]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;&amp;lt;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;ord(quality[0][0])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;60
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一个碱基的quality score的字符是&lt;code&gt;&amp;lt;&lt;/code&gt;,ord函数是用来返回一个字符的unicode code.所以对于某个碱基,他的quality score就是&lt;code&gt;ord(quality) - 33&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;help(ord)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Help on built-in function ord in module builtins:
+
+ord(c, /)
+    Return the Unicode code point for a one-character string.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(sequence[0][0])#碱基
+print(quality[0][0])#碱基质量字符
+print(ord(quality[0][0]) - 33)#碱基quality score
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;G
+&amp;lt;
+60
+27
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;下面我们用quality score这个碱基错误的概率值.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;qs = ord(quality[0][0]) - 33
+print(qs)
+print(qs * -0.1)
+pow(10, (qs * -0.1 ))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;27
+-2.7
+
+
+
+
+
+0.001995262314968879
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;help(pow)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Help on built-in function pow in module builtins:
+
+pow(x, y, z=None, /)
+    Equivalent to x**y (with two arguments) or x**y % z (with three arguments)
+
+    Some types, such as ints, are able to use a more efficient algorithm when
+    invoked using the three argument form.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到该碱基错误的概率为0.001995.也就是说,错误概率越小,quality score越大.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# a little easier to view with just the unique characters
+quality_set = set(list(quality[0]))
+print(quality_set)
+# add float and scientific notation to output of probability
+print(&#39;char\tASCII\tqual\texponent\tprob&#39;)
+for x in quality_set:
+    print(&#39;{}\t{}\t{}\t{:f}\t{:e}&#39;.format(x,
+                                        ord(x),
+                                        ord(x) - 33,
+                                        (ord(x) - 33) * -0.1,
+                                        pow(10, (ord(x) - 33) * -0.1 )))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;/&#39;, &#39;B&#39;, &#39;&amp;lt;&#39;, &#39;F&#39;}
+char    ASCII   qual    exponent    prob
+/   47  14  -1.400000   3.981072e-02
+B   66  33  -3.300000   5.011872e-04
+&amp;lt;   60  27  -2.700000   1.995262e-03
+F   70  37  -3.700000   1.995262e-04
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面这段代码展示了几种在第一个read中,几种quality的字符所代表的ASCII code,以及错误率.&lt;/p&gt;
+
+&lt;p&gt;完整的ASCII tabe可以看这里.
+&lt;a href=&#34;https://www.cs.cmu.edu/~pattis/15-1XX/common/handouts/ascii.html&#34; target=&#34;_blank&#34;&gt;https://www.cs.cmu.edu/~pattis/15-1XX/common/handouts/ascii.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我们在计算一个,如果知道错误率,那么得到的字符应该是什么.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# more exploring
+import math as math
+quality_prob = 1.995262e-04
+print(&#39;math.log():\t\t&#39;,                   math.log(quality_prob, 10) * -10)
+print(&#39;int(math.log()):\t&#39;,            int(math.log(quality_prob, 10) * -10))
+print(&#39;chr(int(math.log())):\t\&#39;&#39;, chr(int(math.log(quality_prob, 10) * -10)), &#39;\&#39;&#39;, sep=&#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;math.log():      37.000000685570285
+int(math.log()):     37
+chr(int(math.log())):   &#39;%&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&#39;chr(int(math.log()) + 33):\t\&#39;&#39;, chr(int(math.log(quality_prob, 10) * -10) + 33), &#39;\&#39;&#39;, sep=&#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;chr(int(math.log()) + 33):  &#39;F&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;另一种读取fastq数据的方法&#34;&gt;另一种读取FASTQ数据的方法&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;ks = [&#39;name&#39;, &#39;sequence&#39;, &#39;optional&#39;, &#39;quality&#39;]
+
+def process_lines(lines):
+    &#39;&#39;&#39;
+    process a group of 4 lines from fastq file
+    dividing them into dictionary, with a key for each category
+    &#39;&#39;&#39;
+    record = {}
+
+    for x in range(len(lines)):
+        record[ks[x]] = lines[x]
+
+    return record
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先定义一个读取每个read的函数.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;fastq_dictionary = {}
+
+with open(fastq_filename) as FASTQ_INPUT:
+    line_cnt = 0
+    lines = []
+    output_lines = 0
+    for line in FASTQ_INPUT:
+        line_cnt += 1
+        lines.append(line.rstrip())
+        if line_cnt % 4 == 0:
+            record_dict = process_lines(lines)
+            line_cnt = 0
+            lines = []
+            output_lines += 1
+            if output_lines &amp;lt; 7:
+                print(record_dict)
+            fastq_dictionary[record_dict[&#39;name&#39;]] = record_dict
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;name&#39;: &#39;@D00611:288:C9C4PANXX:2:2202:1501:2192 1:N:0:0&#39;, &#39;sequence&#39;: &#39;GGCCGCCGCCCGAGTTCTGCGTACGAGAAGAAAGACGCGG&#39;, &#39;optional&#39;: &#39;+&#39;, &#39;quality&#39;: &#39;&amp;lt;B/&amp;lt;BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF&#39;}
+{&#39;name&#39;: &#39;@D00611:288:C9C4PANXX:2:2202:1586:2227 1:N:0:0&#39;, &#39;sequence&#39;: &#39;GCACGCCGACAGCGAGGGAAGGGAGGAGGAGGGAGACGCG&#39;, &#39;optional&#39;: &#39;+&#39;, &#39;quality&#39;: &#39;&amp;lt;&amp;lt;/&amp;lt;&amp;lt;B/FFFFFFFBFFFBFFFFFFFBFF/FFBFFFFFFF&#39;}
+{&#39;name&#39;: &#39;@D00611:288:C9C4PANXX:2:2202:1699:2242 1:N:0:0&#39;, &#39;sequence&#39;: &#39;CCTTTTTTAGCAATGACCCAAATACTTGTTCAGAAATTAG&#39;, &#39;optional&#39;: &#39;+&#39;, &#39;quality&#39;: &#39;&amp;lt;B/&amp;lt;BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF&#39;}
+{&#39;name&#39;: &#39;@D00611:288:C9C4PANXX:2:2202:1848:2207 1:N:0:0&#39;, &#39;sequence&#39;: &#39;TGGTATTTATAGAGTAAGGAGTTGCCTCTTCTAAGAAGGG&#39;, &#39;optional&#39;: &#39;+&#39;, &#39;quality&#39;: &#39;&amp;lt;B/&amp;lt;BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF&#39;}
+{&#39;name&#39;: &#39;@D00611:288:C9C4PANXX:2:2202:1917:2221 1:N:0:0&#39;, &#39;sequence&#39;: &#39;GATCGGAAGAGCACACGTCTCGTATGCCGTCTTCTGCTTG&#39;, &#39;optional&#39;: &#39;+&#39;, &#39;quality&#39;: &#39;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;F&amp;lt;FB&amp;lt;FFFFFFFF/BFFFFFFFFFFFFFBFFF&amp;lt;&#39;}
+{&#39;name&#39;: &#39;@D00611:288:C9C4PANXX:2:2202:1953:2230 1:N:0:0&#39;, &#39;sequence&#39;: &#39;CTTTCTCCTGTCTCAGGTGACCAAGAATATGGCCCAGGTG&#39;, &#39;optional&#39;: &#39;+&#39;, &#39;quality&#39;: &#39;&amp;lt;&amp;lt;/&amp;lt;&amp;lt;FBFFFFFFBFFFFFFFFFFFFFFFFFF&amp;lt;FFFFFFF&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(len(fastq_dictionary))
+print(fastq_dictionary.keys())
+fastq_dictionary[list(fastq_dictionary.keys())[0]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;100
+dict_keys([&#39;@D00611:288:C9C4PANXX:2:2202:1501:2192 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:1586:2227 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:1699:2242 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:1848:2207 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:1917:2221 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:1953:2230 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:1787:2250 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:2095:2230 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:2296:2185 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:2372:2192 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:3089:2192 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:3235:2205 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:3006:2209 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:3276:2220 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:3530:2181 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:3628:2193 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:3614:2206 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4033:2192 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4186:2218 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4130:2219 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4201:2236 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4065:2240 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4081:2245 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4331:2209 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4628:2230 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4570:2244 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:4768:2186 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:5165:2217 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:5406:2197 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:5733:2194 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:5618:2239 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:5995:2220 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:6095:2222 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:6170:2241 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:6261:2196 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:6395:2231 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:6642:2202 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:6547:2249 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:6870:2238 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:7035:2220 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:7395:2192 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:7336:2215 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:7473:2235 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8050:2179 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8239:2188 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8005:2191 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8139:2200 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8096:2216 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8459:2200 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8364:2206 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8265:2216 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8519:2237 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:8635:2239 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:9166:2216 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:9103:2220 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:9364:2224 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:9707:2181 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:9748:2215 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:9558:2248 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10105:2194 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10298:2193 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10376:2209 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10728:2245 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10624:2249 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10894:2186 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10857:2226 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:10756:2250 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:11123:2222 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:11406:2198 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:11675:2186 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:11873:2196 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:11829:2239 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12090:2181 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12190:2185 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12449:2216 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12301:2219 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12319:2234 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12354:2246 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12965:2208 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12947:2215 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:12928:2221 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13024:2177 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13052:2183 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13113:2202 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13163:2212 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13415:2203 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13560:2193 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13577:2214 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13701:2226 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13561:2228 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13571:2246 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13942:2178 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13948:2195 1:Y:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13885:2220 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13796:2224 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:13837:2236 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:14097:2186 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:14026:2199 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:14242:2220 1:N:0:0&#39;, &#39;@D00611:288:C9C4PANXX:2:2202:14052:2226 1:N:0:0&#39;])
+
+
+
+
+
+{&#39;name&#39;: &#39;@D00611:288:C9C4PANXX:2:2202:1501:2192 1:N:0:0&#39;,
+ &#39;sequence&#39;: &#39;GGCCGCCGCCCGAGTTCTGCGTACGAGAAGAAAGACGCGG&#39;,
+ &#39;optional&#39;: &#39;+&#39;,
+ &#39;quality&#39;: &#39;&amp;lt;B/&amp;lt;BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这段代码,将FASTQ文件读成一个dict中,每个read又是其中一个dict.然后有四个key.&lt;/p&gt;
+
+&lt;h1 id=&#34;bed-file-format数据&#34;&gt;BED file format数据&lt;/h1&gt;
+
+&lt;p&gt;This format is used to provide called peaks of signal enrichment based on pooled, normalized (interpreted) data. It is a BED6+4 format.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;chrom - Name of the chromosome (or contig, scaffold, etc.).&lt;/li&gt;
+&lt;li&gt;chromStart - The starting position of the feature in the
+chromosome or scaffold. The first base in a chromosome is numbered 0.&lt;/li&gt;
+&lt;li&gt;chromEnd - The ending position of the feature in the chromosome
+or scaffold. The chromEnd base is not included in the display of the
+feature. For example, the first 100 bases of a chromosome are
+defined as chromStart=0, chromEnd=100, and span the bases numbered
+0-99.&lt;/li&gt;
+&lt;li&gt;name - Name given to a region (preferably unique). Use &amp;ldquo;.&amp;rdquo; if no
+name is assigned.&lt;/li&gt;
+&lt;li&gt;score - Indicates how dark the peak will be displayed in the
+browser (0-1000). If all scores were &amp;ldquo;&amp;lsquo;0&amp;rdquo;&amp;rsquo; when the data were
+submitted to the DCC, the DCC assigned scores 1-1000 based on signal
+value. Ideally the average signalValue per base spread is between
+100-1000.&lt;/li&gt;
+&lt;li&gt;strand - +/- to denote strand or orientation (whenever
+applicable). Use &amp;ldquo;.&amp;rdquo; if no orientation is assigned.&lt;/li&gt;
+&lt;li&gt;signalValue - Measurement of overall (usually, average)
+enrichment for the region.&lt;/li&gt;
+&lt;li&gt;pValue - Measurement of statistical significance (-log10). Use -1
+if no pValue is assigned.&lt;/li&gt;
+&lt;li&gt;qValue - Measurement of statistical significance using false
+discovery rate (-log10). Use -1 if no qValue is assigned.&lt;/li&gt;
+&lt;li&gt;peak - Point-source called for this peak; 0-based offset from
+chromStart. Use -1 if no point-source called.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;column-headings&#34;&gt;column headings&lt;/h2&gt;
+
+&lt;p&gt;每个列代表的含义如下:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Column&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;CHROM&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;CHROMSTART&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;CHROMEND&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;NAME&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;SCORE&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;STRAND&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;SIGNALVALUE&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;PVALUE&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;QVALUE&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;PEAK&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;下面我们打开一个BED文件.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# module for handling gzip formatted files.
+import gzip
+RBFOX2_HepG2_filename = &#39;ENCFF014SMJ_RBFOX2_HepG2_ChIP-seq-chr21.bed.gz&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# What is the minimum and maximum signal values for this file
+max_value = 0.0
+min_value = 1.0e6
+print(max_value)
+print(min_value)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;0.0
+1000000.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;file = gzip.open(RBFOX2_HepG2_filename, &#39;rt&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(file)
+print(type(file))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;_io.TextIOWrapper name=&#39;ENCFF014SMJ_RBFOX2_HepG2_ChIP-seq-chr21.bed.gz&#39; encoding=&#39;cp936&#39;&amp;gt;
+&amp;lt;class &#39;_io.TextIOWrapper&#39;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# for line in file:
+#     ols = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;)
+#     print(ols)
+    
+for idx in range(0, len(file), 5):
+    line = file[idx]
+    ols = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;)
+    print(ols)
+    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&amp;lt;ipython-input-92-8900d0cb8c79&amp;gt; in &amp;lt;module&amp;gt;
+      3 #     print(ols)
+      4 
+----&amp;gt; 5 for idx in range(0, len(file), 5):
+      6     line = file[idx]
+      7     ols = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;)
+
+
+TypeError: object of type &#39;_io.TextIOWrapper&#39; has no len()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# with gzip.open(RBFOX2_HepG2_filename, &#39;rt&#39;) as BED_FILE:
+#     for line in BED_FILE:
+#         cols = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;)
+#         if float(cols[SIGNALVALUE]) &amp;gt; max_value:
+#             max_value = float(cols[SIGNALVALUE])
+#         if float(cols[SIGNALVALUE]) &amp;lt; min_value:
+#             min_value = float(cols[SIGNALVALUE])
+
+# print(&#39;min =&#39;, min_value, &#39;max =&#39;, max_value)
+
+with gzip.open(RBFOX2_HepG2_filename, &#39;rt&#39;) as BED_FILE:
+    for line in BED_FILE:
+        cols = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;)
+        if float(cols[6]) &amp;gt; max_value:
+            max_value = float(cols[6])
+        if float(cols[6]) &amp;lt; min_value:
+            min_value = float(cols[6])
+
+print(&#39;min =&#39;, min_value, &#39;max =&#39;, max_value)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;min = 2.00053908793031 max = 231.272535106579
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;os.getcwd()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;D:\\my github\\shen\\content\\en\\post\\2019-12-02-python-for-genomics-class_day05&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;os.listdir()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;.ipynb_checkpoints&#39;,
+ &#39;ENCFF014SMJ_RBFOX2_HepG2_ChIP-seq-chr21.bed.gz&#39;,
+ &#39;ENCFF733YBM-trunc.fastq&#39;,
+ &#39;fastq.png&#39;,
+ &#39;featured.png&#39;,
+ &#39;index.ipynb&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python for genomics day 06</title>
+      <link>/post/2019-12-02-python-for-genomics-class_day06/</link>
+      <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-12-02-python-for-genomics-class_day06/</guid>
+      <description>
+
+&lt;p&gt;主要介绍了几个基础的模块,函数,以及如何创建自定义函数.&lt;/p&gt;
+
+&lt;h1 id=&#34;os模块-os-module&#34;&gt;os模块(os module)&lt;/h1&gt;
+
+&lt;p&gt;os模块是用于路径管理,文件夹管理等的模块.&lt;/p&gt;
+
+&lt;h2 id=&#34;os模块的常用命令&#34;&gt;os模块的常用命令&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Function&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;os.mkdir()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;创建新的文件夹&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;os.remove()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除一个文件或者文件夹&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;os.chdir()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;更改工作路径&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;os.rmdir()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除一个文件夹,但是要求该文件夹必须为空&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;os.getcwd()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;获取当前工作路径&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;os.listdir()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出当前路径下的所有文件及文件夹&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import os as os
+# 获取当前的工作路径
+result = os.getcwd()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;D:\my github\shen\content\en\post\2019-12-02-python-for-genomics-class_day06
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#列出当前路径下的所有文件和文件夹
+result = os.listdir()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;.ipynb_checkpoints&#39;, &#39;index.ipynb&#39;, &#39;Practice06-Veronica.ipynb&#39;, &#39;sample.txt&#39;, &#39;sample.txt.gz&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;得到的结果是一个列表.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#创建新的文件夹
+dir_name = &#39;new_dir_123456&#39;
+try: 
+    os.mkdir(dir_name)
+except:
+    print(&amp;quot;This file already exists&amp;quot;)
+
+#这里再次熟悉一下异常捕捉语法
+# 跟R不一样,R里面如果已有路径,并不会报错,只会给出warning
+try:
+    os.mkdir(dir_name)
+except FileExistsError:
+    print(&#39;Directory not created. Directory&#39;, dir_name, &#39;exists.&#39;)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;This file already exists
+Directory not created. Directory new_dir_123456 exists.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;需要注意的是,如果当前路径中已经存在了要创建的文件夹,则会报错,跟R中不同,R只是会给出warning.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result = os.listdir()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;.ipynb_checkpoints&#39;, &#39;index.ipynb&#39;, &#39;new_dir_123456&#39;, &#39;Practice06-Veronica.ipynb&#39;, &#39;sample.txt&#39;, &#39;sample.txt.gz&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;os.chdir(&#39;new_dir_123456&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;None
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;try:
+    os.chdir(dir_name)
+except FileNotFoundError:
+    print(&#39;No such file or directory&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;D:\my github\shen\content\en\post\2019-12-02-python-for-genomics-class_day06\new_dir_123456
+No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result = os.getcwd()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;D:\my github\shen\content\en\post\2019-12-02-python-for-genomics-class_day06\new_dir_123456
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result = os.listdir()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将一个示例数据写入到新创建的文件夹中.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&#39;Writing test file in new_dir_123456, testing.txt&#39;)
+with open(&#39;testing.txt&#39;, &#39;w&#39;) as TEST:
+    TEST.write(&#39;testing&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Writing test file in new_dir_123456, testing.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result = os.listdir()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;testing.txt&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;删除掉新创建的实例文件数据,注意,如果没有该文件,会报错.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;try:
+    os.remove(&#39;testing.txt&#39;)
+except FileNotFoundError:
+    print(&amp;quot;No this file is found.&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;os.chdir(&#39;..&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;None
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;删除掉新创建的文件夹.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;os.rmdir(&#39;new_dir_123456&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result = os.getcwd()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;D:\my github\shen\content\en\post\2019-12-02-python-for-genomics-class_day06
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result = os.listdir()
+print(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;.ipynb_checkpoints&#39;, &#39;index.ipynb&#39;, &#39;Practice06-Veronica.ipynb&#39;, &#39;sample.txt&#39;, &#39;sample.txt.gz&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;gzip-urllib模块&#34;&gt;gzip &amp;amp; urllib模块&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;gzip&lt;/code&gt;模块是用来处理压缩文件的.&lt;code&gt;urllib&lt;/code&gt;模块是用来处理网络文件的.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Module for URL, interacting with the web
+import urllib.request
+# Module for reading and writing the compressed file format, gzip
+import gzip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;gff-gtf格式文件&#34;&gt;GFF/GTF格式文件&lt;/h2&gt;
+
+&lt;p&gt;ensEMBL GFF format:&lt;/p&gt;
+
+&lt;p&gt;可以参考下面连接.&lt;a href=&#34;https://uswest.ensembl.org/info/website/upload/gff.html&#34; target=&#34;_blank&#34;&gt;https://uswest.ensembl.org/info/website/upload/gff.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;每行一共有9个元素,每个元素名字如下:&lt;/p&gt;
+
+&lt;p&gt;SEQNAME = 0
+SOURCE = 1
+FEATURE = 2
+START = 3
+END = 4
+SCORE = 5
+STRAND = 6
+FRAME = 7
+ATTRIBUTE = 8&lt;/p&gt;
+
+&lt;p&gt;FTP ensEMBL downloads site: &lt;a href=&#34;https://uswest.ensembl.org/info/data/ftp/index.html&#34; target=&#34;_blank&#34;&gt;https://uswest.ensembl.org/info/data/ftp/index.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我们将每个元素的index赋值给其代表的字符变量.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;SEQNAME = 0
+SOURCE = 1
+FEATURE = 2
+START = 3
+END = 4
+SCORE = 5
+STRAND = 6
+FRAME = 7
+ATTRIBUTE = 8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;另外以各种格式叫GFF3,相对来说容易解析一些.参考下面连接:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;ftp://ftp.ensembl.org/pub/release-98/gff3/homo_sapiens&#34; target=&#34;_blank&#34;&gt;ftp://ftp.ensembl.org/pub/release-98/gff3/homo_sapiens&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;举个例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;GTF_URL = &#39;https://web.stanford.edu/class/gene211/handouts/Homo_sapiens.GRCh38.chr21-truncated.gtf.gz&#39;
+GFF3_URL = &#39;https://web.stanford.edu/class/gene211/handouts/Homo_sapiens.GRCh38.98.chr21-partial.gff3.gz&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;首先读取GTF格式的数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#首先使用urllib模块将文件地址进行解析
+response = urllib.request.urlopen(GTF_URL)
+line_count = 0
+##使用gzip模块的open函数打开文件
+with gzip.open(response, &#39;rt&#39;) as inFile:
+    for line in inFile:
+        # skip file comment lines
+        if line.startswith(&#39;#&#39;):
+            continue
+        if line_count &amp;lt; 1:
+            line = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;)
+            print(line)
+            print(len(line))
+        line_count += 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;21&#39;, &#39;havana&#39;, &#39;gene&#39;, &#39;5011799&#39;, &#39;5017145&#39;, &#39;.&#39;, &#39;+&#39;, &#39;.&#39;, &#39;gene_id &amp;quot;ENSG00000279493&amp;quot;; gene_version &amp;quot;1&amp;quot;; gene_name &amp;quot;FP565260.4&amp;quot;; gene_source &amp;quot;havana&amp;quot;; gene_biotype &amp;quot;protein_coding&amp;quot;;&#39;]
+9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;只打印了一行,先来看一下这个文件的格式.每行都是一个str.然后是&lt;code&gt;\t&lt;/code&gt;分割符进行分割.分割之后变为list,然后每个list有9个元素.&lt;/p&gt;
+
+&lt;p&gt;下面我们在比较一下GTF和GFF3格式数据的差异.&lt;/p&gt;
+
+&lt;p&gt;读取GFF3格式数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Just to compare GTF and GFF3. The difference is in the ATTRIBUTE column (index 8)
+response = urllib.request.urlopen(GFF3_URL)
+line_count = 0
+with gzip.open(response, &#39;rt&#39;) as inFile:
+    for line in inFile:
+        # skip file comment lines
+        if line.startswith(&#39;#&#39;):
+            continue
+        if line_count &amp;lt; 1:
+            line = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;) 
+            print(line)
+            print(len(line))
+        line_count += 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;21&#39;, &#39;Ensembl&#39;, &#39;chromosome&#39;, &#39;1&#39;, &#39;46709983&#39;, &#39;.&#39;, &#39;.&#39;, &#39;.&#39;, &#39;ID=chromosome:21;Alias=CM000683.2,chr21,NC_000021.9&#39;]
+9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;response = urllib.request.urlopen(GTF_URL)
+genes = {}
+attribute_names = [&#39;gene_id&#39;, &#39;gene_name&#39;]
+with gzip.open(response, &#39;rt&#39;) as inFile:
+    for line in inFile:
+        # skip file comment lines
+        if line.startswith(&#39;#&#39;):
+            continue
+        # split line into columns that are separated by TAB 
+        column = line.rstrip(&#39;\n&#39;).split(&#39;\t&#39;)
+        # manipulate column #8, attributes
+        if column[FEATURE] == &#39;gene&#39;:
+            # starting ATTRIBUTE string
+            # gene_id &amp;quot;ENSG00000279493&amp;quot;; gene_version &amp;quot;1&amp;quot;; gene_name &amp;quot;FP565260.4&amp;quot;;
+            # remove semi-colon from right
+            # gene_id &amp;quot;ENSG00000279493&amp;quot;; gene_version &amp;quot;1&amp;quot;; gene_name &amp;quot;FP565260.4&amp;quot;            
+            column[ATTRIBUTE] = column[ATTRIBUTE].rstrip(&#39;;&#39;)
+            # replace semi-colon space with just semi-colon, and delete double-quotes
+            # then split on semi-colon
+            # [&#39;gene_id ENSG00000279493&#39;, &#39;gene_version 1&#39;, &#39;gene_name FP565260.4&#39;]
+            attribute = column[ATTRIBUTE].replace(&#39;; &#39;, &#39;;&#39;).replace(&#39;&amp;quot;&#39;, &#39;&#39;).split(&#39;;&#39;)
+            for item in attribute:
+                name, value = item.split(&#39; &#39;)
+                if name == &#39;gene_id&#39;:
+                    gene_id = value
+                if name == &#39;gene_name&#39;:
+                    gene_name = value
+                if name == &#39;gene_biotype&#39;:
+                    gene_biotype = value
+            genes[gene_name] = {&#39;gene_id&#39;: gene_id,
+                                &#39;chromsome&#39;: int(column[SEQNAME]),
+                                &#39;start&#39;: int(column[START]),
+                                &#39;end&#39;: int(column[END]),
+                                &#39;biotype&#39;: gene_biotype
+                                }
+            if gene_name == &#39;GATD3B&#39;:
+                print(genes[&#39;GATD3B&#39;])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;gene_id&#39;: &#39;ENSG00000280071&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5079294, &#39;end&#39;: 5128413, &#39;biotype&#39;: &#39;protein_coding&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;genes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;FP565260.4&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279493&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5011799,
+  &#39;end&#39;: 5017145,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;FP565260.3&#39;: {&#39;gene_id&#39;: &#39;ENSG00000277117&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5022493,
+  &#39;end&#39;: 5040666,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;FP565260.5&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279687&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5073458,
+  &#39;end&#39;: 5087867,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;GATD3B&#39;: {&#39;gene_id&#39;: &#39;ENSG00000280071&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5079294,
+  &#39;end&#39;: 5128413,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;FP565260.2&#39;: {&#39;gene_id&#39;: &#39;ENSG00000276612&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5116343,
+  &#39;end&#39;: 5133805,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;FP565260.1&#39;: {&#39;gene_id&#39;: &#39;ENSG00000275464&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5130871,
+  &#39;end&#39;: 5154658,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;FP565260.6&#39;: {&#39;gene_id&#39;: &#39;ENSG00000280433&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5155499,
+  &#39;end&#39;: 5165472,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;AC079801.1&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279669&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5232668,
+  &#39;end&#39;: 5243833,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;LINC01670&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279094&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5499151,
+  &#39;end&#39;: 5502542,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;CU633967.1&#39;: {&#39;gene_id&#39;: &#39;ENSG00000274333&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5553637,
+  &#39;end&#39;: 5614880,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;Y_RNA&#39;: {&#39;gene_id&#39;: &#39;ENSG00000276902&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6365955,
+  &#39;end&#39;: 6366055,
+  &#39;biotype&#39;: &#39;misc_RNA&#39;},
+ &#39;FP236315.2&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279186&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5703182,
+  &#39;end&#39;: 5705637,
+  &#39;biotype&#39;: &#39;TEC&#39;},
+ &#39;FP236315.3&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279784&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5705345,
+  &#39;end&#39;: 5707160,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;FP236315.1&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279064&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5707004,
+  &#39;end&#39;: 5709456,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;CU639417.1&#39;: {&#39;gene_id&#39;: &#39;ENSG00000274559&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 5972924,
+  &#39;end&#39;: 5973383,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;CU639417.3&#39;: {&#39;gene_id&#39;: &#39;ENSG00000280013&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6008604,
+  &#39;end&#39;: 6008810,
+  &#39;biotype&#39;: &#39;processed_pseudogene&#39;},
+ &#39;CU639417.2&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279769&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6034690,
+  &#39;end&#39;: 6036093,
+  &#39;biotype&#39;: &#39;TEC&#39;},
+ &#39;LINC01669&#39;: {&#39;gene_id&#39;: &#39;ENSG00000280191&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6060340,
+  &#39;end&#39;: 6076305,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;CU639417.4&#39;: {&#39;gene_id&#39;: &#39;ENSG00000280095&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6081193,
+  &#39;end&#39;: 6082585,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;CU639417.5&#39;: {&#39;gene_id&#39;: &#39;ENSG00000280179&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6084364,
+  &#39;end&#39;: 6091407,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;SIK1B&#39;: {&#39;gene_id&#39;: &#39;ENSG00000275993&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6111131,
+  &#39;end&#39;: 6123778,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;CU633906.5&#39;: {&#39;gene_id&#39;: &#39;ENSG00000288187&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6215291,
+  &#39;end&#39;: 6217681,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;CU633906.1&#39;: {&#39;gene_id&#39;: &#39;ENSG00000275496&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6228966,
+  &#39;end&#39;: 6267317,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;CU633906.4&#39;: {&#39;gene_id&#39;: &#39;ENSG00000280019&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6272135,
+  &#39;end&#39;: 6276532,
+  &#39;biotype&#39;: &#39;unprocessed_pseudogene&#39;},
+ &#39;CU633906.3&#39;: {&#39;gene_id&#39;: &#39;ENSG00000279709&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6309161,
+  &#39;end&#39;: 6312948,
+  &#39;biotype&#39;: &#39;unprocessed_pseudogene&#39;},
+ &#39;CU633906.2&#39;: {&#39;gene_id&#39;: &#39;ENSG00000278903&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6318434,
+  &#39;end&#39;: 6360415,
+  &#39;biotype&#39;: &#39;lncRNA&#39;},
+ &#39;CBSL&#39;: {&#39;gene_id&#39;: &#39;ENSG00000274276&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6444869,
+  &#39;end&#39;: 6468040,
+  &#39;biotype&#39;: &#39;protein_coding&#39;},
+ &#39;U2AF1L5&#39;: {&#39;gene_id&#39;: &#39;ENSG00000275895&#39;,
+  &#39;chromsome&#39;: 21,
+  &#39;start&#39;: 6484623,
+  &#39;end&#39;: 6499261,
+  &#39;biotype&#39;: &#39;protein_coding&#39;}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for key in genes:
+    print(key)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;FP565260.4
+FP565260.3
+FP565260.5
+GATD3B
+FP565260.2
+FP565260.1
+FP565260.6
+AC079801.1
+LINC01670
+CU633967.1
+Y_RNA
+FP236315.2
+FP236315.3
+FP236315.1
+CU639417.1
+CU639417.3
+CU639417.2
+LINC01669
+CU639417.4
+CU639417.5
+SIK1B
+CU633906.5
+CU633906.1
+CU633906.4
+CU633906.3
+CU633906.2
+CBSL
+U2AF1L5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for key in genes:
+    if not key.startswith(&#39;FP&#39;) and not key.startswith(&#39;CU&#39;):
+        print(key)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;GATD3B
+AC079801.1
+LINC01670
+Y_RNA
+LINC01669
+SIK1B
+CBSL
+U2AF1L5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for key in genes:
+    if genes[key] [&#39;biotype&#39;] != &#39;protein_coding&#39;:
+        print(key, genes[key])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;FP565260.5 {&#39;gene_id&#39;: &#39;ENSG00000279687&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5073458, &#39;end&#39;: 5087867, &#39;biotype&#39;: &#39;lncRNA&#39;}
+AC079801.1 {&#39;gene_id&#39;: &#39;ENSG00000279669&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5232668, &#39;end&#39;: 5243833, &#39;biotype&#39;: &#39;lncRNA&#39;}
+LINC01670 {&#39;gene_id&#39;: &#39;ENSG00000279094&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5499151, &#39;end&#39;: 5502542, &#39;biotype&#39;: &#39;lncRNA&#39;}
+CU633967.1 {&#39;gene_id&#39;: &#39;ENSG00000274333&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5553637, &#39;end&#39;: 5614880, &#39;biotype&#39;: &#39;lncRNA&#39;}
+Y_RNA {&#39;gene_id&#39;: &#39;ENSG00000276902&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6365955, &#39;end&#39;: 6366055, &#39;biotype&#39;: &#39;misc_RNA&#39;}
+FP236315.2 {&#39;gene_id&#39;: &#39;ENSG00000279186&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5703182, &#39;end&#39;: 5705637, &#39;biotype&#39;: &#39;TEC&#39;}
+FP236315.3 {&#39;gene_id&#39;: &#39;ENSG00000279784&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5705345, &#39;end&#39;: 5707160, &#39;biotype&#39;: &#39;lncRNA&#39;}
+FP236315.1 {&#39;gene_id&#39;: &#39;ENSG00000279064&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 5707004, &#39;end&#39;: 5709456, &#39;biotype&#39;: &#39;lncRNA&#39;}
+CU639417.3 {&#39;gene_id&#39;: &#39;ENSG00000280013&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6008604, &#39;end&#39;: 6008810, &#39;biotype&#39;: &#39;processed_pseudogene&#39;}
+CU639417.2 {&#39;gene_id&#39;: &#39;ENSG00000279769&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6034690, &#39;end&#39;: 6036093, &#39;biotype&#39;: &#39;TEC&#39;}
+LINC01669 {&#39;gene_id&#39;: &#39;ENSG00000280191&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6060340, &#39;end&#39;: 6076305, &#39;biotype&#39;: &#39;lncRNA&#39;}
+CU639417.4 {&#39;gene_id&#39;: &#39;ENSG00000280095&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6081193, &#39;end&#39;: 6082585, &#39;biotype&#39;: &#39;lncRNA&#39;}
+CU639417.5 {&#39;gene_id&#39;: &#39;ENSG00000280179&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6084364, &#39;end&#39;: 6091407, &#39;biotype&#39;: &#39;lncRNA&#39;}
+CU633906.5 {&#39;gene_id&#39;: &#39;ENSG00000288187&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6215291, &#39;end&#39;: 6217681, &#39;biotype&#39;: &#39;lncRNA&#39;}
+CU633906.1 {&#39;gene_id&#39;: &#39;ENSG00000275496&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6228966, &#39;end&#39;: 6267317, &#39;biotype&#39;: &#39;lncRNA&#39;}
+CU633906.4 {&#39;gene_id&#39;: &#39;ENSG00000280019&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6272135, &#39;end&#39;: 6276532, &#39;biotype&#39;: &#39;unprocessed_pseudogene&#39;}
+CU633906.3 {&#39;gene_id&#39;: &#39;ENSG00000279709&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6309161, &#39;end&#39;: 6312948, &#39;biotype&#39;: &#39;unprocessed_pseudogene&#39;}
+CU633906.2 {&#39;gene_id&#39;: &#39;ENSG00000278903&#39;, &#39;chromsome&#39;: 21, &#39;start&#39;: 6318434, &#39;end&#39;: 6360415, &#39;biotype&#39;: &#39;lncRNA&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;创建函数-defining-functions&#34;&gt;创建函数(defining functions)&lt;/h1&gt;
+
+&lt;p&gt;使用&lt;code&gt;def&lt;/code&gt;语句进行函数创建.下面举一些例子.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def f_to_c(fahrenheit):
+    celsius = (float(fahrenheit) - 32) * 5 / 9
+    return round(celsius, 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;ftemp = 110
+ctemp = f_to_c(56)
+ctemp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;13.33
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&#39;C =&#39;, f_to_c(ftemp))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;C = 43.33
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def roman(string):
+    &#39;&#39;&#39;
+    Returns the integer value of a string in Roman numerals
+    &#39;&#39;&#39; 
+    dictionary = {&#39;M&#39;:1000, &#39;D&#39;:500, &#39;C&#39;:100, &#39;L&#39;:50, &#39;X&#39;:10, &#39;V&#39;:5, &#39;I&#39;:1}
+    arabic = []
+    # list that holds the Roman numerals as Arabic ciphers
+    for letter in string.upper():
+        if letter in dictionary:
+            arabic.append(dictionary[letter])
+
+    for i in range(len(arabic) - 1):
+        if arabic[i] &amp;lt; arabic[i+1]:
+            arabic[i] *= -1 # (5,10) -&amp;gt; (-5,10)
+    print(arabic)
+    return sum(arabic)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def seq_list_from_fastq_file(filename):
+    &#39;&#39;&#39;
+    Parse fastq file returning two lists, one of all sequences
+    the other of the quality strings
+    &#39;&#39;&#39;
+    seq_list = []
+    quality_list = []
+    
+    with open(filename) as FASTQ_INPUT:
+        line_cnt = 0
+        for line in FASTQ_INPUT:
+            line_cnt += 1
+            if line_cnt == 2:
+                seq_list.append(line.rstrip(&#39;\n&#39;))
+            if line_cnt % 4 == 0:
+                quality_list.append(line.rstrip(&#39;\n&#39;))
+                line_cnt = 0
+
+    return seq_list, quality_list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;DNA_codon_table = {
+#                        Second Base
+#        T             C             A             G
+# T
+    &#39;TTT&#39;: &#39;Phe&#39;, &#39;TCT&#39;: &#39;Ser&#39;, &#39;TAT&#39;: &#39;Tyr&#39;, &#39;TGT&#39;: &#39;Cys&#39;,     # TxT
+    &#39;TTC&#39;: &#39;Phe&#39;, &#39;TCC&#39;: &#39;Ser&#39;, &#39;TAC&#39;: &#39;Tyr&#39;, &#39;TGC&#39;: &#39;Cys&#39;,     # TxC
+    &#39;TTA&#39;: &#39;Leu&#39;, &#39;TCA&#39;: &#39;Ser&#39;, &#39;TAA&#39;: &#39;---&#39;, &#39;TGA&#39;: &#39;---&#39;,     # TxA
+    &#39;TTG&#39;: &#39;Leu&#39;, &#39;TCG&#39;: &#39;Ser&#39;, &#39;TAG&#39;: &#39;---&#39;, &#39;TGG&#39;: &#39;Trp&#39;,     # TxG
+# C
+    &#39;CTT&#39;: &#39;Leu&#39;, &#39;CCT&#39;: &#39;Pro&#39;, &#39;CAT&#39;: &#39;His&#39;, &#39;CGT&#39;: &#39;Arg&#39;,     # CxT
+    &#39;CTC&#39;: &#39;Leu&#39;, &#39;CCC&#39;: &#39;Pro&#39;, &#39;CAC&#39;: &#39;His&#39;, &#39;CGC&#39;: &#39;Arg&#39;,     # CxC
+    &#39;CTA&#39;: &#39;Leu&#39;, &#39;CCA&#39;: &#39;Pro&#39;, &#39;CAA&#39;: &#39;Gln&#39;, &#39;CGA&#39;: &#39;Arg&#39;,     # CxA
+    &#39;CTG&#39;: &#39;Leu&#39;, &#39;CCG&#39;: &#39;Pro&#39;, &#39;CAG&#39;: &#39;Gln&#39;, &#39;CGG&#39;: &#39;Arg&#39;,     # CxG
+# A
+    &#39;ATT&#39;: &#39;Ile&#39;, &#39;ACT&#39;: &#39;Thr&#39;, &#39;AAT&#39;: &#39;Asn&#39;, &#39;AGT&#39;: &#39;Ser&#39;,     # AxT
+    &#39;ATC&#39;: &#39;Ile&#39;, &#39;ACC&#39;: &#39;Thr&#39;, &#39;AAC&#39;: &#39;Asn&#39;, &#39;AGC&#39;: &#39;Ser&#39;,     # AxC
+    &#39;ATA&#39;: &#39;Ile&#39;, &#39;ACA&#39;: &#39;Thr&#39;, &#39;AAA&#39;: &#39;Lys&#39;, &#39;AGA&#39;: &#39;Arg&#39;,     # AxA
+    &#39;ATG&#39;: &#39;Met&#39;, &#39;ACG&#39;: &#39;Thr&#39;, &#39;AAG&#39;: &#39;Lys&#39;, &#39;AGG&#39;: &#39;Arg&#39;,     # AxG
+# G
+    &#39;GTT&#39;: &#39;Val&#39;, &#39;GCT&#39;: &#39;Ala&#39;, &#39;GAT&#39;: &#39;Asp&#39;, &#39;GGT&#39;: &#39;Gly&#39;,     # GxT
+    &#39;GTC&#39;: &#39;Val&#39;, &#39;GCC&#39;: &#39;Ala&#39;, &#39;GAC&#39;: &#39;Asp&#39;, &#39;GGC&#39;: &#39;Gly&#39;,     # GxC
+    &#39;GTA&#39;: &#39;Val&#39;, &#39;GCA&#39;: &#39;Ala&#39;, &#39;GAA&#39;: &#39;Glu&#39;, &#39;GGA&#39;: &#39;Gly&#39;,     # GxA
+    &#39;GTG&#39;: &#39;Val&#39;, &#39;GCG&#39;: &#39;Ala&#39;, &#39;GAG&#39;: &#39;Glu&#39;, &#39;GGG&#39;: &#39;Gly&#39;      # GxG
+}
+
+dna_seq = &#39;ATGATATGGAGGAGGTAGCCGCGCGCCATGCGCGCTATATTTTGGTAT&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def translate_DNA_codon(codon):
+    return DNA_codon_table[codon]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def translate(seq):
+    &#39;&#39;&#39;Return the animo acid sequence corresponding to the DNA
+    sequence seq&#39;&#39;&#39;
+    translation = &#39;&#39;
+    for n in range(0, len(seq) - (len(seq) % 3), 3): # every third base
+        translation += translate_DNA_codon(seq[n:n+3])
+    return translation
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;translate(dna_seq)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;MetIleTrpArgArg---ProArgAlaMetArgAlaIlePheTrpTyr&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def translate_in_frame(seq, framenum):
+    &#39;&#39;&#39;Return the translation of seq in framenum 1, 2, or 3&#39;&#39;&#39;
+    return translate(seq[framenum-1:])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;translate_in_frame(dna_seq, 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;---TyrGlyGlyGlySerArgAlaProCysAlaLeuTyrPheGly&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def print_translation_in_frame(seq, framenum, prefix):
+    &#39;&#39;&#39;Print the translation of seq in framenum preceded by prefix&#39;&#39;&#39;
+    print(prefix,
+          framenum,
+          &#39; &#39; * framenum,
+          translate_in_frame(seq, framenum),
+          sep=&#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print_translation_in_frame(dna_seq, 2, &#39;Frame &#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Frame 2  ---TyrGlyGlyGlySerArgAlaProCysAlaLeuTyrPheGly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def print_translations(seq, prefix = &#39;&#39;):
+    &#39;&#39;&#39;Print the translations of seq in all three reading frames,
+    each preceded by prefix&#39;&#39;&#39;
+    # print DNA sequence, indented to line up after prefix is added
+    # to translation lines
+    print(&#39;\n&#39;, &#39; &#39; * (len(prefix) + 2), seq, sep=&#39;&#39;)
+    for framenum in range(1,4):
+        print_translation_in_frame(seq, framenum, prefix)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print_translations(dna_seq)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;  ATGATATGGAGGAGGTAGCCGCGCGCCATGCGCGCTATATTTTGGTAT
+1 MetIleTrpArgArg---ProArgAlaMetArgAlaIlePheTrpTyr
+2  ---TyrGlyGlyGlySerArgAlaProCysAlaLeuTyrPheGly
+3   AspMetGluGluValAlaAlaArgHisAlaArgTyrIleLeuVal
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def translate_with_open_reading_frames(seq, framenum):
+    &#39;&#39;&#39;Return the translation of seq in framenum (1, 2, or 3), with
+    ---&#39;s when not within an open reading frame; assume the read is
+    not in an open frame when at the beginning of seq&#39;&#39;&#39;
+    open = False
+    translation = &amp;quot;&amp;quot;
+    seqlength = len(seq) - (framenum - 1)
+    for n in range(framenum-1, seqlength - (seqlength % 3), 3):
+        codon = translate_DNA_codon(seq[n:n+3])
+        open = (open or codon == &amp;quot;Met&amp;quot;) and not (codon == &amp;quot;---&amp;quot;)
+        translation += codon if open else &amp;quot;---&amp;quot;
+    return translation
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;translate_with_open_reading_frames(dna_seq, 1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;MetIleTrpArgArg------------MetArgAlaIlePheTrpTyr&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def print_translation_with_open_reading_frame(seq, framenum, prefix):
+    print(prefix,
+          framenum,
+          &#39; &#39; * framenum,
+          translate_with_open_reading_frames(seq, framenum),
+          sep=&#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print_translation_with_open_reading_frame(dna_seq, 1, &#39;Seq &#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Seq 1 MetIleTrpArgArg------------MetArgAlaIlePheTrpTyr
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def print_translations_with_open_reading_frames(seq, prefix=&#39;&#39;):
+    print(&#39;\n&#39;, &#39; &#39; * (len(prefix) + 2), seq, sep=&#39;&#39;)
+    for frame in range(1,4):
+        print_translation_with_open_reading_frame(seq, frame, prefix)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print_translations_with_open_reading_frames(dna_seq)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;  ATGATATGGAGGAGGTAGCCGCGCGCCATGCGCGCTATATTTTGGTAT
+1 MetIleTrpArgArg------------MetArgAlaIlePheTrpTyr
+2  ---------------------------------------------
+3   ---MetGluGluValAlaAlaArgHisAlaArgTyrIleLeuVal
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def print_translations_in_frames_in_both_directions(seq):
+    print_translations(seq, &#39;5\&#39;-&amp;gt;3\&#39; ORF &#39;)
+    print_translations(seq[::-1], &#39;3\&#39;-&amp;gt;5\&#39; ORF &#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print_translations_in_frames_in_both_directions(dna_seq)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;             ATGATATGGAGGAGGTAGCCGCGCGCCATGCGCGCTATATTTTGGTAT
+5&#39;-&amp;gt;3&#39; ORF 1 MetIleTrpArgArg---ProArgAlaMetArgAlaIlePheTrpTyr
+5&#39;-&amp;gt;3&#39; ORF 2  ---TyrGlyGlyGlySerArgAlaProCysAlaLeuTyrPheGly
+5&#39;-&amp;gt;3&#39; ORF 3   AspMetGluGluValAlaAlaArgHisAlaArgTyrIleLeuVal
+
+             TATGGTTTTATATCGCGCGTACCGCGCGCCGATGGAGGAGGTATAGTA
+3&#39;-&amp;gt;5&#39; ORF 1 TyrGlyPheIleSerArgValProArgAlaAspGlyGlyGlyIleVal
+3&#39;-&amp;gt;5&#39; ORF 2  MetValLeuTyrArgAlaTyrArgAlaProMetGluGluVal---
+3&#39;-&amp;gt;5&#39; ORF 3   TrpPheTyrIleAlaArgThrAlaArgArgTrpArgArgTyrSer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def print_translations_with_open_reading_frames_in_both_directions(seq):
+    print_translations_with_open_reading_frames(seq, &#39;5\&#39;-&amp;gt;3\&#39; ORF &#39;)
+    print_translations_with_open_reading_frames(seq[::-1], &#39;3\&#39;-&amp;gt;5\&#39; ORF &#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print_translations_with_open_reading_frames_in_both_directions(dna_seq)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;             ATGATATGGAGGAGGTAGCCGCGCGCCATGCGCGCTATATTTTGGTAT
+5&#39;-&amp;gt;3&#39; ORF 1 MetIleTrpArgArg------------MetArgAlaIlePheTrpTyr
+5&#39;-&amp;gt;3&#39; ORF 2  ---------------------------------------------
+5&#39;-&amp;gt;3&#39; ORF 3   ---MetGluGluValAlaAlaArgHisAlaArgTyrIleLeuVal
+
+             TATGGTTTTATATCGCGCGTACCGCGCGCCGATGGAGGAGGTATAGTA
+3&#39;-&amp;gt;5&#39; ORF 1 ------------------------------------------------
+3&#39;-&amp;gt;5&#39; ORF 2  MetValLeuTyrArgAlaTyrArgAlaProMetGluGluVal---
+3&#39;-&amp;gt;5&#39; ORF 3   ---------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;map函数&#34;&gt;map函数&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt;函数跟R中的&lt;code&gt;apply&lt;/code&gt;家族有点像.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt;函数接受两个参数,第一个参数为函数,第二个参数为一个列表,然后函数对列表中的每一个元素进行处理.然后返回长度
+和输入列表相同的列表.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# starting list
+mylist = [1.2, 3.2, 5.4, 2.1, 0.8]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# round all values in list to nearest int
+print(list(map(round, mylist)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[1, 3, 5, 2, 1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# define function to square values
+def sqr(x):
+    return round(pow(x,2),3)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# square each value of list
+print(list(map(sqr, mylist)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[1.44, 10.24, 29.16, 4.41, 0.64]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# mylist #2
+mylist2 = [&#39;71&#39;, &#39;72&#39;, &#39;73&#39;, &#39;74&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# convert each value in list to binary (base 2)
+print(list(map(chr, map(int, mylist2))))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;list-comprehension-列表推导表达式&#34;&gt;list comprehension(列表推导表达式)&lt;/h1&gt;
+
+&lt;p&gt;列表推导表达式可以从一个列表快速的得到另外一个列表,在很多情况下,可以替换掉比较简单的&lt;code&gt;for&lt;/code&gt;循环.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;[&lt;/b&gt; expression &lt;b&gt;for&lt;/b&gt; item &lt;b&gt;in&lt;/b&gt; list &lt;b&gt;if&lt;/b&gt; conditional &lt;b&gt;]&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;for item in list:
+    if conditional:
+        expression&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;mylist = []
+for x in &#39;spam&#39;:
+    mylist.append(ord(x))
+print(mylist)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[115, 112, 97, 109]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# convert a string into a list of ASCII values
+[ord(x) for x in &#39;spam&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[115, 112, 97, 109]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# convert a string into a set of ASCII values
+{ord(x) for x in &#39;spaam&#39;}  # square to curly
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{97, 109, 112, 115}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# convert a string into a dict of ASCII values
+{x: ord(x) for x in &#39;spaam&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{&#39;s&#39;: 115, &#39;p&#39;: 112, &#39;a&#39;: 97, &#39;m&#39;: 109}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;S = []
+V = []
+M = []
+for x in range(10):
+    S.append(x**2)
+print(&#39;S =&#39;, S)
+
+for i in range(13):
+    V.append(2**i)
+print(&#39;V =&#39;, V)
+
+for x in S:
+    if x % 2 == 0:
+        M.append(x)
+print(&#39;M =&#39;, M)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;S = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+V = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
+M = [0, 4, 16, 36, 64]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;S = [x**2 for x in range(10)]
+V = [2**x for x in range(13)]
+M = [x for x in S if x % 2 == 0]
+print(&#39;S =&#39;, S)
+print(&#39;V =&#39;, V)
+print(&#39;M =&#39;, M)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;S = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+V = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
+M = [0, 4, 16, 36, 64]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# start with a matrix, in this case represented as three lists
+M = [[1, 2, 3],
+     [4, 5, 6],
+     [7, 8, 9]]
+col2 = []
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# print out just the 2nd column
+for row in M:
+    col2.append(row[1])
+print(col2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[2, 5, 8]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;[row[1] for row in M]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[2, 5, 8]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Nested comprehensions
+# tuples that are the cross products of two lists: [-1,0,1] and [-1,0,1]
+mylist = []
+for x in range(-1,2):
+    for y in range(-1,2):
+        if x == y:
+            mylist.append((x,y))
+
+print(mylist)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[(-1, -1), (0, 0), (1, 1)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;[(x, y) for x in range(-1,2) for y in range(-1,2) if x == y]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[(-1, -1), (0, 0), (1, 1)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;numbers = [1, 2, 3, 5, 7, 8, 11, 10, 11, 14]
+doubled_odds = []
+for n in numbers:
+    if n % 2 == 1:
+        doubled_odds.append(n * 2)
+print(doubled_odds)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[2, 6, 10, 14, 22, 22]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;doubled_odds = [n * 2 for n in numbers if n % 2 == 1]
+print (doubled_odds)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[2, 6, 10, 14, 22, 22]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# output increasing amount of string
+string = &#39;elephants&#39;
+[string[:c + 1] for c in range(len(string))]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;e&#39;,
+ &#39;el&#39;,
+ &#39;ele&#39;,
+ &#39;elep&#39;,
+ &#39;eleph&#39;,
+ &#39;elepha&#39;,
+ &#39;elephan&#39;,
+ &#39;elephant&#39;,
+ &#39;elephants&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# generate all k-mers of 23bp for a string of nucleotides
+#                1         2         3         4
+#      01234567890123456789012345678901234567890
+dna = &#39;ACTGATCGATTACGTATAGTAGAATTCTATCATATATATGG&#39;
+kmers = []
+for c in range(0, len(dna) - 22):
+    kmers.append(dna[c:c+23])
+kmers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;ACTGATCGATTACGTATAGTAGA&#39;,
+ &#39;CTGATCGATTACGTATAGTAGAA&#39;,
+ &#39;TGATCGATTACGTATAGTAGAAT&#39;,
+ &#39;GATCGATTACGTATAGTAGAATT&#39;,
+ &#39;ATCGATTACGTATAGTAGAATTC&#39;,
+ &#39;TCGATTACGTATAGTAGAATTCT&#39;,
+ &#39;CGATTACGTATAGTAGAATTCTA&#39;,
+ &#39;GATTACGTATAGTAGAATTCTAT&#39;,
+ &#39;ATTACGTATAGTAGAATTCTATC&#39;,
+ &#39;TTACGTATAGTAGAATTCTATCA&#39;,
+ &#39;TACGTATAGTAGAATTCTATCAT&#39;,
+ &#39;ACGTATAGTAGAATTCTATCATA&#39;,
+ &#39;CGTATAGTAGAATTCTATCATAT&#39;,
+ &#39;GTATAGTAGAATTCTATCATATA&#39;,
+ &#39;TATAGTAGAATTCTATCATATAT&#39;,
+ &#39;ATAGTAGAATTCTATCATATATA&#39;,
+ &#39;TAGTAGAATTCTATCATATATAT&#39;,
+ &#39;AGTAGAATTCTATCATATATATG&#39;,
+ &#39;GTAGAATTCTATCATATATATGG&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# generate all 23-mers of dna
+[dna[c:c+23] for c in range(0, len(dna) - 22)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;[&#39;ACTGATCGATTACGTATAGTAGA&#39;,
+ &#39;CTGATCGATTACGTATAGTAGAA&#39;,
+ &#39;TGATCGATTACGTATAGTAGAAT&#39;,
+ &#39;GATCGATTACGTATAGTAGAATT&#39;,
+ &#39;ATCGATTACGTATAGTAGAATTC&#39;,
+ &#39;TCGATTACGTATAGTAGAATTCT&#39;,
+ &#39;CGATTACGTATAGTAGAATTCTA&#39;,
+ &#39;GATTACGTATAGTAGAATTCTAT&#39;,
+ &#39;ATTACGTATAGTAGAATTCTATC&#39;,
+ &#39;TTACGTATAGTAGAATTCTATCA&#39;,
+ &#39;TACGTATAGTAGAATTCTATCAT&#39;,
+ &#39;ACGTATAGTAGAATTCTATCATA&#39;,
+ &#39;CGTATAGTAGAATTCTATCATAT&#39;,
+ &#39;GTATAGTAGAATTCTATCATATA&#39;,
+ &#39;TATAGTAGAATTCTATCATATAT&#39;,
+ &#39;ATAGTAGAATTCTATCATATATA&#39;,
+ &#39;TAGTAGAATTCTATCATATATAT&#39;,
+ &#39;AGTAGAATTCTATCATATATATG&#39;,
+ &#39;GTAGAATTCTATCATATATATGG&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;zip函数&#34;&gt;zip函数&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# reverse key and value in mydict
+mydict = {&#39;A&#39;:12, &#39;B&#39;:25, &#39;C&#39;:23, &#39;D&#39;:14}
+reversed = dict(zip(mydict.values(), mydict))
+print(reversed)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{12: &#39;A&#39;, 25: &#39;B&#39;, 23: &#39;C&#39;, 14: &#39;D&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# same as above
+reversed = dict(zip(mydict.values(), mydict.keys()))
+print(reversed)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;{12: &#39;A&#39;, 25: &#39;B&#39;, 23: &#39;C&#39;, 14: &#39;D&#39;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
       <link>/post/blogdown-instruction/</link>

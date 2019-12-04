@@ -343,3 +343,6 @@ title: Display Jupyter Notebooks with Academic
 
 如果要使用featured figure,需要将`featurd`设置为true,且在该post目录下添加名字为`featured.png`的图片.
 
+
+
+
