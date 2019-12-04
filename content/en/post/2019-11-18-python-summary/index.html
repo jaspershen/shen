@@ -32,6 +32,21 @@ output:
 </ul></li>
 <li><a href="#jupyter-notbook"><span class="toc-section-number">3</span> Jupyter notbook</a><ul>
 <li><a href="#修改工作路径"><span class="toc-section-number">3.1</span> 修改工作路径</a></li>
+<li><a href="#在某个文件夹下面打开jupyter-botebook"><span class="toc-section-number">3.2</span> 在某个文件夹下面打开jupyter botebook</a></li>
+<li><a href="#修改jupyter-note主题"><span class="toc-section-number">3.3</span> 修改jupyter note主题</a><ul>
+<li><a href="#首先安装jupyter-themes"><span class="toc-section-number">3.3.1</span> 首先安装<code>jupyter-themes</code></a></li>
+<li><a href="#查看所有可使用主题"><span class="toc-section-number">3.3.2</span> 查看所有可使用主题</a></li>
+<li><a href="#更改主题"><span class="toc-section-number">3.3.3</span> 更改主题</a></li>
+<li><a href="#恢复默认主题"><span class="toc-section-number">3.3.4</span> 恢复默认主题</a></li>
+<li><a href="#各主题样式"><span class="toc-section-number">3.3.5</span> 各主题样式</a></li>
+</ul></li>
+<li><a href="#在jupyter中使用r"><span class="toc-section-number">3.4</span> 在jupyter中使用R</a><ul>
+<li><a href="#关联jupyter-notebook"><span class="toc-section-number">3.4.1</span> 关联jupyter notebook</a></li>
+<li><a href="#打开jupyter-notebook"><span class="toc-section-number">3.4.2</span> 打开jupyter notebook</a></li>
+</ul></li>
+<li><a href="#jupyter快捷键"><span class="toc-section-number">3.5</span> Jupyter快捷键</a><ul>
+<li><a href="#命令行模式按esc生效"><span class="toc-section-number">3.5.1</span> 命令行模式(按<code>Esc</code>生效)</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -87,5 +102,103 @@ output:
 cd ...</code></pre>
 <p>然后使用下列命令启动<code>jupyter notebook</code></p>
 <pre><code>jupyter notebook</code></pre>
+</div>
+<div id="在某个文件夹下面打开jupyter-botebook" class="section level2">
+<h2><span class="header-section-number">3.2</span> 在某个文件夹下面打开jupyter botebook</h2>
+<p>直接在某个文件夹下面,<code>shift + right click</code>,选择<code>open powershell window here</code>,然后输入<code>jupyter notebook</code>即可.</p>
+</div>
+<div id="修改jupyter-note主题" class="section level2">
+<h2><span class="header-section-number">3.3</span> 修改jupyter note主题</h2>
+<div id="首先安装jupyter-themes" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> 首先安装<code>jupyter-themes</code></h3>
+<pre><code>pip install --upgrade jupyterthemes</code></pre>
+</div>
+<div id="查看所有可使用主题" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> 查看所有可使用主题</h3>
+<pre><code>jt -l</code></pre>
+</div>
+<div id="更改主题" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> 更改主题</h3>
+<pre><code>jt -t theme_name</code></pre>
+</div>
+<div id="恢复默认主题" class="section level3">
+<h3><span class="header-section-number">3.3.4</span> 恢复默认主题</h3>
+<pre><code>jt -r</code></pre>
+</div>
+<div id="各主题样式" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> 各主题样式</h3>
+<div id="oceans16" class="section level4">
+<h4><span class="header-section-number">3.3.5.1</span> oceans16</h4>
+<p><img src="oceans16.png" /></p>
+</div>
+<div id="onedork" class="section level4">
+<h4><span class="header-section-number">3.3.5.2</span> onedork</h4>
+<p><img src="onedork.png" /></p>
+</div>
+<div id="chesterish" class="section level4">
+<h4><span class="header-section-number">3.3.5.3</span> chesterish</h4>
+<p><img src="chesterish.png" /></p>
+</div>
+<div id="grade3" class="section level4">
+<h4><span class="header-section-number">3.3.5.4</span> grade3</h4>
+<p><img src="grade3.png" /></p>
+</div>
+</div>
+</div>
+<div id="在jupyter中使用r" class="section level2">
+<h2><span class="header-section-number">3.4</span> 在jupyter中使用R</h2>
+<div id="关联jupyter-notebook" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> 关联jupyter notebook</h3>
+<pre><code>install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;, &#39;evaluate&#39;, &#39;crayon&#39;, &#39;pbdZMQ&#39;, &#39;IRkernel&#39;, &#39;uuid&#39;, &#39;digest&#39;))
+# 只在当前用户下安装
+IRkernel::installspec()
+# 或者是在系统下安装
+IRkernel::installspec(user = FALSE)</code></pre>
+</div>
+<div id="打开jupyter-notebook" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> 打开jupyter notebook</h3>
+<p>新建,选择R.就可以使用了.</p>
+<p><img src="jupyter_R.png" /></p>
+</div>
+</div>
+<div id="jupyter快捷键" class="section level2">
+<h2><span class="header-section-number">3.5</span> Jupyter快捷键</h2>
+<div id="命令行模式按esc生效" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> 命令行模式(按<code>Esc</code>生效)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Shortcut</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>M</code></td>
+<td>把代码块变成标签</td>
+</tr>
+<tr class="even">
+<td><code>Y</code></td>
+<td>把标签变成代码块</td>
+</tr>
+<tr class="odd">
+<td><code>X</code></td>
+<td>剪切选择的代码块</td>
+</tr>
+<tr class="even">
+<td><code>A</code></td>
+<td>在上面插入代码块</td>
+</tr>
+<tr class="odd">
+<td><code>B</code></td>
+<td>在下面插入代码块</td>
+</tr>
+<tr class="even">
+<td><code>Z</code></td>
+<td>撤销删除</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>

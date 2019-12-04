@@ -83,6 +83,85 @@ cd ...
 jupyter notebook
 ```
 
+## 在某个文件夹下面打开jupyter botebook
+
+直接在某个文件夹下面,`shift + right click`,选择`open powershell window here`,然后输入`jupyter notebook`即可.
+
+## 修改jupyter note主题
+
+### 首先安装`jupyter-themes`
+
+```
+pip install --upgrade jupyterthemes
+```
+
+### 查看所有可使用主题
+
+```
+jt -l
+```
+
+### 更改主题
+
+```
+jt -t theme_name
+```
+
+### 恢复默认主题
+
+```
+jt -r
+```
+
+### 各主题样式
+
+#### oceans16
+
+![](oceans16.png)
+
+#### onedork
+
+![](onedork.png)
+
+
+#### chesterish
+
+![](chesterish.png)
+
+#### grade3
+
+![](grade3.png)
+
+## 在jupyter中使用R
+
+### 关联jupyter notebook
+
+```
+install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'IRkernel', 'uuid', 'digest'))
+# 只在当前用户下安装
+IRkernel::installspec()
+# 或者是在系统下安装
+IRkernel::installspec(user = FALSE)
+```
+
+### 打开jupyter notebook
+
+新建,选择R.就可以使用了.
+
+![](jupyter_R.png)
+
+## Jupyter快捷键
+
+### 命令行模式(按`Esc`生效)
+
+Shortcut | Function
+---------|---------
+`M`|把代码块变成标签
+`Y`|把标签变成代码块
+`X`|剪切选择的代码块
+`A`|在上面插入代码块
+`B`|在下面插入代码块
+`Z`|撤销删除
 
 
 
