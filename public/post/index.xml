@@ -5,7 +5,77 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Tue, 03 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Tmux summary</title>
+      <link>/post/2019-12-04-tmux-summary/</link>
+      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-12-04-tmux-summary/</guid>
+      <description>
+
+&lt;p&gt;&lt;h2&gt;Table of Contents&lt;/h2&gt;
+HAHAHUGOSHORTCODE-TOC0-HBHB&lt;/p&gt;
+
+&lt;p&gt;完整的tmux请参考下面的帖子:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://louiszhai.github.io/2017/09/30/tmux/&#34; target=&#34;_blank&#34;&gt;http://louiszhai.github.io/2017/09/30/tmux/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;tmux简洁&#34;&gt;Tmux简洁&lt;/h1&gt;
+
+&lt;p&gt;tmux是一款优秀的终端复用软件，主要得益于以下三处功能：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;丝滑分屏（split），虽然iTem2也提供了横向和竖向分屏功能，但这种分屏功能非常拙劣，完全等同于屏幕新开一个窗口，新开的pane不会自动进入到当前目录，也没有记住当前登录状态。这意味着如果我ssh进入到远程服务器时，iTem2新开的pane中，我依然要重新走一遍ssh登录的老路（omg）。tmux就不会这样，tmux窗口中，新开的pane，默认进入到之前的路径，如果是ssh连接，登录状态也依旧保持着，如此一来，我就可以随意的增删pane，这种灵活性，好处不言而喻。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;保护现场（attach），即使命令行的工作只进行到一半，关闭终端后还可以重新进入到操作现场，继续工作。对于ssh远程连接而言，即使网络不稳定也没有关系，掉线后重新连接，可以直奔现场，之前运行中的任务，依旧在跑，就好像从来没有离开过一样；特别是在远程服务器上运行耗时的任务，tmux可以帮你一直保持住会话。如此一来，你就可以随时随地放心地进行移动办公，只要你附近的计算机装有tmux（没有你也可以花几分钟装一个），你就能继续刚才的工作。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;会话共享（适用于结对编程或远程教学），将 tmux 会话的地址分享给他人，这样他们就可以通过 SSH 接入该会话。如果你要给同事演示远程服务器的操作，他不必直勾勾地盯着你的屏幕，借助tmux，他完全可以进入到你的会话，然后静静地看着他桌面上你风骚的键盘走位，只要他愿意，甚至还可以录个屏。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;tmux快捷键&#34;&gt;Tmux快捷键&lt;/h1&gt;
+
+&lt;h2 id=&#34;启动新对话&#34;&gt;启动新对话&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;tmux [new -s 会话名 -n 窗口名]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;列出所有的对话&#34;&gt;列出所有的对话&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;tmux ls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;关闭会话&#34;&gt;关闭会话&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;tmux kill-session -t 会话名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;关闭所有会话&#34;&gt;关闭所有会话&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;tmux ls | grep : | cut -d. -f1 | awk &#39;{print substr($1, 0, length($1)-1)}&#39; | xargs kill
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;在-tmux-中-按下-tmux-前缀-ctrl-b-然后&#34;&gt;在 Tmux 中，按下 Tmux 前缀 ctrl+b，然后&lt;/h2&gt;
+
+&lt;h3 id=&#34;会话&#34;&gt;会话&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;:new&amp;lt;回车&amp;gt;  启动新会话
+s           列出所有会话
+$           重命名当前会话
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;窗口-标签页&#34;&gt;窗口 (标签页)&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;c  创建新窗口
+w  列出所有窗口
+n  后一个窗口
+p  前一个窗口
+f  查找窗口
+,  重命名当前窗口
+&amp;amp;  关闭当前窗口
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python for genomics day 05</title>
       <link>/post/2019-12-02-python-for-genomics-class_day05/</link>
