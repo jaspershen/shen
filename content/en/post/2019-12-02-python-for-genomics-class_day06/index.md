@@ -2,21 +2,20 @@
 authors:
 - admin
 categories: [Python]
-date: "2019-12-03T00:00:00Z"
+date: "2019-12-07T00:00:00Z"
 draft: false
 featured: true
 image:
   caption: ""
   focal_point: ""
 projects: []
-subtitle: Learn how to blog in Academic using Jupyter notebooks
-summary: Learn how to blog in Academic using Jupyter notebooks
-tags: []
+subtitle: Python for genomics day 06
+summary: Python for genomics day 06
+tags: [Python]
 title: Python for genomics day 06
 ---
 
 {{% toc %}}
-
 
 主要介绍了几个基础的模块,函数,以及如何创建自定义函数.
 
@@ -1241,7 +1240,377 @@ print(reversed)
     {12: 'A', 25: 'B', 23: 'C', 14: 'D'}
     
 
+# 练习题
+
+## 加载library
+
+不同的加载libyrary方式
+
 
 ```python
+# import the math library
+# find the sqrt of 9
+import math
+print(math.sqrt(9))
 
+# import the math library, but call it m
+# find the sqrt of 9
+import math as m
+print(m.sqrt(9))
+
+# import ONLY the sqrt function from math
+# find the sqrt of 9
+from math import sqrt
+print(sqrt(9))
+
+# import ONLY the sqrt function from math, but call it s
+# find the sqrt of 9
+from math import sqrt as s
+print(s(9))
 ```
+
+    3.0
+    3.0
+    3.0
+    3.0
+    
+
+
+```python
+import math
+
+print(math.log(7))
+print(math.log(7, 2))
+
+print(math.sqrt(9))
+
+print(math.factorial(4))
+```
+
+    1.9459101490553132
+    2.807354922057604
+    3.0
+    24
+    
+
+There are so many more methods in the math library! 
+Put your cursor after the 'math.' and press 'tab' to see them all!
+`math`包中有非常多的函数,只需要加载包之后,然后输入`math.`然后点击tab键就会自动出现代码补齐.
+
+### gzip包
+
+`gzip`包主要是用来读取压缩为zip格式的文件.
+
+
+```python
+import os as os
+os.getcwd()
+os.listdir()
+```
+
+
+
+
+    ['.ipynb_checkpoints',
+     'featured.png',
+     'index.ipynb',
+     'index.md',
+     'Practice06-Veronica.ipynb',
+     'sample.txt',
+     'sample.txt.gz',
+     'Untitled.ipynb']
+
+
+
+
+```python
+import gzip
+# The most common use is to read gzipped files
+gzippedFileName = 'sample.txt.gz'
+with gzip.open(gzippedFileName, 'rt') as inFile: # don't forget to use 'rt' not just 'r'
+    for line in inFile:
+        line = line.strip()
+        print(line)
+```
+
+    1	2	3	4	5
+    6	7	8	9	10
+    11	12	13	14	15
+    16	17	18	19	20
+    21	22	23	24	25
+    26	27	28	29	30
+    
+
+### `os`包
+
+
+```python
+import os
+# Returns your current directory
+print(os.getcwd())
+
+# Returns a list containing the names of the files in the specified directory
+print(os.listdir())
+
+# Create a new directory
+os.makedirs('newDirectory')
+
+# Remove a a directory
+os.removedirs('newDirectory')
+
+open('newFile.txt', 'w') # this creates a new empty file
+
+# Remove a file
+os.remove('newFile.txt')
+```
+
+    D:\my github\shen\content\en\post\2019-12-02-python-for-genomics-class_day06
+    ['.ipynb_checkpoints', 'featured.png', 'index.ipynb', 'index.md', 'Practice06-Veronica.ipynb', 'sample.txt', 'sample.txt.gz', 'Untitled.ipynb']
+    
+
+
+```python
+# THIS CELL WON'T ACTUALLY EXECUTE
+# THEY'RE JUST EXAMPLES
+
+# Change the current working directory to the specified path.
+#修改路径的时候,如果没有这个路径,会报错.
+try:
+    os.chdir('PATH')
+except:
+    print("No this PATH")
+
+# Test whether a path exists.
+os.path.exists('PATH')
+```
+
+    No this PATH
+    
+
+
+
+
+    False
+
+
+
+### `random`包
+
+
+```python
+import random
+# Returns random number from the interval [0, 1)
+print(random.random())
+
+# Returns a random number between the minimum (inclusive) and maximum (not inclusive) provided
+print(random.randrange(1, 101))
+```
+
+    0.7176637829068632
+    97
+    
+
+### 不同的方法取naviage一个文件(file)
+
+使用`open()`函数打开,然后直接使用`read()`方法直接得到所有的内容.
+
+
+```python
+inFileName = 'sample.txt'
+
+with open(inFileName, 'r') as inFile:
+    inFile_string = inFile.read()
+    print(type(inFile))
+
+print(inFile_string)
+```
+
+    <class '_io.TextIOWrapper'>
+    1	2	3	4	5
+    6	7	8	9	10
+    11	12	13	14	15
+    16	17	18	19	20
+    21	22	23	24	25
+    26	27	28	29	30
+    
+    
+
+第二种方法可以对每行进行处理.
+其实一直有个疑问,能不能不在循环中拿到这个文件的某一行的内容?
+
+
+```python
+inFileName = 'sample.txt'
+
+with open(inFileName, 'r') as inFile:
+    for line in inFile:
+        line = line.strip()   # .rstrip() and .lstrip() remove from just the right or left sides of the line
+        print(line)
+```
+
+    1	2	3	4	5
+    6	7	8	9	10
+    11	12	13	14	15
+    16	17	18	19	20
+    21	22	23	24	25
+    26	27	28	29	30
+    
+
+另外一种方法,只读取某一行,使用下面两个函数:
+`next(inFile)`或者`inFile.readline()`
+
+
+```python
+# This is often useful for skipping the header of files!
+#主要用来部读取第一行
+inFileName = 'sample.txt'
+with open(inFileName, 'r') as inFile:
+    firstLine = next(inFile)
+    print(firstLine) # first line will print
+    secondLine = inFile.readline()
+    print(secondLine) # second line will print
+    thirdLine2 = inFile.readline()
+    print(thirdLine2) # third line will print
+```
+
+    1	2	3	4	5
+    
+    6	7	8	9	10
+    
+    11	12	13	14	15
+    
+    
+
+### 从url读取数据文件
+
+#### 从一个url读取zip压缩格斯的文件
+
+
+```python
+##加载需要用到的包
+import urllib.request
+import gzip
+URL = 'https://www.encodeproject.org/files/ENCFF215GBK/@@download/ENCFF215GBK.fastq.gz'
+#URL = 'https://www.encodeproject.org/files/gencode.v24.primary_assembly.annotation/@@download/gencode.v24.primary_assembly.annotation.gtf.gz'
+##使用`urlopen()`函数打链接
+response = urllib.request.urlopen(URL)
+with gzip.open(response, 'rt') as inFile:  # don't forget to use 'rt' not just 'r'
+    i = 0
+    for line in inFile:
+        line = line.strip()
+        print(line)
+        i += 1
+        #** Parsing of file goes here **
+        if i >= 8:
+            break
+```
+
+    @HWI-ST1309F:188:C684MANXX:6:1101:1070:2027 1:Y:0:GCGAAAC
+    ATNTTTTTTTATTATTATTATTTTAANACNCCTGGCATCTGTTGCTATTT
+    +
+    BB#<<//BFFFBF/<FFF<F/<<FBB#<<#<<<</<////<FBFBFFF##
+    @HWI-ST1309F:188:C684MANXX:6:1101:1169:2086 1:N:0:GCGAAAC
+    AGCTAAGGGTTTACCCTGTTTGCTTTCATATTCCAGTAGCCATTTAAAAT
+    +
+    BBBBBFBFFBBF<FFFFFBB<FBFFF</FF<FFBFFFFFFFF</FBFFF<
+    
+
+#### 从一个url读取非zip压缩格斯的文件
+
+
+```python
+URL = 'https://hgdownload.soe.ucsc.edu/gbdb/hg38/snp/snp142.fa'
+response = urllib.request.urlopen(URL)
+i = 0
+for line in response:
+    #line = line.strip()
+    line = line.decode('utf-8').strip()
+    #decode方法
+    print(line)
+    i += 1
+    #** Parsing of file goes here **
+    if i >= 8:
+        break
+```
+
+    >rs171
+    tcattgatgg acatttgggt tggttccagg tctttgctat tgcgagtagt gccacaataa atatacgtgt gcatgtgtct
+    tgatagtagc atgatttata atcctttggg tatataccca ctaatgggat ggctgggtca aatggtattt ctagttctag
+    atccttgagg aatcaccaca ctgtcttcca catggttgaa ctaatttaca gtcccaacaa cagtgtaaaa gtgttcctat
+    ttctccatat cctctccagc acctgttgtt tcctgacttt ttaatgatca ccattctaac tgttgcgaga tggtatctca
+    ttgtggtttt gatttgcatt tctctgatgg gcagtgatga tgagcatttt ttcatgtgtc tgttggctgc ataaatgtct
+    tcttttggga agtgtctgtt catatccatt gcctagtttt gatggggttg tttgatttat ttcttgtaaa tttgtttacg
+    ttcgttgtag attctggat
+    
+
+## 列表推导式和map()函数
+
+EXAMPLE: Three ways to convert a list of strings to a list of integers
+
+### 1. 使用循环
+
+
+```python
+myList = ['1', '2', '3', '4']
+myList_int = []
+for num in myList:
+    num = int(num)
+    myList_int.append(num)
+print(myList_int)
+```
+
+    [1, 2, 3, 4]
+    
+
+### 2. 使用列表推导式
+
+
+```python
+myList = ['1', '2', '3', '4']
+myList = [int(item) for item in myList]
+print(myList)
+```
+
+    [1, 2, 3, 4]
+    
+
+
+```python
+# Here's how you would convert to an integer AND multiply by 3 for each item in the list
+#    only if the original number is greater than 2!
+#可以在后面加上if函数从而对只特定性的选择某些元素
+myList = ['1', '2', '3', '4']
+myNewList = [int(x)*3 for x in myList if int(x) > 2]
+print(myNewList)
+```
+
+    [9, 12]
+    
+
+
+```python
+# Cool example of how to make two lists into a dictionary using a comprehension!
+# 可以将一个列表转变为一个字典
+# 用到了解包方法
+# 外面直接改为大括号就行了
+myList1 = ['one', 'two', 'three', 'four']
+myList2 = [1, 2, 3, 4]
+myDict = {key:value for key, value in zip(myList1, myList2)}
+print(myDict)
+```
+
+    {'one': 1, 'two': 2, 'three': 3, 'four': 4}
+    
+
+### 使用`map()`函数
+
+
+```python
+##map函数对列表中的每个元素进行处理
+myList = ['1', '2', '3', '4']
+myList = list(map(int, myList))
+print(myList)
+```
+
+    [1, 2, 3, 4]
+    
