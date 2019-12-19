@@ -5,7 +5,136 @@
     <link>/tags/chinese/</link>
       <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
     <description>Chinese</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 18 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>R终端输出</title>
+      <link>/post/2019-12-18-r-terminal-output/</link>
+      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-12-18-r-terminal-output/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#message函数&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; &lt;code&gt;message()&lt;/code&gt;函数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#改变输出字体颜色和格式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 改变输出字体颜色和格式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#一些常用的特殊字符&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 一些常用的特殊字符&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;message函数&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; &lt;code&gt;message()&lt;/code&gt;函数&lt;/h1&gt;
+&lt;p&gt;可以使用&lt;code&gt;message()&lt;/code&gt;函数进行终端屏幕输出.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;message(&amp;quot;ABC&amp;quot;, &amp;quot;DEF&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ABCDEF&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(message(&amp;quot;ABC&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;testit &amp;lt;- function() {
+  message(&amp;quot;testing package startup messages&amp;quot;)
+  packageStartupMessage(&amp;quot;initializing ...&amp;quot;, appendLF = FALSE)
+  Sys.sleep(1)
+  packageStartupMessage(&amp;quot; done&amp;quot;)
+}
+
+testit()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## testing package startup messages&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## initializing ... done&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages(testit())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## testing package startup messages&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(testit())&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;改变输出字体颜色和格式&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 改变输出字体颜色和格式&lt;/h1&gt;
+&lt;p&gt;使用&lt;code&gt;crayon&lt;/code&gt;包可以修改输出字体的颜色.参考官方文档:&lt;a href=&#34;https://github.com/r-lib/crayon&#34; class=&#34;uri&#34;&gt;https://github.com/r-lib/crayon&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(crayon)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;crayon&amp;#39; was built under R version 3.6.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(blue(&amp;quot;Hello&amp;quot;, &amp;quot;world!\n&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Hello world!&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(&amp;quot;... to highlight the &amp;quot; %+% red(&amp;quot;search term&amp;quot;) %+% &amp;quot; in a block of text\n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ... to highlight the search term in a block of text&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(yellow$bgMagenta$bold(&amp;#39;Hello world!\n&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Hello world!&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(green(
+  &amp;#39;I am a green line &amp;#39; %+%
+  blue$underline$bold(&amp;#39;with a blue substring&amp;#39;) %+%
+  &amp;#39; that becomes green again!\n&amp;#39;
+))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## I am a green line with a blue substring that becomes green again!&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;error &amp;lt;- red $ bold
+warn &amp;lt;- magenta $ underline
+note &amp;lt;- cyan
+cat(error(&amp;quot;Error: subscript out of bounds!\n&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error: subscript out of bounds!&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(warn(&amp;quot;Warning: shorter argument was recycled.\n&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: shorter argument was recycled.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(note(&amp;quot;Note: no such directory.\n&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Note: no such directory.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一些常用的特殊字符&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 一些常用的特殊字符&lt;/h1&gt;
+&lt;p&gt;使用&lt;code&gt;clisymbols&lt;/code&gt;包可以给出一些常见的特殊字符.&lt;/p&gt;
+&lt;p&gt;官方文档:&lt;a href=&#34;https://github.com/r-lib/clisymbols&#34; class=&#34;uri&#34;&gt;https://github.com/r-lib/clisymbols&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(clisymbols)
+cat(symbol$tick, &amp;quot;All good\n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;U+2714&amp;gt; All good&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cat(symbol$cross, &amp;quot;Problem\n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;U+2716&amp;gt; Problem&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for (i in seq_along(symbol)) {
+  cat(symbol[[i]], &amp;quot;\t&amp;quot;, names(symbol)[i], &amp;quot;\n&amp;quot;, sep = &amp;quot;&amp;quot;)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;U+2714&amp;gt; tick
+## &amp;lt;U+2716&amp;gt; cross
+## &amp;lt;U+2605&amp;gt; star
+## &amp;lt;U+2587&amp;gt; square
+## [ ]  square_small
+## [¦]  square_small_filled
+## &amp;lt;U+25EF&amp;gt; circle
+## (*)  circle_filled
+## &amp;lt;U+25CC&amp;gt; circle_dotted
+## (o)  circle_double
+## &amp;lt;U+24DE&amp;gt; circle_circle
+## &amp;lt;U+24E7&amp;gt; circle_cross
+## &amp;lt;U+24BE&amp;gt; circle_pipe
+## (?)  circle_question_mark
+## &amp;lt;U+25CF&amp;gt; bullet
+## .    dot
+## -    line
+## -    double_line
+## …    ellipsis
+## &amp;gt;    pointer
+## i    info
+## &amp;lt;U+203C&amp;gt; warning
+## &amp;lt;U+2630&amp;gt; menu
+## &amp;lt;U+263A&amp;gt; smiley
+## &amp;lt;U+0DF4&amp;gt; mustache
+## &amp;lt;U+2665&amp;gt; heart
+## &amp;lt;U+2191&amp;gt; arrow_up
+## &amp;lt;U+2193&amp;gt; arrow_down
+## &amp;lt;U+2190&amp;gt; arrow_left
+## &amp;lt;U+2192&amp;gt; arrow_right
+## (*)  radio_on
+## ( )  radio_off
+## &amp;lt;U+2612&amp;gt; checkbox_on
+## &amp;lt;U+2610&amp;gt; checkbox_off
+## &amp;lt;U+24E7&amp;gt; checkbox_circle_on
+## &amp;lt;U+24BE&amp;gt; checkbox_circle_off
+## (?)  fancy_question_mark
+## !=   neq
+## &amp;gt;=   geq
+## &amp;lt;=   leq
+## &amp;lt;U+2594&amp;gt; upper_block_1
+## ¯    upper_block_4
+## &amp;lt;U+2581&amp;gt; lower_block_1
+## &amp;lt;U+2582&amp;gt; lower_block_2
+## &amp;lt;U+2583&amp;gt; lower_block_3
+## _    lower_block_4
+## &amp;lt;U+2585&amp;gt; lower_block_5
+## &amp;lt;U+2586&amp;gt; lower_block_6
+## &amp;lt;U+2587&amp;gt; lower_block_7
+## ¦    lower_block_8
+## ¦    full_block&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Python数据的导入和输出总结</title>
       <link>/post/2019-12-01-python-data-import-output/</link>

@@ -5,7 +5,15 @@
     <link>/categories/</link>
       <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 07 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 18 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>R</title>
+      <link>/categories/r/</link>
+      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/categories/r/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Python</title>
       <link>/categories/python/</link>
@@ -19,14 +27,6 @@
       <link>/categories/linux/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       <guid>/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>/categories/r/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/categories/r/</guid>
       <description></description>
     </item>
     
