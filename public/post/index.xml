@@ -5,7 +5,763 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Wed, 18 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Sat, 21 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>metflow2 and metID workflow</title>
+      <link>/post/2019-12-21-untargeted-metabolomics-analysis/</link>
+      <pubDate>Sat, 21 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/2019-12-21-untargeted-metabolomics-analysis/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#instalation&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Instalation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#raw-data-processing&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Raw data processing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-cleaning&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Data cleaning&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#positive-mode&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Positive mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#negative-mode&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Negative mode&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#metabolite-identification&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Metabolite identification&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;instalation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Instalation&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if(!require(devtools)){
+  install.packages(&amp;quot;devtools&amp;quot;)
+}
+
+if(!require(tidyverse)){
+  install.packages(&amp;quot;tidyverse&amp;quot;)
+}
+devtools::install_github(&amp;quot;jaspershen/metflow2&amp;quot;)
+devtools::install_github(&amp;quot;jaspershen/metID&amp;quot;)
+devtools::install_github(&amp;quot;jaspershen/tinyTools&amp;quot;)
+devtools::install_github(&amp;quot;jaspershen/sxtTools&amp;quot;)
+
+library(metflow2)
+library(metID)
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Use &lt;code&gt;Chicago&lt;/code&gt; data as a example.&lt;/p&gt;
+&lt;p&gt;This data is in workstation. The work directory is in &lt;code&gt;D:/shenxt/project/depression142&lt;/code&gt;. And the data organization is like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure1.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;raw-data-processing&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Raw data processing&lt;/h1&gt;
+&lt;p&gt;All the mzXML data should be placed in a folder names as &lt;code&gt;XCMS_processing&lt;/code&gt;. Like this figure shows:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure2.png&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;setwd(&amp;quot;D:/shenxt/project/depression142/RPLC/POS/XCMS_Processing&amp;quot;)
+metflow2::processData(polarity = &amp;#39;positive&amp;#39;,
+                      peakwidth = c(5, 30), 
+                      threads = 10, 
+                      min.fraction = 0.8, 
+                      fill.peaks = FALSE,
+                      output.tic = TRUE, 
+                      output.bpc = TRUE,
+                      output.rt.correction.plot = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;polarity: &lt;code&gt;positive&lt;/code&gt; or &lt;code&gt;negative&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;peakwidth: for RPLC, set it as &lt;code&gt;c(5, 30)&lt;/code&gt;, for HILIC, set it as &lt;code&gt;c(10, 60)&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All the results will be outputed in a folder named as &lt;code&gt;Result&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure3.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Peak.table.csv&lt;/code&gt; is the Peak.table from XCMS.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;RT correction plot&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RT%20correction%20plot.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleaning&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Data cleaning&lt;/h1&gt;
+&lt;p&gt;First, please copy the &lt;code&gt;Peak.table.csv&lt;/code&gt; from XCMS to another folder, I recommed data cleaning in your own PC or Mac.&lt;/p&gt;
+&lt;p&gt;And you also need a &lt;code&gt;sample_info.csv&lt;/code&gt; to provide the information of each sample..&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure4.png&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;positive-mode&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Positive mode&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;setwd(&amp;quot;xxx/data_cleaning/RPLC/POS&amp;quot;)
+peak_table &amp;lt;- readr::read_csv(&amp;quot;Peak.table.csv&amp;quot;)
+
+peak_table &amp;lt;- 
+  peak_table %&amp;gt;% 
+  rename(name = sample.name,
+         mz = mzmed,
+         rt = rtmed) %&amp;gt;% 
+  select(-c(peak.name, mzmin, mzmax, rtmin, rtmax, npeaks, Blank, QC, Subject, QC_DL))
+
+readr::write_csv(peak_table, &amp;quot;peak_table.csv&amp;quot;)
+
+####creat object
+(
+  rplc_pos_1 &amp;lt;-
+    creatMetflowObject(
+      ms1.data = &amp;quot;peak_table.csv&amp;quot;,
+      sample.information = &amp;quot;sample_info.csv&amp;quot;,
+      path = &amp;quot;.&amp;quot;
+    )
+)
+
+save(rplc_pos_1, file = &amp;quot;rplc_pos_1&amp;quot;)
+
+###remove peaks
+(
+  rplc_pos_2 &amp;lt;-
+    filterPeak(
+      object = rplc_pos_1,
+      min.fraction.qc = 0.8,##QC at least more than 80%
+      min.fraction = 0.2,##Subject no restraction
+      min.subject.qc.ratio = 0,##don&amp;#39;t use blank to remove any peaks
+      dl.qc.r2.cutoff = 0
+    )
+)
+
+
+save(rplc_pos_2, file = &amp;quot;rplc_pos_2&amp;quot;)
+
+###remove some samples (outliers)
+(
+  rplc_pos_3 &amp;lt;-
+    filterSample(object = rplc_pos_2,
+                 min.fraction.peak = 0.5)
+)
+
+save(rplc_pos_3, file = &amp;quot;rplc_pos_3&amp;quot;)
+
+
+#get the MV distribution plot
+(
+  plot &amp;lt;- 
+    getMVplot4sample(object = rplc_pos_3)
+)
+
+
+#MV imputateion
+
+(
+  rplc_pos_4 &amp;lt;- 
+    imputeMV(object = rplc_pos_3, method = &amp;#39;knn&amp;#39;)
+)
+
+save(rplc_pos_4, file = &amp;quot;rplc_pos_4&amp;quot;)
+
+###RSD distribution
+qc_rsd &amp;lt;- calRSD(object = rplc_pos_4, slot = &amp;quot;QC&amp;quot;)
+
+(plot1 &amp;lt;- 
+    ggplot(data = qc_rsd, aes(index, rsd)) +
+    geom_hline(yintercept = 30, linetype = 2, colour = &amp;quot;red&amp;quot;) +
+    geom_point() +
+    scale_y_continuous(name = &amp;quot;Relative standard deviation (RSD, %)&amp;quot;, limits = c(0,100),
+                       breaks = c(0, 25, 30, 50, 75, 100), labels = c(c(0, 25, 30, 50, 75, 100)))+
+    labs(x = &amp;quot;Peak index&amp;quot;) +
+    theme_bw() +
+    theme(axis.title = element_text(size = 15),
+          axis.text = element_text(size = 12),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12),
+          strip.background = element_rect(fill = &amp;quot;#0099B47F&amp;quot;),
+          strip.text = element_text(color = &amp;quot;white&amp;quot;, size = 15))
+)
+
+
+(plot2 &amp;lt;- 
+    ggplot(data = qc_rsd, aes(x = rsd)) +
+    geom_histogram(binwidth = 10, colour = &amp;quot;white&amp;quot;, fill = &amp;quot;#0099B47F&amp;quot;, origin = 0) +
+    scale_x_continuous(name = &amp;quot;Relative standard deviation (RSD, %)&amp;quot;) +
+    labs(y = &amp;quot;Peak number&amp;quot;) +
+    # geom_vline(xintercept = 30, linetype = 2, colour = &amp;quot;red&amp;quot;) +
+    annotate(geom = &amp;quot;rect&amp;quot;, xmin = 0, xmax = 30, ymin = 0, ymax = 380,
+             alpha = 0.1, fill = &amp;quot;#ED00007F&amp;quot;) +
+    theme_bw()+
+    theme(axis.title = element_text(size = 15),
+          axis.text = element_text(size = 12),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12),
+          strip.background = element_rect(fill = &amp;quot;#0099B47F&amp;quot;),
+          strip.text = element_text(color = &amp;quot;white&amp;quot;, size = 15))
+)
+
+
+
+
+## data normalization
+(
+  rplc_pos_5 &amp;lt;- 
+    normalizeData(object = rplc_pos_4, 
+                  method = &amp;quot;mean&amp;quot;)
+)
+
+save(rplc_pos_5, file = &amp;quot;rplc_pos_5&amp;quot;)
+
+###batch intergration
+
+(
+  rplc_pos_6 &amp;lt;- 
+    metflow2:::integrateData(
+      object = rplc_pos_5, 
+      method = &amp;quot;subject.mean&amp;quot;)
+)
+
+save(rplc_pos_6, file = &amp;quot;rplc_pos_6&amp;quot;)
+
+##output peak table after data cleaning
+peak_table_after_cleaning &amp;lt;- rplc_pos_6@ms1.data[[1]]
+readr::write_csv(peak_table_after_cleaning, &amp;quot;peak_table_after_cleaning.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;peak_table_after_cleaning.csv&lt;/code&gt; is the peak table after data cleaning.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;negative-mode&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Negative mode&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sxtTools::setwd_project()
+####Negative mode
+setwd(&amp;quot;data_cleaning/RPLC/NEG&amp;quot;)
+peak_table &amp;lt;- readr::read_csv(&amp;quot;Peak.table.csv&amp;quot;)
+
+
+peak_table &amp;lt;- 
+  peak_table %&amp;gt;% 
+  rename(name = sample.name,
+         mz = mzmed,
+         rt = rtmed) %&amp;gt;% 
+  select(-c(peak.name, mzmin, mzmax, rtmin, rtmax, npeaks, Blank, QC, Subject, QC_DL))
+
+
+readr::write_csv(peak_table, &amp;quot;peak_table.csv&amp;quot;)
+
+####creat object
+
+(
+  rplc_neg_1 &amp;lt;-
+    creatMetflowObject(
+      ms1.data = &amp;quot;peak_table.csv&amp;quot;,
+      sample.information = &amp;quot;sample_info.csv&amp;quot;,
+      path = &amp;quot;.&amp;quot;
+    )
+)
+
+save(rplc_neg_1, file = &amp;quot;rplc_neg_1&amp;quot;)
+
+###remove peaks
+(
+  rplc_neg_2 &amp;lt;-
+    filterPeak(
+      object = rplc_neg_1,
+      min.fraction.qc = 0.8,##QC at least more than 80%
+      min.fraction = 0.2,##Subject no restraction
+      min.subject.qc.ratio = 0,##don&amp;#39;t use blank to remove any peaks
+      dl.qc.r2.cutoff = 0
+    )
+)
+
+
+save(rplc_neg_2, file = &amp;quot;rplc_neg_2&amp;quot;)
+
+###remove some samples (outliers)
+(
+  rplc_neg_3 &amp;lt;-
+    filterSample(object = rplc_neg_2,
+                 min.fraction.peak = 0.5)
+)
+
+save(rplc_neg_3, file = &amp;quot;rplc_neg_3&amp;quot;)
+
+
+#get the MV distribution plot
+(
+  plot &amp;lt;- 
+    getMVplot4sample(object = rplc_neg_3)
+)
+
+
+#MV imputateion
+
+(
+  rplc_neg_4 &amp;lt;- 
+    imputeMV(object = rplc_neg_3, method = &amp;#39;knn&amp;#39;)
+)
+
+save(rplc_neg_4, file = &amp;quot;rplc_neg_4&amp;quot;)
+
+###RSD distribution
+qc_rsd &amp;lt;- calRSD(object = rplc_neg_4, slot = &amp;quot;QC&amp;quot;)
+
+(plot1 &amp;lt;- 
+    ggplot(data = qc_rsd, aes(index, rsd)) +
+    geom_hline(yintercept = 30, linetype = 2, colour = &amp;quot;red&amp;quot;) +
+    geom_point() +
+    scale_y_continuous(name = &amp;quot;Relative standard deviation (RSD, %)&amp;quot;, limits = c(0,100),
+                       breaks = c(0, 25, 30, 50, 75, 100), labels = c(c(0, 25, 30, 50, 75, 100)))+
+    labs(x = &amp;quot;Peak index&amp;quot;) +
+    theme_bw() +
+    theme(axis.title = element_text(size = 15),
+          axis.text = element_text(size = 12),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12),
+          strip.background = element_rect(fill = &amp;quot;#0099B47F&amp;quot;),
+          strip.text = element_text(color = &amp;quot;white&amp;quot;, size = 15))
+)
+
+
+(plot2 &amp;lt;- 
+    ggplot(data = qc_rsd, aes(x = rsd)) +
+    geom_histogram(binwidth = 10, colour = &amp;quot;white&amp;quot;, fill = &amp;quot;#0099B47F&amp;quot;, origin = 0) +
+    scale_x_continuous(name = &amp;quot;Relative standard deviation (RSD, %)&amp;quot;) +
+    labs(y = &amp;quot;Peak number&amp;quot;) +
+    # geom_vline(xintercept = 30, linetype = 2, colour = &amp;quot;red&amp;quot;) +
+    annotate(geom = &amp;quot;rect&amp;quot;, xmin = 0, xmax = 30, ymin = 0, ymax = 380,
+             alpha = 0.1, fill = &amp;quot;#ED00007F&amp;quot;) +
+    theme_bw()+
+    theme(axis.title = element_text(size = 15),
+          axis.text = element_text(size = 12),
+          legend.title = element_text(size = 15),
+          legend.text = element_text(size = 12),
+          strip.background = element_rect(fill = &amp;quot;#0099B47F&amp;quot;),
+          strip.text = element_text(color = &amp;quot;white&amp;quot;, size = 15))
+)
+
+
+
+
+## data normalization
+(
+  rplc_neg_5 &amp;lt;- 
+    normalizeData(object = rplc_neg_4, 
+                  method = &amp;quot;mean&amp;quot;)
+)
+
+save(rplc_neg_5, file = &amp;quot;rplc_neg_5&amp;quot;)
+
+###batch intergration
+
+(
+  rplc_neg_6 &amp;lt;- 
+    metflow2:::integrateData(
+      object = rplc_neg_5, 
+      method = &amp;quot;subject.mean&amp;quot;)
+)
+
+save(rplc_neg_6, file = &amp;quot;rplc_neg_6&amp;quot;)
+
+##output peak table after data cleaning
+peak_table_after_cleaning &amp;lt;- rplc_neg_6@ms1.data[[1]]
+readr::write_csv(peak_table_after_cleaning, &amp;quot;peak_table_after_cleaning.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;metabolite-identification&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Metabolite identification&lt;/h1&gt;
+&lt;p&gt;Please copy the peak table after data cleaning to the folder in workstaiton:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;D:\shenxt\project\smartD\RPLC\POS\metabolite_annotation\NCE25&lt;/code&gt; and &lt;code&gt;D:\shenxt\project\smartD\RPLC\POS\metabolite_annotation\NCE50&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;And then copy all the MS2 library to &lt;code&gt;D:\shenxt\project\smartD\RPLC\POS\metabolite_annotation\NCE25&lt;/code&gt; and &lt;code&gt;D:\shenxt\project\smartD\RPLC\POS\metabolite_annotation\NCE50&lt;/code&gt;. The MS2 library can be found here:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;D:\shenxt\project\database\metabolite&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#####RPLC positive
+setwd(&amp;quot;D:/shenxt/project/smartD/RPLC/POS/metabolite_annotation/NCE25&amp;quot;)
+library(metID)
+parameter1 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;positive&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;msDatabase_rplc0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter2 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25,
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;positive&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;hmdbDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter3 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;positive&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;massbankDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter4 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;positive&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;metlinDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter5 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;positive&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;monaDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter6 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;positive&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;nistDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter7 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;positive&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;orbitrapDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter8 &amp;lt;- mzIdentifyParam(ms1.match.ppm = 25, 
+                              polarity = &amp;quot;positive&amp;quot;, 
+                              column = &amp;quot;rp&amp;quot;, 
+                              candidate.num = 3,
+                              database = &amp;quot;HMDB.metabolite.data&amp;quot;, 
+                              threads = 4)
+
+ms1.data &amp;lt;- grep(&amp;quot;\\.csv&amp;quot;, dir(), value = TRUE)
+ms2.data &amp;lt;- grep(&amp;quot;mgf&amp;quot;, dir(), value = TRUE)
+
+result.pRPLC.nce25 &amp;lt;- metIdentify4all(
+  ms1.data = ms1.data,
+  ms2.data = ms2.data,
+  parameter.list = c(
+    parameter1,
+    parameter2,
+    parameter3,
+    parameter4,
+    parameter5,
+    parameter6,
+    parameter7,
+    parameter8
+  ),
+  path = &amp;quot;.&amp;quot;
+)
+
+save(result.pRPLC.nce25, file = &amp;quot;result.pRPLC.nce25&amp;quot;)
+
+setwd(&amp;quot;../NCE50&amp;quot;)
+ms1.data &amp;lt;- grep(&amp;quot;\\.csv&amp;quot;, dir(), value = TRUE)
+ms2.data &amp;lt;- grep(&amp;quot;mgf&amp;quot;, dir(), value = TRUE)
+result.pRPLC.nce50 &amp;lt;- metIdentify4all(ms1.data = ms1.data,
+                                      ms2.data = ms2.data, 
+                                      parameter.list = c(parameter1,
+                                                         parameter2,
+                                                         parameter3,
+                                                         parameter4,
+                                                         parameter5,
+                                                         parameter6,
+                                                         parameter7),
+                                      path = &amp;quot;.&amp;quot;)
+
+save(result.pRPLC.nce50, file = &amp;quot;result.pRPLC.nce50&amp;quot;)
+
+#####RPLC negative
+setwd(&amp;quot;D:/shenxt/project/smartD/RPLC/NEG/metabolite_annotation/NCE25&amp;quot;)
+parameter1 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;msDatabase_rplc0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter2 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25,
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;hmdbDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter3 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;massbankDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter4 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;metlinDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter5 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;monaDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter6 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;nistDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter7 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;orbitrapDatabase0.0.1&amp;quot;, 
+                               threads = 4)
+
+parameter8 &amp;lt;- mzIdentifyParam(ms1.match.ppm = 25, 
+                              polarity = &amp;quot;negative&amp;quot;, 
+                              column = &amp;quot;rp&amp;quot;, 
+                              candidate.num = 3,
+                              database = &amp;quot;HMDB.metabolite.data&amp;quot;, 
+                              threads = 4)
+
+
+ms1.data &amp;lt;- grep(&amp;quot;\\.csv&amp;quot;, dir(), value = TRUE)
+ms2.data &amp;lt;- grep(&amp;quot;mgf&amp;quot;, dir(), value = TRUE)
+result.nRPLC.nce25 &amp;lt;- metIdentify4all(ms1.data = ms1.data,
+                                      ms2.data = ms2.data, 
+                                      parameter.list = c(parameter1,
+                                                         parameter2,
+                                                         parameter3,
+                                                         parameter4,
+                                                         parameter5,
+                                                         parameter6,
+                                                         parameter7,
+                                                         parameter8),
+                                      path = &amp;quot;.&amp;quot;)
+
+save(result.nRPLC.nce25, 
+     file = &amp;quot;result.nRPLC.nce25&amp;quot;)
+
+setwd(&amp;quot;../NCE50&amp;quot;)
+
+ms1.data &amp;lt;- grep(&amp;quot;\\.csv&amp;quot;, dir(), value = TRUE)
+ms2.data &amp;lt;- grep(&amp;quot;mgf&amp;quot;, dir(), value = TRUE)
+result.nRPLC.nce50 &amp;lt;- metIdentify4all(ms1.data = ms1.data,
+                                      ms2.data = ms2.data, 
+                                      parameter.list = c(parameter1,
+                                                         parameter2,
+                                                         parameter3,
+                                                         parameter4,
+                                                         parameter5,
+                                                         parameter6,
+                                                         parameter7),
+                                      path = &amp;quot;.&amp;quot;)
+
+save(result.nRPLC.nce50, file = &amp;quot;result.nRPLC.nce50&amp;quot;)
+
+###get annotation table
+####RPLC positive
+setwd(&amp;quot;D:/shenxt/project/smartD/RPLC/POS/metabolite_annotation&amp;quot;)
+load(&amp;quot;NCE25/result.pRPLC.nce25&amp;quot;)
+load(&amp;quot;NCE50/result.pRPLC.nce50&amp;quot;)
+
+identification.table1 &amp;lt;- getIdentificationTable(result.pRPLC.nce25[[1]],
+                                                result.pRPLC.nce50[[1]],
+                                                candidate.num = 1,
+                                                type = &amp;quot;old&amp;quot;)
+identification.table1 &amp;lt;-
+  identification.table1 %&amp;gt;%
+  filter(!is.na(Identification)) %&amp;gt;%
+  mutate(Level = 1)
+
+
+identification.table2 &amp;lt;-
+  getIdentificationTable(
+    result.pRPLC.nce25[[2]],
+    result.pRPLC.nce25[[3]],
+    result.pRPLC.nce25[[4]],
+    result.pRPLC.nce25[[5]],
+    result.pRPLC.nce25[[6]],
+    result.pRPLC.nce25[[7]],
+    result.pRPLC.nce50[[2]],
+    result.pRPLC.nce50[[3]],
+    result.pRPLC.nce50[[4]],
+    result.pRPLC.nce50[[5]],
+    result.pRPLC.nce50[[6]],
+    result.pRPLC.nce50[[7]],
+    candidate.num = 1,
+    type = &amp;quot;old&amp;quot;
+  )
+
+identification.table2 &amp;lt;-
+  identification.table2 %&amp;gt;% 
+  filter(!is.na(Identification), !is.element(name, identification.table1$name)) %&amp;gt;% 
+  mutate(Level = 2)
+
+identification.table3 &amp;lt;- 
+  getIdentificationTable2(result.pRPLC.nce25[[8]],
+                          candidate.num = 3,
+                          type = &amp;quot;old&amp;quot;)
+
+identification.table3 &amp;lt;-
+  identification.table3 %&amp;gt;% 
+  filter(!is.na(Identification), !is.element(name, identification.table1$name), !is.element(name, identification.table2$name)) %&amp;gt;% 
+  mutate(Level = 3)
+
+identification.table &amp;lt;- 
+  dplyr::full_join(rbind(identification.table1, identification.table2), 
+                   identification.table3, 
+                   by = colnames(identification.table3))
+
+write.csv(identification.table, &amp;quot;identification.table.csv&amp;quot;, row.names = FALSE)
+
+
+identification.table.new &amp;lt;- trans2newStyle(identification.table = identification.table)
+write.csv(identification.table.new, &amp;quot;identification.table.new.csv&amp;quot;, row.names = FALSE)
+
+
+####RPLC negative
+setwd(&amp;quot;D:/shenxt/project/smartD/RPLC/NEG/metabolite_annotation&amp;quot;)
+load(&amp;quot;NCE25/result.nRPLC.nce25&amp;quot;)
+load(&amp;quot;NCE50/result.nRPLC.nce50&amp;quot;)
+
+identification.table1 &amp;lt;- getIdentificationTable(result.nRPLC.nce25[[1]],
+                                                result.nRPLC.nce50[[1]],
+                                                candidate.num = 1,
+                                                type = &amp;quot;old&amp;quot;)
+
+identification.table1 &amp;lt;- 
+  identification.table1 %&amp;gt;% 
+  filter(!is.na(Identification)) %&amp;gt;% 
+  mutate(Level = 1)
+
+identification.table2 &amp;lt;-
+  getIdentificationTable(
+    result.nRPLC.nce25[[2]],
+    result.nRPLC.nce25[[3]],
+    result.nRPLC.nce25[[4]],
+    result.nRPLC.nce25[[5]],
+    result.nRPLC.nce25[[6]],
+    result.nRPLC.nce25[[7]],
+    result.nRPLC.nce50[[2]],
+    result.nRPLC.nce50[[3]],
+    result.nRPLC.nce50[[4]],
+    result.nRPLC.nce50[[5]],
+    result.nRPLC.nce50[[6]],
+    result.nRPLC.nce50[[7]],
+    candidate.num = 1,
+    type = &amp;quot;old&amp;quot;
+  )
+
+identification.table2 &amp;lt;-
+  identification.table2 %&amp;gt;% 
+  filter(!is.na(Identification), !is.element(name, identification.table1$name)) %&amp;gt;% 
+  mutate(Level = 2)
+
+
+identification.table3 &amp;lt;- 
+  getIdentificationTable2(result.nRPLC.nce25[[8]],
+                          candidate.num = 3,
+                          type = &amp;quot;old&amp;quot;)
+
+
+identification.table3 &amp;lt;-
+  identification.table3 %&amp;gt;% 
+  filter(!is.na(Identification), !is.element(name, identification.table1$name), !is.element(name, identification.table2$name)) %&amp;gt;% 
+  mutate(Level = 3)
+
+identification.table &amp;lt;- 
+  dplyr::full_join(rbind(identification.table1, identification.table2), 
+                   identification.table3, 
+                   by = colnames(identification.table3))
+
+write.csv(identification.table, &amp;quot;identification.table.csv&amp;quot;, row.names = FALSE)
+
+
+identification.table.new &amp;lt;- trans2newStyle(identification.table = identification.table)
+write.csv(identification.table.new, &amp;quot;identification.table.new.csv&amp;quot;, row.names = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For HILIC data, the identification is same, just change &lt;code&gt;parameter1&lt;/code&gt; as :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;parameter1 &amp;lt;- metIdentifyParam(ms1.ms2.match.mz.tol = 25, 
+                               ms1.ms2.match.rt.tol = 60, 
+                               ms1.match.ppm = 25, 
+                               ms2.match.tol = 0.4, 
+                               rt.match.tol = 90,
+                               polarity = &amp;quot;negative&amp;quot;, 
+                               ce = &amp;quot;all&amp;quot;, 
+                               column = &amp;quot;rp&amp;quot;, 
+                               total.score.tol = 0, 
+                               candidate.num = 3,
+                               database = &amp;quot;msDatabase_hilic0.0.1&amp;quot;, 
+                               threads = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And change the result name as &lt;code&gt;result.pHILIC.nce25&lt;/code&gt;,&lt;code&gt;result.pHILIC.nce50&lt;/code&gt;,&lt;code&gt;result.nHILIC.nce25&lt;/code&gt; and &lt;code&gt;result.nHILIC.nce50&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>R终端输出</title>
       <link>/post/2019-12-18-r-terminal-output/</link>

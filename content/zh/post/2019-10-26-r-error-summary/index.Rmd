@@ -17,3 +17,34 @@ output:
 ---
 
 这篇博客用来记录R常见的错及其器解决办法.
+
+# 系统
+
+## 保存ggplot2对象时报错.
+
+使用`ggraph`画图之后,保存报错.
+
+错误如下:
+
+> Error in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : invalid font type Traceback:
+
+很明显时字体的错误,但是在`set_graph_style`以及`theme_graph`设置字体之后,还是不行,仍然报错.
+
+```
+set_graph_style(family = "Arial")#默认为'Arial Narrow'
+theme_graph(base_family = 'Arial')
+```
+
+使用`extrafont`包导入字体:
+
+```
+extrafont::font_import()
+```
+
+重启R和Rstuio.然后先load字体.
+
+```
+extrafont::loadfonts()
+```
+
+然后画图再保存.

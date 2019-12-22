@@ -10,6 +10,10 @@ tags:
 image:
   caption: ''
   focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
 ---
 
 
@@ -36,13 +40,25 @@ image:
 ```
 显示:<i class="fa fa-weixin"></i>
 
+## 如何在markdown中插入脚注?
+
+在正文中插入:
+```
+You can create footnotes like this[^footnote].
+```
+
+然后在参考文献地方插入:
+
+```
+[^footnote]: Here is the *text* of the **footnote**.
+```
+
+显示如下:
+
+You can create footnotes like this[^footnote].
+
+[^footnote]: Here is the *text* of the **footnote**.
+
+
+
 # Rmarkdown
-
-
-
-
-<head> 
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script> 
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/v4-shims.js"></script> 
-</head> 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">

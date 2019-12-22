@@ -165,6 +165,9 @@ x2[1:3, 0].ndim
 
 可以看到,降维了.
 
+![](./array_slicing.png)
+
+
 ## 重塑array的形状
 
 array的形状,上面简单介绍了,指的就是数组的各个维度的大小.比较常用的是`reshape`方法.
@@ -249,4 +252,239 @@ left, right = np.hsplit(grid, [2])
 print(left)
 print(right)
 ```
+
+
+# 在Numpy array上进行运算
+
+对array进行运算有一点非常重要,就是进行向量化操作(vectorized operations),跟R一样.这样的好处时可以提高运算速度.
+
+## Universal Functions(UFuncs)
+
+举一个简单的例子,给定一组数,计算每个数的倒数.如果用以前的思维,那么应该对每一个数分别计算倒数,然后循环.但是其实大可不必.
+
+```{python}
+import numpy as np
+values = np.arange(1,10)
+values
+1/values
+```
+
+这在R中的基础数据格式,向量中就可以运行的,但是对python的基础数据格式,列表和tuple是不可以的.
+
+```{python}
+list(range(1,10))
+# 1/list(range(1,10))
+```
+
+也就是说列表是不支持向量化操作的,只有在numpy的array上才可以.
+
+所以,可以将numpy中的一维array想象成是R中的向量,这样就好记住多了.
+
+那么,同样的,两个一维array也可以像R向量一样,做向量化的操作.比如+,÷等.但是两个array的长度必须相等,否则报错.
+
+```{python}
+np.arange(1,10)/np.arange(2,11)
+np.arange(1,10) + np.arange(2,11)
+np.arange(1,10) - np.arange(2,11)
+```
+
+当然,向量化的操作并不局限于一维的array,对于二维的array同样适用,只要将其对比为R中的数据框即可.当然,也可以二维和一维操作,这时候是按照每行都对同一个一维array分别操作进行的.
+
+```{python}
+test = np.arange(1,10)
+test = test.reshape((3,3))
+test2 = np.arange(2,11).reshape((3,3)) 
+test3 = np.array([1,2,3])
+test
+test2
+test3
+test + test2
+test/test2
+test/test3
+```
+
+再来看一个例子:
+
+```{python}
+import numpy as np
+x = np.random.randn(8)
+y = np.random.randn(8)
+x
+y
+np.maximum(x, y)
+```
+
+可以看到,`np.maximum()`函数对两个array的同一位置上的数取最大值,返回与输入array长度相同的array.
+
+如果两个array长度不同,则报错.
+
+常见的接受一个array的ufuncs:
+
+Function|Description
+--------|----------
+`abs`,`fabs`| Compute the absolute value element-wise for integer, floating-point, or complex values
+`sqrt` | Compute the square root of each element (equivalent to arr ** 0.5)
+`square` | Compute the square of each element (equivalent to arr ** 2)
+`exp` |Compute the exponent ex of each element
+`log, log10, log2, log1p` | Natural logarithm (base e), log base 10, log base 2, and log(1 + x), respectively
+`sign` | Compute the sign of each element: 1 (positive), 0 (zero), or –1 (negative)
+`ceil` | Compute the ceiling of each element (i.e., the smallest integer greater than or equal to that
+number)
+`floor` | Compute the floor of each element (i.e., the largest integer less than or equal to each element)
+`rint` | Round elements to the nearest integer, preserving the dtype
+`modf` | Return fractional and integral parts of array as a separate array
+`isnan` | Return boolean array indicating whether each value is NaN (Not a Number)
+`isfinite, isinf` | Return boolean array indicating whether each element is finite (non-inf, non-NaN) or infinite,
+respectively
+`cos`, `cosh`,`sin`,`sinh`,`tan`,`tanh` | Regular and hyperbolic trigonometric functions
+`arccos`, `arccosh`, `arcsin`, `arcsinh`, `arctan`, `arctanh` |  Inverse trigonometric functions logical_not Compute truth value of not x element-wise (equivalent to ~arr).
+
+常见的接受两个array的ufuncs:
+
+Function|Description
+--------|----------
+`add` | Add corresponding elements in arrays
+`subtract` | Subtract elements in second array from first array
+`multiply` | Multiply array elements
+`divide`, `floor_divide` | Divide or floor divide (truncating the remainder)
+`power` | Raise elements in first array to powers indicated in second array
+`maximum`, `fmax` | Element-wise maximum; fmax ignores NaN
+`minimum`, `fmin` | Element-wise minimum; fmin ignores NaN
+`mod` | Element-wise modulus (remainder of division)
+`copysign` Copy sign of values in second argument to values in first argument
+`greater`, `greater_equal`, `less`, `less_equal`, `equal`, `not_equal` |  Perform element-wise comparison, yielding boolean array (equivalent to infix operators >, >=, <, <=, ==, !=) 
+`logical_and`, `logical_or`, `logical_xor` | Compute element-wise truth value of logical operation (equivalent to infix operators & |, ^)
+
+##  面向数组的编程
+
+一般来说,使用向量化操作,会比loop循环至少快上一个数量级.
+
+### Expressing Conditional Logic as Array Operations
+
+```{python}
+import numpy as np
+xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
+yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
+cond = np.array([True, False, True, True, False])
+result = [(x if c else y) for x, y, c in zip(xarr, yarr, cond)]
+result
+```
+
+
+这种办法问题很多.我们可以使用`np.where()`函数来做.
+
+```{python}
+result = np.where(cond, xarr, yarr)
+result
+```
+
+```{python}
+arr = np.random.randn(4, 4)
+arr
+arr > 0
+np.where(arr > 2, 2, -2)
+np.where(arr > 0, 2, arr)
+```
+
+`np.random.randn()`函数用来随机产生二维的array.
+
+### Numpy中的数学和统计方法
+
+随机产生正态分布数据.
+
+```{python}
+arr = np.random.randn(5, 4)
+arr
+arr.mean()
+np.mean(arr)
+arr.max()
+np.max(arr)
+arr.min()
+np.min(arr)
+arr.sum()
+np.sum(arr)
+```
+
+对于这些方法,都有一个参数,`axis`,用来指示是否按行或者按列进行计算.0代表按行,1代表按列.
+
+```{python}
+arr.mean(axis=0)
+arr.mean(axis=1)
+```
+
+```{python}
+arr = np.array([0, 1, 2, 3, 4, 5, 6, 7])
+arr
+arr.cumsum()#累乘
+arr = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
+arr
+arr.cumsum(axis=0)
+arr.cumsum(axis=1)
+```
+
+array常用统计方法总结
+
+Method | meaning
+-------|--------
+`sum` | Sum of all the elements in the array or along an axis; zero-length arrays have sum 0
+`mean` | Arithmetic mean; zero-length arrays have NaN mean
+`std`, `var` | Standard deviation and variance, respectively, with optional degrees of freedom adjustment (default
+denominator n)
+`min`, `max` | Minimum and maximum
+`argmin`, `argmax` | Indices of minimum and maximum elements, respectively
+`cumsum` | Cumulative sum of elements starting from 0
+`cumprod` | Cumulative product of elements starting from 1
+
+### 排序(sorting)
+
+使用`sort`方法来对array进行排序.
+
+```{python}
+arr = np.random.randn(6)
+arr
+arr.sort()
+arr
+arr = np.random.randn(5, 3)
+arr
+arr.sort(axis=0)
+arr.sort(axis=1)
+```
+
+### Unique and Other Set Logic
+
+```{python}
+names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
+names
+np.unique(names)
+sorted(names)
+sorted(set(names))
+```
+
+总结
+
+Functions | meaning
+----------|--------
+`unique(x)` | Compute the sorted, unique elements in x
+`intersect1d(x, y)` | Compute the sorted, common elements in x and y
+`union1d(x, y)` | Compute the sorted union of elements
+`in1d(x, y)` | Compute a boolean array indicating whether each element of x is contained in y
+`setdiff1d(x, y)` | Set difference, elements in x that are not in y
+`setxor1d(x, y)` | Set symmetric differences; elements that are in either of the arrays, but not both
+
+### array数据的输入和的输出
+
+跟R的`save`和`load`比较像.
+
+```{python}
+arr = np.arange(10)
+arr
+np.save(file='some_array', arr=arr)
+```
+
+默认的后缀民为`.npy`.然后可以使用`np.load()`函数load.
+
+```{python}
+np.load('some_array.npy')
+```
+
 

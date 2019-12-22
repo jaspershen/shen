@@ -17,5 +17,31 @@ output:
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#系统"><span class="toc-section-number">1</span> 系统</a><ul>
+<li><a href="#保存ggplot2对象时报错."><span class="toc-section-number">1.1</span> 保存ggplot2对象时报错.</a></li>
+</ul></li>
+</ul>
+</div>
 
 <p>这篇博客用来记录R常见的错及其器解决办法.</p>
+<div id="系统" class="section level1">
+<h1><span class="header-section-number">1</span> 系统</h1>
+<div id="保存ggplot2对象时报错." class="section level2">
+<h2><span class="header-section-number">1.1</span> 保存ggplot2对象时报错.</h2>
+<p>使用<code>ggraph</code>画图之后,保存报错.</p>
+<p>错误如下:</p>
+<blockquote>
+<p>Error in grid.Call.graphics(C_text, as.graphicsAnnot(x<span class="math inline">\(label), x\)</span>x, x$y, : invalid font type Traceback:</p>
+</blockquote>
+<p>很明显时字体的错误,但是在<code>set_graph_style</code>以及<code>theme_graph</code>设置字体之后,还是不行,仍然报错.</p>
+<pre><code>set_graph_style(family = &quot;Arial&quot;)#默认为&#39;Arial Narrow&#39;
+theme_graph(base_family = &#39;Arial&#39;)</code></pre>
+<p>使用<code>extrafont</code>包导入字体:</p>
+<pre><code>extrafont::font_import()</code></pre>
+<p>重启R和Rstuio.然后先load字体.</p>
+<pre><code>extrafont::loadfonts()</code></pre>
+<p>然后画图再保存.</p>
+</div>
+</div>

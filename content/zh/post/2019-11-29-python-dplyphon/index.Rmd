@@ -1,0 +1,388 @@
+---
+title: Python中与dplyr类似的数据处理包
+author: Xiaotao Shen
+date: 2019-11-29
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+# dplython
+
+`dplython`是python借鉴R中`dplyr`包开发的,用于数据tidy的包.基本语法跟R非常像,而且还支持管道函数(操作符`>>`).对于我这种从R转python的人来说,用起来会更加熟悉和方便.
+
+官网在这.
+
+https://pythonhosted.org/dplython/
+
+
+## 安装
+
+```
+pip install dplython
+```
+
+也可以从github上安装最新开发版本.
+
+```
+pip install git+https://github.com/dodger487/dplython.git
+```
+
+## 简单介绍
+
+加载所需要的包.
+
+```{python}
+import pandas as pd
+import numpy as np
+import dplython as dply
+from dplython import (DplyFrame, X, diamonds, select, sift,
+  sample_n, sample_frac, head, arrange, mutate, group_by,
+  summarize, DelayFunction)
+```
+
+支持管道符操作,但是如果要将每一个操作写作一行,需要使用小括号将其括起来.
+
+```{python}
+diamonds >> head
+(
+diamonds >>
+head(5)
+)
+```
+
+再`dplyr`中,进行行筛选的函数为`filter()`,但是在`dplython`中,函数名为`sift()`,暂时不知道为什么要改名,猜想可能是由于和python自带函数冲突.
+
+列名不能直接引用,需要使用dplython中的`X`来引用.
+
+> X.foo will refer to the "foo" column of the DataFrame in which it is later applied. 
+
+```{python}
+(
+diamonds >> 
+sift(X.carat > 4) >> 
+select(X.carat, X.cut, X.depth, X.price)
+)
+
+(diamonds >>
+  sample_n(10) >>
+  arrange(X.carat) >>
+  select(X.carat, X.cut, X.depth, X.price))
+  
+(diamonds >>
+  mutate(carat_bin=X.carat.round()) >>
+  group_by(X.cut, X.carat_bin) >>
+  summarize(avg_price=X.price.mean()))
+
+```
+
+需要注意的是,使用管道函数,第一行为要处理的数据,第二行开始,都要缩进.
+
+但是作者已经3年没有维护这个包了,所以感觉有点悬,有可能废掉了,所以还是别用了.
+
+# dfply
+
+另外一个将`dplyr`移植到python的包是`dfply`,可能更加可靠一些.
+
+官网如下:
+
+https://github.com/kieferk/dfply#the--and--pipe-operators
+
+https://github.com/kieferk/dfply
+
+## 安装
+
+```
+pip install dfply
+```
+
+## 函数概览
+
+### `>>`和`>>=`管道操作符
+
+在R中,管道操作符为`%>%`,在python中,改为`>>`.
+
+```{python}
+from dfply import *
+diamonds >> head(5)
+(
+diamonds >>
+  head(5)
+)
+```
+
+同样的,如果每一个操作都开始新的一行的话,需要使用小括号将他们括起来.
+
+将处理之后的数据框赋予一个新的变量名的时候,需要注意变量名等号和小括号的左半部分需要在同一行.
+
+```{python}
+new = (
+diamonds >>
+  tail(5)
+)
+new
+```
+
+另外一个管道操作符`>>=`意味着对原始数据直接进行修改后付给这个变量.
+
+```{python}
+diamonds2 = diamonds.copy()
+diamonds2 >> head(5)
+diamonds2 >>= head(5)
+diamonds2
+diamonds >> head(10)
+```
+
+### 数据框标志`X`
+
+在管道操作符中,将数据框传到后面的函数中,需要使用`X`标志来代表.在R中,我们可以直接使用数据框的列名来引用每一列,在python中,需要使用`X`来表示.
+
+```{python}
+diamonds >> select(X.carat, X.cut) >> head(5)
+```
+
+### 选择某列或者删除某列(selecting and dropping)
+
+在R中,使用`select`函数可以完成选择和删除,在删除某列时,直接在前面加上减号就可以了.但是在python中,`select`也可以完成删除列,只是减号改为`~`.但是对于删除列,还有一个专门的函数,`drop()`.
+
+选择列的时候,既可以使用列的index,也可以使用`X`符合以及引号括起来的列名进行选择.可惜的是,暂时看到是不支持切片的.
+
+```{python}
+(
+diamonds >> 
+  select(0, X.price, "x", ['y', 'z']) >>
+  head(5)
+)
+
+
+(
+diamonds >>
+  select(['carat','price']) >>
+  head(5)
+)
+
+```
+
+```{python}
+(
+diamonds >>
+  drop(1, X.price, ['x', 'y']) >>
+  head()
+)
+
+(
+diamonds >>
+  select(~0, ~X.price) >>
+  head(5)
+)
+```
+
+#### Selection filter函数
+
+和`dplyr`类似,也有很多配合使用的函数.
+
+Function | Meaning
+---------|--------
+`starts_with(prefix)` | find columns that start with a string prefix.
+`ends_with(suffix)` | find columns that end with a string suffix.
+`contains(substr)` | find columns that contain a substring in their name.
+`everything()` | all columns.
+`columns_between(start_col, end_col, inclusive=True)` |  find columns between a specified start and end column. The inclusive boolean keyword argument indicates whether the end column should be included or not.
+`columns_to(end_col, inclusive=True)` | get columns up to a specified end column. The inclusive argument indicates whether the ending column should be included or not.
+`columns_from(start_col)` |  get the columns starting at a specified column.
+
+因为`dfply`并不支持切片,所以可以看到,分别提供了三个函数用来代替切片的功能.
+
+```{python}
+(
+diamonds >>
+  select(columns_between("carat", "color")) >>
+  head(5)
+)
+
+(
+diamonds >>
+  select(columns_to("color")) >>
+  head(5)
+)
+
+(
+diamonds >>
+  select(columns_from("color")) >>
+  head(5)
+)
+
+diamonds >> select(columns_to(1, inclusive=True), 'depth', columns_from(-2)) >> head(2)
+
+```
+
+### 对列进行筛选
+
+#### `row_slice()`
+
+与`pandas`的`iloc`方法类似,使用index对列筛选.
+
+问题是,仍然不支持切片.但是可以和`group_by`联合使用,从而选出每一组的固定行.
+
+```{python}
+diamonds >> row_slice([10,15])
+diamonds >> group_by('cut') >> row_slice(5)
+```
+
+#### `sample()`函数
+
+和`pandas`的`.sample()`方法类似,可以用于随机抽取列.
+
+```{python}
+diamonds >> sample(frac=0.0001, replace=False)
+diamonds >> sample(n=3, replace=True)
+```
+
+#### `distinct()`函数
+
+只保留唯一不重复的行.传入的参数为列名,可以是多个列.与`pandas`的`.drop_duolicates()`方法类似.
+
+```{python}
+diamonds >> distinct(X.color, X.price) >> head(5)
+```
+
+
+#### `mask()`和`filter_by()`函数
+
+类似于`dplyr`中的`filter()`函数.这两个函数是等价的.
+
+```{python}
+diamonds >> mask(X.cut == 'Ideal') >> head(4)
+diamonds >> mask(X.cut == 'Ideal', X.color == 'E', X.table < 55, X.price < 500)
+diamonds >> filter_by(X.cut == 'Ideal', X.color == 'E', X.table < 55, X.price < 500)
+```
+
+#### `pull()`函数
+
+与`dplyr`中函数同名且功能相同.
+
+```{python}
+(diamonds
+ >> filter_by(X.cut == 'Ideal', X.color == 'E', X.table < 55, X.price < 500)
+ >> pull('carat'))
+```
+
+### 数据框转变
+
+#### `mutate()`函数
+
+添加新的变量(列)
+
+```{python}
+diamonds >> mutate(x_plus_y=X.x + X.y) >> select(columns_from('x')) >> head(3)
+diamonds >> mutate(x_plus_y=X.x + X.y, y_div_z=(X.y / X.z)) >> select(columns_from('x')) >> head(3)
+```
+
+#### `transmutate()`函数
+
+只保留下新创建的列(变量).
+
+```{python}
+diamonds >> transmute(x_plus_y=X.x + X.y, y_div_z=(X.y / X.z)) >> head(3)
+```
+
+### 分组(grouping)
+
+#### `group_by()`和`ungroup()`函数
+
+分组非常有用.利用某个或某几个变量将数据框分成不同的部分,然后对每一组分别进行处理.结束之后,需要使用`ungroup()`函数结束分组状态.
+
+比如,如果想知道对于不同的`cut`的钻石的最高价和最低价,可以使用下面的代码.
+
+```{python}
+(diamonds >> group_by(X.cut) >>
+ mutate(price_lead=lead(X.price), price_lag=lag(X.price)) >>
+ head(2) >> select(X.cut, X.price, X.price_lead, X.price_lag))
+```
+
+### 重塑数据框(reshaping)
+
+#### `arrange()`函数
+
+这个函数是用来sort的.跟`pandas`的`.sort_valiues()`方法是一样的.
+
+```{python}
+diamonds >> arrange(X.table, ascending=False) >> head(5)
+(diamonds >> group_by(X.cut) >> arrange(X.price) >>
+ head(3) >> ungroup() >> mask(X.carat < 0.23))
+```
+
+
+#### `rename()`函数
+
+对列进行重新命名.
+
+```{python}
+diamonds >> rename(CUT=X.cut, COLOR='color') >> head(2)
+```
+
+
+#### `gather()`函数和`spread()`函数
+
+对长宽数据进行转换的函数.`gather()`将宽数据转边为长数据,`spread()`将长数据转换为宽数据.
+
+```{python}
+diamonds >> gather('variable', 'value', ['price', 'depth','x','y','z']) >> head(5)
+```
+
+```{python}
+elongated = diamonds >> gather('variable', 'value', add_id=True)
+elongated >> head(5)
+widened = elongated >> spread(X.variable, X.value)
+widened >> head(5)
+```
+
+### 合并(joining)
+
+这个用处非常多.
+
+Funcation | Meaning
+----------|-------
+inner_join(other, by='column') | 合并两个数据框共有的部分
+outer_join(other, by='column') | 合并两个数据框并集部分
+full_join(other, by='column') | 合并两个数据框并集部分
+right_join(other, by='column') | 以右边数据框为准进行合并
+left_join(other, by='column') | 以左边数据框为准进行合并
+semi_join(other, by='column') | 只保留左边数据框能够匹配上右边数据框的行
+anti_join(other, by='column') | 只保留两个数据框都互不相同的行
+
+
+```{python}
+a = pd.DataFrame({
+        'x1':['A','B','C'],
+        'x2':[1,2,3]
+    })
+b = pd.DataFrame({
+    'x1':['A','B','D'],
+    'x3':[True,False,True]
+})
+
+a >> inner_join(b, by='x1')
+
+a >> outer_join(b, by='x1')
+a >> full_join(b, by='x1')
+a >> semi_join(b, by='x1')
+a >> anti_join(b, by='x1')
+```
+
+未完待续....
+

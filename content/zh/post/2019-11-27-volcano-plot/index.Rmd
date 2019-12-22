@@ -1,0 +1,130 @@
+---
+title: SAM test用于差异标志物的选择
+author: Xiaotao Shen
+date: '2019-11-27'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+参考文献[^1],[^2].
+
+
+[^1]: Uses and misuses of the fudge factor in quantitative discovery proteomics
+
+[^2]: Significance analysis of microarrays applied to the ionizing radiation response
+
+
+示例代码:
+
+```{r}
+# Function to compute the smooth threshold curve
+smooth.threshold=function(x,ta,s0,df){
+  xp=x[x>(ta*s0)]; xn=x[x<(-ta*s0)]; dp=xp/ta-s0; dn=xn/(-ta)-s0;
+  dp=s0/dp; dp=ta*(1+dp); dn=s0/dn; dn=ta*(1+dn);
+  fp=pt(dp,df=df); fn=pt(dn,df=df); yp=-log10(2*(1-fp)); yn=-log10(2*(1-fn));
+  return(cbind(c(xn,xp),c(yn,yp)));
+}
+
+# Get data
+library(cp4p); data(LFQRatio2); tabl=LFQRatio2;
+
+# Get Fold-Change
+n1=3; n2=3;
+m1=apply(tabl[,1:n1],1,mean); m2=apply(tabl[,(n1+1):(n1+n2)],1,mean);
+FC=m1-m2;
+
+# Get standard deviations for t-test
+sd1=apply(tabl[,1:n1],1,sd)
+sd2=apply(tabl[,(n1+1):(n1+n2)],1,sd)
+sdd=sqrt(((sd1^2)+(sd2^2))/(n1+n2))
+
+# Compute the fudge factor with the method of Tusher, V., Tibshirani, R., and Chu, G. (2001)
+library(siggenes) 
+ff0=fudge2(FC,sdd)$s.zero;
+
+# Get degrees of freedom for significance testing
+df=(n1+n2)-2;
+
+# Get t.stats and p.values 
+t.stat=FC/sdd; p.value=2*(1-pt(abs(t.stat),df=df));
+
+####################################################
+# Prepare displays
+abs.inf=-3.5; abs.sup=3.5;
+
+#################################
+# Figure a
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism=="human")],-log10(p.value)[(tabl$Organism=="human")],col=2,pch=3);
+
+confidence_level=0.975
+ff=0.5;
+ht <- -log10(1-confidence_level);
+points(c(-ff,ff), c(10,10), type='h', col='green',lwd=2);
+lines(c(abs.inf,abs.sup), c(ht,ht), col='green',lwd=2);
+
+#################################
+# Figure b
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism=="human")],-log10(p.value)[(tabl$Organism=="human")],col=2,pch=3);
+
+confidence_level=0.975; ff=0.5;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),
+                             ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col='green',lwd=2);
+
+#################################
+# Figure c
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism=="human")],-log10(p.value)[(tabl$Organism=="human")],col=2,pch=3);
+
+confidence_level=0.975; ff=0.5; ht <- -log10(1-confidence_level)
+points(c(-ff,ff), c(10,10), type='h', col='black',lwd=1)
+lines(c(abs.inf,abs.sup), c(ht,ht), col='black',lwd=1)
+
+confidence_level=0.9; ff=0.6;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col='gray',lwd=1)
+
+confidence_level=0.75; ff=2;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col='gray',lwd=1)
+
+confidence_level=0.95; ff=0.6;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col='gray',lwd=1)
+
+confidence_level=0.97; ff=0.15;
+smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
+lines(smoothcurve, col='green',lwd=2)
+
+#################################
+# Figure d
+#################################
+# Display the volcano plot on the interval [abs.inf,abs.sup]
+plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
+# Display the human proteins which should be identified as differentially abundant
+points(FC[(tabl$Organism=="human")],-log10(p.value)[(tabl$Organism=="human")],col=2,pch=3);
+
+```
+

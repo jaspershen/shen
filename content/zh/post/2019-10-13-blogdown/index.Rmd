@@ -288,3 +288,61 @@ https://getbootstrap.com/docs/3.3/components/
 显示:
 
 <i class="fas fa-hourglass"></i>
+
+# 如何使用jupyter编辑post?
+
+如果是写关于python的博客,那么使用jupyter就要比使用Rmarkdown方便太多了.以windowns系统为例.
+
+## 打开CMD,修改路径到当前post路径下.
+
+可以参考本博文的内容.
+
+## 打开jupyter notebook
+
+输入
+
+```
+jupyter notebook
+```
+
+打开jupyter notebook.然后新建一个jupyter文件,命名为`index`.
+
+## 开始对jupyter进行编辑.
+
+开始在jupyter上进行编辑.
+
+## 另存为`markdown`文件.
+
+如下图操作.
+
+![](save_as_markdown.png)
+
+## 编辑YAML
+
+将index.md打开,然后添加YAML信息.
+
+```
+---
+authors:
+- admin
+categories: [Python]
+date: "2019-02-05T00:00:00Z"
+draft: false
+featured: true
+image:
+  caption: ""
+  focal_point: ""
+projects: []
+subtitle: Learn how to blog in Academic using Jupyter notebooks
+summary: Learn how to blog in Academic using Jupyter notebooks
+tags: []
+title: Display Jupyter Notebooks with Academic
+---
+
+```
+
+如果要使用featured figure,需要将`featurd`设置为true,且在该post目录下添加名字为`featured.png`的图片.
+
+
+
+

@@ -1,0 +1,94 @@
+---
+title: R终端输出
+author: Xiaotao Shen
+date: '2019-12-18'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# `message()`函数
+
+可以使用`message()`函数进行终端屏幕输出.
+
+```{r}
+message("ABC", "DEF")
+suppressMessages(message("ABC"))
+```
+
+```{r}
+testit <- function() {
+  message("testing package startup messages")
+  packageStartupMessage("initializing ...", appendLF = FALSE)
+  Sys.sleep(1)
+  packageStartupMessage(" done")
+}
+
+testit()
+suppressPackageStartupMessages(testit())
+suppressMessages(testit())
+```
+
+# 改变输出字体颜色和格式
+
+使用`crayon`包可以修改输出字体的颜色.参考官方文档:https://github.com/r-lib/crayon.
+
+```{r}
+library(crayon)
+cat(blue("Hello", "world!\n"))
+```
+
+```{r}
+cat("... to highlight the " %+% red("search term") %+% " in a block of text\n")
+```
+
+
+```{r}
+cat(yellow$bgMagenta$bold('Hello world!\n'))
+```
+
+```{r}
+cat(green(
+  'I am a green line ' %+%
+  blue$underline$bold('with a blue substring') %+%
+  ' that becomes green again!\n'
+))
+```
+
+```{r}
+error <- red $ bold
+warn <- magenta $ underline
+note <- cyan
+cat(error("Error: subscript out of bounds!\n"))
+cat(warn("Warning: shorter argument was recycled.\n"))
+cat(note("Note: no such directory.\n"))
+```
+
+# 一些常用的特殊字符
+
+使用`clisymbols`包可以给出一些常见的特殊字符.
+
+官方文档:https://github.com/r-lib/clisymbols.
+
+```{r}
+library(clisymbols)
+cat(symbol$tick, "All good\n")
+cat(symbol$cross, "Problem\n")
+```
+
+```{r}
+for (i in seq_along(symbol)) {
+  cat(symbol[[i]], "\t", names(symbol)[i], "\n", sep = "")
+}
+```
+

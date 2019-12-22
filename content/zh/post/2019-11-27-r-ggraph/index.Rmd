@@ -1,0 +1,382 @@
+---
+title: ggraph画网络图
+author: Xiaotao Shen
+date: '2019-11-27'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+`ggraph`是Thomas Lin Pedersen开发的网络可视化的包.官方文档在这:https://ggraph.data-imaginist.com/index.html.
+
+它和`igraph`不同,igraph虽然也有网络可视化,但是更多的还是用于网络分析,可视化并不是太友好.
+
+大致记录一下如何使用它来进行网络图的构建.
+
+# 安装
+
+需要安装两个包.
+
+```
+install.packages("ggraph")
+install.packages("tidygraph")
+```
+
+```{r}
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+```
+
+
+# 构建所需要的数据
+
+最为简单的办法是使用数据库格式的数据,而且前两行分别为`from`和`to`.我们构建一个示例数据:
+
+## 构建edges数据
+
+```{r}
+set.seed(0)
+edges <- data.frame(from = sample(1:15, 80, replace = TRUE), 
+                 to = sample(1:15, 80, replace = TRUE), 
+                 stringsAsFactors = FALSE) %>% 
+  distinct()
+
+```
+
+这是最简单的一个edge信息,每一行就是一个edge信息,当然,我们也可以给每一条边都加上属性信息.
+
+```{r}
+edges <- data.frame(edges, 
+                 edge.width = rnorm(n = nrow(edges), mean = 1, sd = 0.5), 
+                 edge.colour = rnorm(n = nrow(edges), mean = 0, sd = 0.5),
+                 stringsAsFactors = FALSE)
+edges %>% head
+```
+
+## 然后构建node的数据
+
+```{r}
+node <- unique(c(edges$from, edges$to)) %>% sort()
+node
+nodes <- data.frame(node, node.size = rnorm(n = length(node), mean = 1, sd = 0.5),
+                    node.colour = sample(c("Class A", "Class B"), length(node), replace = TRUE), 
+                    stringsAsFactors = FALSE)
+nodes %>% head
+```
+
+## 构建`ggraph`所需的数据
+
+得到edges和nodes之后,需要将其转为`ggraph`所需要的格式.
+
+```{r}
+graph_data <- tidygraph::tbl_graph(nodes = nodes, edges = edges, 
+                                   directed = FALSE)
+graph_data
+```
+
+# 画图
+
+## 基础绘图
+
+拿到所需数据之后,可以开始画图了,跟`ggplot2`一样,也是图层的画法,一层层进行叠加.我们先看一个简单的例子.
+
+```{r}
+ggraph(graph = graph_data) +
+  geom_edge_fan() +
+  geom_node_point()
+```
+
+首先可以看到,需要使用`ggraph`启动一个图像,然后必须的两个geom分别是`geom_edge_xx`和`geom_node_xxx`分别用来定义边和node.他们的使用办法跟`ggplot2`非常类似,参数也都很类似,只是加上了`edge`和`node`标签.
+
+我们下面接着对图片进行美化.
+
+```{r}
+plot <- 
+ggraph(graph = graph_data, layout = "linear", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void()
+plot
+```
+
+从上面例子可以看到,对于edge的属性的设置,需要使用`scale_edge_xxx`系列函数,而对于node,则直接使用原来的`ggplot2`的`scale_xxx`系列函数就可以了.
+
+## 添加文字
+
+添加文字可以使用`geom_node_text()`和`geom_node_label()`函数.
+
+对于layout为圆形网状来说,我们需要将node的角度进行一定程度的调整.
+
+```{r}
+node_name = paste("Node", node, sep = "_")
+node_name
+angle <- 360 * (c(1:length(node_name)) - 0.5)/length(node_name)
+hjust <- ifelse(angle > 180, 1, 0)
+angle <- ifelse(angle > 180, 90 - angle + 180, 90 - angle)
+```
+
+然后添加node文字.
+
+```{r}
+plot +
+  geom_node_text(aes(x = x * 1.05,
+                     y = y * 1.15,
+                     label = node_name), 
+                 angle = angle, 
+                 hjust = hjust,
+                 colour = "black",
+                 size = 3.5)
+```
+
+可以看到有些文字跑到绘图区域外面了,这时候需要将坐标轴进行扩展就行了.
+
+```{r}
+plot +
+  geom_node_text(aes(x = x * 1.05,
+                     y = y * 1.15,
+                     label = node_name), 
+                 angle = angle, 
+                 hjust = hjust,
+                 colour = "black",
+                 size = 3.5) +
+  expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5))
+
+```
+
+我们可以看看原来的坐标轴是什么样子的.
+
+```{r}
+ggraph(graph = graph_data, layout = "linear", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_bw()
+```
+
+我们将theme设置为`theme_bw()`就可以清楚的看到原来的坐标体系了.
+
+可以看到legend的顺序有点乱.可以在`guides()`函数中设置.
+
+```{r}
+ggraph(graph = graph_data, layout = "linear", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+  scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  guides(colour = guide_legend(order = 1),
+         size = guide_legend(order = 2),
+         colour = guide_edge_colourbar(order = 3)) +
+  theme_void()
+```
+
+添加文字的时候,文字之间,以及文字node之间,会出现覆盖的问题.如下图所示:
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void() +
+      geom_node_text(aes(x = x,
+                     y = y,
+                     label = node_name,
+                     colour = node.colour), 
+                 size = 3.5) 
+```
+
+
+在`ggplot2`中,我们使用`ggrepel`包可以解决这个问题.在这里,我们可以设置`repel`为TRUE.
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void() +
+      geom_node_text(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) 
+```
+
+当然,也可以使用`geom_node_label()`来标注.
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void() +
+      geom_node_label(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) 
+```
+
+
+## 使用不同的layout
+
+对网络来说,可以使用不同的layout,layout既可以通过再`ggraph`中通过设置`layout`参数实现,也可以通过将`graph`直接赋予layout属性实现.
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void()
+```
+
+```{r}
+ggraph(graph = graph_data, layout = "linear", circular = FALSE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+      geom_node_text(aes(colour = node.colour),
+                     hjust = 1,
+                     angle = 65,
+                     nudge_y = -0.3,
+                     label = node_name, 
+                 size = 3.5) +
+  expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5)) +
+  theme_void()
+```
+
+```{r}
+ggraph(graph = graph_data, layout = "eigen", circular = FALSE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void() +
+    geom_node_text(aes(x = x,
+                     y = y,
+                     label = node_name,
+                     colour = node.colour), 
+                 size = 3.5) 
+```
+
+## 不同的连接线
+
+上面的例子node之间的连接都是曲线(`geom_edge_arc`),当然我们也可以使用不同的连接方式,比如直线,这时候需要使用不同的`geom_edge_xxx()`函数.
+
+比如直线可以使用`geom_edge_link()`,有三个不同的函数,暂时没有仔细看差别,详细差别可以使用:`?get_edges`查看.
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_link(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void()
+```
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_link2(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void()
+```
+
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_link0(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void()
+```
+
+画有一定弯度的edge可以使用`geom_edge_fan()`函数.
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_fan(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  theme_void()
+```
+
+
+## 使用不同的主题
+
+可以使用暗黑主题,像图片显示的更炫酷一些.
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+scale_edge_colour_gradient2(low = "#155F83FF", mid = "white", high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2)) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  ggdark::dark_theme_void() +
+      geom_node_text(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) 
+```
+
+因为leged的某些显示颜色为黑色,而主题没有将其修改过来,可以手动进行修改.
+
+```{r}
+ggraph(graph = graph_data, layout = "auto", circular = TRUE) +
+  geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
+  scale_edge_colour_gradient2(low = "#155F83FF", mid = "white",
+                              high = "#800000FF") +
+  scale_edge_width_continuous(range = c(0.2,2), 
+                              guide = guide_legend(override.aes = list(colour = "white", alpha =1))) +
+  guides(colour = guide_legend(override.aes = list(size = 5))) +
+  geom_node_point(aes(colour = node.colour, size = node.size)) +
+  scale_size_continuous(range = c(5,10)) +
+  scale_colour_manual(values = c("Class A" = "#8A9045FF", "Class B" = "#155F83FF")) +
+  ggdark::dark_theme_void() +
+      geom_node_text(aes(label = node_name,
+                     colour = node.colour), 
+                 size = 3.5, repel = TRUE) 
+```

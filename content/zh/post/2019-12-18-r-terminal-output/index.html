@@ -1,0 +1,139 @@
+---
+title: R终端输出
+author: Xiaotao Shen
+date: '2019-12-18'
+slug: ''
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#message函数"><span class="toc-section-number">1</span> <code>message()</code>函数</a></li>
+<li><a href="#改变输出字体颜色和格式"><span class="toc-section-number">2</span> 改变输出字体颜色和格式</a></li>
+<li><a href="#一些常用的特殊字符"><span class="toc-section-number">3</span> 一些常用的特殊字符</a></li>
+</ul>
+</div>
+
+<div id="message函数" class="section level1">
+<h1><span class="header-section-number">1</span> <code>message()</code>函数</h1>
+<p>可以使用<code>message()</code>函数进行终端屏幕输出.</p>
+<pre class="r"><code>message(&quot;ABC&quot;, &quot;DEF&quot;)</code></pre>
+<pre><code>## ABCDEF</code></pre>
+<pre class="r"><code>suppressMessages(message(&quot;ABC&quot;))</code></pre>
+<pre class="r"><code>testit &lt;- function() {
+  message(&quot;testing package startup messages&quot;)
+  packageStartupMessage(&quot;initializing ...&quot;, appendLF = FALSE)
+  Sys.sleep(1)
+  packageStartupMessage(&quot; done&quot;)
+}
+
+testit()</code></pre>
+<pre><code>## testing package startup messages</code></pre>
+<pre><code>## initializing ... done</code></pre>
+<pre class="r"><code>suppressPackageStartupMessages(testit())</code></pre>
+<pre><code>## testing package startup messages</code></pre>
+<pre class="r"><code>suppressMessages(testit())</code></pre>
+</div>
+<div id="改变输出字体颜色和格式" class="section level1">
+<h1><span class="header-section-number">2</span> 改变输出字体颜色和格式</h1>
+<p>使用<code>crayon</code>包可以修改输出字体的颜色.参考官方文档:<a href="https://github.com/r-lib/crayon" class="uri">https://github.com/r-lib/crayon</a>.</p>
+<pre class="r"><code>library(crayon)</code></pre>
+<pre><code>## Warning: package &#39;crayon&#39; was built under R version 3.6.1</code></pre>
+<pre class="r"><code>cat(blue(&quot;Hello&quot;, &quot;world!\n&quot;))</code></pre>
+<pre><code>## Hello world!</code></pre>
+<pre class="r"><code>cat(&quot;... to highlight the &quot; %+% red(&quot;search term&quot;) %+% &quot; in a block of text\n&quot;)</code></pre>
+<pre><code>## ... to highlight the search term in a block of text</code></pre>
+<pre class="r"><code>cat(yellow$bgMagenta$bold(&#39;Hello world!\n&#39;))</code></pre>
+<pre><code>## Hello world!</code></pre>
+<pre class="r"><code>cat(green(
+  &#39;I am a green line &#39; %+%
+  blue$underline$bold(&#39;with a blue substring&#39;) %+%
+  &#39; that becomes green again!\n&#39;
+))</code></pre>
+<pre><code>## I am a green line with a blue substring that becomes green again!</code></pre>
+<pre class="r"><code>error &lt;- red $ bold
+warn &lt;- magenta $ underline
+note &lt;- cyan
+cat(error(&quot;Error: subscript out of bounds!\n&quot;))</code></pre>
+<pre><code>## Error: subscript out of bounds!</code></pre>
+<pre class="r"><code>cat(warn(&quot;Warning: shorter argument was recycled.\n&quot;))</code></pre>
+<pre><code>## Warning: shorter argument was recycled.</code></pre>
+<pre class="r"><code>cat(note(&quot;Note: no such directory.\n&quot;))</code></pre>
+<pre><code>## Note: no such directory.</code></pre>
+</div>
+<div id="一些常用的特殊字符" class="section level1">
+<h1><span class="header-section-number">3</span> 一些常用的特殊字符</h1>
+<p>使用<code>clisymbols</code>包可以给出一些常见的特殊字符.</p>
+<p>官方文档:<a href="https://github.com/r-lib/clisymbols" class="uri">https://github.com/r-lib/clisymbols</a>.</p>
+<pre class="r"><code>library(clisymbols)
+cat(symbol$tick, &quot;All good\n&quot;)</code></pre>
+<pre><code>## &lt;U+2714&gt; All good</code></pre>
+<pre class="r"><code>cat(symbol$cross, &quot;Problem\n&quot;)</code></pre>
+<pre><code>## &lt;U+2716&gt; Problem</code></pre>
+<pre class="r"><code>for (i in seq_along(symbol)) {
+  cat(symbol[[i]], &quot;\t&quot;, names(symbol)[i], &quot;\n&quot;, sep = &quot;&quot;)
+}</code></pre>
+<pre><code>## &lt;U+2714&gt; tick
+## &lt;U+2716&gt; cross
+## &lt;U+2605&gt; star
+## &lt;U+2587&gt; square
+## [ ]  square_small
+## [¦]  square_small_filled
+## &lt;U+25EF&gt; circle
+## (*)  circle_filled
+## &lt;U+25CC&gt; circle_dotted
+## (o)  circle_double
+## &lt;U+24DE&gt; circle_circle
+## &lt;U+24E7&gt; circle_cross
+## &lt;U+24BE&gt; circle_pipe
+## (?)  circle_question_mark
+## &lt;U+25CF&gt; bullet
+## .    dot
+## -    line
+## -    double_line
+## …    ellipsis
+## &gt;    pointer
+## i    info
+## &lt;U+203C&gt; warning
+## &lt;U+2630&gt; menu
+## &lt;U+263A&gt; smiley
+## &lt;U+0DF4&gt; mustache
+## &lt;U+2665&gt; heart
+## &lt;U+2191&gt; arrow_up
+## &lt;U+2193&gt; arrow_down
+## &lt;U+2190&gt; arrow_left
+## &lt;U+2192&gt; arrow_right
+## (*)  radio_on
+## ( )  radio_off
+## &lt;U+2612&gt; checkbox_on
+## &lt;U+2610&gt; checkbox_off
+## &lt;U+24E7&gt; checkbox_circle_on
+## &lt;U+24BE&gt; checkbox_circle_off
+## (?)  fancy_question_mark
+## !=   neq
+## &gt;=   geq
+## &lt;=   leq
+## &lt;U+2594&gt; upper_block_1
+## ¯    upper_block_4
+## &lt;U+2581&gt; lower_block_1
+## &lt;U+2582&gt; lower_block_2
+## &lt;U+2583&gt; lower_block_3
+## _    lower_block_4
+## &lt;U+2585&gt; lower_block_5
+## &lt;U+2586&gt; lower_block_6
+## &lt;U+2587&gt; lower_block_7
+## ¦    lower_block_8
+## ¦    full_block</code></pre>
+</div>

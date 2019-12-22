@@ -1,0 +1,94 @@
+---
+title: Python包及模块的导入
+author: Xiaotao Shen
+date: 2019-11-26
+slug: ''
+categories:
+ -  Python
+tags:
+ -  Blog
+ -  Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+# 模块(module)
+
+模块一般是一个python文件(.py),直接使用`import`语句就可以导入一个模块.
+
+# 包(package)
+
+包是一个目录,可以使用`import`语句或者`from` + `import`语句来导入.也可以再后面加上`as`语句,将导入的包或者模块重新命名为其他的名字.
+
+# 常规导入
+
+直接使用`import`语句
+
+例如
+
+```{python}
+import os
+os.getcwd()
+```
+
+当然,也可以同时导入多个包.每个包中间使用逗号分隔开.
+
+```{python}
+import os,sys,time
+```
+
+但是,这样导入多个包的时候,一方面不能使用`as`将包重新命名,另外也不符合python的编程风格指导,python建议一行只导入一个包.
+
+# 使用`from`语句导入
+
+很多时候,可能只想导入包的某个模块.这时候我们可以使用`from`语句跟`import`语句联合使用
+
+```(python)
+from functools import lru_cache#只导入lru_cache模块
+import functools#导入functools所有的模块
+```
+
+这样就可以直接使用`lru_cache`模块了.
+
+当然,也可以导入这个包的所有模块.
+
+```{python}
+from os import *
+```
+
+这样做有一个很大的问题,就是打乱了你的命名空间,因为很有可能你自己定义的函数或者变量跟你导入的包中的模块名时相同的,这时候就有可能发生冲突,所以并不推荐这样做.
+
+# 使用`as`语句
+
+使用`as`语句可以将导入的包或者模块重新命名,对于那些包名字比较长而且不太好打印的包来说,非常有用.
+
+```{python}
+import numpy as np
+import pandas as pd
+np.array([1,2,3])
+test = np.array(np.arange(9))
+test = test.reshape((3,3))
+test
+test2 = pd.DataFrame(test)
+test2
+```
+
+
+# 我倾向的方式
+
+还是使用`import` + `as`的方式更加可靠,然后使用`pkg_name.function()`的方式进行调用.
+
+
+
+
+
+

@@ -2,7 +2,7 @@
 title: ggplot2拼图工具:patchwork
 author: Xiaotao Shen
 date: '2019-09-09'
-slug: ggplot2-patchwork
+slug: ''
 categories:
   - R
 tags:
@@ -18,15 +18,15 @@ output:
 
 推荐一个用来拼图的包:`patchwork`.作者是[Thomas Lin Pedersen](https://github.com/thomasp85).使用方法非常简洁,具体使用方法可以查看其帮助文档.他的思想跟`tidyverse`非常像,直接使用`+`,`-`等符号来进行图的拼接.举个例子说明.
 
-### 安装
+# 安装
 
 `patchwork`
 
-```{r}
+```
 devtools::install_github("thomasp85/patchwork")
 ```
 
-### 使用
+# 使用
 
 拼图有两种不同的含义:
 
@@ -91,6 +91,6 @@ plot
 具体使用方法可以参考作者github(https://github.com/thomasp85/patchwork).
 
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/9bZkp7q19f0?rel=0" frameborder="0" allowfullscreen></iframe>
+
 
 
