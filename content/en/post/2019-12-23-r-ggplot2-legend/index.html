@@ -1,0 +1,247 @@
+---
+title: ggplot2 legend总结-1
+author: Xiaotao Shen
+date: '2019-12-23'
+slug: ''
+categories:
+  - R
+  - ggplot2
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#画出示例图片"><span class="toc-section-number">1</span> 画出示例图片</a></li>
+<li><a href="#去掉legend"><span class="toc-section-number">2</span> 去掉legend</a></li>
+<li><a href="#更改legend位置"><span class="toc-section-number">3</span> 更改legend位置</a></li>
+<li><a href="#更改legend水平或者垂直排列"><span class="toc-section-number">4</span> 更改legend水平或者垂直排列</a></li>
+<li><a href="#更改legend各个元素相对位置"><span class="toc-section-number">5</span> 更改legend各个元素相对位置</a></li>
+<li><a href="#更改legend背景"><span class="toc-section-number">6</span> 更改legend背景</a></li>
+<li><a href="#其他一些设置"><span class="toc-section-number">7</span> 其他一些设置</a><ul>
+<li><a href="#设置legend上下左右的边缘距离"><span class="toc-section-number">7.1</span> 设置legend上下左右的边缘距离</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="画出示例图片" class="section level1">
+<h1><span class="header-section-number">1</span> 画出示例图片</h1>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v tibble  2.1.3     v purrr   0.3.3
+## v tidyr   1.0.0     v dplyr   0.8.3
+## v readr   1.3.1     v stringr 1.4.0
+## v tibble  2.1.3     v forcats 0.4.0</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
+<pre><code>## -- Conflicts ---------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>mtcars$gear &lt;- factor(mtcars$gear)
+(plot &lt;- mtcars %&gt;% 
+    ggplot(aes(x = gear)) +
+    geom_bar(aes(fill = gear)) +
+    theme_bw()
+)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>与其他ggplot2上的对象一样，对于其外在表现（appearance）等，大都是在<code>theme()</code>函数中进行设置。</p>
+</div>
+<div id="去掉legend" class="section level1">
+<h1><span class="header-section-number">2</span> 去掉legend</h1>
+<pre class="r"><code>##使用theme函数
+plot +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>#使用guides函数
+plot +
+  guides(fill = FALSE)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<pre class="r"><code>##在scales系列函数中设置
+plot +
+  scale_fill_discrete(guide = FALSE)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+</div>
+<div id="更改legend位置" class="section level1">
+<h1><span class="header-section-number">3</span> 更改legend位置</h1>
+<pre class="r"><code>##左侧
+plot +
+  theme(legend.position = &quot;left&quot;)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>##右侧
+plot +
+  theme(legend.position = &quot;top&quot;)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code>##底部
+plot +
+  theme(legend.position = &quot;bottom&quot;)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<pre class="r"><code>##右侧。默认放在右侧
+plot +
+  theme(legend.position = &quot;right&quot;)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
+<p>有时候我们需要将legend放在角上。这时候还是使用<code>legend.position</code>参数，但是需要配合<code>legend.justification</code>参数使用。<code>legend.position</code>设置为两个元素（数值）的向量，且取值范围为0-1。0代表最左边或者最右边，而1代表最上边或者最右边。第一个数值控制左右，第二个数值控制上下。</p>
+<pre class="r"><code>##右上角
+plot +
+  theme(legend.position = c(1, 1),
+        legend.justification = c(1, 1))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>##右下角
+plot +
+  theme(legend.position = c(1, 0),
+        legend.justification = c(1, 0))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<pre class="r"><code>##左上角
+plot +
+  theme(legend.position = c(0, 1),
+        legend.justification = c(0, 1))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<pre class="r"><code>##左下角
+plot +
+  theme(legend.position = c(0, 0),
+        legend.justification = c(0, 0))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
+<p>当然，也可以通过设置具体的位置参数，来控制legend的位置。<code>legend.poisition</code>中的数值都是相对值,而不是绝对值.</p>
+<pre class="r"><code>##中间
+plot +
+  theme(legend.position =  c(0.5, 0.5))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="更改legend水平或者垂直排列" class="section level1">
+<h1><span class="header-section-number">4</span> 更改legend水平或者垂直排列</h1>
+<p>可以通过<code>legend.direction</code>参数进行设置：<code>horizontal</code>水平或者<code>verti</code>垂直。</p>
+<pre class="r"><code>##修改legend标识中的size
+plot +
+  guides(fill = guide_legend(override.aes = list(size = 20)))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>##修改legend title位置
+##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
+plot +
+  theme(legend.title.align = 0)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.title.align = -1)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.title.align = 1)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+<pre class="r"><code>##通过guides函数控制
+plot +
+  guides(fill = guide_legend(title.position = &quot;left&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-5.png" width="672" /></p>
+<pre class="r"><code>plot +
+  guides(fill = guide_legend(title.position = &quot;bottom&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-6.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.direction = &quot;horizontal&quot;, legend.position = &quot;bottom&quot;) +
+  guides(fill = guide_legend(title.position = &quot;top&quot;, title.hjust = 0.5))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-7.png" width="672" /></p>
+</div>
+<div id="更改legend各个元素相对位置" class="section level1">
+<h1><span class="header-section-number">5</span> 更改legend各个元素相对位置</h1>
+<pre class="r"><code>##修改legend title位置
+##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
+plot +
+  theme(legend.title.align = 0)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.title.align = -1)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.title.align = 1)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-3.png" width="672" /></p>
+<pre class="r"><code>##通过guides函数控制
+plot +
+  guides(fill = guide_legend(title.position = &quot;left&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-4.png" width="672" /></p>
+<pre class="r"><code>plot +
+  guides(fill = guide_legend(title.position = &quot;bottom&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-5.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.direction = &quot;horizontal&quot;, legend.position = &quot;bottom&quot;) +
+  guides(fill = guide_legend(title.position = &quot;top&quot;, title.hjust = 0.5))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-6.png" width="672" /></p>
+<pre class="r"><code>##去除legend文字
+plot +
+  guides(fill = guide_legend(label = FALSE))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-7.png" width="672" /></p>
+<pre class="r"><code>##修改legend text位置
+plot +
+  theme(legend.text.align = 1)</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-8.png" width="672" /></p>
+<pre class="r"><code>plot +
+  guides(fill = guide_legend(label.position = &quot;left&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-9.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.position = &quot;bottom&quot;) +
+  guides(fill = guide_legend(
+    title.position = &quot;right&quot;,
+    label.position = &quot;bottom&quot;,
+    title.vjust = 1
+  ))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-10.png" width="672" /></p>
+</div>
+<div id="更改legend背景" class="section level1">
+<h1><span class="header-section-number">6</span> 更改legend背景</h1>
+<pre class="r"><code>##修改legend整体背景
+plot +
+  theme(legend.background = element_rect(
+    fill = &quot;green&quot;,
+    colour = &quot;red&quot;,
+    size = 2,
+    linetype = 2
+  ))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>##修改legend单个标识的背景
+plot +
+  theme(legend.key = element_rect(
+    fill = &quot;green&quot;,
+    colour = &quot;red&quot;,
+    size = 0.1,
+    linetype = 3
+  ))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<pre class="r"><code>##修改单个标识的高度和宽度，也可以用来改变标识的大小。
+plot +
+  theme(legend.key.height = unit(2, &quot;line&quot;),
+        legend.key.width = unit(2, &quot;line&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.key.size = unit(2, &quot;line&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+<pre class="r"><code>##修改legend各个key之间的距离
+plot +
+  theme(legend.position = &quot;top&quot;,
+        legend.spacing.x = unit(2, &quot;line&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-5.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.position = &quot;left&quot;,
+        legend.spacing.y = unit(2, &quot;line&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-6.png" width="672" /></p>
+<pre class="r"><code>plot +
+  theme(legend.position = &quot;left&quot;,
+        legend.spacing = unit(2, &quot;line&quot;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-7.png" width="672" /></p>
+</div>
+<div id="其他一些设置" class="section level1">
+<h1><span class="header-section-number">7</span> 其他一些设置</h1>
+<div id="设置legend上下左右的边缘距离" class="section level2">
+<h2><span class="header-section-number">7.1</span> 设置legend上下左右的边缘距离</h2>
+<pre class="r"><code>plot +
+  theme(legend.margin = margin(5, 5, 5, 5, &#39;cm&#39;))</code></pre>
+<p><img src="/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+</div>

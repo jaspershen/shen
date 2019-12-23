@@ -1,0 +1,220 @@
+---
+title: ggplot2 legend总结-1
+author: Xiaotao Shen
+date: '2019-12-23'
+slug: ''
+categories:
+  - R
+  - ggplot2
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# 画出示例图片
+
+```{r, echo=TRUE, eval=TRUE}
+library(ggplot2)
+library(tidyverse)
+
+mtcars$gear <- factor(mtcars$gear)
+(plot <- mtcars %>% 
+    ggplot(aes(x = gear)) +
+    geom_bar(aes(fill = gear)) +
+    theme_bw()
+)
+```
+
+与其他ggplot2上的对象一样，对于其外在表现（appearance）等，大都是在`theme()`函数中进行设置。
+
+# 去掉legend
+
+```{r}
+##使用theme函数
+plot +
+  theme(legend.position = "none")
+
+#使用guides函数
+plot +
+  guides(fill = FALSE)
+
+##在scales系列函数中设置
+plot +
+  scale_fill_discrete(guide = FALSE)
+```
+
+# 更改legend位置
+
+```{r}
+##左侧
+plot +
+  theme(legend.position = "left")
+##右侧
+plot +
+  theme(legend.position = "top")
+##底部
+plot +
+  theme(legend.position = "bottom")
+##右侧。默认放在右侧
+plot +
+  theme(legend.position = "right")
+```
+
+有时候我们需要将legend放在角上。这时候还是使用`legend.position`参数，但是需要配合`legend.justification`参数使用。`legend.position`设置为两个元素（数值）的向量，且取值范围为0-1。0代表最左边或者最右边，而1代表最上边或者最右边。第一个数值控制左右，第二个数值控制上下。
+
+```{r}
+##右上角
+plot +
+  theme(legend.position = c(1, 1),
+        legend.justification = c(1, 1))
+
+##右下角
+plot +
+  theme(legend.position = c(1, 0),
+        legend.justification = c(1, 0))
+
+##左上角
+plot +
+  theme(legend.position = c(0, 1),
+        legend.justification = c(0, 1))
+
+##左下角
+plot +
+  theme(legend.position = c(0, 0),
+        legend.justification = c(0, 0))
+```
+
+当然，也可以通过设置具体的位置参数，来控制legend的位置。`legend.poisition`中的数值都是相对值,而不是绝对值.
+
+
+```{r}
+##中间
+plot +
+  theme(legend.position =  c(0.5, 0.5))
+```
+
+# 更改legend水平或者垂直排列
+
+可以通过`legend.direction`参数进行设置：`horizontal`水平或者`verti`垂直。
+
+```{r}
+##修改legend标识中的size
+plot +
+  guides(fill = guide_legend(override.aes = list(size = 20)))
+
+##修改legend title位置
+##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
+plot +
+  theme(legend.title.align = 0)
+plot +
+  theme(legend.title.align = -1)
+plot +
+  theme(legend.title.align = 1)
+##通过guides函数控制
+plot +
+  guides(fill = guide_legend(title.position = "left"))
+plot +
+  guides(fill = guide_legend(title.position = "bottom"))
+plot +
+  theme(legend.direction = "horizontal", legend.position = "bottom") +
+  guides(fill = guide_legend(title.position = "top", title.hjust = 0.5))
+```
+
+# 更改legend各个元素相对位置
+
+```{r}
+##修改legend title位置
+##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
+plot +
+  theme(legend.title.align = 0)
+plot +
+  theme(legend.title.align = -1)
+plot +
+  theme(legend.title.align = 1)
+##通过guides函数控制
+plot +
+  guides(fill = guide_legend(title.position = "left"))
+plot +
+  guides(fill = guide_legend(title.position = "bottom"))
+plot +
+  theme(legend.direction = "horizontal", legend.position = "bottom") +
+  guides(fill = guide_legend(title.position = "top", title.hjust = 0.5))
+
+##去除legend文字
+plot +
+  guides(fill = guide_legend(label = FALSE))
+
+##修改legend text位置
+plot +
+  theme(legend.text.align = 1)
+
+plot +
+  guides(fill = guide_legend(label.position = "left"))
+
+plot +
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(
+    title.position = "right",
+    label.position = "bottom",
+    title.vjust = 1
+  ))
+```
+
+# 更改legend背景
+
+```{r}
+##修改legend整体背景
+plot +
+  theme(legend.background = element_rect(
+    fill = "green",
+    colour = "red",
+    size = 2,
+    linetype = 2
+  ))
+
+##修改legend单个标识的背景
+plot +
+  theme(legend.key = element_rect(
+    fill = "green",
+    colour = "red",
+    size = 0.1,
+    linetype = 3
+  ))
+
+##修改单个标识的高度和宽度，也可以用来改变标识的大小。
+plot +
+  theme(legend.key.height = unit(2, "line"),
+        legend.key.width = unit(2, "line"))
+plot +
+  theme(legend.key.size = unit(2, "line"))
+
+##修改legend各个key之间的距离
+plot +
+  theme(legend.position = "top",
+        legend.spacing.x = unit(2, "line"))
+
+plot +
+  theme(legend.position = "left",
+        legend.spacing.y = unit(2, "line"))
+
+plot +
+  theme(legend.position = "left",
+        legend.spacing = unit(2, "line"))
+```
+
+# 其他一些设置
+
+## 设置legend上下左右的边缘距离
+
+```{r}
+plot +
+  theme(legend.margin = margin(5, 5, 5, 5, 'cm'))
+```
+
