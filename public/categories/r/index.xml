@@ -5,7 +5,60 @@
     <link>/categories/r/</link>
       <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Mon, 23 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>使用pkgdown为自己的R包创建说明网站</title>
+      <link>/post/2020-01-08-r-pkgdown/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-01-08-r-pkgdown/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建网站&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 创建网站&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#主页home-page&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 主页(Home page)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#文章article&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 文章(Article)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#新闻news&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 新闻(NEWS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#发布&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; 发布&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;使用&lt;code&gt;pkgdown&lt;/code&gt;包可以为自己的R包创建说明网站,从而更加方便别人对自己包的立即以及自己对包的管理.&lt;/p&gt;
+&lt;p&gt;参考网址如下:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pkgdown.r-lib.org/index.html&#34; class=&#34;uri&#34;&gt;https://pkgdown.r-lib.org/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;安装&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 安装&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Install release version from CRAN
+install.packages(&amp;quot;pkgdown&amp;quot;)
+# Install development version from GitHub
+devtools::install_github(&amp;quot;r-lib/pkgdown&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建网站&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 创建网站&lt;/h1&gt;
+&lt;p&gt;在包的根目录下运行下列代码来创建网站.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pkgdown::build_site()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;主页home-page&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 主页(Home page)&lt;/h1&gt;
+&lt;p&gt;主页的内容来自于&lt;code&gt;README.md&lt;/code&gt;或者&lt;code&gt;index.md&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;文章article&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 文章(Article)&lt;/h1&gt;
+&lt;p&gt;pkgdown自动的将&lt;code&gt;vignettes&lt;/code&gt;文件夹中的所有的&lt;code&gt;md&lt;/code&gt;文件转变为aritcles.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;新闻news&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 新闻(NEWS)&lt;/h1&gt;
+&lt;p&gt;在根目录下创建&lt;code&gt;NEWS.md&lt;/code&gt;文件,然后就会在&lt;code&gt;Changelog&lt;/code&gt;页面下显示.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;发布&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 发布&lt;/h1&gt;
+&lt;p&gt;最简单的方式是在github网页的&lt;code&gt;setting&lt;/code&gt;中,直接将&lt;code&gt;docs&lt;/code&gt;选为github pages.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;figure1.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>ggplot2 legend总结-1</title>
       <link>/post/2019-12-23-r-ggplot2-legend/</link>
@@ -3843,6 +3896,7 @@ p + geom_tufteboxplot() +
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#系统&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 系统&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#保存ggplot2对象时报错.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 保存ggplot2对象时报错.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#安装包时报错&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 安装包时报错&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -3865,6 +3919,17 @@ theme_graph(base_family = &amp;#39;Arial&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;重启R和Rstuio.然后先load字体.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;extrafont::loadfonts()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后画图再保存.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;安装包时报错&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 安装包时报错&lt;/h2&gt;
+&lt;p&gt;错误如下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ERROR: loading failed for ‘i386’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原因可能如下:&lt;/p&gt;
+&lt;p&gt;the problem, I think, is that if both 32-bit and 64-bit versions of R are installed, devtools tries to build for both of them. During the build process, it checks if the newly built package can be loaded under both 32-bit and 64-bit R versions. When it tries running the 32-bit version, the reticulate package causes an error if the version of Python it has access to is 64-bit, so the install process fails. I think the key part of the update which spared me this problem was not installing the 32-bit version of R, as now devtools only builds for 64-bit.&lt;/p&gt;
+&lt;p&gt;解决办法:&lt;/p&gt;
+&lt;p&gt;add &lt;code&gt;INSTALL_opts=c(&#34;--no-multiarch&#34;)&lt;/code&gt; to your &lt;code&gt;install_github()&lt;/code&gt; or &lt;code&gt;BiocManager::install()&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

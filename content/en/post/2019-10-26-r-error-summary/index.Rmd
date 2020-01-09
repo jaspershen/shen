@@ -48,3 +48,18 @@ extrafont::loadfonts()
 ```
 
 然后画图再保存.
+
+
+## 安装包时报错
+
+错误如下:
+
+> ERROR: loading failed for 'i386'
+
+原因可能如下:
+
+the problem, I think, is that if both 32-bit and 64-bit versions of R are installed, devtools tries to build for both of them. During the build process, it checks if the newly built package can be loaded under both 32-bit and 64-bit R versions. When it tries running the 32-bit version, the reticulate package causes an error if the version of Python it has access to is 64-bit, so the install process fails. I think the key part of the update which spared me this problem was not installing the 32-bit version of R, as now devtools only builds for 64-bit.
+
+解决办法:
+
+add `INSTALL_opts=c("--no-multiarch")` to your `install_github()` or `BiocManager::install()`.

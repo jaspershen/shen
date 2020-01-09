@@ -5,38 +5,7 @@
     <link>/categories/omics/</link>
       <atom:link href="/categories/omics/index.xml" rel="self" type="application/rss+xml" />
     <description>omics</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2019</copyright><lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Machine for genomics conference</title>
-      <link>/post/machine-for-genomics-conference/</link>
-      <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/machine-for-genomics-conference/</guid>
-      <description>
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#machine-learning-for-biomedical-information&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.0.1&lt;/span&gt; Machine learning for biomedical information&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;p&gt;freenome&lt;/p&gt;
-&lt;p&gt;freenome intergateing innovative science to develop a blood-based cancer test starting with CRC.&lt;/p&gt;
-&lt;p&gt;cfDNA (cell free DNA).&lt;/p&gt;
-&lt;p&gt;Interpreting deep learning models of regulatory DNA&lt;/p&gt;
-&lt;p&gt;Anshul Kundaje&lt;/p&gt;
-&lt;p&gt;decoding genome function&lt;/p&gt;
-&lt;p&gt;control elements gene&lt;/p&gt;
-&lt;p&gt;ATAC-seq/DNase-seq&lt;/p&gt;
-&lt;p&gt;ChIP-seq&lt;/p&gt;
-&lt;p&gt;prediCtive model of regularity DNA&lt;/p&gt;
-&lt;p&gt;Just transform DNA sequence to dummy matrxi.&lt;/p&gt;
-&lt;div id=&#34;machine-learning-for-biomedical-information&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; Machine learning for biomedical information&lt;/h3&gt;
-&lt;p&gt;hierarchical latent variable models?&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Machine for genomics conference</title>
       <link>/post/machine-for-genomics-conference/</link>

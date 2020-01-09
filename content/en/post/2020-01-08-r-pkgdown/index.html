@@ -1,0 +1,64 @@
+---
+title:  使用pkgdown为自己的R包创建说明网站
+author: Xiaotao Shen
+date: '2020-01-08'
+slug: ''
+categories:
+  - Rstudio
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#安装"><span class="toc-section-number">1</span> 安装</a></li>
+<li><a href="#创建网站"><span class="toc-section-number">2</span> 创建网站</a></li>
+<li><a href="#主页home-page"><span class="toc-section-number">3</span> 主页(Home page)</a></li>
+<li><a href="#文章article"><span class="toc-section-number">4</span> 文章(Article)</a></li>
+<li><a href="#新闻news"><span class="toc-section-number">5</span> 新闻(NEWS)</a></li>
+<li><a href="#发布"><span class="toc-section-number">6</span> 发布</a></li>
+</ul>
+</div>
+
+<p>使用<code>pkgdown</code>包可以为自己的R包创建说明网站,从而更加方便别人对自己包的立即以及自己对包的管理.</p>
+<p>参考网址如下:</p>
+<p><a href="https://pkgdown.r-lib.org/index.html" class="uri">https://pkgdown.r-lib.org/index.html</a></p>
+<div id="安装" class="section level1">
+<h1><span class="header-section-number">1</span> 安装</h1>
+<pre class="r"><code># Install release version from CRAN
+install.packages(&quot;pkgdown&quot;)
+# Install development version from GitHub
+devtools::install_github(&quot;r-lib/pkgdown&quot;)</code></pre>
+</div>
+<div id="创建网站" class="section level1">
+<h1><span class="header-section-number">2</span> 创建网站</h1>
+<p>在包的根目录下运行下列代码来创建网站.</p>
+<pre class="r"><code>pkgdown::build_site()</code></pre>
+</div>
+<div id="主页home-page" class="section level1">
+<h1><span class="header-section-number">3</span> 主页(Home page)</h1>
+<p>主页的内容来自于<code>README.md</code>或者<code>index.md</code>.</p>
+</div>
+<div id="文章article" class="section level1">
+<h1><span class="header-section-number">4</span> 文章(Article)</h1>
+<p>pkgdown自动的将<code>vignettes</code>文件夹中的所有的<code>md</code>文件转变为aritcles.</p>
+</div>
+<div id="新闻news" class="section level1">
+<h1><span class="header-section-number">5</span> 新闻(NEWS)</h1>
+<p>在根目录下创建<code>NEWS.md</code>文件,然后就会在<code>Changelog</code>页面下显示.</p>
+</div>
+<div id="发布" class="section level1">
+<h1><span class="header-section-number">6</span> 发布</h1>
+<p>最简单的方式是在github网页的<code>setting</code>中,直接将<code>docs</code>选为github pages.</p>
+<p><img src="figure1.png" /></p>
+</div>

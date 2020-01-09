@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="1 系统 1.1 保存ggplot2对象时报错. 这篇博客用来记录R常见的错及其器解决办法. 1 系统 1.1 保存ggplot2对象时报错. 使用ggraph画图之">
+  <meta name="description" content="1 系统 1.1 保存ggplot2对象时报错. 1.2 安装包时报错 这篇博客用来记录R常见的错及其器解决办法. 1 系统 1.1 保存ggplot2对象时报错. 使用gg">
 
   
   <link rel="alternate" hreflang="zh" href="/zh/post/r-error-summary/">
@@ -139,7 +139,7 @@
   <meta property="og:site_name" content="Xiaotao Shen">
   <meta property="og:url" content="/post/r-error-summary/">
   <meta property="og:title" content="R常见错误总结 | Xiaotao Shen">
-  <meta property="og:description" content="1 系统 1.1 保存ggplot2对象时报错. 这篇博客用来记录R常见的错及其器解决办法. 1 系统 1.1 保存ggplot2对象时报错. 使用ggraph画图之"><meta property="og:image" content="/img/shen3.png">
+  <meta property="og:description" content="1 系统 1.1 保存ggplot2对象时报错. 1.2 安装包时报错 这篇博客用来记录R常见的错及其器解决办法. 1 系统 1.1 保存ggplot2对象时报错. 使用gg"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-10-26T00:00:00&#43;00:00">
@@ -705,6 +705,7 @@
 <ul>
 <li><a href="#系统"><span class="toc-section-number">1</span> 系统</a><ul>
 <li><a href="#保存ggplot2对象时报错."><span class="toc-section-number">1.1</span> 保存ggplot2对象时报错.</a></li>
+<li><a href="#安装包时报错"><span class="toc-section-number">1.2</span> 安装包时报错</a></li>
 </ul></li>
 </ul>
 </div>
@@ -727,6 +728,17 @@ theme_graph(base_family = &#39;Arial&#39;)</code></pre>
 <p>重启R和Rstuio.然后先load字体.</p>
 <pre><code>extrafont::loadfonts()</code></pre>
 <p>然后画图再保存.</p>
+</div>
+<div id="安装包时报错" class="section level2">
+<h2><span class="header-section-number">1.2</span> 安装包时报错</h2>
+<p>错误如下:</p>
+<blockquote>
+<p>ERROR: loading failed for ‘i386’</p>
+</blockquote>
+<p>原因可能如下:</p>
+<p>the problem, I think, is that if both 32-bit and 64-bit versions of R are installed, devtools tries to build for both of them. During the build process, it checks if the newly built package can be loaded under both 32-bit and 64-bit R versions. When it tries running the 32-bit version, the reticulate package causes an error if the version of Python it has access to is 64-bit, so the install process fails. I think the key part of the update which spared me this problem was not installing the 32-bit version of R, as now devtools only builds for 64-bit.</p>
+<p>解决办法:</p>
+<p>add <code>INSTALL_opts=c("--no-multiarch")</code> to your <code>install_github()</code> or <code>BiocManager::install()</code>.</p>
 </div>
 </div>
 
@@ -1024,7 +1036,7 @@ theme_graph(base_family = &#39;Arial&#39;)</code></pre>
   
 
   <p class="powered-by">
-    &copy;Xiaotao Shen2019 &middot; 
+    &copy;Xiaotao Shen2020 &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
