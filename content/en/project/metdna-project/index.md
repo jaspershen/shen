@@ -10,7 +10,7 @@ links:
   name: Follow
   url: https://twitter.com/georgecushen
 slides: example
-summary: Metabololite identification and dysregulated network analysis.
+summary: 
 tags:
 - Metabolomics
 title: MetDNA

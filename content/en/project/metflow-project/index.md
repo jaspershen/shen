@@ -10,7 +10,7 @@ links:
   name: Follow
   url: https://twitter.com/georgecushen
 slides: example
-summary: Web Server for Metabolomics Data Cleaning and Differential Metabolite Discovery
+summary: 
 tags:
 - Metabolomics
 title: MetFlow

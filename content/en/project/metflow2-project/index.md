@@ -10,7 +10,7 @@ links:
   name: Follow
   url: https://twitter.com/georgecushen
 slides: example
-summary: Untargeted metabolomics data processing and analysis.
+summary:
 tags:
 - Metabolomics
 title: metflow2

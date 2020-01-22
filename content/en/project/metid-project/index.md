@@ -10,7 +10,7 @@ links:
   name: Follow
   url: https://twitter.com/georgecushen
 slides: example
-summary: Metabolite identification.
+summary:
 tags:
 - Metabolomics
 title: metID
