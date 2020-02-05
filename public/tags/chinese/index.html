@@ -623,17 +623,6 @@
   </div>
   
   <div>
-    <h2><a href="/post/2019-12-21-untargeted-metabolomics-analysis/">metflow2 and metID workflow</a></h2>
-    <div class="article-style">
-      
-      1 Instalation2 Raw data processing3 Data cleaning3.1 Positive mode3.2 Negative mode4 Metabolite identification1 Instalationif(!require(devtools)){install.packages(&quot;devtools&quot;)}if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;)}devtools::install_github(&quot;jaspershen/metflow2&quot;)devtools::install_github(&quot;jaspershen/metID&quot;)devtools::install_github(&quot;jaspershen/tinyTools&quot;)devtools::install_github(&quot;jaspershen/sxtTools&quot;)library(metflow2)library(metID)library(tidyverse)Use Chicago data as a example.
-This data is in workstation. The work directory is in D:/shenxt/project/depression142. And the data organization is like this:
-2 Raw data processingAll the mzXML data should be placed in a folder names as XCMS_processing.
-      
-    </div>
-  </div>
-  
-  <div>
     <h2><a href="/post/2019-12-18-r-terminal-output/">R终端输出</a></h2>
     <div class="article-style">
       
@@ -683,6 +672,15 @@ This data is in workstation. The work directory is in D:/shenxt/project/depressi
     <div class="article-style">
       
       1 安装 2 使用 Python中有一个模仿R ggplot2语法创建的绘图包,plotnine.官网在这: https://plotnine.readthedocs.io/en/stable/ 1 安装 pip install plotinie 2 使用 from plotnine import * from plotnine.data import mtcars mtcars.head() ## name
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/post/2019-11-27-volcano-plot/">SAM test用于差异标志物的选择</a></h2>
+    <div class="article-style">
+      
+      参考文献1,2. 示例代码: # Function to compute the smooth threshold curve smooth.threshold=function(x,ta,s0,df){ xp=x[x&gt;(ta*s0)]; xn=x[x&lt;(-ta*s0)]; dp=xp/ta-s0; dn=xn/(-ta)-s0; dp=s0/dp; dp=ta*(1+dp); dn=s0/dn; dn=ta*(1+dn); fp=pt(dp,df=df); fn=pt(dn,df=df); yp=-log10(2*(1-fp)); yn=-log10(2*(1-fn)); return(cbind(c(xn,xp),c(yn,yp))); } # Get data library(cp4p); data(LFQRatio2); tabl=LFQRatio2; ## Warning: package &#39;cp4p&#39; was built under R version 3.6.1 ## Loading required package: MESS ## Warning: package &#39;MESS&#39; was built under R version 3.6.1 ## Loading required
       
     </div>
   </div>
