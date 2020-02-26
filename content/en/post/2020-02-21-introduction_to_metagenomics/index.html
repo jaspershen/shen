@@ -1,0 +1,87 @@
+---
+title: R下载数据
+author: Xiaotao Shen
+date: '2020-02-06'
+slug: ''
+categories:
+  - Rstudio
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#使用命令打开网页"><span class="toc-section-number">1</span> 使用命令打开网页</a></li>
+<li><a href="#下载2019-new-coronaverus数据"><span class="toc-section-number">2</span> 下载2019 new-Coronaverus数据</a></li>
+</ul>
+</div>
+
+<p>在看余光创教授的一个包,把一些学到的内容记录下来.</p>
+<div id="使用命令打开网页" class="section level1">
+<h1><span class="header-section-number">1</span> 使用命令打开网页</h1>
+<pre class="r"><code>  url &lt;- &#39;https://baidu.com&#39;
+  utils::browseURL(url)</code></pre>
+</div>
+<div id="下载2019-new-coronaverus数据" class="section level1">
+<h1><span class="header-section-number">2</span> 下载2019 new-Coronaverus数据</h1>
+<pre class="r"><code> url &lt;- &#39;https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&amp;callback=1580373566110&#39;
+  x &lt;- suppressWarnings(readLines(url, encoding = &quot;UTF-8&quot;))
+  x &lt;- sub(pattern = &quot;^\\d+\\(&quot;, replacement = &quot;&quot;, x = x)
+  x &lt;- sub(pattern = &quot;\\)$&quot;, replacement = &quot;&quot;, x = x)
+  y &lt;- jsonlite::fromJSON(txt = x)
+  z &lt;- jsonlite::fromJSON(txt = y$data)</code></pre>
+<p>z是一个list,里面包含了所有的信息.</p>
+<pre class="r"><code>names(z)</code></pre>
+<pre><code>##  [1] &quot;lastUpdateTime&quot;     &quot;chinaTotal&quot;         &quot;chinaAdd&quot;          
+##  [4] &quot;isShowAdd&quot;          &quot;showAddSwitch&quot;      &quot;areaTree&quot;          
+##  [7] &quot;chinaDayList&quot;       &quot;chinaDayAddList&quot;    &quot;dailyNewAddHistory&quot;
+## [10] &quot;dailyHistory&quot;       &quot;wuhanDayList&quot;       &quot;articleList&quot;</code></pre>
+<pre class="r"><code>z$chinaTotal</code></pre>
+<pre><code>## $confirm
+## [1] 78196
+## 
+## $heal
+## [1] 29858
+## 
+## $dead
+## [1] 2718
+## 
+## $nowConfirm
+## [1] 45620
+## 
+## $suspect
+## [1] 2491
+## 
+## $nowSevere
+## [1] 8752</code></pre>
+<pre class="r"><code>z$chinaAdd</code></pre>
+<pre><code>## $confirm
+## [1] 6
+## 
+## $heal
+## [1] 83
+## 
+## $dead
+## [1] 0
+## 
+## $nowConfirm
+## [1] -77
+## 
+## $suspect
+## [1] 0
+## 
+## $nowSevere
+## [1] 0</code></pre>
+<pre class="r"><code>z$lastUpdateTime</code></pre>
+<pre><code>## [1] &quot;2020-02-27 00:32:14&quot;</code></pre>
+</div>

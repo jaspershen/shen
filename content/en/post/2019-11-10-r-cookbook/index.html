@@ -25,6 +25,11 @@ output:
 <li><a href="#重启r-session"><span class="toc-section-number">1.1.1</span> 重启R session</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#rstudio快捷键总结"><span class="toc-section-number">2</span> Rstudio快捷键总结</a></li>
+<li><a href="#r小技巧"><span class="toc-section-number">3</span> R小技巧</a><ul>
+<li><a href="#从字符串获取其所代表的变量名的对象"><span class="toc-section-number">3.1</span> 从字符串获取其所代表的变量名的对象</a></li>
+<li><a href="#将某个对象赋予某个字符串所代表的变量名"><span class="toc-section-number">3.2</span> 将某个对象赋予某个字符串所代表的变量名</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -36,5 +41,50 @@ output:
 <h3><span class="header-section-number">1.1.1</span> 重启R session</h3>
 <pre><code>.rs.restartR()</code></pre>
 </div>
+</div>
+</div>
+<div id="rstudio快捷键总结" class="section level1">
+<h1><span class="header-section-number">2</span> Rstudio快捷键总结</h1>
+<ul>
+<li><p><code>alt + arrow</code>: 代码整体移动.</p></li>
+<li><p><code>shift + alt + mouse click</code>:大光标.</p></li>
+</ul>
+<p><img src="big_cursor.png" /></p>
+</div>
+<div id="r小技巧" class="section level1">
+<h1><span class="header-section-number">3</span> R小技巧</h1>
+<div id="从字符串获取其所代表的变量名的对象" class="section level2">
+<h2><span class="header-section-number">3.1</span> 从字符串获取其所代表的变量名的对象</h2>
+<p>使用<code>get()</code>函数.比如:</p>
+<pre class="r"><code>a &lt;- 1:10
+b &lt;- &quot;a&quot;
+b</code></pre>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<pre class="r"><code>get(b)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<div id="将某个对象赋予某个字符串所代表的变量名" class="section level2">
+<h2><span class="header-section-number">3.2</span> 将某个对象赋予某个字符串所代表的变量名</h2>
+<p>使用<code>assign()</code>函数.</p>
+<pre class="r"><code>b &lt;- &quot;a&quot;
+assign(x = b, value = 1:10)
+a</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>b</code></pre>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<p>这个函数非常有用,尤其是在一个循环中,你想将每个循环获得的对象赋予给一些使用数字编号的变量名中.</p>
+<pre class="r"><code>rm(list = ls())
+for(i in 1:10){
+  cat(i, &quot; &quot;)
+  temp &lt;- 1:i
+  assign(x = paste(&quot;run&quot;, i, sep = &quot;_&quot;), value = temp)
+}</code></pre>
+<pre><code>## 1  2  3  4  5  6  7  8  9  10</code></pre>
+<pre class="r"><code>run_1</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>run_5</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<pre class="r"><code>run_10</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 </div>

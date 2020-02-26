@@ -5,7 +5,134 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Introduction to metagenomics</title>
+      <link>/post/2020-02-06-r-study/</link>
+      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-02-06-r-study/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#eli-metchnikoff&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Eli MEtchnikoff&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#phylogenetics-of-organisms&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Phylogenetics of organisms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-human-microbiome-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; The human Microbiome Project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;eli-metchnikoff&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Eli MEtchnikoff&lt;/h1&gt;
+&lt;p&gt;microbome祖师爷.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;phylogenetics-of-organisms&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Phylogenetics of organisms&lt;/h1&gt;
+&lt;p&gt;核糖体RNA (rRNA)功能非常重要,可以将RNA变为蛋白质.序列非常保守.在所有生物种很相似.所以可以用来比较其序列来确定进化的依据.&lt;/p&gt;
+&lt;p&gt;rRNA tree based.&lt;/p&gt;
+&lt;p&gt;16S ribosomal RNA structure. (细菌)&lt;/p&gt;
+&lt;p&gt;二级结构是预测出来的.&lt;/p&gt;
+&lt;p&gt;RNA不稳定,所以一般都是测DNA.&lt;/p&gt;
+&lt;p&gt;The collective genomes of soil microflora. metagenome.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-human-microbiome-project&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; The human Microbiome Project&lt;/h1&gt;
+&lt;p&gt;300 healthy participants.&lt;/p&gt;
+&lt;p&gt;Utilize next generation sequencing&lt;/p&gt;
+&lt;p&gt;what is normal microbome?&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.hmpdacc.org/ihmp/&#34; class=&#34;uri&#34;&gt;https://www.hmpdacc.org/ihmp/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;16S and sequencing.&lt;/p&gt;
+&lt;p&gt;Targeted sequening 16S rna&lt;/p&gt;
+&lt;p&gt;16S只能知道是什么菌.但是whole genome知道所有的基因的功能.&lt;/p&gt;
+&lt;p&gt;Taxa.&lt;/p&gt;
+&lt;p&gt;97 % similiary is one OTU (Operate Taxonomy Unit)&lt;/p&gt;
+&lt;p&gt;Operational Taxonomic Unit (OPT)&lt;/p&gt;
+&lt;p&gt;MetaHIT&lt;/p&gt;
+&lt;p&gt;929 reference genomes.&lt;/p&gt;
+&lt;p&gt;k-mers&lt;/p&gt;
+&lt;p&gt;Challenge:&lt;/p&gt;
+&lt;p&gt;Metagenomics classification&lt;/p&gt;
+&lt;p&gt;跟已知的数据库进行对比.&lt;/p&gt;
+&lt;p&gt;HUMAnN 2.0 pipeline&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R下载数据</title>
+      <link>/post/2020-02-21-introduction_to_metagenomics/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-02-21-introduction_to_metagenomics/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#使用命令打开网页&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 使用命令打开网页&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#下载2019-new-coronaverus数据&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 下载2019 new-Coronaverus数据&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在看余光创教授的一个包,把一些学到的内容记录下来.&lt;/p&gt;
+&lt;div id=&#34;使用命令打开网页&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 使用命令打开网页&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  url &amp;lt;- &amp;#39;https://baidu.com&amp;#39;
+  utils::browseURL(url)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;下载2019-new-coronaverus数据&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 下载2019 new-Coronaverus数据&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt; url &amp;lt;- &amp;#39;https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&amp;amp;callback=1580373566110&amp;#39;
+  x &amp;lt;- suppressWarnings(readLines(url, encoding = &amp;quot;UTF-8&amp;quot;))
+  x &amp;lt;- sub(pattern = &amp;quot;^\\d+\\(&amp;quot;, replacement = &amp;quot;&amp;quot;, x = x)
+  x &amp;lt;- sub(pattern = &amp;quot;\\)$&amp;quot;, replacement = &amp;quot;&amp;quot;, x = x)
+  y &amp;lt;- jsonlite::fromJSON(txt = x)
+  z &amp;lt;- jsonlite::fromJSON(txt = y$data)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;z是一个list,里面包含了所有的信息.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;names(z)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;lastUpdateTime&amp;quot;     &amp;quot;chinaTotal&amp;quot;         &amp;quot;chinaAdd&amp;quot;          
+##  [4] &amp;quot;isShowAdd&amp;quot;          &amp;quot;showAddSwitch&amp;quot;      &amp;quot;areaTree&amp;quot;          
+##  [7] &amp;quot;chinaDayList&amp;quot;       &amp;quot;chinaDayAddList&amp;quot;    &amp;quot;dailyNewAddHistory&amp;quot;
+## [10] &amp;quot;dailyHistory&amp;quot;       &amp;quot;wuhanDayList&amp;quot;       &amp;quot;articleList&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z$chinaTotal&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $confirm
+## [1] 78196
+## 
+## $heal
+## [1] 29858
+## 
+## $dead
+## [1] 2718
+## 
+## $nowConfirm
+## [1] 45620
+## 
+## $suspect
+## [1] 2491
+## 
+## $nowSevere
+## [1] 8752&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z$chinaAdd&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $confirm
+## [1] 6
+## 
+## $heal
+## [1] 83
+## 
+## $dead
+## [1] 0
+## 
+## $nowConfirm
+## [1] -77
+## 
+## $suspect
+## [1] 0
+## 
+## $nowSevere
+## [1] 0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;z$lastUpdateTime&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;2020-02-27 00:32:14&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>使用pkgdown为自己的R包创建说明网站</title>
       <link>/post/2020-01-08-r-pkgdown/</link>
@@ -12267,6 +12394,11 @@ p + geom_tufteboxplot() +
 &lt;li&gt;&lt;a href=&#34;#重启r-session&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 重启R session&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rstudio快捷键总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Rstudio快捷键总结&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r小技巧&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; R小技巧&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#从字符串获取其所代表的变量名的对象&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 从字符串获取其所代表的变量名的对象&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将某个对象赋予某个字符串所代表的变量名&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 将某个对象赋予某个字符串所代表的变量名&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -12278,6 +12410,51 @@ p + geom_tufteboxplot() +
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; 重启R session&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;.rs.restartR()&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rstudio快捷键总结&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Rstudio快捷键总结&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;alt + arrow&lt;/code&gt;: 代码整体移动.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;shift + alt + mouse click&lt;/code&gt;:大光标.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;big_cursor.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r小技巧&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; R小技巧&lt;/h1&gt;
+&lt;div id=&#34;从字符串获取其所代表的变量名的对象&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; 从字符串获取其所代表的变量名的对象&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;get()&lt;/code&gt;函数.比如:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- 1:10
+b &amp;lt;- &amp;quot;a&amp;quot;
+b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;a&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get(b)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1]  1  2  3  4  5  6  7  8  9 10&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将某个对象赋予某个字符串所代表的变量名&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; 将某个对象赋予某个字符串所代表的变量名&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;assign()&lt;/code&gt;函数.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b &amp;lt;- &amp;quot;a&amp;quot;
+assign(x = b, value = 1:10)
+a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1]  1  2  3  4  5  6  7  8  9 10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;a&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个函数非常有用,尤其是在一个循环中,你想将每个循环获得的对象赋予给一些使用数字编号的变量名中.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())
+for(i in 1:10){
+  cat(i, &amp;quot; &amp;quot;)
+  temp &amp;lt;- 1:i
+  assign(x = paste(&amp;quot;run&amp;quot;, i, sep = &amp;quot;_&amp;quot;), value = temp)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 1  2  3  4  5  6  7  8  9  10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;run_1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;run_5&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1 2 3 4 5&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;run_10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1]  1  2  3  4  5  6  7  8  9 10&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

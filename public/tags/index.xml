@@ -5,19 +5,11 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Tue, 21 Jan 2020 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Metabolomics</title>
-      <link>/tags/metabolomics/</link>
-      <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/metabolomics/</guid>
-      <description></description>
-    </item>
-    
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Blog</title>
       <link>/tags/blog/</link>
-      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/tags/blog/</guid>
       <description></description>
     </item>
@@ -25,8 +17,16 @@
     <item>
       <title>Chinese</title>
       <link>/tags/chinese/</link>
-      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/tags/chinese/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Metabolomics</title>
+      <link>/tags/metabolomics/</link>
+      <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/metabolomics/</guid>
       <description></description>
     </item>
     

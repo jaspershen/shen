@@ -1,0 +1,77 @@
+---
+title: Introduction to metagenomics
+author: Xiaotao Shen
+date: '2020-02-21'
+slug: ''
+categories:
+  - omics
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+# Eli MEtchnikoff
+
+microbome祖师爷.
+
+# Phylogenetics of organisms
+
+核糖体RNA (rRNA)功能非常重要,可以将RNA变为蛋白质.序列非常保守.在所有生物种很相似.所以可以用来比较其序列来确定进化的依据.
+
+rRNA tree based.
+
+16S ribosomal RNA structure. (细菌)
+
+二级结构是预测出来的.
+
+RNA不稳定,所以一般都是测DNA.
+
+The collective genomes of soil microflora. metagenome.
+
+# The human Microbiome Project
+
+300 healthy participants.
+
+Utilize next generation sequencing
+
+what is normal microbome?
+
+https://www.hmpdacc.org/ihmp/
+
+
+16S and sequencing.
+
+Targeted sequening 16S rna
+
+
+16S只能知道是什么菌.但是whole genome知道所有的基因的功能.
+
+Taxa.
+
+97 % similiary is one OTU (Operate Taxonomy Unit)
+
+Operational Taxonomic Unit (OPT)
+
+MetaHIT
+
+929 reference genomes.
+
+k-mers
+
+Challenge: 
+
+Metagenomics classification
+
+跟已知的数据库进行对比.
+
+HUMAnN 2.0 pipeline
+

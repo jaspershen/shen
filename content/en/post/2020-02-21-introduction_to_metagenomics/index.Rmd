@@ -1,0 +1,52 @@
+---
+title: R下载数据
+author: Xiaotao Shen
+date: '2020-02-06'
+slug: ''
+categories:
+  - Rstudio
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+在看余光创教授的一个包,把一些学到的内容记录下来.
+
+# 使用命令打开网页
+
+```{r}
+  url <- 'https://baidu.com'
+  utils::browseURL(url)
+```
+
+
+# 下载2019 new-Coronaverus数据
+
+```{r}
+ url <- 'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&callback=1580373566110'
+  x <- suppressWarnings(readLines(url, encoding = "UTF-8"))
+  x <- sub(pattern = "^\\d+\\(", replacement = "", x = x)
+  x <- sub(pattern = "\\)$", replacement = "", x = x)
+  y <- jsonlite::fromJSON(txt = x)
+  z <- jsonlite::fromJSON(txt = y$data)
+```
+
+z是一个list,里面包含了所有的信息.
+
+```{r}
+names(z)
+z$chinaTotal
+z$chinaAdd
+z$lastUpdateTime
+```
+
+
+
