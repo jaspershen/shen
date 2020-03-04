@@ -5,7 +5,192 @@
     <link>/tags/chinese/</link>
       <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
     <description>Chinese</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>git和GitHub使用</title>
+      <link>/post/2020-03-04-git_github/</link>
+      <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-03-04-git_github/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#git配置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Git配置&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装git之后需要进行一些全局设置比如用户名邮箱.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 安装git之后,需要进行一些全局设置,比如用户名邮箱.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#除了用户名邮箱之外也可以对其他内容进行配置如&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 除了用户名邮箱之外,也可以对其他内容进行配置,如:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#查看所有的配置&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; 查看所有的配置&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#基础操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 基础操作&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建本地git版本库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 创建本地git版本库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将文件添加到版本库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 将文件添加到版本库&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#使用git-add命令将文件添加到暂存区&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.1&lt;/span&gt; 使用&lt;code&gt;git add&lt;/code&gt;命令将文件添加到暂存区:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#使用git-commit命令将暂存区文件提交到仓库中.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2.2&lt;/span&gt; 使用&lt;code&gt;git commit&lt;/code&gt;命令将暂存区文件提交到仓库中.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#查看仓库状态&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 查看仓库状态&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#查看仓库中的具体修改&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.4&lt;/span&gt; 查看仓库中的具体修改&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#查看提交的历史记录&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.5&lt;/span&gt; 查看提交的历史记录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#版本回退&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.6&lt;/span&gt; 版本回退&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#回到未来某个版本&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.7&lt;/span&gt; 回到未来某个版本&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#撤销修改&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8&lt;/span&gt; 撤销修改&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#丢弃工作区中的文件修改&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8.1&lt;/span&gt; 丢弃工作区中的文件修改&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#丢弃暂存区的修改&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.8.2&lt;/span&gt; 丢弃暂存区的修改&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置忽略文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 设置忽略文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;git配置&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Git配置&lt;/h1&gt;
+&lt;div id=&#34;安装git之后需要进行一些全局设置比如用户名邮箱.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 安装git之后,需要进行一些全局设置,比如用户名邮箱.&lt;/h2&gt;
+&lt;p&gt;设置的主要命令是&lt;code&gt;git config&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;your name&amp;quot; 
+git config --global user.email &amp;quot;your email&amp;quot; &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中,&lt;code&gt;--global&lt;/code&gt;是指全局配置,如果不写,则只为当前仓库(repository)配置.&lt;/p&gt;
+&lt;p&gt;如果有多个git用户,这时候需要先确定某个仓库使用的哪个账户.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config user.name
+git config user.email &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查询全局的git账户信息:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global user.name
+git config --global user.email &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;除了用户名邮箱之外也可以对其他内容进行配置如&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 除了用户名邮箱之外,也可以对其他内容进行配置,如:&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git config --global color.ui true #让git显示不同的颜色
+git config cor.ignorcase true #让git对仓库中文件大小写敏感&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;查看所有的配置&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; 查看所有的配置&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git config -l&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;基础操作&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 基础操作&lt;/h1&gt;
+&lt;div id=&#34;创建本地git版本库&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 创建本地git版本库&lt;/h2&gt;
+&lt;p&gt;使用&lt;code&gt;git init&lt;/code&gt;命令.&lt;/p&gt;
+&lt;p&gt;首先,创建一个你要当作仓库的文件夹,然后将其设置为工作路径,然后执行.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir git_test
+cd git_test
+git init&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20101100.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候查看目录结构,就可以看到创建了一个名为&lt;code&gt;.git&lt;/code&gt;的子目录,这就说明创建版本库成功了.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20101400.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将文件添加到版本库&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 将文件添加到版本库&lt;/h2&gt;
+&lt;p&gt;要将一个文件纳入到版本管理,首先需要将其添加到暂存区,然后才能提交到仓库中.&lt;/p&gt;
+&lt;div id=&#34;使用git-add命令将文件添加到暂存区&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.1&lt;/span&gt; 使用&lt;code&gt;git add&lt;/code&gt;命令将文件添加到暂存区:&lt;/h3&gt;
+&lt;p&gt;比如我们首先新建一个名为&lt;code&gt;README.md&lt;/code&gt;的文件,然后将其添加到暂存区.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add README.md&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当然也可以使用下面命令将所有修改添加到暂存区:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;.&lt;/code&gt; 是正则表达式,代表任意文件.但是空文件夹是不会添加到暂存区的.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;使用git-commit命令将暂存区文件提交到仓库中.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2.2&lt;/span&gt; 使用&lt;code&gt;git commit&lt;/code&gt;命令将暂存区文件提交到仓库中.&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git commit #如果暂存区有文件,则将其中的文件提交到仓库
+git commit -m &amp;quot;your note for this commit&amp;quot; #用于注明提交的内容,变更等信息,方便溯源&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20102352.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果直接使用&lt;code&gt;git commit&lt;/code&gt;提交,不带注释信息,则会先弹出评论界面,需要评论.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20102751.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;注意这时候是使用vi打开的文件,所以需要掌握一点vi的基础知识.参考下面帖子:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/itech/archive/2009/04/17/1438439.html&#34; class=&#34;uri&#34;&gt;https://www.cnblogs.com/itech/archive/2009/04/17/1438439.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;简单来说,首先在命令行模式下按下字母&lt;code&gt;i&lt;/code&gt;进入插入模式,在该模式下进行信息的输入.输入结束之后,点击&lt;code&gt;ESC&lt;/code&gt;退回到命令行模式,然后再输入冒号(&lt;code&gt;:&lt;/code&gt;).输入w,回车,保存,然后输入q,回车,退出vi编辑器.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;查看仓库状态&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 查看仓库状态&lt;/h2&gt;
+&lt;p&gt;不论我们是新建了文件,将文件加入暂存区,或者是其他修改等,我们都可以使用&lt;code&gt;git status&lt;/code&gt;来查看当前的仓库状态.&lt;/p&gt;
+&lt;p&gt;如果当前没有任何变动.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20103831.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果我们新建了一个文件,然后再次查看状态:&lt;/p&gt;
+&lt;p&gt;因为我们还没有将其添加到暂存区,因此显示该新建文件为 &lt;code&gt;Untracted files&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20103937.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将文件放入暂存区,然后再查看状态:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20104126.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后再将其进行提交,查看状态.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20104709.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;查看仓库中的具体修改&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.4&lt;/span&gt; 查看仓库中的具体修改&lt;/h2&gt;
+&lt;p&gt;如果做过之后修改,我们忘了做了哪些修改,可以使用&lt;code&gt;git diff&lt;/code&gt;命令来查看具体修改内容.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git diff #查看所有改动
+git diff README.md #查看具体文件的改动&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;比如我们再&lt;code&gt;test.txt&lt;/code&gt;文件中加入一行,然后查看:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20105306.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;可以看到记录了对该文件的修改内容.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意,如果你修改之后已经将其存入暂存区,则&lt;code&gt;git diff&lt;/code&gt;不会再显示内容.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20105454.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;查看提交的历史记录&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.5&lt;/span&gt; 查看提交的历史记录&lt;/h2&gt;
+&lt;p&gt;有的时候,你需要查看自己做过哪些提交(commit),来回顾自己的完成部分,这时候需要使用&lt;code&gt;git log&lt;/code&gt;命令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git log     #显示所有提交的历史记录
+git log --pretty=oneline    #单行显示提交历史记录的内容&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20105927.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;可以看到我们现在一共进行了4次提交,每次提交的第一行commit之后是该次提交的唯一&lt;code&gt;ID&lt;/code&gt;.然后后面显示提交者,时间以及一些记录等.&lt;/p&gt;
+&lt;p&gt;如果提交非常多,需要显示内容精简一些,就需要使用&lt;code&gt;git log --pretty=oneline&lt;/code&gt;命令.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20110141.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;版本回退&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.6&lt;/span&gt; 版本回退&lt;/h2&gt;
+&lt;p&gt;有了&lt;code&gt;git log&lt;/code&gt;来查看提交的历史记录,我们就可以通过&lt;code&gt;git reset --hard&lt;/code&gt;来退回到我们需要的某个特定把呢不能.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset --hard HEAD^        # 回退到上一个提交版本
+git reset --hard HEAD^^        # 回退到上上一个提交版本
+git reset --hard &amp;#39;commit_id&amp;#39;    # 会退到 commit_id 指定的提交版本&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用&lt;code&gt;git log&lt;/code&gt;我们可以看到每个提交都有一个唯一的commit ID,其中上一个也可以使用&lt;code&gt;HEAD&lt;/code&gt;代表.因此我们可以退回到上一个版本.比如,我们在最近的一次提交中修改了test.txt,在其中加入一行.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20110543.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们想退回到上一个版本,不想加入这一行,可以使用下面命令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset --hard HEAD^&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候再查看log,可以看到最近的一个commit已经消失,回到了上一个提交.而上一次的修改也已经消失.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20110857.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;回到未来某个版本&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.7&lt;/span&gt; 回到未来某个版本&lt;/h2&gt;
+&lt;p&gt;退回到原来某个版本之后,如何再回到未来某个版本呢?还是使用&lt;code&gt;git reset --hard&lt;/code&gt;命令,但是此时使用&lt;code&gt;git log&lt;/code&gt;命令是无法显示在这之后的提交信息的。但是，通过&lt;code&gt;git reflog&lt;/code&gt;可以获取到操作命令的历史。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20111241.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候只要在使用&lt;code&gt;git reset&lt;/code&gt;命令就可以回到未来的任意一个版本了.而且这时候再使用&lt;code&gt;git log&lt;/code&gt;也回到了最初的版本提交记录.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20111622.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;撤销修改&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8&lt;/span&gt; 撤销修改&lt;/h2&gt;
+&lt;p&gt;撤销修改同样包括两方面的内容，由于仓库中的文件在提交之前，可能在工作区中(也就是还未运行 &lt;code&gt;git add&lt;/code&gt;命令)，尚未在版本控制范围内，也可能在暂存区中(也就是运行了&lt;code&gt;git add&lt;/code&gt;命令但是没有运行&lt;code&gt;git commit .&lt;/code&gt;命令)。&lt;/p&gt;
+&lt;div id=&#34;丢弃工作区中的文件修改&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8.1&lt;/span&gt; 丢弃工作区中的文件修改&lt;/h3&gt;
+&lt;p&gt;使用如下命令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout -- READ.md    #如果 READ.md 文件在工作区，则丢弃其修改
+git checkout -- .            #丢弃当前目录下所有工作区中文件的修改&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;比如我们再&lt;code&gt;test.txt&lt;/code&gt;中添加另外一行,然后不加入暂存区,然后将其丢弃掉.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20112427.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后运行:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout -- test.txt&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20112527.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;丢弃暂存区的修改&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.8.2&lt;/span&gt; 丢弃暂存区的修改&lt;/h3&gt;
+&lt;p&gt;如果已经运行了&lt;code&gt;git add&lt;/code&gt;将修改放入了暂存区,可以通过下列命令进行丢弃:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset HEAD README.md #将 README.md 恢复到 HEAD 提交版本的状态
+git checkout -- README.md&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20112956.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后将其删除掉.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20113351.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置忽略文件&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 设置忽略文件&lt;/h1&gt;
+&lt;p&gt;有时候仓库中的某些文件或者文件夹并不需要进行同步,这时候可以通过设置忽略文件&lt;code&gt;.gitignore&lt;/code&gt;进行管理.&lt;/p&gt;
+&lt;p&gt;参考帖子:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/onlynight/ReadmeDemo/tree/master/Readmes/GitIgnore&#34; class=&#34;uri&#34;&gt;https://github.com/onlynight/ReadmeDemo/tree/master/Readmes/GitIgnore&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Introduction to metagenomics</title>
       <link>/post/2020-02-06-r-study/</link>
@@ -9540,6 +9725,26 @@ sudo gem sources -a http://ruby.taobao.org/&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;结语&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.8&lt;/span&gt; 结语&lt;/h2&gt;
 &lt;p&gt;如果你跟着这篇不那么详尽的教程，成功搭建了自己的博客，恭喜你！剩下的就是保持热情的去写自己的文章吧。&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Metabolic health center conference</title>
+      <link>/post/2020-02-28-metabolic-health-center/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/post/2020-02-28-metabolic-health-center/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#christopher-newgard&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Christopher Newgard&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Clinical Metabolomics&lt;/p&gt;
+&lt;div id=&#34;christopher-newgard&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Christopher Newgard&lt;/h1&gt;
 &lt;/div&gt;
 </description>
     </item>

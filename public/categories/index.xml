@@ -5,19 +5,11 @@
     <link>/categories/</link>
       <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>omics</title>
-      <link>/categories/omics/</link>
-      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/omics/</guid>
-      <description></description>
-    </item>
-    
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>R</title>
       <link>/categories/r/</link>
-      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       <guid>/categories/r/</guid>
       <description></description>
     </item>
@@ -25,8 +17,16 @@
     <item>
       <title>Rstudio</title>
       <link>/categories/rstudio/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       <guid>/categories/rstudio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>omics</title>
+      <link>/categories/omics/</link>
+      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/omics/</guid>
       <description></description>
     </item>
     
