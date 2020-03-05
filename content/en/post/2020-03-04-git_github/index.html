@@ -41,8 +41,23 @@ output:
 <li><a href="#丢弃工作区中的文件修改"><span class="toc-section-number">2.8.1</span> 丢弃工作区中的文件修改</a></li>
 <li><a href="#丢弃暂存区的修改"><span class="toc-section-number">2.8.2</span> 丢弃暂存区的修改</a></li>
 </ul></li>
+<li><a href="#删除文件"><span class="toc-section-number">2.9</span> 删除文件</a></li>
 </ul></li>
-<li><a href="#设置忽略文件"><span class="toc-section-number">3</span> 设置忽略文件</a></li>
+<li><a href="#git的分支管理"><span class="toc-section-number">3</span> git的分支管理</a><ul>
+<li><a href="#查看分支"><span class="toc-section-number">3.1</span> 查看分支</a></li>
+<li><a href="#创建分支"><span class="toc-section-number">3.2</span> 创建分支</a></li>
+<li><a href="#切换分支"><span class="toc-section-number">3.3</span> 切换分支</a></li>
+<li><a href="#合并分支merge"><span class="toc-section-number">3.4</span> 合并分支(merge)</a></li>
+<li><a href="#删除分支"><span class="toc-section-number">3.5</span> 删除分支</a></li>
+</ul></li>
+<li><a href="#远程仓库github"><span class="toc-section-number">4</span> 远程仓库(GitHub)</a><ul>
+<li><a href="#添加到远程仓库"><span class="toc-section-number">4.1</span> 添加到远程仓库</a></li>
+<li><a href="#推送到远程仓库"><span class="toc-section-number">4.2</span> 推送到远程仓库</a></li>
+<li><a href="#从远程仓库获取最新内容"><span class="toc-section-number">4.3</span> 从远程仓库获取最新内容</a></li>
+<li><a href="#查看远程仓库信息"><span class="toc-section-number">4.4</span> 查看远程仓库信息</a></li>
+<li><a href="#从远程仓库克隆"><span class="toc-section-number">4.5</span> 从远程仓库克隆</a></li>
+</ul></li>
+<li><a href="#设置忽略文件"><span class="toc-section-number">5</span> 设置忽略文件</a></li>
 </ul>
 </div>
 
@@ -187,9 +202,114 @@ git checkout -- README.md</code></pre>
 <p><img src="Annotation%202020-03-04%20113351.png" /></p>
 </div>
 </div>
+<div id="删除文件" class="section level2">
+<h2><span class="header-section-number">2.9</span> 删除文件</h2>
+<p>在文件未添加到暂存区之前,对想删除文件可以直接物理删除.或者通过<code>git checkout -- file</code>来丢弃.如果文件已经被提交,则需要<code>git rm</code>来删除.</p>
+<pre><code>git rm Readme.md #删除已经提交(commit)过的文件</code></pre>
+<blockquote>
+<p>注意: <code>git rm</code>只能删除已经提交到版本库中的文件.其他状态的文件直接用这个命令操作是出错的.</p>
+</blockquote>
+<p><img src="Annotation%202020-03-04%20204036.png" /></p>
+</div>
+</div>
+<div id="git的分支管理" class="section level1">
+<h1><span class="header-section-number">3</span> git的分支管理</h1>
+<p>分支管理是版本管理中的重要概念.在进行多个并行作业时,我们经常会用到分支.在这类并行开发的过程中,往往同时存在着多个最新的代码状态.</p>
+<p>master分支时git默认创建的分支.因此基本上所有的开发都是以这个分支为中心进行的.</p>
+<p>在不同分支中,可以同时进行不同的作业,等该分支的作业完成之后,再与master分支进行合并.</p>
+<p>比如下图中,我们首先以master作为模板复制得到<code>feature A</code>的分支.<code>feature A</code>分支主要用来开发另外一个新的特性,等开发完毕之后,再将其合并到master分支中即可.</p>
+<p><img src="Annotation%202020-03-04%20205634.png" /></p>
+<div id="查看分支" class="section level2">
+<h2><span class="header-section-number">3.1</span> 查看分支</h2>
+<p>使用<code>git branch</code>命令查看分支信息.</p>
+<pre><code>git branch        #查看本地分支信息
+git branch -v     #查看相对详细的本地分支信息
+git branch -av     #查看包括远程仓库在内的分支信息</code></pre>
+<p><img src="Annotation%202020-03-04%20210006.png" /></p>
+<p>可以看到我们现在只有一个分支,也就是master,然后星号标识的就是当前所在的分支.</p>
+</div>
+<div id="创建分支" class="section level2">
+<h2><span class="header-section-number">3.2</span> 创建分支</h2>
+<p>使用 <code>git branch new.name</code>用来创建新的分支.</p>
+<pre><code>git branch development ##创建一个新的名字叫做development的分支</code></pre>
+<blockquote>
+<p>需要注意的是,在哪个分支下面新建分支,则该分支就是copy自当前所在的分支.</p>
+</blockquote>
+</div>
+<div id="切换分支" class="section level2">
+<h2><span class="header-section-number">3.3</span> 切换分支</h2>
+<p>使用<code>git checkout</code>命令来切换分支.比如我们先新建一个development的分支,然后切换到该分支下.</p>
+<pre><code>git branch development
+git checkout development</code></pre>
+<p>当然也可以使用下面命令直接创建并切换到新建的分支下.</p>
+<pre><code>git checkout -b development</code></pre>
+<p><img src="Annotation%202020-03-04%20210500.png" /></p>
+<p>我们下面在development分支下面再新建一个<code>development.txt</code>文件,然后写入一些内容.</p>
+<p><img src="Annotation%202020-03-04%20211512.png" /></p>
+<p>可以看到此时有一个新建的development.txt文件.如果我们切换到master分支,还是有该文件,但是对该文件内容进行修改,则因为没有加入到暂存区,因此并不会进行版本控制.</p>
+</div>
+<div id="合并分支merge" class="section level2">
+<h2><span class="header-section-number">3.4</span> 合并分支(merge)</h2>
+<p>当我们修复完成一个Bug,或者开发完成一个新特性,我们就会把相关的Bug或者特性的上修改合并回原来的主分支上.,这时候就需要<code>git merge</code>命令来做分支的合并.</p>
+<p>首先需要切换回最终需要合并的分支,也就是<code>master</code>分支,然后再合并.</p>
+<pre><code>git checkout master        #切换回 master 分支
+git merge development     #将development分支中的修改合并回master分支</code></pre>
+<p><img src="Annotation%202020-03-04%20212532.png" /></p>
+</div>
+<div id="删除分支" class="section level2">
+<h2><span class="header-section-number">3.5</span> 删除分支</h2>
+<p>当之前创建的分支,完成了它的使命,如Bug修复完,分支合并以后,这个分支就不在需要了,就可以删除它.</p>
+<pre><code>git branch -d development #删除development分支</code></pre>
+</div>
+</div>
+<div id="远程仓库github" class="section level1">
+<h1><span class="header-section-number">4</span> 远程仓库(GitHub)</h1>
+<p>上面的所有命令都是针对本地仓库的操作.当我们希望多个人来协作时,会将代码发布到一个统一的远程仓库,然后多个人在本地操作以后,再推送到远程仓库.其他人协作时,需要先同步远程仓库的内容,再推送自己的修改.这就要用到了我们最常用的github.</p>
+<div id="添加到远程仓库" class="section level2">
+<h2><span class="header-section-number">4.1</span> 添加到远程仓库</h2>
+<p>比如我们上面所建立的<code>git_test</code>本地仓库,我们需要将其添加到github的远程仓库中.</p>
+<pre><code>git remote add origin your_remote_git_repo #为本地仓库添加远程仓库</code></pre>
+<p>其中<code>your_remote_git_repo</code>是再github中创建的.我们先创建一下,然后进行尝试.</p>
+<p>格式为<code>git@github.com:user.name/repo_name</code>.
+当然,也可以直接使用远程仓库的网址:</p>
+<p><a href="https://github.com/jaspershen/git_test" class="uri">https://github.com/jaspershen/git_test</a></p>
+<p><img src="Annotation%202020-03-04%20213542.png" /></p>
+</div>
+<div id="推送到远程仓库" class="section level2">
+<h2><span class="header-section-number">4.2</span> 推送到远程仓库</h2>
+<p>使用<code>git push</code>将本地仓库的内容推送到远程仓库.</p>
+<pre><code>git push -u origin master #第一次推送时使用,可以简化后面的推送或者拉取命令使用
+git push origin master #将本地master分支推送到origin远程分支</code></pre>
+<p><img src="Annotation%202020-03-04%20214807.png" /></p>
+<p>以后再推送的时候,就使用<code>git push</code>就可以了.</p>
+<p>这时候可以看到github中已经有了内容.</p>
+<p><img src="Annotation%202020-03-04%20214930.png" /></p>
+</div>
+<div id="从远程仓库获取最新内容" class="section level2">
+<h2><span class="header-section-number">4.3</span> 从远程仓库获取最新内容</h2>
+<p>在多人协作过程中,当自己完成了本地仓库中的提交,想要向远程仓库推送前,需要先获取到远程仓库的最新内容。</p>
+<p>可以通过<code>git fetch</code>和<code>git pull</code>来获取远程仓库的内容.</p>
+<pre><code>git fetch origin master    
+git pull origin master</code></pre>
+<p>两者之间的区别:</p>
+<ul>
+<li><p><code>git fetch</code>是仅仅获取远程仓库的更新内容,并不会自动做合并.</p></li>
+<li><p><code>git pull</code>在获取远程仓库的内容后,会自动做合并,可以看成<code>git fetch</code>之后<code>git merge</code>.</p></li>
+</ul>
+</div>
+<div id="查看远程仓库信息" class="section level2">
+<h2><span class="header-section-number">4.4</span> 查看远程仓库信息</h2>
+<pre><code>git remote -v</code></pre>
+</div>
+<div id="从远程仓库克隆" class="section level2">
+<h2><span class="header-section-number">4.5</span> 从远程仓库克隆</h2>
+<p>如果你本地没有仓库,希望从已有的远程仓库上复制一份代码,那么你需要<code>git clone</code>.</p>
+<pre><code>git clone https://github.com/jaspershen/git_test #通过 https 协议,克隆Github上git仓库的源码
+git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git仓库的源码</code></pre>
+</div>
 </div>
 <div id="设置忽略文件" class="section level1">
-<h1><span class="header-section-number">3</span> 设置忽略文件</h1>
+<h1><span class="header-section-number">5</span> 设置忽略文件</h1>
 <p>有时候仓库中的某些文件或者文件夹并不需要进行同步,这时候可以通过设置忽略文件<code>.gitignore</code>进行管理.</p>
 <p>参考帖子:</p>
 <p><a href="https://github.com/onlynight/ReadmeDemo/tree/master/Readmes/GitIgnore" class="uri">https://github.com/onlynight/ReadmeDemo/tree/master/Readmes/GitIgnore</a></p>

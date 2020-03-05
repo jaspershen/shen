@@ -408,8 +408,15 @@ git pull origin master
 git remote -v
 ```
 
+## 从远程仓库克隆
 
-## o
+如果你本地没有仓库,希望从已有的远程仓库上复制一份代码,那么你需要`git clone`.
+
+```
+git clone https://github.com/jaspershen/git_test #通过 https 协议,克隆Github上git仓库的源码
+git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git仓库的源码
+```
+
 
 # 设置忽略文件
 
