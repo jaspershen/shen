@@ -1,0 +1,71 @@
+---
+title: Linux
+author: Xiaotao Shen
+date: '2020-03-04'
+slug: Linux
+categories:
+  - Linux
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# Linux常用命令总结
+
+## 文件和目录
+
+### 修改工作路径
+
+* `cat /home`:进入home目录
+
+* `cat ..`:返回上一级目录.
+
+* `cat ../..`;返回上两级目录.
+
+### 显示工作路径
+
+* `pwd`:显示当前工作路径.
+
+* `ls`:查看当前路径中的所有文件.
+
+* `ls -l`:查看当前路径中的所有文件和目录的详细资料.
+
+* `ls -a`:查看隐藏文件.
+
+* `ls -la`:查看文件详细信息和隐藏文件.
+
+## 创建文件夹和文件
+
+* `mkdir dir1`:创建dir1文件夹.
+
+* `mkdir dir1 dir2`:同时创建dir1和dir2文件夹.
+
+* `touch file`:创建一个名为file的文件.
+
+## 删除文件
+
+* `rm -f file1`:删除file1文件.
+
+* `rmdir dir1`:删除dir1文件夹.
+
+* `rm rf dir1`:删除dir1文件夹及其中的文件.
+
+## 拷贝和复制文件
+
+* `mv dir1 new_dir1`: 重命名或者移动一个目录.
+
+* `cp file1 file2`:拷贝一个文件.
+
+
+
+
+
+
+

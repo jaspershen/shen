@@ -1,0 +1,81 @@
+---
+title: Linux
+author: Xiaotao Shen
+date: '2020-03-04'
+slug: Linux
+categories:
+  - Linux
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#linux常用命令总结"><span class="toc-section-number">1</span> Linux常用命令总结</a><ul>
+<li><a href="#文件和目录"><span class="toc-section-number">1.1</span> 文件和目录</a><ul>
+<li><a href="#修改工作路径"><span class="toc-section-number">1.1.1</span> 修改工作路径</a></li>
+<li><a href="#显示工作路径"><span class="toc-section-number">1.1.2</span> 显示工作路径</a></li>
+</ul></li>
+<li><a href="#创建文件夹和文件"><span class="toc-section-number">1.2</span> 创建文件夹和文件</a></li>
+<li><a href="#删除文件"><span class="toc-section-number">1.3</span> 删除文件</a></li>
+<li><a href="#拷贝和复制文件"><span class="toc-section-number">1.4</span> 拷贝和复制文件</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="linux常用命令总结" class="section level1">
+<h1><span class="header-section-number">1</span> Linux常用命令总结</h1>
+<div id="文件和目录" class="section level2">
+<h2><span class="header-section-number">1.1</span> 文件和目录</h2>
+<div id="修改工作路径" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> 修改工作路径</h3>
+<ul>
+<li><p><code>cat /home</code>:进入home目录</p></li>
+<li><p><code>cat ..</code>:返回上一级目录.</p></li>
+<li><p><code>cat ../..</code>;返回上两级目录.</p></li>
+</ul>
+</div>
+<div id="显示工作路径" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> 显示工作路径</h3>
+<ul>
+<li><p><code>pwd</code>:显示当前工作路径.</p></li>
+<li><p><code>ls</code>:查看当前路径中的所有文件.</p></li>
+<li><p><code>ls -l</code>:查看当前路径中的所有文件和目录的详细资料.</p></li>
+<li><p><code>ls -a</code>:查看隐藏文件.</p></li>
+<li><p><code>ls -la</code>:查看文件详细信息和隐藏文件.</p></li>
+</ul>
+</div>
+</div>
+<div id="创建文件夹和文件" class="section level2">
+<h2><span class="header-section-number">1.2</span> 创建文件夹和文件</h2>
+<ul>
+<li><p><code>mkdir dir1</code>:创建dir1文件夹.</p></li>
+<li><p><code>mkdir dir1 dir2</code>:同时创建dir1和dir2文件夹.</p></li>
+<li><p><code>touch file</code>:创建一个名为file的文件.</p></li>
+</ul>
+</div>
+<div id="删除文件" class="section level2">
+<h2><span class="header-section-number">1.3</span> 删除文件</h2>
+<ul>
+<li><p><code>rm -f file1</code>:删除file1文件.</p></li>
+<li><p><code>rmdir dir1</code>:删除dir1文件夹.</p></li>
+<li><p><code>rm rf dir1</code>:删除dir1文件夹及其中的文件.</p></li>
+</ul>
+</div>
+<div id="拷贝和复制文件" class="section level2">
+<h2><span class="header-section-number">1.4</span> 拷贝和复制文件</h2>
+<ul>
+<li><p><code>mv dir1 new_dir1</code>: 重命名或者移动一个目录.</p></li>
+<li><p><code>cp file1 file2</code>:拷贝一个文件.</p></li>
+</ul>
+</div>
+</div>
