@@ -5086,7 +5086,7 @@ output:
 &lt;pre&gt;&lt;code&gt;I : heart : Academic : smile :&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意需要把emoji文字和两边的冒号之间的空格去除掉.&lt;/p&gt;
 &lt;p&gt;显示:&lt;/p&gt;
-&lt;p&gt;I ❤️ Academic 😄&lt;/p&gt;
+&lt;p&gt;I ❤ Academic 😄&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何在post中插入视频&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;10&lt;/span&gt; 如何在post中插入视频?&lt;/h1&gt;

@@ -1,0 +1,46 @@
+---
+title: Vi sumary
+author: Xiaotao Shen
+date: '2020-03-06'
+slug: Linux
+categories:
+  - Linux
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+Vi是linux系统下的一款编辑器。常用的快捷键和用法总结如下。
+
+# VI的几种模式
+
+## 命令行模式
+
+一般使用`vi`命令进入到某个文件之后,就是命令行模式.在mac下,使用terminal进入,可以看到最下面没有任何标志,此时无法对文件进行更改.
+
+## 插入模式(insert)
+
+在命令行模式下,点击i或者a或者o等按键,都可以进入到插入模式,此时可以对文件进行修改.
+
+从插入模式进入到命令行模式,可以按`esc`键.
+
+# 文档操作
+
+在命令行模式下,一般需要先按冒号(shift+:),然后可以看到光标出现在了最底部,在冒号之后,然后可以在冒号中输入各种快捷键进行不同操作.
+
+## 保存
+
+`:w`:输入w之后,回车就是保存修改之后的文件.
+
+## 退出
+
+`:q`:输入q之后,回车退出文件.
+
+当然也可以直接输入`:wq`,同时保存退出文件.

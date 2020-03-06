@@ -1,0 +1,59 @@
+---
+title: Vi sumary
+author: Xiaotao Shen
+date: '2020-03-06'
+slug: Linux
+categories:
+  - Linux
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#vi的几种模式"><span class="toc-section-number">1</span> VI的几种模式</a><ul>
+<li><a href="#命令行模式"><span class="toc-section-number">1.1</span> 命令行模式</a></li>
+<li><a href="#插入模式insert"><span class="toc-section-number">1.2</span> 插入模式(insert)</a></li>
+</ul></li>
+<li><a href="#文档操作"><span class="toc-section-number">2</span> 文档操作</a><ul>
+<li><a href="#保存"><span class="toc-section-number">2.1</span> 保存</a></li>
+<li><a href="#退出"><span class="toc-section-number">2.2</span> 退出</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p>Vi是linux系统下的一款编辑器。常用的快捷键和用法总结如下。</p>
+<div id="vi的几种模式" class="section level1">
+<h1><span class="header-section-number">1</span> VI的几种模式</h1>
+<div id="命令行模式" class="section level2">
+<h2><span class="header-section-number">1.1</span> 命令行模式</h2>
+<p>一般使用<code>vi</code>命令进入到某个文件之后,就是命令行模式.在mac下,使用terminal进入,可以看到最下面没有任何标志,此时无法对文件进行更改.</p>
+</div>
+<div id="插入模式insert" class="section level2">
+<h2><span class="header-section-number">1.2</span> 插入模式(insert)</h2>
+<p>在命令行模式下,点击i或者a或者o等按键,都可以进入到插入模式,此时可以对文件进行修改.</p>
+<p>从插入模式进入到命令行模式,可以按<code>esc</code>键.</p>
+</div>
+</div>
+<div id="文档操作" class="section level1">
+<h1><span class="header-section-number">2</span> 文档操作</h1>
+<p>在命令行模式下,一般需要先按冒号(shift+:),然后可以看到光标出现在了最底部,在冒号之后,然后可以在冒号中输入各种快捷键进行不同操作.</p>
+<div id="保存" class="section level2">
+<h2><span class="header-section-number">2.1</span> 保存</h2>
+<p><code>:w</code>:输入w之后,回车就是保存修改之后的文件.</p>
+</div>
+<div id="退出" class="section level2">
+<h2><span class="header-section-number">2.2</span> 退出</h2>
+<p><code>:q</code>:输入q之后,回车退出文件.</p>
+<p>当然也可以直接输入<code>:wq</code>,同时保存退出文件.</p>
+</div>
+</div>

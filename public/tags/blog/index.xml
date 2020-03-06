@@ -5,7 +5,56 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Vi sumary</title>
+      <link>/post/linux/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/post/linux/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#vi的几种模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; VI的几种模式&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#命令行模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 命令行模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#插入模式insert&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 插入模式(insert)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#文档操作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 文档操作&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#保存&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 保存&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#退出&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; 退出&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vi是linux系统下的一款编辑器。常用的快捷键和用法总结如下。&lt;/p&gt;
+&lt;div id=&#34;vi的几种模式&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; VI的几种模式&lt;/h1&gt;
+&lt;div id=&#34;命令行模式&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 命令行模式&lt;/h2&gt;
+&lt;p&gt;一般使用&lt;code&gt;vi&lt;/code&gt;命令进入到某个文件之后,就是命令行模式.在mac下,使用terminal进入,可以看到最下面没有任何标志,此时无法对文件进行更改.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;插入模式insert&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 插入模式(insert)&lt;/h2&gt;
+&lt;p&gt;在命令行模式下,点击i或者a或者o等按键,都可以进入到插入模式,此时可以对文件进行修改.&lt;/p&gt;
+&lt;p&gt;从插入模式进入到命令行模式,可以按&lt;code&gt;esc&lt;/code&gt;键.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;文档操作&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 文档操作&lt;/h1&gt;
+&lt;p&gt;在命令行模式下,一般需要先按冒号(shift+:),然后可以看到光标出现在了最底部,在冒号之后,然后可以在冒号中输入各种快捷键进行不同操作.&lt;/p&gt;
+&lt;div id=&#34;保存&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 保存&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;:w&lt;/code&gt;:输入w之后,回车就是保存修改之后的文件.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;退出&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; 退出&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;:q&lt;/code&gt;:输入q之后,回车退出文件.&lt;/p&gt;
+&lt;p&gt;当然也可以直接输入&lt;code&gt;:wq&lt;/code&gt;,同时保存退出文件.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>git和GitHub使用</title>
       <link>/post/2020-03-04-git_github/</link>
@@ -11048,7 +11097,7 @@ output:
 &lt;pre&gt;&lt;code&gt;I : heart : Academic : smile :&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意需要把emoji文字和两边的冒号之间的空格去除掉.&lt;/p&gt;
 &lt;p&gt;显示:&lt;/p&gt;
-&lt;p&gt;I ❤️ Academic 😄&lt;/p&gt;
+&lt;p&gt;I ❤ Academic 😄&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何在post中插入视频&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;10&lt;/span&gt; 如何在post中插入视频?&lt;/h1&gt;
