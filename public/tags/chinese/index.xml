@@ -7,6 +7,54 @@
     <description>Chinese</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020</copyright><lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
     <item>
+      <title>Machine learning and bioinformaticss</title>
+      <link>/post/ml/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/post/ml/</guid>
+      <description>
+
+
+&lt;p&gt;ML and bioinformatics.&lt;/p&gt;
+&lt;p&gt;SungRoh Yoon&lt;/p&gt;
+&lt;p&gt;ACM-BCB 2016 Tutorial&lt;/p&gt;
+&lt;p&gt;Deep learning for Bioinformatics and Healt Informatics&lt;/p&gt;
+&lt;p&gt;Convoloutional neuralnetworks&lt;/p&gt;
+&lt;p&gt;RNN (recurrent neuroanl network)&lt;/p&gt;
+&lt;p&gt;PRML 经典书用来学习基础&lt;/p&gt;
+&lt;p&gt;比较计算的讲法&lt;/p&gt;
+&lt;p&gt;Christopher M Bishop作者.&lt;/p&gt;
+&lt;p&gt;还有一种比较统计的讲法.&lt;/p&gt;
+&lt;p&gt;统计分两个学派:频率和贝叶斯.&lt;/p&gt;
+&lt;p&gt;这本书是贝叶斯学派.&lt;/p&gt;
+&lt;p&gt;最大似然估计,是频率学派.&lt;/p&gt;
+&lt;p&gt;最大后验估计.&lt;/p&gt;
+&lt;p&gt;理论讲的比较少.&lt;/p&gt;
+&lt;p&gt;SVM讲的比较少.(本质上是优化模型,是概率)&lt;/p&gt;
+&lt;p&gt;另外一本书:Foundations of Machine Learning(从理论开始讲起)&lt;/p&gt;
+&lt;p&gt;Deep learning (Bengio)&lt;/p&gt;
+&lt;p&gt;online resourcce:&lt;/p&gt;
+&lt;p&gt;Andre Ng&lt;/p&gt;
+&lt;p&gt;高维数据()&lt;/p&gt;
+&lt;p&gt;降维.lasso.&lt;/p&gt;
+&lt;p&gt;一般来说,要feature要小于sample size.&lt;/p&gt;
+&lt;p&gt;可以降维.&lt;/p&gt;
+&lt;p&gt;问题:&lt;/p&gt;
+&lt;p&gt;数据越来越高维,
+怎么让数据量足够handle?&lt;/p&gt;
+&lt;p&gt;gradient descent(梯度下降)&lt;/p&gt;
+&lt;p&gt;step依靠经验去挑选.&lt;/p&gt;
+&lt;p&gt;training and test data的误差都要比较小才比较好.&lt;/p&gt;
+&lt;p&gt;Hoeffding’s inequality&lt;/p&gt;
+&lt;p&gt;最为关键的问题,overfitting.&lt;/p&gt;
+&lt;p&gt;如何克服overfiting?&lt;/p&gt;
+&lt;p&gt;variance + bias&lt;/p&gt;
+&lt;p&gt;tradeoff&lt;/p&gt;
+&lt;p&gt;克服overfiting的方法?&lt;/p&gt;
+&lt;p&gt;drop off.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Vi sumary</title>
       <link>/post/linux/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>

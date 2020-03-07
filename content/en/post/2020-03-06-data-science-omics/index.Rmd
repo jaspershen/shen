@@ -1,0 +1,98 @@
+---
+title: Machine learning and bioinformaticss
+author: Xiaotao Shen
+date: '2020-03-06'
+slug: ML
+categories:
+  - Linux
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+ML and bioinformatics.
+
+SungRoh Yoon
+
+ACM-BCB 2016 Tutorial
+
+Deep learning for Bioinformatics and Healt Informatics
+
+Convoloutional neuralnetworks
+
+RNN (recurrent neuroanl network)
+
+PRML 经典书用来学习基础
+
+比较计算的讲法
+
+Christopher M Bishop作者.
+
+还有一种比较统计的讲法.
+
+统计分两个学派:频率和贝叶斯.
+
+这本书是贝叶斯学派.
+
+最大似然估计,是频率学派.
+
+最大后验估计.
+
+理论讲的比较少.
+
+SVM讲的比较少.(本质上是优化模型,是概率)
+
+另外一本书:Foundations of Machine Learning(从理论开始讲起)
+
+Deep learning (Bengio)
+
+online resourcce:
+
+Andre Ng
+
+高维数据()
+
+降维.lasso.
+
+一般来说,要feature要小于sample size.
+
+可以降维.
+
+问题:
+
+数据越来越高维,
+怎么让数据量足够handle?
+
+gradient descent(梯度下降)
+
+step依靠经验去挑选.
+
+training and test data的误差都要比较小才比较好.
+
+Hoeffding's inequality
+
+最为关键的问题,overfitting.
+
+如何克服overfiting?
+
+variance + bias
+
+tradeoff
+
+克服overfiting的方法?
+
+drop off.
+
+
+
+
+
+
+
