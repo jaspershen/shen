@@ -1,0 +1,21 @@
+---
+title: Rstudio server in Ubuntu
+author: Xiaotao Shen
+date: '2020-03-08'
+slug: 
+categories:
+  - Ubuntu
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+I just installed a Rstudio server in a Ubuntu. So I can use the Rstudio in any computer via ssh.
+
