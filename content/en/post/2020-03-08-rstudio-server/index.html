@@ -2,7 +2,7 @@
 title: Rstudio server in Ubuntu
 author: Xiaotao Shen
 date: '2020-03-08'
-slug: 
+slug:
 categories:
   - Ubuntu
 tags:
@@ -18,5 +18,82 @@ output:
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#安装rstudio-server"><span class="toc-section-number">1</span> 安装Rstudio server</a></li>
+<li><a href="#常用命令"><span class="toc-section-number">2</span> 常用命令</a><ul>
+<li><a href="#检查rstudio-server是否运行"><span class="toc-section-number">2.1</span> 检查rstudio server是否运行</a></li>
+<li><a href="#启动"><span class="toc-section-number">2.2</span> 启动</a></li>
+<li><a href="#查看服务器状态"><span class="toc-section-number">2.3</span> 查看服务器状态</a></li>
+<li><a href="#停止服务器"><span class="toc-section-number">2.4</span> 停止服务器</a></li>
+<li><a href="#重启服务器"><span class="toc-section-number">2.5</span> 重启服务器</a></li>
+<li><a href="#添加新的用户"><span class="toc-section-number">2.6</span> 添加新的用户</a><ul>
+<li><a href="#添加用户"><span class="toc-section-number">2.6.1</span> 添加用户</a></li>
+<li><a href="#添加用户组"><span class="toc-section-number">2.6.2</span> 添加用户组</a></li>
+<li><a href="#删除用户和组"><span class="toc-section-number">2.6.3</span> 删除用户和组</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#远程访问rstudio-server"><span class="toc-section-number">3</span> 远程访问Rstudio server</a></li>
+</ul>
+</div>
 
-<p>I just installed a Rstudio server in a Ubuntu. So I can use the Rstudio in any computer via ssh.</p>
+<div id="安装rstudio-server" class="section level1">
+<h1><span class="header-section-number">1</span> 安装Rstudio server</h1>
+<pre><code>sudo apt-get install gdebi-core
+wget https://download2.rstudio.org/rstudio-server-1.1.383-amd64.deb
+sudo gdebi rstudio-server-1.1.383-amd64.deb</code></pre>
+</div>
+<div id="常用命令" class="section level1">
+<h1><span class="header-section-number">2</span> 常用命令</h1>
+<div id="检查rstudio-server是否运行" class="section level2">
+<h2><span class="header-section-number">2.1</span> 检查rstudio server是否运行</h2>
+<pre><code>ps -aux|grep rstudio-server</code></pre>
+<p>或者使用</p>
+<pre><code>sudo rstudio-server verify-installation</code></pre>
+<p>看是否安装正确。</p>
+</div>
+<div id="启动" class="section level2">
+<h2><span class="header-section-number">2.2</span> 启动</h2>
+<pre><code>sudo rstudio-server start</code></pre>
+</div>
+<div id="查看服务器状态" class="section level2">
+<h2><span class="header-section-number">2.3</span> 查看服务器状态</h2>
+<pre><code>sudo rstudio-server status</code></pre>
+</div>
+<div id="停止服务器" class="section level2">
+<h2><span class="header-section-number">2.4</span> 停止服务器</h2>
+<pre><code>sudo rstudio-server stop</code></pre>
+</div>
+<div id="重启服务器" class="section level2">
+<h2><span class="header-section-number">2.5</span> 重启服务器</h2>
+<pre><code>sudo rstudio-server restart</code></pre>
+</div>
+<div id="添加新的用户" class="section level2">
+<h2><span class="header-section-number">2.6</span> 添加新的用户</h2>
+<p>添加用户命令是使用Linux中的命令。</p>
+<div id="添加用户" class="section level3">
+<h3><span class="header-section-number">2.6.1</span> 添加用户</h3>
+<pre><code>sudo useradd new_user_name</code></pre>
+<p>后面需要填写密码以及一些其他的信息。</p>
+</div>
+<div id="添加用户组" class="section level3">
+<h3><span class="header-section-number">2.6.2</span> 添加用户组</h3>
+<p>可以添加用户组，这样能够分组进行管理。</p>
+<pre><code>sudo groupadd new_group</code></pre>
+<p>也可以给用户组添加用户：</p>
+<pre><code>sudo useradd new_user_name -g new_group</code></pre>
+</div>
+<div id="删除用户和组" class="section level3">
+<h3><span class="header-section-number">2.6.3</span> 删除用户和组</h3>
+<pre><code>userdel user_name
+groupdel group_name</code></pre>
+</div>
+</div>
+</div>
+<div id="远程访问rstudio-server" class="section level1">
+<h1><span class="header-section-number">3</span> 远程访问Rstudio server</h1>
+<p>默认有端口为8787.需要先获得该电脑的IP地址。</p>
+<p>使用<code>ifconfig</code>获得。</p>
+<p><img src="Selection_002.png" /></p>
+<p>然后使用http://192.168.0.155:8787/就可以远程访问了。</p>
+</div>
