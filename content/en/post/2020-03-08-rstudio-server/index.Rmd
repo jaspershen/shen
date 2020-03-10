@@ -2,7 +2,7 @@
 title: Rstudio server in Ubuntu
 author: Xiaotao Shen
 date: '2020-03-08'
-slug: 
+slug:
 categories:
   - Ubuntu
 tags:
@@ -17,5 +17,93 @@ output:
     number_sections: true
 ---
 
-I just installed a Rstudio server in a Ubuntu. So I can use the Rstudio in any computer via ssh.
+# 安装Rstudio server
 
+```
+sudo apt-get install gdebi-core
+wget https://download2.rstudio.org/rstudio-server-1.1.383-amd64.deb
+sudo gdebi rstudio-server-1.1.383-amd64.deb
+```
+
+# 常用命令
+
+## 检查rstudio server是否运行
+```
+ps -aux|grep rstudio-server
+```
+
+或者使用
+
+```
+sudo rstudio-server verify-installation
+```
+
+看是否安装正确。
+
+## 启动
+
+```
+sudo rstudio-server start
+```
+
+## 查看服务器状态
+
+```
+sudo rstudio-server status
+```
+
+## 停止服务器
+
+```
+sudo rstudio-server stop
+```
+
+## 重启服务器
+
+```
+sudo rstudio-server restart
+```
+
+## 添加新的用户
+
+添加用户命令是使用Linux中的命令。
+
+### 添加用户
+
+```
+sudo useradd new_user_name
+```
+后面需要填写密码以及一些其他的信息。
+
+### 添加用户组
+
+可以添加用户组，这样能够分组进行管理。
+
+```
+sudo groupadd new_group
+```
+
+也可以给用户组添加用户：
+
+```
+sudo useradd new_user_name -g new_group
+```
+
+### 删除用户和组
+
+```
+userdel user_name
+groupdel group_name
+```
+
+# 远程访问Rstudio server
+
+ 默认有端口为8787.需要先获得该电脑的IP地址。
+
+ 使用`ifconfig`获得。
+
+ ![](Selection_002.png)
+
+ 然后使用http://192.168.0.155:8787/就可以远程访问了。
+
+ 
