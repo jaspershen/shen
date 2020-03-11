@@ -1,0 +1,20 @@
+---
+title: Github多人协作
+author: Xiaotao Shen
+date: '2020-03-10'
+slug: ''
+categories:
+  - Rstudio
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
