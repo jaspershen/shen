@@ -596,15 +596,6 @@
   
   
   <div>
-    <h2><a href="/post/2019-11-27-volcano-plot/">SAM test用于差异标志物的选择</a></h2>
-    <div class="article-style">
-      
-      参考文献1,2. 示例代码: # Function to compute the smooth threshold curve smooth.threshold=function(x,ta,s0,df){ xp=x[x&gt;(ta*s0)]; xn=x[x&lt;(-ta*s0)]; dp=xp/ta-s0; dn=xn/(-ta)-s0; dp=s0/dp; dp=ta*(1+dp); dn=s0/dn; dn=ta*(1+dn); fp=pt(dp,df=df); fn=pt(dn,df=df); yp=-log10(2*(1-fp)); yn=-log10(2*(1-fn)); return(cbind(c(xn,xp),c(yn,yp))); } # Get data library(cp4p); data(LFQRatio2); tabl=LFQRatio2; ## Warning: package &#39;cp4p&#39; was built under R version 3.6.1 ## Loading required package: MESS ## Warning: package &#39;MESS&#39; was built under R version 3.6.1 ## Loading required
-      
-    </div>
-  </div>
-  
-  <div>
     <h2><a href="/post/2019-11-20-blogdown-creat-post/">blogdown创建post模板文件夹</a></h2>
     <div class="article-style">
       
@@ -681,6 +672,15 @@
     <div class="article-style">
       
       ggthemes是ggplot2的一个主题扩展包.含有ggplot2的多个扩展主题.官网参考文档见下面链接: 安装 # 从CRAN安装 install.packages(&#39;ggthemes&#39;, dependencies = TRUE) # 从
+      
+    </div>
+  </div>
+  
+  <div>
+    <h2><a href="/post/2019-11-10-r-cookbook/">R cookbook</a></h2>
+    <div class="article-style">
+      
+      1 R一些常用小命令 1.1 系统相关 1.1.1 重启R session 2 Rstudio快捷键总结 3 R小技巧 3.1 从字符串获取其所代表的变量名的对象 3.2 将某个对象赋予某个字符串所代
       
     </div>
   </div>

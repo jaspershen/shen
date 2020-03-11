@@ -4,8 +4,8 @@ author: Xiaotao Shen
 date: '2020-03-10'
 slug: ''
 categories:
-  - Rstudio
-  - R
+  - Git
+  - Github
 tags:
   - Blog
   - Chinese
@@ -19,5 +19,95 @@ output:
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#生成秘钥"><span class="toc-section-number">1</span> 生成秘钥</a><ul>
+<li><a href="#生成jaspershen的秘钥"><span class="toc-section-number">1.0.1</span> 生成jaspershen的秘钥</a></li>
+<li><a href="#生成shenxt账户的秘钥"><span class="toc-section-number">1.1</span> 生成shenxt账户的秘钥</a></li>
+</ul></li>
+<li><a href="#将两个秘钥分别添加到自己对应的github账户中"><span class="toc-section-number">2</span> 将两个秘钥分别添加到自己对应的github账户中</a></li>
+<li><a href="#编辑配置文件"><span class="toc-section-number">3</span> 编辑配置文件</a></li>
+<li><a href="#配置仓库设置"><span class="toc-section-number">4</span> 配置仓库设置</a><ul>
+<li><a href="#删除全局配置"><span class="toc-section-number">4.1</span> 删除全局配置</a></li>
+<li><a href="#设置local配置"><span class="toc-section-number">4.2</span> 设置local配置</a></li>
+</ul></li>
+<li><a href="#将本地仓库推送到远程仓库github"><span class="toc-section-number">5</span> 将本地仓库推送到远程仓库(github)</a></li>
+</ul>
+</div>
 
+<p>如何在一台电脑上进行多个github账户的配置?</p>
+<div id="生成秘钥" class="section level1">
+<h1><span class="header-section-number">1</span> 生成秘钥</h1>
+<p>首先需要对自己的多个不同账户生成对应的秘钥.比如我有两个账户分别为jaspershen和shenxt,这时候对两个账户分别生成对应账户,注意一定要区分开,不能后面一个将前面一个覆盖了.</p>
+<div id="生成jaspershen的秘钥" class="section level3">
+<h3><span class="header-section-number">1.0.1</span> 生成jaspershen的秘钥</h3>
+<pre><code>ssh-keygen -t rsa -C “shenxt1990@163.com”</code></pre>
+<p>这时候会在<code>~/.ssh/</code>(我使用的是mac)文件夹下自动生成两个文件,分别是<code>id_rsa</code>和<code>id_rsa.pub</code>.</p>
+</div>
+<div id="生成shenxt账户的秘钥" class="section level2">
+<h2><span class="header-section-number">1.1</span> 生成shenxt账户的秘钥</h2>
+<p>注意一定要重命名,我们这边将其命名为<code>id_rsa_2</code>.</p>
+<pre><code>ssh-keygen -t rsa -f ~/.ssh/id_rsa_2 -C &quot;kagawabale@163.com&quot;</code></pre>
+<p>这时候会在<code>~/.ssh/</code>文件夹下生成新的秘钥文件,分别是<code>id_rsa2</code>(秘钥)和<code>id_rsa_2.pub</code>(公钥).</p>
+</div>
+</div>
+<div id="将两个秘钥分别添加到自己对应的github账户中" class="section level1">
+<h1><span class="header-section-number">2</span> 将两个秘钥分别添加到自己对应的github账户中</h1>
+<p>然后需要将两个秘钥(公钥文件)分别添加到自己对应的账户当中.</p>
+<p>使用vi打开公钥文件即可.</p>
+<pre><code>vi ~/.ssh/id_rsa.pud#jaspershen账户
+vi ~/.ssh/id_rsa_2.pud#shenxt账户</code></pre>
+</div>
+<div id="编辑配置文件" class="section level1">
+<h1><span class="header-section-number">3</span> 编辑配置文件</h1>
+<p>先确认在<code>~/.ssh/</code>文件夹中是否存在<code>config</code>文件,如果不存在,首先创建一个,然后对其进行编辑.内容如下:</p>
+<pre><code># jaspershen
+Host github_jaspershen
+HostName ssh.github.com
+User git
+IdentityFile ~/.ssh/id_rsa
 
+# shenxt
+Host github_shenxt  # 前缀名可以任意设置
+HostName ssh.github.com
+User git
+IdentityFile ~/.ssh/id_rsa_2</code></pre>
+<p>需要更改的地方是<code>Host</code>和<code>IdentityFile</code>,修改为自己能够识别的内容,以及自己生成的秘钥即可.</p>
+<blockquote>
+<p>注意,HostName一定要是<code>ssh.github.com</code>,不然可能会失败.</p>
+</blockquote>
+<p>修改完之后,保存退出,然后在terminal下命令以下命令,看是否正常:</p>
+<pre><code>ssh -T git@github_jaspershen
+ssh -T git@github_shenxt</code></pre>
+<p>如果出现下面结果,说明已经正常工作:</p>
+<pre><code>Hi jaspershen! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre>
+</div>
+<div id="配置仓库设置" class="section level1">
+<h1><span class="header-section-number">4</span> 配置仓库设置</h1>
+<p>首先需要删除git配置的全局用户名和邮箱.接着在自己每个项目的仓库中按照需要设置不同的<code>user.name</code>和<code>user.email</code>.</p>
+<div id="删除全局配置" class="section level2">
+<h2><span class="header-section-number">4.1</span> 删除全局配置</h2>
+<pre><code>git config --global --unset &#39;user.name&#39;
+git config --global --unset &#39;user.email&#39;</code></pre>
+</div>
+<div id="设置local配置" class="section level2">
+<h2><span class="header-section-number">4.2</span> 设置local配置</h2>
+<p>在自己的每个文件夹(repo仓库)下,打开terminal,然后进行设置.</p>
+<pre><code>git config user.name `xxx`
+git config user.email `xxx@xxx.com`</code></pre>
+<blockquote>
+<p>注意,在设置结束之后,创建git repo(<code>git init</code>)的时候,一定要再次检查一下用户名和用户邮箱,如果不对, 需要再次设置.</p>
+</blockquote>
+</div>
+</div>
+<div id="将本地仓库推送到远程仓库github" class="section level1">
+<h1><span class="header-section-number">5</span> 将本地仓库推送到远程仓库(github)</h1>
+<p>之后再添加远程仓库的时候,就不能直接使用<code>http</code>的方式了,只能使用<code>ssh</code>方式.</p>
+<pre><code>git remote add origin git@github_jaspershen:jaspershen/example.git # jaspershen account
+git remote add origin git@github_shenxt:shenxt/example.git # shenxt account</code></pre>
+<p>其中<code>github_jaspershen</code>或者<code>github_shenxt</code>就是在配置文件中设置的<code>Host</code>.</p>
+<p>然后使用<code>git remote -v</code>确认是否连接上.</p>
+<p>最后进行推送.</p>
+<pre><code>git push origin master</code></pre>
+<p>其实，上面的配置文件的意思就是，按照你设置远程仓库时使用不同的Host名称，查找<code>~/.ssh/config</code>文件使用不同的SSH 文件连接到GitHub。这样你就将是以不同的身份访问GitHub仓库。</p>
+</div>
