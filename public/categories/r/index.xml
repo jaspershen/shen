@@ -13,8 +13,123 @@
       <guid>/post/2020-03-10-github-collobration/</guid>
       <description>
 
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建远程仓库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 创建远程仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#本地创建分支并推送到远程仓库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 本地创建分支并推送到远程仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#邀请合作者&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 邀请合作者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#合作者参与项目&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 合作者参与项目&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#克隆项目&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; 克隆项目&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#开始工作&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 开始工作&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; 创建文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#提交&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; 提交&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#合并分支&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3&lt;/span&gt; 合并分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#推送到远程仓库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.4&lt;/span&gt; 推送到远程仓库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#有冲突怎么办&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; 有冲突怎么办&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#抓取分支&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;7&lt;/span&gt; 抓取分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#多人协作的工作模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;8&lt;/span&gt; 多人协作的工作模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 
-
+&lt;p&gt;多个人共同合作进行一个项目,是git的一大优势.&lt;/p&gt;
+&lt;p&gt;一般来说,共同合作,是其中某个人先建立一个repo仓库,然后克隆到本地,然后在本地创建分支,将分支推送到远程仓库,然后邀请合作者.&lt;/p&gt;
+&lt;div id=&#34;创建远程仓库&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 创建远程仓库&lt;/h1&gt;
+&lt;p&gt;在github创建远程仓库或者将本地仓库推送到远程仓库.这里就不在演示了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;本地创建分支并推送到远程仓库&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 本地创建分支并推送到远程仓库&lt;/h1&gt;
+&lt;p&gt;比如我们在&lt;code&gt;shenxt&lt;/code&gt;账户上有一个远程仓库,创建一个&lt;code&gt;jaspershen&lt;/code&gt;分支.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch jaspershen&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后将该分支推送到远程仓库.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push origin jaspershen&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候再去远程仓库就可以看到&lt;code&gt;jaspershen&lt;/code&gt;分支了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;邀请合作者&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 邀请合作者&lt;/h1&gt;
+&lt;p&gt;在github远程仓库的&lt;code&gt;setting&lt;/code&gt;中,点击&lt;code&gt;Manage access&lt;/code&gt;,然后点击&lt;code&gt;invite collarbortor&lt;/code&gt;,填入邀请人的ID即可.这时候邀请人可以在自己github中看到邀请,同意即可.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;合作者参与项目&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 合作者参与项目&lt;/h1&gt;
+&lt;p&gt;合作者同意邀请之后,需要克隆项目,创建本地分支.&lt;/p&gt;
+&lt;div id=&#34;克隆项目&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; 克隆项目&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git clone git@github_jaspershen:shenxt/github_test4.git
+cd github_test4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候查看分支,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;会看到只有master分支.所以要创建远程仓库的分支到本地.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout -b jaspershen origin/jaspershen&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候再查看分支,就会在&lt;code&gt;jaspershen&lt;/code&gt;分支了.这时候合作者jaspershen就可以在该分支下进行工作了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;开始工作&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 开始工作&lt;/h1&gt;
+&lt;p&gt;这时候合作者&lt;code&gt;jaspershen&lt;/code&gt;可以在分支下正常工作,然后提交,合并,并推送到远程仓库.&lt;/p&gt;
+&lt;div id=&#34;创建文件&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; 创建文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;touch heloworld.txt&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后在该文件下写入一行文字:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;test from jaspershen&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;提交&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; 提交&lt;/h2&gt;
+&lt;p&gt;然后加入到暂存区并提交.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add helloworld.txt
+git commit -m &amp;quot;test from jaspershen&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;合并分支&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; 合并分支&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git checkout master
+git merge jaspershen&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;推送到远程仓库&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.4&lt;/span&gt; 推送到远程仓库&lt;/h2&gt;
+&lt;p&gt;然后可以将其推送到远程分支(包括master和jaspershen分支).注意是直接推送到&lt;code&gt;shenxt&lt;/code&gt;账户的远程仓库.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push origin master
+git push origin jaspershen&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候就可以在&lt;code&gt;shenxt&lt;/code&gt;的远程仓库下看到&lt;code&gt;jaspershen&lt;/code&gt;的提交工作了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;有冲突怎么办&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 有冲突怎么办&lt;/h1&gt;
+&lt;p&gt;多人协作是不免会有冲突,冲突的主要原因就是对同一文件的修改,所以最好是提前说好不要对同一个文件进行修改,如果有冲突,请参考:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344&#34; class=&#34;uri&#34;&gt;https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;抓取分支&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;7&lt;/span&gt; 抓取分支&lt;/h1&gt;
+&lt;p&gt;多人协作时，大家都会往&lt;code&gt;master&lt;/code&gt;分支上推送各自的修改。如果两个人同时对同一个文件进行了修改,并且同试图推送到&lt;code&gt;master&lt;/code&gt;分支,那么就会冲突,报错.这时候,应该先使用&lt;code&gt;git pull&lt;/code&gt;命令将最新的提交从&lt;code&gt;origin/master&lt;/code&gt;下抓取下来,然后本地合并,解决冲突,再推送.&lt;/p&gt;
+&lt;p&gt;比如我们在&lt;code&gt;shenxt&lt;/code&gt;账户下也创建一个&lt;code&gt;helloworld.txt&lt;/code&gt;文件.然后提交,推送到远程仓库.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push origin master&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;会得到下面的报错:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; ! [rejected]        master -&amp;gt; master (fetch first)
+error: failed to push some refs to &amp;#39;git@github_shenxt:shenxt/github_test4.git&amp;#39;
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., &amp;#39;git pull ...&amp;#39;) before pushing again.
+hint: See the &amp;#39;Note about fast-forwards&amp;#39; in &amp;#39;git push --help&amp;#39; for details.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们先使用&lt;code&gt;git pull&lt;/code&gt;抓取分支的最新提交.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git pull&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也失败了,因为没有指定本地分支与远程&lt;code&gt;origin/xxx&lt;/code&gt;分支的链接，根据提示，设置本地分支和远程分支的链接：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch --set-upstream-to=origin/master master
+git branch --set-upstream-to=origin/jaspershen jaspershen&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后在pull.&lt;/p&gt;
+&lt;p&gt;这回&lt;code&gt;git pull&lt;/code&gt;成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再&lt;code&gt;push&lt;/code&gt;：&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;多人协作的工作模式&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;8&lt;/span&gt; 多人协作的工作模式&lt;/h1&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;首先，可以试图用&lt;code&gt;git push origin &amp;lt;branch-name&amp;gt;&lt;/code&gt;推送自己的修改；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果推送失败，则因为远程分支比你的本地更新，需要先用&lt;code&gt;git pull&lt;/code&gt;试图合并；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果合并有冲突，则解决冲突，并在本地提交；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;没有冲突或者解决掉冲突后，再用&lt;code&gt;git push origin &amp;lt;branch-name&amp;gt;&lt;/code&gt;推送就能成功！&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果&lt;code&gt;git pull&lt;/code&gt;提示&lt;code&gt;no tracking information&lt;/code&gt;，则说明本地分支和远程分支的链接关系没有创建，用命令&lt;code&gt;git branch --set-upstream-to &amp;lt;branch-name&amp;gt; origin/&amp;lt;branch-name&amp;gt;&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这就是多人协作的工作模式，一旦熟悉了，就非常简单。&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
@@ -53,8 +168,11 @@
 &lt;li&gt;&lt;a href=&#34;#查看分支&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 查看分支&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#创建分支&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 创建分支&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#切换分支&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; 切换分支&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#合并分支merge&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; 合并分支(merge)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#删除分支&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; 删除分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#switch命令&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; &lt;code&gt;switch&lt;/code&gt;命令&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#合并分支merge&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; 合并分支(merge)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#删除分支&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.6&lt;/span&gt; 删除分支&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分支提交冲突&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.7&lt;/span&gt; 分支提交冲突&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分支策略&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.8&lt;/span&gt; 分支策略&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#远程仓库github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 远程仓库(GitHub)&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#添加到远程仓库&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; 添加到远程仓库&lt;/a&gt;&lt;/li&gt;
@@ -249,13 +367,22 @@ git branch -av     #查看包括远程仓库在内的分支信息&lt;/code&gt;&l
 git checkout development&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当然也可以使用下面命令直接创建并切换到新建的分支下.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git checkout -b development&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;switch命令&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; &lt;code&gt;switch&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;我们注意到切换分支使用&lt;code&gt;git checkout &amp;lt;branch&amp;gt;&lt;/code&gt;,而前面讲过的撤销修改则是&lt;code&gt;git checkout -- &amp;lt;file&amp;gt;&lt;/code&gt;,同一个命令,有两种作用,确实有点令人迷惑.&lt;/p&gt;
+&lt;p&gt;实际上,切换分支这个动作,用&lt;code&gt;switch&lt;/code&gt;更科学。因此，最新版本的Git提供了新的&lt;code&gt;git switch&lt;/code&gt;命令来切换分支：&lt;/p&gt;
+&lt;p&gt;创建并切换到新的development分支,可以使用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git switch -c development &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;直接切换到已有分支:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git switch master&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20210500.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们下面在development分支下面再新建一个&lt;code&gt;development.txt&lt;/code&gt;文件,然后写入一些内容.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20211512.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到此时有一个新建的development.txt文件.如果我们切换到master分支,还是有该文件,但是对该文件内容进行修改,则因为没有加入到暂存区,因此并不会进行版本控制.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;合并分支merge&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 合并分支(merge)&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 合并分支(merge)&lt;/h2&gt;
 &lt;p&gt;当我们修复完成一个Bug,或者开发完成一个新特性,我们就会把相关的Bug或者特性的上修改合并回原来的主分支上.,这时候就需要&lt;code&gt;git merge&lt;/code&gt;命令来做分支的合并.&lt;/p&gt;
 &lt;p&gt;首先需要切换回最终需要合并的分支,也就是&lt;code&gt;master&lt;/code&gt;分支,然后再合并.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git checkout master        #切换回 master 分支
@@ -263,9 +390,37 @@ git merge development     #将development分支中的修改合并回master分支
 &lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20212532.png&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;删除分支&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 删除分支&lt;/h2&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.6&lt;/span&gt; 删除分支&lt;/h2&gt;
 &lt;p&gt;当之前创建的分支,完成了它的使命,如Bug修复完,分支合并以后,这个分支就不在需要了,就可以删除它.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git branch -d development #删除development分支&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果分支没有合并到master分支中,直接使用上面命令会报错,可以使用下面的命令强制删除.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git branch -D development&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分支提交冲突&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.7&lt;/span&gt; 分支提交冲突&lt;/h2&gt;
+&lt;p&gt;如果新创建了一个分支&lt;code&gt;develpment&lt;/code&gt;,然后在该分支下对&lt;code&gt;readme.txt&lt;/code&gt;进行修改,然后提交.&lt;/p&gt;
+&lt;p&gt;随后然后切换到&lt;code&gt;master&lt;/code&gt;分支,然后也对&lt;code&gt;readme.txt&lt;/code&gt;进行修改,然后也提交.&lt;/p&gt;
+&lt;p&gt;这样,两个分支分别有了不同的提交.这种情况下,再进行合并就会有冲突.&lt;/p&gt;
+&lt;p&gt;我们合并一下试试:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![](Screen Shot 2020-03-11 at 9.20.30 PM.png)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到报错,Git告诉我们,&lt;code&gt;readme.txt&lt;/code&gt;文件存在冲突,必须手动解决冲突后再提交.&lt;code&gt;git status&lt;/code&gt;也可以告诉我们冲突的文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git status&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202020-03-11%20at%209.25.20%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候我们可以使用&lt;code&gt;vi&lt;/code&gt;或者其他工具打开冲突的文件,在这就是&lt;code&gt;readme.txt&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202020-03-11%20at%209.32.06%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Git用&lt;code&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&lt;/code&gt;，&lt;code&gt;=======&lt;/code&gt;，&lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;标记出不同分支的内容，我们修改如下后保存：&lt;/p&gt;
+&lt;p&gt;我们将这些记号删除,然后保留自己想要保留的修改就可.然后重新提交.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git add .
+git commit-m &amp;#39;remove conflict&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候就完成了合并.可以删除development分支了.&lt;/p&gt;
+&lt;p&gt;这时候使用&lt;code&gt;git log&lt;/code&gt;也可以看到分支的提交情况.使用&lt;code&gt;git log --graph&lt;/code&gt;可以观察分支合并图.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分支策略&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.8&lt;/span&gt; 分支策略&lt;/h2&gt;
+&lt;p&gt;在实际开发中，我们应该按照几个基本原则进行分支管理：&lt;/p&gt;
+&lt;p&gt;首先，&lt;code&gt;master&lt;/code&gt;分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；&lt;/p&gt;
+&lt;p&gt;那在哪干活呢？干活都在&lt;code&gt;dev&lt;/code&gt;分支上，也就是说，&lt;code&gt;dev&lt;/code&gt;分支是不稳定的，到某个时候，比如&lt;code&gt;1.0&lt;/code&gt;版本发布时，再把&lt;code&gt;dev&lt;/code&gt;分支合并到&lt;code&gt;master&lt;/code&gt;上，在&lt;code&gt;master&lt;/code&gt;分支发布1.0版本；&lt;/p&gt;
+&lt;p&gt;你和你的小伙伴们每个人都在&lt;code&gt;dev&lt;/code&gt;分支上干活，每个人都有自己的分支，时不时地往&lt;code&gt;dev&lt;/code&gt;分支上合并就可以了。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;远程仓库github&#34; class=&#34;section level1&#34;&gt;
@@ -285,7 +440,7 @@ git merge development     #将development分支中的修改合并回master分支
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; 推送到远程仓库&lt;/h2&gt;
 &lt;p&gt;使用&lt;code&gt;git push&lt;/code&gt;将本地仓库的内容推送到远程仓库.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git push -u origin master #第一次推送时使用,可以简化后面的推送或者拉取命令使用
-git push origin master #将本地master分支推送到origin远程分支&lt;/code&gt;&lt;/pre&gt;
+git push origin master #将本地master分支推送到origin远程分支,后面之后就可以直接使用该命令推送&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;Annotation%202020-03-04%20214807.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;以后再推送的时候,就使用&lt;code&gt;git push&lt;/code&gt;就可以了.&lt;/p&gt;
 &lt;p&gt;这时候可以看到github中已经有了内容.&lt;/p&gt;

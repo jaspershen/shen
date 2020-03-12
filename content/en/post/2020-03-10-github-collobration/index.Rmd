@@ -18,3 +18,157 @@ output:
     number_sections: true
 ---
 
+多个人共同合作进行一个项目,是git的一大优势.
+
+一般来说,共同合作,是其中某个人先建立一个repo仓库,然后克隆到本地,然后在本地创建分支,将分支推送到远程仓库,然后邀请合作者.
+
+# 创建远程仓库
+
+在github创建远程仓库或者将本地仓库推送到远程仓库.这里就不在演示了.
+
+# 本地创建分支并推送到远程仓库
+
+比如我们在`shenxt`账户上有一个远程仓库,创建一个`jaspershen`分支.
+
+```
+git branch jaspershen
+```
+
+然后将该分支推送到远程仓库.
+
+```
+git push origin jaspershen
+```
+
+这时候再去远程仓库就可以看到`jaspershen`分支了.
+
+# 邀请合作者
+
+在github远程仓库的`setting`中,点击`Manage access`,然后点击`invite collarbortor`,填入邀请人的ID即可.这时候邀请人可以在自己github中看到邀请,同意即可.
+
+# 合作者参与项目
+
+合作者同意邀请之后,需要克隆项目,创建本地分支.
+
+## 克隆项目
+
+```
+git clone git@github_jaspershen:shenxt/github_test4.git
+cd github_test4
+```
+
+这时候查看分支,
+
+```
+git branch
+```
+
+会看到只有master分支.所以要创建远程仓库的分支到本地.
+
+```
+git checkout -b jaspershen origin/jaspershen
+```
+
+这时候再查看分支,就会在`jaspershen`分支了.这时候合作者jaspershen就可以在该分支下进行工作了.
+
+# 开始工作
+
+这时候合作者`jaspershen`可以在分支下正常工作,然后提交,合并,并推送到远程仓库.
+
+## 创建文件
+
+```
+touch heloworld.txt
+```
+然后在该文件下写入一行文字:
+
+```
+test from jaspershen
+```
+
+## 提交
+
+然后加入到暂存区并提交.
+
+```
+git add helloworld.txt
+git commit -m "test from jaspershen"
+```
+
+## 合并分支
+
+```
+git checkout master
+git merge jaspershen
+```
+
+## 推送到远程仓库
+
+然后可以将其推送到远程分支(包括master和jaspershen分支).注意是直接推送到`shenxt`账户的远程仓库.
+
+```
+git push origin master
+git push origin jaspershen
+```
+
+这时候就可以在`shenxt`的远程仓库下看到`jaspershen`的提交工作了.
+
+# 有冲突怎么办
+
+多人协作是不免会有冲突,冲突的主要原因就是对同一文件的修改,所以最好是提前说好不要对同一个文件进行修改,如果有冲突,请参考:
+
+https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344
+
+# 抓取分支
+
+多人协作时，大家都会往`master`分支上推送各自的修改。如果两个人同时对同一个文件进行了修改,并且同试图推送到`master`分支,那么就会冲突,报错.这时候,应该先使用`git pull`命令将最新的提交从`origin/master`下抓取下来,然后本地合并,解决冲突,再推送.
+
+比如我们在`shenxt`账户下也创建一个`helloworld.txt`文件.然后提交,推送到远程仓库.
+
+```
+git push origin master
+```
+
+会得到下面的报错:
+
+```
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github_shenxt:shenxt/github_test4.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+我们先使用`git pull`抓取分支的最新提交.
+
+```
+git pull
+```
+也失败了,因为没有指定本地分支与远程`origin/xxx`分支的链接，根据提示，设置本地分支和远程分支的链接：
+
+
+```
+git branch --set-upstream-to=origin/master master
+git branch --set-upstream-to=origin/jaspershen jaspershen
+```
+
+
+然后在pull.
+
+这回`git pull`成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再`push`：
+
+# 多人协作的工作模式
+
+1. 首先，可以试图用`git push origin <branch-name>`推送自己的修改；
+
+2. 如果推送失败，则因为远程分支比你的本地更新，需要先用`git pull`试图合并；
+
+3. 如果合并有冲突，则解决冲突，并在本地提交；
+
+4. 没有冲突或者解决掉冲突后，再用`git push origin <branch-name>`推送就能成功！
+
+5. 如果`git pull`提示`no tracking information`，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream-to <branch-name> origin/<branch-name>`。
+
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。

@@ -47,8 +47,11 @@ output:
 <li><a href="#查看分支"><span class="toc-section-number">3.1</span> 查看分支</a></li>
 <li><a href="#创建分支"><span class="toc-section-number">3.2</span> 创建分支</a></li>
 <li><a href="#切换分支"><span class="toc-section-number">3.3</span> 切换分支</a></li>
-<li><a href="#合并分支merge"><span class="toc-section-number">3.4</span> 合并分支(merge)</a></li>
-<li><a href="#删除分支"><span class="toc-section-number">3.5</span> 删除分支</a></li>
+<li><a href="#switch命令"><span class="toc-section-number">3.4</span> <code>switch</code>命令</a></li>
+<li><a href="#合并分支merge"><span class="toc-section-number">3.5</span> 合并分支(merge)</a></li>
+<li><a href="#删除分支"><span class="toc-section-number">3.6</span> 删除分支</a></li>
+<li><a href="#分支提交冲突"><span class="toc-section-number">3.7</span> 分支提交冲突</a></li>
+<li><a href="#分支策略"><span class="toc-section-number">3.8</span> 分支策略</a></li>
 </ul></li>
 <li><a href="#远程仓库github"><span class="toc-section-number">4</span> 远程仓库(GitHub)</a><ul>
 <li><a href="#添加到远程仓库"><span class="toc-section-number">4.1</span> 添加到远程仓库</a></li>
@@ -243,13 +246,22 @@ git branch -av     #查看包括远程仓库在内的分支信息</code></pre>
 git checkout development</code></pre>
 <p>当然也可以使用下面命令直接创建并切换到新建的分支下.</p>
 <pre><code>git checkout -b development</code></pre>
+</div>
+<div id="switch命令" class="section level2">
+<h2><span class="header-section-number">3.4</span> <code>switch</code>命令</h2>
+<p>我们注意到切换分支使用<code>git checkout &lt;branch&gt;</code>,而前面讲过的撤销修改则是<code>git checkout -- &lt;file&gt;</code>,同一个命令,有两种作用,确实有点令人迷惑.</p>
+<p>实际上,切换分支这个动作,用<code>switch</code>更科学。因此，最新版本的Git提供了新的<code>git switch</code>命令来切换分支：</p>
+<p>创建并切换到新的development分支,可以使用:</p>
+<pre><code>git switch -c development </code></pre>
+<p>直接切换到已有分支:</p>
+<pre><code>git switch master</code></pre>
 <p><img src="Annotation%202020-03-04%20210500.png" /></p>
 <p>我们下面在development分支下面再新建一个<code>development.txt</code>文件,然后写入一些内容.</p>
 <p><img src="Annotation%202020-03-04%20211512.png" /></p>
 <p>可以看到此时有一个新建的development.txt文件.如果我们切换到master分支,还是有该文件,但是对该文件内容进行修改,则因为没有加入到暂存区,因此并不会进行版本控制.</p>
 </div>
 <div id="合并分支merge" class="section level2">
-<h2><span class="header-section-number">3.4</span> 合并分支(merge)</h2>
+<h2><span class="header-section-number">3.5</span> 合并分支(merge)</h2>
 <p>当我们修复完成一个Bug,或者开发完成一个新特性,我们就会把相关的Bug或者特性的上修改合并回原来的主分支上.,这时候就需要<code>git merge</code>命令来做分支的合并.</p>
 <p>首先需要切换回最终需要合并的分支,也就是<code>master</code>分支,然后再合并.</p>
 <pre><code>git checkout master        #切换回 master 分支
@@ -257,9 +269,37 @@ git merge development     #将development分支中的修改合并回master分支
 <p><img src="Annotation%202020-03-04%20212532.png" /></p>
 </div>
 <div id="删除分支" class="section level2">
-<h2><span class="header-section-number">3.5</span> 删除分支</h2>
+<h2><span class="header-section-number">3.6</span> 删除分支</h2>
 <p>当之前创建的分支,完成了它的使命,如Bug修复完,分支合并以后,这个分支就不在需要了,就可以删除它.</p>
 <pre><code>git branch -d development #删除development分支</code></pre>
+<p>如果分支没有合并到master分支中,直接使用上面命令会报错,可以使用下面的命令强制删除.</p>
+<pre><code>git branch -D development</code></pre>
+</div>
+<div id="分支提交冲突" class="section level2">
+<h2><span class="header-section-number">3.7</span> 分支提交冲突</h2>
+<p>如果新创建了一个分支<code>develpment</code>,然后在该分支下对<code>readme.txt</code>进行修改,然后提交.</p>
+<p>随后然后切换到<code>master</code>分支,然后也对<code>readme.txt</code>进行修改,然后也提交.</p>
+<p>这样,两个分支分别有了不同的提交.这种情况下,再进行合并就会有冲突.</p>
+<p>我们合并一下试试:</p>
+<pre><code>![](Screen Shot 2020-03-11 at 9.20.30 PM.png)</code></pre>
+<p>可以看到报错,Git告诉我们,<code>readme.txt</code>文件存在冲突,必须手动解决冲突后再提交.<code>git status</code>也可以告诉我们冲突的文件:</p>
+<pre><code>git status</code></pre>
+<p><img src="Screen%20Shot%202020-03-11%20at%209.25.20%20PM.png" /></p>
+<p>这时候我们可以使用<code>vi</code>或者其他工具打开冲突的文件,在这就是<code>readme.txt</code>:</p>
+<p><img src="Screen%20Shot%202020-03-11%20at%209.32.06%20PM.png" /></p>
+<p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容，我们修改如下后保存：</p>
+<p>我们将这些记号删除,然后保留自己想要保留的修改就可.然后重新提交.</p>
+<pre><code>git add .
+git commit-m &#39;remove conflict&#39;</code></pre>
+<p>这时候就完成了合并.可以删除development分支了.</p>
+<p>这时候使用<code>git log</code>也可以看到分支的提交情况.使用<code>git log --graph</code>可以观察分支合并图.</p>
+</div>
+<div id="分支策略" class="section level2">
+<h2><span class="header-section-number">3.8</span> 分支策略</h2>
+<p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
+<p>首先，<code>master</code>分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
+<p>那在哪干活呢？干活都在<code>dev</code>分支上，也就是说，<code>dev</code>分支是不稳定的，到某个时候，比如<code>1.0</code>版本发布时，再把<code>dev</code>分支合并到<code>master</code>上，在<code>master</code>分支发布1.0版本；</p>
+<p>你和你的小伙伴们每个人都在<code>dev</code>分支上干活，每个人都有自己的分支，时不时地往<code>dev</code>分支上合并就可以了。</p>
 </div>
 </div>
 <div id="远程仓库github" class="section level1">
@@ -279,7 +319,7 @@ git merge development     #将development分支中的修改合并回master分支
 <h2><span class="header-section-number">4.2</span> 推送到远程仓库</h2>
 <p>使用<code>git push</code>将本地仓库的内容推送到远程仓库.</p>
 <pre><code>git push -u origin master #第一次推送时使用,可以简化后面的推送或者拉取命令使用
-git push origin master #将本地master分支推送到origin远程分支</code></pre>
+git push origin master #将本地master分支推送到origin远程分支,后面之后就可以直接使用该命令推送</code></pre>
 <p><img src="Annotation%202020-03-04%20214807.png" /></p>
 <p>以后再推送的时候,就使用<code>git push</code>就可以了.</p>
 <p>这时候可以看到github中已经有了内容.</p>

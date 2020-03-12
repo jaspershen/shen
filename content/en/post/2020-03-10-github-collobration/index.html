@@ -19,5 +19,120 @@ output:
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#创建远程仓库"><span class="toc-section-number">1</span> 创建远程仓库</a></li>
+<li><a href="#本地创建分支并推送到远程仓库"><span class="toc-section-number">2</span> 本地创建分支并推送到远程仓库</a></li>
+<li><a href="#邀请合作者"><span class="toc-section-number">3</span> 邀请合作者</a></li>
+<li><a href="#合作者参与项目"><span class="toc-section-number">4</span> 合作者参与项目</a><ul>
+<li><a href="#克隆项目"><span class="toc-section-number">4.1</span> 克隆项目</a></li>
+</ul></li>
+<li><a href="#开始工作"><span class="toc-section-number">5</span> 开始工作</a><ul>
+<li><a href="#创建文件"><span class="toc-section-number">5.1</span> 创建文件</a></li>
+<li><a href="#提交"><span class="toc-section-number">5.2</span> 提交</a></li>
+<li><a href="#合并分支"><span class="toc-section-number">5.3</span> 合并分支</a></li>
+<li><a href="#推送到远程仓库"><span class="toc-section-number">5.4</span> 推送到远程仓库</a></li>
+</ul></li>
+<li><a href="#有冲突怎么办"><span class="toc-section-number">6</span> 有冲突怎么办</a></li>
+<li><a href="#抓取分支"><span class="toc-section-number">7</span> 抓取分支</a></li>
+<li><a href="#多人协作的工作模式"><span class="toc-section-number">8</span> 多人协作的工作模式</a></li>
+</ul>
+</div>
 
-
+<p>多个人共同合作进行一个项目,是git的一大优势.</p>
+<p>一般来说,共同合作,是其中某个人先建立一个repo仓库,然后克隆到本地,然后在本地创建分支,将分支推送到远程仓库,然后邀请合作者.</p>
+<div id="创建远程仓库" class="section level1">
+<h1><span class="header-section-number">1</span> 创建远程仓库</h1>
+<p>在github创建远程仓库或者将本地仓库推送到远程仓库.这里就不在演示了.</p>
+</div>
+<div id="本地创建分支并推送到远程仓库" class="section level1">
+<h1><span class="header-section-number">2</span> 本地创建分支并推送到远程仓库</h1>
+<p>比如我们在<code>shenxt</code>账户上有一个远程仓库,创建一个<code>jaspershen</code>分支.</p>
+<pre><code>git branch jaspershen</code></pre>
+<p>然后将该分支推送到远程仓库.</p>
+<pre><code>git push origin jaspershen</code></pre>
+<p>这时候再去远程仓库就可以看到<code>jaspershen</code>分支了.</p>
+</div>
+<div id="邀请合作者" class="section level1">
+<h1><span class="header-section-number">3</span> 邀请合作者</h1>
+<p>在github远程仓库的<code>setting</code>中,点击<code>Manage access</code>,然后点击<code>invite collarbortor</code>,填入邀请人的ID即可.这时候邀请人可以在自己github中看到邀请,同意即可.</p>
+</div>
+<div id="合作者参与项目" class="section level1">
+<h1><span class="header-section-number">4</span> 合作者参与项目</h1>
+<p>合作者同意邀请之后,需要克隆项目,创建本地分支.</p>
+<div id="克隆项目" class="section level2">
+<h2><span class="header-section-number">4.1</span> 克隆项目</h2>
+<pre><code>git clone git@github_jaspershen:shenxt/github_test4.git
+cd github_test4</code></pre>
+<p>这时候查看分支,</p>
+<pre><code>git branch</code></pre>
+<p>会看到只有master分支.所以要创建远程仓库的分支到本地.</p>
+<pre><code>git checkout -b jaspershen origin/jaspershen</code></pre>
+<p>这时候再查看分支,就会在<code>jaspershen</code>分支了.这时候合作者jaspershen就可以在该分支下进行工作了.</p>
+</div>
+</div>
+<div id="开始工作" class="section level1">
+<h1><span class="header-section-number">5</span> 开始工作</h1>
+<p>这时候合作者<code>jaspershen</code>可以在分支下正常工作,然后提交,合并,并推送到远程仓库.</p>
+<div id="创建文件" class="section level2">
+<h2><span class="header-section-number">5.1</span> 创建文件</h2>
+<pre><code>touch heloworld.txt</code></pre>
+<p>然后在该文件下写入一行文字:</p>
+<pre><code>test from jaspershen</code></pre>
+</div>
+<div id="提交" class="section level2">
+<h2><span class="header-section-number">5.2</span> 提交</h2>
+<p>然后加入到暂存区并提交.</p>
+<pre><code>git add helloworld.txt
+git commit -m &quot;test from jaspershen&quot;</code></pre>
+</div>
+<div id="合并分支" class="section level2">
+<h2><span class="header-section-number">5.3</span> 合并分支</h2>
+<pre><code>git checkout master
+git merge jaspershen</code></pre>
+</div>
+<div id="推送到远程仓库" class="section level2">
+<h2><span class="header-section-number">5.4</span> 推送到远程仓库</h2>
+<p>然后可以将其推送到远程分支(包括master和jaspershen分支).注意是直接推送到<code>shenxt</code>账户的远程仓库.</p>
+<pre><code>git push origin master
+git push origin jaspershen</code></pre>
+<p>这时候就可以在<code>shenxt</code>的远程仓库下看到<code>jaspershen</code>的提交工作了.</p>
+</div>
+</div>
+<div id="有冲突怎么办" class="section level1">
+<h1><span class="header-section-number">6</span> 有冲突怎么办</h1>
+<p>多人协作是不免会有冲突,冲突的主要原因就是对同一文件的修改,所以最好是提前说好不要对同一个文件进行修改,如果有冲突,请参考:</p>
+<p><a href="https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344" class="uri">https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344</a></p>
+</div>
+<div id="抓取分支" class="section level1">
+<h1><span class="header-section-number">7</span> 抓取分支</h1>
+<p>多人协作时，大家都会往<code>master</code>分支上推送各自的修改。如果两个人同时对同一个文件进行了修改,并且同试图推送到<code>master</code>分支,那么就会冲突,报错.这时候,应该先使用<code>git pull</code>命令将最新的提交从<code>origin/master</code>下抓取下来,然后本地合并,解决冲突,再推送.</p>
+<p>比如我们在<code>shenxt</code>账户下也创建一个<code>helloworld.txt</code>文件.然后提交,推送到远程仓库.</p>
+<pre><code>git push origin master</code></pre>
+<p>会得到下面的报错:</p>
+<pre><code> ! [rejected]        master -&gt; master (fetch first)
+error: failed to push some refs to &#39;git@github_shenxt:shenxt/github_test4.git&#39;
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., &#39;git pull ...&#39;) before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</code></pre>
+<p>我们先使用<code>git pull</code>抓取分支的最新提交.</p>
+<pre><code>git pull</code></pre>
+<p>也失败了,因为没有指定本地分支与远程<code>origin/xxx</code>分支的链接，根据提示，设置本地分支和远程分支的链接：</p>
+<pre><code>git branch --set-upstream-to=origin/master master
+git branch --set-upstream-to=origin/jaspershen jaspershen</code></pre>
+<p>然后在pull.</p>
+<p>这回<code>git pull</code>成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再<code>push</code>：</p>
+</div>
+<div id="多人协作的工作模式" class="section level1">
+<h1><span class="header-section-number">8</span> 多人协作的工作模式</h1>
+<ol style="list-style-type: decimal">
+<li><p>首先，可以试图用<code>git push origin &lt;branch-name&gt;</code>推送自己的修改；</p></li>
+<li><p>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</p></li>
+<li><p>如果合并有冲突，则解决冲突，并在本地提交；</p></li>
+<li><p>没有冲突或者解决掉冲突后，再用<code>git push origin &lt;branch-name&gt;</code>推送就能成功！</p></li>
+<li><p>如果<code>git pull</code>提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>。</p></li>
+</ol>
+<p>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
+</div>
