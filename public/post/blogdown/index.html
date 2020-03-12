@@ -52,7 +52,7 @@
   
   
   
-  <meta name="theme-color" content="#4caf50">
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
   
 
   
@@ -73,8 +73,8 @@
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
         
       
     
@@ -89,14 +89,24 @@
 
   
   
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
   
 
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.2e038e803253b54216e0df687a69876f.css">
+  <link rel="stylesheet" href="/css/academic.min.3b8c2f5de7e4a97d13856a3f8d76e233.css">
 
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.901b21034d2f3f7df203350a892fc07d.css">
   
 
   
@@ -156,12 +166,12 @@
     window.cookieconsent.initialise({
       "palette": {
         "popup": {
-          "background": "#4caf50",
+          "background": "hsl(339, 90%, 68%)",
           "text": "#fff"
         },
         "button": {
           "background": "#fff",
-          "text": "#4caf50"
+          "text": "hsl(339, 90%, 68%)"
         }
       },
       "theme": "classic",
@@ -180,7 +190,7 @@
   <title>blogdown创建博客总结 | Xiaotao Shen</title>
 
 </head>
-<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" class="dark">
   <aside class="search-results" id="search">
   <div class="container">
     <section class="search-header">
@@ -725,7 +735,7 @@
 <li><a href="#如何插入b站视频"><span class="toc-section-number">10.1</span> 如何插入B站视频?</a></li>
 <li><a href="#在markdown中"><span class="toc-section-number">10.2</span> 在markdown中</a><ul>
 <li><a href="#a-video-from-your-staticimg-media-library"><span class="toc-section-number">10.2.1</span> A video from your static/img/ media library:</a></li>
-<li><a href="#a-video-within-a-pages-folder-e.g.-contentposthello"><span class="toc-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</a></li>
+<li><a href="#a-video-within-a-pages-folder-e.g.contentposthello"><span class="toc-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</a></li>
 <li><a href="#youtube"><span class="toc-section-number">10.2.3</span> Youtube:</a></li>
 <li><a href="#vimeo"><span class="toc-section-number">10.2.4</span> Vimeo:</a></li>
 </ul></li>
@@ -742,6 +752,7 @@
 <li><a href="#另存为markdown文件."><span class="toc-section-number">12.4</span> 另存为<code>markdown</code>文件.</a></li>
 <li><a href="#编辑yaml"><span class="toc-section-number">12.5</span> 编辑YAML</a></li>
 </ul></li>
+<li><a href="#如何修改页面宽度"><span class="toc-section-number">13</span> 如何修改页面宽度?</a></li>
 </ul>
 </div>
 
@@ -791,7 +802,7 @@
 <p>发现自动部署总是失败.查了一下,应该是本地的<code>Hugo</code>和netlify上的版本不一致,解决方法如下:</p>
 <p>首先,在R console输入下列语句,查看本地<code>Hugo</code>版本:</p>
 <pre class="r"><code>blogdown::hugo_version()</code></pre>
-<pre><code>## [1] &#39;0.58.3&#39;</code></pre>
+<pre><code>## [1] &#39;0.66.0&#39;</code></pre>
 <p>然后修改netlify上的<code>Hugo</code>的版本.</p>
 <div id="打开netlify网站" class="section level2">
 <h2><span class="header-section-number">7.1</span> 打开netlify网站:</h2>
@@ -924,7 +935,7 @@ document.getElementById("test").style.height=document.getElementById("test").scr
 <h3><span class="header-section-number">10.2.1</span> A video from your static/img/ media library:</h3>
 <pre><code>{{&lt; video library=&quot;1&quot; src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}</code></pre>
 </div>
-<div id="a-video-within-a-pages-folder-e.g.-contentposthello" class="section level3">
+<div id="a-video-within-a-pages-folder-e.g.contentposthello" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</h3>
 <pre><code>{{&lt; video src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}
 </code></pre>
@@ -1037,6 +1048,11 @@ title: Display Jupyter Notebooks with Academic
 </code></pre>
 <p>如果要使用featured figure,需要将<code>featurd</code>设置为true,且在该post目录下添加名字为<code>featured.png</code>的图片.</p>
 </div>
+</div>
+<div id="如何修改页面宽度" class="section level1">
+<h1><span class="header-section-number">13</span> 如何修改页面宽度?</h1>
+<p>参考下面方法:</p>
+<p><a href="https://github.com/gcushen/hugo-academic/issues/147" class="uri">https://github.com/gcushen/hugo-academic/issues/147</a></p>
 </div>
 
     </div>

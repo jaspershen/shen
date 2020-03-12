@@ -5084,7 +5084,7 @@ g&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;#如何插入b站视频&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;10.1&lt;/span&gt; 如何插入B站视频?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#在markdown中&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;10.2&lt;/span&gt; 在markdown中&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#a-video-from-your-staticimg-media-library&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;10.2.1&lt;/span&gt; A video from your static/img/ media library:&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#a-video-within-a-pages-folder-e.g.-contentposthello&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;10.2.2&lt;/span&gt; A video within a page’s folder (e.g. content/post/hello/):&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#a-video-within-a-pages-folder-e.g.contentposthello&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;10.2.2&lt;/span&gt; A video within a page’s folder (e.g. content/post/hello/):&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#youtube&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;10.2.3&lt;/span&gt; Youtube:&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#vimeo&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;10.2.4&lt;/span&gt; Vimeo:&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -5101,6 +5101,7 @@ g&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&#34;#另存为markdown文件.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;12.4&lt;/span&gt; 另存为&lt;code&gt;markdown&lt;/code&gt;文件.&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#编辑yaml&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;12.5&lt;/span&gt; 编辑YAML&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#如何修改页面宽度&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;13&lt;/span&gt; 如何修改页面宽度?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
@@ -5150,7 +5151,7 @@ g&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;发现自动部署总是失败.查了一下,应该是本地的&lt;code&gt;Hugo&lt;/code&gt;和netlify上的版本不一致,解决方法如下:&lt;/p&gt;
 &lt;p&gt;首先,在R console输入下列语句,查看本地&lt;code&gt;Hugo&lt;/code&gt;版本:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;blogdown::hugo_version()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;#39;0.58.3&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;#39;0.66.0&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后修改netlify上的&lt;code&gt;Hugo&lt;/code&gt;的版本.&lt;/p&gt;
 &lt;div id=&#34;打开netlify网站&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;7.1&lt;/span&gt; 打开netlify网站:&lt;/h2&gt;
@@ -5283,7 +5284,7 @@ document.getElementById(&#34;test&#34;).style.height=document.getElementById(&#3
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;10.2.1&lt;/span&gt; A video from your static/img/ media library:&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;{{&amp;lt; video library=&amp;quot;1&amp;quot; src=&amp;quot;my_video.mp4&amp;quot; controls=&amp;quot;yes&amp;quot; &amp;gt;}}&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;a-video-within-a-pages-folder-e.g.-contentposthello&#34; class=&#34;section level3&#34;&gt;
+&lt;div id=&#34;a-video-within-a-pages-folder-e.g.contentposthello&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;10.2.2&lt;/span&gt; A video within a page’s folder (e.g. content/post/hello/):&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;{{&amp;lt; video src=&amp;quot;my_video.mp4&amp;quot; controls=&amp;quot;yes&amp;quot; &amp;gt;}}
 &lt;/code&gt;&lt;/pre&gt;
@@ -5396,6 +5397,11 @@ title: Display Jupyter Notebooks with Academic
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如果要使用featured figure,需要将&lt;code&gt;featurd&lt;/code&gt;设置为true,且在该post目录下添加名字为&lt;code&gt;featured.png&lt;/code&gt;的图片.&lt;/p&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;如何修改页面宽度&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;13&lt;/span&gt; 如何修改页面宽度?&lt;/h1&gt;
+&lt;p&gt;参考下面方法:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/issues/147&#34; class=&#34;uri&#34;&gt;https://github.com/gcushen/hugo-academic/issues/147&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
