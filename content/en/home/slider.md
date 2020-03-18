@@ -3,7 +3,7 @@
 widget = "slider"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 1  # Order that this section will appear.
+weight = 10  # Order that this section will appear.
 
 # Slide interval.
 # Use `false` to disable animation or enter a time in ms, e.g. `5000` (5s).
@@ -20,7 +20,7 @@ interval = 5000
   #   Deactivate an option by commenting out the line, prefixing it with `#`.
   overlay_color = "#666"  # An HTML color value.
   overlay_img = "headers/stanford.jpg"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.2  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.1  # Darken the image. Value in range 0-1.
 
   # Call to action button (optional).
   #   Activate the button by specifying a URL and button label below.
@@ -37,7 +37,7 @@ interval = 5000
 
   overlay_color = "#555"  # An HTML color value.
   overlay_img = "headers/bioinformatics.jpg"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.5  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.1  # Darken the image. Value in range 0-1.
   
   # Call to action button (optional).
   #   Activate the button by specifying a URL and button label below.
@@ -50,12 +50,12 @@ interval = 5000
 
 [[item]]
   title = "Record My life"
-  content = "Life with my family and Dr. Wang. :smile:"
-  align = "Center"
+  content = "Life with my family. :smile:"
+  align = "center"
 
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/wcc.jpg"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.5  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.1  # Darken the image. Value in range 0-1.
   
     # Call to action button (optional).
   #   Activate the button by specifying a URL and button label below.
