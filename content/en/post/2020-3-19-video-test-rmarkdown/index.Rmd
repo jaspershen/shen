@@ -1,0 +1,52 @@
+---
+title: Video test in rmakrdown
+author: Xiaotao Shen
+date: '2020-03-19'
+slug: ''
+categories:
+  - Git
+  - Github
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# Video from youtube
+
+```markdown
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/8_QoT3ygdI4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/8_QoT3ygdI4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+# Video from bilibili
+
+```markdown
+<iframe width="100%" height="500" src="//player.bilibili.com/player.html?aid=47432978&cid=83074959&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+```
+
+<iframe width="100%" height="500" src="//player.bilibili.com/player.html?aid=47432978&cid=83074959&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+# Video from Tecent
+
+```markdown
+<iframe width="100%" height="500" frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=s0855vzl4du" allowFullScreen="true"></iframe>
+```
+<iframe width="100%" height="500" frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=s0855vzl4du" allowFullScreen="true"></iframe>
+
+# Music from Xiami music
+
+```markdown
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="110" loading="lazy" sandbox="allow-popups allow-scripts allow-same-origin" src="https://www.xiami.com/webapp/embed-player?autoPlay=1&id=1769071425"></iframe>
+```
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="110" loading="lazy" sandbox="allow-popups allow-scripts allow-same-origin" src="https://www.xiami.com/webapp/embed-player?autoPlay=1&id=1769071425"></iframe>
+

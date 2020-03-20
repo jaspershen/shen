@@ -155,7 +155,7 @@
   <meta property="og:description" content="Share"><meta property="og:image" content="/img/shen3.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2020-03-10T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2020-03-19T00:00:00&#43;00:00">
   
 
   
@@ -606,6 +606,15 @@
   
   
   <div>
+    <h2><a href="/post/2020-02-21-introduction_to_metagenomics/">R下载数据</a></h2>
+    <div class="article-style">
+      
+      1 使用命令打开网页 2 下载2019 new-Coronaverus数据 在看余光创教授的一个包,把一些学到的内容记录下来. 1 使用命令打开网页 url &lt;- &#39;https://baidu.com&#39;
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/post/2020-01-08-r-pkgdown/">使用pkgdown为自己的R包创建说明网站</a></h2>
     <div class="article-style">
       
@@ -682,15 +691,6 @@
     <div class="article-style">
       
       1 安装 2 使用 Python中有一个模仿R ggplot2语法创建的绘图包,plotnine.官网在这: https://plotnine.readthedocs.io/en/stable/ 1 安装 pip install plotinie 2 使用 from plotnine import * from plotnine.data import mtcars mtcars.head() ## name
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/2019-11-27-volcano-plot/">SAM test用于差异标志物的选择</a></h2>
-    <div class="article-style">
-      
-      参考文献1,2. 示例代码: # Function to compute the smooth threshold curve smooth.threshold=function(x,ta,s0,df){ xp=x[x&gt;(ta*s0)]; xn=x[x&lt;(-ta*s0)]; dp=xp/ta-s0; dn=xn/(-ta)-s0; dp=s0/dp; dp=ta*(1+dp); dn=s0/dn; dn=ta*(1+dn); fp=pt(dp,df=df); fn=pt(dn,df=df); yp=-log10(2*(1-fp)); yn=-log10(2*(1-fn)); return(cbind(c(xn,xp),c(yn,yp))); } # Get data library(cp4p); data(LFQRatio2); tabl=LFQRatio2; ## Warning: package &#39;cp4p&#39; was built under R version 3.6.1 ## Loading required package: MESS ## Warning: package &#39;MESS&#39; was built under R version 3.6.1 ## Loading required
       
     </div>
   </div>
