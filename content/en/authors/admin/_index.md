@@ -12,6 +12,7 @@ interests:
 - Bioinformatics
 - Metabolomics
 - Systems Biology
+- Biomarker
 
 education:
   courses:

@@ -47,21 +47,8 @@ output:
 <div id="tibble函数" class="section level2">
 <h2><span class="header-section-number">1.1</span> <code>tibble()</code>函数</h2>
 <p>使用<code>tibble()</code>可以创建新的<code>tibble</code>对象,但是一般用来创建比较简单的tibble。</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ------------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
-## v tibble  2.1.3     v dplyr   0.8.3
-## v tidyr   1.0.0     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.4.0</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts ---------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>a &lt;- 1
+<pre class="r"><code>library(tidyverse)
+a &lt;- 1
 b &lt;- 2:6
 tibble(a, b)</code></pre>
 <pre><code>## # A tibble: 5 x 2
@@ -109,47 +96,7 @@ try(
  tibble(a = 1:3, a = 1:3) 
 )</code></pre>
 <pre><code>## Error : Column name `a` must not be duplicated.
-## Use .name_repair to specify repair.
-## Backtrace:
-##      x
-##   1. +-base::local(...)
-##   2. | \-base::eval.parent(substitute(eval(quote(expr), envir)))
-##   3. |   \-base::eval(expr, p)
-##   4. |     \-base::eval(expr, p)
-##   5. +-base::eval(...)
-##   6. | \-base::eval(...)
-##   7. |   \-rmarkdown::render(...)
-##   8. |     \-knitr::knit(...)
-##   9. |       \-knitr:::process_file(text, output)
-##  10. |         +-base::withCallingHandlers(...)
-##  11. |         +-knitr:::process_group(group)
-##  12. |         \-knitr:::process_group.block(group)
-##  13. |           \-knitr:::call_block(x)
-##  14. |             \-knitr:::block_exec(params)
-##  15. |               +-knitr:::in_dir(...)
-##  16. |               \-knitr:::evaluate(...)
-##  17. |                 \-evaluate::evaluate(...)
-##  18. |                   \-evaluate:::evaluate_call(...)
-##  19. |                     +-evaluate:::timing_fn(...)
-##  20. |                     +-base:::handle(...)
-##  21. |                     +-base::withCallingHandlers(...)
-##  22. |                     +-base::withVisible(eval(expr, envir, enclos))
-##  23. |                     \-base::eval(expr, envir, enclos)
-##  24. |                       \-base::eval(expr, envir, enclos)
-##  25. +-base::try(tibble(a = 1:3, a = 1:3))
-##  26. | \-base::tryCatch(...)
-##  27. |   \-base:::tryCatchList(expr, classes, parentenv, handlers)
-##  28. |     \-base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
-##  29. |       \-base:::doTryCatch(return(expr), name, parentenv, handler)
-##  30. \-tibble::tibble(a = 1:3, a = 1:3)
-##  31.   \-tibble:::lst_to_tibble(xlq$output, .rows, .name_repair, lengths = xlq$lengths)
-##  32.     \-tibble:::set_repaired_names(x, .name_repair)
-##  33.       +-rlang::set_names(x, repaired_names(names(x), .name_repair = .name_repair))
-##  34.       | \-rlang:::set_names_impl(x, x, nm, ...)
-##  35.       |   \-rlang::is_function(nm)
-##  36.       |     \-rlang::is_closure(x)
-##  37.       \-tibble:::repaired_names(names(x), .name_repair = .name_repair)
-##  38.         \-tibble:::check_unique(new_name)</code></pre>
+## Use .name_repair to specify repair.</code></pre>
 <ul>
 <li><strong>universal</strong> 保证列名都是唯一的并且符合R语言语法.</li>
 </ul>
@@ -262,78 +209,77 @@ tibble::as_tibble(test2)</code></pre>
 # 默认显示
 nycflights13::flights</code></pre>
 <pre><code>## # A tibble: 336,776 x 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
-##  1  2013     1     1      517            515         2      830
-##  2  2013     1     1      533            529         4      850
-##  3  2013     1     1      542            540         2      923
-##  4  2013     1     1      544            545        -1     1004
-##  5  2013     1     1      554            600        -6      812
-##  6  2013     1     1      554            558        -4      740
-##  7  2013     1     1      555            600        -5      913
-##  8  2013     1     1      557            600        -3      709
-##  9  2013     1     1      557            600        -3      838
-## 10  2013     1     1      558            600        -2      753
-## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
-## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
-## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
-## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+##  1  2013     1     1      517            515         2      830            819
+##  2  2013     1     1      533            529         4      850            830
+##  3  2013     1     1      542            540         2      923            850
+##  4  2013     1     1      544            545        -1     1004           1022
+##  5  2013     1     1      554            600        -6      812            837
+##  6  2013     1     1      554            558        -4      740            728
+##  7  2013     1     1      555            600        -5      913            854
+##  8  2013     1     1      557            600        -3      709            723
+##  9  2013     1     1      557            600        -3      838            846
+## 10  2013     1     1      558            600        -2      753            745
+## # … with 336,766 more rows, and 11 more variables: arr_delay &lt;dbl&gt;,
+## #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
+## #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <pre class="r"><code># 输出15行及所有列数
 nycflights13::flights %&gt;% 
   print(n = 15, width = Inf)</code></pre>
 <pre><code>## # A tibble: 336,776 x 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
-##  1  2013     1     1      517            515         2      830
-##  2  2013     1     1      533            529         4      850
-##  3  2013     1     1      542            540         2      923
-##  4  2013     1     1      544            545        -1     1004
-##  5  2013     1     1      554            600        -6      812
-##  6  2013     1     1      554            558        -4      740
-##  7  2013     1     1      555            600        -5      913
-##  8  2013     1     1      557            600        -3      709
-##  9  2013     1     1      557            600        -3      838
-## 10  2013     1     1      558            600        -2      753
-## 11  2013     1     1      558            600        -2      849
-## 12  2013     1     1      558            600        -2      853
-## 13  2013     1     1      558            600        -2      924
-## 14  2013     1     1      558            600        -2      923
-## 15  2013     1     1      559            600        -1      941
-##    sched_arr_time arr_delay carrier flight tailnum origin dest  air_time
-##             &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;
-##  1            819        11 UA        1545 N14228  EWR    IAH        227
-##  2            830        20 UA        1714 N24211  LGA    IAH        227
-##  3            850        33 AA        1141 N619AA  JFK    MIA        160
-##  4           1022       -18 B6         725 N804JB  JFK    BQN        183
-##  5            837       -25 DL         461 N668DN  LGA    ATL        116
-##  6            728        12 UA        1696 N39463  EWR    ORD        150
-##  7            854        19 B6         507 N516JB  EWR    FLL        158
-##  8            723       -14 EV        5708 N829AS  LGA    IAD         53
-##  9            846        -8 B6          79 N593JB  JFK    MCO        140
-## 10            745         8 AA         301 N3ALAA  LGA    ORD        138
-## 11            851        -2 B6          49 N793JB  JFK    PBI        149
-## 12            856        -3 B6          71 N657JB  JFK    TPA        158
-## 13            917         7 UA         194 N29129  JFK    LAX        345
-## 14            937       -14 UA        1124 N53441  EWR    SFO        361
-## 15            910        31 AA         707 N3DUAA  LGA    DFW        257
-##    distance  hour minute time_hour          
-##       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dttm&gt;             
-##  1     1400     5     15 2013-01-01 05:00:00
-##  2     1416     5     29 2013-01-01 05:00:00
-##  3     1089     5     40 2013-01-01 05:00:00
-##  4     1576     5     45 2013-01-01 05:00:00
-##  5      762     6      0 2013-01-01 06:00:00
-##  6      719     5     58 2013-01-01 05:00:00
-##  7     1065     6      0 2013-01-01 06:00:00
-##  8      229     6      0 2013-01-01 06:00:00
-##  9      944     6      0 2013-01-01 06:00:00
-## 10      733     6      0 2013-01-01 06:00:00
-## 11     1028     6      0 2013-01-01 06:00:00
-## 12     1005     6      0 2013-01-01 06:00:00
-## 13     2475     6      0 2013-01-01 06:00:00
-## 14     2565     6      0 2013-01-01 06:00:00
-## 15     1389     6      0 2013-01-01 06:00:00
-## # ... with 3.368e+05 more rows</code></pre>
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
+##  1  2013     1     1      517            515         2      830            819
+##  2  2013     1     1      533            529         4      850            830
+##  3  2013     1     1      542            540         2      923            850
+##  4  2013     1     1      544            545        -1     1004           1022
+##  5  2013     1     1      554            600        -6      812            837
+##  6  2013     1     1      554            558        -4      740            728
+##  7  2013     1     1      555            600        -5      913            854
+##  8  2013     1     1      557            600        -3      709            723
+##  9  2013     1     1      557            600        -3      838            846
+## 10  2013     1     1      558            600        -2      753            745
+## 11  2013     1     1      558            600        -2      849            851
+## 12  2013     1     1      558            600        -2      853            856
+## 13  2013     1     1      558            600        -2      924            917
+## 14  2013     1     1      558            600        -2      923            937
+## 15  2013     1     1      559            600        -1      941            910
+##    arr_delay carrier flight tailnum origin dest  air_time distance  hour minute
+##        &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1        11 UA        1545 N14228  EWR    IAH        227     1400     5     15
+##  2        20 UA        1714 N24211  LGA    IAH        227     1416     5     29
+##  3        33 AA        1141 N619AA  JFK    MIA        160     1089     5     40
+##  4       -18 B6         725 N804JB  JFK    BQN        183     1576     5     45
+##  5       -25 DL         461 N668DN  LGA    ATL        116      762     6      0
+##  6        12 UA        1696 N39463  EWR    ORD        150      719     5     58
+##  7        19 B6         507 N516JB  EWR    FLL        158     1065     6      0
+##  8       -14 EV        5708 N829AS  LGA    IAD         53      229     6      0
+##  9        -8 B6          79 N593JB  JFK    MCO        140      944     6      0
+## 10         8 AA         301 N3ALAA  LGA    ORD        138      733     6      0
+## 11        -2 B6          49 N793JB  JFK    PBI        149     1028     6      0
+## 12        -3 B6          71 N657JB  JFK    TPA        158     1005     6      0
+## 13         7 UA         194 N29129  JFK    LAX        345     2475     6      0
+## 14       -14 UA        1124 N53441  EWR    SFO        361     2565     6      0
+## 15        31 AA         707 N3DUAA  LGA    DFW        257     1389     6      0
+##    time_hour          
+##    &lt;dttm&gt;             
+##  1 2013-01-01 05:00:00
+##  2 2013-01-01 05:00:00
+##  3 2013-01-01 05:00:00
+##  4 2013-01-01 05:00:00
+##  5 2013-01-01 06:00:00
+##  6 2013-01-01 05:00:00
+##  7 2013-01-01 06:00:00
+##  8 2013-01-01 06:00:00
+##  9 2013-01-01 06:00:00
+## 10 2013-01-01 06:00:00
+## 11 2013-01-01 06:00:00
+## 12 2013-01-01 06:00:00
+## 13 2013-01-01 06:00:00
+## 14 2013-01-01 06:00:00
+## 15 2013-01-01 06:00:00
+## # … with 3.368e+05 more rows</code></pre>
 </div>
 <div id="修改options默认参数" class="section level2">
 <h2><span class="header-section-number">2.2</span> 修改<code>options()</code>默认参数</h2>
@@ -363,29 +309,29 @@ nycflights13::flights %&gt;%
 <p>如何取出一个tibble的一列或者几列.</p>
 <pre class="r"><code>test &lt;- as_tibble(mtcars)
 test[,1, drop = TRUE]</code></pre>
-<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
-## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
-## [29] 15.8 19.7 15.0 21.4</code></pre>
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4</code></pre>
 <pre class="r"><code>mtcars[,1]</code></pre>
-<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
-## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
-## [29] 15.8 19.7 15.0 21.4</code></pre>
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4</code></pre>
 <p>tibble如果使用<code>[</code>函数来进行选择某一列,则默认出来的还是一个tibble,当然可以使用<code>drop</code>参数来设置为TRUE,让其转变成一个vector.而对于data.frame,则取出一列,默认为vector.</p>
 <pre class="r"><code>test$mpg</code></pre>
-<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
-## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
-## [29] 15.8 19.7 15.0 21.4</code></pre>
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4</code></pre>
 <pre class="r"><code>test[[&quot;mpg&quot;]]</code></pre>
-<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
-## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
-## [29] 15.8 19.7 15.0 21.4</code></pre>
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4</code></pre>
 <p>当然还可以使用<code>$</code>和<code>[[</code>函数,这两个函数取出来的都是vector.</p>
 <pre class="r"><code>library(tidyverse)
 test %&gt;% 
   pull(mpg)</code></pre>
-<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
-## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
-## [29] 15.8 19.7 15.0 21.4</code></pre>
+<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4</code></pre>
 <p>当然,还可以使用<code>dplyr</code>中的<code>pull()</code>函数,取出来的也是vector.</p>
 </div>
 <div id="tibble添加新的列或者行" class="section level1">
@@ -481,78 +427,14 @@ try(
 add_column(df, x = 4:6)  
 )</code></pre>
 <pre><code>## Error : Can&#39;t add duplicate columns with `add_column()`:
-## * Column `x` already exists in `.data`.
-## Backtrace:
-##      x
-##   1. +-base::local(...)
-##   2. | \-base::eval.parent(substitute(eval(quote(expr), envir)))
-##   3. |   \-base::eval(expr, p)
-##   4. |     \-base::eval(expr, p)
-##   5. +-base::eval(...)
-##   6. | \-base::eval(...)
-##   7. |   \-rmarkdown::render(...)
-##   8. |     \-knitr::knit(...)
-##   9. |       \-knitr:::process_file(text, output)
-##  10. |         +-base::withCallingHandlers(...)
-##  11. |         +-knitr:::process_group(group)
-##  12. |         \-knitr:::process_group.block(group)
-##  13. |           \-knitr:::call_block(x)
-##  14. |             \-knitr:::block_exec(params)
-##  15. |               +-knitr:::in_dir(...)
-##  16. |               \-knitr:::evaluate(...)
-##  17. |                 \-evaluate::evaluate(...)
-##  18. |                   \-evaluate:::evaluate_call(...)
-##  19. |                     +-evaluate:::timing_fn(...)
-##  20. |                     +-base:::handle(...)
-##  21. |                     +-base::withCallingHandlers(...)
-##  22. |                     +-base::withVisible(eval(expr, envir, enclos))
-##  23. |                     \-base::eval(expr, envir, enclos)
-##  24. |                       \-base::eval(expr, envir, enclos)
-##  25. +-base::try(add_column(df, x = 4:6))
-##  26. | \-base::tryCatch(...)
-##  27. |   \-base:::tryCatchList(expr, classes, parentenv, handlers)
-##  28. |     \-base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
-##  29. |       \-base:::doTryCatch(return(expr), name, parentenv, handler)
-##  30. \-tibble::add_column(df, x = 4:6)</code></pre>
+## * Column `x` already exists in `.data`.</code></pre>
 <pre class="r"><code># You can&#39;t create new observations
 try(
  add_column(df, z = 1:5) 
 )</code></pre>
 <pre><code>## Error : New columns in `add_column()` must be consistent with `.data`:
 ## * `.data` has 3 rows
-## * New column contributes 5 rows
-## Backtrace:
-##      x
-##   1. +-base::local(...)
-##   2. | \-base::eval.parent(substitute(eval(quote(expr), envir)))
-##   3. |   \-base::eval(expr, p)
-##   4. |     \-base::eval(expr, p)
-##   5. +-base::eval(...)
-##   6. | \-base::eval(...)
-##   7. |   \-rmarkdown::render(...)
-##   8. |     \-knitr::knit(...)
-##   9. |       \-knitr:::process_file(text, output)
-##  10. |         +-base::withCallingHandlers(...)
-##  11. |         +-knitr:::process_group(group)
-##  12. |         \-knitr:::process_group.block(group)
-##  13. |           \-knitr:::call_block(x)
-##  14. |             \-knitr:::block_exec(params)
-##  15. |               +-knitr:::in_dir(...)
-##  16. |               \-knitr:::evaluate(...)
-##  17. |                 \-evaluate::evaluate(...)
-##  18. |                   \-evaluate:::evaluate_call(...)
-##  19. |                     +-evaluate:::timing_fn(...)
-##  20. |                     +-base:::handle(...)
-##  21. |                     +-base::withCallingHandlers(...)
-##  22. |                     +-base::withVisible(eval(expr, envir, enclos))
-##  23. |                     \-base::eval(expr, envir, enclos)
-##  24. |                       \-base::eval(expr, envir, enclos)
-##  25. +-base::try(add_column(df, z = 1:5))
-##  26. | \-base::tryCatch(...)
-##  27. |   \-base:::tryCatchList(expr, classes, parentenv, handlers)
-##  28. |     \-base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
-##  29. |       \-base:::doTryCatch(return(expr), name, parentenv, handler)
-##  30. \-tibble::add_column(df, z = 1:5)</code></pre>
+## * New column contributes 5 rows</code></pre>
 <p>所以其实并不方便,还是使用<code>dplyr</code>更方便.</p>
 </div>
 </div>
@@ -591,20 +473,19 @@ try(
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <pre class="r"><code>rownames(iris)</code></pre>
-<pre><code>##   [1] &quot;1&quot;   &quot;2&quot;   &quot;3&quot;   &quot;4&quot;   &quot;5&quot;   &quot;6&quot;   &quot;7&quot;   &quot;8&quot;   &quot;9&quot;   &quot;10&quot;  &quot;11&quot; 
-##  [12] &quot;12&quot;  &quot;13&quot;  &quot;14&quot;  &quot;15&quot;  &quot;16&quot;  &quot;17&quot;  &quot;18&quot;  &quot;19&quot;  &quot;20&quot;  &quot;21&quot;  &quot;22&quot; 
-##  [23] &quot;23&quot;  &quot;24&quot;  &quot;25&quot;  &quot;26&quot;  &quot;27&quot;  &quot;28&quot;  &quot;29&quot;  &quot;30&quot;  &quot;31&quot;  &quot;32&quot;  &quot;33&quot; 
-##  [34] &quot;34&quot;  &quot;35&quot;  &quot;36&quot;  &quot;37&quot;  &quot;38&quot;  &quot;39&quot;  &quot;40&quot;  &quot;41&quot;  &quot;42&quot;  &quot;43&quot;  &quot;44&quot; 
-##  [45] &quot;45&quot;  &quot;46&quot;  &quot;47&quot;  &quot;48&quot;  &quot;49&quot;  &quot;50&quot;  &quot;51&quot;  &quot;52&quot;  &quot;53&quot;  &quot;54&quot;  &quot;55&quot; 
-##  [56] &quot;56&quot;  &quot;57&quot;  &quot;58&quot;  &quot;59&quot;  &quot;60&quot;  &quot;61&quot;  &quot;62&quot;  &quot;63&quot;  &quot;64&quot;  &quot;65&quot;  &quot;66&quot; 
-##  [67] &quot;67&quot;  &quot;68&quot;  &quot;69&quot;  &quot;70&quot;  &quot;71&quot;  &quot;72&quot;  &quot;73&quot;  &quot;74&quot;  &quot;75&quot;  &quot;76&quot;  &quot;77&quot; 
-##  [78] &quot;78&quot;  &quot;79&quot;  &quot;80&quot;  &quot;81&quot;  &quot;82&quot;  &quot;83&quot;  &quot;84&quot;  &quot;85&quot;  &quot;86&quot;  &quot;87&quot;  &quot;88&quot; 
-##  [89] &quot;89&quot;  &quot;90&quot;  &quot;91&quot;  &quot;92&quot;  &quot;93&quot;  &quot;94&quot;  &quot;95&quot;  &quot;96&quot;  &quot;97&quot;  &quot;98&quot;  &quot;99&quot; 
-## [100] &quot;100&quot; &quot;101&quot; &quot;102&quot; &quot;103&quot; &quot;104&quot; &quot;105&quot; &quot;106&quot; &quot;107&quot; &quot;108&quot; &quot;109&quot; &quot;110&quot;
-## [111] &quot;111&quot; &quot;112&quot; &quot;113&quot; &quot;114&quot; &quot;115&quot; &quot;116&quot; &quot;117&quot; &quot;118&quot; &quot;119&quot; &quot;120&quot; &quot;121&quot;
-## [122] &quot;122&quot; &quot;123&quot; &quot;124&quot; &quot;125&quot; &quot;126&quot; &quot;127&quot; &quot;128&quot; &quot;129&quot; &quot;130&quot; &quot;131&quot; &quot;132&quot;
-## [133] &quot;133&quot; &quot;134&quot; &quot;135&quot; &quot;136&quot; &quot;137&quot; &quot;138&quot; &quot;139&quot; &quot;140&quot; &quot;141&quot; &quot;142&quot; &quot;143&quot;
-## [144] &quot;144&quot; &quot;145&quot; &quot;146&quot; &quot;147&quot; &quot;148&quot; &quot;149&quot; &quot;150&quot;</code></pre>
+<pre><code>##   [1] &quot;1&quot;   &quot;2&quot;   &quot;3&quot;   &quot;4&quot;   &quot;5&quot;   &quot;6&quot;   &quot;7&quot;   &quot;8&quot;   &quot;9&quot;   &quot;10&quot;  &quot;11&quot;  &quot;12&quot; 
+##  [13] &quot;13&quot;  &quot;14&quot;  &quot;15&quot;  &quot;16&quot;  &quot;17&quot;  &quot;18&quot;  &quot;19&quot;  &quot;20&quot;  &quot;21&quot;  &quot;22&quot;  &quot;23&quot;  &quot;24&quot; 
+##  [25] &quot;25&quot;  &quot;26&quot;  &quot;27&quot;  &quot;28&quot;  &quot;29&quot;  &quot;30&quot;  &quot;31&quot;  &quot;32&quot;  &quot;33&quot;  &quot;34&quot;  &quot;35&quot;  &quot;36&quot; 
+##  [37] &quot;37&quot;  &quot;38&quot;  &quot;39&quot;  &quot;40&quot;  &quot;41&quot;  &quot;42&quot;  &quot;43&quot;  &quot;44&quot;  &quot;45&quot;  &quot;46&quot;  &quot;47&quot;  &quot;48&quot; 
+##  [49] &quot;49&quot;  &quot;50&quot;  &quot;51&quot;  &quot;52&quot;  &quot;53&quot;  &quot;54&quot;  &quot;55&quot;  &quot;56&quot;  &quot;57&quot;  &quot;58&quot;  &quot;59&quot;  &quot;60&quot; 
+##  [61] &quot;61&quot;  &quot;62&quot;  &quot;63&quot;  &quot;64&quot;  &quot;65&quot;  &quot;66&quot;  &quot;67&quot;  &quot;68&quot;  &quot;69&quot;  &quot;70&quot;  &quot;71&quot;  &quot;72&quot; 
+##  [73] &quot;73&quot;  &quot;74&quot;  &quot;75&quot;  &quot;76&quot;  &quot;77&quot;  &quot;78&quot;  &quot;79&quot;  &quot;80&quot;  &quot;81&quot;  &quot;82&quot;  &quot;83&quot;  &quot;84&quot; 
+##  [85] &quot;85&quot;  &quot;86&quot;  &quot;87&quot;  &quot;88&quot;  &quot;89&quot;  &quot;90&quot;  &quot;91&quot;  &quot;92&quot;  &quot;93&quot;  &quot;94&quot;  &quot;95&quot;  &quot;96&quot; 
+##  [97] &quot;97&quot;  &quot;98&quot;  &quot;99&quot;  &quot;100&quot; &quot;101&quot; &quot;102&quot; &quot;103&quot; &quot;104&quot; &quot;105&quot; &quot;106&quot; &quot;107&quot; &quot;108&quot;
+## [109] &quot;109&quot; &quot;110&quot; &quot;111&quot; &quot;112&quot; &quot;113&quot; &quot;114&quot; &quot;115&quot; &quot;116&quot; &quot;117&quot; &quot;118&quot; &quot;119&quot; &quot;120&quot;
+## [121] &quot;121&quot; &quot;122&quot; &quot;123&quot; &quot;124&quot; &quot;125&quot; &quot;126&quot; &quot;127&quot; &quot;128&quot; &quot;129&quot; &quot;130&quot; &quot;131&quot; &quot;132&quot;
+## [133] &quot;133&quot; &quot;134&quot; &quot;135&quot; &quot;136&quot; &quot;137&quot; &quot;138&quot; &quot;139&quot; &quot;140&quot; &quot;141&quot; &quot;142&quot; &quot;143&quot; &quot;144&quot;
+## [145] &quot;145&quot; &quot;146&quot; &quot;147&quot; &quot;148&quot; &quot;149&quot; &quot;150&quot;</code></pre>
 <pre class="r"><code>has_rownames(iris)</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <p>可以使用<code>remove_rownames()</code>函数去除掉行名.当然也可以使用将行名设置为NULL打到目的</p>
@@ -623,19 +504,19 @@ rownames_to_column(mtcars, var = &quot;test&quot;)
 mtcars2 %&gt;% 
   as_tibble()</code></pre>
 <pre><code>## # A tibble: 32 x 12
-##    test     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-##    &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 Mazda~  21       6  160    110  3.9   2.62  16.5     0     1     4     4
-##  2 Mazda~  21       6  160    110  3.9   2.88  17.0     0     1     4     4
-##  3 Datsu~  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
-##  4 Horne~  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
-##  5 Horne~  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
-##  6 Valia~  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
-##  7 Duste~  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
-##  8 Merc ~  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
-##  9 Merc ~  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
-## 10 Merc ~  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-## # ... with 22 more rows</code></pre>
+##    test          mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 Mazda RX4    21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2 Mazda RX4 …  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3 Datsun 710   22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4 Hornet 4 D…  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5 Hornet Spo…  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6 Valiant      18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7 Duster 360   14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8 Merc 240D    24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9 Merc 230     22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10 Merc 280     19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # … with 22 more rows</code></pre>
 <p>另外一个函数,<code>rowid_to_column()</code>可以去除掉行名,并在最开始添加一列rowid,从1开始.</p>
 <pre class="r"><code>rowid_to_column(mtcars) %&gt;% 
   as_tibble()</code></pre>
@@ -652,7 +533,7 @@ mtcars2 %&gt;%
 ##  8     8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
 ##  9     9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
 ## 10    10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-## # ... with 22 more rows</code></pre>
+## # … with 22 more rows</code></pre>
 <p>当然也可以将某一列变为行名:<code>column_to_rownames()</code>.注意必须要求tibble没有行名,且新的行名是没有重复元素的.</p>
 <pre class="r"><code>column_to_rownames(mtcars2, var = &quot;test&quot;)</code></pre>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb

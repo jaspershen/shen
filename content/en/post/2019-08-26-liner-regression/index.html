@@ -42,28 +42,32 @@ height &lt;-
 data &lt;- 
   data.frame(age, height, 
              stringsAsFactors = FALSE)
-library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>(
+library(ggplot2)
+
+(
 plot &lt;- 
 ggplot(data, aes(age, height)) +
   geom_point() +
   theme_bw()
 )</code></pre>
-<p><img src="/zh/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>我们画出散点图之后,可以看出age和height呈比较明显的线性关系.</p>
 <p>那我们怎么用一条直线去拟合(fit)数据呢?我们使用的就是最小平方差法(least square).</p>
 <p>那么最简单的拟合办法是什么呢?也就是直接使用所有人的height的平均值去拟合.</p>
 <pre class="r"><code>plot +
   geom_hline(yintercept = mean(data$height))</code></pre>
-<p><img src="/zh/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>那么怎么评价一条直线对数据拟合的好坏呢?这时候就需要引入另外一个概念,残差(residuls).残差也就是真实值和拟合值之间差值:</p>
 <p><span class="math display">\[residual = y_i - y_i^{&#39;}\]</span></p>
 <p>其中<span class="math inline">\(y_i\)</span>是真实值,而<span class="math inline">\(y_i{&#39;}\)</span>是模型预测值.</p>
 <pre class="r"><code>plot +
   geom_hline(yintercept = mean(data$height)) +
   geom_segment(aes(x = data$age[1], y = data$height[1], xend = data$age[1], yend = mean(data$height)), colour = &quot;red&quot;, arrow = arrow()) </code></pre>
-<p><img src="/zh/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre><code>## Warning: Use of `data$age` is discouraged. Use `age` instead.</code></pre>
+<pre><code>## Warning: Use of `data$height` is discouraged. Use `height` instead.</code></pre>
+<pre><code>## Warning: Use of `data$age` is discouraged. Use `age` instead.</code></pre>
+<pre><code>## Warning: Use of `data$height` is discouraged. Use `height` instead.</code></pre>
+<p><img src="/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>从定义可以看到,残差有正有负.为了表示一条拟合直线对数据拟合的程度的好坏,我们将残差平方然后加和,从而得到<strong>残差平方和(sum of squared residuals)</strong>,该值就可以用来表示一条直线对数据的拟合的好坏.拟合的越好,该值越小,拟合的越差,该值越大.</p>
 <blockquote>
 <p>其实使用残差平方和作为损失函数得到的最后的方程或者说模型并不一定是最优解,但是好处是方便后面求解(求导)并且解是唯一的.另外还有使用残差绝对值之和作为损失函数进行求解.以后再慢慢介绍.</p>
