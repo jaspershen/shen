@@ -18,10 +18,10 @@ education:
   courses:
   - course: PhD
     institution: Chinese Academy of Sciences
-    year: 2018
+    year: 2013-2018
   - course: BSc
     institution: Inner Mongolia University
-    year: 2013
+    year: 2009-2013
 
 social:
 - icon: envelope
@@ -58,10 +58,6 @@ social:
   icon_pack: fab
   link: https://www.facebook.com/xiaotao.shen.3
 
-
-  
-  
-  
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "shenxt@stanford.edu"
