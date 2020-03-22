@@ -36,6 +36,10 @@ subtitle = "Software and algorithm development. More software are in my [Github]
   [[content.filter_button]]
     name = "Others"
     tag = "Others"
+  
+  [[content.filter_button]]
+    name = "Book"
+    tag = "Book"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -48,7 +52,7 @@ subtitle = "Software and algorithm development. More software are in my [Github]
   view = 3
 
   # For Showcase view, flip alternate rows?
-  flip_alt_rows = false
+  flip_alt_rows = true
 
 [design.background]
   # Apply a background color, gradient, or image.
