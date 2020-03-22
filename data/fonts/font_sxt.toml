@@ -1,0 +1,15 @@
+# Font style metadata
+name = "font_sxt"
+
+# Optional Google font URL
+google_fonts = "Open+Sans|Noto+Sans|PT+Sans"
+
+# Font families
+heading_font = "Open Sans"
+body_font = "Noto Sans"
+nav_font = "PT Sans"
+mono_font = "PT Sans"
+
+# Font size
+font_size = "20"
+font_size_small = "16"

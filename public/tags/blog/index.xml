@@ -5,7 +5,7 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Video test in rmakrdown</title>
       <link>/post/2020-3-19-video-test-rmarkdown/</link>
