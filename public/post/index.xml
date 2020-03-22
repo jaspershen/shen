@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog | Xiaotao Shen</title>
+    <title>Xiaotao Shen&#39;s Blog | Xiaotao Shen</title>
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    <description>Blog</description>
+    <description>Xiaotao Shen&#39;s Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen2020 From Stanford university, School of Medicine.</copyright>
     <item>
       <title>Video test in rmakrdown</title>
