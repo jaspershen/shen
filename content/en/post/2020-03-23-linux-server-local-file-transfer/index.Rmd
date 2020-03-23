@@ -1,0 +1,67 @@
+---
+title: 在Linux服务器和本地之间传输数据
+author: Xiaotao Shen
+date: '2020-03-23'
+slug: ''
+categories:
+  - Linux
+tags:
+  - Blog
+  - Chinese
+  - Linux
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+可以使用`scp`在本地和服务器之间传输数据.`scp`全称是`secure copy`.注意,在mac中,直接打开terminal即可,不能够登录到服务器再进行下面操作.
+
+# 从本地向服务器copy文件
+
+```markdown
+scp /file/to/send username@remote:/where/to/put
+```
+
+其中`/file/to/send`是比本地数据所在路径.`username`是你在remote服务器的用户名.`remote`一般是你的登录IP.`where/to/put`是你想要在远程服务器存放数据的路径.
+
+比如:
+
+```markdown
+scp /Users/shenxt/projects/demark_multiomics/denmark_project/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis/sft shenxt@login.scg.stanford.edu:/home/shenxt/denmark_multiomics/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis/
+```
+
+# 从本地向服务器copy文件夹
+
+拷贝文件夹需要设定参数`r`
+
+```markdown
+scp -r /file/to/send username@remote:/where/to/put
+```
+
+其中`/file/to/send`是比本地数据所在路径.`username`是你在remote服务器的用户名.`remote`一般是你的登录IP.`where/to/put`是你想要在远程服务器存放数据的路径.
+
+# 从服务器向本地copy文件
+
+```markdown
+scp username@remote:/file/to/send /where/to/put
+```
+
+参数和上面是一样的.
+
+比如:
+
+```markdown
+scp shenxt@login.scg.stanford.edu:/home/shenxt/denmark_multiomics/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis/sft /Users/shenxt/projects/demark_multiomics/denmark_project/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis
+```
+
+# 从服务器向本地copy文件夹
+
+```markdown
+scp username@remote:/file/to/send/ /where/to/put
+```
+
+
