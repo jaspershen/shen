@@ -1,14 +1,14 @@
 ---
-title: Video test in rmakrdown
+title: 在Linux服务器和本地之间传输数据
 author: Xiaotao Shen
-date: '2020-03-19'
+date: '2020-03-23'
 slug: ''
 categories:
-  - Git
-  - Github
+  - Linux
 tags:
   - Blog
   - Chinese
+  - Linux
 image:
   caption: ''
   focal_point: ''
@@ -21,35 +21,35 @@ output:
 
 <div id="TOC">
 <ul>
-<li><a href="#video-from-youtube"><span class="toc-section-number">1</span> Video from youtube</a></li>
-<li><a href="#video-from-bilibili"><span class="toc-section-number">2</span> Video from bilibili</a></li>
-<li><a href="#video-from-tecent"><span class="toc-section-number">3</span> Video from Tecent</a></li>
-<li><a href="#music-from-xiami-music"><span class="toc-section-number">4</span> Music from Xiami music</a></li>
+<li><a href="#从本地向服务器copy文件"><span class="toc-section-number">1</span> 从本地向服务器copy文件</a></li>
+<li><a href="#从本地向服务器copy文件夹"><span class="toc-section-number">2</span> 从本地向服务器copy文件夹</a></li>
+<li><a href="#从服务器向本地copy文件"><span class="toc-section-number">3</span> 从服务器向本地copy文件</a></li>
+<li><a href="#从服务器向本地copy文件夹"><span class="toc-section-number">4</span> 从服务器向本地copy文件夹</a></li>
 </ul>
 </div>
 
-<div id="video-from-youtube" class="section level1">
-<h1><span class="header-section-number">1</span> Video from youtube</h1>
-<pre class="markdown"><code>&lt;iframe width=&quot;100%&quot; height=&quot;500&quot; src=&quot;https://www.youtube.com/embed/8_QoT3ygdI4&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/8_QoT3ygdI4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+<p>可以使用<code>scp</code>在本地和服务器之间传输数据.<code>scp</code>全称是<code>secure copy</code>.注意,在mac中,直接打开terminal即可,不能够登录到服务器再进行下面操作.</p>
+<div id="从本地向服务器copy文件" class="section level1">
+<h1><span class="header-section-number">1</span> 从本地向服务器copy文件</h1>
+<pre class="markdown"><code>scp /file/to/send username@remote:/where/to/put</code></pre>
+<p>其中<code>/file/to/send</code>是比本地数据所在路径.<code>username</code>是你在remote服务器的用户名.<code>remote</code>一般是你的登录IP.<code>where/to/put</code>是你想要在远程服务器存放数据的路径.</p>
+<p>比如:</p>
+<pre class="markdown"><code>scp /Users/shenxt/projects/demark_multiomics/denmark_project/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis/sft shenxt@login.scg.stanford.edu:/home/shenxt/denmark_multiomics/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis/</code></pre>
 </div>
-<div id="video-from-bilibili" class="section level1">
-<h1><span class="header-section-number">2</span> Video from bilibili</h1>
-<pre class="markdown"><code>&lt;iframe width=&quot;100%&quot; height=&quot;500&quot; src=&quot;//player.bilibili.com/player.html?aid=47432978&amp;cid=83074959&amp;page=1&quot; scrolling=&quot;yes&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;</code></pre>
-<iframe width="100%" height="500" src="//player.bilibili.com/player.html?aid=47432978&amp;cid=83074959&amp;page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
-</iframe>
+<div id="从本地向服务器copy文件夹" class="section level1">
+<h1><span class="header-section-number">2</span> 从本地向服务器copy文件夹</h1>
+<p>拷贝文件夹需要设定参数<code>r</code></p>
+<pre class="markdown"><code>scp -r /file/to/send username@remote:/where/to/put</code></pre>
+<p>其中<code>/file/to/send</code>是比本地数据所在路径.<code>username</code>是你在remote服务器的用户名.<code>remote</code>一般是你的登录IP.<code>where/to/put</code>是你想要在远程服务器存放数据的路径.</p>
 </div>
-<div id="video-from-tecent" class="section level1">
-<h1><span class="header-section-number">3</span> Video from Tecent</h1>
-<pre class="markdown"><code>&lt;iframe width=&quot;100%&quot; height=&quot;500&quot; frameborder=&quot;0&quot; src=&quot;https://v.qq.com/txp/iframe/player.html?vid=s0855vzl4du&quot; allowFullScreen=&quot;true&quot;&gt;&lt;/iframe&gt;</code></pre>
-<iframe width="100%" height="500" frameborder="0" src="https://v.qq.com/txp/iframe/player.html?vid=s0855vzl4du" allowFullScreen="true">
-</iframe>
+<div id="从服务器向本地copy文件" class="section level1">
+<h1><span class="header-section-number">3</span> 从服务器向本地copy文件</h1>
+<pre class="markdown"><code>scp username@remote:/file/to/send /where/to/put</code></pre>
+<p>参数和上面是一样的.</p>
+<p>比如:</p>
+<pre class="markdown"><code>scp shenxt@login.scg.stanford.edu:/home/shenxt/denmark_multiomics/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis/sft /Users/shenxt/projects/demark_multiomics/denmark_project/data_analysis_2020_02_13/transcriptome_data_analysis/module_analysis</code></pre>
 </div>
-<div id="music-from-xiami-music" class="section level1">
-<h1><span class="header-section-number">4</span> Music from Xiami music</h1>
-<pre class="markdown"><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;100%&quot; height=&quot;110&quot; loading=&quot;lazy&quot; sandbox=&quot;allow-popups allow-scripts allow-same-origin&quot; src=&quot;https://www.xiami.com/webapp/embed-player?autoPlay=1&amp;id=1769071425&quot;&gt;&lt;/iframe&gt;</code></pre>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="100%" height="110" loading="lazy" sandbox="allow-popups allow-scripts allow-same-origin" src="https://www.xiami.com/webapp/embed-player?autoPlay=1&amp;id=1769071425">
-</iframe>
-<p><img src="http://ghchart.rshah.org/jaspershen" alt="Name Your GitHub chart"></p>
+<div id="从服务器向本地copy文件夹" class="section level1">
+<h1><span class="header-section-number">4</span> 从服务器向本地copy文件夹</h1>
+<pre class="markdown"><code>scp username@remote:/file/to/send/ /where/to/put</code></pre>
 </div>
