@@ -168,7 +168,7 @@ p <- ggplot() +
     key_glyph = draw_key_point
   ) +
   # geom_tile_interactive(
-    geom_tile(
+    ggplot2::geom_tile(
     data = dplyr::filter(p_data, !is.na(type)),
     width = 6,
     height = .8,
@@ -197,9 +197,9 @@ p <- ggplot() +
     na.value = "#eee8d5"
   ) +
   scale_y_discrete(breaks = c("Mon", "Wed", "Fri")) +
-  ggpubr::theme_transparent() +
+  theme_bw() +
   theme(
-    rect = element_rect(fill = "transparent", colour = NA),
+    rect = element_rect(fill = "transparent"),
     line = element_blank(),
     panel.background = element_rect(fill = "transparent",colour = NA),
     plot.background = element_rect(fill = "transparent",colour = NA),
