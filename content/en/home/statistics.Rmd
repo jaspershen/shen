@@ -167,8 +167,7 @@ library(ggthemes)
 ###
 ```
 
-```{r, echo = FALSE, warning = FALSE, out.width="100%",cache=FALSE}
-# p_data$count[is.na(p_data$count)] <- 0
+```{r, echo = FALSE, warning = FALSE, out.width="100%",cacp_data$count[is.na(p_data$count)] <- 0
 ## Actually plot
 my_pal = solarized_pal("green")(5)
 rebase <- ggthemes:::solarized_rebase()
@@ -256,9 +255,7 @@ girafe_options(x, opts_tooltip(css = tooltip_css))
 
 
 
-```{r, echo = FALSE, warning = FALSE, out.width="100%", fig.asp = 0.6, cache = FALSE}
-#
-library(scholar)
+```{r, echo = FALSE, warning = FALSE, out.width="100%", fig.asp = 0.6, calibrary(scholar)
 library(ggplot2)
 cit <- get_citation_history('3TK9yz8AAAAJ')
 if(nrow(cit) < 8){

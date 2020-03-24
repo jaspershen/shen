@@ -14,7 +14,7 @@ links:
 - icon: twitter
   icon_pack: fab
   name: Follow
-  url: url: https://twitter.com/JasperShen1990
+  url: https://twitter.com/JasperShen1990
 location: Seattle, United States
 math: true
 projects:
