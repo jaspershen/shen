@@ -222,7 +222,7 @@ p <- ggplot() +
     line = element_blank(),
     panel.background = element_rect(fill = "transparent",colour = NA),
     plot.background = element_rect(fill = "transparent",colour = NA),
-    text = element_text(family = "Lato", size = 7),
+    # text = element_text(family = "Lato", size = 7),
     legend.position = "right",
     aspect.ratio = .8 / 6
   ) +
@@ -262,9 +262,12 @@ if(nrow(cit) < 8){
   cit1 <- 
     matrix(rep(c(year - 1, 0), 8 - nrow(cit)), 
                       ncol = 2, byrow = TRUE)
+  cit1[,1] <- cit1[,1] - c(0:(nrow(cit1) - 1))
   colnames(cit1) <- colnames(cit)
   cit <- rbind(cit1,
-               cit)
+               cit) %>% 
+    as.data.frame() %>% 
+    dplyr::arrange(year)
 }
 # profile <- scholar::get_profile("3TK9yz8AAAAJ")
 plot <- 
