@@ -103,7 +103,7 @@ talk_data <- map_dfr(set_names(talks, dirname(talks)), function(file) {
 #   )
 ```
 
-```{r, include = FALSE}
+```{r, include = FALSE, cache = FALSE}
 ## Join all data together
 all_data <- bind_rows(
   dplyr::select(
@@ -167,7 +167,7 @@ library(ggthemes)
 ###
 ```
 
-```{r, echo = FALSE, warning = FALSE}
+```{r, echo = FALSE, warning = FALSE, out.width="100%",cache=FALSE}
 # p_data$count[is.na(p_data$count)] <- 0
 ## Actually plot
 my_pal = solarized_pal("green")(5)
@@ -223,8 +223,12 @@ p <- ggplot() +
     panel.background = element_rect(fill = "transparent",colour = NA),
     plot.background = element_rect(fill = "transparent",colour = NA),
     # text = element_text(family = "Lato", size = 7),
-    legend.position = "right",
-    aspect.ratio = .8 / 6
+    legend.position = "left",   
+    aspect.ratio = .8 / 6,
+    title = element_text(color = "#991500"),
+    axis.text = element_text(color = "#991500"),
+    axis.title = element_text(color = "#991500"),
+    axis.ticks = element_line(color = "#991500")
   ) +
   guides(
     alpha = "none",
@@ -233,7 +237,7 @@ p <- ggplot() +
       override.aes = list(shape = 'square filled', size = 1),
       keywidth = 1,
       # label.theme = element_text(family = "Lato", size = 7),
-      label.position = "right",
+      label.position = "left",     
       nrow = 2
     )
   ) +
@@ -243,7 +247,7 @@ x <- girafe(code = print(p),
             height_svg = 2)
 ##
 tooltip_css <-
-  "background: #ffffff; opacity: 1; color: #839496; border-radius: 5px;
+  "background: #ffffff; opacity: 0; color: #839496; border-radius: 5px;
                 padding: 5px; box-shadow: 3px 3px 5px 0px #888888;
                 font-size: 12px; border-width 2px; border-color: #002b36;"
 ##
@@ -252,7 +256,7 @@ girafe_options(x, opts_tooltip(css = tooltip_css))
 
 
 
-```{r, echo = FALSE, warning = FALSE, out.width="100%", fig.asp = 0.6}
+```{r, echo = FALSE, warning = FALSE, out.width="100%", fig.asp = 0.6, cache = FALSE}
 #
 library(scholar)
 library(ggplot2)
