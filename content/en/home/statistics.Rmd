@@ -305,3 +305,4 @@ ggplot(cit, aes(x = year, y = cites)) +
 plotly::ggplotly(plot)
 # knitr::kable(table, format = 'html')
 ```
+
