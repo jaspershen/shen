@@ -37,6 +37,8 @@ gh_data <- tibble(
 )
 ```
 
+
+
 ```{r, include = FALSE}
 ## get posts
 posts <- list.files(
@@ -65,8 +67,12 @@ post_data <-
 
 ```{r, include = FALSE}
 ## Get talks and workshops
-talks <- list.files(here::here("content/en/talk"), recursive = TRUE, full.names = FALSE, pattern = "^index[.]md")
-talk_data <- map_dfr(set_names(talks, dirname(talks)), function(file) {
+talks <- list.files(here::here("content/en/talk"), 
+                    recursive = TRUE, 
+                    full.names = FALSE, 
+                    pattern = "^index[.]md")
+
+talk_data <- purrr::map_dfr(set_names(talks, dirname(talks)), function(file) {
   data <- rmarkdown::yaml_front_matter(here::here("content/en/talk", file))
   list(
     date = as.Date(data$date),
@@ -167,7 +173,7 @@ library(ggthemes)
 ###
 ```
 
-```{r, echo = FALSE, warning = FALSE, out.width="100%",cacp_data$count[is.na(p_data$count)] <- 0
+```{r, echo = FALSE, warning = FALSE, out.width="100%"}
 ## Actually plot
 my_pal = solarized_pal("green")(5)
 rebase <- ggthemes:::solarized_rebase()
@@ -255,7 +261,8 @@ girafe_options(x, opts_tooltip(css = tooltip_css))
 
 
 
-```{r, echo = FALSE, warning = FALSE, out.width="100%", fig.asp = 0.6, calibrary(scholar)
+```{r, echo = FALSE, warning = FALSE, out.width="100%", fig.asp = 0.6}
+library(scholar)
 library(ggplot2)
 cit <- get_citation_history('3TK9yz8AAAAJ')
 if(nrow(cit) < 8){
