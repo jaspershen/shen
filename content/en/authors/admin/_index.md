@@ -58,7 +58,6 @@ social:
   icon_pack: fab
   link: https://www.facebook.com/xiaotao.shen.3
 
-
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "shenxt@stanford.edu"
 
