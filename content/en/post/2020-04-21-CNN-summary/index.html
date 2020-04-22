@@ -1,0 +1,69 @@
+---
+title: CNN基础知识总结
+author: Xiaotao Shen
+date: 'Creat on 2020-04-21 and update on `Sys.Date()`'
+slug: 
+categories:
+  - Python
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#cnn的基本结构"><span class="toc-section-number">1</span> CNN的基本结构</a></li>
+<li><a href="#卷积层"><span class="toc-section-number">2</span> 卷积层</a></li>
+<li><a href="#cnn中的卷积层"><span class="toc-section-number">3</span> CNN中的卷积层</a></li>
+<li><a href="#cnn中的池化层"><span class="toc-section-number">4</span> CNN中的池化层</a></li>
+<li><a href="#cnn前向传播算法"><span class="toc-section-number">5</span> CNN前向传播算法</a></li>
+<li><a href="#cnn反向传播算法"><span class="toc-section-number">6</span> CNN反向传播算法</a></li>
+<li><a href="#pytorch实现cnn算法"><span class="toc-section-number">7</span> Pytorch实现CNN算法</a></li>
+</ul>
+</div>
+
+<div id="cnn的基本结构" class="section level1">
+<h1><span class="header-section-number">1</span> CNN的基本结构</h1>
+<p>CNN(convolutional neural network),卷积神经网络.主要用于图像识别.</p>
+<p>一个典型的CNN基本结构,最左边是输入层.</p>
+<p>然后是卷积层(convolutin layer),这个是CNN特有的.卷积层的激活函数使用的是ReLU.</p>
+<p>在卷积层后面是池化层(pooling layer),这个也是CNN特有的.需要注意的是,池化层没有激活函数.</p>
+<p>卷积层+池化层的组合可以在隐藏层出现很多次.</p>
+<p>在卷积层+池化层的组合之后,是全连接层(fully connected layer),对于分类的图片识别,输出层使用了Softmax激活函数来做图像识别的分类.</p>
+</div>
+<div id="卷积层" class="section level1">
+<h1><span class="header-section-number">2</span> 卷积层</h1>
+<p>对于卷积层,需要有卷积核,X是输出的矩阵.如果X是一个二维输入的矩阵,那么卷积核也是一个二维的矩阵,但是如果X是多维张量,那么卷积核也是一个多维的张量.</p>
+</div>
+<div id="cnn中的卷积层" class="section level1">
+<h1><span class="header-section-number">3</span> CNN中的卷积层</h1>
+<p>对于CNN中的卷积层,其实就是对输入图像的不同局部的矩阵和卷积核在各个位置的元素相乘,然后相加得到.</p>
+<p>所以一般来说,其实就是一个一个像素将卷积核在输入图像上进行移动,然后进行矩阵相乘,然后得到卷积后的新的图片.</p>
+<p>有时候会使用padding参数,比如在原来的图片都添加一圈0,从而将图片变成的像素变大两个.</p>
+<p>注意对于卷纸后的输出,一般会通过ReLU激活函数,将输入的张量中的小于0的位置对应的元素都变成0</p>
+</div>
+<div id="cnn中的池化层" class="section level1">
+<h1><span class="header-section-number">4</span> CNN中的池化层</h1>
+<p>相对于卷积,池化就会相对来说简单一些.比如2x2的池化,就是将子矩阵中的每个2x2的元素变成一个元素,那么需要一个池化标准.常见的池化标准有两个,Max或者average.即取对应区域的最大值或者平均值作为池化后的元素值.</p>
+</div>
+<div id="cnn前向传播算法" class="section level1">
+<h1><span class="header-section-number">5</span> CNN前向传播算法</h1>
+<p>输入: 一个图片样本,CNN模型的层数L和所有隐藏层的类型,对于卷积层,要定义卷积核的大小K,卷积核子矩阵的纬度F,填充大小P,步幅S.对于池化层区域大小k,和池化标准(max或者average),对于全连接层,要定义全连接层的激活函数(输出层除外)和各层的神经元个数.</p>
+</div>
+<div id="cnn反向传播算法" class="section level1">
+<h1><span class="header-section-number">6</span> CNN反向传播算法</h1>
+<p>需要注意的是CNN的池化层没有激活函数.</p>
+</div>
+<div id="pytorch实现cnn算法" class="section level1">
+<h1><span class="header-section-number">7</span> Pytorch实现CNN算法</h1>
+<p>已经用好的常用的经典CNN算法:</p>
+<p><a href="https://pytorch.org/docs/stable/torchvision/models.html" class="uri">https://pytorch.org/docs/stable/torchvision/models.html</a></p>
+</div>
