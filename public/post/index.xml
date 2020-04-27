@@ -7,6 +7,188 @@
     <description>Xiaotao Shen&#39;s Blog</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright>
     <item>
+      <title>Mac R在不同版本之间切换</title>
+      <link>/post/2020-04-26-switch-r-in-mac/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-04-26-switch-r-in-mac/</guid>
+      <description>
+
+
+&lt;p&gt;Mac在R不同版本之间切换不如windows方便.可以使用&lt;code&gt;Rswitch&lt;/code&gt;工具.链接地址如下:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://rud.is/rswitch/&#34; class=&#34;uri&#34;&gt;https://rud.is/rswitch/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;下载之后安装,然后就会出现在menu中.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202020-04-26%20at%2010.54.45%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后切换R版本,重启R session即可.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.rs.restartR()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;该函数在Rstudio中才可以使用.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CNN基础知识总结</title>
+      <link>/post/2020-04-21-cnn-summary/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-04-21-cnn-summary/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#cnn的基本结构&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; CNN的基本结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#卷积层&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 卷积层&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cnn中的卷积层&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; CNN中的卷积层&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cnn中的池化层&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; CNN中的池化层&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cnn前向传播算法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; CNN前向传播算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cnn反向传播算法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; CNN反向传播算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pytorch实现cnn算法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;7&lt;/span&gt; Pytorch实现CNN算法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;cnn的基本结构&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; CNN的基本结构&lt;/h1&gt;
+&lt;p&gt;CNN(convolutional neural network),卷积神经网络.主要用于图像识别.&lt;/p&gt;
+&lt;p&gt;一个典型的CNN基本结构,最左边是输入层.&lt;/p&gt;
+&lt;p&gt;然后是卷积层(convolutin layer),这个是CNN特有的.卷积层的激活函数使用的是ReLU.&lt;/p&gt;
+&lt;p&gt;在卷积层后面是池化层(pooling layer),这个也是CNN特有的.需要注意的是,池化层没有激活函数.&lt;/p&gt;
+&lt;p&gt;卷积层+池化层的组合可以在隐藏层出现很多次.&lt;/p&gt;
+&lt;p&gt;在卷积层+池化层的组合之后,是全连接层(fully connected layer),对于分类的图片识别,输出层使用了Softmax激活函数来做图像识别的分类.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;卷积层&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 卷积层&lt;/h1&gt;
+&lt;p&gt;对于卷积层,需要有卷积核,X是输出的矩阵.如果X是一个二维输入的矩阵,那么卷积核也是一个二维的矩阵,但是如果X是多维张量,那么卷积核也是一个多维的张量.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cnn中的卷积层&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; CNN中的卷积层&lt;/h1&gt;
+&lt;p&gt;对于CNN中的卷积层,其实就是对输入图像的不同局部的矩阵和卷积核在各个位置的元素相乘,然后相加得到.&lt;/p&gt;
+&lt;p&gt;所以一般来说,其实就是一个一个像素将卷积核在输入图像上进行移动,然后进行矩阵相乘,然后得到卷积后的新的图片.&lt;/p&gt;
+&lt;p&gt;有时候会使用padding参数,比如在原来的图片都添加一圈0,从而将图片变成的像素变大两个.&lt;/p&gt;
+&lt;p&gt;注意对于卷纸后的输出,一般会通过ReLU激活函数,将输入的张量中的小于0的位置对应的元素都变成0&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cnn中的池化层&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; CNN中的池化层&lt;/h1&gt;
+&lt;p&gt;相对于卷积,池化就会相对来说简单一些.比如2x2的池化,就是将子矩阵中的每个2x2的元素变成一个元素,那么需要一个池化标准.常见的池化标准有两个,Max或者average.即取对应区域的最大值或者平均值作为池化后的元素值.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cnn前向传播算法&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; CNN前向传播算法&lt;/h1&gt;
+&lt;p&gt;输入: 一个图片样本,CNN模型的层数L和所有隐藏层的类型,对于卷积层,要定义卷积核的大小K,卷积核子矩阵的纬度F,填充大小P,步幅S.对于池化层区域大小k,和池化标准(max或者average),对于全连接层,要定义全连接层的激活函数(输出层除外)和各层的神经元个数.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cnn反向传播算法&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; CNN反向传播算法&lt;/h1&gt;
+&lt;p&gt;需要注意的是CNN的池化层没有激活函数.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pytorch实现cnn算法&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;7&lt;/span&gt; Pytorch实现CNN算法&lt;/h1&gt;
+&lt;p&gt;已经用好的常用的经典CNN算法:&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jupyter notebook使用summary</title>
+      <link>/post/2020-04-11-jupyter-sumary/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-04-11-jupyter-sumary/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#jupyter-notebook-常用快捷键&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Jupyter notebook 常用快捷键&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#命令模式-按键-esc-开启&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 命令模式 (按键 Esc 开启)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编辑模式-enter-键启动&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 编辑模式 ( Enter 键启动)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#esc-进入命令模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Esc: 进入命令模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;jupyter-notebook-常用快捷键&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Jupyter notebook 常用快捷键&lt;/h1&gt;
+&lt;p&gt;Jupyter Notebook 有两种键盘输入模式。&lt;code&gt;编辑模式&lt;/code&gt;，允许你往单元中键入代码或文本；这时的单元框线是绿色的。&lt;code&gt;命令模式&lt;/code&gt;，键盘输入运行程序命令；这时的单元框线是灰色。&lt;/p&gt;
+&lt;div id=&#34;命令模式-按键-esc-开启&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 命令模式 (按键 Esc 开启)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Enter: 转入编辑模式&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-Enter: 运行本单元，选中下个单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Enter: 运行本单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Alt-Enter: 运行本单元，在其下插入新单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Y: 单元转入代码状态&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;M:单元转入markdown状态&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;R: 单元转入raw状态&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1: 设定 1 级标题&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2: 设定 2 级标题&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3: 设定 3 级标题&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;4: 设定 4 级标题&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;5: 设定 5 级标题&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6: 设定 6 级标题&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Up: 选中上方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;K: 选中上方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Down: 选中下方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;J: 选中下方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-K: 扩大选中上方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-J: 扩大选中下方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A: 在上方插入新单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;B: 在下方插入新单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;X: 剪切选中的单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;C: 复制选中的单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-V: 粘贴到上方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;V: 粘贴到下方单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Z: 恢复删除的最后一个单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;D: 删除选中的单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-M: 合并选中的单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-S: 文件存盘&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;S: 文件存盘&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;L: 转换行号&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;O: 转换输出&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-O: 转换输出滚动&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Esc: 关闭页面&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Q: 关闭页面&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;H: 显示快捷键帮助&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I: 中断Notebook内核&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;0: 重启Notebook内核&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift: 忽略&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-Space: 向上滚动&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Space: 向下滚动&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编辑模式-enter-键启动&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 编辑模式 ( Enter 键启动)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Tab: 代码补全或缩进&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-Tab: 提示&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-]: 缩进&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-[: 解除缩进&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-A: 全选&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Z: 复原&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Shift-Z: 再做&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Y: 再做&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Home: 跳到单元开头&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Up: 跳到单元开头&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-End: 跳到单元末尾&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Down: 跳到单元末尾&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Left: 跳到左边一个字首&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Right: 跳到右边一个字首&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Backspace: 删除前面一个字&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Delete: 删除后面一个字&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;esc-进入命令模式&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; Esc: 进入命令模式&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-M: 进入命令模式&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift-Enter: 运行本单元，选中下一单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Enter: 运行本单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Alt-Enter: 运行本单元，在下面插入一单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Shift–: 分割单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-Shift-Subtract: 分割单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ctrl-S: 文件存盘&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shift: 忽略&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Up: 光标上移或转入上一单元&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Down:光标下移或转入下一单元&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>在Linux服务器和本地之间传输数据</title>
       <link>/post/2020-03-23-linux-server-local-file-transfer/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
@@ -17746,171 +17928,6 @@ sudo gem sources -a http://ruby.taobao.org/&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/post/2019-12-15-python-fro-genomics-final-set/final_problem_xiaotao_shen/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>CNN基础知识总结</title>
-      <link>/post/2020-04-21-cnn-summary/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/post/2020-04-21-cnn-summary/</guid>
-      <description>
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#cnn的基本结构&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; CNN的基本结构&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#卷积层&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 卷积层&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cnn中的卷积层&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; CNN中的卷积层&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cnn中的池化层&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; CNN中的池化层&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cnn前向传播算法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; CNN前向传播算法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cnn反向传播算法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; CNN反向传播算法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pytorch实现cnn算法&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;7&lt;/span&gt; Pytorch实现CNN算法&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;cnn的基本结构&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; CNN的基本结构&lt;/h1&gt;
-&lt;p&gt;CNN(convolutional neural network),卷积神经网络.主要用于图像识别.&lt;/p&gt;
-&lt;p&gt;一个典型的CNN基本结构,最左边是输入层.&lt;/p&gt;
-&lt;p&gt;然后是卷积层(convolutin layer),这个是CNN特有的.卷积层的激活函数使用的是ReLU.&lt;/p&gt;
-&lt;p&gt;在卷积层后面是池化层(pooling layer),这个也是CNN特有的.需要注意的是,池化层没有激活函数.&lt;/p&gt;
-&lt;p&gt;卷积层+池化层的组合可以在隐藏层出现很多次.&lt;/p&gt;
-&lt;p&gt;在卷积层+池化层的组合之后,是全连接层(fully connected layer),对于分类的图片识别,输出层使用了Softmax激活函数来做图像识别的分类.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;卷积层&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 卷积层&lt;/h1&gt;
-&lt;p&gt;对于卷积层,需要有卷积核,X是输出的矩阵.如果X是一个二维输入的矩阵,那么卷积核也是一个二维的矩阵,但是如果X是多维张量,那么卷积核也是一个多维的张量.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;cnn中的卷积层&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; CNN中的卷积层&lt;/h1&gt;
-&lt;p&gt;对于CNN中的卷积层,其实就是对输入图像的不同局部的矩阵和卷积核在各个位置的元素相乘,然后相加得到.&lt;/p&gt;
-&lt;p&gt;所以一般来说,其实就是一个一个像素将卷积核在输入图像上进行移动,然后进行矩阵相乘,然后得到卷积后的新的图片.&lt;/p&gt;
-&lt;p&gt;有时候会使用padding参数,比如在原来的图片都添加一圈0,从而将图片变成的像素变大两个.&lt;/p&gt;
-&lt;p&gt;注意对于卷纸后的输出,一般会通过ReLU激活函数,将输入的张量中的小于0的位置对应的元素都变成0&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;cnn中的池化层&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; CNN中的池化层&lt;/h1&gt;
-&lt;p&gt;相对于卷积,池化就会相对来说简单一些.比如2x2的池化,就是将子矩阵中的每个2x2的元素变成一个元素,那么需要一个池化标准.常见的池化标准有两个,Max或者average.即取对应区域的最大值或者平均值作为池化后的元素值.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;cnn前向传播算法&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; CNN前向传播算法&lt;/h1&gt;
-&lt;p&gt;输入: 一个图片样本,CNN模型的层数L和所有隐藏层的类型,对于卷积层,要定义卷积核的大小K,卷积核子矩阵的纬度F,填充大小P,步幅S.对于池化层区域大小k,和池化标准(max或者average),对于全连接层,要定义全连接层的激活函数(输出层除外)和各层的神经元个数.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;cnn反向传播算法&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; CNN反向传播算法&lt;/h1&gt;
-&lt;p&gt;需要注意的是CNN的池化层没有激活函数.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;pytorch实现cnn算法&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;7&lt;/span&gt; Pytorch实现CNN算法&lt;/h1&gt;
-&lt;p&gt;已经用好的常用的经典CNN算法:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://pytorch.org/docs/stable/torchvision/models.html&#34; class=&#34;uri&#34;&gt;https://pytorch.org/docs/stable/torchvision/models.html&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Jupyter notebook使用summary</title>
-      <link>/post/2020-04-11-jupyter-sumary/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/post/2020-04-11-jupyter-sumary/</guid>
-      <description>
-
-&lt;div id=&#34;TOC&#34;&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#jupyter-notebook-常用快捷键&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Jupyter notebook 常用快捷键&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#命令模式-按键-esc-开启&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 命令模式 (按键 Esc 开启)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#编辑模式-enter-键启动&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 编辑模式 ( Enter 键启动)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#esc-进入命令模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Esc: 进入命令模式&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;jupyter-notebook-常用快捷键&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Jupyter notebook 常用快捷键&lt;/h1&gt;
-&lt;p&gt;Jupyter Notebook 有两种键盘输入模式。&lt;code&gt;编辑模式&lt;/code&gt;，允许你往单元中键入代码或文本；这时的单元框线是绿色的。&lt;code&gt;命令模式&lt;/code&gt;，键盘输入运行程序命令；这时的单元框线是灰色。&lt;/p&gt;
-&lt;div id=&#34;命令模式-按键-esc-开启&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 命令模式 (按键 Esc 开启)&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Enter: 转入编辑模式&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-Enter: 运行本单元，选中下个单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Enter: 运行本单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Alt-Enter: 运行本单元，在其下插入新单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Y: 单元转入代码状态&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;M:单元转入markdown状态&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;R: 单元转入raw状态&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;1: 设定 1 级标题&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2: 设定 2 级标题&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;3: 设定 3 级标题&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;4: 设定 4 级标题&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;5: 设定 5 级标题&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;6: 设定 6 级标题&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Up: 选中上方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;K: 选中上方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Down: 选中下方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;J: 选中下方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-K: 扩大选中上方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-J: 扩大选中下方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;A: 在上方插入新单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;B: 在下方插入新单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;X: 剪切选中的单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;C: 复制选中的单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-V: 粘贴到上方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;V: 粘贴到下方单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Z: 恢复删除的最后一个单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;D: 删除选中的单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-M: 合并选中的单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-S: 文件存盘&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;S: 文件存盘&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;L: 转换行号&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;O: 转换输出&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-O: 转换输出滚动&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Esc: 关闭页面&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Q: 关闭页面&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;H: 显示快捷键帮助&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I: 中断Notebook内核&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;0: 重启Notebook内核&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift: 忽略&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-Space: 向上滚动&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Space: 向下滚动&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;编辑模式-enter-键启动&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 编辑模式 ( Enter 键启动)&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Tab: 代码补全或缩进&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-Tab: 提示&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-]: 缩进&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-[: 解除缩进&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-A: 全选&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Z: 复原&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Shift-Z: 再做&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Y: 再做&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Home: 跳到单元开头&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Up: 跳到单元开头&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-End: 跳到单元末尾&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Down: 跳到单元末尾&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Left: 跳到左边一个字首&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Right: 跳到右边一个字首&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Backspace: 删除前面一个字&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Delete: 删除后面一个字&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;esc-进入命令模式&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; Esc: 进入命令模式&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-M: 进入命令模式&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift-Enter: 运行本单元，选中下一单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Enter: 运行本单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Alt-Enter: 运行本单元，在下面插入一单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Shift–: 分割单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-Shift-Subtract: 分割单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ctrl-S: 文件存盘&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shift: 忽略&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Up: 光标上移或转入上一单元&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Down:光标下移或转入下一单元&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
     </item>
     
     <item>

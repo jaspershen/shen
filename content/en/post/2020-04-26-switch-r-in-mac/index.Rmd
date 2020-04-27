@@ -1,0 +1,35 @@
+---
+title: Mac R在不同版本之间切换
+author: Xiaotao Shen
+date: '2020-04-26'
+slug: 
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+Mac在R不同版本之间切换不如windows方便.可以使用`Rswitch`工具.链接地址如下:
+
+https://rud.is/rswitch/.
+
+下载之后安装,然后就会出现在menu中.
+
+![](Screen Shot 2020-04-26 at 10.54.45 PM.png)
+
+然后切换R版本,重启R session即可.
+
+```
+.rs.restartR()
+```
+
+该函数在Rstudio中才可以使用.

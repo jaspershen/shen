@@ -1,7 +1,7 @@
 ---
 title: CNN基础知识总结
 author: Xiaotao Shen
-date: 'Creat on 2020-04-21 and update on `Sys.Date()`'
+date: '2020-04-21'
 slug: 
 categories:
   - Python
@@ -63,4 +63,4 @@ CNN(convolutional neural network),卷积神经网络.主要用于图像识别.
 
 已经用好的常用的经典CNN算法:
 
-https://pytorch.org/docs/stable/torchvision/models.html
+

@@ -5,7 +5,25 @@
     <link>/categories/r/</link>
       <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sun, 26 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Mac R在不同版本之间切换</title>
+      <link>/post/2020-04-26-switch-r-in-mac/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-04-26-switch-r-in-mac/</guid>
+      <description>
+
+
+&lt;p&gt;Mac在R不同版本之间切换不如windows方便.可以使用&lt;code&gt;Rswitch&lt;/code&gt;工具.链接地址如下:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://rud.is/rswitch/&#34; class=&#34;uri&#34;&gt;https://rud.is/rswitch/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;下载之后安装,然后就会出现在menu中.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202020-04-26%20at%2010.54.45%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后切换R版本,重启R session即可.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.rs.restartR()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;该函数在Rstudio中才可以使用.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Github多人协作</title>
       <link>/post/2020-03-10-github-collobration/</link>
