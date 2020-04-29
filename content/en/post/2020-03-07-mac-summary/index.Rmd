@@ -71,7 +71,9 @@ output:
 
 * `option + command + space`:打开finder.
 
-* `command + i`:显示文件或者文件夹信息. 
+* `command + i`:显示文件或者文件夹信息.
+
+* `command + ~`:在同一个应用的多个窗口间快速切换.
 
 # space和desktop
 
@@ -103,7 +105,6 @@ output:
 * `shift + command + 4`:选择区域截图.
 
 
-
 # Mac touchpad常用手势操作
 
 ## 单指
@@ -129,3 +130,9 @@ output:
 * 四指并排向上:mission control.
 
 * 四指并排向下:显示当前应用的所有窗口.
+
+## 五指
+
+* 五指向内聚拢: 显示所有程序.
+
+* 五指向外发散: 显示桌面.
