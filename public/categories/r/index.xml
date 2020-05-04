@@ -5,7 +5,21 @@
     <link>/categories/r/</link>
       <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sun, 26 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>How to open the currect working directory in R</title>
+      <link>/post/2020-05-03-open-current-directory-in-r/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-05-03-open-current-directory-in-r/</guid>
+      <description>
+
+
+&lt;p&gt;Sometimes we just want to open the work directory in R to process the files. In Linux shell, we can use &lt;code&gt;open .&lt;/code&gt; comment. How to do in R? We can use the below comment:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; system(sprintf(&amp;quot;open %s&amp;quot;, shQuote(getwd())))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It this script, &lt;code&gt;shQuote&lt;/code&gt; is ued to “Quote Strings for Use in OS Shells”.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Mac R在不同版本之间切换</title>
       <link>/post/2020-04-26-switch-r-in-mac/</link>

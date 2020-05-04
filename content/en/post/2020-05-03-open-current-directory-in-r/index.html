@@ -1,0 +1,24 @@
+---
+title: How to open the currect working directory in R
+author: Xiaotao Shen
+date: '2020-05-03'
+slug: 
+categories:
+  - R
+tags:
+  - Blog
+  - English
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+
+<p>Sometimes we just want to open the work directory in R to process the files. In Linux shell, we can use <code>open .</code> comment. How to do in R? We can use the below comment:</p>
+<pre><code> system(sprintf(&quot;open %s&quot;, shQuote(getwd())))</code></pre>
+<p>It this script, <code>shQuote</code> is ued to “Quote Strings for Use in OS Shells”.</p>

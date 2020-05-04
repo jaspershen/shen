@@ -5,7 +5,40 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 01 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>How to open the currect working directory in R</title>
+      <link>/post/2020-05-03-open-current-directory-in-r/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-05-03-open-current-directory-in-r/</guid>
+      <description>
+
+
+&lt;p&gt;Sometimes we just want to open the work directory in R to process the files. In Linux shell, we can use &lt;code&gt;open .&lt;/code&gt; comment. How to do in R? We can use the below comment:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; system(sprintf(&amp;quot;open %s&amp;quot;, shQuote(getwd())))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It this script, &lt;code&gt;shQuote&lt;/code&gt; is ued to “Quote Strings for Use in OS Shells”.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>加州covid19隔离日记2020-05-03</title>
+      <link>/post/2020-05-03-quarantine-daily-note/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-05-03-quarantine-daily-note/</guid>
+      <description>
+
+
+&lt;p&gt;转眼间已经5月3号了.&lt;/p&gt;
+&lt;p&gt;周六去了一趟filoli,就在208的旁边,开车半个小时.去年王博士来stanford面试的时候,我们去half moon bay返程的时候去了一趟,里面的花非常漂亮,现在正好事在春天,所以想着去去看看花,google map上显示的也是开门的.然而到了那里之后,才发现大门紧锁,吃了闭门羹.&lt;/p&gt;
+&lt;p&gt;只好在路边随便找了个地方停车,然后拿着我们带的防潮垫在路边某块草地上躺着休息,很多人在骑行车,跑步,美国人民果然还是非常热爱运动,很多人带着口罩也在运动.大部分的人都是非常有好的,经过我们旁边都会问一句hello.让人感觉非常舒服.&lt;/p&gt;
+&lt;p&gt;随后开车去了学校,王博士需要去工作.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;WechatIMG14.jpeg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;WechatIMG15.jpeg&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;周日待在家里一天,哪里也没有去.&lt;/p&gt;
+&lt;p&gt;当然,这个周末还有一件比较有意思的事情,就是&lt;code&gt;创造营2020&lt;/code&gt;终于开播了.我以为自己再也不会追所谓的综艺或者选秀,没想到去年因为杨超越入了前年的&lt;code&gt;创造101&lt;/code&gt;的坑,因此也一直期盼着&lt;code&gt;创造营2020&lt;/code&gt;的开播.今年因为有&lt;code&gt;青春有你2&lt;/code&gt;的衬托,显得分外的好.很多有实力的人,现在在这里记录一下,看最后是否准确,我觉得&lt;code&gt;希林娜依.高&lt;/code&gt;,&lt;code&gt;刘些宁&lt;/code&gt;和&lt;code&gt;张艺凡&lt;/code&gt;应该会占据三个出道位.前两个实力都比较好,最后一个我感觉应该是鹅选之子.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>加州covid19隔离日记</title>
       <link>/post/2020-05-01-quarantine-daily-note/</link>
