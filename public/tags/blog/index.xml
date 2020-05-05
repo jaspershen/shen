@@ -5,7 +5,22 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Mon, 04 May 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>加州covid19隔离日记2020-05-04</title>
+      <link>/post/2020-05-04-quarantine-daily-note/</link>
+      <pubDate>Mon, 04 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-05-04-quarantine-daily-note/</guid>
+      <description>
+
+
+&lt;p&gt;还是跟往常一样中午吃过午饭然后去了学校.在办公室里做完了一直想要分析的内容.五点半回到了家里.&lt;/p&gt;
+&lt;p&gt;晚上在一个微信群中,有人问到了说自己一个师妹博士一年级在美国一个学校遭到了自己的博士导师的性骚扰,而且是有行为的性骚扰,不仅仅只是言语的.大家纷纷给出意见,我的意见算是比较明确,首先,看看能否像学校反映告发.当然,有时候因为证据时间以及精力的问题,可能不能做到,但是这个导师这种德性,肯定是狗改不了吃屎了,所以即使这个小姑娘忍气吞声待在他的实验室,以后还是会过的非常难受.所以我是极度赞成赶紧换实验室甚至quit的,毕竟才一年级,沉没成本是最低的.&lt;/p&gt;
+&lt;p&gt;这件事让我想起了我的博士导师在这一点做得就非常好,他跟所有女同学聊天都会开着办公室的门,瓜田李下,还是要避闲的.&lt;/p&gt;
+&lt;p&gt;另外,自己晚上做了一晚上的文献调研,以后每天晚上都应该多看看文献,思考一些问题,记下一些笔记.安排一下明天的内容.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>How to open the currect working directory in R</title>
       <link>/post/2020-05-03-open-current-directory-in-r/</link>
