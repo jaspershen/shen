@@ -1,0 +1,64 @@
+---
+title: 加州covid19隔离日记2020-05-05
+author: Xiaotao Shen
+date: '2020-05-05'
+slug: 
+categories:
+  - literature
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#method"><span class="toc-section-number">1</span> Method</a><ul>
+<li><a href="#study-design"><span class="toc-section-number">1.1</span> Study design</a></li>
+<li><a href="#metabolomics数据采集"><span class="toc-section-number">1.2</span> Metabolomics数据采集</a></li>
+<li><a href="#statistical-analysis"><span class="toc-section-number">1.3</span> Statistical analysis</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p>今天早上就来了办公室.看了一篇文章.</p>
+<p>发表在Nature medincine.</p>
+<p>A maternal serum metabolite ratio predicts fetal growth restriction at term</p>
+<p>作者使用代谢组学发现可以使用母亲血液中的metabolite来预测胎儿的fetal growth restriction (FCR).FCR是指一个未出生的婴儿在某个时间(gestational age)的预期体重低于某个范围,一般是指胎儿体重小于所有同GA时期的所有胎儿体重的10%分位数.</p>
+<p>作者一共选取了175个case在出生的时候是FGR,然后有299个controls.最后作者找到了四个metabolites,分别是(1-(1-enyl-stearoyl)- 2-oleoyl-GPC (P-18:0/18:1) and 1,5-anhydroglucitol) to the product of the relative concentrations of two negatively asso- ciated metabolites (5α-androstan-3α,17α-diol disulfate and N1,N12-diacetylspermine) predicted FGR at term.</p>
+<p>最后是在两个单独的cohort上进行验证.</p>
+<p>作者研究的是term FGR,定义为出生时体重低于3%分位或体重处3%和10%分位之间,但是featal abdominal growth velocity(胎儿腹围生长速度)低于10%分位.</p>
+<p>metabolimics数据是untargeted,首先进行log转换.</p>
+<div id="method" class="section level1">
+<h1><span class="header-section-number">1</span> Method</h1>
+<div id="study-design" class="section level2">
+<h2><span class="header-section-number">1.1</span> Study design</h2>
+<p>discovery dataset来自于POP cohort.在12,20,29和36 GA进行血液样品采集.</p>
+<p>FGR at term定义:</p>
+<p>在37 week或者之后出生,体重低于3%分位或者体重处于3%和10%分位之间,但是胎儿在20和36周之间的腹围生长速率(ACGVD1)小于10%分位.</p>
+<p>外部验证数据集:</p>
+</div>
+<div id="metabolomics数据采集" class="section level2">
+<h2><span class="header-section-number">1.2</span> Metabolomics数据采集</h2>
+<p>对于POP发现样品,每个人的12,20,28和36周的样品采集了数据.而对于验证数据集,对于每个人只采集了一个样品,处于24-28周之间.</p>
+</div>
+<div id="statistical-analysis" class="section level2">
+<h2><span class="header-section-number">1.3</span> Statistical analysis</h2>
+<p>数据首先进行log转换.对于logistic regression,还需要进行scale.</p>
+<p>#如何对出生体重进行校正</p>
+<p>将参与者按照gestation age分成不同组,保证每组大于50人.分别是24-28,29-31,32-33和42-44.34-41则每周一个组,所以一共有12个组.</p>
+<p>对于每个组(比如第i组),分别计算男性胎儿(m[i])和女性胎儿(f[i])的体重平均值.然后计算得到男性胎儿和女性胎儿的体重平均值的差值.</p>
+<p>d[i] = m[i] - f[i]</p>
+<p>然后分别对每组的胎儿体重进行校正:</p>
+<p>m*[i] = m[i] - d[i]/2</p>
+<p>f*[i] = f[i] + d[i]/2</p>
+<p>可以看到其实就是将性别带来的误差对所有胎儿进行校正.</p>
+</div>
+</div>

@@ -5,7 +5,83 @@
     <link>/categories/literature/</link>
       <atom:link href="/categories/literature/index.xml" rel="self" type="application/rss+xml" />
     <description>literature</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Mon, 11 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 07 May 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>加州covid19隔离日记2020-05-07</title>
+      <link>/post/2020-05-07-quarantine-daily-note/</link>
+      <pubDate>Thu, 07 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-05-07-quarantine-daily-note/</guid>
+      <description>
+
+
+&lt;p&gt;这几天都是早早的到了实验室.今天把看到了一些关于labor marker的学术术语总结一下:&lt;/p&gt;
+&lt;p&gt;cervix: 子宫颈.&lt;/p&gt;
+&lt;p&gt;cervix dilates: 子宫颈扩大.&lt;/p&gt;
+&lt;p&gt;contractions: 收缩.&lt;/p&gt;
+&lt;p&gt;uterine: 子宫&lt;/p&gt;
+&lt;p&gt;dialate: 扩大,膨胀.&lt;/p&gt;
+&lt;p&gt;spontaneous: 自发的,自然地,无意识的.&lt;/p&gt;
+&lt;p&gt;nulliparous:未生育过的.&lt;/p&gt;
+&lt;p&gt;multiparous:多产的,一胎多子的.&lt;/p&gt;
+&lt;p&gt;parturition:分娩,生产.&lt;/p&gt;
+&lt;p&gt;obstetric: 产科的生产的,分娩的.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>加州covid19隔离日记2020-05-05</title>
+      <link>/post/2020-05-05-quarantine-daily-note/</link>
+      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-05-05-quarantine-daily-note/</guid>
+      <description>
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#method&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Method&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#study-design&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Study design&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#metabolomics数据采集&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Metabolomics数据采集&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#statistical-analysis&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Statistical analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;今天早上就来了办公室.看了一篇文章.&lt;/p&gt;
+&lt;p&gt;发表在Nature medincine.&lt;/p&gt;
+&lt;p&gt;A maternal serum metabolite ratio predicts fetal growth restriction at term&lt;/p&gt;
+&lt;p&gt;作者使用代谢组学发现可以使用母亲血液中的metabolite来预测胎儿的fetal growth restriction (FCR).FCR是指一个未出生的婴儿在某个时间(gestational age)的预期体重低于某个范围,一般是指胎儿体重小于所有同GA时期的所有胎儿体重的10%分位数.&lt;/p&gt;
+&lt;p&gt;作者一共选取了175个case在出生的时候是FGR,然后有299个controls.最后作者找到了四个metabolites,分别是(1-(1-enyl-stearoyl)- 2-oleoyl-GPC (P-18:0/18:1) and 1,5-anhydroglucitol) to the product of the relative concentrations of two negatively asso- ciated metabolites (5α-androstan-3α,17α-diol disulfate and N1,N12-diacetylspermine) predicted FGR at term.&lt;/p&gt;
+&lt;p&gt;最后是在两个单独的cohort上进行验证.&lt;/p&gt;
+&lt;p&gt;作者研究的是term FGR,定义为出生时体重低于3%分位或体重处3%和10%分位之间,但是featal abdominal growth velocity(胎儿腹围生长速度)低于10%分位.&lt;/p&gt;
+&lt;p&gt;metabolimics数据是untargeted,首先进行log转换.&lt;/p&gt;
+&lt;div id=&#34;method&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Method&lt;/h1&gt;
+&lt;div id=&#34;study-design&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Study design&lt;/h2&gt;
+&lt;p&gt;discovery dataset来自于POP cohort.在12,20,29和36 GA进行血液样品采集.&lt;/p&gt;
+&lt;p&gt;FGR at term定义:&lt;/p&gt;
+&lt;p&gt;在37 week或者之后出生,体重低于3%分位或者体重处于3%和10%分位之间,但是胎儿在20和36周之间的腹围生长速率(ACGVD1)小于10%分位.&lt;/p&gt;
+&lt;p&gt;外部验证数据集:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;metabolomics数据采集&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; Metabolomics数据采集&lt;/h2&gt;
+&lt;p&gt;对于POP发现样品,每个人的12,20,28和36周的样品采集了数据.而对于验证数据集,对于每个人只采集了一个样品,处于24-28周之间.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;statistical-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; Statistical analysis&lt;/h2&gt;
+&lt;p&gt;数据首先进行log转换.对于logistic regression,还需要进行scale.&lt;/p&gt;
+&lt;p&gt;#如何对出生体重进行校正&lt;/p&gt;
+&lt;p&gt;将参与者按照gestation age分成不同组,保证每组大于50人.分别是24-28,29-31,32-33和42-44.34-41则每周一个组,所以一共有12个组.&lt;/p&gt;
+&lt;p&gt;对于每个组(比如第i组),分别计算男性胎儿(m[i])和女性胎儿(f[i])的体重平均值.然后计算得到男性胎儿和女性胎儿的体重平均值的差值.&lt;/p&gt;
+&lt;p&gt;d[i] = m[i] - f[i]&lt;/p&gt;
+&lt;p&gt;然后分别对每组的胎儿体重进行校正:&lt;/p&gt;
+&lt;p&gt;m*[i] = m[i] - d[i]/2&lt;/p&gt;
+&lt;p&gt;f*[i] = f[i] + d[i]/2&lt;/p&gt;
+&lt;p&gt;可以看到其实就是将性别带来的误差对所有胎儿进行校正.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Learning representations of microbe–metabolite interactions文献总结</title>
       <link>/post/2019-11-11-nm-mmvec/</link>

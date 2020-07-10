@@ -1,0 +1,75 @@
+---
+title: 加州covid19隔离日记2020-05-05
+author: Xiaotao Shen
+date: '2020-05-05'
+slug: 
+categories:
+  - literature
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+今天早上就来了办公室.看了一篇文章.
+
+发表在Nature medincine.
+
+A maternal serum metabolite ratio predicts fetal growth restriction at term
+
+作者使用代谢组学发现可以使用母亲血液中的metabolite来预测胎儿的fetal growth restriction (FCR).FCR是指一个未出生的婴儿在某个时间(gestational age)的预期体重低于某个范围,一般是指胎儿体重小于所有同GA时期的所有胎儿体重的10%分位数.
+
+作者一共选取了175个case在出生的时候是FGR,然后有299个controls.最后作者找到了四个metabolites,分别是(1-(1-enyl-stearoyl)- 2-oleoyl-GPC (P-18:0/18:1) and 1,5-anhydroglucitol) to the product of the relative concentrations of two negatively asso- ciated metabolites (5α-androstan-3α,17α-diol disulfate and N1,N12-diacetylspermine) predicted FGR at term. 
+
+最后是在两个单独的cohort上进行验证.
+
+作者研究的是term FGR,定义为出生时体重低于3%分位或体重处3%和10%分位之间,但是featal abdominal growth velocity(胎儿腹围生长速度)低于10%分位.
+
+metabolimics数据是untargeted,首先进行log转换.
+
+# Method
+
+## Study design
+
+discovery dataset来自于POP cohort.在12,20,29和36 GA进行血液样品采集.
+
+FGR at term定义:
+
+在37 week或者之后出生,体重低于3%分位或者体重处于3%和10%分位之间,但是胎儿在20和36周之间的腹围生长速率(ACGVD1)小于10%分位.
+
+外部验证数据集:
+
+
+## Metabolomics数据采集
+
+对于POP发现样品,每个人的12,20,28和36周的样品采集了数据.而对于验证数据集,对于每个人只采集了一个样品,处于24-28周之间.
+
+## Statistical analysis
+
+数据首先进行log转换.对于logistic regression,还需要进行scale.
+
+#如何对出生体重进行校正
+
+将参与者按照gestation age分成不同组,保证每组大于50人.分别是24-28,29-31,32-33和42-44.34-41则每周一个组,所以一共有12个组.
+
+对于每个组(比如第i组),分别计算男性胎儿(m[i])和女性胎儿(f[i])的体重平均值.然后计算得到男性胎儿和女性胎儿的体重平均值的差值.
+
+d[i] = m[i] - f[i]
+
+然后分别对每组的胎儿体重进行校正:
+
+m*[i] = m[i] - d[i]/2
+
+f*[i] = f[i] + d[i]/2
+
+可以看到其实就是将性别带来的误差对所有胎儿进行校正.
+
+
+
+

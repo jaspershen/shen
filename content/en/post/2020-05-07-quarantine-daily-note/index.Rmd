@@ -1,0 +1,52 @@
+---
+title: 加州covid19隔离日记2020-05-07
+author: Xiaotao Shen
+date: '2020-05-07'
+slug: 
+categories:
+  - literature
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+这几天都是早早的到了实验室.今天把看到了一些关于labor marker的学术术语总结一下:
+
+cervix: 子宫颈.
+
+cervix dilates: 子宫颈扩大.
+
+contractions: 收缩.
+
+uterine: 子宫
+
+dialate: 扩大,膨胀.
+
+spontaneous: 自发的,自然地,无意识的.
+
+nulliparous:未生育过的.
+
+multiparous:多产的,一胎多子的.
+
+parturition:分娩,生产.
+
+obstetric: 产科的生产的,分娩的.
+
+
+
+
+
+
+
+
+
+
+
+
