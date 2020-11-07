@@ -5,7 +5,44 @@
     <link>/tags/blog/</link>
       <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 07 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 06 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>github大文件无法上传</title>
+      <link>/post/2020-11-06-github-large-file/</link>
+      <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-11-06-github-large-file/</guid>
+      <description>
+
+
+&lt;p&gt;将本地文件更新到github时,遇到如下问题:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 8756e0d10b2fb95c8b6974bbb8dac04efccdf70b4d52dd0fe1abb4248cdf229f
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File summary/20201029_summary.pptx is 274.76 MB; this exceeds GitHub&amp;#39;s file size limit of 100.00 MB
+To https://github.com/jaspershen/ryan_microsampling
+ ! [remote rejected] master -&amp;gt; master (pre-receive hook declined)
+error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_microsampling&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原因是有大文件(&amp;gt;100 M),所以无法上传,但是因为已经git add了,删除也无法消除问题,所以需要使用下面命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git filter-branch -f --index-filter &amp;#39;git rm --cached --ignore-unmatch fixtures/11_user_answer.json&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后再push即可.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>学术英语经典语句</title>
+      <link>/post/2020-10-06-academic-english/</link>
+      <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-10-06-academic-english/</guid>
+      <description>
+
+
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Since genetic risk is non-time-varying, longitudinal analyte data were collapsed by taking the median across time points.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ashkenazi Jewish德国犹太裔.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
     <item>
       <title>加州covid19隔离日记2020-05-07</title>
       <link>/post/2020-05-07-quarantine-daily-note/</link>
