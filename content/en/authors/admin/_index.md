@@ -82,7 +82,4 @@ My research focuses on the development of bioinformatic algorithms and tools for
 <iframe width="100%" height="30%"
 src="//player.bilibili.com/player.html?aid=83602606&bvid=BV1TJ411n7qc&cid=143019131&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<iframe width="100%" height="30%"
-src="//player.bilibili.com/player.html?aid=83602606&bvid=BV1TJ411n7qc&cid=143019131&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
 ---
