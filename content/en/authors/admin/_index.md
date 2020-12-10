@@ -79,6 +79,7 @@ My research focuses on the development of bioinformatic algorithms and tools for
 ---
 假如生活欺骗了你-新裤子乐队
 
-<iframe src="//player.bilibili.com/player.html?aid=73935496&bvid=BV1vE411b7aN&cid=126478040&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe width="100%" height="500"
+src="//player.bilibili.com/player.html?aid=73935496&bvid=BV1vE411b7aN&cid=126478040&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ---
