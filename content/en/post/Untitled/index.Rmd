@@ -1,0 +1,147 @@
+---
+title: 2020-12-09学习总结
+author: Xiaotao Shen
+date: '2020-12-09'
+slug: 
+categories:
+  - literature
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+昨天的组会汇报被人问懵了.但是问题的实质在于自己英语不好,对课题了解程度不够,所以还是需要加强.
+
+
+## 文献需要subscribe
+
+全部重新subscribe,都使用shenxt1990@outlook邮箱.
+
+### Nature 系列
+
+1. Nature
+
+2. Nature Biotechnology
+
+3. Nature Methods
+
+4. Cell Discovery
+
+5. Nature Genetics
+
+6. Nature Microbiology
+
+7. Nature Reviews Drug Discovery
+
+8. Nature Reviews Molecular Cell Biology
+
+9. Cell Research
+
+10. Nature Aging
+
+11. Nature Cell Biology
+
+12. npj Systems Biology and Applications
+
+13. Nature Biomedical Engineering
+
+14. Nature Chemical Biology
+
+15. Nature Protocols
+
+16. Nature Reviews Microbiology
+
+17. Nature Cancer
+
+18. Nature Immunology
+
+19. Nature Neuroscience
+
+20. Nature Medicine
+
+21. Journal of Exposure Science & Environmental Epidemiology
+
+22. Nature Metabolism
+
+23. Nature Reviews Immunology
+
+24. Nature Communications
+
+25. Nature Reviews Methods Primers
+
+### Cell系列
+
+1. Cancer cell
+
+2. Cell
+
+3. Cell Chemical Biology
+
+4. Cell Host & Microbe
+
+5. Cell Metabolism
+
+6. Cell Stem Cell
+
+7. Cell Systems
+
+8. Developmental Cell
+
+9. Immunity
+
+10. Molecular Cell
+
+11. Molecular Therapy
+
+12. Molecular Therapy - Methods & Clinical Development
+
+13. Neuron
+
+14. 
+
+### Science系列
+
+1. Science
+
+2. Science Translational Medicine
+
+3. Science Advanced
+
+### Others
+
+1. Bioinformatics
+
+2. BioRxiv
+
+3. Briefings in Bioinformatics
+
+4. 
+
+
+## 文献阅读
+
+### 1. non-targeted urinary metabolomics in pregnancy and associations with fetal growth restriction
+
+没有太多可借鉴的地方.
+
+### 2. 
+
+## 单词
+
+Anecdotal: 基于道听途说
+
+whilst: 相当于while
+
+metastatic: 转移
+
+adhere: 坚持
+
+discordant: 不一致的
+
