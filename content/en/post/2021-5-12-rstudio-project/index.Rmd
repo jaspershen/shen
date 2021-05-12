@@ -1,0 +1,205 @@
+---
+title: 使用Rstudio进行project管理
+author: Xiaotao Shen
+date: '2021-05-12'
+slug: 
+categories:
+  - R
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# 创建Rstudio project
+
+## 需要跟github配合使用,首先在github创建repo.
+
+![](Screen Shot 2021-05-12 at 1.06.02 PM.png)
+
+## 本地创建Rstudio project
+
+![](Screen Shot 2021-05-12 at 1.07.56 PM.png)
+![](Screen Shot 2021-05-12 at 1.08.01 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.08.15 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.08.28 PM.png)
+
+# 创建必须文件夹
+
+## 在Rstudio project的本地文件夹下创建必须的文件夹.
+
+![](Screen Shot 2021-05-12 at 1.11.18 PM.png)
+
+## github忽略某些文件/文件夹
+
+如果不想要上传某些文件或者文件夹到github,在.gitgnore中写明.
+
+![](Screen Shot 2021-05-12 at 1.13.32 PM.png)
+
+## 第一次上传到github
+
+```
+git add.
+git commit -m "first commit"
+git push
+```
+
+![](Screen Shot 2021-05-12 at 1.16.04 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.16.24 PM.png)
+
+# 创建website
+
+使用distill,参考网站:
+
+1. [https://distill.netlify.app/](https://distill.netlify.app/)
+
+2. [https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html](https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html)
+
+## 安装distill
+
+```
+remotes::install_github("rstudio/distill")
+```
+
+## 创建网站地址
+
+不要将webiste文件放到root路径,可以在root路径下创建一个文件夹,比如`website_files`,然后把文件都放到这里面.
+
+```
+distill::create_website(dir = "website_files/", gh_pages = TRUE)
+```
+
+![](Screen Shot 2021-05-12 at 1.21.15 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.22.10 PM.png)
+
+## Build website
+
+```
+rmarkdown::render_site(input = "website_files/")
+```
+
+## 将doc文件夹复制到root路径
+
+```
+file.copy(from = "website_files/docs/", to = ".", recursive = TRUE, overwrite = TRUE)
+```
+
+这时候会在root有一个`doc`文件夹.
+
+
+## 发布website到github pages
+
+### 提交github.
+
+```
+git add.
+git commit -m "create website"
+git push
+```
+
+### 设置website
+
+![](Screen Shot 2021-05-12 at 1.26.50 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.27.44 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.27.51 PM.png)
+
+这时候就可以看到网址了.
+
+[https://jaspershen.github.io/rstudio_project_test/](https://jaspershen.github.io/rstudio_project_test/)
+
+![](Screen Shot 2021-05-12 at 1.29.00 PM.png)
+
+这时候网站就已经公开了.
+
+# 将github repo设置为private
+
+## 在文章发表之前,不想别人看到我们的数据/code等.
+
+![](Screen Shot 2021-05-12 at 1.30.50 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.31.10 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.31.10 PM.png)
+
+这时候虽然别人看不到你的github repo,但是网址仍然可见.
+
+## 邀请合作者
+
+这样,合作者还是可以看到repo.
+
+![](Screen Shot 2021-05-12 at 1.32.41 PM.png)
+
+
+# 装扮website
+
+## website_files简单介绍
+
+![](Screen Shot 2021-05-12 at 1.36.27 PM.png)
+
+1. `index.Rmd`: This will be our site’s homepage. This file must be named index.Rmd.
+
+2. `about.Rmd`:  This will be an additional page on our site, and you can change the name of this file to be whatever you want. 
+
+3. `_site.yml`: is not a file that gets turned into a site page, but it is necessary for site setup. 
+
+4. `docs/`: folder: This is the output folder, where knitted versions of our .Rmds live once they’ve been processed to become .html files.
+
+## 修改页面布局
+
+打开`_site.yml`
+
+![](Screen Shot 2021-05-12 at 1.47.34 PM.png)
+
+然后按照下图进行修改.
+
+![](Screen Shot 2021-05-12 at 1.51.13 PM.png)
+
+编辑好文章之后,重新render并将docs copy到root路径
+
+```
+rmarkdown::render_site(input = "website_files/")
+file.copy(from = "website_files/docs/", to = ".", recursive = TRUE, overwrite = TRUE)
+```
+
+重新生成网站如下:
+
+![](Screen Shot 2021-05-12 at 1.52.29 PM.png)
+
+但是这时候还没有提交到github.只有再次提交到github网址链接的网站才会更新.
+
+## 创建新的文章并将其加入到网站中
+
+### 创建新的`rmarkdown`文件,放在website_files文件夹中.
+
+![](Screen Shot 2021-05-12 at 1.41.38 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.42.14 PM.png)
+
+![](Screen Shot 2021-05-12 at 1.43.26 PM.png)
+
+### 编辑好文章之后,添加到网页.
+
+这里我们生成的文章名字为`figure1.html`,所以在`_site.yml`修改:
+
+![](Screen Shot 2021-05-12 at 1.55.02 PM.png)
+
+然后重新render,并提交到github即可.
+
+打开链接:
+
+![](Screen Shot 2021-05-12 at 1.57.03 PM.png)
+
+
+
