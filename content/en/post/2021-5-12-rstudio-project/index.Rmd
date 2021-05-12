@@ -202,4 +202,100 @@ file.copy(from = "website_files/docs/", to = ".", recursive = TRUE, overwrite = 
 ![](Screen Shot 2021-05-12 at 1.57.03 PM.png)
 
 
+# 我自己的project管理模式
+
+## 文件结构
+
+1. `data`:存放原始数据. 不上传到github.
+
+2. `data_analysis`: 存放分析结果. 发表前不上传到github.
+
+3. `code`: 分析脚本. 公开.
+
+4. `summary`: slides, document等. 不公开.
+
+5. `manuscript`: figures. 不公开.
+
+6. `docs`: project网站介绍,公开.
+
+## 分析及重复
+
+数据分析自己以及别人重复很重要. 
+
+### 几个原则
+
+1. 以Rstudio project为中心组织数据和code
+
+所有的数据和code都以Rstudio project为中心进行组织. 文章发表之后,public project,如果别人要重复分析,下载Rstudio project, 包含了数据和code.
+
+![](Screen Shot 2021-05-12 at 2.03.50 PM.png)
+
+2. 使用相对路径
+
+在code中,尽量不要使用绝对路径,使用相对路径. 每个code中,都首先将work directory定为到Rstudio project所在位置.
+
+![](Screen Shot 2021-05-12 at 2.07.16 PM.png)
+
+如果想要使用`tinyTools`,从github安装:
+
+```
+devtools::install_github("jaspershen/tinyTools")
+```
+
+3. 代码命名
+
+代码按照分析步骤进行命名.
+
+代码运行的可能会有先后依赖关系,命名时最好注明.
+
+### 直接使用r script生成html文件
+
+我比较习惯直接使用r script而不是rmarkdown.为了能够直接render成html格式,需要在前面加上一些:
+
+```
+#' ---
+#' title: "Stool microbiome metabolome correlation"
+#' author: 
+#'   - name: "Xiaotao Shen" 
+#'     url: https://www.shenxt.info/
+#'     affiliation: Stanford School of Medicine
+#' date: "`r Sys.Date()`"
+#' site: distill::distill_website
+#' output: 
+#'   distill::distill_article:
+#'     code_folding: false
+#' ---
+
+#+ r setup, echo=TRUE, eval = FALSE, include = TRUE
+```
+
+参考网址:
+
+[https://bookdown.org/yihui/rmarkdown-cookbook/spin.html](https://bookdown.org/yihui/rmarkdown-cookbook/spin.html)
+
+
+一些基本用法:
+
+1. `#'`后是markdown语法内容, 比如想要使用一级标题,需要这样写:
+
+```
+#' # title
+```
+
+2. `#+`后面是r code chunk设置.比如我们想要设置某段代码不运行但是显示,需要这样写:
+
+```
+#+ eval=FALSE, echo = TRUE
+```
+
+相当于rmarkdown的:
+
+```
+{r eval=FALSE, echo = TRUE}
+```
+
+
+
+
+
 
