@@ -66,6 +66,7 @@ output:
 <ul>
 <li><a href="#几个原则"><span class="toc-section-number">6.2.1</span> 几个原则</a></li>
 <li><a href="#直接使用r-script生成html文件"><span class="toc-section-number">6.2.2</span> 直接使用r script生成html文件</a></li>
+<li><a href="#一个例子"><span class="toc-section-number">6.2.3</span> 一个例子</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -276,6 +277,17 @@ file.copy(from = &quot;website_files/docs/&quot;, to = &quot;.&quot;, recursive 
 <pre><code>#+ eval=FALSE, echo = TRUE</code></pre>
 <p>相当于rmarkdown的:</p>
 <pre><code>{r eval=FALSE, echo = TRUE}</code></pre>
+</div>
+<div id="一个例子" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> 一个例子</h3>
+<p>在code中创建r script</p>
+<p><img src="Screen%20Shot%202021-05-12%20at%202.52.55%20PM.png" /></p>
+<p>然后运行之后,会在保存该script的路径下生成html文件.</p>
+<p><img src="Screen%20Shot%202021-05-12%20at%202.53.46%20PM.png" /></p>
+<p>将该html文件copy到docs文件夹下.</p>
+<pre><code>sxtTools::setwd_project()
+file.copy(from = &quot;code/microbiome_analysis/data_summary.html&quot;, to = &quot;docs/&quot;)</code></pre>
+<p>将该文件放到网页中.</p>
 </div>
 </div>
 </div>

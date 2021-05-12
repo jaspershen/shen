@@ -294,6 +294,28 @@ devtools::install_github("jaspershen/tinyTools")
 {r eval=FALSE, echo = TRUE}
 ```
 
+### 一个例子
+
+在code中创建r script
+
+![](Screen Shot 2021-05-12 at 2.52.55 PM.png)
+
+然后运行之后,会在保存该script的路径下生成html文件.
+
+![](Screen Shot 2021-05-12 at 2.53.46 PM.png)
+
+将该html文件copy到docs文件夹下.
+
+```
+sxtTools::setwd_project()
+file.copy(from = "code/microbiome_analysis/data_summary.html", to = "docs/")
+```
+
+将该文件放到网页中.
+
+
+
+
 
 
 
