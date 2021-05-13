@@ -313,6 +313,30 @@ file.copy(from = "code/microbiome_analysis/data_summary.html", to = "docs/")
 
 将该文件放到网页中.
 
+![](Screen Shot 2021-05-12 at 4.49.52 PM.png)
+
+然后重新render website,copy `webiste_files/docs`到`../docs`.
+
+```
+rmarkdown::render_site(input = "website_files/")
+file.copy(from = "website_files/docs/", to = ".", recursive = TRUE, overwrite = TRUE)
+```
+
+然后提交到github.
+
+![](Screen Shot 2021-05-12 at 4.55.28 PM.png)
+
+
+### 仍然使用rmakdown
+
+仍然在code中建立相应的rmakdown文件. 
+
+最后需要手动copy到`website_files文件夹中.`
+
+后续步骤相同.
+
+
+
 
 
 

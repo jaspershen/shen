@@ -67,6 +67,7 @@ output:
 <li><a href="#几个原则"><span class="toc-section-number">6.2.1</span> 几个原则</a></li>
 <li><a href="#直接使用r-script生成html文件"><span class="toc-section-number">6.2.2</span> 直接使用r script生成html文件</a></li>
 <li><a href="#一个例子"><span class="toc-section-number">6.2.3</span> 一个例子</a></li>
+<li><a href="#仍然使用rmakdown"><span class="toc-section-number">6.2.4</span> 仍然使用rmakdown</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -288,6 +289,18 @@ file.copy(from = &quot;website_files/docs/&quot;, to = &quot;.&quot;, recursive 
 <pre><code>sxtTools::setwd_project()
 file.copy(from = &quot;code/microbiome_analysis/data_summary.html&quot;, to = &quot;docs/&quot;)</code></pre>
 <p>将该文件放到网页中.</p>
+<p><img src="Screen%20Shot%202021-05-12%20at%204.49.52%20PM.png" /></p>
+<p>然后重新render website,copy <code>webiste_files/docs</code>到<code>../docs</code>.</p>
+<pre><code>rmarkdown::render_site(input = &quot;website_files/&quot;)
+file.copy(from = &quot;website_files/docs/&quot;, to = &quot;.&quot;, recursive = TRUE, overwrite = TRUE)</code></pre>
+<p>然后提交到github.</p>
+<p><img src="Screen%20Shot%202021-05-12%20at%204.55.28%20PM.png" /></p>
+</div>
+<div id="仍然使用rmakdown" class="section level3" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> 仍然使用rmakdown</h3>
+<p>仍然在code中建立相应的rmakdown文件.</p>
+<p>最后需要手动copy到<code>website_files文件夹中.</code></p>
+<p>后续步骤相同.</p>
 </div>
 </div>
 </div>
