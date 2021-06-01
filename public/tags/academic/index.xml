@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Academic | Xiaotao Shen</title>
-    <link>/tags/academic/</link>
-      <atom:link href="/tags/academic/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/tags/academic/</link>
+      <atom:link href="https://www.shenxt.info/tags/academic/index.xml" rel="self" type="application/rss+xml" />
     <description>Academic</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Mon, 04 Nov 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Metmicrobome Literature Sumamry</title>
-      <link>/post/2019-11-04-metmicrobome-literature-sumamry/</link>
+      <link>https://www.shenxt.info/post/2019-11-04-metmicrobome-literature-sumamry/</link>
       <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-04-metmicrobome-literature-sumamry/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-04-metmicrobome-literature-sumamry/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -66,9 +66,9 @@
     
     <item>
       <title>Maternal urinary metabolic signatures of fetal growth and associated clinical and environmental factors in the INMA study文献阅读总结</title>
-      <link>/post/2019-11-01-maternal-urinary-metabolic-signatures/</link>
+      <link>https://www.shenxt.info/post/2019-11-01-maternal-urinary-metabolic-signatures/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-01-maternal-urinary-metabolic-signatures/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-01-maternal-urinary-metabolic-signatures/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -161,9 +161,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>怀孕基础知识总结</title>
-      <link>/post/2019-11-01-pregnancy-knowledge/</link>
+      <link>https://www.shenxt.info/post/2019-11-01-pregnancy-knowledge/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-01-pregnancy-knowledge/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-01-pregnancy-knowledge/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -210,9 +210,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>Machine for genomics conference</title>
-      <link>/post/machine-for-genomics-conference/</link>
+      <link>https://www.shenxt.info/post/machine-for-genomics-conference/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/machine-for-genomics-conference/</guid>
+      <guid>https://www.shenxt.info/post/machine-for-genomics-conference/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -241,9 +241,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>Docker的安装使用和配置</title>
-      <link>/post/docker/</link>
+      <link>https://www.shenxt.info/post/docker/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/docker/</guid>
+      <guid>https://www.shenxt.info/post/docker/</guid>
       <description>
 
 
@@ -253,9 +253,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>R语言常见统计预测模型</title>
-      <link>/post/r-ml-model/</link>
+      <link>https://www.shenxt.info/post/r-ml-model/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-ml-model/</guid>
+      <guid>https://www.shenxt.info/post/r-ml-model/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -300,9 +300,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>网络分析之igraph</title>
-      <link>/post/igraph/</link>
+      <link>https://www.shenxt.info/post/igraph/</link>
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/igraph/</guid>
+      <guid>https://www.shenxt.info/post/igraph/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -357,7 +357,7 @@ g&lt;/code&gt;&lt;/pre&gt;
 ## [1] Bob      -&amp;gt;Alice Cecil    -&amp;gt;Bob   Cecil    -&amp;gt;Alice David    -&amp;gt;Alice
 ## [5] David    -&amp;gt;Bob   Esmeralda-&amp;gt;Alice&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-10-15-igraph/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-10-15-igraph/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;寻找某个vertex的neighbor&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3.1&lt;/span&gt; 寻找某个vertex的neighbor&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;neighbors()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
@@ -410,9 +410,9 @@ g&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>R可视化之小提琴图</title>
-      <link>/post/r-violin/</link>
+      <link>https://www.shenxt.info/post/r-violin/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-violin/</guid>
+      <guid>https://www.shenxt.info/post/r-violin/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -455,7 +455,7 @@ p &amp;lt;-
   theme_bw()
 
 p&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;数据格式&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1.1&lt;/span&gt; 数据格式&lt;/h4&gt;
 &lt;p&gt;注意在使用&lt;code&gt;geom_violin()&lt;/code&gt;函数构建小提琴图时,数据格式为长数据(long format).每一行时一个观测.一共需要两列:&lt;/p&gt;
@@ -503,7 +503,7 @@ data_long %&amp;gt;%
   ggplot(., aes(variable, value)) +
   geom_violin(aes(fill = variable)) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -520,7 +520,7 @@ library(tidyverse)
   theme_bw() +
     theme(legend.position = &amp;quot;none&amp;quot;) +
     coord_flip()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;小提琴图与箱型图同时展示&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 小提琴图与箱型图同时展示&lt;/h2&gt;
@@ -537,21 +537,21 @@ library(tidyverse)
     theme(legend.position = &amp;quot;none&amp;quot;) +
     coord_flip()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: position_dodge requires non-overlapping x intervals&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>R可视化之桑吉图</title>
-      <link>/post/r-sankey/</link>
+      <link>https://www.shenxt.info/post/r-sankey/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-sankey/</guid>
+      <guid>https://www.shenxt.info/post/r-sankey/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/sankey/sankey.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/sankey/sankey.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -730,7 +730,7 @@ ggplot(vaccinations,
         axis.ticks = element_blank(), 
         axis.text.y = element_blank()) +
   ggtitle(&amp;quot;vaccination survey responses at three points in time&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-r-sankey/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-r-sankey/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们在对该包做一个详细的讲解.&lt;/p&gt;
 &lt;div id=&#34;冲积图alluvial-diagrams的结构&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3.1&lt;/span&gt; 冲积图(Alluvial diagrams)的结构&lt;/h4&gt;
@@ -758,9 +758,9 @@ ggplot(vaccinations,
     
     <item>
       <title>pregnancy project文献阅读总结</title>
-      <link>/post/pregnancy-project/</link>
+      <link>https://www.shenxt.info/post/pregnancy-project/</link>
       <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/pregnancy-project/</guid>
+      <guid>https://www.shenxt.info/post/pregnancy-project/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -877,9 +877,9 @@ Metabolic&lt;/p&gt;
     
     <item>
       <title>文献解读:Longitudinal multi-omics of host– microbe dynamics in prediabetes</title>
-      <link>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
+      <link>https://www.shenxt.info/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
+      <guid>https://www.shenxt.info/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
       <description>
 
 
@@ -889,9 +889,9 @@ Metabolic&lt;/p&gt;
     
     <item>
       <title>Academic: the website builder for Hugo</title>
-      <link>/post/getting-started/</link>
+      <link>https://www.shenxt.info/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/post/getting-started/</guid>
+      <guid>https://www.shenxt.info/post/getting-started/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Create a free website with Academic using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 &lt;em&gt;widgets&lt;/em&gt;, &lt;em&gt;themes&lt;/em&gt;, and &lt;em&gt;language packs&lt;/em&gt; included!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://academic-demo.netlify.com/&#34;&gt;Check out the latest &lt;strong&gt;demo&lt;/strong&gt;&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes, or &lt;a href=&#34;https://sourcethemes.com/academic/#expo&#34;&gt;view the &lt;strong&gt;showcase&lt;/strong&gt;&lt;/a&gt; of personal, project, and business sites.&lt;/p&gt;
 &lt;ul&gt;
@@ -973,8 +973,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1000,8 +1000,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1027,8 +1027,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1054,8 +1054,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1081,8 +1081,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1108,8 +1108,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1135,8 +1135,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -1162,8 +1162,8 @@ Metabolic&lt;/p&gt;
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
 

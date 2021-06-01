@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Source Themes | Xiaotao Shen</title>
-    <link>/tags/source-themes/</link>
-      <atom:link href="/tags/source-themes/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/tags/source-themes/</link>
+      <atom:link href="https://www.shenxt.info/tags/source-themes/index.xml" rel="self" type="application/rss+xml" />
     <description>Source Themes</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 04 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 04 Apr 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
-      <link>/publication/journal-article/metdna/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metdna/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metdna/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metdna/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/publication/journal-article/metflow/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metflow/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metflow/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metflow/</guid>
       <description>&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
 &lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
@@ -28,9 +28,9 @@
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/publication/journal-article/metnormalizer/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metnormalizer/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metnormalizer/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metnormalizer/</guid>
       <description>&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
 &lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;

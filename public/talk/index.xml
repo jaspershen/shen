@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PRESENTATIONS | Xiaotao Shen</title>
-    <link>/talk/</link>
-      <atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/talk/</link>
+      <atom:link href="https://www.shenxt.info/talk/index.xml" rel="self" type="application/rss+xml" />
     <description>PRESENTATIONS</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright>
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Identification for Untargeted Metabolomics</title>
-      <link>/talk/2018seattle/</link>
+      <link>https://www.shenxt.info/talk/2018seattle/</link>
       <pubDate>Sun, 24 Jun 2018 13:00:00 +0000</pubDate>
-      <guid>/talk/2018seattle/</guid>
+      <guid>https://www.shenxt.info/talk/2018seattle/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
 &lt;ul&gt;
@@ -24,9 +24,9 @@
     
     <item>
       <title>Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression</title>
-      <link>/talk/2016texas/</link>
+      <link>https://www.shenxt.info/talk/2016texas/</link>
       <pubDate>Fri, 22 Jul 2016 13:00:00 +0000</pubDate>
-      <guid>/talk/2016texas/</guid>
+      <guid>https://www.shenxt.info/talk/2016texas/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
 &lt;ul&gt;

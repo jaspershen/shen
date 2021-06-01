@@ -2,15 +2,91 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>literature | Xiaotao Shen</title>
-    <link>/categories/literature/</link>
-      <atom:link href="/categories/literature/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/categories/literature/</link>
+      <atom:link href="https://www.shenxt.info/categories/literature/index.xml" rel="self" type="application/rss+xml" />
     <description>literature</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 10 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>文献阅读-Noninvasive blood tests for fetal development predict gestational age and preterm delivery</title>
+      <link>https://www.shenxt.info/post/2021-03-11-paper-reading-noninvasive-blood-tests-for-fetal-development-predict-gestational-age-and-preterm-delivery/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/2021-03-11-paper-reading-noninvasive-blood-tests-for-fetal-development-predict-gestational-age-and-preterm-delivery/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文献题目&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 文献题目:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Summary&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#results&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Results&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;文献题目&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 文献题目:&lt;/h1&gt;
+&lt;p&gt;Noninvasive blood tests for fetal development predict gestational age and preterm delivery&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Summary&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Noninvasive blood tests that provide information about fetal development and gestational age could potentially improve prenatal care. Ultrasound, the current gold standard, is not always affordable in low-resource settings and does not predict spontaneous preterm birth, a leading cause of infant death. In a pilot study of 31 healthy pregnant women, we found that measurement of nine cell-free RNA (cfRNA) transcripts in maternal blood predicted gestational age with comparable accuracy to ultrasound but at substantially lower cost. In a related study of 38 women (25 full-term and 13 preterm deliveries), all at elevated risk of delivering preterm, we identified seven cfRNA transcripts that accurately classified women who delivered preterm up to 2 months in advance of labor. These tests hold promise for prenatal care in both the developed and developing worlds, although they require validation in larger, blinded clinical trials.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Results&lt;/h2&gt;
+&lt;p&gt;31个pregnant women,mothly sampling.共有521个plasma samples.所有women都是full term (delivery GA &amp;gt;= 37 weeks).记录了medicine. 强调了:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;and their medical records showed no unusual health changes during pregnancy (table S1).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但是table S1中并没有记录.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-03-11%20at%2010.03.37%20AM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;测cfRNA时,特异性的只测量某些:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each sam- ple was analyzed by highlymultiplexed real-time polymerase chain reaction (PCR) using a panel of genes with expression specific to the placenta or to the immune system, or highly enriched in the fetal liver (table S2).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;某些placental(胎盘)cfRNA在delivery之后就无法测量到.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placental cfRNAs and several fetal liver cfRNAs were not detected above the noise floor after delivery, which sup- ports their pregnancy-derived origin; some fetal liver transcripts were also expressed in the adult liver, and we observed a small maternal baseline for this subset. cfRNAmeasurements&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;跟immune system相关的cfRNA在GA期间逐渐升高,然后delivery之后恢复到正常水平,说明在GA期间主要是有怀孕引起的升高.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cfRNAmeasurements correspond- ing to immune system–related genes increased during gestation and showed a return to measurable baselines after delivery, which supports their predominantly maternal origin.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;BMI并不影响到cfRNA的含量.将women分为几组,然后使用wulcoxon test检验.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have tested for the effect of BMI on circulating cfRNA levels using estimated
+transcript counts of GAPDH per milliliter of plasma and found no significant difference
+between underweight (BMI &amp;lt; 18.5), normal weight (18.5 ≤ BMI &amp;lt; 25), overweight (25 ≤
+BMI &amp;lt; 30), and obese (BMI ≥ 30) individuals both before and after Bonferroni correction
+using a Wilcoxon rank sum test.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P-values for distinct tests of GAPDH levels before and after Bonferroni correction,
+respectively, were as follows: (1) underweight versus normal weight (P = 0.58, 1),
+underweight versus overweight (P = 0.12, 0.80), underweight versus obese (P = 0.26, 1),
+normal weight versus overweight (P = 0.06, 0.35), normal weight versus obese (P = 0.16,
+0.95), and overweight versus obese (P = 0.72, 1). Similar results were obtained for
+placental-specific cfRNAs such as CAPN6, CGA, and CGB.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All comparisons were done within cohorts so that differences in BMI distribution
+between cohorts were not confounding.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;建立预测GA模型,使用了RF模型,徐哪去最后九个cfRNA作为maker.预测效果跟使用所有51个cfRNA相差无几.预测效果随着GA增加而变好.third trimester效果最好.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We then built a random forest model to predict time from sample collection until delivery, using cfRNA measurements as the primary fea- tures. We also found that model performance improved significantly over the course of pregnancy, as measured by root mean squared error (RMSE) for both training [RMSE = 6.0 (first trimester, T1), 3.9 (second trimester, T2), 3.3 (third trimester, T3), 3.7 (postpartum, PP) weeks] (Fig. 2C) and validation sets [RMSE = 5.4 (T1), 4.2 (T2), 3.8 (T3), 2.6 (PP) weeks] (Fig. 2D). Although&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>2020-12-09学习总结</title>
-      <link>/post/2020-12-09-summary/</link>
+      <link>https://www.shenxt.info/post/2020-12-09-summary/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-12-09-summary/</guid>
+      <guid>https://www.shenxt.info/post/2020-12-09-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -122,10 +198,128 @@
     </item>
     
     <item>
+      <title>2020-12-09学习总结</title>
+      <link>https://www.shenxt.info/post/untitled/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/untitled/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文献需要subscribe&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; 文献需要subscribe&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#nature-系列&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.1&lt;/span&gt; Nature 系列&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cell系列&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.2&lt;/span&gt; Cell系列&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#science系列&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.3&lt;/span&gt; Science系列&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#others&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.4&lt;/span&gt; Others&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#文献阅读&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; 文献阅读&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#non-targeted-urinary-metabolomics-in-pregnancy-and-associations-with-fetal-growth-restriction&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.1&lt;/span&gt; 1. non-targeted urinary metabolomics in pregnancy and associations with fetal growth restriction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#section&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.2&lt;/span&gt; 2.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#单词&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; 单词&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;昨天的组会汇报被人问懵了.但是问题的实质在于自己英语不好,对课题了解程度不够,所以还是需要加强.&lt;/p&gt;
+&lt;div id=&#34;文献需要subscribe&#34; class=&#34;section level2&#34; number=&#34;0.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; 文献需要subscribe&lt;/h2&gt;
+&lt;p&gt;全部重新subscribe,&lt;a href=&#34;mailto:都使用shenxt1990@outlook邮箱&#34; class=&#34;email&#34;&gt;都使用shenxt1990@outlook邮箱&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;nature-系列&#34; class=&#34;section level3&#34; number=&#34;0.1.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1&lt;/span&gt; Nature 系列&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Nature&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Biotechnology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Methods&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Discovery&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Genetics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Microbiology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Drug Discovery&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Molecular Cell Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Research&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Aging&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Cell Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;npj Systems Biology and Applications&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Biomedical Engineering&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Chemical Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Protocols&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Microbiology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Cancer&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Immunology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Neuroscience&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Medicine&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Journal of Exposure Science &amp;amp; Environmental Epidemiology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Metabolism&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Immunology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Communications&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Methods Primers&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cell系列&#34; class=&#34;section level3&#34; number=&#34;0.1.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.2&lt;/span&gt; Cell系列&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Cancer cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Chemical Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Host &amp;amp; Microbe&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Metabolism&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Stem Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Systems&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Developmental Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Immunity&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Molecular Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Molecular Therapy&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Molecular Therapy - Methods &amp;amp; Clinical Development&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Neuron&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;science系列&#34; class=&#34;section level3&#34; number=&#34;0.1.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3&lt;/span&gt; Science系列&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Science&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Science Translational Medicine&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Science Advanced&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;others&#34; class=&#34;section level3&#34; number=&#34;0.1.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.4&lt;/span&gt; Others&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Bioinformatics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BioRxiv&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Briefings in Bioinformatics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;文献阅读&#34; class=&#34;section level2&#34; number=&#34;0.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2&lt;/span&gt; 文献阅读&lt;/h2&gt;
+&lt;div id=&#34;non-targeted-urinary-metabolomics-in-pregnancy-and-associations-with-fetal-growth-restriction&#34; class=&#34;section level3&#34; number=&#34;0.2.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1&lt;/span&gt; 1. non-targeted urinary metabolomics in pregnancy and associations with fetal growth restriction&lt;/h3&gt;
+&lt;p&gt;没有太多可借鉴的地方.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level3&#34; number=&#34;0.2.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.2&lt;/span&gt; 2.&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;单词&#34; class=&#34;section level2&#34; number=&#34;0.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 单词&lt;/h2&gt;
+&lt;p&gt;Anecdotal: 基于道听途说&lt;/p&gt;
+&lt;p&gt;whilst: 相当于while&lt;/p&gt;
+&lt;p&gt;metastatic: 转移&lt;/p&gt;
+&lt;p&gt;adhere: 坚持&lt;/p&gt;
+&lt;p&gt;discordant: 不一致的&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>github大文件无法上传</title>
-      <link>/post/2020-11-06-github-large-file/</link>
+      <link>https://www.shenxt.info/post/2020-11-06-github-large-file/</link>
       <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-11-06-github-large-file/</guid>
+      <guid>https://www.shenxt.info/post/2020-11-06-github-large-file/</guid>
       <description>
 
 
@@ -145,9 +339,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>学术英语经典语句</title>
-      <link>/post/2020-10-06-academic-english/</link>
+      <link>https://www.shenxt.info/post/2020-10-06-academic-english/</link>
       <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-10-06-academic-english/</guid>
+      <guid>https://www.shenxt.info/post/2020-10-06-academic-english/</guid>
       <description>
 
 
@@ -160,9 +354,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>加州covid19隔离日记2020-05-07</title>
-      <link>/post/2020-05-07-quarantine-daily-note/</link>
+      <link>https://www.shenxt.info/post/2020-05-07-quarantine-daily-note/</link>
       <pubDate>Thu, 07 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-07-quarantine-daily-note/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-07-quarantine-daily-note/</guid>
       <description>
 
 
@@ -182,9 +376,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>加州covid19隔离日记2020-05-05</title>
-      <link>/post/2020-05-05-quarantine-daily-note/</link>
+      <link>https://www.shenxt.info/post/2020-05-05-quarantine-daily-note/</link>
       <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-05-quarantine-daily-note/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-05-quarantine-daily-note/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -236,9 +430,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>Learning representations of microbe–metabolite interactions文献总结</title>
-      <link>/post/2019-11-11-nm-mmvec/</link>
+      <link>https://www.shenxt.info/post/2019-11-11-nm-mmvec/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-11-nm-mmvec/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-11-nm-mmvec/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -306,9 +500,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>Metmicrobome Literature Sumamry</title>
-      <link>/post/2019-11-04-metmicrobome-literature-sumamry/</link>
+      <link>https://www.shenxt.info/post/2019-11-04-metmicrobome-literature-sumamry/</link>
       <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-04-metmicrobome-literature-sumamry/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-04-metmicrobome-literature-sumamry/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -364,9 +558,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>Maternal urinary metabolic signatures of fetal growth and associated clinical and environmental factors in the INMA study文献阅读总结</title>
-      <link>/post/2019-11-01-maternal-urinary-metabolic-signatures/</link>
+      <link>https://www.shenxt.info/post/2019-11-01-maternal-urinary-metabolic-signatures/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-01-maternal-urinary-metabolic-signatures/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-01-maternal-urinary-metabolic-signatures/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -459,9 +653,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>怀孕基础知识总结</title>
-      <link>/post/2019-11-01-pregnancy-knowledge/</link>
+      <link>https://www.shenxt.info/post/2019-11-01-pregnancy-knowledge/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-01-pregnancy-knowledge/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-01-pregnancy-knowledge/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -508,9 +702,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>Pregancy project participant information summary</title>
-      <link>/post/pregancy-project-participant-information-summary/</link>
+      <link>https://www.shenxt.info/post/pregancy-project-participant-information-summary/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/pregancy-project-participant-information-summary/</guid>
+      <guid>https://www.shenxt.info/post/pregancy-project-participant-information-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -677,9 +871,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>pubmed插件scholarscoop使用总结</title>
-      <link>/post/pubmed-scholarscoop-summary/</link>
+      <link>https://www.shenxt.info/post/pubmed-scholarscoop-summary/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/pubmed-scholarscoop-summary/</guid>
+      <guid>https://www.shenxt.info/post/pubmed-scholarscoop-summary/</guid>
       <description>
 
 
@@ -698,9 +892,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>文献管理工具mendeley使用总结</title>
-      <link>/post/mendeley-summary/</link>
+      <link>https://www.shenxt.info/post/mendeley-summary/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/mendeley-summary/</guid>
+      <guid>https://www.shenxt.info/post/mendeley-summary/</guid>
       <description>
 
 
@@ -710,9 +904,9 @@ Physical activity, as well as other modifiable lifestyle/clinical factors, such 
     
     <item>
       <title>pregnancy project文献阅读总结</title>
-      <link>/post/pregnancy-project/</link>
+      <link>https://www.shenxt.info/post/pregnancy-project/</link>
       <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/pregnancy-project/</guid>
+      <guid>https://www.shenxt.info/post/pregnancy-project/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -829,9 +1023,9 @@ Metabolic&lt;/p&gt;
     
     <item>
       <title>文献解读:Longitudinal multi-omics of host– microbe dynamics in prediabetes</title>
-      <link>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
+      <link>https://www.shenxt.info/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
+      <guid>https://www.shenxt.info/post/longitudinal-multi-omics-of-host-microbe-dynamics-in-prediabetes/</guid>
       <description>
 
 

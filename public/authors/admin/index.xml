@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xiaotao Shen</title>
-    <link>/authors/admin/</link>
-      <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/authors/admin/</link>
+      <atom:link href="https://www.shenxt.info/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Xiaotao Shen</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright>
     <item>
       <title>Metabolic Dynamics and Prediction of Gestational Age and Time to Delivery in Pregnant Women</title>
-      <link>/publication/journal-article/liang_cell/</link>
+      <link>https://www.shenxt.info/publication/journal-article/liang_cell/</link>
       <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/liang_cell/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/liang_cell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Video test</title>
-      <link>/post/2020-03-19-video-test/</link>
+      <link>https://www.shenxt.info/post/2020-03-19-video-test/</link>
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-19-video-test/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-19-video-test/</guid>
       <description>&lt;h1 id=&#34;video-from-youtube&#34;&gt;Video from youtube&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&amp;lt;iframe width=&amp;#34;100%&amp;#34; height=&amp;#34;315&amp;#34; src=&amp;#34;https://www.youtube.com/embed/8_QoT3ygdI4&amp;#34; frameborder=&amp;#34;0&amp;#34; allow=&amp;#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&amp;#34; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
@@ -30,9 +30,9 @@
     
     <item>
       <title>Python for genomics day 06</title>
-      <link>/post/2019-12-02-python-for-genomics-class_day06/</link>
+      <link>https://www.shenxt.info/post/2019-12-02-python-for-genomics-class_day06/</link>
       <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-02-python-for-genomics-class_day06/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-02-python-for-genomics-class_day06/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;主要介绍了几个基础的模块,函数,以及如何创建自定义函数.&lt;/p&gt;
 &lt;h1 id=&#34;os模块os-module&#34;&gt;os模块(os module)&lt;/h1&gt;
@@ -1108,9 +1108,9 @@ myList &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list(map(int, my
     
     <item>
       <title>Python for genomics day 07</title>
-      <link>/post/2019-12-04-python-for-genomics-day07/</link>
+      <link>https://www.shenxt.info/post/2019-12-04-python-for-genomics-day07/</link>
       <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-04-python-for-genomics-day07/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-04-python-for-genomics-day07/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;h1 id=&#34;通过url读取gzipped-data&#34;&gt;通过URL读取gzipped data&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#使用的还是urllib.request和zip包&lt;/span&gt;
@@ -2152,9 +2152,9 @@ with urllib.request.urlopen(request_URL) as inStream:
     
     <item>
       <title>Tmux summary</title>
-      <link>/post/2019-12-04-tmux-summary/</link>
+      <link>https://www.shenxt.info/post/2019-12-04-tmux-summary/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-04-tmux-summary/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-04-tmux-summary/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;完整的tmux请参考下面的帖子:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://louiszhai.github.io/2017/09/30/tmux/&#34;&gt;http://louiszhai.github.io/2017/09/30/tmux/&lt;/a&gt;&lt;/p&gt;
@@ -2198,9 +2198,9 @@ f  查找窗口
     
     <item>
       <title>Python for genomics day 05</title>
-      <link>/post/2019-12-02-python-for-genomics-class_day05/</link>
+      <link>https://www.shenxt.info/post/2019-12-02-python-for-genomics-class_day05/</link>
       <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-02-python-for-genomics-class_day05/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-02-python-for-genomics-class_day05/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;第五天的知识点总结.&lt;/p&gt;
 &lt;h1 id=&#34;fastq格式数据&#34;&gt;FASTQ格式数据&lt;/h1&gt;
@@ -2660,9 +2660,9 @@ TypeError: object of type &#39;_io.TextIOWrapper&#39; has no len()
     
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
-      <link>/post/blogdown-instruction/</link>
+      <link>https://www.shenxt.info/post/blogdown-instruction/</link>
       <pubDate>Thu, 04 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>/post/blogdown-instruction/</guid>
+      <guid>https://www.shenxt.info/post/blogdown-instruction/</guid>
       <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; IPython.core.display &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Image
 Image(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png&amp;#39;&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;./academic_0_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
@@ -2697,17 +2697,17 @@ rm Untitled.md
     
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
-      <link>/publication/journal-article/metdna/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metdna/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metdna/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metdna/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Display Jupyter Notebooks with Academic</title>
-      <link>/post/jupyter/</link>
+      <link>https://www.shenxt.info/post/jupyter/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>/post/jupyter/</guid>
+      <guid>https://www.shenxt.info/post/jupyter/</guid>
       <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; IPython.core.display &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Image
 Image(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png&amp;#39;&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;./academic_0_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
@@ -2742,17 +2742,17 @@ rm Untitled.md
     
     <item>
       <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
-      <link>/publication/journal-article/zhuozhong_ac/</link>
+      <link>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/zhuozhong_ac/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/publication/journal-article/metflow/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metflow/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metflow/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metflow/</guid>
       <description>&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
 &lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
@@ -2762,9 +2762,9 @@ rm Untitled.md
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>/publication/journal-article/metnormalizer/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metnormalizer/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metnormalizer/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metnormalizer/</guid>
       <description>&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
 &lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
@@ -2774,41 +2774,41 @@ rm Untitled.md
     
     <item>
       <title>Predicting the pathological response to neoadjuvant chemoradiation using untargeted metabolomics in locally advanced rectal cancer</title>
-      <link>/publication/journal-article/huixun/</link>
+      <link>https://www.shenxt.info/publication/journal-article/huixun/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/huixun/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/huixun/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LipidCCS Prediction of Collision Cross-Section Values for Lipids with High Precision To Support Ion Mobility–Mass Spectrometry-Based Lipidomics</title>
-      <link>/publication/journal-article/lipidccs/</link>
+      <link>https://www.shenxt.info/publication/journal-article/lipidccs/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/lipidccs/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/lipidccs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LipidIMMS Analyzer integrating multi-dimensional information to support lipid identification in ion mobility—mass spectrometry based lipidomics</title>
-      <link>/publication/journal-article/lipidimms/</link>
+      <link>https://www.shenxt.info/publication/journal-article/lipidimms/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/lipidimms/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/lipidimms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility-Mass Spectrometry</title>
-      <link>/publication/journal-article/metccs/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metccs/</link>
       <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metccs/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metccs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Academic: the website builder for Hugo</title>
-      <link>/post/getting-started/</link>
+      <link>https://www.shenxt.info/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/post/getting-started/</guid>
+      <guid>https://www.shenxt.info/post/getting-started/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Create a free website with Academic using Markdown, Jupyter, or RStudio. Choose a beautiful color theme and build anything with the Page Builder - over 40 &lt;em&gt;widgets&lt;/em&gt;, &lt;em&gt;themes&lt;/em&gt;, and &lt;em&gt;language packs&lt;/em&gt; included!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://academic-demo.netlify.com/&#34;&gt;Check out the latest &lt;strong&gt;demo&lt;/strong&gt;&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes, or &lt;a href=&#34;https://sourcethemes.com/academic/#expo&#34;&gt;view the &lt;strong&gt;showcase&lt;/strong&gt;&lt;/a&gt; of personal, project, and business sites.&lt;/p&gt;
 &lt;ul&gt;
@@ -2890,8 +2890,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-1950s_huaf5482f8cea0c5a703a328640e3b7509_21614_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -2917,8 +2917,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-apogee_hu4b45d99db97150df01464c393bfd17d4_24119_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -2944,8 +2944,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-coffee-playfair_hu446a8f670cc5622adcc77b97ba95f6c5_22462_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -2971,8 +2971,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-cupcake_hueba8cfa8cfbc7543924fcbf387a99e92_23986_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -2998,8 +2998,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-dark_hu1e8601ecc47f58eada7743fdcd709d3d_21456_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -3025,8 +3025,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-default_huba6228b7bdf30e2f03f12ea91b2cba0d_21751_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -3052,8 +3052,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-forest_hu4f093a1c683134431456584193ea41ee_21797_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -3079,8 +3079,8 @@ rm Untitled.md
       
     
     
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
+  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
+  &lt;img src=&#34;https://www.shenxt.info/post/getting-started/gallery/theme-ocean_hu14831ccafc2219f30a7a096fa7617e01_21760_0x190_resize_lanczos_2.png&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
 
@@ -3111,9 +3111,9 @@ rm Untitled.md
     
     <item>
       <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
-      <link>/publication/journal-article/taozhang_metabolomics/</link>
+      <link>https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/taozhang_metabolomics/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/</guid>
       <description></description>
     </item>
     

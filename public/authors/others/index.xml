@@ -2,71 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Others | Xiaotao Shen</title>
-    <link>/authors/others/</link>
-      <atom:link href="/authors/others/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/authors/others/</link>
+      <atom:link href="https://www.shenxt.info/authors/others/index.xml" rel="self" type="application/rss+xml" />
     <description>Others</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Metabolic Dynamics and Prediction of Gestational Age and Time to Delivery in Pregnant Women</title>
-      <link>/publication/journal-article/liang_cell/</link>
+      <link>https://www.shenxt.info/publication/journal-article/liang_cell/</link>
       <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/liang_cell/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/liang_cell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
-      <link>/publication/journal-article/metdna/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metdna/</link>
       <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metdna/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metdna/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
-      <link>/publication/journal-article/zhuozhong_ac/</link>
+      <link>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/zhuozhong_ac/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Predicting the pathological response to neoadjuvant chemoradiation using untargeted metabolomics in locally advanced rectal cancer</title>
-      <link>/publication/journal-article/huixun/</link>
+      <link>https://www.shenxt.info/publication/journal-article/huixun/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/huixun/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/huixun/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LipidCCS Prediction of Collision Cross-Section Values for Lipids with High Precision To Support Ion Mobility–Mass Spectrometry-Based Lipidomics</title>
-      <link>/publication/journal-article/lipidccs/</link>
+      <link>https://www.shenxt.info/publication/journal-article/lipidccs/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/lipidccs/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/lipidccs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LipidIMMS Analyzer integrating multi-dimensional information to support lipid identification in ion mobility—mass spectrometry based lipidomics</title>
-      <link>/publication/journal-article/lipidimms/</link>
+      <link>https://www.shenxt.info/publication/journal-article/lipidimms/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/lipidimms/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/lipidimms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Large-Scale Prediction of Collision Cross-Section Values for Metabolites in Ion Mobility-Mass Spectrometry</title>
-      <link>/publication/journal-article/metccs/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metccs/</link>
       <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/metccs/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metccs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Normalization and integration of large-scale metabolomics data using support vector regression</title>
-      <link>/publication/journal-article/taozhang_metabolomics/</link>
+      <link>https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/taozhang_metabolomics/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/</guid>
       <description></description>
     </item>
     

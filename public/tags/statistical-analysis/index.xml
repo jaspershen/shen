@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistical analysis | Xiaotao Shen</title>
-    <link>/tags/statistical-analysis/</link>
-      <atom:link href="/tags/statistical-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/tags/statistical-analysis/</link>
+      <atom:link href="https://www.shenxt.info/tags/statistical-analysis/index.xml" rel="self" type="application/rss+xml" />
     <description>Statistical analysis</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Metabolic Dynamics and Prediction of Gestational Age and Time to Delivery in Pregnant Women</title>
-      <link>/publication/journal-article/liang_cell/</link>
+      <link>https://www.shenxt.info/publication/journal-article/liang_cell/</link>
       <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/liang_cell/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/liang_cell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R语言常见统计预测模型</title>
-      <link>/post/r-ml-model/</link>
+      <link>https://www.shenxt.info/post/r-ml-model/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-ml-model/</guid>
+      <guid>https://www.shenxt.info/post/r-ml-model/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -63,9 +63,9 @@
     
     <item>
       <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
-      <link>/publication/journal-article/zhuozhong_ac/</link>
+      <link>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/journal-article/zhuozhong_ac/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</guid>
       <description></description>
     </item>
     

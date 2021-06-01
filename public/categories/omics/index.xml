@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>omics | Xiaotao Shen</title>
-    <link>/categories/omics/</link>
-      <atom:link href="/categories/omics/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/categories/omics/</link>
+      <atom:link href="https://www.shenxt.info/categories/omics/index.xml" rel="self" type="application/rss+xml" />
     <description>omics</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 21 Feb 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Introduction to metagenomics</title>
-      <link>/post/2020-02-06-r-study/</link>
+      <link>https://www.shenxt.info/post/2020-02-06-r-study/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-02-06-r-study/</guid>
+      <guid>https://www.shenxt.info/post/2020-02-06-r-study/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -59,9 +59,9 @@
     
     <item>
       <title>Machine for genomics conference</title>
-      <link>/post/machine-for-genomics-conference/</link>
+      <link>https://www.shenxt.info/post/machine-for-genomics-conference/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/machine-for-genomics-conference/</guid>
+      <guid>https://www.shenxt.info/post/machine-for-genomics-conference/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -90,9 +90,9 @@
     
     <item>
       <title>Modern Statistics for Modern Biology:第一章</title>
-      <link>/post/2019-10-10-modern-statistics-for-modern-biology/</link>
+      <link>https://www.shenxt.info/post/2019-10-10-modern-statistics-for-modern-biology/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -125,9 +125,9 @@
     
     <item>
       <title>组学数据分析常见方法总结</title>
-      <link>/post/2019-10-10-data-analysis-omics/</link>
+      <link>https://www.shenxt.info/post/2019-10-10-data-analysis-omics/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-10-data-analysis-omics/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-10-data-analysis-omics/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;

@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Study | Xiaotao Shen</title>
-    <link>/categories/study/</link>
-      <atom:link href="/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/categories/study/</link>
+      <atom:link href="https://www.shenxt.info/categories/study/index.xml" rel="self" type="application/rss+xml" />
     <description>Study</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Windows使用Summary</title>
-      <link>/post/2019-11-08-windows-summary/</link>
+      <link>https://www.shenxt.info/post/2019-11-08-windows-summary/</link>
       <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-08-windows-summary/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-08-windows-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -84,9 +84,9 @@
     
     <item>
       <title>Markdown cookbook</title>
-      <link>/post/markdown-cookbook/</link>
+      <link>https://www.shenxt.info/post/markdown-cookbook/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/markdown-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/markdown-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;

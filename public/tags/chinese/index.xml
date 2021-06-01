@@ -2,15 +2,387 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chinese | Xiaotao Shen</title>
-    <link>/tags/chinese/</link>
-      <atom:link href="/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/tags/chinese/</link>
+      <atom:link href="https://www.shenxt.info/tags/chinese/index.xml" rel="self" type="application/rss+xml" />
     <description>Chinese</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>使用Rstudio进行project管理</title>
+      <link>https://www.shenxt.info/post/2021-5-12-rstudio-project/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/2021-5-12-rstudio-project/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#需要跟github配合使用首先在github创建repo.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#本地创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建必须文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在rstudio-project的本地文件夹下创建必须的文件夹.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github忽略某些文件文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第一次上传到github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装distill&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建网站地址&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#build-website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将doc文件夹复制到root路径&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#发布website到github-pages&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#提交github.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将github-repo设置为private&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在文章发表之前不想别人看到我们的数据code等.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#邀请合作者&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#装扮website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#website_files简单介绍&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改页面布局&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的文章并将其加入到网站中&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的rmarkdown文件放在website_files文件夹中.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编辑好文章之后添加到网页.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#我自己的project管理模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文件结构&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分析及重复&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#几个原则&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#直接使用r-script生成html文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#一个例子&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#仍然使用rmakdown&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;创建rstudio-project&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/h1&gt;
+&lt;div id=&#34;需要跟github配合使用首先在github创建repo.&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.06.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;本地创建rstudio-project&#34; class=&#34;section level2&#34; number=&#34;1.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.07.56%20PM.png&#34; /&gt;
+&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.01%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建必须文件夹&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/h1&gt;
+&lt;div id=&#34;在rstudio-project的本地文件夹下创建必须的文件夹.&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.11.18%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;github忽略某些文件文件夹&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/h2&gt;
+&lt;p&gt;如果不想要上传某些文件或者文件夹到github,在.gitgnore中写明.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.13.32%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第一次上传到github&#34; class=&#34;section level2&#34; number=&#34;2.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;first commit&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.04%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.24%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建website&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/h1&gt;
+&lt;p&gt;使用distill,参考网站:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://distill.netlify.app/&#34;&gt;https://distill.netlify.app/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&#34;&gt;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;安装distill&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;rstudio/distill&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建网站地址&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/h2&gt;
+&lt;p&gt;不要将webiste文件放到root路径,可以在root路径下创建一个文件夹,比如&lt;code&gt;website_files&lt;/code&gt;,然后把文件都放到这里面.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;distill::create_website(dir = &amp;quot;website_files/&amp;quot;, gh_pages = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.21.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.22.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-website&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将doc文件夹复制到root路径&#34; class=&#34;section level2&#34; number=&#34;3.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候会在root有一个&lt;code&gt;doc&lt;/code&gt;文件夹.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;发布website到github-pages&#34; class=&#34;section level2&#34; number=&#34;3.5&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/h2&gt;
+&lt;div id=&#34;提交github.&#34; class=&#34;section level3&#34; number=&#34;3.5.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;create website&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置website&#34; class=&#34;section level3&#34; number=&#34;3.5.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.26.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.44%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.51%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候就可以看到网址了.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jaspershen.github.io/rstudio_project_test/&#34;&gt;https://jaspershen.github.io/rstudio_project_test/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.29.00%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候网站就已经公开了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将github-repo设置为private&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/h1&gt;
+&lt;div id=&#34;在文章发表之前不想别人看到我们的数据code等.&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.30.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候虽然别人看不到你的github repo,但是网址仍然可见.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;邀请合作者&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/h2&gt;
+&lt;p&gt;这样,合作者还是可以看到repo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.32.41%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;装扮website&#34; class=&#34;section level1&#34; number=&#34;5&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/h1&gt;
+&lt;div id=&#34;website_files简单介绍&#34; class=&#34;section level2&#34; number=&#34;5.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.36.27%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;index.Rmd&lt;/code&gt;: This will be our site’s homepage. This file must be named index.Rmd.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;about.Rmd&lt;/code&gt;: This will be an additional page on our site, and you can change the name of this file to be whatever you want.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;_site.yml&lt;/code&gt;: is not a file that gets turned into a site page, but it is necessary for site setup.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs/&lt;/code&gt;: folder: This is the output folder, where knitted versions of our .Rmds live once they’ve been processed to become .html files.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改页面布局&#34; class=&#34;section level2&#34; number=&#34;5.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/h2&gt;
+&lt;p&gt;打开&lt;code&gt;_site.yml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.47.34%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后按照下图进行修改.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.51.13%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;编辑好文章之后,重新render并将docs copy到root路径&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新生成网站如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.52.29%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;但是这时候还没有提交到github.只有再次提交到github网址链接的网站才会更新.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建新的文章并将其加入到网站中&#34; class=&#34;section level2&#34; number=&#34;5.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/h2&gt;
+&lt;div id=&#34;创建新的rmarkdown文件放在website_files文件夹中.&#34; class=&#34;section level3&#34; number=&#34;5.3.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.41.38%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.42.14%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.43.26%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编辑好文章之后添加到网页.&#34; class=&#34;section level3&#34; number=&#34;5.3.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/h3&gt;
+&lt;p&gt;这里我们生成的文章名字为&lt;code&gt;figure1.html&lt;/code&gt;,所以在&lt;code&gt;_site.yml&lt;/code&gt;修改:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.55.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render,并提交到github即可.&lt;/p&gt;
+&lt;p&gt;打开链接:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.57.03%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;我自己的project管理模式&#34; class=&#34;section level1&#34; number=&#34;6&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/h1&gt;
+&lt;div id=&#34;文件结构&#34; class=&#34;section level2&#34; number=&#34;6.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data&lt;/code&gt;:存放原始数据. 不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data_analysis&lt;/code&gt;: 存放分析结果. 发表前不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;code&lt;/code&gt;: 分析脚本. 公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;summary&lt;/code&gt;: slides, document等. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;manuscript&lt;/code&gt;: figures. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs&lt;/code&gt;: project网站介绍,公开.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分析及重复&#34; class=&#34;section level2&#34; number=&#34;6.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/h2&gt;
+&lt;p&gt;数据分析自己以及别人重复很重要.&lt;/p&gt;
+&lt;div id=&#34;几个原则&#34; class=&#34;section level3&#34; number=&#34;6.2.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;以Rstudio project为中心组织数据和code&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所有的数据和code都以Rstudio project为中心进行组织. 文章发表之后,public project,如果别人要重复分析,下载Rstudio project, 包含了数据和code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.03.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;使用相对路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在code中,尽量不要使用绝对路径,使用相对路径. 每个code中,都首先将work directory定为到Rstudio project所在位置.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.07.16%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果想要使用&lt;code&gt;tinyTools&lt;/code&gt;,从github安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;devtools::install_github(&amp;quot;jaspershen/tinyTools&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;代码命名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代码按照分析步骤进行命名.&lt;/p&gt;
+&lt;p&gt;代码运行的可能会有先后依赖关系,命名时最好注明.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;直接使用r-script生成html文件&#34; class=&#34;section level3&#34; number=&#34;6.2.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/h3&gt;
+&lt;p&gt;我比较习惯直接使用r script而不是rmarkdown.为了能够直接render成html格式,需要在前面加上一些:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; ---
+#&amp;#39; title: &amp;quot;Stool microbiome metabolome correlation&amp;quot;
+#&amp;#39; author: 
+#&amp;#39;   - name: &amp;quot;Xiaotao Shen&amp;quot; 
+#&amp;#39;     url: https://www.shenxt.info/
+#&amp;#39;     affiliation: Stanford School of Medicine
+#&amp;#39; date: &amp;quot;2021-05-12&amp;quot;
+#&amp;#39; site: distill::distill_website
+#&amp;#39; output: 
+#&amp;#39;   distill::distill_article:
+#&amp;#39;     code_folding: false
+#&amp;#39; ---
+
+#+ r setup, echo=TRUE, eval = FALSE, include = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考网址:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&#34;&gt;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一些基本用法:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#&#39;&lt;/code&gt;后是markdown语法内容, 比如想要使用一级标题,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; # title&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#+&lt;/code&gt;后面是r code chunk设置.比如我们想要设置某段代码不运行但是显示,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#+ eval=FALSE, echo = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相当于rmarkdown的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{r eval=FALSE, echo = TRUE}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一个例子&#34; class=&#34;section level3&#34; number=&#34;6.2.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/h3&gt;
+&lt;p&gt;在code中创建r script&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.52.55%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后运行之后,会在保存该script的路径下生成html文件.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.53.46%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将该html文件copy到docs文件夹下.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sxtTools::setwd_project()
+file.copy(from = &amp;quot;code/microbiome_analysis/data_summary.html&amp;quot;, to = &amp;quot;docs/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将该文件放到网页中.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.49.52%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render website,copy &lt;code&gt;webiste_files/docs&lt;/code&gt;到&lt;code&gt;../docs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后提交到github.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.55.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;仍然使用rmakdown&#34; class=&#34;section level3&#34; number=&#34;6.2.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/h3&gt;
+&lt;p&gt;仍然在code中建立相应的rmakdown文件.&lt;/p&gt;
+&lt;p&gt;最后需要手动copy到&lt;code&gt;website_files文件夹中.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;后续步骤相同.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>文献阅读-Noninvasive blood tests for fetal development predict gestational age and preterm delivery</title>
+      <link>https://www.shenxt.info/post/2021-03-11-paper-reading-noninvasive-blood-tests-for-fetal-development-predict-gestational-age-and-preterm-delivery/</link>
+      <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/2021-03-11-paper-reading-noninvasive-blood-tests-for-fetal-development-predict-gestational-age-and-preterm-delivery/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文献题目&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 文献题目:&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#summary&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Summary&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#results&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Results&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;文献题目&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 文献题目:&lt;/h1&gt;
+&lt;p&gt;Noninvasive blood tests for fetal development predict gestational age and preterm delivery&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summary&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Summary&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Noninvasive blood tests that provide information about fetal development and gestational age could potentially improve prenatal care. Ultrasound, the current gold standard, is not always affordable in low-resource settings and does not predict spontaneous preterm birth, a leading cause of infant death. In a pilot study of 31 healthy pregnant women, we found that measurement of nine cell-free RNA (cfRNA) transcripts in maternal blood predicted gestational age with comparable accuracy to ultrasound but at substantially lower cost. In a related study of 38 women (25 full-term and 13 preterm deliveries), all at elevated risk of delivering preterm, we identified seven cfRNA transcripts that accurately classified women who delivered preterm up to 2 months in advance of labor. These tests hold promise for prenatal care in both the developed and developing worlds, although they require validation in larger, blinded clinical trials.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Results&lt;/h2&gt;
+&lt;p&gt;31个pregnant women,mothly sampling.共有521个plasma samples.所有women都是full term (delivery GA &amp;gt;= 37 weeks).记录了medicine. 强调了:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;and their medical records showed no unusual health changes during pregnancy (table S1).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;但是table S1中并没有记录.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-03-11%20at%2010.03.37%20AM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;测cfRNA时,特异性的只测量某些:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each sam- ple was analyzed by highlymultiplexed real-time polymerase chain reaction (PCR) using a panel of genes with expression specific to the placenta or to the immune system, or highly enriched in the fetal liver (table S2).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;某些placental(胎盘)cfRNA在delivery之后就无法测量到.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Placental cfRNAs and several fetal liver cfRNAs were not detected above the noise floor after delivery, which sup- ports their pregnancy-derived origin; some fetal liver transcripts were also expressed in the adult liver, and we observed a small maternal baseline for this subset. cfRNAmeasurements&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;跟immune system相关的cfRNA在GA期间逐渐升高,然后delivery之后恢复到正常水平,说明在GA期间主要是有怀孕引起的升高.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cfRNAmeasurements correspond- ing to immune system–related genes increased during gestation and showed a return to measurable baselines after delivery, which supports their predominantly maternal origin.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;BMI并不影响到cfRNA的含量.将women分为几组,然后使用wulcoxon test检验.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have tested for the effect of BMI on circulating cfRNA levels using estimated
+transcript counts of GAPDH per milliliter of plasma and found no significant difference
+between underweight (BMI &amp;lt; 18.5), normal weight (18.5 ≤ BMI &amp;lt; 25), overweight (25 ≤
+BMI &amp;lt; 30), and obese (BMI ≥ 30) individuals both before and after Bonferroni correction
+using a Wilcoxon rank sum test.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P-values for distinct tests of GAPDH levels before and after Bonferroni correction,
+respectively, were as follows: (1) underweight versus normal weight (P = 0.58, 1),
+underweight versus overweight (P = 0.12, 0.80), underweight versus obese (P = 0.26, 1),
+normal weight versus overweight (P = 0.06, 0.35), normal weight versus obese (P = 0.16,
+0.95), and overweight versus obese (P = 0.72, 1). Similar results were obtained for
+placental-specific cfRNAs such as CAPN6, CGA, and CGB.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All comparisons were done within cohorts so that differences in BMI distribution
+between cohorts were not confounding.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;建立预测GA模型,使用了RF模型,徐哪去最后九个cfRNA作为maker.预测效果跟使用所有51个cfRNA相差无几.预测效果随着GA增加而变好.third trimester效果最好.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We then built a random forest model to predict time from sample collection until delivery, using cfRNA measurements as the primary fea- tures. We also found that model performance improved significantly over the course of pregnancy, as measured by root mean squared error (RMSE) for both training [RMSE = 6.0 (first trimester, T1), 3.9 (second trimester, T2), 3.3 (third trimester, T3), 3.7 (postpartum, PP) weeks] (Fig. 2C) and validation sets [RMSE = 5.4 (T1), 4.2 (T2), 3.8 (T3), 2.6 (PP) weeks] (Fig. 2D). Although&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>2020-12-09学习总结</title>
-      <link>/post/2020-12-09-summary/</link>
+      <link>https://www.shenxt.info/post/2020-12-09-summary/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-12-09-summary/</guid>
+      <guid>https://www.shenxt.info/post/2020-12-09-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -122,10 +494,128 @@
     </item>
     
     <item>
+      <title>2020-12-09学习总结</title>
+      <link>https://www.shenxt.info/post/untitled/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/untitled/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文献需要subscribe&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1&lt;/span&gt; 文献需要subscribe&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#nature-系列&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.1&lt;/span&gt; Nature 系列&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cell系列&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.2&lt;/span&gt; Cell系列&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#science系列&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.3&lt;/span&gt; Science系列&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#others&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.1.4&lt;/span&gt; Others&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#文献阅读&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2&lt;/span&gt; 文献阅读&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#non-targeted-urinary-metabolomics-in-pregnancy-and-associations-with-fetal-growth-restriction&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.1&lt;/span&gt; 1. non-targeted urinary metabolomics in pregnancy and associations with fetal growth restriction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#section&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.2.2&lt;/span&gt; 2.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#单词&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;0.3&lt;/span&gt; 单词&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;昨天的组会汇报被人问懵了.但是问题的实质在于自己英语不好,对课题了解程度不够,所以还是需要加强.&lt;/p&gt;
+&lt;div id=&#34;文献需要subscribe&#34; class=&#34;section level2&#34; number=&#34;0.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1&lt;/span&gt; 文献需要subscribe&lt;/h2&gt;
+&lt;p&gt;全部重新subscribe,&lt;a href=&#34;mailto:都使用shenxt1990@outlook邮箱&#34; class=&#34;email&#34;&gt;都使用shenxt1990@outlook邮箱&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;nature-系列&#34; class=&#34;section level3&#34; number=&#34;0.1.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1&lt;/span&gt; Nature 系列&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Nature&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Biotechnology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Methods&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Discovery&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Genetics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Microbiology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Drug Discovery&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Molecular Cell Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Research&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Aging&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Cell Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;npj Systems Biology and Applications&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Biomedical Engineering&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Chemical Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Protocols&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Microbiology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Cancer&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Immunology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Neuroscience&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Medicine&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Journal of Exposure Science &amp;amp; Environmental Epidemiology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Metabolism&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Immunology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Communications&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nature Reviews Methods Primers&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cell系列&#34; class=&#34;section level3&#34; number=&#34;0.1.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.2&lt;/span&gt; Cell系列&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Cancer cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Chemical Biology&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Host &amp;amp; Microbe&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Metabolism&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Stem Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cell Systems&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Developmental Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Immunity&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Molecular Cell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Molecular Therapy&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Molecular Therapy - Methods &amp;amp; Clinical Development&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Neuron&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;science系列&#34; class=&#34;section level3&#34; number=&#34;0.1.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3&lt;/span&gt; Science系列&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Science&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Science Translational Medicine&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Science Advanced&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;others&#34; class=&#34;section level3&#34; number=&#34;0.1.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.4&lt;/span&gt; Others&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Bioinformatics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BioRxiv&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Briefings in Bioinformatics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;文献阅读&#34; class=&#34;section level2&#34; number=&#34;0.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2&lt;/span&gt; 文献阅读&lt;/h2&gt;
+&lt;div id=&#34;non-targeted-urinary-metabolomics-in-pregnancy-and-associations-with-fetal-growth-restriction&#34; class=&#34;section level3&#34; number=&#34;0.2.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1&lt;/span&gt; 1. non-targeted urinary metabolomics in pregnancy and associations with fetal growth restriction&lt;/h3&gt;
+&lt;p&gt;没有太多可借鉴的地方.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level3&#34; number=&#34;0.2.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.2&lt;/span&gt; 2.&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;单词&#34; class=&#34;section level2&#34; number=&#34;0.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 单词&lt;/h2&gt;
+&lt;p&gt;Anecdotal: 基于道听途说&lt;/p&gt;
+&lt;p&gt;whilst: 相当于while&lt;/p&gt;
+&lt;p&gt;metastatic: 转移&lt;/p&gt;
+&lt;p&gt;adhere: 坚持&lt;/p&gt;
+&lt;p&gt;discordant: 不一致的&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>github大文件无法上传</title>
-      <link>/post/2020-11-06-github-large-file/</link>
+      <link>https://www.shenxt.info/post/2020-11-06-github-large-file/</link>
       <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-11-06-github-large-file/</guid>
+      <guid>https://www.shenxt.info/post/2020-11-06-github-large-file/</guid>
       <description>
 
 
@@ -145,9 +635,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>学术英语经典语句</title>
-      <link>/post/2020-10-06-academic-english/</link>
+      <link>https://www.shenxt.info/post/2020-10-06-academic-english/</link>
       <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-10-06-academic-english/</guid>
+      <guid>https://www.shenxt.info/post/2020-10-06-academic-english/</guid>
       <description>
 
 
@@ -160,9 +650,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>加州covid19隔离日记2020-05-07</title>
-      <link>/post/2020-05-07-quarantine-daily-note/</link>
+      <link>https://www.shenxt.info/post/2020-05-07-quarantine-daily-note/</link>
       <pubDate>Thu, 07 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-07-quarantine-daily-note/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-07-quarantine-daily-note/</guid>
       <description>
 
 
@@ -182,9 +672,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>加州covid19隔离日记2020-05-05</title>
-      <link>/post/2020-05-05-quarantine-daily-note/</link>
+      <link>https://www.shenxt.info/post/2020-05-05-quarantine-daily-note/</link>
       <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-05-quarantine-daily-note/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-05-quarantine-daily-note/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -236,9 +726,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>加州covid19隔离日记2020-05-04</title>
-      <link>/post/2020-05-04-quarantine-daily-note/</link>
+      <link>https://www.shenxt.info/post/2020-05-04-quarantine-daily-note/</link>
       <pubDate>Mon, 04 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-04-quarantine-daily-note/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-04-quarantine-daily-note/</guid>
       <description>
 
 
@@ -251,9 +741,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>加州covid19隔离日记2020-05-03</title>
-      <link>/post/2020-05-03-quarantine-daily-note/</link>
+      <link>https://www.shenxt.info/post/2020-05-03-quarantine-daily-note/</link>
       <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-03-quarantine-daily-note/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-03-quarantine-daily-note/</guid>
       <description>
 
 
@@ -270,9 +760,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>加州covid19隔离日记</title>
-      <link>/post/2020-05-01-quarantine-daily-note/</link>
+      <link>https://www.shenxt.info/post/2020-05-01-quarantine-daily-note/</link>
       <pubDate>Fri, 01 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-01-quarantine-daily-note/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-01-quarantine-daily-note/</guid>
       <description>
 
 
@@ -290,9 +780,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>Mac R在不同版本之间切换</title>
-      <link>/post/2020-04-26-switch-r-in-mac/</link>
+      <link>https://www.shenxt.info/post/2020-04-26-switch-r-in-mac/</link>
       <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-04-26-switch-r-in-mac/</guid>
+      <guid>https://www.shenxt.info/post/2020-04-26-switch-r-in-mac/</guid>
       <description>
 
 
@@ -308,9 +798,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>CNN基础知识总结</title>
-      <link>/post/2020-04-21-cnn-summary/</link>
+      <link>https://www.shenxt.info/post/2020-04-21-cnn-summary/</link>
       <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-04-21-cnn-summary/</guid>
+      <guid>https://www.shenxt.info/post/2020-04-21-cnn-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -366,9 +856,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>Jupyter notebook使用summary</title>
-      <link>/post/2020-04-11-jupyter-sumary/</link>
+      <link>https://www.shenxt.info/post/2020-04-11-jupyter-sumary/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-04-11-jupyter-sumary/</guid>
+      <guid>https://www.shenxt.info/post/2020-04-11-jupyter-sumary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -472,9 +962,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>在Linux服务器和本地之间传输数据</title>
-      <link>/post/2020-03-23-linux-server-local-file-transfer/</link>
+      <link>https://www.shenxt.info/post/2020-03-23-linux-server-local-file-transfer/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-23-linux-server-local-file-transfer/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-23-linux-server-local-file-transfer/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -516,9 +1006,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>Video test in rmakrdown</title>
-      <link>/post/2020-3-19-video-test-rmarkdown/</link>
+      <link>https://www.shenxt.info/post/2020-3-19-video-test-rmarkdown/</link>
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-3-19-video-test-rmarkdown/</guid>
+      <guid>https://www.shenxt.info/post/2020-3-19-video-test-rmarkdown/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -560,9 +1050,9 @@ error: failed to push some refs to &amp;#39;https://github.com/jaspershen/ryan_m
     
     <item>
       <title>Github多人协作</title>
-      <link>/post/2020-03-10-github-collobration/</link>
+      <link>https://www.shenxt.info/post/2020-03-10-github-collobration/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-10-github-collobration/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-10-github-collobration/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -687,9 +1177,9 @@ git branch --set-upstream-to=origin/jaspershen jaspershen&lt;/code&gt;&lt;/pre&g
     
     <item>
       <title>如何在一台电脑上设置多个github账号</title>
-      <link>/post/2020-03-11-multi-github-in-one-pc/</link>
+      <link>https://www.shenxt.info/post/2020-03-11-multi-github-in-one-pc/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-11-multi-github-in-one-pc/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-11-multi-github-in-one-pc/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -789,9 +1279,9 @@ git remote add origin git@github_shenxt:shenxt/example.git # shenxt account&lt;/
     
     <item>
       <title>Rstudio server in Ubuntu</title>
-      <link>/post/2020-03-08-rstudio-server/</link>
+      <link>https://www.shenxt.info/post/2020-03-08-rstudio-server/</link>
       <pubDate>Sun, 08 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-08-rstudio-server/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-08-rstudio-server/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -878,9 +1368,9 @@ groupdel group_name&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Mac使用summary</title>
-      <link>/post/2020-03-07-mac-summary/</link>
+      <link>https://www.shenxt.info/post/2020-03-07-mac-summary/</link>
       <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-07-mac-summary/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-07-mac-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1001,9 +1491,9 @@ groupdel group_name&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Machine learning and bioinformaticss</title>
-      <link>/post/ml/</link>
+      <link>https://www.shenxt.info/post/ml/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/ml/</guid>
+      <guid>https://www.shenxt.info/post/ml/</guid>
       <description>
 
 
@@ -1049,9 +1539,9 @@ groupdel group_name&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Vi sumary</title>
-      <link>/post/linux/</link>
+      <link>https://www.shenxt.info/post/linux/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/linux/</guid>
+      <guid>https://www.shenxt.info/post/linux/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1098,9 +1588,9 @@ groupdel group_name&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>git和GitHub使用</title>
-      <link>/post/2020-03-04-git_github/</link>
+      <link>https://www.shenxt.info/post/2020-03-04-git_github/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-04-git_github/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-04-git_github/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1443,9 +1933,9 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
     
     <item>
       <title>Linux</title>
-      <link>/post/linux/</link>
+      <link>https://www.shenxt.info/post/linux/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/linux/</guid>
+      <guid>https://www.shenxt.info/post/linux/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1514,9 +2004,9 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
     
     <item>
       <title>Introduction to metagenomics</title>
-      <link>/post/2020-02-06-r-study/</link>
+      <link>https://www.shenxt.info/post/2020-02-06-r-study/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-02-06-r-study/</guid>
+      <guid>https://www.shenxt.info/post/2020-02-06-r-study/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1565,9 +2055,9 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
     
     <item>
       <title>R下载数据</title>
-      <link>/post/2020-02-21-introduction_to_metagenomics/</link>
+      <link>https://www.shenxt.info/post/2020-02-21-introduction_to_metagenomics/</link>
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-02-21-introduction_to_metagenomics/</guid>
+      <guid>https://www.shenxt.info/post/2020-02-21-introduction_to_metagenomics/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1641,9 +2131,9 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
     
     <item>
       <title>使用pkgdown为自己的R包创建说明网站</title>
-      <link>/post/2020-01-08-r-pkgdown/</link>
+      <link>https://www.shenxt.info/post/2020-01-08-r-pkgdown/</link>
       <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-01-08-r-pkgdown/</guid>
+      <guid>https://www.shenxt.info/post/2020-01-08-r-pkgdown/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1694,9 +2184,9 @@ devtools::install_github(&amp;quot;r-lib/pkgdown&amp;quot;)&lt;/code&gt;&lt;/pre
     
     <item>
       <title>ggplot2 legend总结-1</title>
-      <link>/post/2019-12-23-r-ggplot2-legend/</link>
+      <link>https://www.shenxt.info/post/2019-12-23-r-ggplot2-legend/</link>
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-23-r-ggplot2-legend/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-23-r-ggplot2-legend/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1737,7 +2227,7 @@ devtools::install_github(&amp;quot;r-lib/pkgdown&amp;quot;)&lt;/code&gt;&lt;/pre
     geom_bar(aes(fill = gear)) +
     theme_bw()
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;与其他ggplot2上的对象一样，对于其外在表现（appearance）等，大都是在&lt;code&gt;theme()&lt;/code&gt;函数中进行设置。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;去掉legend&#34; class=&#34;section level1&#34;&gt;
@@ -1745,60 +2235,60 @@ devtools::install_github(&amp;quot;r-lib/pkgdown&amp;quot;)&lt;/code&gt;&lt;/pre
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##使用theme函数
 plot +
   theme(legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#使用guides函数
 plot +
   guides(fill = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##在scales系列函数中设置
 plot +
   scale_fill_discrete(guide = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend位置&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 更改legend位置&lt;/h1&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##左侧
 plot +
   theme(legend.position = &amp;quot;left&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右侧
 plot +
   theme(legend.position = &amp;quot;top&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##底部
 plot +
   theme(legend.position = &amp;quot;bottom&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右侧。默认放在右侧
 plot +
   theme(legend.position = &amp;quot;right&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;有时候我们需要将legend放在角上。这时候还是使用&lt;code&gt;legend.position&lt;/code&gt;参数，但是需要配合&lt;code&gt;legend.justification&lt;/code&gt;参数使用。&lt;code&gt;legend.position&lt;/code&gt;设置为两个元素（数值）的向量，且取值范围为0-1。0代表最左边或者最右边，而1代表最上边或者最右边。第一个数值控制左右，第二个数值控制上下。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右上角
 plot +
   theme(legend.position = c(1, 1),
         legend.justification = c(1, 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右下角
 plot +
   theme(legend.position = c(1, 0),
         legend.justification = c(1, 0))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##左上角
 plot +
   theme(legend.position = c(0, 1),
         legend.justification = c(0, 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##左下角
 plot +
   theme(legend.position = c(0, 0),
         legend.justification = c(0, 0))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;当然，也可以通过设置具体的位置参数，来控制legend的位置。&lt;code&gt;legend.poisition&lt;/code&gt;中的数值都是相对值,而不是绝对值.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##中间
 plot +
   theme(legend.position =  c(0.5, 0.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend水平或者垂直排列&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 更改legend水平或者垂直排列&lt;/h1&gt;
@@ -1806,29 +2296,29 @@ plot +
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend标识中的size
 plot +
   guides(fill = guide_legend(override.aes = list(size = 20)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend title位置
 ##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
 plot +
   theme(legend.title.align = 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = -1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##通过guides函数控制
 plot +
   guides(fill = guide_legend(title.position = &amp;quot;left&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   guides(fill = guide_legend(title.position = &amp;quot;bottom&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.direction = &amp;quot;horizontal&amp;quot;, legend.position = &amp;quot;bottom&amp;quot;) +
   guides(fill = guide_legend(title.position = &amp;quot;top&amp;quot;, title.hjust = 0.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend各个元素相对位置&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 更改legend各个元素相对位置&lt;/h1&gt;
@@ -1836,35 +2326,35 @@ plot +
 ##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
 plot +
   theme(legend.title.align = 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = -1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##通过guides函数控制
 plot +
   guides(fill = guide_legend(title.position = &amp;quot;left&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   guides(fill = guide_legend(title.position = &amp;quot;bottom&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.direction = &amp;quot;horizontal&amp;quot;, legend.position = &amp;quot;bottom&amp;quot;) +
   guides(fill = guide_legend(title.position = &amp;quot;top&amp;quot;, title.hjust = 0.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##去除legend文字
 plot +
   guides(fill = guide_legend(label = FALSE))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend text位置
 plot +
   theme(legend.text.align = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   guides(fill = guide_legend(label.position = &amp;quot;left&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.position = &amp;quot;bottom&amp;quot;) +
   guides(fill = guide_legend(
@@ -1872,7 +2362,7 @@ plot +
     label.position = &amp;quot;bottom&amp;quot;,
     title.vjust = 1
   ))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend背景&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 更改legend背景&lt;/h1&gt;
@@ -1884,7 +2374,7 @@ plot +
     size = 2,
     linetype = 2
   ))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend单个标识的背景
 plot +
   theme(legend.key = element_rect(
@@ -1893,28 +2383,28 @@ plot +
     size = 0.1,
     linetype = 3
   ))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改单个标识的高度和宽度，也可以用来改变标识的大小。
 plot +
   theme(legend.key.height = unit(2, &amp;quot;line&amp;quot;),
         legend.key.width = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.key.size = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend各个key之间的距离
 plot +
   theme(legend.position = &amp;quot;top&amp;quot;,
         legend.spacing.x = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.position = &amp;quot;left&amp;quot;,
         legend.spacing.y = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.position = &amp;quot;left&amp;quot;,
         legend.spacing = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;其他一些设置&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;7&lt;/span&gt; 其他一些设置&lt;/h1&gt;
@@ -1922,7 +2412,7 @@ plot +
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;7.1&lt;/span&gt; 设置legend上下左右的边缘距离&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.margin = margin(5, 5, 5, 5, &amp;#39;cm&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -1930,9 +2420,9 @@ plot +
     
     <item>
       <title>Rstudio shortcut总结</title>
-      <link>/post/2019-12-23-rstudio-shortcut/</link>
+      <link>https://www.shenxt.info/post/2019-12-23-rstudio-shortcut/</link>
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-23-rstudio-shortcut/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-23-rstudio-shortcut/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2159,9 +2649,9 @@ plot +
     
     <item>
       <title>R终端输出</title>
-      <link>/post/2019-12-18-r-terminal-output/</link>
+      <link>https://www.shenxt.info/post/2019-12-18-r-terminal-output/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-18-r-terminal-output/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-18-r-terminal-output/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2288,9 +2778,9 @@ cat(symbol$tick, &amp;quot;All good\n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python数据的导入和输出总结</title>
-      <link>/post/2019-12-01-python-data-import-output/</link>
+      <link>https://www.shenxt.info/post/2019-12-01-python-data-import-output/</link>
       <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-01-python-data-import-output/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-01-python-data-import-output/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2317,9 +2807,9 @@ os.getcwd()&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python中与dplyr类似的数据处理包</title>
-      <link>/post/2019-11-29-python-dplyphon/</link>
+      <link>https://www.shenxt.info/post/2019-11-29-python-dplyphon/</link>
       <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-29-python-dplyphon/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-29-python-dplyphon/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2950,9 +3440,9 @@ a &amp;gt;&amp;gt; inner_join(b, by=&amp;#39;x1&amp;#39;)&lt;/code&gt;&lt;/pre&g
     
     <item>
       <title>Python Numpy函数和方法完全总结</title>
-      <link>/post/2019-11-28-numpy-function-method/</link>
+      <link>https://www.shenxt.info/post/2019-11-28-numpy-function-method/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-28-numpy-function-method/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-28-numpy-function-method/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3138,9 +3628,9 @@ a&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>ggraph画网络图</title>
-      <link>/post/2019-11-27-r-ggraph/</link>
+      <link>https://www.shenxt.info/post/2019-11-27-r-ggraph/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-27-r-ggraph/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-27-r-ggraph/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3273,7 +3763,7 @@ graph_data&lt;/code&gt;&lt;/pre&gt;
   geom_edge_fan() +
   geom_node_point()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;首先可以看到,需要使用&lt;code&gt;ggraph&lt;/code&gt;启动一个图像,然后必须的两个geom分别是&lt;code&gt;geom_edge_xx&lt;/code&gt;和&lt;code&gt;geom_node_xxx&lt;/code&gt;分别用来定义边和node.他们的使用办法跟&lt;code&gt;ggplot2&lt;/code&gt;非常类似,参数也都很类似,只是加上了&lt;code&gt;edge&lt;/code&gt;和&lt;code&gt;node&lt;/code&gt;标签.&lt;/p&gt;
 &lt;p&gt;我们下面接着对图片进行美化.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot &amp;lt;- 
@@ -3286,7 +3776,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()
 plot&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;从上面例子可以看到,对于edge的属性的设置,需要使用&lt;code&gt;scale_edge_xxx&lt;/code&gt;系列函数,而对于node,则直接使用原来的&lt;code&gt;ggplot2&lt;/code&gt;的&lt;code&gt;scale_xxx&lt;/code&gt;系列函数就可以了.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;添加文字&#34; class=&#34;section level2&#34;&gt;
@@ -3310,7 +3800,7 @@ angle &amp;lt;- ifelse(angle &amp;gt; 180, 90 - angle + 180, 90 - angle)&lt;/cod
                  hjust = hjust,
                  colour = &amp;quot;black&amp;quot;,
                  size = 3.5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到有些文字跑到绘图区域外面了,这时候需要将坐标轴进行扩展就行了.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   geom_node_text(aes(x = x * 1.05,
@@ -3321,7 +3811,7 @@ angle &amp;lt;- ifelse(angle &amp;gt; 180, 90 - angle + 180, 90 - angle)&lt;/cod
                  colour = &amp;quot;black&amp;quot;,
                  size = 3.5) +
   expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们可以看看原来的坐标轴是什么样子的.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -3331,7 +3821,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_size_continuous(range = c(5,10)) +
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们将theme设置为&lt;code&gt;theme_bw()&lt;/code&gt;就可以清楚的看到原来的坐标体系了.&lt;/p&gt;
 &lt;p&gt;可以看到legend的顺序有点乱.可以在&lt;code&gt;guides()&lt;/code&gt;函数中设置.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = TRUE) +
@@ -3346,7 +3836,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
          colour = guide_edge_colourbar(order = 3)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Duplicated aesthetics after name standardisation: colour&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;添加文字的时候,文字之间,以及文字node之间,会出现覆盖的问题.如下图所示:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -3362,7 +3852,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;在&lt;code&gt;ggplot2&lt;/code&gt;中,我们使用&lt;code&gt;ggrepel&lt;/code&gt;包可以解决这个问题.在这里,我们可以设置&lt;code&gt;repel&lt;/code&gt;为TRUE.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -3376,7 +3866,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5, repel = TRUE) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;当然,也可以使用&lt;code&gt;geom_node_label()&lt;/code&gt;来标注.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -3390,7 +3880,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5, repel = TRUE) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用不同的layout&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; 使用不同的layout&lt;/h2&gt;
@@ -3404,7 +3894,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = FALSE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -3420,7 +3910,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                  size = 3.5) +
   expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;eigen&amp;quot;, circular = FALSE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -3434,7 +3924,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      label = node_name,
                      colour = node.colour), 
                  size = 3.5) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;不同的连接线&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 不同的连接线&lt;/h2&gt;
@@ -3449,7 +3939,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_link2(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -3459,7 +3949,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_link0(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -3469,7 +3959,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;画有一定弯度的edge可以使用&lt;code&gt;geom_edge_fan()&lt;/code&gt;函数.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_fan(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -3480,7 +3970,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用不同的主题&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 使用不同的主题&lt;/h2&gt;
@@ -3499,7 +3989,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Inverted geom defaults of fill and color/colour.
 ## To change them back, use invert_geom_defaults().&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;因为leged的某些显示颜色为黑色,而主题没有将其修改过来,可以手动进行修改.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -3516,7 +4006,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5, repel = TRUE) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -3524,9 +4014,9 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
     
     <item>
       <title>Python模仿ggplot2的绘图包:plotnine</title>
-      <link>/post/2019-11-27-plotnine/</link>
+      <link>https://www.shenxt.info/post/2019-11-27-plotnine/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-27-plotnine/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-27-plotnine/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3574,7 +4064,7 @@ mtcars.head()&lt;/code&gt;&lt;/pre&gt;
 ## D:\software\python\lib\site-packages\plotnine\utils.py:553: MatplotlibDeprecationWarning: 
 ## The iterable function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use np.iterable instead.
 ##   return cbook.iterable(var) and not is_string(var)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-plotnine/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;614&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-plotnine/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;614&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到跟&lt;code&gt;ggplot2&lt;/code&gt;语法几乎一致,非常方便,大大减小了学习成本.&lt;/p&gt;
 &lt;p&gt;当然也可以将生成的图片赋值给变量.&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;plot = (ggplot(mtcars)
@@ -3590,7 +4080,7 @@ plot&lt;/code&gt;&lt;/pre&gt;
 ## D:\software\python\lib\site-packages\plotnine\utils.py:553: MatplotlibDeprecationWarning: 
 ## The iterable function was deprecated in Matplotlib 3.1 and will be removed in 3.3. Use np.iterable instead.
 ##   return cbook.iterable(var) and not is_string(var)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-plotnine/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;614&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-plotnine/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;614&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;但是需要注意&lt;/strong&gt;:&lt;/p&gt;
 &lt;p&gt;从&lt;code&gt;ggplot&lt;/code&gt;开始,到绘图代码结束,都需要放在一个小括号里面.&lt;/p&gt;
 &lt;p&gt;语法跟ggplot2几乎是相同的,真的是非常方便了!!&lt;/p&gt;
@@ -3601,9 +4091,9 @@ plot&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>SAM test用于差异标志物的选择</title>
-      <link>/post/2019-11-27-volcano-plot/</link>
+      <link>https://www.shenxt.info/post/2019-11-27-volcano-plot/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-27-volcano-plot/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-27-volcano-plot/</guid>
       <description>
 
 
@@ -3695,7 +4185,7 @@ ff=0.5;
 ht &amp;lt;- -log10(1-confidence_level);
 points(c(-ff,ff), c(10,10), type=&amp;#39;h&amp;#39;, col=&amp;#39;green&amp;#39;,lwd=2);
 lines(c(abs.inf,abs.sup), c(ht,ht), col=&amp;#39;green&amp;#39;,lwd=2);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
 # Figure b
 #################################
@@ -3708,7 +4198,7 @@ confidence_level=0.975; ff=0.5;
 smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),
                              ta=qt(confidence_level,df=df),s0=ff,df=df);
 lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
 # Figure c
 #################################
@@ -3736,7 +4226,7 @@ lines(smoothcurve, col=&amp;#39;gray&amp;#39;,lwd=1)
 confidence_level=0.97; ff=0.15;
 smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
 lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
 # Figure d
 #################################
@@ -3744,7 +4234,7 @@ lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2)&lt;/code&gt;&lt;/pre&gt;
 plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
 # Display the human proteins which should be identified as differentially abundant
 points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Organism==&amp;quot;human&amp;quot;)],col=2,pch=3);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
@@ -3757,9 +4247,9 @@ points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Orga
     
     <item>
       <title>Python包及模块的导入</title>
-      <link>/post/2019-11-26-impot-module-package/</link>
+      <link>https://www.shenxt.info/post/2019-11-26-impot-module-package/</link>
       <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-26-impot-module-package/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-26-impot-module-package/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3831,9 +4321,9 @@ test2&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python NumPy包总结</title>
-      <link>/post/2019-11-24-python-numpy-summary/</link>
+      <link>https://www.shenxt.info/post/2019-11-24-python-numpy-summary/</link>
       <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-24-python-numpy-summary/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-24-python-numpy-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -4562,9 +5052,9 @@ arr&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python pandas包总结</title>
-      <link>/post/2019-11-23-python-pandas-summary/</link>
+      <link>https://www.shenxt.info/post/2019-11-23-python-pandas-summary/</link>
       <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-23-python-pandas-summary/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-23-python-pandas-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5307,9 +5797,9 @@ test2&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python中如何创建自定义对象</title>
-      <link>/post/2019-11-23-python-object/</link>
+      <link>https://www.shenxt.info/post/2019-11-23-python-object/</link>
       <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-23-python-object/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-23-python-object/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5502,9 +5992,9 @@ class SPAMFilter(Filter): # SPAMFilter是Filter的子类
     
     <item>
       <title>Python中如何创建函数</title>
-      <link>/post/2019-11-22-python-function/</link>
+      <link>https://www.shenxt.info/post/2019-11-22-python-function/</link>
       <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-22-python-function/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-22-python-function/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5763,9 +6253,9 @@ reduce(lambda x, y: x + y, numbers)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python for genomics class day04</title>
-      <link>/post/2019-11-21-python-for-genomics-class-day04/</link>
+      <link>https://www.shenxt.info/post/2019-11-21-python-for-genomics-class-day04/</link>
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-21-python-for-genomics-class-day04/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-21-python-for-genomics-class-day04/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -6423,9 +6913,9 @@ for key, value in myDict.items():
     
     <item>
       <title>blogdown创建post模板文件夹</title>
-      <link>/post/2019-11-20-blogdown-creat-post/</link>
+      <link>https://www.shenxt.info/post/2019-11-20-blogdown-creat-post/</link>
       <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-20-blogdown-creat-post/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-20-blogdown-creat-post/</guid>
       <description>
 
 
@@ -6530,9 +7020,9 @@ output:
     
     <item>
       <title>Python for genomics class day03</title>
-      <link>/post/2019-11-20-python-for-genomics-class-day03/</link>
+      <link>https://www.shenxt.info/post/2019-11-20-python-for-genomics-class-day03/</link>
       <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-20-python-for-genomics-class-day03/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-20-python-for-genomics-class-day03/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -7884,9 +8374,9 @@ TAGACCATTCAAAAGCTTCCAGACAGTCTAGCTCGAAGAAATTT&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python Cookbook</title>
-      <link>/post/2019-11-18-python-summary/</link>
+      <link>https://www.shenxt.info/post/2019-11-18-python-summary/</link>
       <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-18-python-summary/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-18-python-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -8078,9 +8568,9 @@ IRkernel::installspec(user = FALSE)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Python forbioinformatics课程</title>
-      <link>/post/2019-11-18-python-for-bioinformatics/</link>
+      <link>https://www.shenxt.info/post/2019-11-18-python-for-bioinformatics/</link>
       <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-18-python-for-bioinformatics/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-18-python-for-bioinformatics/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -8231,9 +8721,9 @@ type(test)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>ggplot2做蝴蝶图</title>
-      <link>/post/2019-11-16-butterfly-plot/</link>
+      <link>https://www.shenxt.info/post/2019-11-16-butterfly-plot/</link>
       <pubDate>Sat, 16 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-16-butterfly-plot/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-16-butterfly-plot/</guid>
       <description>
 
 
@@ -8292,7 +8782,7 @@ df %&amp;gt;%
   scale_y_continuous(breaks = c(-2, 0, 2, 4), labels = c(2, 0 ,2, 4)) +
   theme_bw() +
   coord_flip()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-16-butterfly-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-16-butterfly-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-twitter&#34;&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-weixin&#34;&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-qq&#34;&gt;&lt;/i&gt;&lt;/p&gt;
@@ -8301,9 +8791,9 @@ df %&amp;gt;%
     
     <item>
       <title>KEGG数据库总结</title>
-      <link>/post/2019-11-14-kegg/</link>
+      <link>https://www.shenxt.info/post/2019-11-14-kegg/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-14-kegg/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-14-kegg/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -8816,9 +9306,9 @@ the type of this relation
     
     <item>
       <title>Learning representations of microbe–metabolite interactions文献总结</title>
-      <link>/post/2019-11-11-nm-mmvec/</link>
+      <link>https://www.shenxt.info/post/2019-11-11-nm-mmvec/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-11-nm-mmvec/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-11-nm-mmvec/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -8886,9 +9376,9 @@ the type of this relation
     
     <item>
       <title>R读取和输出数据</title>
-      <link>/post/2019-11-12-r-import-export-data/</link>
+      <link>https://www.shenxt.info/post/2019-11-12-r-import-export-data/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-12-r-import-export-data/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-12-r-import-export-data/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -8939,9 +9429,9 @@ test&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>使用rayshader包将ggplot2转换为3D图像</title>
-      <link>/post/2019-11-11-ggpot2-3d/</link>
+      <link>https://www.shenxt.info/post/2019-11-11-ggpot2-3d/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-11-ggpot2-3d/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-11-ggpot2-3d/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9002,9 +9492,9 @@ rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)&lt;/
     
     <item>
       <title>在美国购买车险</title>
-      <link>/post/2019-11-10-car-insurance/</link>
+      <link>https://www.shenxt.info/post/2019-11-10-car-insurance/</link>
       <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-10-car-insurance/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-10-car-insurance/</guid>
       <description>
 
 
@@ -9016,9 +9506,9 @@ rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)&lt;/
     
     <item>
       <title>tibble cookbook</title>
-      <link>/post/2019-10-09-tibble-cookbook/</link>
+      <link>https://www.shenxt.info/post/2019-10-09-tibble-cookbook/</link>
       <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-09-tibble-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-09-tibble-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9579,9 +10069,9 @@ mtcars2 %&amp;gt;%
     
     <item>
       <title>Markdown cookbook</title>
-      <link>/post/markdown-cookbook/</link>
+      <link>https://www.shenxt.info/post/markdown-cookbook/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/markdown-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/markdown-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9633,9 +10123,9 @@ mtcars2 %&amp;gt;%
     
     <item>
       <title>R cookbook</title>
-      <link>/post/2019-11-10-r-cookbook/</link>
+      <link>https://www.shenxt.info/post/2019-11-10-r-cookbook/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-10-r-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-10-r-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9713,9 +10203,9 @@ for(i in 1:10){
     
     <item>
       <title>质谱常见问题总结</title>
-      <link>/post/ms-summary/</link>
+      <link>https://www.shenxt.info/post/ms-summary/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/ms-summary/</guid>
+      <guid>https://www.shenxt.info/post/ms-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9745,9 +10235,9 @@ for(i in 1:10){
     
     <item>
       <title>一点感想</title>
-      <link>/post/20191014/</link>
+      <link>https://www.shenxt.info/post/20191014/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/20191014/</guid>
+      <guid>https://www.shenxt.info/post/20191014/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9795,9 +10285,9 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
     
     <item>
       <title>2017年的第一篇博客</title>
-      <link>/post/2017-02-12-firstblog2017/</link>
+      <link>https://www.shenxt.info/post/2017-02-12-firstblog2017/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      <guid>/post/2017-02-12-firstblog2017/</guid>
+      <guid>https://www.shenxt.info/post/2017-02-12-firstblog2017/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9865,9 +10355,9 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
     
     <item>
       <title>MetCleaning instruction</title>
-      <link>/post/2016-11-25-metcleaning/</link>
+      <link>https://www.shenxt.info/post/2016-11-25-metcleaning/</link>
       <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>/post/2016-11-25-metcleaning/</guid>
+      <guid>https://www.shenxt.info/post/2016-11-25-metcleaning/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -9884,7 +10374,7 @@ Brian, Med T&amp;amp;DS&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;em&gt;MetCleaning&lt;/em&gt; provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, &lt;em&gt;MetClean&lt;/em&gt; and &lt;em&gt;MetStat&lt;/em&gt; in &lt;em&gt;MetCleaning&lt;/em&gt; utilizing demo data.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/workflow%20for%20instruction.jpg&#34; alt=&#34;Figure1 Workflow of MetCleaning&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/workflow%20for%20instruction.jpg&#34; alt=&#34;Figure1 Workflow of MetCleaning&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure1 Workflow of &lt;em&gt;MetCleaning&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -9926,7 +10416,7 @@ write.csv(sample.information , &amp;quot;sample.information.csv&amp;quot;, row.n
 1. “data.csv” is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain “name” (feature name), “mz” (mass to change ratio) and “rt” (retention time). Other information of features are optional, for example “isotopes” and “adducts”. The name of sample can contain “.”, but cannot contain “-” and space. And the start of sample name cannot be number. &lt;strong&gt;For example, “A210.a” and “A210a” are valid, and “210a” or “210-a” are invalid.&lt;/strong&gt;
 2. “sample.information.csv” is sample information for metabolomic dataset. Column 1 is “sample.name” which is the names of subject and QC samples. Please confirm that the sample names in “sample.information.csv” and “data.csv” are completely same. Column 2 is “injection.order” which is the injection order of QC and subject samples. Column 3 is “class”, which is used to distinguish “QC” and “Subject” samples. Column 4 is “batch” to provide acquisition batch information for samples. Column 5 is “group”, which is used to label the group of subject sample, for example, “control” and “case”. The “group” of QC samples is labeled as “QC”.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/data%20organisation.jpg&#34; alt=&#34;Figure2 Data organisation of MetCleaning&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/data%20organisation.jpg&#34; alt=&#34;Figure2 Data organisation of MetCleaning&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure2 Data organisation of MetCleaning&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Then you can run &lt;em&gt;MetClean&lt;/em&gt; function to do data cleaning of data. All the arguments of &lt;em&gt;MetClean&lt;/em&gt; can be found in the other functions in &lt;em&gt;MetCleaning&lt;/em&gt;. You can use &lt;em&gt;help(package = “MetCleaning”)&lt;/em&gt; to see the help page of &lt;em&gt;MetCleaning&lt;/em&gt;.&lt;/p&gt;
@@ -9936,12 +10426,12 @@ MetClean(polarity = &amp;quot;positive&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Running results of &lt;em&gt;MetClean&lt;/em&gt;
 1.Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/mv%20filter.jpg&#34; alt=&#34;Figure3 Missing or zero value filtering&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/mv%20filter.jpg&#34; alt=&#34;Figure3 Missing or zero value filtering&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure3 Missing or zero value filtering&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;2.Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don’t recommend to remove them as Figure 4 shows, because they should be consired combined other information.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/sample%20filter.jpg&#34; alt=&#34;Figure4 Sample filtering&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/sample%20filter.jpg&#34; alt=&#34;Figure4 Sample filtering&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure4 Sample filtering&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;3.Output files. Output files of &lt;em&gt;MetClean&lt;/em&gt; are listed as Figure 5 shows.
@@ -9955,7 +10445,7 @@ MetClean(polarity = &amp;quot;positive&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 (8) &lt;strong&gt;“data_after_pre.csv”, “qc.info.csv” and “subject.info”&lt;/strong&gt; are the data and sample information after data cleaning.
 (9) “intermediate” is the intermediate data during processing.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/output%20files%20of%20MetClean.jpg&#34; alt=&#34;Figure5 Output files of MetClean&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/output%20files%20of%20MetClean.jpg&#34; alt=&#34;Figure5 Output files of MetClean&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure5 Output files of &lt;em&gt;MetClean&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -9973,7 +10463,7 @@ setwd(&amp;quot;Demo for MetStat&amp;quot;)
 write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The demo data have been added in your work directory. “new.group.csv” is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don’t want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/new.group.jpg&#34; alt=&#34;Figure6 new group information&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/new.group.jpg&#34; alt=&#34;Figure6 new group information&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure6 new group information&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;code 5: Running of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
@@ -9981,12 +10471,12 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/c
 &lt;p&gt;Running results of &lt;em&gt;MetStat&lt;/em&gt;
 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/sample%20remove.jpg&#34; alt=&#34;Figure7 sample removing confirmation&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/sample%20remove.jpg&#34; alt=&#34;Figure7 sample removing confirmation&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure7 sample removing confirmation&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;2.Number of component selection in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the Console show “How many comps do you want to see?”, you can type 10 and enter “Enter” key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and enter “Enter” key.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/PLS%20analysis.jpg&#34; alt=&#34;Figure8 Number of component selection in PLS-DA analysis&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/PLS%20analysis.jpg&#34; alt=&#34;Figure8 Number of component selection in PLS-DA analysis&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure8 Number of component selection in PLS-DA analysis&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;3.Output files. Output files of &lt;em&gt;MetStat&lt;/em&gt; are listed as Figure 9 shows.
@@ -9997,7 +10487,7 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/c
 (5) &lt;strong&gt;“data_after_stat.csv”, “qc.info.csv” and “subject.info”&lt;/strong&gt; are the data and sample information after statistical analysis.
 (6) “intermediate” is the intermediate data during processing.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/output%20files%20of%20MetStat.jpg&#34; alt=&#34;Figure9 Output files of MetStat&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/output%20files%20of%20MetStat.jpg&#34; alt=&#34;Figure9 Output files of MetStat&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure9 Output files of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -10006,9 +10496,9 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/c
     
     <item>
       <title>使用Github和Hexo建独立博客</title>
-      <link>/post/2017-09-09-github-blog/</link>
+      <link>https://www.shenxt.info/post/2017-09-09-github-blog/</link>
       <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>/post/2017-09-09-github-blog/</guid>
+      <guid>https://www.shenxt.info/post/2017-09-09-github-blog/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -10229,9 +10719,9 @@ categories:
     
     <item>
       <title>使用R爬取HMDB和KEGG数据库</title>
-      <link>/post/2016-12-03-keggandhmdb/</link>
+      <link>https://www.shenxt.info/post/2016-12-03-keggandhmdb/</link>
       <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>/post/2016-12-03-keggandhmdb/</guid>
+      <guid>https://www.shenxt.info/post/2016-12-03-keggandhmdb/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -10578,9 +11068,9 @@ for (i in 1:400) {
     
     <item>
       <title>我的第一篇博客</title>
-      <link>/post/2016-11-25-first-blog/</link>
+      <link>https://www.shenxt.info/post/2016-11-25-first-blog/</link>
       <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>/post/2016-11-25-first-blog/</guid>
+      <guid>https://www.shenxt.info/post/2016-11-25-first-blog/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -10600,9 +11090,9 @@ for (i in 1:400) {
     
     <item>
       <title>使用Github Pages建独立博客</title>
-      <link>/post/2012-02-22-github-pages/</link>
+      <link>https://www.shenxt.info/post/2012-02-22-github-pages/</link>
       <pubDate>Wed, 22 Feb 2012 00:00:00 +0000</pubDate>
-      <guid>/post/2012-02-22-github-pages/</guid>
+      <guid>https://www.shenxt.info/post/2012-02-22-github-pages/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -10687,7 +11177,7 @@ for (i in 1:400) {
 &lt;p&gt;要使用Git，需要安装它的客户端，推荐在Linux下使用Git，会比较方便。Windows版的下载地址在这里：&lt;a href=&#34;http://code.google.com/p/msysgit/downloads/list&#34; title=&#34;Windows版Git客户端&#34;&gt;http://code.google.com/p/msysgit/downloads/list&lt;/a&gt;。其他系统的安装也可以参考官方的&lt;a href=&#34;http://help.github.com/mac-set-up-git/&#34; title=&#34;Mac下Git安装&#34;&gt;安装教程&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;下载安装客户端之后，各个系统的配置就类似了，我们使用windows作为例子，Linux和Mac与此类似。&lt;/p&gt;
 &lt;p&gt;在Windows下，打开Git Bash，其他系统下面则打开终端（Terminal）：
-&lt;img src=&#34;/images/githubpages/bootcamp_1_win_gitbash.jpg&#34; alt=&#34;Git Bash&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/bootcamp_1_win_gitbash.jpg&#34; alt=&#34;Git Bash&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;检查ssh-keys的设置&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.1&lt;/span&gt; 1、检查SSH keys的设置&lt;/h3&gt;
 &lt;p&gt;首先我们需要检查你电脑上现有的ssh key：&lt;/p&gt;
@@ -10713,16 +11203,16 @@ Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):&am
 &lt;pre&gt;&lt;code&gt;Enter passphrase (empty for no passphrase):&amp;lt;输入加密串&amp;gt;
 Enter same passphrase again:&amp;lt;再次输入加密串&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;最后看到这样的界面，就成功设置ssh key了：
-&lt;img src=&#34;/images/githubpages/ssh-key-set.png&#34; alt=&#34;ssh key success&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/ssh-key-set.png&#34; alt=&#34;ssh key success&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;添加ssh-key到github&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.2.4&lt;/span&gt; 4、添加SSH Key到GitHub：&lt;/h3&gt;
 &lt;p&gt;在本机设置SSH Key之后，需要添加到GitHub上，以完成SSH链接的设置。&lt;/p&gt;
 &lt;p&gt;用文本编辑工具打开id_rsa.pub文件，如果看不到这个文件，你需要设置显示隐藏文件。准确的复制这个文件的内容，才能保证设置的成功。&lt;/p&gt;
 &lt;p&gt;在GitHub的主页上点击设置按钮：
-&lt;img src=&#34;/images/githubpages/github-account-setting.png&#34; alt=&#34;github account setting&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/github-account-setting.png&#34; alt=&#34;github account setting&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;选择SSH Keys项，把复制的内容粘贴进去，然后点击Add Key按钮即可：
-&lt;img src=&#34;/images/githubpages/bootcamp_1_ssh.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/bootcamp_1_ssh.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;PS：如果需要配置多个GitHub账号，可以参看这个&lt;a href=&#34;http://omiga.org/blog/archives/2269&#34;&gt;多个github帐号的SSH key切换&lt;/a&gt;，不过需要提醒一下的是，如果你只是通过这篇文章中所述配置了Host，那么你多个账号下面的提交用户会是一个人，所以需要通过命令&lt;code&gt;git config --global --unset user.email&lt;/code&gt;删除用户账户设置，在每一个repo下面使用&lt;code&gt;git config --local user.email &#39;你的github邮箱@mail.com&#39;&lt;/code&gt; 命令单独设置用户账户信息&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;测试一下&#34; class=&#34;section level3&#34;&gt;
@@ -10747,7 +11237,7 @@ $ git config --global user.email &amp;quot;your_email@youremail.com&amp;quot;&lt
 &lt;p&gt;2012-4-28补充：新版的接口已经不需要配置token了，所以下面这段可以跳过了&lt;/p&gt;
 &lt;p&gt;有些工具没有通过SSH来链接GitHub。如果要使用这类工具，你需要找到然后设置你的API Token。&lt;/p&gt;
 &lt;p&gt;在GitHub上，你可以点击&lt;em&gt;Account Setting &amp;gt; Account Admin&lt;/em&gt;：
-&lt;img src=&#34;/images/githubpages/bootcamp_1_token.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/bootcamp_1_token.jpg&#34; alt=&#34;set ssh keys&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;然后在你的命令行中，输入下面的命令，把token添加进去：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ git config --global user.name &amp;quot;你的名字&amp;quot;
 $ git config --global user.token 0123456789your123456789token&lt;/code&gt;&lt;/pre&gt;
@@ -10765,9 +11255,9 @@ $ git config --global user.token 0123456789your123456789token&lt;/code&gt;&lt;/p
 &lt;div id=&#34;user-organization-pages&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3.1&lt;/span&gt; User &amp;amp; Organization Pages&lt;/h3&gt;
 &lt;p&gt;想建立个人博客是用的第一种，形如&lt;code&gt;beiyuu.github.io&lt;/code&gt;这样的可访问的站，每个用户名下面只能建立一个，创建之后点击&lt;code&gt;Admin&lt;/code&gt;进入项目管理，可以看到是这样的：
-&lt;img src=&#34;/images/githubpages/user-pages.png&#34; alt=&#34;user pages&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/user-pages.png&#34; alt=&#34;user pages&#34; /&gt;
 而普通的项目是这样的，即使你也是用的&lt;code&gt;othername.github.io&lt;/code&gt;：
-&lt;img src=&#34;/images/githubpages/other-pages.png&#34; alt=&#34;other pages&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/other-pages.png&#34; alt=&#34;other pages&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;创建好&lt;code&gt;username.github.io&lt;/code&gt;项目之后，提交一个&lt;code&gt;index.html&lt;/code&gt;文件，然后&lt;code&gt;push&lt;/code&gt;到GitHub的&lt;code&gt;master&lt;/code&gt;分支（也就是普通意义上的主干）。第一次页面生效需要一些时间，大概10分钟左右。&lt;/p&gt;
 &lt;p&gt;生效之后，访问&lt;code&gt;username.github.io&lt;/code&gt;就可以看到你上传的页面了，&lt;a href=&#34;http://beiyuu.github.io&#34;&gt;beiyuu.github.io&lt;/a&gt;就是一个例子。&lt;/p&gt;
 &lt;p&gt;关于第二种项目&lt;code&gt;pages&lt;/code&gt;，简单提一下，他和用户pages使用的后台程序是同一套，只不过它的目的是项目的帮助文档等跟项目绑定的内容，所以需要在项目的&lt;code&gt;gh-pages&lt;/code&gt;分支上去提交相应的文件，GitHub会自动帮你生成项目pages。具体的使用帮助可以参考&lt;a href=&#34;http://pages.github.com/&#34; title=&#34;Github Pages&#34;&gt;Github Pages&lt;/a&gt;的官方文档：&lt;/p&gt;
@@ -10874,7 +11364,7 @@ title: Blogging Like a Hacker
 &lt;p&gt;模板部分到此就算是配置完毕了，但是Jekyll只是个静态页面的发布系统，想做到关爽场倒是很容易，如果想要评论呢？也很简单。&lt;/p&gt;
 &lt;p&gt;现在专做评论模块的产品有很多，比如&lt;a href=&#34;http://disqus.com/&#34;&gt;Disqus&lt;/a&gt;，还有国产的&lt;a href=&#34;http://duoshuo.com/&#34;&gt;多说&lt;/a&gt;，Disqus对现在各种系统的支持都比较全面，到写博客为止，多说现在仅是WordPress的一个插件，所以我这里暂时也使用不了，多说与国内的社交网络紧密结合，还是有很多亮点的，值得期待一下。我先选择了Disqus。&lt;/p&gt;
 &lt;p&gt;注册账号什么的就不提了，Disqus支持很多的博客平台，参见下图：
-&lt;img src=&#34;/images/githubpages/disqus-site.jpg&#34; alt=&#34;Disqus sites&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/githubpages/disqus-site.jpg&#34; alt=&#34;Disqus sites&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们选择最下面的&lt;code&gt;Universal Code&lt;/code&gt;就好，然后会看到一个介绍页面，把下面这段代码复制到你的模板里面，可以只复制到显示文章的模板中：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;disqus_thread&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
 &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
@@ -10933,9 +11423,9 @@ sudo gem sources -a http://ruby.taobao.org/&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Metabolic health center conference</title>
-      <link>/post/2020-02-28-metabolic-health-center/</link>
+      <link>https://www.shenxt.info/post/2020-02-28-metabolic-health-center/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/post/2020-02-28-metabolic-health-center/</guid>
+      <guid>https://www.shenxt.info/post/2020-02-28-metabolic-health-center/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;

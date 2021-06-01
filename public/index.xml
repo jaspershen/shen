@@ -2,95 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xiaotao Shen</title>
-    <link>/</link>
+    <link>https://www.shenxt.info/</link>
     <description>Recent content on Xiaotao Shen</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy;Xiaotao Shen {year} From Stanford university, School of Medicine.</copyright>
-    <lastBuildDate>Thu, 28 Jun 2018 00:00:00 +0100</lastBuildDate>
     
-	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://www.shenxt.info/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Recent Blogs</title>
-      <link>/landing/</link>
+      <link>https://www.shenxt.info/landing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/landing/</guid>
+      <guid>https://www.shenxt.info/landing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Xiaotao Shen&#39;s Blog</title>
-      <link>/post/</link>
+      <link>https://www.shenxt.info/post/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/</guid>
+      <guid>https://www.shenxt.info/post/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>/project/</link>
+      <link>https://www.shenxt.info/project/</link>
       <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/project/</guid>
+      <guid>https://www.shenxt.info/project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Landing Page</title>
-      <link>/landing/</link>
+      <link>https://www.shenxt.info/landing/</link>
       <pubDate>Sun, 13 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/landing/</guid>
+      <guid>https://www.shenxt.info/landing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Slides</title>
-      <link>/slides/</link>
+      <link>https://www.shenxt.info/slides/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/slides/</guid>
+      <guid>https://www.shenxt.info/slides/</guid>
       <description></description>
     </item>
     
     <item>
-      <title></title>
-      <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      
-      <guid>/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Courses</title>
-      <link>/courses/</link>
+      <link>https://www.shenxt.info/courses/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/courses/</guid>
+      <guid>https://www.shenxt.info/courses/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PRESENTATIONS</title>
-      <link>/talk/</link>
+      <link>https://www.shenxt.info/talk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/talk/</guid>
+      <guid>https://www.shenxt.info/talk/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Publications</title>
-      <link>/publication/</link>
+      <link>https://www.shenxt.info/publication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/publication/</guid>
+      <guid>https://www.shenxt.info/publication/</guid>
       <description></description>
     </item>
     

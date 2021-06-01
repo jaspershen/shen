@@ -1,19 +1,12 @@
 ---
-# A Demo section created with the Blank widget.
-# Any elements can be added in the body: https://sourcethemes.com/academic/docs/writing-markdown-latex/
-# Add more sections by duplicating this file and customizing to your requirements.
-
-widget: "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless: true  # This file represents a page section.
-active: true # Activate this widget? true/false
-weight:  21  # Order that this section will appear.
-
 title: "Statistics"
-subtitle: "Record how many work I have done"
-
+headless: yes
+active: yes
+weight: 21
+widget: blank
+subtitle: Record how many work I have done
 design:
-  # Choose how many columns the section has. Valid values: 1 or 2.
-  columns: "1"
+  columns: '1'
 ---
 
 ```{r, include = FALSE}
@@ -277,19 +270,22 @@ if(nrow(cit) < 8){
     as.data.frame() %>% 
     dplyr::arrange(year)
 }
-# profile <- scholar::get_profile("3TK9yz8AAAAJ")
+profile <- scholar::get_profile("3TK9yz8AAAAJ")
 plot <- 
 ggplot(cit, aes(x = year, y = cites)) +
-  geom_bar(stat = "identity", fill = ggplot2::alpha("#991500", 0.8)) +
+  geom_bar(stat = "identity", 
+           color = ggplot2::alpha("#991500", 1),
+           fill = "transparent") +
     xlab('Year of citation')+
-    ylab('Google Scholar\n cites') +
+    ylab('Number of cites') +
     theme_void() +
-  ggplot2::ggtitle("Google Scholar") +
+  ggplot2::ggtitle(paste("Google Scholar total cites:", profile$total_cites)) +
+  scale_y_continuous(expand = expansion(mult = c(0.01, 0.1))) +
   theme(
     rect = element_rect(fill = "transparent", color = "#991500"),
     title = element_text(colour = "#991500"),
-    axis.text = element_text(color = "#991500"),
-    axis.title = element_text(color = "#991500"),
+    axis.text = element_text(color = "#991500", size = 12),
+    axis.title = element_text(color = "#991500", size = 13),
     axis.ticks = element_line(color = "#991500"),
     line = element_blank(),
     panel.background = element_rect(fill = "transparent", colour = "#991500"),

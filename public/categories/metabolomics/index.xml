@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Metabolomics | Xiaotao Shen</title>
-    <link>/categories/metabolomics/</link>
-      <atom:link href="/categories/metabolomics/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/categories/metabolomics/</link>
+      <atom:link href="https://www.shenxt.info/categories/metabolomics/index.xml" rel="self" type="application/rss+xml" />
     <description>Metabolomics</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 25 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Fri, 25 Nov 2016 00:00:00 +0000</lastBuildDate>
     <item>
       <title>MetCleaning instruction</title>
-      <link>/post/2016-11-25-metcleaning/</link>
+      <link>https://www.shenxt.info/post/2016-11-25-metcleaning/</link>
       <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>/post/2016-11-25-metcleaning/</guid>
+      <guid>https://www.shenxt.info/post/2016-11-25-metcleaning/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -27,7 +27,7 @@
 &lt;hr /&gt;
 &lt;p&gt;&lt;em&gt;MetCleaning&lt;/em&gt; provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, &lt;em&gt;MetClean&lt;/em&gt; and &lt;em&gt;MetStat&lt;/em&gt; in &lt;em&gt;MetCleaning&lt;/em&gt; utilizing demo data.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/workflow%20for%20instruction.jpg&#34; alt=&#34;Figure1 Workflow of MetCleaning&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/workflow%20for%20instruction.jpg&#34; alt=&#34;Figure1 Workflow of MetCleaning&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure1 Workflow of &lt;em&gt;MetCleaning&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -69,7 +69,7 @@ write.csv(sample.information , &amp;quot;sample.information.csv&amp;quot;, row.n
 1. “data.csv” is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain “name” (feature name), “mz” (mass to change ratio) and “rt” (retention time). Other information of features are optional, for example “isotopes” and “adducts”. The name of sample can contain “.”, but cannot contain “-” and space. And the start of sample name cannot be number. &lt;strong&gt;For example, “A210.a” and “A210a” are valid, and “210a” or “210-a” are invalid.&lt;/strong&gt;
 2. “sample.information.csv” is sample information for metabolomic dataset. Column 1 is “sample.name” which is the names of subject and QC samples. Please confirm that the sample names in “sample.information.csv” and “data.csv” are completely same. Column 2 is “injection.order” which is the injection order of QC and subject samples. Column 3 is “class”, which is used to distinguish “QC” and “Subject” samples. Column 4 is “batch” to provide acquisition batch information for samples. Column 5 is “group”, which is used to label the group of subject sample, for example, “control” and “case”. The “group” of QC samples is labeled as “QC”.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/data%20organisation.jpg&#34; alt=&#34;Figure2 Data organisation of MetCleaning&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/data%20organisation.jpg&#34; alt=&#34;Figure2 Data organisation of MetCleaning&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure2 Data organisation of MetCleaning&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Then you can run &lt;em&gt;MetClean&lt;/em&gt; function to do data cleaning of data. All the arguments of &lt;em&gt;MetClean&lt;/em&gt; can be found in the other functions in &lt;em&gt;MetCleaning&lt;/em&gt;. You can use &lt;em&gt;help(package = “MetCleaning”)&lt;/em&gt; to see the help page of &lt;em&gt;MetCleaning&lt;/em&gt;.&lt;/p&gt;
@@ -79,12 +79,12 @@ MetClean(polarity = &amp;quot;positive&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Running results of &lt;em&gt;MetClean&lt;/em&gt;
 1.Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/mv%20filter.jpg&#34; alt=&#34;Figure3 Missing or zero value filtering&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/mv%20filter.jpg&#34; alt=&#34;Figure3 Missing or zero value filtering&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure3 Missing or zero value filtering&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;2.Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don’t recommend to remove them as Figure 4 shows, because they should be consired combined other information.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/sample%20filter.jpg&#34; alt=&#34;Figure4 Sample filtering&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/sample%20filter.jpg&#34; alt=&#34;Figure4 Sample filtering&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure4 Sample filtering&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;3.Output files. Output files of &lt;em&gt;MetClean&lt;/em&gt; are listed as Figure 5 shows.
@@ -98,7 +98,7 @@ MetClean(polarity = &amp;quot;positive&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 (8) &lt;strong&gt;“data_after_pre.csv”, “qc.info.csv” and “subject.info”&lt;/strong&gt; are the data and sample information after data cleaning.
 (9) “intermediate” is the intermediate data during processing.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/output%20files%20of%20MetClean.jpg&#34; alt=&#34;Figure5 Output files of MetClean&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/output%20files%20of%20MetClean.jpg&#34; alt=&#34;Figure5 Output files of MetClean&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure5 Output files of &lt;em&gt;MetClean&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -116,7 +116,7 @@ setwd(&amp;quot;Demo for MetStat&amp;quot;)
 write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The demo data have been added in your work directory. “new.group.csv” is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don’t want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/new.group.jpg&#34; alt=&#34;Figure6 new group information&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/new.group.jpg&#34; alt=&#34;Figure6 new group information&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure6 new group information&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;code 5: Running of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
@@ -124,12 +124,12 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/c
 &lt;p&gt;Running results of &lt;em&gt;MetStat&lt;/em&gt;
 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/sample%20remove.jpg&#34; alt=&#34;Figure7 sample removing confirmation&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/sample%20remove.jpg&#34; alt=&#34;Figure7 sample removing confirmation&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure7 sample removing confirmation&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;2.Number of component selection in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the Console show “How many comps do you want to see?”, you can type 10 and enter “Enter” key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and enter “Enter” key.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/PLS%20analysis.jpg&#34; alt=&#34;Figure8 Number of component selection in PLS-DA analysis&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/PLS%20analysis.jpg&#34; alt=&#34;Figure8 Number of component selection in PLS-DA analysis&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure8 Number of component selection in PLS-DA analysis&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;3.Output files. Output files of &lt;em&gt;MetStat&lt;/em&gt; are listed as Figure 9 shows.
@@ -140,7 +140,7 @@ write.csv(new.group, &amp;quot;new.group.csv&amp;quot;, row.names = FALSE)&lt;/c
 (5) &lt;strong&gt;“data_after_stat.csv”, “qc.info.csv” and “subject.info”&lt;/strong&gt; are the data and sample information after statistical analysis.
 (6) “intermediate” is the intermediate data during processing.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/images/metcleaning/output%20files%20of%20MetStat.jpg&#34; alt=&#34;Figure9 Output files of MetStat&#34; /&gt;
+&lt;img src=&#34;https://www.shenxt.info/images/metcleaning/output%20files%20of%20MetStat.jpg&#34; alt=&#34;Figure9 Output files of MetStat&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Figure9 Output files of &lt;em&gt;MetStat&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

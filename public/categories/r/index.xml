@@ -2,15 +2,311 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R | Xiaotao Shen</title>
-    <link>/categories/r/</link>
-      <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/categories/r/</link>
+      <atom:link href="https://www.shenxt.info/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>使用Rstudio进行project管理</title>
+      <link>https://www.shenxt.info/post/2021-5-12-rstudio-project/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/2021-5-12-rstudio-project/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#需要跟github配合使用首先在github创建repo.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#本地创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建必须文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在rstudio-project的本地文件夹下创建必须的文件夹.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github忽略某些文件文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第一次上传到github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装distill&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建网站地址&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#build-website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将doc文件夹复制到root路径&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#发布website到github-pages&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#提交github.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将github-repo设置为private&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在文章发表之前不想别人看到我们的数据code等.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#邀请合作者&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#装扮website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#website_files简单介绍&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改页面布局&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的文章并将其加入到网站中&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的rmarkdown文件放在website_files文件夹中.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编辑好文章之后添加到网页.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#我自己的project管理模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文件结构&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分析及重复&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#几个原则&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#直接使用r-script生成html文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#一个例子&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#仍然使用rmakdown&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;创建rstudio-project&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/h1&gt;
+&lt;div id=&#34;需要跟github配合使用首先在github创建repo.&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.06.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;本地创建rstudio-project&#34; class=&#34;section level2&#34; number=&#34;1.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.07.56%20PM.png&#34; /&gt;
+&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.01%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建必须文件夹&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/h1&gt;
+&lt;div id=&#34;在rstudio-project的本地文件夹下创建必须的文件夹.&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.11.18%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;github忽略某些文件文件夹&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/h2&gt;
+&lt;p&gt;如果不想要上传某些文件或者文件夹到github,在.gitgnore中写明.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.13.32%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第一次上传到github&#34; class=&#34;section level2&#34; number=&#34;2.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;first commit&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.04%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.24%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建website&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/h1&gt;
+&lt;p&gt;使用distill,参考网站:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://distill.netlify.app/&#34;&gt;https://distill.netlify.app/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&#34;&gt;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;安装distill&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;rstudio/distill&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建网站地址&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/h2&gt;
+&lt;p&gt;不要将webiste文件放到root路径,可以在root路径下创建一个文件夹,比如&lt;code&gt;website_files&lt;/code&gt;,然后把文件都放到这里面.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;distill::create_website(dir = &amp;quot;website_files/&amp;quot;, gh_pages = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.21.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.22.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-website&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将doc文件夹复制到root路径&#34; class=&#34;section level2&#34; number=&#34;3.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候会在root有一个&lt;code&gt;doc&lt;/code&gt;文件夹.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;发布website到github-pages&#34; class=&#34;section level2&#34; number=&#34;3.5&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/h2&gt;
+&lt;div id=&#34;提交github.&#34; class=&#34;section level3&#34; number=&#34;3.5.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;create website&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置website&#34; class=&#34;section level3&#34; number=&#34;3.5.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.26.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.44%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.51%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候就可以看到网址了.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jaspershen.github.io/rstudio_project_test/&#34;&gt;https://jaspershen.github.io/rstudio_project_test/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.29.00%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候网站就已经公开了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将github-repo设置为private&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/h1&gt;
+&lt;div id=&#34;在文章发表之前不想别人看到我们的数据code等.&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.30.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候虽然别人看不到你的github repo,但是网址仍然可见.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;邀请合作者&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/h2&gt;
+&lt;p&gt;这样,合作者还是可以看到repo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.32.41%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;装扮website&#34; class=&#34;section level1&#34; number=&#34;5&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/h1&gt;
+&lt;div id=&#34;website_files简单介绍&#34; class=&#34;section level2&#34; number=&#34;5.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.36.27%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;index.Rmd&lt;/code&gt;: This will be our site’s homepage. This file must be named index.Rmd.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;about.Rmd&lt;/code&gt;: This will be an additional page on our site, and you can change the name of this file to be whatever you want.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;_site.yml&lt;/code&gt;: is not a file that gets turned into a site page, but it is necessary for site setup.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs/&lt;/code&gt;: folder: This is the output folder, where knitted versions of our .Rmds live once they’ve been processed to become .html files.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改页面布局&#34; class=&#34;section level2&#34; number=&#34;5.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/h2&gt;
+&lt;p&gt;打开&lt;code&gt;_site.yml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.47.34%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后按照下图进行修改.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.51.13%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;编辑好文章之后,重新render并将docs copy到root路径&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新生成网站如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.52.29%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;但是这时候还没有提交到github.只有再次提交到github网址链接的网站才会更新.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建新的文章并将其加入到网站中&#34; class=&#34;section level2&#34; number=&#34;5.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/h2&gt;
+&lt;div id=&#34;创建新的rmarkdown文件放在website_files文件夹中.&#34; class=&#34;section level3&#34; number=&#34;5.3.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.41.38%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.42.14%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.43.26%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编辑好文章之后添加到网页.&#34; class=&#34;section level3&#34; number=&#34;5.3.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/h3&gt;
+&lt;p&gt;这里我们生成的文章名字为&lt;code&gt;figure1.html&lt;/code&gt;,所以在&lt;code&gt;_site.yml&lt;/code&gt;修改:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.55.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render,并提交到github即可.&lt;/p&gt;
+&lt;p&gt;打开链接:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.57.03%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;我自己的project管理模式&#34; class=&#34;section level1&#34; number=&#34;6&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/h1&gt;
+&lt;div id=&#34;文件结构&#34; class=&#34;section level2&#34; number=&#34;6.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data&lt;/code&gt;:存放原始数据. 不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data_analysis&lt;/code&gt;: 存放分析结果. 发表前不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;code&lt;/code&gt;: 分析脚本. 公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;summary&lt;/code&gt;: slides, document等. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;manuscript&lt;/code&gt;: figures. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs&lt;/code&gt;: project网站介绍,公开.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分析及重复&#34; class=&#34;section level2&#34; number=&#34;6.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/h2&gt;
+&lt;p&gt;数据分析自己以及别人重复很重要.&lt;/p&gt;
+&lt;div id=&#34;几个原则&#34; class=&#34;section level3&#34; number=&#34;6.2.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;以Rstudio project为中心组织数据和code&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所有的数据和code都以Rstudio project为中心进行组织. 文章发表之后,public project,如果别人要重复分析,下载Rstudio project, 包含了数据和code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.03.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;使用相对路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在code中,尽量不要使用绝对路径,使用相对路径. 每个code中,都首先将work directory定为到Rstudio project所在位置.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.07.16%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果想要使用&lt;code&gt;tinyTools&lt;/code&gt;,从github安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;devtools::install_github(&amp;quot;jaspershen/tinyTools&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;代码命名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代码按照分析步骤进行命名.&lt;/p&gt;
+&lt;p&gt;代码运行的可能会有先后依赖关系,命名时最好注明.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;直接使用r-script生成html文件&#34; class=&#34;section level3&#34; number=&#34;6.2.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/h3&gt;
+&lt;p&gt;我比较习惯直接使用r script而不是rmarkdown.为了能够直接render成html格式,需要在前面加上一些:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; ---
+#&amp;#39; title: &amp;quot;Stool microbiome metabolome correlation&amp;quot;
+#&amp;#39; author: 
+#&amp;#39;   - name: &amp;quot;Xiaotao Shen&amp;quot; 
+#&amp;#39;     url: https://www.shenxt.info/
+#&amp;#39;     affiliation: Stanford School of Medicine
+#&amp;#39; date: &amp;quot;2021-05-12&amp;quot;
+#&amp;#39; site: distill::distill_website
+#&amp;#39; output: 
+#&amp;#39;   distill::distill_article:
+#&amp;#39;     code_folding: false
+#&amp;#39; ---
+
+#+ r setup, echo=TRUE, eval = FALSE, include = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考网址:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&#34;&gt;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一些基本用法:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#&#39;&lt;/code&gt;后是markdown语法内容, 比如想要使用一级标题,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; # title&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#+&lt;/code&gt;后面是r code chunk设置.比如我们想要设置某段代码不运行但是显示,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#+ eval=FALSE, echo = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相当于rmarkdown的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{r eval=FALSE, echo = TRUE}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一个例子&#34; class=&#34;section level3&#34; number=&#34;6.2.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/h3&gt;
+&lt;p&gt;在code中创建r script&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.52.55%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后运行之后,会在保存该script的路径下生成html文件.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.53.46%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将该html文件copy到docs文件夹下.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sxtTools::setwd_project()
+file.copy(from = &amp;quot;code/microbiome_analysis/data_summary.html&amp;quot;, to = &amp;quot;docs/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将该文件放到网页中.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.49.52%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render website,copy &lt;code&gt;webiste_files/docs&lt;/code&gt;到&lt;code&gt;../docs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后提交到github.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.55.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;仍然使用rmakdown&#34; class=&#34;section level3&#34; number=&#34;6.2.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/h3&gt;
+&lt;p&gt;仍然在code中建立相应的rmakdown文件.&lt;/p&gt;
+&lt;p&gt;最后需要手动copy到&lt;code&gt;website_files文件夹中.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;后续步骤相同.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>How to open the currect working directory in R</title>
-      <link>/post/2020-05-03-open-current-directory-in-r/</link>
+      <link>https://www.shenxt.info/post/2020-05-03-open-current-directory-in-r/</link>
       <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-05-03-open-current-directory-in-r/</guid>
+      <guid>https://www.shenxt.info/post/2020-05-03-open-current-directory-in-r/</guid>
       <description>
 
 
@@ -22,9 +318,9 @@
     
     <item>
       <title>Mac R在不同版本之间切换</title>
-      <link>/post/2020-04-26-switch-r-in-mac/</link>
+      <link>https://www.shenxt.info/post/2020-04-26-switch-r-in-mac/</link>
       <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-04-26-switch-r-in-mac/</guid>
+      <guid>https://www.shenxt.info/post/2020-04-26-switch-r-in-mac/</guid>
       <description>
 
 
@@ -40,9 +336,9 @@
     
     <item>
       <title>Github多人协作</title>
-      <link>/post/2020-03-10-github-collobration/</link>
+      <link>https://www.shenxt.info/post/2020-03-10-github-collobration/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-10-github-collobration/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-10-github-collobration/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -167,9 +463,9 @@ git branch --set-upstream-to=origin/jaspershen jaspershen&lt;/code&gt;&lt;/pre&g
     
     <item>
       <title>git和GitHub使用</title>
-      <link>/post/2020-03-04-git_github/</link>
+      <link>https://www.shenxt.info/post/2020-03-04-git_github/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-04-git_github/</guid>
+      <guid>https://www.shenxt.info/post/2020-03-04-git_github/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -512,9 +808,9 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
     
     <item>
       <title>Introduction to metagenomics</title>
-      <link>/post/2020-02-06-r-study/</link>
+      <link>https://www.shenxt.info/post/2020-02-06-r-study/</link>
       <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-02-06-r-study/</guid>
+      <guid>https://www.shenxt.info/post/2020-02-06-r-study/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -563,9 +859,9 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
     
     <item>
       <title>R下载数据</title>
-      <link>/post/2020-02-21-introduction_to_metagenomics/</link>
+      <link>https://www.shenxt.info/post/2020-02-21-introduction_to_metagenomics/</link>
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-02-21-introduction_to_metagenomics/</guid>
+      <guid>https://www.shenxt.info/post/2020-02-21-introduction_to_metagenomics/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -639,9 +935,9 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
     
     <item>
       <title>使用pkgdown为自己的R包创建说明网站</title>
-      <link>/post/2020-01-08-r-pkgdown/</link>
+      <link>https://www.shenxt.info/post/2020-01-08-r-pkgdown/</link>
       <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-01-08-r-pkgdown/</guid>
+      <guid>https://www.shenxt.info/post/2020-01-08-r-pkgdown/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -692,9 +988,9 @@ devtools::install_github(&amp;quot;r-lib/pkgdown&amp;quot;)&lt;/code&gt;&lt;/pre
     
     <item>
       <title>ggplot2 legend总结-1</title>
-      <link>/post/2019-12-23-r-ggplot2-legend/</link>
+      <link>https://www.shenxt.info/post/2019-12-23-r-ggplot2-legend/</link>
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-23-r-ggplot2-legend/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-23-r-ggplot2-legend/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -735,7 +1031,7 @@ devtools::install_github(&amp;quot;r-lib/pkgdown&amp;quot;)&lt;/code&gt;&lt;/pre
     geom_bar(aes(fill = gear)) +
     theme_bw()
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;与其他ggplot2上的对象一样，对于其外在表现（appearance）等，大都是在&lt;code&gt;theme()&lt;/code&gt;函数中进行设置。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;去掉legend&#34; class=&#34;section level1&#34;&gt;
@@ -743,60 +1039,60 @@ devtools::install_github(&amp;quot;r-lib/pkgdown&amp;quot;)&lt;/code&gt;&lt;/pre
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##使用theme函数
 plot +
   theme(legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#使用guides函数
 plot +
   guides(fill = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##在scales系列函数中设置
 plot +
   scale_fill_discrete(guide = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend位置&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 更改legend位置&lt;/h1&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##左侧
 plot +
   theme(legend.position = &amp;quot;left&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右侧
 plot +
   theme(legend.position = &amp;quot;top&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##底部
 plot +
   theme(legend.position = &amp;quot;bottom&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右侧。默认放在右侧
 plot +
   theme(legend.position = &amp;quot;right&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-3-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;有时候我们需要将legend放在角上。这时候还是使用&lt;code&gt;legend.position&lt;/code&gt;参数，但是需要配合&lt;code&gt;legend.justification&lt;/code&gt;参数使用。&lt;code&gt;legend.position&lt;/code&gt;设置为两个元素（数值）的向量，且取值范围为0-1。0代表最左边或者最右边，而1代表最上边或者最右边。第一个数值控制左右，第二个数值控制上下。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右上角
 plot +
   theme(legend.position = c(1, 1),
         legend.justification = c(1, 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##右下角
 plot +
   theme(legend.position = c(1, 0),
         legend.justification = c(1, 0))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##左上角
 plot +
   theme(legend.position = c(0, 1),
         legend.justification = c(0, 1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##左下角
 plot +
   theme(legend.position = c(0, 0),
         legend.justification = c(0, 0))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;当然，也可以通过设置具体的位置参数，来控制legend的位置。&lt;code&gt;legend.poisition&lt;/code&gt;中的数值都是相对值,而不是绝对值.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##中间
 plot +
   theme(legend.position =  c(0.5, 0.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend水平或者垂直排列&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 更改legend水平或者垂直排列&lt;/h1&gt;
@@ -804,29 +1100,29 @@ plot +
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend标识中的size
 plot +
   guides(fill = guide_legend(override.aes = list(size = 20)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend title位置
 ##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
 plot +
   theme(legend.title.align = 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = -1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##通过guides函数控制
 plot +
   guides(fill = guide_legend(title.position = &amp;quot;left&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   guides(fill = guide_legend(title.position = &amp;quot;bottom&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.direction = &amp;quot;horizontal&amp;quot;, legend.position = &amp;quot;bottom&amp;quot;) +
   guides(fill = guide_legend(title.position = &amp;quot;top&amp;quot;, title.hjust = 0.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-6-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend各个元素相对位置&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 更改legend各个元素相对位置&lt;/h1&gt;
@@ -834,35 +1130,35 @@ plot +
 ##通过设置legend..title.align从而控制其左右相对位置，0是居中对其，-1靠左对其，1靠右对其，
 plot +
   theme(legend.title.align = 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = -1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.title.align = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##通过guides函数控制
 plot +
   guides(fill = guide_legend(title.position = &amp;quot;left&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   guides(fill = guide_legend(title.position = &amp;quot;bottom&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.direction = &amp;quot;horizontal&amp;quot;, legend.position = &amp;quot;bottom&amp;quot;) +
   guides(fill = guide_legend(title.position = &amp;quot;top&amp;quot;, title.hjust = 0.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##去除legend文字
 plot +
   guides(fill = guide_legend(label = FALSE))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend text位置
 plot +
   theme(legend.text.align = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   guides(fill = guide_legend(label.position = &amp;quot;left&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.position = &amp;quot;bottom&amp;quot;) +
   guides(fill = guide_legend(
@@ -870,7 +1166,7 @@ plot +
     label.position = &amp;quot;bottom&amp;quot;,
     title.vjust = 1
   ))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-7-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;更改legend背景&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 更改legend背景&lt;/h1&gt;
@@ -882,7 +1178,7 @@ plot +
     size = 2,
     linetype = 2
   ))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend单个标识的背景
 plot +
   theme(legend.key = element_rect(
@@ -891,28 +1187,28 @@ plot +
     size = 0.1,
     linetype = 3
   ))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改单个标识的高度和宽度，也可以用来改变标识的大小。
 plot +
   theme(legend.key.height = unit(2, &amp;quot;line&amp;quot;),
         legend.key.width = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.key.size = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##修改legend各个key之间的距离
 plot +
   theme(legend.position = &amp;quot;top&amp;quot;,
         legend.spacing.x = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.position = &amp;quot;left&amp;quot;,
         legend.spacing.y = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.position = &amp;quot;left&amp;quot;,
         legend.spacing = unit(2, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-8-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;其他一些设置&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;7&lt;/span&gt; 其他一些设置&lt;/h1&gt;
@@ -920,7 +1216,7 @@ plot +
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;7.1&lt;/span&gt; 设置legend上下左右的边缘距离&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   theme(legend.margin = margin(5, 5, 5, 5, &amp;#39;cm&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-12-23-r-ggplot2-legend/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -928,9 +1224,9 @@ plot +
     
     <item>
       <title>Rstudio shortcut总结</title>
-      <link>/post/2019-12-23-rstudio-shortcut/</link>
+      <link>https://www.shenxt.info/post/2019-12-23-rstudio-shortcut/</link>
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-23-rstudio-shortcut/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-23-rstudio-shortcut/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1157,9 +1453,9 @@ plot +
     
     <item>
       <title>R终端输出</title>
-      <link>/post/2019-12-18-r-terminal-output/</link>
+      <link>https://www.shenxt.info/post/2019-12-18-r-terminal-output/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-12-18-r-terminal-output/</guid>
+      <guid>https://www.shenxt.info/post/2019-12-18-r-terminal-output/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1286,9 +1582,9 @@ cat(symbol$tick, &amp;quot;All good\n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>ggraph画网络图</title>
-      <link>/post/2019-11-27-r-ggraph/</link>
+      <link>https://www.shenxt.info/post/2019-11-27-r-ggraph/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-27-r-ggraph/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-27-r-ggraph/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -1421,7 +1717,7 @@ graph_data&lt;/code&gt;&lt;/pre&gt;
   geom_edge_fan() +
   geom_node_point()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;首先可以看到,需要使用&lt;code&gt;ggraph&lt;/code&gt;启动一个图像,然后必须的两个geom分别是&lt;code&gt;geom_edge_xx&lt;/code&gt;和&lt;code&gt;geom_node_xxx&lt;/code&gt;分别用来定义边和node.他们的使用办法跟&lt;code&gt;ggplot2&lt;/code&gt;非常类似,参数也都很类似,只是加上了&lt;code&gt;edge&lt;/code&gt;和&lt;code&gt;node&lt;/code&gt;标签.&lt;/p&gt;
 &lt;p&gt;我们下面接着对图片进行美化.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot &amp;lt;- 
@@ -1434,7 +1730,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()
 plot&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;从上面例子可以看到,对于edge的属性的设置,需要使用&lt;code&gt;scale_edge_xxx&lt;/code&gt;系列函数,而对于node,则直接使用原来的&lt;code&gt;ggplot2&lt;/code&gt;的&lt;code&gt;scale_xxx&lt;/code&gt;系列函数就可以了.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;添加文字&#34; class=&#34;section level2&#34;&gt;
@@ -1458,7 +1754,7 @@ angle &amp;lt;- ifelse(angle &amp;gt; 180, 90 - angle + 180, 90 - angle)&lt;/cod
                  hjust = hjust,
                  colour = &amp;quot;black&amp;quot;,
                  size = 3.5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到有些文字跑到绘图区域外面了,这时候需要将坐标轴进行扩展就行了.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   geom_node_text(aes(x = x * 1.05,
@@ -1469,7 +1765,7 @@ angle &amp;lt;- ifelse(angle &amp;gt; 180, 90 - angle + 180, 90 - angle)&lt;/cod
                  colour = &amp;quot;black&amp;quot;,
                  size = 3.5) +
   expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们可以看看原来的坐标轴是什么样子的.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -1479,7 +1775,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_size_continuous(range = c(5,10)) +
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们将theme设置为&lt;code&gt;theme_bw()&lt;/code&gt;就可以清楚的看到原来的坐标体系了.&lt;/p&gt;
 &lt;p&gt;可以看到legend的顺序有点乱.可以在&lt;code&gt;guides()&lt;/code&gt;函数中设置.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = TRUE) +
@@ -1494,7 +1790,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
          colour = guide_edge_colourbar(order = 3)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Duplicated aesthetics after name standardisation: colour&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;添加文字的时候,文字之间,以及文字node之间,会出现覆盖的问题.如下图所示:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -1510,7 +1806,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;在&lt;code&gt;ggplot2&lt;/code&gt;中,我们使用&lt;code&gt;ggrepel&lt;/code&gt;包可以解决这个问题.在这里,我们可以设置&lt;code&gt;repel&lt;/code&gt;为TRUE.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -1524,7 +1820,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5, repel = TRUE) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;当然,也可以使用&lt;code&gt;geom_node_label()&lt;/code&gt;来标注.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -1538,7 +1834,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5, repel = TRUE) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用不同的layout&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; 使用不同的layout&lt;/h2&gt;
@@ -1552,7 +1848,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;linear&amp;quot;, circular = FALSE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -1568,7 +1864,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                  size = 3.5) +
   expand_limits(x = c(-1.5, 1.5), y = c(-1.5, 1.5)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;eigen&amp;quot;, circular = FALSE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -1582,7 +1878,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      label = node_name,
                      colour = node.colour), 
                  size = 3.5) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;不同的连接线&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 不同的连接线&lt;/h2&gt;
@@ -1597,7 +1893,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_link2(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -1607,7 +1903,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_link0(aes(edge_colour = edge.colour, edge_width = edge.width)) +
 scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot;white&amp;quot;, high = &amp;quot;#800000FF&amp;quot;) +
@@ -1617,7 +1913,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;画有一定弯度的edge可以使用&lt;code&gt;geom_edge_fan()&lt;/code&gt;函数.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_fan(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -1628,7 +1924,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
   scale_colour_manual(values = c(&amp;quot;Class A&amp;quot; = &amp;quot;#8A9045FF&amp;quot;, &amp;quot;Class B&amp;quot; = &amp;quot;#155F83FF&amp;quot;)) +
   theme_void()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;使用不同的主题&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 使用不同的主题&lt;/h2&gt;
@@ -1647,7 +1943,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Inverted geom defaults of fill and color/colour.
 ## To change them back, use invert_geom_defaults().&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;因为leged的某些显示颜色为黑色,而主题没有将其修改过来,可以手动进行修改.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggraph(graph = graph_data, layout = &amp;quot;auto&amp;quot;, circular = TRUE) +
   geom_edge_arc(aes(edge_colour = edge.colour, edge_width = edge.width)) +
@@ -1664,7 +1960,7 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
                      colour = node.colour), 
                  size = 3.5, repel = TRUE) &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Using `stress` as default layout&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-r-ggraph/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -1672,9 +1968,9 @@ scale_edge_colour_gradient2(low = &amp;quot;#155F83FF&amp;quot;, mid = &amp;quot
     
     <item>
       <title>SAM test用于差异标志物的选择</title>
-      <link>/post/2019-11-27-volcano-plot/</link>
+      <link>https://www.shenxt.info/post/2019-11-27-volcano-plot/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-27-volcano-plot/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-27-volcano-plot/</guid>
       <description>
 
 
@@ -1766,7 +2062,7 @@ ff=0.5;
 ht &amp;lt;- -log10(1-confidence_level);
 points(c(-ff,ff), c(10,10), type=&amp;#39;h&amp;#39;, col=&amp;#39;green&amp;#39;,lwd=2);
 lines(c(abs.inf,abs.sup), c(ht,ht), col=&amp;#39;green&amp;#39;,lwd=2);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
 # Figure b
 #################################
@@ -1779,7 +2075,7 @@ confidence_level=0.975; ff=0.5;
 smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),
                              ta=qt(confidence_level,df=df),s0=ff,df=df);
 lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
 # Figure c
 #################################
@@ -1807,7 +2103,7 @@ lines(smoothcurve, col=&amp;#39;gray&amp;#39;,lwd=1)
 confidence_level=0.97; ff=0.15;
 smoothcurve=smooth.threshold(seq(abs.inf,abs.sup,by=0.0001),ta=qt(confidence_level,df=df),s0=ff,df=df);
 lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#################################
 # Figure d
 #################################
@@ -1815,7 +2111,7 @@ lines(smoothcurve, col=&amp;#39;green&amp;#39;,lwd=2)&lt;/code&gt;&lt;/pre&gt;
 plot(FC,-log10(p.value),xlim=c(abs.inf,abs.sup),col=4);
 # Display the human proteins which should be identified as differentially abundant
 points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Organism==&amp;quot;human&amp;quot;)],col=2,pch=3);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-27-volcano-plot/index_files/figure-html/unnamed-chunk-1-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
@@ -1828,9 +2124,9 @@ points(FC[(tabl$Organism==&amp;quot;human&amp;quot;)],-log10(p.value)[(tabl$Orga
     
     <item>
       <title>blogdown创建post模板文件夹</title>
-      <link>/post/2019-11-20-blogdown-creat-post/</link>
+      <link>https://www.shenxt.info/post/2019-11-20-blogdown-creat-post/</link>
       <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-20-blogdown-creat-post/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-20-blogdown-creat-post/</guid>
       <description>
 
 
@@ -1935,9 +2231,9 @@ output:
     
     <item>
       <title>ggplot2做蝴蝶图</title>
-      <link>/post/2019-11-16-butterfly-plot/</link>
+      <link>https://www.shenxt.info/post/2019-11-16-butterfly-plot/</link>
       <pubDate>Sat, 16 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-16-butterfly-plot/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-16-butterfly-plot/</guid>
       <description>
 
 
@@ -1996,7 +2292,7 @@ df %&amp;gt;%
   scale_y_continuous(breaks = c(-2, 0, 2, 4), labels = c(2, 0 ,2, 4)) +
   theme_bw() +
   coord_flip()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-11-16-butterfly-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-11-16-butterfly-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-twitter&#34;&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-weixin&#34;&gt;&lt;/i&gt;&lt;/p&gt;
 &lt;p&gt;&lt;i class=&#34;fab fa-qq&#34;&gt;&lt;/i&gt;&lt;/p&gt;
@@ -2005,9 +2301,9 @@ df %&amp;gt;%
     
     <item>
       <title>KEGG数据库总结</title>
-      <link>/post/2019-11-14-kegg/</link>
+      <link>https://www.shenxt.info/post/2019-11-14-kegg/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-14-kegg/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-14-kegg/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2520,9 +2816,9 @@ the type of this relation
     
     <item>
       <title>R读取和输出数据</title>
-      <link>/post/2019-11-12-r-import-export-data/</link>
+      <link>https://www.shenxt.info/post/2019-11-12-r-import-export-data/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-12-r-import-export-data/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-12-r-import-export-data/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2573,9 +2869,9 @@ test&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>使用rayshader包将ggplot2转换为3D图像</title>
-      <link>/post/2019-11-11-ggpot2-3d/</link>
+      <link>https://www.shenxt.info/post/2019-11-11-ggpot2-3d/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-11-ggpot2-3d/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-11-ggpot2-3d/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -2636,9 +2932,9 @@ rayshader::plot_gg(gg, multicore = TRUE, width = 5, height = 5,scale = 250)&lt;/
     
     <item>
       <title>tibble cookbook</title>
-      <link>/post/2019-10-09-tibble-cookbook/</link>
+      <link>https://www.shenxt.info/post/2019-10-09-tibble-cookbook/</link>
       <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-09-tibble-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-09-tibble-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3199,9 +3495,9 @@ mtcars2 %&amp;gt;%
     
     <item>
       <title>日期时间操作总结</title>
-      <link>/post/2019-10-31-date-summary/</link>
+      <link>https://www.shenxt.info/post/2019-10-31-date-summary/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-31-date-summary/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-31-date-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3354,9 +3650,9 @@ as.Date(z, tz = &amp;quot;NZ&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>dplyr cookbook</title>
-      <link>/post/2019-10-28-dplyr-cookbook/</link>
+      <link>https://www.shenxt.info/post/2019-10-28-dplyr-cookbook/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-28-dplyr-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-28-dplyr-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3422,9 +3718,9 @@ as.Date(z, tz = &amp;quot;NZ&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>ggplot2主题扩充包-ggthemes</title>
-      <link>/post/2019-10-28-ggplot2-ggthemes/ggplot2-ggthemes/</link>
+      <link>https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes/ggplot2-ggthemes/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-28-ggplot2-ggthemes/ggplot2-ggthemes/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes/ggplot2-ggthemes/</guid>
       <description>
 
 
@@ -3450,9 +3746,9 @@ install_github(c(&amp;quot;hadley/ggplot2&amp;quot;, &amp;quot;jrnold/ggthemes&a
 p &amp;lt;- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
      colour = factor(gear))) + facet_wrap(~am)
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + theme_base()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;theme_base()&lt;/code&gt;有两个参数,&lt;code&gt;base_size&lt;/code&gt;和&lt;code&gt;base_family&lt;/code&gt;,分别用来设置图片中所有字体的颜色和字体.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;theme_calc主题&#34; class=&#34;section level2&#34;&gt;
@@ -3463,9 +3759,9 @@ library(ggthemes)
 p &amp;lt;- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
      colour = factor(gear))) + facet_wrap(~am)
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + theme_calc()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;还有很多其他的主题,可以直接参考官方网站.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3483,14 +3779,14 @@ library(&amp;quot;scales&amp;quot;)
 library(ggthemes)
 
 show_col(colorblind_pal()(8))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##该函数用来给出最多8种颜色的名字&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;ggplot2&amp;quot;)
 library(&amp;quot;scales&amp;quot;)
 library(ggthemes)
 
 show_col(colorblind_pal()(8))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##该函数用来给出最多8种颜色的名字
 (
 p &amp;lt;- ggplot(mtcars) + 
@@ -3498,11 +3794,11 @@ p &amp;lt;- ggplot(mtcars) +
      colour = factor(gear))) + 
   facet_wrap(~am)
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
   theme_igray() + 
   scale_colour_colorblind()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;scale_fill_colorblind()&lt;/code&gt;函数和colour函数相同,只是用来填充.&lt;/p&gt;
 &lt;p&gt;还有很多其他的颜色标度扩展,详情可以看其官方网站.&lt;/p&gt;
 &lt;/div&gt;
@@ -3518,9 +3814,9 @@ p &amp;lt;- ggplot(mtcars) +
      shape = factor(gear))) + 
   facet_wrap(~am)
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + scale_shape_calc()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-5-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-5-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;线性标度&#34; class=&#34;section level1&#34;&gt;
@@ -3535,10 +3831,10 @@ require(ggthemes)
     ggplot(mtcars,aes(mpg, wt)) +
     geom_line(aes(linetype = factor(gear)))
 ) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p  +
     scale_linetype_stata()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;颜色形状和线性调色板&#34; class=&#34;section level1&#34;&gt;
@@ -3547,11 +3843,11 @@ require(ggthemes)
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggthemes)
 library(scales)
 show_col(few_pal(palette = &amp;quot;Light&amp;quot;)(8))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show_col(few_pal(palette = &amp;quot;Medium&amp;quot;)(8))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;show_col(few_pal(palette = &amp;quot;Dark&amp;quot;)(8))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;几何对象和统计变换函数&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;几何对象和统计变换函数&lt;/h1&gt;
@@ -3565,20 +3861,20 @@ p &amp;lt;-
 ggplot(mtcars, aes(wt, mpg)) +
  geom_point() 
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
    geom_rangeframe(colour = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
    geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
    geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2, sides = &amp;quot;top&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p +
    geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2, sides = c(&amp;quot;top&amp;quot;)) +
   geom_rangeframe(colour = &amp;quot;red&amp;quot;, linetype = 2, sides = c(&amp;quot;right&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tuftes-box-plot&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Tufte’s Box Plot&lt;/h2&gt;
@@ -3587,25 +3883,25 @@ library(ggthemes)
 (
   p &amp;lt;- ggplot(mtcars, aes(factor(cyl), mpg))
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with a point for the median and lines for whiskers
 p + geom_tufteboxplot()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with a line for the interquartile range and points for whiskers
 p + geom_tufteboxplot(median.type = &amp;quot;line&amp;quot;, whisker.type = &amp;quot;point&amp;quot;, hoffset = 0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with a wide line for the interquartile range and lines for whiskers
 p + geom_tufteboxplot(median.type = &amp;quot;line&amp;quot;, hoffset = 0, width = 3)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: position_dodge requires non-overlapping x intervals&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# with an offset line for the interquartile range and lines for whiskers
 p + geom_tufteboxplot(median.type = &amp;quot;line&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# combined with theme_tufte
 p + geom_tufteboxplot() +
   theme_tufte() +
   theme(axis.ticks.x = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/post/2019-10-28-ggplot2-ggthemes_files/figure-html/unnamed-chunk-9-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -3613,9 +3909,9 @@ p + geom_tufteboxplot() +
     
     <item>
       <title>R cookbook</title>
-      <link>/post/2019-11-10-r-cookbook/</link>
+      <link>https://www.shenxt.info/post/2019-11-10-r-cookbook/</link>
       <pubDate>Mon, 28 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-11-10-r-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/2019-11-10-r-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3693,9 +3989,9 @@ for(i in 1:10){
     
     <item>
       <title>R常见错误总结</title>
-      <link>/post/r-error-summary/</link>
+      <link>https://www.shenxt.info/post/r-error-summary/</link>
       <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-error-summary/</guid>
+      <guid>https://www.shenxt.info/post/r-error-summary/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3743,9 +4039,9 @@ theme_graph(base_family = &amp;#39;Arial&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>下载KEGG数据库</title>
-      <link>/post/download-kegg-database/</link>
+      <link>https://www.shenxt.info/post/download-kegg-database/</link>
       <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/download-kegg-database/</guid>
+      <guid>https://www.shenxt.info/post/download-kegg-database/</guid>
       <description>
 
 
@@ -3846,9 +4142,9 @@ vertex_attr(GO)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>ggplot2 cookbook</title>
-      <link>/post/ggplot2-cookbook/</link>
+      <link>https://www.shenxt.info/post/ggplot2-cookbook/</link>
       <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/ggplot2-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/ggplot2-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -3956,7 +4252,7 @@ ds &amp;lt;- do.call(rbind, lapply(split(df, df$gp), function(d) {
 ggplot(df, aes(gp, y)) +
   geom_point() +
   geom_point(data = ds, aes(y = mean), colour = &amp;#39;red&amp;#39;, size = 3)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#注意,第一个geom_point图层使用的是ggplot中的数据和美学映射.而第二个geom_point
 #图层中使用的则是不同的数据和美学映射.
 
@@ -3966,7 +4262,7 @@ ggplot(df, aes(gp, y)) +
 ggplot(df) +
   geom_point(aes(gp, y)) +
   geom_point(data = ds, aes(gp, mean), colour = &amp;#39;red&amp;#39;, size = 3)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 另外一个选择则是完全不在ggplot中定义数据和美学映射,而是在每一个图层中分别定义.
 # 当你要画复杂图形的时候,这种方法就会显示的非常清晰和明了.
 ggplot() +
@@ -3979,7 +4275,7 @@ ggplot() +
     width = 0.4
   )&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Ignoring unknown aesthetics: y&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;aes-创建美学映射&#34; class=&#34;section level2&#34;&gt;
@@ -4056,9 +4352,9 @@ aes(colour = x)&lt;/code&gt;&lt;/pre&gt;
 # aes() is passed to either ggplot() or specific layer. Aesthetics supplied
 # to ggplot() are used as defaults for every layer.
 ggplot(mpg, aes(displ, hwy)) + geom_point()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mpg) + geom_point(aes(displ, hwy))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Tidy evaluation ----------------------------------------------------
 # aes() automatically quotes all its arguments, so you need to use tidy
 # evaluation to create wrappers around ggplot2 pipelines. The
@@ -4067,7 +4363,7 @@ scatter_by &amp;lt;- function(data, ...) {
   ggplot(data) + geom_point(aes(...))
 }
 scatter_by(mtcars, disp, drat)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# If your wrapper has a more specific interface with named arguments,
 # you need &amp;quot;enquote and unquote&amp;quot;:
 scatter_by &amp;lt;- function(data, x, y) {
@@ -4077,12 +4373,12 @@ scatter_by &amp;lt;- function(data, x, y) {
   ggplot(data) + geom_point(aes(!!x, !!y))
 }
 scatter_by(mtcars, disp, drat)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Note that users of your wrapper can use their own functions in the
 # quoted expressions and all will resolve as it should!
 cut3 &amp;lt;- function(x) cut_number(x, 3)
 scatter_by(mtcars, cut3(disp), drat)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ggsave保存ggplot2图片对象&#34; class=&#34;section level2&#34;&gt;
@@ -4156,29 +4452,29 @@ p &amp;lt;-
 # 添加垂直直线
 p + 
   geom_vline(xintercept = 5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
   geom_vline(xintercept = 1:5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 添加水平直线
 p + 
   geom_hline(yintercept = 20)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 添加对角线,默认斜率为1
 p + 
   geom_abline(intercept = 20)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 计算直线回归的斜率和截距
 coef(lm(mpg ~ wt, data = mtcars))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## (Intercept)          wt 
 ##   37.285126   -5.344472&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
   geom_abline(intercept = 37, slope = -5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 但是使用geom_smooth更加简单h:
 p + 
   geom_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果想要再不同分面显示不同的直线,则使用美学对象,也就是需要自己创建
 p &amp;lt;- ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
@@ -4195,17 +4491,17 @@ mean_wt&lt;/code&gt;&lt;/pre&gt;
   geom_hline(mapping = aes(x = cyl, yintercept = wt), 
              data = mean_wt)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Ignoring unknown aesthetics: x&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##如果不使用美学对象,则在每一个分面上都是一样的
 p +
   geom_hline(yintercept = mean_wt$wt)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 控制其他美学对象
 ggplot(mtcars, aes(mpg, wt, colour = wt)) +
   geom_point() +
   geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
   facet_wrap(~ cyl)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4288,32 +4584,32 @@ stat_count(mapping = NULL, data = NULL, geom = &amp;quot;bar&amp;quot;,
 g &amp;lt;- ggplot(mpg, aes(class))
 # 然后使用geom_bar来展示每个class的case的数目
 g + geom_bar()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 可以通过设置weight参数,将每个柱子的高度改为该变量的和
 g + geom_bar(aes(weight = displ))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 当每一个柱子又可以分为不同的group时,默认是堆积在一起的.
 g + geom_bar(aes(fill = drv))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果想要翻转类别的顺序,可以在position参数中设置
 g +
  geom_bar(aes(fill = drv), 
           position = position_stack(reverse = TRUE)) +
  coord_flip() +
  theme(legend.position = &amp;quot;top&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果只是想要柱子高度显示某个变量的值,使用geom_col函数
 df &amp;lt;- data.frame(trt = c(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;), outcome = c(2.3, 1.9, 3.2))
 ggplot(df, aes(trt, outcome)) +
   geom_col()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 当然,geom_bar函数也可以用来显示连续性的变量
 df &amp;lt;- data.frame(x = rep(c(2.9, 3.1, 4.5), c(5, 10, 4)))
 ggplot(df, aes(x)) + geom_bar()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cf. a histogram of the same data
 ggplot(df, aes(x)) + geom_histogram(binwidth = 0.5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;二维方格计数热图heatmap-of-2d-bin-countsgeom_bin2d和stat_bin_2d&#34; class=&#34;section level2&#34;&gt;
@@ -4369,7 +4665,7 @@ d &amp;lt;- ggplot(diamonds, aes(x, y)) +
   ylim(4, 10)
 d + geom_bin2d()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 478 rows containing non-finite values (stat_bin2d).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;空白图geom_blank&#34; class=&#34;section level2&#34;&gt;
@@ -4386,10 +4682,10 @@ d + geom_bin2d()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p &amp;lt;- 
   ggplot(mtcars, aes(wt, mpg))
 p&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + 
   geom_blank()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-6-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;箱型图boxplot或者whiskers-plotgeom_boxplot和stat_boxplot&#34; class=&#34;section level2&#34;&gt;
@@ -4461,44 +4757,44 @@ p &amp;lt;- ggplot(mpg, aes(class, hwy))
 
 p +
     geom_boxplot()  &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 交换x轴和y轴
 p + geom_boxplot() + 
   coord_flip()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 有缺口的box plot,注意此时上下晶须距离是有变化的.
 p +
   geom_boxplot(notch = TRUE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## notch went outside hinges. Try setting notch=FALSE.
 ## notch went outside hinges. Try setting notch=FALSE.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# box宽度和每组数目n的平方根成正比
 p + geom_boxplot(varwidth = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p + geom_boxplot(fill = &amp;quot;white&amp;quot;, colour = &amp;quot;#3366FF&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 设置outlier的美学参数
 p + geom_boxplot(outlier.colour = &amp;quot;red&amp;quot;, outlier.shape = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 将点和boxplot画在一起,这时候需要把outlier去除掉,因为和原始点会有重叠
 p + geom_boxplot(outlier.shape = NA) + 
   geom_jitter(width = 0.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果每组的box plot再分类,则默认是并列排在一起的
 p + geom_boxplot(aes(colour = drv))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# x轴不是分类数据,而是连续数据也是可以的.但是需要提供如何对x轴进行分类,比如通过
 #cut_width函数将连续性变量进行分类
 ggplot(diamonds, aes(x = carat, y = price)) +
   geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Continuous x aesthetic -- did you forget aes(group=...)?&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(diamonds, aes(carat, price)) +
   geom_boxplot(aes(colour = cut_width(carat, 0.25)), show.legend = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(diamonds, aes(carat, price)) +
   geom_boxplot(aes(group = cut_width(carat, 0.25)), show.legend = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-11.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-11.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 如果你自己定义了boxplot的各个元素,也可以通过设置stat=`identify`来画boxplot
 y &amp;lt;- rnorm(100)
 df &amp;lt;- data.frame(
@@ -4514,7 +4810,7 @@ ggplot(df, aes(x)) +
    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),
    stat = &amp;quot;identity&amp;quot;
  )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-12.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-12.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;d表面的2d等高线contoursgeom_contour和stat_contour&#34; class=&#34;section level2&#34;&gt;
@@ -4584,35 +4880,35 @@ head(faithfuld)&lt;/code&gt;&lt;/pre&gt;
 ## 6      1.84      43 0.00574&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;v &amp;lt;- ggplot(faithfuld, aes(waiting, eruptions, z = density))
 v + geom_contour()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 也可以通过设置参数bins,来确定有几个等高线.
 v + geom_contour(bins = 2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;v + geom_contour(bins = 10)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 当然,也可以设置等高线之间的距离
 v + geom_contour(binwidth = 0.01)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;v + geom_contour(binwidth = 0.001)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 其他的参数
 ##level就是stat_contour的其中一个计算变量,level.
 v + geom_contour(aes(colour = ..level..))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-6.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##下面与上面相同.
 v + geom_contour(aes(colour = stat(level)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-7.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;v + geom_contour(colour = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-8.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# geom_rect用来画矩形
 
 v + geom_raster(aes(fill = density)) +
   geom_contour(colour = &amp;quot;white&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-9.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;v + geom_raster(aes(fill = density)) +
   scale_fill_gradient(low = &amp;quot;white&amp;quot;, high = &amp;quot;red&amp;quot;) +
   geom_contour(colour = &amp;quot;white&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-10.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4630,18 +4926,18 @@ library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  data.frame(x = 1:5, y = 1:5) %&amp;gt;% 
   ggplot() +
   geom_point(aes(x = x, y = y, size = x))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;scale_size_...()&lt;/code&gt;函数来进行设置.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  data.frame(x = 1:5, y = 1:5) %&amp;gt;% 
   ggplot() +
   geom_point(aes(x = x, y = y, size = x)) +
   scale_size_continuous(limits = c(1,5), range = c(1,5))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data.frame(x = 1:5, y = 1:5) %&amp;gt;% 
   ggplot() +
   geom_point(aes(x = x, y = y, size = x)) +
   scale_size_continuous(limits = c(1,5), range = c(5,6))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;其中参数&lt;code&gt;limits&lt;/code&gt;是一个两个的数值vector,用来设置是指的最小和最大值.而参数&lt;code&gt;range&lt;/code&gt;也是一个两个数值的vector,用来设置point的size的最小值和最大值.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4650,9 +4946,9 @@ library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>R data visulization cookbook</title>
-      <link>/post/r-data-visulization-cookbook/</link>
+      <link>https://www.shenxt.info/post/r-data-visulization-cookbook/</link>
       <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-data-visulization-cookbook/</guid>
+      <guid>https://www.shenxt.info/post/r-data-visulization-cookbook/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -4676,15 +4972,15 @@ mtcars %&amp;gt;%
   ggplot(aes(mpg, disp)) +
   geom_point() 
 p&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##反转X坐标轴
 p + 
   scale_x_reverse()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# 反转y坐标轴
 p + 
   scale_y_reverse()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ggplot2中如何修改绘图区域的边界&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.2&lt;/span&gt; &lt;code&gt;ggplot2&lt;/code&gt;中如何修改绘图区域的边界?&lt;/h3&gt;
@@ -4698,7 +4994,7 @@ mtcars %&amp;gt;%
   theme_bw() +
   theme(plot.margin = margin(t = 0, r = 0, b = 0, l = 0, unit = &amp;quot;pt&amp;quot;))
 p&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;如何获得合适的配色组合&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3&lt;/span&gt; 如何获得合适的配色组合?&lt;/h3&gt;
@@ -4711,20 +5007,20 @@ test_colour &amp;lt;-
   ggsci::pal_jama()(7)
 
 show_col(test_colour)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_colour &amp;lt;- 
   ggsci::pal_jama(alpha = 0.5)(7)
 
 show_col(test_colour)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;另外,&lt;code&gt;RColorBrewer&lt;/code&gt;包也非常方便.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(RColorBrewer)
 ##显示所有的配色
 RColorBrewer::display.brewer.all()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##可以扩大弄每一种配色左边都有该配色的名字,因此如果想要单独显示该配色,直接使用下列命令.
 RColorBrewer::display.brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##两个参数分别用来设置需要显示的颜色的个数以及配色的名字.
 #如果需要将该配色名字提出来,使用下面命令
 RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -4739,9 +5035,9 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
     
     <item>
       <title>快速回到R project所在的工作目录</title>
-      <link>/post/r-project-work-directory/</link>
+      <link>https://www.shenxt.info/post/r-project-work-directory/</link>
       <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-project-work-directory/</guid>
+      <guid>https://www.shenxt.info/post/r-project-work-directory/</guid>
       <description>
 
 
@@ -4811,9 +5107,9 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
     
     <item>
       <title>R语言常见统计预测模型</title>
-      <link>/post/r-ml-model/</link>
+      <link>https://www.shenxt.info/post/r-ml-model/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-ml-model/</guid>
+      <guid>https://www.shenxt.info/post/r-ml-model/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -4858,9 +5154,9 @@ RColorBrewer::brewer.pal(n = 9, name = &amp;quot;Set1&amp;quot;)&lt;/code&gt;&lt
     
     <item>
       <title>网络分析之igraph</title>
-      <link>/post/igraph/</link>
+      <link>https://www.shenxt.info/post/igraph/</link>
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/igraph/</guid>
+      <guid>https://www.shenxt.info/post/igraph/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -4915,7 +5211,7 @@ g&lt;/code&gt;&lt;/pre&gt;
 ## [1] Bob      -&amp;gt;Alice Cecil    -&amp;gt;Bob   Cecil    -&amp;gt;Alice David    -&amp;gt;Alice
 ## [5] David    -&amp;gt;Bob   Esmeralda-&amp;gt;Alice&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-10-15-igraph/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-10-15-igraph/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;寻找某个vertex的neighbor&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.3.1&lt;/span&gt; 寻找某个vertex的neighbor&lt;/h4&gt;
 &lt;p&gt;使用&lt;code&gt;neighbors()&lt;/code&gt;函数.一共两个参数:&lt;/p&gt;
@@ -4968,9 +5264,9 @@ g&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>blogdown创建博客总结</title>
-      <link>/post/blogdown/</link>
+      <link>https://www.shenxt.info/post/blogdown/</link>
       <pubDate>Sun, 13 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/blogdown/</guid>
+      <guid>https://www.shenxt.info/post/blogdown/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5321,9 +5617,9 @@ title: Display Jupyter Notebooks with Academic
     
     <item>
       <title>R可视化之小提琴图</title>
-      <link>/post/r-violin/</link>
+      <link>https://www.shenxt.info/post/r-violin/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-violin/</guid>
+      <guid>https://www.shenxt.info/post/r-violin/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5366,7 +5662,7 @@ p &amp;lt;-
   theme_bw()
 
 p&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;数据格式&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.1.1&lt;/span&gt; 数据格式&lt;/h4&gt;
 &lt;p&gt;注意在使用&lt;code&gt;geom_violin()&lt;/code&gt;函数构建小提琴图时,数据格式为长数据(long format).每一行时一个观测.一共需要两列:&lt;/p&gt;
@@ -5414,7 +5710,7 @@ data_long %&amp;gt;%
   ggplot(., aes(variable, value)) +
   geom_violin(aes(fill = variable)) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5431,7 +5727,7 @@ library(tidyverse)
   theme_bw() +
     theme(legend.position = &amp;quot;none&amp;quot;) +
     coord_flip()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;小提琴图与箱型图同时展示&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.3&lt;/span&gt; 小提琴图与箱型图同时展示&lt;/h2&gt;
@@ -5448,21 +5744,21 @@ library(tidyverse)
     theme(legend.position = &amp;quot;none&amp;quot;) +
     coord_flip()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: position_dodge requires non-overlapping x intervals&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>R可视化之桑吉图</title>
-      <link>/post/r-sankey/</link>
+      <link>https://www.shenxt.info/post/r-sankey/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/r-sankey/</guid>
+      <guid>https://www.shenxt.info/post/r-sankey/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/sankey/sankey.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/sankey/sankey.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.shenxt.info/rmarkdown-libs/sankeyNetwork-binding/sankeyNetwork.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -5641,7 +5937,7 @@ ggplot(vaccinations,
         axis.ticks = element_blank(), 
         axis.text.y = element_blank()) +
   ggtitle(&amp;quot;vaccination survey responses at three points in time&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/zh/post/2019-10-12-r-sankey/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/zh/post/2019-10-12-r-sankey/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们在对该包做一个详细的讲解.&lt;/p&gt;
 &lt;div id=&#34;冲积图alluvial-diagrams的结构&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.1.3.1&lt;/span&gt; 冲积图(Alluvial diagrams)的结构&lt;/h4&gt;
@@ -5669,9 +5965,9 @@ ggplot(vaccinations,
     
     <item>
       <title>Modern Statistics for Modern Biology:第一章</title>
-      <link>/post/2019-10-10-modern-statistics-for-modern-biology/</link>
+      <link>https://www.shenxt.info/post/2019-10-10-modern-statistics-for-modern-biology/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5704,9 +6000,9 @@ ggplot(vaccinations,
     
     <item>
       <title>组学数据分析常见方法总结</title>
-      <link>/post/2019-10-10-data-analysis-omics/</link>
+      <link>https://www.shenxt.info/post/2019-10-10-data-analysis-omics/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-10-data-analysis-omics/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-10-data-analysis-omics/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5724,9 +6020,9 @@ ggplot(vaccinations,
     
     <item>
       <title>purrr教程1:Overview</title>
-      <link>/post/2019-10-08-purrr-1-overview/</link>
+      <link>https://www.shenxt.info/post/2019-10-08-purrr-1-overview/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-10-08-purrr-1-overview/</guid>
+      <guid>https://www.shenxt.info/post/2019-10-08-purrr-1-overview/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5772,9 +6068,9 @@ mtcars %&amp;gt;%
     
     <item>
       <title>tidyverse select使用总结</title>
-      <link>/post/tidyverse-select/</link>
+      <link>https://www.shenxt.info/post/tidyverse-select/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/tidyverse-select/</guid>
+      <guid>https://www.shenxt.info/post/tidyverse-select/</guid>
       <description>
 
 
@@ -5784,9 +6080,9 @@ mtcars %&amp;gt;%
     
     <item>
       <title>ggplot2拼图工具:patchwork</title>
-      <link>/post/2019-09-09-ggplot2-patchwork/</link>
+      <link>https://www.shenxt.info/post/2019-09-09-ggplot2-patchwork/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-09-09-ggplot2-patchwork/</guid>
+      <guid>https://www.shenxt.info/post/2019-09-09-ggplot2-patchwork/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5856,7 +6152,7 @@ plot&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Removed 12 rows containing non-finite values (stat_bin).
 
 ## Warning: Removed 2 rows containing missing values (geom_bar).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-09-09-ggplot2-patchwork/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-09-09-ggplot2-patchwork/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;plot_spacer()&lt;/code&gt;函数用来生成一个空白图片.&lt;code&gt;plot_layout()&lt;/code&gt;函数用来设置拼接图片的一些具体参数,如列数,行数,宽度或者高度比等.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;{}&lt;/code&gt;括起来的几个plot组成一个完整的新的plot.&lt;/p&gt;
 &lt;p&gt;这里面需要注意的是&lt;code&gt;-&lt;/code&gt;.它是指该符号左右两侧当成两个新的图层进行拼接.&lt;/p&gt;
@@ -5867,9 +6163,9 @@ plot&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>如何修改ggplot2垂直square legend之间的距离</title>
-      <link>/post/ggplot2-square-legend/</link>
+      <link>https://www.shenxt.info/post/ggplot2-square-legend/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      <guid>/post/ggplot2-square-legend/</guid>
+      <guid>https://www.shenxt.info/post/ggplot2-square-legend/</guid>
       <description>
 
 
@@ -5878,39 +6174,39 @@ plot&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;使用&lt;code&gt;legend.key.height&lt;/code&gt;参数来设置:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl))) +
   theme(legend.key.height = unit(4, &amp;quot;line&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看到每个key变高了,但是距离并没有变化.我们试试其他类型的legend,比如point.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_point(aes(colour = factor(cyl)), stat = &amp;quot;count&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_point(aes(colour = factor(cyl)), stat = &amp;quot;count&amp;quot;) +
   theme(legend.key.height = unit(10, &amp;quot;mm&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;从这幅图看的就非常的清楚了,每个legend的图像元素是由&lt;code&gt;key&lt;/code&gt;(背景)和指示元素组成的.&lt;code&gt;legend.key.height&lt;/code&gt;参数可以改变&lt;code&gt;key&lt;/code&gt;的高度,而指示元素则处在key的中间,对于square legend来说,他们其实是和&lt;code&gt;key&lt;/code&gt;背景重合的,所以&lt;code&gt;legend.key.height&lt;/code&gt;没有办法改变他们之间的距离.&lt;/p&gt;
 &lt;p&gt;那如果确实有需要更改这个距离,怎么做呢?想到一个办法只能更改square指示元素的line的宽度(line颜色为白色),从而间接修改他们之间的距离.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(mtcars, aes(x = factor(cyl))) +
   geom_bar(aes(fill = factor(cyl))) +
   theme(legend.key.size = unit(2, &amp;quot;line&amp;quot;)) +
   guides(fill = guide_legend(override.aes = list(size = 3, colour = &amp;quot;white&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-09-04-ggplot2-square-legend/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;欢迎大家由其他办法的留言讨论.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>生物统计学学习:逻辑回归</title>
-      <link>/post/2019-08-31-logistic-regression/</link>
+      <link>https://www.shenxt.info/post/2019-08-31-logistic-regression/</link>
       <pubDate>Sat, 31 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-08-31-logistic-regression/</guid>
+      <guid>https://www.shenxt.info/post/2019-08-31-logistic-regression/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5933,7 +6229,7 @@ ggplot(data.frame(x,y), aes(x, y)) +
   geom_line(colour = &amp;quot;red&amp;quot;) +
   geom_vline(xintercept = 0) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-08-31-logistic-regression/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-08-31-logistic-regression/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;可以看出来sigmoid函数是一个S型曲线.他的取值在[0,1]之间.&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -5941,9 +6237,9 @@ ggplot(data.frame(x,y), aes(x, y)) +
     
     <item>
       <title>生物统计学习:简单线性回归模型</title>
-      <link>/post/2019-08-26-liner-regression/</link>
+      <link>https://www.shenxt.info/post/2019-08-26-liner-regression/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-08-26-liner-regression/</guid>
+      <guid>https://www.shenxt.info/post/2019-08-26-liner-regression/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -5979,13 +6275,13 @@ ggplot(data, aes(age, height)) +
   geom_point() +
   theme_bw()
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我们画出散点图之后,可以看出age和height呈比较明显的线性关系.&lt;/p&gt;
 &lt;p&gt;那我们怎么用一条直线去拟合(fit)数据呢?我们使用的就是最小平方差法(least square).&lt;/p&gt;
 &lt;p&gt;那么最简单的拟合办法是什么呢?也就是直接使用所有人的height的平均值去拟合.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot +
   geom_hline(yintercept = mean(data$height))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;那么怎么评价一条直线对数据拟合的好坏呢?这时候就需要引入另外一个概念,残差(residuls).残差也就是真实值和拟合值之间差值:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[residual = y_i - y_i^{&amp;#39;}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt;是真实值,而&lt;span class=&#34;math inline&#34;&gt;\(y_i{&amp;#39;}\)&lt;/span&gt;是模型预测值.&lt;/p&gt;
@@ -5996,7 +6292,7 @@ ggplot(data, aes(age, height)) +
 &lt;pre&gt;&lt;code&gt;## Warning: Use of `data$height` is discouraged. Use `height` instead.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Use of `data$age` is discouraged. Use `age` instead.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: Use of `data$height` is discouraged. Use `height` instead.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.shenxt.info/en/post/2019-08-26-liner-regression/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;从定义可以看到,残差有正有负.为了表示一条拟合直线对数据拟合的程度的好坏,我们将残差平方然后加和,从而得到&lt;strong&gt;残差平方和(sum of squared residuals)&lt;/strong&gt;,该值就可以用来表示一条直线对数据的拟合的好坏.拟合的越好,该值越小,拟合的越差,该值越大.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;其实使用残差平方和作为损失函数得到的最后的方程或者说模型并不一定是最优解,但是好处是方便后面求解(求导)并且解是唯一的.另外还有使用残差绝对值之和作为损失函数进行求解.以后再慢慢介绍.&lt;/p&gt;
@@ -6088,9 +6384,9 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Markdown中输入数学公式</title>
-      <link>/post/2019-08-25-math-markdown/</link>
+      <link>https://www.shenxt.info/post/2019-08-25-math-markdown/</link>
       <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/post/2019-08-25-math-markdown/</guid>
+      <guid>https://www.shenxt.info/post/2019-08-25-math-markdown/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -6643,9 +6939,9 @@ summary(lm_fit)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>使用R爬取HMDB和KEGG数据库</title>
-      <link>/post/2016-12-03-keggandhmdb/</link>
+      <link>https://www.shenxt.info/post/2016-12-03-keggandhmdb/</link>
       <pubDate>Fri, 25 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>/post/2016-12-03-keggandhmdb/</guid>
+      <guid>https://www.shenxt.info/post/2016-12-03-keggandhmdb/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;
@@ -6992,9 +7288,9 @@ for (i in 1:400) {
     
     <item>
       <title>Metabolic health center conference</title>
-      <link>/post/2020-02-28-metabolic-health-center/</link>
+      <link>https://www.shenxt.info/post/2020-02-28-metabolic-health-center/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/post/2020-02-28-metabolic-health-center/</guid>
+      <guid>https://www.shenxt.info/post/2020-02-28-metabolic-health-center/</guid>
       <description>
 
 &lt;div id=&#34;TOC&#34;&gt;

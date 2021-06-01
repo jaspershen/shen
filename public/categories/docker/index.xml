@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker | Xiaotao Shen</title>
-    <link>/categories/docker/</link>
-      <atom:link href="/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.shenxt.info/categories/docker/</link>
+      <atom:link href="https://www.shenxt.info/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     <description>docker</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2020 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Docker的安装使用和配置</title>
-      <link>/post/docker/</link>
+      <link>https://www.shenxt.info/post/docker/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/docker/</guid>
+      <guid>https://www.shenxt.info/post/docker/</guid>
       <description>
 
 
