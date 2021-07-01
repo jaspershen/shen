@@ -17,32 +17,36 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#csv文件"><span class="toc-section-number">1</span> <code>CSV</code>文件</a><ul>
-<li><a href="#读取"><span class="toc-section-number">1.1</span> 读取</a><ul>
+<li><a href="#csv文件"><span class="toc-section-number">1</span> <code>CSV</code>文件</a>
+<ul>
+<li><a href="#读取"><span class="toc-section-number">1.1</span> 读取</a>
+<ul>
 <li><a href="#readr包"><span class="toc-section-number">1.1.1</span> <code>readr</code>包</a></li>
 </ul></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="csv文件" class="section level1">
+<div id="csv文件" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> <code>CSV</code>文件</h1>
-<div id="读取" class="section level2">
+<div id="读取" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> 读取</h2>
-<div id="readr包" class="section level3">
+<div id="readr包" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> <code>readr</code>包</h3>
 <p><code>readr</code>包中有几个函数可以读取<code>csv</code>文件.其中第一个就是<code>read_csv()</code>函数.另外还有一个与其非常类似的<code>read_csv2()</code>函数,唯一区别在于<code>read_csv()</code>读取的<code>csv</code>文件分隔符是逗号(,),而<code>read_csv2()</code>读取的分隔符是分号(;),这在某些欧洲国家会比较常见.需要注意一下.</p>
 <p>第一个参数<code>file</code>用来指定要读取的文件的路径和名称.</p>
 <p>使用<code>readr</code>自带的示例数据.</p>
 <pre class="r"><code>library(readr)
-test &lt;- readr_example(path = &quot;mtcars.csv&quot;)
+test &lt;- readr_example(&quot;mtcars.csv&quot;)
 test</code></pre>
-<pre><code>## [1] &quot;D:/software/R/R-3.6.0/library/readr/extdata/mtcars.csv&quot;</code></pre>
+<pre><code>## [1] &quot;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/readr/extdata/mtcars.csv&quot;</code></pre>
 <pre class="r"><code>test &lt;- read_csv(file = test)</code></pre>
-<pre><code>## Parsed with column specification:
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
 ##   mpg = col_double(),
 ##   cyl = col_double(),

@@ -16,6 +16,7 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -36,7 +37,7 @@ output:
 </div>
 
 <p>在Markdown中可以方便的输入数学公式.现在将Markdown中数学公式总结一下.</p>
-<div id="如何插入公式" class="section level3">
+<div id="如何插入公式" class="section level3" number="0.0.1">
 <h3><span class="header-section-number">0.0.1</span> 1. 如何插入公式</h3>
 <p>包括两种,一种是在行内插入,一种是独立公式(单独一行).</p>
 <ul>
@@ -46,7 +47,7 @@ output:
 <pre><code>$$E = mc^2$$</code></pre>
 <p><span class="math display">\[E = mc^2\]</span></p>
 </div>
-<div id="上下标" class="section level3">
+<div id="上下标" class="section level3" number="0.0.2">
 <h3><span class="header-section-number">0.0.2</span> 2. 上下标</h3>
 <p><code>^</code>上标,<code>_</code>下标.如果上下标内容多于一个字符,需要使用<code>{}</code>将其扩大为一个整体.</p>
 <ul>
@@ -57,7 +58,7 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} \]</span></p>
 </div>
-<div id="括号和分隔符" class="section level3">
+<div id="括号和分隔符" class="section level3" number="0.0.3">
 <h3><span class="header-section-number">0.0.3</span> 3. 括号和分隔符</h3>
 <p>()、[] 和 | 表示符号本身，使用 {} 来表示{} 。当要显示大号的括号或分隔符时，要用 和 命令。</p>
 <p>一些特殊的例子:</p>
@@ -99,9 +100,9 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2}\right) \]</span></p>
 </div>
-<div id="分数" class="section level3">
+<div id="分数" class="section level3" number="0.0.4">
 <h3><span class="header-section-number">0.0.4</span> 4. 分数</h3>
-<p>通常使用  命令产生一个分数，分数可嵌套。</p>
+<p>通常使用  {分母} 命令产生一个分数，分数可嵌套。</p>
 <ul>
 <li><strong>例子</strong></li>
 </ul>
@@ -110,7 +111,7 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[\frac{a-1}{b-1}\]</span></p>
 </div>
-<div id="开方" class="section level3">
+<div id="开方" class="section level3" number="0.0.5">
 <h3><span class="header-section-number">0.0.5</span> 5. 开方</h3>
 <p>使用  命令输入开方。</p>
 <ul>
@@ -124,7 +125,7 @@ output:
 <p>其中.</p>
 </blockquote>
 </div>
-<div id="省略号" class="section level3">
+<div id="省略号" class="section level3" number="0.0.6">
 <h3><span class="header-section-number">0.0.6</span> 6. 省略号</h3>
 <p>数学公式中常见的省略号有两种，表示与文本底线对齐的省略号，表示与文本中线对齐的省略号。</p>
 <ul>
@@ -135,7 +136,7 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[f(x_1,x_2,\ldots ,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2\]</span></p>
 </div>
-<div id="矢量" class="section level3">
+<div id="矢量" class="section level3" number="0.0.7">
 <h3><span class="header-section-number">0.0.7</span> 7. 矢量</h3>
 <p>使用  来自动产生一个矢量。也可以使用 等命令自定义字母上方的符号。</p>
 <ul>
@@ -154,7 +155,7 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[\overleftarrow{xy} \quad and \quad \overleftrightarrow{xy} \quad and \quad \overrightarrow{xy}\]</span></p>
 </div>
-<div id="积分" class="section level3">
+<div id="积分" class="section level3" number="0.0.8">
 <h3><span class="header-section-number">0.0.8</span> 8. 积分</h3>
 <p>使用 _积分下限^积分上限 {被积表达式} 来输入一个积分。</p>
 <ul>
@@ -165,7 +166,7 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[\int_0^1 {x^2} dx\]</span></p>
 </div>
-<div id="极限预算" class="section level3">
+<div id="极限预算" class="section level3" number="0.0.9">
 <h3><span class="header-section-number">0.0.9</span> 9. 极限预算</h3>
 <p>使用 _{变量 表达式} 表达式 来输入一个极限。如有需求，可以更改 符号至任意符号。</p>
 <ul>
@@ -184,7 +185,7 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[\to \quad and \quad \rightarrow\]</span></p>
 </div>
-<div id="累加累乘公式" class="section level3">
+<div id="累加累乘公式" class="section level3" number="0.0.10">
 <h3><span class="header-section-number">0.0.10</span> 10. 累加,累乘公式</h3>
 <p>使用 _{下标表达式}^{上标表达式} {累加表达式} 来输入一个累加。
 与之类似，使用 来分别输入累乘、并集和交集。
@@ -197,7 +198,7 @@ output:
 <p>显示:</p>
 <p><span class="math display">\[\sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} R\]</span></p>
 </div>
-<div id="希腊字母" class="section level3">
+<div id="希腊字母" class="section level3" number="0.0.11">
 <h3><span class="header-section-number">0.0.11</span> 11. 希腊字母</h3>
 <p>输入<code>\小写希腊字母英文全称</code>和<code>\首字母大写希腊字母英文全称</code>来分别输入小写和大写希腊字母。</p>
 <blockquote>
@@ -340,9 +341,9 @@ output:
 </tbody>
 </table>
 </div>
-<div id="运算符" class="section level3">
+<div id="运算符" class="section level3" number="0.0.12">
 <h3><span class="header-section-number">0.0.12</span> 12. 运算符</h3>
-<div id="关系运算符" class="section level4">
+<div id="关系运算符" class="section level4" number="0.0.12.1">
 <h4><span class="header-section-number">0.0.12.1</span> (1) 关系运算符</h4>
 <table>
 <thead>
@@ -411,7 +412,7 @@ output:
 </tbody>
 </table>
 </div>
-<div id="集合运算符" class="section level4">
+<div id="集合运算符" class="section level4" number="0.0.12.2">
 <h4><span class="header-section-number">0.0.12.2</span> (2) 集合运算符</h4>
 <table>
 <thead>
@@ -460,7 +461,7 @@ output:
 </tbody>
 </table>
 </div>
-<div id="对数运算符" class="section level4">
+<div id="对数运算符" class="section level4" number="0.0.12.3">
 <h4><span class="header-section-number">0.0.12.3</span> (3) 对数运算符</h4>
 <table>
 <thead>
@@ -485,7 +486,7 @@ output:
 </tbody>
 </table>
 </div>
-<div id="三角运算符" class="section level4">
+<div id="三角运算符" class="section level4" number="0.0.12.4">
 <h4><span class="header-section-number">0.0.12.4</span> (4) 三角运算符</h4>
 <table>
 <thead>
@@ -531,7 +532,7 @@ output:
 </table>
 </div>
 </div>
-<div id="字体转换" class="section level3">
+<div id="字体转换" class="section level3" number="0.0.13">
 <h3><span class="header-section-number">0.0.13</span> 13. 字体转换</h3>
 <p>若要对公式的某一部分字符进行字体转换，可以用<code>{\字体 {需转换的部分字符}}</code>命令，其中 <code>\字体</code> 部分可以参照下表选择合适的字体。一般情况下，公式默认为意大利体。</p>
 <p>示例中<code>全部大写</code>的字体仅大写可用。</p>

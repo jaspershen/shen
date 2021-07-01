@@ -16,13 +16,16 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#日期格式转换"><span class="toc-section-number">1</span> 日期格式转换</a><ul>
+<li><a href="#日期格式转换"><span class="toc-section-number">1</span> 日期格式转换</a>
+<ul>
 <li><a href="#比如美国这边常见的月日年."><span class="toc-section-number">1.1</span> 比如美国这边常见的<code>月/日/年</code>.</a></li>
 <li><a href="#国内常见常见的年月日"><span class="toc-section-number">1.2</span> 国内常见常见的<code>年/月/日</code></a></li>
-<li><a href="#常见日期各个元素的写法及相应format的写法"><span class="toc-section-number">1.3</span> 常见日期各个元素的写法及相应format的写法</a><ul>
+<li><a href="#常见日期各个元素的写法及相应format的写法"><span class="toc-section-number">1.3</span> 常见日期各个元素的写法及相应format的写法</a>
+<ul>
 <li><a href="#年"><span class="toc-section-number">1.3.1</span> 年</a></li>
 <li><a href="#月"><span class="toc-section-number">1.3.2</span> 月</a></li>
 <li><a href="#日"><span class="toc-section-number">1.3.3</span> 日</a></li>
@@ -38,14 +41,14 @@ output:
 parse_datetime(&quot;2019-11-11T2010&quot;)</code></pre>
 <pre><code>## [1] &quot;2019-11-11 20:10:00 UTC&quot;</code></pre>
 <p><code>parse_datetime()</code>是<code>readr</code>包中的用于解析日期的函数.</p>
-<div id="日期格式转换" class="section level1">
+<div id="日期格式转换" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> 日期格式转换</h1>
 <p>使用<code>as.Date()</code>函数将文本格式日期转换为date格式数据.一共需要两个参数:</p>
 <ul>
 <li><p>x:文本格式日期.</p></li>
 <li><p>format:文本格式日期的格式.</p></li>
 </ul>
-<div id="比如美国这边常见的月日年." class="section level2">
+<div id="比如美国这边常见的月日年." class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> 比如美国这边常见的<code>月/日/年</code>.</h2>
 <pre class="r"><code>date &lt;- c(&quot;8/6/2014&quot;, &quot;3/18/2015&quot;)
 class(date)</code></pre>
@@ -69,7 +72,7 @@ date2</code></pre>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <p>注意可以看到,对于<code>年</code>,有时候大家会省写,比如<code>2015</code>写为<code>15</code>.这时候在<code>format</code>参数中代表年的位置应当由全写的<code>Y</code>改为小写的<code>y</code>.对于<code>月</code>和<code>日</code>则不存在这个问题.</p>
 </div>
-<div id="国内常见常见的年月日" class="section level2">
+<div id="国内常见常见的年月日" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> 国内常见常见的<code>年/月/日</code></h2>
 <p>当然对于其他的类似使用<code>/</code>分隔开日期形式,只要变换<code>format</code>中的顺序即可.</p>
 <pre class="r"><code>date &lt;- c(&quot;2015/8/6&quot;, &quot;3/18/15&quot;)
@@ -82,16 +85,16 @@ date2</code></pre>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <p>可以看到对于格式不同的数据,可以将<code>format</code>设置为向量.</p>
 </div>
-<div id="常见日期各个元素的写法及相应format的写法" class="section level2">
+<div id="常见日期各个元素的写法及相应format的写法" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> 常见日期各个元素的写法及相应format的写法</h2>
-<div id="年" class="section level3">
+<div id="年" class="section level3" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> 年</h3>
 <ul>
 <li><p><strong>%Y</strong>: 4位完整数字的年.如<code>2019</code></p></li>
 <li><p><strong>%y</strong>: 2位数字的年.如<code>19</code></p></li>
 </ul>
 </div>
-<div id="月" class="section level3">
+<div id="月" class="section level3" number="1.3.2">
 <h3><span class="header-section-number">1.3.2</span> 月</h3>
 <ul>
 <li><p><strong>%m</strong>: 两位或者一位的月,如<code>01</code>或者<code>10</code>.</p></li>
@@ -99,14 +102,14 @@ date2</code></pre>
 <li><p><strong>%B</strong>: 月份的全写,比如<code>January</code>.</p></li>
 </ul>
 </div>
-<div id="日" class="section level3">
+<div id="日" class="section level3" number="1.3.3">
 <h3><span class="header-section-number">1.3.3</span> 日</h3>
 <ul>
 <li><p><strong>%d</strong>: 两位或者一位的日,比如<code>1</code>或者<code>28</code>.</p></li>
 <li><p><strong>%d</strong>: 两位或者一位的日,比如<code>1</code>或者<code>28</code>.</p></li>
 </ul>
 </div>
-<div id="时间" class="section level3">
+<div id="时间" class="section level3" number="1.3.4">
 <h3><span class="header-section-number">1.3.4</span> 时间</h3>
 <ul>
 <li><p><strong>%H</strong>: 0-23小时的时间格式.</p></li>
@@ -119,7 +122,7 @@ date2</code></pre>
 </ul>
 <pre class="r"><code>## locale-specific version of the date
 format(Sys.Date(), &quot;%a %b %d&quot;)</code></pre>
-<pre><code>## [1] &quot;Tue Nov 12&quot;</code></pre>
+<pre><code>## [1] &quot;Thu Jul 01&quot;</code></pre>
 <pre class="r"><code>x &lt;- c(&quot;1jan1960&quot;, &quot;2jan1960&quot;, &quot;31mar1960&quot;, &quot;30jul1960&quot;)
 z &lt;- as.Date(x, &quot;%d%b%Y&quot;)
 z</code></pre>

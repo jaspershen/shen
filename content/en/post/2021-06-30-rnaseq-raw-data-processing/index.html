@@ -1,10 +1,10 @@
 ---
-title: 使用Rstudio进行project管理
+title: RNA-seq原始数据处理
 author: Xiaotao Shen
-date: '2021-05-12'
+date: '2021-06-30'
 slug: 
 categories:
-  - R
+  - Linux
 tags:
   - Blog
   - Chinese
@@ -21,286 +21,142 @@ output:
 
 <div id="TOC">
 <ul>
-<li><a href="#创建rstudio-project"><span class="toc-section-number">1</span> 创建Rstudio project</a>
+<li><a href="#rna-seq原始数据"><span class="toc-section-number">1</span> RNA-seq原始数据</a></li>
+<li><a href="#数据整理"><span class="toc-section-number">2</span> 数据整理</a>
 <ul>
-<li><a href="#需要跟github配合使用首先在github创建repo."><span class="toc-section-number">1.1</span> 需要跟github配合使用,首先在github创建repo.</a></li>
-<li><a href="#本地创建rstudio-project"><span class="toc-section-number">1.2</span> 本地创建Rstudio project</a></li>
+<li><a href="#raw_data"><span class="toc-section-number">2.1</span> raw_data</a></li>
+<li><a href="#qc_results"><span class="toc-section-number">2.2</span> qc_results</a></li>
+<li><a href="#clean_data"><span class="toc-section-number">2.3</span> clean_data</a></li>
+<li><a href="#reference_geonome"><span class="toc-section-number">2.4</span> reference_geonome</a></li>
+<li><a href="#aligned"><span class="toc-section-number">2.5</span> aligned</a></li>
 </ul></li>
-<li><a href="#创建必须文件夹"><span class="toc-section-number">2</span> 创建必须文件夹</a>
+<li><a href="#质量控制"><span class="toc-section-number">3</span> 质量控制</a>
 <ul>
-<li><a href="#在rstudio-project的本地文件夹下创建必须的文件夹."><span class="toc-section-number">2.1</span> 在Rstudio project的本地文件夹下创建必须的文件夹.</a></li>
-<li><a href="#github忽略某些文件文件夹"><span class="toc-section-number">2.2</span> github忽略某些文件/文件夹</a></li>
-<li><a href="#第一次上传到github"><span class="toc-section-number">2.3</span> 第一次上传到github</a></li>
+<li><a href="#fastqc"><span class="toc-section-number">3.1</span> fastQC</a></li>
+<li><a href="#multiqc"><span class="toc-section-number">3.2</span> multiqc</a></li>
 </ul></li>
-<li><a href="#创建website"><span class="toc-section-number">3</span> 创建website</a>
-<ul>
-<li><a href="#安装distill"><span class="toc-section-number">3.1</span> 安装distill</a></li>
-<li><a href="#创建网站地址"><span class="toc-section-number">3.2</span> 创建网站地址</a></li>
-<li><a href="#build-website"><span class="toc-section-number">3.3</span> Build website</a></li>
-<li><a href="#将doc文件夹复制到root路径"><span class="toc-section-number">3.4</span> 将doc文件夹复制到root路径</a></li>
-<li><a href="#发布website到github-pages"><span class="toc-section-number">3.5</span> 发布website到github pages</a>
-<ul>
-<li><a href="#提交github."><span class="toc-section-number">3.5.1</span> 提交github.</a></li>
-<li><a href="#设置website"><span class="toc-section-number">3.5.2</span> 设置website</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#将github-repo设置为private"><span class="toc-section-number">4</span> 将github repo设置为private</a>
-<ul>
-<li><a href="#在文章发表之前不想别人看到我们的数据code等."><span class="toc-section-number">4.1</span> 在文章发表之前,不想别人看到我们的数据/code等.</a></li>
-<li><a href="#邀请合作者"><span class="toc-section-number">4.2</span> 邀请合作者</a></li>
-</ul></li>
-<li><a href="#装扮website"><span class="toc-section-number">5</span> 装扮website</a>
-<ul>
-<li><a href="#website_files简单介绍"><span class="toc-section-number">5.1</span> website_files简单介绍</a></li>
-<li><a href="#修改页面布局"><span class="toc-section-number">5.2</span> 修改页面布局</a></li>
-<li><a href="#创建新的文章并将其加入到网站中"><span class="toc-section-number">5.3</span> 创建新的文章并将其加入到网站中</a>
-<ul>
-<li><a href="#创建新的rmarkdown文件放在website_files文件夹中."><span class="toc-section-number">5.3.1</span> 创建新的<code>rmarkdown</code>文件,放在website_files文件夹中.</a></li>
-<li><a href="#编辑好文章之后添加到网页."><span class="toc-section-number">5.3.2</span> 编辑好文章之后,添加到网页.</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#我自己的project管理模式"><span class="toc-section-number">6</span> 我自己的project管理模式</a>
-<ul>
-<li><a href="#文件结构"><span class="toc-section-number">6.1</span> 文件结构</a></li>
-<li><a href="#分析及重复"><span class="toc-section-number">6.2</span> 分析及重复</a>
-<ul>
-<li><a href="#几个原则"><span class="toc-section-number">6.2.1</span> 几个原则</a></li>
-<li><a href="#直接使用r-script生成html文件"><span class="toc-section-number">6.2.2</span> 直接使用r script生成html文件</a></li>
-<li><a href="#一个例子"><span class="toc-section-number">6.2.3</span> 一个例子</a></li>
-<li><a href="#仍然使用rmakdown"><span class="toc-section-number">6.2.4</span> 仍然使用rmakdown</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#使用trim-galore去除低质量的reads和adaptor"><span class="toc-section-number">4</span> 使用trim-galore去除低质量的reads和adaptor</a></li>
+<li><a href="#序列比对"><span class="toc-section-number">5</span> 序列比对</a></li>
+<li><a href="#samtools将sam转换为bam"><span class="toc-section-number">6</span> samtools将sam转换为bam</a></li>
 </ul>
 </div>
 
-<div id="创建rstudio-project" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> 创建Rstudio project</h1>
-<div id="需要跟github配合使用首先在github创建repo." class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> 需要跟github配合使用,首先在github创建repo.</h2>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.06.02%20PM.png" /></p>
+<div id="rna-seq原始数据" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> RNA-seq原始数据</h1>
+<p>参考:<a href="https://mp.weixin.qq.com/s?__biz=MzA4NDAzODkzMA==&amp;mid=2651272899&amp;idx=1&amp;sn=6779b2bd21f3b607a08227d31c7212c6&amp;chksm=841ed2beb3695ba8bee23563c28caa005447b2298785719964732b16cafe3a15d7d4937b95c1&amp;scene=21#wechat_redirect" class="uri">https://mp.weixin.qq.com/s?__biz=MzA4NDAzODkzMA==&amp;mid=2651272899&amp;idx=1&amp;sn=6779b2bd21f3b607a08227d31c7212c6&amp;chksm=841ed2beb3695ba8bee23563c28caa005447b2298785719964732b16cafe3a15d7d4937b95c1&amp;scene=21#wechat_redirect</a></p>
+<p>原始数据格式为fastq,为本文文件.用来保存生物序列.每一个样本一个fastq文件,每个序列用四行信息记录.</p>
 </div>
-<div id="本地创建rstudio-project" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> 本地创建Rstudio project</h2>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.07.56%20PM.png" />
-<img src="Screen%20Shot%202021-05-12%20at%201.08.01%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.08.15%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.08.28%20PM.png" /></p>
+<div id="数据整理" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> 数据整理</h1>
+<p>一般需要将不同数据放在不同文件夹下.</p>
+<div id="raw_data" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> raw_data</h2>
+<p>原始数据.fastq或者fastq.gz格式.</p>
 </div>
+<div id="qc_results" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> qc_results</h2>
+<p>用来存放质量控制得到的数据.</p>
 </div>
-<div id="创建必须文件夹" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> 创建必须文件夹</h1>
-<div id="在rstudio-project的本地文件夹下创建必须的文件夹." class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> 在Rstudio project的本地文件夹下创建必须的文件夹.</h2>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.11.18%20PM.png" /></p>
+<div id="clean_data" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> clean_data</h2>
+<p>用来存放<code>trim_galore</code>清洗之后的数据.</p>
 </div>
-<div id="github忽略某些文件文件夹" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> github忽略某些文件/文件夹</h2>
-<p>如果不想要上传某些文件或者文件夹到github,在.gitgnore中写明.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.13.32%20PM.png" /></p>
+<div id="reference_geonome" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> reference_geonome</h2>
+<p>用来存放参考基因组.</p>
 </div>
-<div id="第一次上传到github" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> 第一次上传到github</h2>
-<pre><code>git add.
-git commit -m &quot;first commit&quot;
-git push</code></pre>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.16.04%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.16.24%20PM.png" /></p>
+<div id="aligned" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> aligned</h2>
+<p>用来存放比对之后的数据.</p>
 </div>
 </div>
-<div id="创建website" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> 创建website</h1>
-<p>使用distill,参考网站:</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="https://distill.netlify.app/">https://distill.netlify.app/</a></p></li>
-<li><p><a href="https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html">https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html</a></p></li>
-</ol>
-<div id="安装distill" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> 安装distill</h2>
-<pre><code>remotes::install_github(&quot;rstudio/distill&quot;)</code></pre>
+<div id="质量控制" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> 质量控制</h1>
+<p>使用<code>fastQC</code>和<code>multiqc</code>对测序质量进行评价.</p>
+<div id="fastqc" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> fastQC</h2>
+<p>首先使用fastQC对每个样品的测序质量进行评估.</p>
+<pre><code>fastqc -o &lt;output dir&gt; &lt;seqfile1,seqfile2..&gt;</code></pre>
+<p>-o:输出的路径</p>
+<p>&lt;seqfile1,seqfile2..&gt;:要进行评估的原始数据.</p>
+<p>将路径设置到最外面.</p>
+<p>然后输入下面代码:</p>
+<pre><code>fastqc -o qc_results *.fastq.gz</code></pre>
 </div>
-<div id="创建网站地址" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> 创建网站地址</h2>
-<p>不要将webiste文件放到root路径,可以在root路径下创建一个文件夹,比如<code>website_files</code>,然后把文件都放到这里面.</p>
-<pre><code>distill::create_website(dir = &quot;website_files/&quot;, gh_pages = TRUE)</code></pre>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.21.15%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.22.10%20PM.png" /></p>
-</div>
-<div id="build-website" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Build website</h2>
-<pre><code>rmarkdown::render_site(input = &quot;website_files/&quot;)</code></pre>
-</div>
-<div id="将doc文件夹复制到root路径" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> 将doc文件夹复制到root路径</h2>
-<pre><code>file.copy(from = &quot;website_files/docs/&quot;, to = &quot;.&quot;, recursive = TRUE, overwrite = TRUE)</code></pre>
-<p>这时候会在root有一个<code>doc</code>文件夹.</p>
-</div>
-<div id="发布website到github-pages" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> 发布website到github pages</h2>
-<div id="提交github." class="section level3" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> 提交github.</h3>
-<pre><code>git add.
-git commit -m &quot;create website&quot;
-git push</code></pre>
-</div>
-<div id="设置website" class="section level3" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> 设置website</h3>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.26.50%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.27.44%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.27.51%20PM.png" /></p>
-<p>这时候就可以看到网址了.</p>
-<p><a href="https://jaspershen.github.io/rstudio_project_test/">https://jaspershen.github.io/rstudio_project_test/</a></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.29.00%20PM.png" /></p>
-<p>这时候网站就已经公开了.</p>
+<div id="multiqc" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> multiqc</h2>
+<p>使用multiqc将fastqc对每个测序样品的结果进行汇总.</p>
+<pre><code>multiqc *fastqc.zip --pdf</code></pre>
+<p>fastQC的结果是fastqc.zip格式.</p>
+<p>需要先将路径设置到<code>qc_results</code>中.然后运行该命令.</p>
 </div>
 </div>
+<div id="使用trim-galore去除低质量的reads和adaptor" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> 使用trim-galore去除低质量的reads和adaptor</h1>
+<p>处理单个样本可以使用下面命令.</p>
+<pre><code>trim_galore -output_dir clean_data --paired --length 75 --quality 25 --stringency 5 /raw_data/*fastq.gz</code></pre>
+<p>批量多核处理:</p>
+<p>首先设置路径到<code>raw_data</code></p>
+<pre><code>ls|grep R1_001.fastq.gz&gt;gz1
+ls|grep R2_001.fastq.gz&gt;gz2
+paste gz1 gz2&gt;config
+cat config</code></pre>
+<p>然后创建一个<code>trim.sh</code>文件:</p>
+<pre><code>touch trim.sh</code></pre>
+<p>vim打开.</p>
+<pre><code>vim trim.sh</code></pre>
+<p>按esc,然后<code>:i</code>进入插入模式,写入下面的代码:</p>
+<pre><code>dir=/home/kelly/wesproject/clean_data/
+cat config |while read id
+do
+      arr=${id}
+      fq1=${arr[0]}
+      fq2=${arr[1]}
+      nohup trim_galore -q 25 --phred33 --length 36 -e 0.1 --stringency 3 --paired -o $dir $fq1 $fq2 &amp;
+done</code></pre>
+<p>其中dir是clean_data的绝对路径.</p>
+<p>然后按esc,然后<code>:wq</code>保存退出.</p>
+<p>然后运行该文件.</p>
+<pre><code>shell trim.sh</code></pre>
+<p>然后就会在clean_data中生成数据.</p>
+<p>进入该文件夹下.可以查看文件的数据.</p>
+<pre><code>ls -lht | grep val | wc -l</code></pre>
+<p>这种写法<code>|</code>跟R中的<code>%&gt;%</code>类似.</p>
+<p>这里面,<code>wc -l</code>是计数的.</p>
 </div>
-<div id="将github-repo设置为private" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> 将github repo设置为private</h1>
-<div id="在文章发表之前不想别人看到我们的数据code等." class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> 在文章发表之前,不想别人看到我们的数据/code等.</h2>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.30.50%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png" /></p>
-<p>这时候虽然别人看不到你的github repo,但是网址仍然可见.</p>
+<div id="序列比对" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> 序列比对</h1>
+<p>我们使用<code>hisat</code>进行序列比对.</p>
+<p>下载参考基因组:</p>
+<p>路径设置到想要存放路径的地方.</p>
+<pre><code>wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/data/hg38.tar.gz</code></pre>
+<p>这里我们下载最近的hg38参考基因组.</p>
+<p>hisat2使用.</p>
+<pre><code>hisat2 -p 6 -x &lt;dir of index of genome&gt; -1 seq_val_1.fq.gz -2 seq_val_2.fq.gz -S  tem.hisat2.sam</code></pre>
+<p>-p: 处理核心数.</p>
+<p>-x: 参考基因组存放位置.最后需要写上<code>geome</code>.</p>
+<p>-1: 两端测序的第一个文件.</p>
+<p>-2: 两端测序的第二个文件.</p>
+<p>-S: 生成的sam格式数据的名字.</p>
+<p>具体例子:</p>
+<pre><code>hisat2 --dta -t -p 8 -x ./reference_genome/index/hg38/genome -1 ./clean_data/iPOP_MC_PBMC_RNAseq_1_S1_L001_R1_001_val_1.fq.gz -2 ./clean_data/iPOP_MC_PBMC_RNAseq_1_S1_L001_R2_001_val_2.fq.gz -S ./aligned/iPOP_MC_PBMC_RNAseq_1_S1_L001_R2_001_val_2.sam</code></pre>
+<p>路径需要在整个project root路径.</p>
+<p>注意参考基因组的路径写法,其实我们的参考基因组就存放在<code>./reference_genome/index/hg38/</code>文件夹下.genome一定要加上去.</p>
+<p>写一个循环进行批次处理:</p>
+<pre><code>for i in iPOP_MC_PBMC_RNAseq_1_S1_L001 iPOP_MC_PBMC_RNAseq_10_S10_L001 iPOP_MC_PBMC_RNAseq_11_S11_L001 iPOP_MC_PBMC_RNAseq_12_S12_L001 iPOP_MC_PBMC_RNAseq_13_S13_L001 iPOP_MC_PBMC_RNAseq_14_S14_L001 iPOP_MC_PBMC_RNAseq_15_S15_L001 iPOP_MC_PBMC_RNAseq_16_S16_L001 iPOP_MC_PBMC_RNAseq_17_S17_L001 iPOP_MC_PBMC_RNAseq_18_S18_L001 iPOP_MC_PBMC_RNAseq_19_S19_L001 iPOP_MC_PBMC_RNAseq_2_S2_L001 iPOP_MC_PBMC_RNAseq_20_S20_L001 iPOP_MC_PBMC_RNAseq_21_S21_L001 iPOP_MC_PBMC_RNAseq_22_S22_L001 iPOP_MC_PBMC_RNAseq_23_S23_L001 iPOP_MC_PBMC_RNAseq_24_S24_L001 iPOP_MC_PBMC_RNAseq_25_S25_L001 iPOP_MC_PBMC_RNAseq_26_S26_L001 iPOP_MC_PBMC_RNAseq_27_S27_L001 iPOP_MC_PBMC_RNAseq_28_S28_L001 iPOP_MC_PBMC_RNAseq_29_S29_L001 iPOP_MC_PBMC_RNAseq_3_S3_L001 iPOP_MC_PBMC_RNAseq_30_S30_L001 iPOP_MC_PBMC_RNAseq_31_S31_L001 iPOP_MC_PBMC_RNAseq_32_S32_L001 iPOP_MC_PBMC_RNAseq_33_S33_L001 iPOP_MC_PBMC_RNAseq_34_S34_L001 iPOP_MC_PBMC_RNAseq_35_S35_L001 iPOP_MC_PBMC_RNAseq_36_S36_L001 iPOP_MC_PBMC_RNAseq_37_S37_L001 iPOP_MC_PBMC_RNAseq_38_S38_L001 iPOP_MC_PBMC_RNAseq_39_S39_L001 iPOP_MC_PBMC_RNAseq_4_S4_L001 iPOP_MC_PBMC_RNAseq_40_S40_L001 iPOP_MC_PBMC_RNAseq_41_S41_L001 iPOP_MC_PBMC_RNAseq_42_S42_L001 iPOP_MC_PBMC_RNAseq_43_S43_L001 iPOP_MC_PBMC_RNAseq_44_S44_L001 iPOP_MC_PBMC_RNAseq_45_S45_L001 iPOP_MC_PBMC_RNAseq_46_S46_L001 iPOP_MC_PBMC_RNAseq_47_S47_L001 iPOP_MC_PBMC_RNAseq_5_S5_L001 iPOP_MC_PBMC_RNAseq_6_S6_L001 iPOP_MC_PBMC_RNAseq_7_S7_L001 iPOP_MC_PBMC_RNAseq_8_S8_L001 iPOP_MC_PBMC_RNAseq_9_S9_L001 Undetermined_S0_L001
+do 
+hisat2 --dta -t -p 15 -x ./reference_genome/index/hg38/genome \
+-1 ./clean_data/&quot;$i&quot;_R1_001_val_1.fq.gz \
+-2 ./clean_data/&quot;$i&quot;_R2_001_val_2.fq.gz \
+-S ./aligned/&quot;$i&quot;.sam; done</code></pre>
 </div>
-<div id="邀请合作者" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> 邀请合作者</h2>
-<p>这样,合作者还是可以看到repo.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.32.41%20PM.png" /></p>
-</div>
-</div>
-<div id="装扮website" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> 装扮website</h1>
-<div id="website_files简单介绍" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> website_files简单介绍</h2>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.36.27%20PM.png" /></p>
-<ol style="list-style-type: decimal">
-<li><p><code>index.Rmd</code>: This will be our site’s homepage. This file must be named index.Rmd.</p></li>
-<li><p><code>about.Rmd</code>: This will be an additional page on our site, and you can change the name of this file to be whatever you want.</p></li>
-<li><p><code>_site.yml</code>: is not a file that gets turned into a site page, but it is necessary for site setup.</p></li>
-<li><p><code>docs/</code>: folder: This is the output folder, where knitted versions of our .Rmds live once they’ve been processed to become .html files.</p></li>
-</ol>
-</div>
-<div id="修改页面布局" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> 修改页面布局</h2>
-<p>打开<code>_site.yml</code></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.47.34%20PM.png" /></p>
-<p>然后按照下图进行修改.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.51.13%20PM.png" /></p>
-<p>编辑好文章之后,重新render并将docs copy到root路径</p>
-<pre><code>rmarkdown::render_site(input = &quot;website_files/&quot;)
-file.copy(from = &quot;website_files/docs/&quot;, to = &quot;.&quot;, recursive = TRUE, overwrite = TRUE)</code></pre>
-<p>重新生成网站如下:</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.52.29%20PM.png" /></p>
-<p>但是这时候还没有提交到github.只有再次提交到github网址链接的网站才会更新.</p>
-</div>
-<div id="创建新的文章并将其加入到网站中" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> 创建新的文章并将其加入到网站中</h2>
-<div id="创建新的rmarkdown文件放在website_files文件夹中." class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> 创建新的<code>rmarkdown</code>文件,放在website_files文件夹中.</h3>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.41.38%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.42.14%20PM.png" /></p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.43.26%20PM.png" /></p>
-</div>
-<div id="编辑好文章之后添加到网页." class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> 编辑好文章之后,添加到网页.</h3>
-<p>这里我们生成的文章名字为<code>figure1.html</code>,所以在<code>_site.yml</code>修改:</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.55.02%20PM.png" /></p>
-<p>然后重新render,并提交到github即可.</p>
-<p>打开链接:</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%201.57.03%20PM.png" /></p>
-</div>
-</div>
-</div>
-<div id="我自己的project管理模式" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> 我自己的project管理模式</h1>
-<div id="文件结构" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> 文件结构</h2>
-<ol style="list-style-type: decimal">
-<li><p><code>data</code>:存放原始数据. 不上传到github.</p></li>
-<li><p><code>data_analysis</code>: 存放分析结果. 发表前不上传到github.</p></li>
-<li><p><code>code</code>: 分析脚本. 公开.</p></li>
-<li><p><code>summary</code>: slides, document等. 不公开.</p></li>
-<li><p><code>manuscript</code>: figures. 不公开.</p></li>
-<li><p><code>docs</code>: project网站介绍,公开.</p></li>
-</ol>
-</div>
-<div id="分析及重复" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> 分析及重复</h2>
-<p>数据分析自己以及别人重复很重要.</p>
-<div id="几个原则" class="section level3" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> 几个原则</h3>
-<ol style="list-style-type: decimal">
-<li>以Rstudio project为中心组织数据和code</li>
-</ol>
-<p>所有的数据和code都以Rstudio project为中心进行组织. 文章发表之后,public project,如果别人要重复分析,下载Rstudio project, 包含了数据和code.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%202.03.50%20PM.png" /></p>
-<ol start="2" style="list-style-type: decimal">
-<li>使用相对路径</li>
-</ol>
-<p>在code中,尽量不要使用绝对路径,使用相对路径. 每个code中,都首先将work directory定为到Rstudio project所在位置.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%202.07.16%20PM.png" /></p>
-<p>如果想要使用<code>tinyTools</code>,从github安装:</p>
-<pre><code>devtools::install_github(&quot;jaspershen/tinyTools&quot;)</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>代码命名</li>
-</ol>
-<p>代码按照分析步骤进行命名.</p>
-<p>代码运行的可能会有先后依赖关系,命名时最好注明.</p>
-</div>
-<div id="直接使用r-script生成html文件" class="section level3" number="6.2.2">
-<h3><span class="header-section-number">6.2.2</span> 直接使用r script生成html文件</h3>
-<p>我比较习惯直接使用r script而不是rmarkdown.为了能够直接render成html格式,需要在前面加上一些:</p>
-<pre><code>#&#39; ---
-#&#39; title: &quot;Stool microbiome metabolome correlation&quot;
-#&#39; author: 
-#&#39;   - name: &quot;Xiaotao Shen&quot; 
-#&#39;     url: https://www.shenxt.info/
-#&#39;     affiliation: Stanford School of Medicine
-#&#39; date: &quot;2021-05-12&quot;
-#&#39; site: distill::distill_website
-#&#39; output: 
-#&#39;   distill::distill_article:
-#&#39;     code_folding: false
-#&#39; ---
-
-#+ r setup, echo=TRUE, eval = FALSE, include = TRUE</code></pre>
-<p>参考网址:</p>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/spin.html">https://bookdown.org/yihui/rmarkdown-cookbook/spin.html</a></p>
-<p>一些基本用法:</p>
-<ol style="list-style-type: decimal">
-<li><code>#'</code>后是markdown语法内容, 比如想要使用一级标题,需要这样写:</li>
-</ol>
-<pre><code>#&#39; # title</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li><code>#+</code>后面是r code chunk设置.比如我们想要设置某段代码不运行但是显示,需要这样写:</li>
-</ol>
-<pre><code>#+ eval=FALSE, echo = TRUE</code></pre>
-<p>相当于rmarkdown的:</p>
-<pre><code>{r eval=FALSE, echo = TRUE}</code></pre>
-</div>
-<div id="一个例子" class="section level3" number="6.2.3">
-<h3><span class="header-section-number">6.2.3</span> 一个例子</h3>
-<p>在code中创建r script</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%202.52.55%20PM.png" /></p>
-<p>然后运行之后,会在保存该script的路径下生成html文件.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%202.53.46%20PM.png" /></p>
-<p>将该html文件copy到docs文件夹下.</p>
-<pre><code>sxtTools::setwd_project()
-file.copy(from = &quot;code/microbiome_analysis/data_summary.html&quot;, to = &quot;docs/&quot;)</code></pre>
-<p>将该文件放到网页中.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%204.49.52%20PM.png" /></p>
-<p>然后重新render website,copy <code>webiste_files/docs</code>到<code>../docs</code>.</p>
-<pre><code>rmarkdown::render_site(input = &quot;website_files/&quot;)
-file.copy(from = &quot;website_files/docs/&quot;, to = &quot;.&quot;, recursive = TRUE, overwrite = TRUE)</code></pre>
-<p>然后提交到github.</p>
-<p><img src="Screen%20Shot%202021-05-12%20at%204.55.28%20PM.png" /></p>
-</div>
-<div id="仍然使用rmakdown" class="section level3" number="6.2.4">
-<h3><span class="header-section-number">6.2.4</span> 仍然使用rmakdown</h3>
-<p>仍然在code中建立相应的rmakdown文件.</p>
-<p>最后需要手动copy到<code>website_files文件夹中.</code></p>
-<p>后续步骤相同.</p>
-</div>
-</div>
+<div id="samtools将sam转换为bam" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> samtools将sam转换为bam</h1>
+<p>使用samtools将得到的sam格式数据转换为bam格式,并且进行sort.</p>
+<p>单个转换:</p>
+<pre><code>samtools view -S iPOP_MC_PBMC_RNAseq_10_S10_L001.sam -b &gt; iPOP_MC_PBMC_RNAseq_10_S10_L001.bam</code></pre>
+<p>批次转换:</p>
+<pre><code>for i in iPOP_MC_PBMC_RNAseq_11_S11_L001 iPOP_MC_PBMC_RNAseq_12_S12_L001 iPOP_MC_PBMC_RNAseq_13_S13_L001 iPOP_MC_PBMC_RNAseq_14_S14_L001 iPOP_MC_PBMC_RNAseq_15_S15_L001 iPOP_MC_PBMC_RNAseq_16_S16_L001 iPOP_MC_PBMC_RNAseq_17_S17_L001 iPOP_MC_PBMC_RNAseq_18_S18_L001 iPOP_MC_PBMC_RNAseq_19_S19_L001 iPOP_MC_PBMC_RNAseq_2_S2_L001 iPOP_MC_PBMC_RNAseq_20_S20_L001 iPOP_MC_PBMC_RNAseq_21_S21_L001 iPOP_MC_PBMC_RNAseq_22_S22_L001 iPOP_MC_PBMC_RNAseq_23_S23_L001 iPOP_MC_PBMC_RNAseq_24_S24_L001 iPOP_MC_PBMC_RNAseq_25_S25_L001 iPOP_MC_PBMC_RNAseq_26_S26_L001 iPOP_MC_PBMC_RNAseq_27_S27_L001 iPOP_MC_PBMC_RNAseq_28_S28_L001 iPOP_MC_PBMC_RNAseq_29_S29_L001 iPOP_MC_PBMC_RNAseq_3_S3_L001 iPOP_MC_PBMC_RNAseq_30_S30_L001 iPOP_MC_PBMC_RNAseq_31_S31_L001 iPOP_MC_PBMC_RNAseq_32_S32_L001 iPOP_MC_PBMC_RNAseq_33_S33_L001 iPOP_MC_PBMC_RNAseq_34_S34_L001 iPOP_MC_PBMC_RNAseq_35_S35_L001 iPOP_MC_PBMC_RNAseq_36_S36_L001 iPOP_MC_PBMC_RNAseq_37_S37_L001 iPOP_MC_PBMC_RNAseq_38_S38_L001 iPOP_MC_PBMC_RNAseq_39_S39_L001 iPOP_MC_PBMC_RNAseq_4_S4_L001 iPOP_MC_PBMC_RNAseq_40_S40_L001 iPOP_MC_PBMC_RNAseq_41_S41_L001 iPOP_MC_PBMC_RNAseq_42_S42_L001 iPOP_MC_PBMC_RNAseq_43_S43_L001 iPOP_MC_PBMC_RNAseq_44_S44_L001 iPOP_MC_PBMC_RNAseq_45_S45_L001 iPOP_MC_PBMC_RNAseq_46_S46_L001 iPOP_MC_PBMC_RNAseq_47_S47_L001 iPOP_MC_PBMC_RNAseq_5_S5_L001 iPOP_MC_PBMC_RNAseq_6_S6_L001 iPOP_MC_PBMC_RNAseq_7_S7_L001 iPOP_MC_PBMC_RNAseq_8_S8_L001 iPOP_MC_PBMC_RNAseq_9_S9_L001 Undetermined_S0_L001
+do
+samtools view -S &quot;$i&quot;.sam -b &gt; &quot;$i&quot;.bam; done</code></pre>
 </div>

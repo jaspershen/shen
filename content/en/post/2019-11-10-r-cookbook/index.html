@@ -17,33 +17,37 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#r一些常用小命令"><span class="toc-section-number">1</span> R一些常用小命令</a><ul>
-<li><a href="#系统相关"><span class="toc-section-number">1.1</span> 系统相关</a><ul>
+<li><a href="#r一些常用小命令"><span class="toc-section-number">1</span> R一些常用小命令</a>
+<ul>
+<li><a href="#系统相关"><span class="toc-section-number">1.1</span> 系统相关</a>
+<ul>
 <li><a href="#重启r-session"><span class="toc-section-number">1.1.1</span> 重启R session</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#rstudio快捷键总结"><span class="toc-section-number">2</span> Rstudio快捷键总结</a></li>
-<li><a href="#r小技巧"><span class="toc-section-number">3</span> R小技巧</a><ul>
+<li><a href="#r小技巧"><span class="toc-section-number">3</span> R小技巧</a>
+<ul>
 <li><a href="#从字符串获取其所代表的变量名的对象"><span class="toc-section-number">3.1</span> 从字符串获取其所代表的变量名的对象</a></li>
 <li><a href="#将某个对象赋予某个字符串所代表的变量名"><span class="toc-section-number">3.2</span> 将某个对象赋予某个字符串所代表的变量名</a></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="r一些常用小命令" class="section level1">
+<div id="r一些常用小命令" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> R一些常用小命令</h1>
-<div id="系统相关" class="section level2">
+<div id="系统相关" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> 系统相关</h2>
-<div id="重启r-session" class="section level3">
+<div id="重启r-session" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> 重启R session</h3>
 <pre><code>.rs.restartR()</code></pre>
 </div>
 </div>
 </div>
-<div id="rstudio快捷键总结" class="section level1">
+<div id="rstudio快捷键总结" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Rstudio快捷键总结</h1>
 <ul>
 <li><p><code>alt + arrow</code>: 代码整体移动.</p></li>
@@ -51,9 +55,9 @@ output:
 </ul>
 <p><img src="big_cursor.png" /></p>
 </div>
-<div id="r小技巧" class="section level1">
+<div id="r小技巧" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> R小技巧</h1>
-<div id="从字符串获取其所代表的变量名的对象" class="section level2">
+<div id="从字符串获取其所代表的变量名的对象" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> 从字符串获取其所代表的变量名的对象</h2>
 <p>使用<code>get()</code>函数.比如:</p>
 <pre class="r"><code>a &lt;- 1:10
@@ -63,7 +67,7 @@ b</code></pre>
 <pre class="r"><code>get(b)</code></pre>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div id="将某个对象赋予某个字符串所代表的变量名" class="section level2">
+<div id="将某个对象赋予某个字符串所代表的变量名" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> 将某个对象赋予某个字符串所代表的变量名</h2>
 <p>使用<code>assign()</code>函数.</p>
 <pre class="r"><code>b &lt;- &quot;a&quot;

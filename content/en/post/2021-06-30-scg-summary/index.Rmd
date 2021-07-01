@@ -1,7 +1,7 @@
 ---
 title: stanford scg总结
 author: Xiaotao Shen
-date: '2021-05-12'
+date: '2021-06-30'
 slug: 
 categories:
   - Linux

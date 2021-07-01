@@ -16,78 +16,91 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#绘图基础plot-basics"><span class="toc-section-number">1</span> 绘图基础(plot basics)</a><ul>
-<li><a href="#ggplot-创建一个新的ggplot图片"><span class="toc-section-number">1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</a><ul>
+<li><a href="#绘图基础plot-basics"><span class="toc-section-number">1</span> 绘图基础(plot basics)</a>
+<ul>
+<li><a href="#ggplot-创建一个新的ggplot图片"><span class="toc-section-number">1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</a>
+<ul>
 <li><a href="#参数"><span class="toc-section-number">1.1.1</span> 参数</a></li>
 <li><a href="#细节"><span class="toc-section-number">1.1.2</span> 细节</a></li>
 <li><a href="#例子"><span class="toc-section-number">1.1.3</span> 例子</a></li>
 </ul></li>
-<li><a href="#aes-创建美学映射"><span class="toc-section-number">1.2</span> <code>aes()</code> 创建美学映射</a><ul>
+<li><a href="#aes-创建美学映射"><span class="toc-section-number">1.2</span> <code>aes()</code> 创建美学映射</a>
+<ul>
 <li><a href="#参数-1"><span class="toc-section-number">1.2.1</span> 参数</a></li>
 <li><a href="#细节-1"><span class="toc-section-number">1.2.2</span> 细节</a></li>
 <li><a href="#例子-1"><span class="toc-section-number">1.2.3</span> 例子</a></li>
 </ul></li>
-<li><a href="#ggsave保存ggplot2图片对象"><span class="toc-section-number">1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</a><ul>
+<li><a href="#ggsave保存ggplot2图片对象"><span class="toc-section-number">1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</a>
+<ul>
 <li><a href="#参数-2"><span class="toc-section-number">1.3.1</span> 参数</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#图层layer几何对象geoms"><span class="toc-section-number">2</span> 图层(Layer):几何对象(geoms)</a><ul>
-<li><a href="#直线geom_ablinegeom_hline和geom_vline"><span class="toc-section-number">2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></a><ul>
+<li><a href="#图层layer几何对象geoms"><span class="toc-section-number">2</span> 图层(Layer):几何对象(geoms)</a>
+<ul>
+<li><a href="#直线geom_ablinegeom_hline和geom_vline"><span class="toc-section-number">2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></a>
+<ul>
 <li><a href="#参数-3"><span class="toc-section-number">2.1.1</span> 参数</a></li>
 <li><a href="#细节-2"><span class="toc-section-number">2.1.2</span> 细节</a></li>
 <li><a href="#美学映射aesthetics"><span class="toc-section-number">2.1.3</span> 美学映射(Aesthetics)</a></li>
 <li><a href="#例子-2"><span class="toc-section-number">2.1.4</span> 例子</a></li>
 </ul></li>
-<li><a href="#柱形图bar-chartsgeom_bargeom_col和stat_count"><span class="toc-section-number">2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></a><ul>
+<li><a href="#柱形图bar-chartsgeom_bargeom_col和stat_count"><span class="toc-section-number">2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></a>
+<ul>
 <li><a href="#参数-4"><span class="toc-section-number">2.2.1</span> 参数</a></li>
 <li><a href="#细节-3"><span class="toc-section-number">2.2.2</span> 细节</a></li>
 <li><a href="#美学参数aesthetics"><span class="toc-section-number">2.2.3</span> 美学参数(Aesthetics)</a></li>
 <li><a href="#计算变量-computed-variables"><span class="toc-section-number">2.2.4</span> 计算变量 (Computed variables)</a></li>
 <li><a href="#例子-3"><span class="toc-section-number">2.2.5</span> 例子</a></li>
 </ul></li>
-<li><a href="#二维方格计数热图heatmap-of-2d-bin-countsgeom_bin2d和stat_bin_2d"><span class="toc-section-number">2.3</span> 二维方格计数热图(Heatmap of 2d bin counts)<code>geom_bin2d()</code>和<code>stat_bin_2d()</code></a><ul>
+<li><a href="#二维方格计数热图heatmap-of-2d-bin-countsgeom_bin2d和stat_bin_2d"><span class="toc-section-number">2.3</span> 二维方格计数热图(Heatmap of 2d bin counts)<code>geom_bin2d()</code>和<code>stat_bin_2d()</code></a>
+<ul>
 <li><a href="#参数-5"><span class="toc-section-number">2.3.1</span> 参数</a></li>
 <li><a href="#美学参数asethetics"><span class="toc-section-number">2.3.2</span> 美学参数(Asethetics)</a></li>
 <li><a href="#计算变量computed-variables"><span class="toc-section-number">2.3.3</span> 计算变量(Computed variables)</a></li>
 <li><a href="#例子-4"><span class="toc-section-number">2.3.4</span> 例子</a></li>
 </ul></li>
-<li><a href="#空白图geom_blank"><span class="toc-section-number">2.4</span> 空白图<code>geom_blank()</code></a><ul>
+<li><a href="#空白图geom_blank"><span class="toc-section-number">2.4</span> 空白图<code>geom_blank()</code></a>
+<ul>
 <li><a href="#参数-6"><span class="toc-section-number">2.4.1</span> 参数</a></li>
 <li><a href="#例子-5"><span class="toc-section-number">2.4.2</span> 例子</a></li>
 </ul></li>
-<li><a href="#箱型图boxplot或者whiskers-plotgeom_boxplot和stat_boxplot"><span class="toc-section-number">2.5</span> 箱型图(boxplot或者whiskers plot)<code>geom_boxplot()</code>和<code>stat_boxplot()</code></a><ul>
+<li><a href="#箱型图boxplot或者whiskers-plotgeom_boxplot和stat_boxplot"><span class="toc-section-number">2.5</span> 箱型图(boxplot或者whiskers plot)<code>geom_boxplot()</code>和<code>stat_boxplot()</code></a>
+<ul>
 <li><a href="#参数-7"><span class="toc-section-number">2.5.1</span> 参数</a></li>
 <li><a href="#统计总结"><span class="toc-section-number">2.5.2</span> 统计总结</a></li>
 <li><a href="#美学参数"><span class="toc-section-number">2.5.3</span> 美学参数</a></li>
 <li><a href="#计算变量"><span class="toc-section-number">2.5.4</span> 计算变量</a></li>
 <li><a href="#例子-6"><span class="toc-section-number">2.5.5</span> 例子</a></li>
 </ul></li>
-<li><a href="#d表面的2d等高线contoursgeom_contour和stat_contour"><span class="toc-section-number">2.6</span> 3D表面的2D等高线(contours)<code>geom_contour()</code>和<code>stat_contour()</code></a><ul>
+<li><a href="#d表面的2d等高线contoursgeom_contour和stat_contour"><span class="toc-section-number">2.6</span> 3D表面的2D等高线(contours)<code>geom_contour()</code>和<code>stat_contour()</code></a>
+<ul>
 <li><a href="#参数-8"><span class="toc-section-number">2.6.1</span> 参数</a></li>
 <li><a href="#美学参数-1"><span class="toc-section-number">2.6.2</span> 美学参数</a></li>
 <li><a href="#计算变量-1"><span class="toc-section-number">2.6.3</span> 计算变量</a></li>
 <li><a href="#例子-7"><span class="toc-section-number">2.6.4</span> 例子</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#常见问题总结"><span class="toc-section-number">3</span> 常见问题总结</a><ul>
+<li><a href="#常见问题总结"><span class="toc-section-number">3</span> 常见问题总结</a>
+<ul>
 <li><a href="#如何保证不同图中legend的scale一致"><span class="toc-section-number">3.1</span> 如何保证不同图中legend的scale一致</a></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="绘图基础plot-basics" class="section level1">
+<div id="绘图基础plot-basics" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> 绘图基础(plot basics)</h1>
 <p>所有的ggplot2图形都开始于<code>ggplot()</code>函数的调用.给其提供数据,以及美学映射(aesthethic mappings)(使用<code>aes()</code>函数).然后添加图层(layers), 度量系统(scales), 坐标系(coords)以及分面(facets).添加的每个对象,都是在前一行末尾使用符号<code>+</code>.如果需要将一个ggplot2图像保存在本地,使用<code>ggsave()</code>函数.</p>
-<div id="ggplot-创建一个新的ggplot图片" class="section level2">
+<div id="ggplot-创建一个新的ggplot图片" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> <code>ggplot()</code> 创建一个新的ggplot图片</h2>
 <p><code>ggplot()</code>函数是用来启动初始化一个ggplot2对象的.It can be used to declare the input data frame for a graphic and to specify the set of plot aesthetics intended to be common throughout all subsequent layers unless specifically overridden.</p>
 <pre><code>ggplot(data = NULL, mapping = aes(), ...,
   environment = parent.frame())
 Arguments</code></pre>
-<div id="参数" class="section level3">
+<div id="参数" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> 参数</h3>
 <ul>
 <li><p><strong>data</strong> 用于绘图的数据.如果数据格式不是<code>data.frame</code>,会默认使用<code>fortity()</code>函数转换为<code>data.frame</code>格式.如果在该函数中不提供data,则在后面添加的每一个图层,都需要提供data.</p></li>
@@ -96,7 +109,7 @@ Arguments</code></pre>
 <li><p><strong>environment</strong> 该参数已经淘汰了.</p></li>
 </ul>
 </div>
-<div id="细节" class="section level3">
+<div id="细节" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> 细节</h3>
 <p><code>ggplot()</code>用来初始化ggplot2图形对象.经常后面需要通过<code>+</code>来添加其他的对象.一般有三种方法调用该函数:</p>
 <ul>
@@ -106,11 +119,10 @@ Arguments</code></pre>
 </ul>
 <p>如果后面的所有图层使用的都是同一套数据以及美学映射,则推荐使用第一种用法.如果后面图层使用数据一致,但是美学映射不同,则推荐使用第二种方法.如果每一个图层使用的数据和美学映射都不相同,则使用第三种方法,一般用来构建比较复杂的图形.</p>
 </div>
-<div id="例子" class="section level3">
+<div id="例子" class="section level3" number="1.1.3">
 <h3><span class="header-section-number">1.1.3</span> 例子</h3>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code># 产生随机数据,然后计算平均值和标准差
+<pre class="r"><code>library(ggplot2)
+# 产生随机数据,然后计算平均值和标准差
 df &lt;- data.frame(
   gp = factor(rep(letters[1:3], each = 10)),
   y = rnorm(30)
@@ -122,7 +134,7 @@ ds &lt;- do.call(rbind, lapply(split(df, df$gp), function(d) {
 ggplot(df, aes(gp, y)) +
   geom_point() +
   geom_point(data = ds, aes(y = mean), colour = &#39;red&#39;, size = 3)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <pre class="r"><code>#注意,第一个geom_point图层使用的是ggplot中的数据和美学映射.而第二个geom_point
 #图层中使用的则是不同的数据和美学映射.
 
@@ -132,7 +144,7 @@ ggplot(df, aes(gp, y)) +
 ggplot(df) +
   geom_point(aes(gp, y)) +
   geom_point(data = ds, aes(gp, mean), colour = &#39;red&#39;, size = 3)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
 <pre class="r"><code># 另外一个选择则是完全不在ggplot中定义数据和美学映射,而是在每一个图层中分别定义.
 # 当你要画复杂图形的时候,这种方法就会显示的非常清晰和明了.
 ggplot() +
@@ -144,25 +156,24 @@ ggplot() +
     colour = &#39;red&#39;,
     width = 0.4
   )</code></pre>
-<pre><code>## Warning: Ignoring unknown aesthetics: y</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
 </div>
 </div>
-<div id="aes-创建美学映射" class="section level2">
+<div id="aes-创建美学映射" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> <code>aes()</code> 创建美学映射</h2>
 <p>美学映射指的是数据中的变量如何映射到图形的视觉特性上(也就是美学aesthetics).美学映射可以在<code>ggplot()</code>函数以及每一个单独的图层中进行设置.</p>
 <p><code>aes(x, y, ...)</code></p>
-<div id="参数-1" class="section level3">
+<div id="参数-1" class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> 参数</h3>
 <ul>
 <li><strong>x, y, …</strong> 将变量映射到图形的视觉特性的名字.x和y分别指x轴和y轴.通常他们可以省略不写.但是其他的,如颜色(colour/color),填充颜色(fill),大小(size)等则必须写明参数名字.</li>
 </ul>
 </div>
-<div id="细节-1" class="section level3">
+<div id="细节-1" class="section level3" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> 细节</h3>
 <p>注意的是,在ggplot2种,对于视觉特征的名字进行了规范化,因此和R base绘图函数种的并不相同,比如从<code>pch</code>改为<code>shape</code>,从<code>cex</code>改为<code>size</code>.</p>
 </div>
-<div id="例子-1" class="section level3">
+<div id="例子-1" class="section level3" number="1.2.3">
 <h3><span class="header-section-number">1.2.3</span> 例子</h3>
 <pre class="r"><code>aes(x = mpg, y = wt)</code></pre>
 <pre><code>## Aesthetic mapping: 
@@ -222,9 +233,9 @@ aes(colour = x)</code></pre>
 # aes() is passed to either ggplot() or specific layer. Aesthetics supplied
 # to ggplot() are used as defaults for every layer.
 ggplot(mpg, aes(displ, hwy)) + geom_point()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(mpg) + geom_point(aes(displ, hwy))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
 <pre class="r"><code># Tidy evaluation ----------------------------------------------------
 # aes() automatically quotes all its arguments, so you need to use tidy
 # evaluation to create wrappers around ggplot2 pipelines. The
@@ -233,7 +244,7 @@ scatter_by &lt;- function(data, ...) {
   ggplot(data) + geom_point(aes(...))
 }
 scatter_by(mtcars, disp, drat)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
 <pre class="r"><code># If your wrapper has a more specific interface with named arguments,
 # you need &quot;enquote and unquote&quot;:
 scatter_by &lt;- function(data, x, y) {
@@ -243,21 +254,21 @@ scatter_by &lt;- function(data, x, y) {
   ggplot(data) + geom_point(aes(!!x, !!y))
 }
 scatter_by(mtcars, disp, drat)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
 <pre class="r"><code># Note that users of your wrapper can use their own functions in the
 # quoted expressions and all will resolve as it should!
 cut3 &lt;- function(x) cut_number(x, 3)
 scatter_by(mtcars, cut3(disp), drat)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
 </div>
 </div>
-<div id="ggsave保存ggplot2图片对象" class="section level2">
+<div id="ggsave保存ggplot2图片对象" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> <code>ggsave()</code>保存<code>ggplot2</code>图片对象</h2>
 <p><code>ggsave()</code>默认会保存当前最后一幅<code>ggplot2</code>图片.如果不设置尺寸,则使用当前设备尺寸.</p>
 <pre><code>ggsave(filename, plot = last_plot(), device = NULL, path = NULL,
   scale = 1, width = NA, height = NA, units = c(&quot;in&quot;, &quot;cm&quot;, &quot;mm&quot;),
   dpi = 300, limitsize = TRUE, ...)</code></pre>
-<div id="参数-2" class="section level3">
+<div id="参数-2" class="section level3" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> 参数</h3>
 <ul>
 <li><p><strong>filename</strong> 要保存的图片的名字,注意不包括后缀名.</p></li>
@@ -273,10 +284,10 @@ scatter_by(mtcars, cut3(disp), drat)</code></pre>
 </div>
 </div>
 </div>
-<div id="图层layer几何对象geoms" class="section level1">
+<div id="图层layer几何对象geoms" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> 图层(Layer):几何对象(geoms)</h1>
 <p>一个图层包括了数据(data),美学映射(aesthetic mapping),几何对象(geometric object),统计转换(statistical transformation),以及位置调整(position adjustment).一般来说,应该使用<code>geom_xxx()</code>函数来创建图层.必要情况下,需要手动设置去覆盖默认的位置和统计转换.</p>
-<div id="直线geom_ablinegeom_hline和geom_vline" class="section level2">
+<div id="直线geom_ablinegeom_hline和geom_vline" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> 直线<code>geom_abline</code>,<code>geom_hline</code>和<code>geom_vline</code></h2>
 <p>这三个函数(几何对象)分别用来画对角线,水平和垂直直线.</p>
 <pre><code>geom_abline(mapping = NULL, data = NULL, ..., slope, intercept,
@@ -287,7 +298,7 @@ geom_hline(mapping = NULL, data = NULL, ..., yintercept,
 
 geom_vline(mapping = NULL, data = NULL, ..., xintercept,
   na.rm = FALSE, show.legend = NA)</code></pre>
-<div id="参数-3" class="section level3">
+<div id="参数-3" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> 参数</h3>
 <ul>
 <li><p><strong>mapping</strong> 美学映射,使用<code>aes()</code>函数设置.</p></li>
@@ -298,12 +309,12 @@ geom_vline(mapping = NULL, data = NULL, ..., xintercept,
 <li><p><strong>xintercept/yintercept/slope/intercept</strong> 控制直线的位置参数.如果这些设置了,则<code>data</code>,<code>mapping</code>和<code>show.legend</code>则会被覆盖掉.</p></li>
 </ul>
 </div>
-<div id="细节-2" class="section level3">
+<div id="细节-2" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> 细节</h3>
 <p>这些几何对象和其他的几何对象稍微有些不同.可以通过两种方法提供参数:1)给layer函数提供参数,或者2)通过美学对象提供参数.如果你使用参数,例如<code>geom_abline(intercept = 0, slope = 1)</code>,然后几何对象(<code>geom_</code>)会创建一个新的data frame,这个data rame只包括了你所提供的数据.这意味着在所有的分面中,直线都是相同的.如果你想在不同的分面中,直线不相同,你需要自己创建一个data frame,然后再美学映射(aesthetics)中设置.</p>
 <p>与其他的几何对象不同,这些几何对象不会从<code>ggplot</code>中继承data.他们也不会影响到x和y的scale.</p>
 </div>
-<div id="美学映射aesthetics" class="section level3">
+<div id="美学映射aesthetics" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> 美学映射(Aesthetics)</h3>
 <p>这三个几何对象(geom)其实都是使用<code>geom_line()</code>函数来画直线的,因此他们都支持<code>geom_line()</code>的美学参数,如<code>alpha</code>,<code>colour</code>,<code>linetype</code>和<code>size</code>.对于每个几何对象都有,都有单独的参数用来控制直线的位置:</p>
 <ul>
@@ -312,7 +323,7 @@ geom_vline(mapping = NULL, data = NULL, ..., xintercept,
 <li><p><code>geom_vline</code>:<code>slope</code>(斜率)和<code>intercept</code>(截距).</p></li>
 </ul>
 </div>
-<div id="例子-2" class="section level3">
+<div id="例子-2" class="section level3" number="2.1.4">
 <h3><span class="header-section-number">2.1.4</span> 例子</h3>
 <pre class="r"><code>library(ggplot2)
 p &lt;- 
@@ -322,29 +333,30 @@ p &lt;-
 # 添加垂直直线
 p + 
   geom_vline(xintercept = 5)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>p + 
   geom_vline(xintercept = 1:5)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <pre class="r"><code># 添加水平直线
 p + 
   geom_hline(yintercept = 20)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
 <pre class="r"><code># 添加对角线,默认斜率为1
 p + 
   geom_abline(intercept = 20)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
 <pre class="r"><code># 计算直线回归的斜率和截距
 coef(lm(mpg ~ wt, data = mtcars))</code></pre>
 <pre><code>## (Intercept)          wt 
 ##   37.285126   -5.344472</code></pre>
 <pre class="r"><code>p + 
   geom_abline(intercept = 37, slope = -5)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-5.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-5.png" width="672" /></p>
 <pre class="r"><code># 但是使用geom_smooth更加简单h:
 p + 
   geom_smooth(method = &quot;lm&quot;, se = FALSE)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-6.png" width="672" /></p>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-6.png" width="672" /></p>
 <pre class="r"><code># 如果想要再不同分面显示不同的直线,则使用美学对象,也就是需要自己创建
 p &lt;- ggplot(mtcars, aes(mpg, wt)) +
   geom_point() +
@@ -361,21 +373,21 @@ mean_wt</code></pre>
   geom_hline(mapping = aes(x = cyl, yintercept = wt), 
              data = mean_wt)</code></pre>
 <pre><code>## Warning: Ignoring unknown aesthetics: x</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-7.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-7.png" width="672" /></p>
 <pre class="r"><code>##如果不使用美学对象,则在每一个分面上都是一样的
 p +
   geom_hline(yintercept = mean_wt$wt)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-8.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-8.png" width="672" /></p>
 <pre class="r"><code># 控制其他美学对象
 ggplot(mtcars, aes(mpg, wt, colour = wt)) +
   geom_point() +
   geom_hline(aes(yintercept = wt, colour = wt), mean_wt) +
   facet_wrap(~ cyl)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-3-9.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-9.png" width="672" /></p>
 <hr />
 </div>
 </div>
-<div id="柱形图bar-chartsgeom_bargeom_col和stat_count" class="section level2">
+<div id="柱形图bar-chartsgeom_bargeom_col和stat_count" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> 柱形图(bar charts)<code>geom_bar()</code>,<code>geom_col()</code>和<code>stat_count</code></h2>
 <p>一共有两种类型的函数用来绘制柱形图:<code>geom_bar()</code>和<code>geom_col()</code>函数.<code>geom_bar()</code>配对的统计转换函数为<code>stat_count()</code>函数,所以他会自动将每个group的case个数计算出来,然后转为新的data frame,也就是group和数目,然后映射到x和y轴上.而<code>geom_bar()</code>则和R base的bar plot函数相似(默认配对统计转换函数为<code>stat_identify()</code>函数),需要指定x和y轴变量,然后直接将指定的y轴变量映射为bar的高度.</p>
 <pre><code>geom_bar(mapping = NULL, data = NULL, stat = &quot;count&quot;,
@@ -389,7 +401,7 @@ geom_col(mapping = NULL, data = NULL, position = &quot;stack&quot;, ...,
 stat_count(mapping = NULL, data = NULL, geom = &quot;bar&quot;,
   position = &quot;stack&quot;, ..., width = NULL, na.rm = FALSE,
   show.legend = NA, inherit.aes = TRUE)</code></pre>
-<div id="参数-4" class="section level3">
+<div id="参数-4" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> 参数</h3>
 <ul>
 <li><p><strong>mapping</strong> 美学映射,使用<code>aes()</code>函数设置.如果设置参数<code>inherit.aes = TRUE</code>(默认),则该图层会从<code>ggplot()</code>函数继承美学映射的参数.</p></li>
@@ -403,12 +415,12 @@ stat_count(mapping = NULL, data = NULL, geom = &quot;bar&quot;,
 <li><p><strong>geom, stat</strong> 覆盖掉默认的<code>geom_()</code>和<code>stat_()</code>函数.</p></li>
 </ul>
 </div>
-<div id="细节-3" class="section level3">
+<div id="细节-3" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> 细节</h3>
 <p>柱形图使用高度来表示数值.所以一般柱形图是用来进行对比展示的.这也是为什么如果你将数据log之后,使用柱形图就不太合适.</p>
 <p>默认,对于同个x轴位置有着多个柱子,则他们会堆积在一起.也就输堆积柱形图,这是由默认的位置调整函数<code>position_stack()</code>实现的.如果你想要让他们并排排列,则需要使用<code>position_dodge()</code>或者<code>position_dodge2()</code>函数.当然,如果你想要堆叠柱形图,而显示的是比例而不是真实数值,则需要使用<code>position_fill()</code>函数.</p>
 </div>
-<div id="美学参数aesthetics" class="section level3">
+<div id="美学参数aesthetics" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> 美学参数(Aesthetics)</h3>
 <p><code>geom_bar()</code>可以接受以下美学参数(粗体为必须参数).</p>
 <ul>
@@ -440,49 +452,49 @@ stat_count(mapping = NULL, data = NULL, geom = &quot;bar&quot;,
 <li><p>weight</p></li>
 </ul>
 </div>
-<div id="计算变量-computed-variables" class="section level3">
+<div id="计算变量-computed-variables" class="section level3" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> 计算变量 (Computed variables)</h3>
 <ul>
 <li><p><strong>count</strong> 每一个grou中的数目</p></li>
 <li><p><strong>prop</strong> 每组的比例</p></li>
 </ul>
 </div>
-<div id="例子-3" class="section level3">
+<div id="例子-3" class="section level3" number="2.2.5">
 <h3><span class="header-section-number">2.2.5</span> 例子</h3>
 <pre class="r"><code>library(ggplot2)
 ## 首先创建一个ggplot2对象
 g &lt;- ggplot(mpg, aes(class))
 # 然后使用geom_bar来展示每个class的case的数目
 g + geom_bar()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code># 可以通过设置weight参数,将每个柱子的高度改为该变量的和
 g + geom_bar(aes(weight = displ))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <pre class="r"><code># 当每一个柱子又可以分为不同的group时,默认是堆积在一起的.
 g + geom_bar(aes(fill = drv))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
 <pre class="r"><code># 如果想要翻转类别的顺序,可以在position参数中设置
 g +
  geom_bar(aes(fill = drv), 
           position = position_stack(reverse = TRUE)) +
  coord_flip() +
  theme(legend.position = &quot;top&quot;)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
 <pre class="r"><code># 如果只是想要柱子高度显示某个变量的值,使用geom_col函数
 df &lt;- data.frame(trt = c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), outcome = c(2.3, 1.9, 3.2))
 ggplot(df, aes(trt, outcome)) +
   geom_col()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-5.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-5.png" width="672" /></p>
 <pre class="r"><code># 当然,geom_bar函数也可以用来显示连续性的变量
 df &lt;- data.frame(x = rep(c(2.9, 3.1, 4.5), c(5, 10, 4)))
 ggplot(df, aes(x)) + geom_bar()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-6.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-6.png" width="672" /></p>
 <pre class="r"><code># cf. a histogram of the same data
 ggplot(df, aes(x)) + geom_histogram(binwidth = 0.5)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-4-7.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-7.png" width="672" /></p>
 </div>
 </div>
-<div id="二维方格计数热图heatmap-of-2d-bin-countsgeom_bin2d和stat_bin_2d" class="section level2">
+<div id="二维方格计数热图heatmap-of-2d-bin-countsgeom_bin2d和stat_bin_2d" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> 二维方格计数热图(Heatmap of 2d bin counts)<code>geom_bin2d()</code>和<code>stat_bin_2d()</code></h2>
 <p>将平面划分为放个,然后计算每个方格中case的数目,然后将小方格内的case的数目映射到小方格的填充颜色上(默认).这种作图方法与<code>geom_point()</code>相比,好处是可以有效的避免重叠.</p>
 <pre><code>geom_bin2d(mapping = NULL, data = NULL, stat = &quot;bin2d&quot;,
@@ -492,7 +504,7 @@ ggplot(df, aes(x)) + geom_histogram(binwidth = 0.5)</code></pre>
 stat_bin_2d(mapping = NULL, data = NULL, geom = &quot;tile&quot;,
   position = &quot;identity&quot;, ..., bins = 30, binwidth = NULL,
   drop = TRUE, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)</code></pre>
-<div id="参数-5" class="section level3">
+<div id="参数-5" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> 参数</h3>
 <ul>
 <li><p><strong>mapping</strong> 美学映射参数,使用<code>aes()</code>建立.如果在该图层进行设置,并且<code>inherit.aes = TRUE</code>(默认), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping?</p></li>
@@ -508,7 +520,7 @@ stat_bin_2d(mapping = NULL, data = NULL, geom = &quot;tile&quot;,
 <li><p><strong>drop</strong> 如果设置为<code>TRUE</code>,则会去除掉count为0的方格.</p></li>
 </ul>
 </div>
-<div id="美学参数asethetics" class="section level3">
+<div id="美学参数asethetics" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> 美学参数(Asethetics)</h3>
 <p><code>stat_bind2d()</code>接受以下美学参数(黑体为必须参数):</p>
 <ul>
@@ -518,7 +530,7 @@ stat_bin_2d(mapping = NULL, data = NULL, geom = &quot;tile&quot;,
 </ul>
 <p>*group</p>
 </div>
-<div id="计算变量computed-variables" class="section level3">
+<div id="计算变量computed-variables" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> 计算变量(Computed variables)</h3>
 <ul>
 <li><p><strong>count</strong> bin中的数据点的个数.</p></li>
@@ -527,7 +539,7 @@ stat_bin_2d(mapping = NULL, data = NULL, geom = &quot;tile&quot;,
 <li><p><strong>ndensity</strong> density, scaled to maximum of 1</p></li>
 </ul>
 </div>
-<div id="例子-4" class="section level3">
+<div id="例子-4" class="section level3" number="2.3.4">
 <h3><span class="header-section-number">2.3.4</span> 例子</h3>
 <pre class="r"><code>library(ggplot2)
 d &lt;- ggplot(diamonds, aes(x, y)) + 
@@ -535,30 +547,30 @@ d &lt;- ggplot(diamonds, aes(x, y)) +
   ylim(4, 10)
 d + geom_bin2d()</code></pre>
 <pre><code>## Warning: Removed 478 rows containing non-finite values (stat_bin2d).</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
-<div id="空白图geom_blank" class="section level2">
+<div id="空白图geom_blank" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> 空白图<code>geom_blank()</code></h2>
 <p><code>geom_blank()</code>函数不绘制任何东西,但是可以用来绘制一个空的plot来保持一定的刻度.</p>
 <pre><code>geom_blank(mapping = NULL, data = NULL, stat = &quot;identity&quot;,
   position = &quot;identity&quot;, ..., show.legend = NA, inherit.aes = TRUE)</code></pre>
-<div id="参数-6" class="section level3">
+<div id="参数-6" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> 参数</h3>
 <p>所有参数可以参考上面所有的函数.</p>
 </div>
-<div id="例子-5" class="section level3">
+<div id="例子-5" class="section level3" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> 例子</h3>
 <pre class="r"><code>p &lt;- 
   ggplot(mtcars, aes(wt, mpg))
 p</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <pre class="r"><code>p + 
   geom_blank()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 </div>
 </div>
-<div id="箱型图boxplot或者whiskers-plotgeom_boxplot和stat_boxplot" class="section level2">
+<div id="箱型图boxplot或者whiskers-plotgeom_boxplot和stat_boxplot" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> 箱型图(boxplot或者whiskers plot)<code>geom_boxplot()</code>和<code>stat_boxplot()</code></h2>
 <p>箱型图用来展示连续性变量的分布.它可以展示5个统计量(中位值,two hinges and two whiskers), 以及所有的outlier值.</p>
 <pre><code>geom_boxplot(mapping = NULL, data = NULL, stat = &quot;boxplot&quot;,
@@ -571,7 +583,7 @@ p</code></pre>
 stat_boxplot(mapping = NULL, data = NULL, geom = &quot;boxplot&quot;,
   position = &quot;dodge2&quot;, ..., coef = 1.5, na.rm = FALSE,
   show.legend = NA, inherit.aes = TRUE)</code></pre>
-<div id="参数-7" class="section level3">
+<div id="参数-7" class="section level3" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> 参数</h3>
 <p><strong>mapping</strong>,<strong>data</strong>,<strong>position</strong>和<strong>…</strong>参数可以参考前面的参数.都是一致的.</p>
 <ul>
@@ -582,12 +594,12 @@ stat_boxplot(mapping = NULL, data = NULL, geom = &quot;boxplot&quot;,
 <li><p><strong>coef</strong>:默认为1.5.也就是上下边框扩展出的上下晶须的距离为1.5倍的IQR.</p></li>
 </ul>
 </div>
-<div id="统计总结" class="section level3">
+<div id="统计总结" class="section level3" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> 统计总结</h3>
 <p>box plot框的上下边界(hinge)分别代表第一和第三分位数.</p>
 <p>从框上边界扩展出的上晶须(whisker)的距离为1.5倍的IQR(IQR为inter quartile range,也就是第三分位数和第一份位数之差).从框下边界扩展出的下晶须(whisker)的距离为1.5倍的IQR.在上下晶须范围以外的,就是outlier.</p>
 </div>
-<div id="美学参数" class="section level3">
+<div id="美学参数" class="section level3" number="2.5.3">
 <h3><span class="header-section-number">2.5.3</span> 美学参数</h3>
 <p><code>geom_boxplot()</code>接收以下美学参数(黑体为必须参数):</p>
 <ul>
@@ -607,7 +619,7 @@ stat_boxplot(mapping = NULL, data = NULL, geom = &quot;boxplot&quot;,
 <li><p>weight</p></li>
 </ul>
 </div>
-<div id="计算变量" class="section level3">
+<div id="计算变量" class="section level3" number="2.5.4">
 <h3><span class="header-section-number">2.5.4</span> 计算变量</h3>
 <ul>
 <li>width box plot宽度.</li>
@@ -620,51 +632,51 @@ stat_boxplot(mapping = NULL, data = NULL, geom = &quot;boxplot&quot;,
 <p>upper:上框边界,默认为75%分位数.</p>
 <p>ymax上晶须==上框边界+1.5*IQR</p>
 </div>
-<div id="例子-6" class="section level3">
+<div id="例子-6" class="section level3" number="2.5.5">
 <h3><span class="header-section-number">2.5.5</span> 例子</h3>
 <pre class="r"><code>library(ggplot2)
 p &lt;- ggplot(mpg, aes(class, hwy))
 
 p +
     geom_boxplot()  </code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre class="r"><code># 交换x轴和y轴
 p + geom_boxplot() + 
   coord_flip()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 <pre class="r"><code># 有缺口的box plot,注意此时上下晶须距离是有变化的.
 p +
   geom_boxplot(notch = TRUE)</code></pre>
 <pre><code>## notch went outside hinges. Try setting notch=FALSE.
 ## notch went outside hinges. Try setting notch=FALSE.</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-3.png" width="672" /></p>
 <pre class="r"><code># box宽度和每组数目n的平方根成正比
 p + geom_boxplot(varwidth = TRUE)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-4.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-4.png" width="672" /></p>
 <pre class="r"><code>p + geom_boxplot(fill = &quot;white&quot;, colour = &quot;#3366FF&quot;)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-5.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-5.png" width="672" /></p>
 <pre class="r"><code># 设置outlier的美学参数
 p + geom_boxplot(outlier.colour = &quot;red&quot;, outlier.shape = 1)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-6.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-6.png" width="672" /></p>
 <pre class="r"><code># 将点和boxplot画在一起,这时候需要把outlier去除掉,因为和原始点会有重叠
 p + geom_boxplot(outlier.shape = NA) + 
   geom_jitter(width = 0.2)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-7.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-7.png" width="672" /></p>
 <pre class="r"><code># 如果每组的box plot再分类,则默认是并列排在一起的
 p + geom_boxplot(aes(colour = drv))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-8.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-8.png" width="672" /></p>
 <pre class="r"><code># x轴不是分类数据,而是连续数据也是可以的.但是需要提供如何对x轴进行分类,比如通过
 #cut_width函数将连续性变量进行分类
 ggplot(diamonds, aes(x = carat, y = price)) +
   geom_boxplot()</code></pre>
 <pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-9.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-9.png" width="672" /></p>
 <pre class="r"><code>ggplot(diamonds, aes(carat, price)) +
   geom_boxplot(aes(colour = cut_width(carat, 0.25)), show.legend = FALSE)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-10.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-10.png" width="672" /></p>
 <pre class="r"><code>ggplot(diamonds, aes(carat, price)) +
   geom_boxplot(aes(group = cut_width(carat, 0.25)), show.legend = FALSE)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-11.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-11.png" width="672" /></p>
 <pre class="r"><code># 如果你自己定义了boxplot的各个元素,也可以通过设置stat=`identify`来画boxplot
 y &lt;- rnorm(100)
 df &lt;- data.frame(
@@ -680,10 +692,10 @@ ggplot(df, aes(x)) +
    aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),
    stat = &quot;identity&quot;
  )</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-7-12.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-12.png" width="672" /></p>
 </div>
 </div>
-<div id="d表面的2d等高线contoursgeom_contour和stat_contour" class="section level2">
+<div id="d表面的2d等高线contoursgeom_contour和stat_contour" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> 3D表面的2D等高线(contours)<code>geom_contour()</code>和<code>stat_contour()</code></h2>
 <p><code>ggplot2</code>并不能画3D图形,但是可以使用<code>geom_contour()</code>和<code>geom_tile()</code>(tile是瓷砖的意思)画等高线. To be a valid surface, the data must contain only a single row for each unique combination of the variables mapped to the x and y aesthetics. Contouring tends to work best when x and y form a (roughly) evenly spaced grid. If your data is not evenly spaced, you may want to interpolate to a grid before visualising.</p>
 <pre><code>geom_contour(mapping = NULL, data = NULL, stat = &quot;contour&quot;,
@@ -694,7 +706,7 @@ ggplot(df, aes(x)) +
 stat_contour(mapping = NULL, data = NULL, geom = &quot;contour&quot;,
   position = &quot;identity&quot;, ..., na.rm = FALSE, show.legend = NA,
   inherit.aes = TRUE)</code></pre>
-<div id="参数-8" class="section level3">
+<div id="参数-8" class="section level3" number="2.6.1">
 <h3><span class="header-section-number">2.6.1</span> 参数</h3>
 <p>很多参数跟前面是一样的.其他不同的见下:</p>
 <ul>
@@ -703,7 +715,7 @@ stat_contour(mapping = NULL, data = NULL, geom = &quot;contour&quot;,
 <li><p><strong>linemitre</strong> Line mitre limit (number greater than 1).</p></li>
 </ul>
 </div>
-<div id="美学参数-1" class="section level3">
+<div id="美学参数-1" class="section level3" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> 美学参数</h3>
 <p><code>geom_contour()</code>接受以下参数(黑体为必须参数):</p>
 <ul>
@@ -725,7 +737,7 @@ stat_contour(mapping = NULL, data = NULL, geom = &quot;contour&quot;,
 <li><p>order</p></li>
 </ul>
 </div>
-<div id="计算变量-1" class="section level3">
+<div id="计算变量-1" class="section level3" number="2.6.3">
 <h3><span class="header-section-number">2.6.3</span> 计算变量</h3>
 <ul>
 <li><p>level:等高线的高度</p></li>
@@ -733,7 +745,7 @@ stat_contour(mapping = NULL, data = NULL, geom = &quot;contour&quot;,
 <li><p>piece:contour piece (整数).</p></li>
 </ul>
 </div>
-<div id="例子-7" class="section level3">
+<div id="例子-7" class="section level3" number="2.6.4">
 <h3><span class="header-section-number">2.6.4</span> 例子</h3>
 <pre class="r"><code># 基础图形
 library(ggplot2)
@@ -750,64 +762,60 @@ head(faithfuld)</code></pre>
 ## 6      1.84      43 0.00574</code></pre>
 <pre class="r"><code>v &lt;- ggplot(faithfuld, aes(waiting, eruptions, z = density))
 v + geom_contour()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code># 也可以通过设置参数bins,来确定有几个等高线.
 v + geom_contour(bins = 2)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
 <pre class="r"><code>v + geom_contour(bins = 10)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
 <pre class="r"><code># 当然,也可以设置等高线之间的距离
 v + geom_contour(binwidth = 0.01)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
 <pre class="r"><code>v + geom_contour(binwidth = 0.001)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-5.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-5.png" width="672" /></p>
 <pre class="r"><code># 其他的参数
 ##level就是stat_contour的其中一个计算变量,level.
 v + geom_contour(aes(colour = ..level..))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-6.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-6.png" width="672" /></p>
 <pre class="r"><code>##下面与上面相同.
 v + geom_contour(aes(colour = stat(level)))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-7.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-7.png" width="672" /></p>
 <pre class="r"><code>v + geom_contour(colour = &quot;red&quot;)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-8.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-8.png" width="672" /></p>
 <pre class="r"><code># geom_rect用来画矩形
 
 v + geom_raster(aes(fill = density)) +
   geom_contour(colour = &quot;white&quot;)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-9.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-9.png" width="672" /></p>
 <pre class="r"><code>v + geom_raster(aes(fill = density)) +
   scale_fill_gradient(low = &quot;white&quot;, high = &quot;red&quot;) +
   geom_contour(colour = &quot;white&quot;)</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-8-10.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-10.png" width="672" /></p>
 </div>
 </div>
 </div>
-<div id="常见问题总结" class="section level1">
+<div id="常见问题总结" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> 常见问题总结</h1>
-<div id="如何保证不同图中legend的scale一致" class="section level2">
+<div id="如何保证不同图中legend的scale一致" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> 如何保证不同图中legend的scale一致</h2>
 <p>比如两个图中,我们想保证legend对应的size的粗细是和数据一致的.</p>
 <pre class="r"><code>library(ggplot2)
-library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>  data.frame(x = 1:5, y = 1:5) %&gt;% 
+library(tidyverse)
+  data.frame(x = 1:5, y = 1:5) %&gt;% 
   ggplot() +
   geom_point(aes(x = x, y = y, size = x))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>使用<code>scale_size_...()</code>函数来进行设置.</p>
 <pre class="r"><code>  data.frame(x = 1:5, y = 1:5) %&gt;% 
   ggplot() +
   geom_point(aes(x = x, y = y, size = x)) +
   scale_size_continuous(limits = c(1,5), range = c(1,5))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <pre class="r"><code>data.frame(x = 1:5, y = 1:5) %&gt;% 
   ggplot() +
   geom_point(aes(x = x, y = y, size = x)) +
   scale_size_continuous(limits = c(1,5), range = c(5,6))</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-cookbook/index_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
 <p>其中参数<code>limits</code>是一个两个的数值vector,用来设置是指的最小和最大值.而参数<code>range</code>也是一个两个数值的vector,用来设置point的size的最小值和最大值.</p>
 </div>
 </div>

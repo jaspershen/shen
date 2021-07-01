@@ -31,7 +31,7 @@ output:
 
 ```{r}
 library(readr)
-test <- readr_example(path = "mtcars.csv")
+test <- readr_example("mtcars.csv")
 test
 test <- read_csv(file = test)
 ```

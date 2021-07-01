@@ -18,20 +18,25 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#kegg-pathway数据库"><span class="toc-section-number">1</span> KEGG Pathway数据库</a><ul>
+<li><a href="#kegg-pathway数据库"><span class="toc-section-number">1</span> KEGG Pathway数据库</a>
+<ul>
 <li><a href="#背景"><span class="toc-section-number">1.1</span> 背景</a></li>
 <li><a href="#kgml的overview"><span class="toc-section-number">1.2</span> <code>KGML</code>的overview</a></li>
 <li><a href="#如何获得某个pathwaykgml文件"><span class="toc-section-number">1.3</span> 如何获得某个pathway<code>KGML</code>文件</a></li>
-<li><a href="#pathway"><span class="toc-section-number">1.4</span> Pathway</a><ul>
+<li><a href="#pathway"><span class="toc-section-number">1.4</span> Pathway</a>
+<ul>
 <li><a href="#pathway-element"><span class="toc-section-number">1.4.1</span> Pathway element</a></li>
 </ul></li>
-<li><a href="#entry条目"><span class="toc-section-number">1.5</span> Entry(条目)</a><ul>
+<li><a href="#entry条目"><span class="toc-section-number">1.5</span> Entry(条目)</a>
+<ul>
 <li><a href="#entry-element"><span class="toc-section-number">1.5.1</span> Entry element</a></li>
 </ul></li>
-<li><a href="#relation"><span class="toc-section-number">1.6</span> Relation</a><ul>
+<li><a href="#relation"><span class="toc-section-number">1.6</span> Relation</a>
+<ul>
 <li><a href="#relation元素"><span class="toc-section-number">1.6.1</span> relation元素</a></li>
 </ul></li>
 <li><a href="#reaction反应"><span class="toc-section-number">1.7</span> Reaction反应</a></li>
@@ -39,11 +44,11 @@ output:
 </ul>
 </div>
 
-<div id="kegg-pathway数据库" class="section level1">
+<div id="kegg-pathway数据库" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> KEGG Pathway数据库</h1>
 <p>KEGG pathway的数据是使用<code>KGML</code>(KEGG Markup Language)格式存储下来的.详细的信息可以阅读官方文档.</p>
 <p><a href="https://www.kegg.jp/kegg/xml/docs/" class="uri">https://www.kegg.jp/kegg/xml/docs/</a></p>
-<div id="背景" class="section level2">
+<div id="背景" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> 背景</h2>
 <p>KEGG pathway有两个类型.</p>
 <ul>
@@ -58,12 +63,12 @@ output:
 <li><p>regulatory pathways viewed as protein networks only.</p></li>
 </ol>
 </div>
-<div id="kgml的overview" class="section level2">
+<div id="kgml的overview" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> <code>KGML</code>的overview</h2>
 <p><img src="overview.png" /></p>
 <p>这幅图是整个<code>KGML</code>的总览.</p>
 </div>
-<div id="如何获得某个pathwaykgml文件" class="section level2">
+<div id="如何获得某个pathwaykgml文件" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> 如何获得某个pathway<code>KGML</code>文件</h2>
 <p>使用R包<code>KEGGlincs</code>可以下载pathway的<code>KGML</code>文件.</p>
 <pre class="r"><code>library(tidyverse)
@@ -106,11 +111,11 @@ class(temp_kgml)</code></pre>
 ## [ Name ]: path:hsa00010
 ## [ Organism ]: hsa
 ## [ Number ] :00010
-## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
-## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## [ Image ] :https://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :https://www.kegg.jp/kegg-bin/show_pathway?hsa00010
 ## ------------------------------------------------------------
 ## Statistics:
-##  100 node(s)
+##  102 node(s)
 ##  89 edge(s)
 ##  35 reaction(s)
 ## ------------------------------------------------------------</code></pre>
@@ -128,18 +133,18 @@ temp_kgml2</code></pre>
 ## [ Name ]: path:hsa00010
 ## [ Organism ]: hsa
 ## [ Number ] :00010
-## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
-## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## [ Image ] :https://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :https://www.kegg.jp/kegg-bin/show_pathway?hsa00010
 ## ------------------------------------------------------------
 ## Statistics:
-##  100 node(s)
+##  102 node(s)
 ##  89 edge(s)
 ##  35 reaction(s)
 ## ------------------------------------------------------------</code></pre>
 </div>
-<div id="pathway" class="section level2">
+<div id="pathway" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Pathway</h2>
-<div id="pathway-element" class="section level3">
+<div id="pathway-element" class="section level3" number="1.4.1">
 <h3><span class="header-section-number">1.4.1</span> Pathway element</h3>
 <p>一共有六个属性.</p>
 <table>
@@ -207,16 +212,16 @@ pathway link
 <p>我们可以下载pathway的图片.</p>
 <pre class="r"><code>image_link &lt;- slot(slot(temp_kgml, &quot;pathwayInfo&quot;), &quot;image&quot;)
 image_link</code></pre>
-<pre><code>## [1] &quot;http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&quot;</code></pre>
+<pre><code>## [1] &quot;https://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&quot;</code></pre>
 <pre class="r"><code>download.file(url = image_link, 
               destfile = basename(image_link), 
               mode = &quot;wb&quot;)</code></pre>
 <p><img src="hsa00010.png" /></p>
 </div>
 </div>
-<div id="entry条目" class="section level2">
+<div id="entry条目" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Entry(条目)</h2>
-<div id="entry-element" class="section level3">
+<div id="entry-element" class="section level3" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> Entry element</h3>
 <p>包括了网络中的node的属性.属性包括以下内容.</p>
 <table>
@@ -279,8 +284,8 @@ temp_kgml@pathwayInfo</code></pre>
 ## [ Name ]: path:hsa00010
 ## [ Organism ]: hsa
 ## [ Number ] :00010
-## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
-## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010</code></pre>
+## [ Image ] :https://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :https://www.kegg.jp/kegg-bin/show_pathway?hsa00010</code></pre>
 <pre class="r"><code>#分别的属性
 temp_kgml@pathwayInfo@name</code></pre>
 <pre><code>## [1] &quot;path:hsa00010&quot;</code></pre>
@@ -291,9 +296,9 @@ temp_kgml@pathwayInfo@name</code></pre>
 <pre class="r"><code>temp_kgml@pathwayInfo@title</code></pre>
 <pre><code>## [1] &quot;Glycolysis / Gluconeogenesis&quot;</code></pre>
 <pre class="r"><code>temp_kgml@pathwayInfo@image</code></pre>
-<pre><code>## [1] &quot;http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&quot;</code></pre>
+<pre><code>## [1] &quot;https://www.kegg.jp/kegg/pathway/hsa/hsa00010.png&quot;</code></pre>
 <pre class="r"><code>temp_kgml@pathwayInfo@link</code></pre>
-<pre><code>## [1] &quot;http://www.kegg.jp/kegg-bin/show_pathway?hsa00010&quot;</code></pre>
+<pre><code>## [1] &quot;https://www.kegg.jp/kegg-bin/show_pathway?hsa00010&quot;</code></pre>
 <p>图片下载链接:</p>
 <p><a href="http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png"></a></p>
 <p>pathway详细信息链接:</p>
@@ -305,11 +310,11 @@ temp_kgml@pathwayInfo@name</code></pre>
 ## [ Name ]: path:hsa00010
 ## [ Organism ]: hsa
 ## [ Number ] :00010
-## [ Image ] :http://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
-## [ Link ] :http://www.kegg.jp/kegg-bin/show_pathway?hsa00010
+## [ Image ] :https://www.kegg.jp/kegg/pathway/hsa/hsa00010.png
+## [ Link ] :https://www.kegg.jp/kegg-bin/show_pathway?hsa00010
 ## ------------------------------------------------------------
 ## Statistics:
-##  100 node(s)
+##  102 node(s)
 ##  89 edge(s)
 ##  35 reaction(s)
 ## ------------------------------------------------------------</code></pre>
@@ -321,7 +326,7 @@ temp_kgml@nodes$`18`</code></pre>
 ## [ displayName ]: ALDOA, ALDA, GSD12, HEL-S-87p...
 ## [ Name ]: hsa:226,hsa:229,hsa:230
 ## [ Type ]: gene
-## [ Link ]: http://www.kegg.jp/dbget-bin/www_bget?hsa:226+hsa:229+hsa:230
+## [ Link ]: https://www.kegg.jp/dbget-bin/www_bget?hsa:226+hsa:229+hsa:230
 ## ------------------------------------------------------------</code></pre>
 <pre class="r"><code>#edge
 temp_kgml@edges[[1]]</code></pre>
@@ -341,7 +346,7 @@ temp_kgml@reactions[[1]]</code></pre>
 ## [ Type ]: reversible
 ## [ Substrate Name ]: cpd:C00084
 ## [ Product Name ]: cpd:C00033</code></pre>
-<div id="type属性的详细解释" class="section level4">
+<div id="type属性的详细解释" class="section level4" number="1.5.1.1">
 <h4><span class="header-section-number">1.5.1.1</span> Type属性的详细解释</h4>
 <p>在pathway中,如果一个pathway链接到另外一个pathway,那么pathway也是会被作为一个node展示出来.</p>
 <table>
@@ -433,9 +438,9 @@ the node is an unclassified type
 </div>
 </div>
 </div>
-<div id="relation" class="section level2">
+<div id="relation" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Relation</h2>
-<div id="relation元素" class="section level3">
+<div id="relation元素" class="section level3" number="1.6.1">
 <h3><span class="header-section-number">1.6.1</span> relation元素</h3>
 <p>这里面的relation不包括我们所知道的酶催化代谢物的联系.只包括两个proteins(gene products)或者两个KOs(ortholog groups)或者protein和compound</p>
 <table>
@@ -476,7 +481,7 @@ the type of this relation
 </tr>
 </tbody>
 </table>
-<div id="type属性" class="section level4">
+<div id="type属性" class="section level4" number="1.6.1.1">
 <h4><span class="header-section-number">1.6.1.1</span> Type属性</h4>
 <p>relation的type一共有5个,分别是</p>
 <ul>
@@ -487,7 +492,7 @@ the type of this relation
 <li><p><strong>maplink</strong>: 跟另外一个pathway的联系.</p></li>
 </ul>
 </div>
-<div id="subtype-element" class="section level4">
+<div id="subtype-element" class="section level4" number="1.6.1.2">
 <h4><span class="header-section-number">1.6.1.2</span> subtype element</h4>
 <p>每个relatio还有一个subtype属性.这个属性用来对relation做进一步的说明.</p>
 <ul>
@@ -510,7 +515,7 @@ the type of this relation
 </div>
 </div>
 </div>
-<div id="reaction反应" class="section level2">
+<div id="reaction反应" class="section level2" number="1.7">
 <h2><span class="header-section-number">1.7</span> Reaction反应</h2>
 <p>reaction和relation很类似.不一样的是type属性.</p>
 <p>type属性包括<code>reversible</code>和<code>irreversible</code>.分别表示可逆反应和不可逆反映.</p>

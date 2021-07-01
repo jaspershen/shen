@@ -17,6 +17,7 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -27,16 +28,16 @@ output:
 </ul>
 </div>
 
-<div id="introduction" class="section level2">
+<div id="introduction" class="section level2" number="0.1">
 <h2><span class="header-section-number">0.1</span> <strong>Introduction</strong></h2>
 <hr />
 <p><em>MetCleaning</em> provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, <em>MetClean</em> and <em>MetStat</em> in <em>MetCleaning</em> utilizing demo data.</p>
 <div class="figure">
-<img src="/images/metcleaning/workflow%20for%20instruction.jpg" alt="Figure1 Workflow of MetCleaning" />
+<img src="/images/metcleaning/workflow%20for%20instruction.jpg" alt="" />
 <p class="caption">Figure1 Workflow of <em>MetCleaning</em></p>
 </div>
 </div>
-<div id="installation-and-help" class="section level2">
+<div id="installation-and-help" class="section level2" number="0.2">
 <h2><span class="header-section-number">0.2</span> <strong>Installation and help</strong></h2>
 <hr />
 <p><em>MetCleaning</em> is published in github <a href="https://github.com/jaspershen/MetCleaning">(link)</a>. So you can install it via to github.</p>
@@ -56,7 +57,7 @@ source(&quot;http://bioconductor.org/biocLite.R&quot;)
  library(MetCleaning)
  help(package = &quot;MetCleaning&quot;)</code></pre>
 </div>
-<div id="data-cleaning" class="section level2">
+<div id="data-cleaning" class="section level2" number="0.3">
 <h2><span class="header-section-number">0.3</span> <strong>Data cleaning</strong></h2>
 <hr />
 <p>Data cleaning is integrated as a function named as <em>MetClean</em> in <em>MetCleaning</em>. We use the demo data as the example. Copy the code below and paste in you R console.</p>
@@ -74,7 +75,7 @@ write.csv(sample.information , &quot;sample.information.csv&quot;, row.names = F
 1. “data.csv” is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain “name” (feature name), “mz” (mass to change ratio) and “rt” (retention time). Other information of features are optional, for example “isotopes” and “adducts”. The name of sample can contain “.”, but cannot contain “-” and space. And the start of sample name cannot be number. <strong>For example, “A210.a” and “A210a” are valid, and “210a” or “210-a” are invalid.</strong>
 2. “sample.information.csv” is sample information for metabolomic dataset. Column 1 is “sample.name” which is the names of subject and QC samples. Please confirm that the sample names in “sample.information.csv” and “data.csv” are completely same. Column 2 is “injection.order” which is the injection order of QC and subject samples. Column 3 is “class”, which is used to distinguish “QC” and “Subject” samples. Column 4 is “batch” to provide acquisition batch information for samples. Column 5 is “group”, which is used to label the group of subject sample, for example, “control” and “case”. The “group” of QC samples is labeled as “QC”.</p>
 <div class="figure">
-<img src="/images/metcleaning/data%20organisation.jpg" alt="Figure2 Data organisation of MetCleaning" />
+<img src="/images/metcleaning/data%20organisation.jpg" alt="" />
 <p class="caption">Figure2 Data organisation of MetCleaning</p>
 </div>
 <p>Then you can run <em>MetClean</em> function to do data cleaning of data. All the arguments of <em>MetClean</em> can be found in the other functions in <em>MetCleaning</em>. You can use <em>help(package = “MetCleaning”)</em> to see the help page of <em>MetCleaning</em>.</p>
@@ -84,12 +85,12 @@ MetClean(polarity = &quot;positive&quot;)</code></pre>
 <p>Running results of <em>MetClean</em>
 1.Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.</p>
 <div class="figure">
-<img src="/images/metcleaning/mv%20filter.jpg" alt="Figure3 Missing or zero value filtering" />
+<img src="/images/metcleaning/mv%20filter.jpg" alt="" />
 <p class="caption">Figure3 Missing or zero value filtering</p>
 </div>
 <p>2.Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don’t recommend to remove them as Figure 4 shows, because they should be consired combined other information.</p>
 <div class="figure">
-<img src="/images/metcleaning/sample%20filter.jpg" alt="Figure4 Sample filtering" />
+<img src="/images/metcleaning/sample%20filter.jpg" alt="" />
 <p class="caption">Figure4 Sample filtering</p>
 </div>
 <p>3.Output files. Output files of <em>MetClean</em> are listed as Figure 5 shows.
@@ -103,11 +104,11 @@ MetClean(polarity = &quot;positive&quot;)</code></pre>
 (8) <strong>“data_after_pre.csv”, “qc.info.csv” and “subject.info”</strong> are the data and sample information after data cleaning.
 (9) “intermediate” is the intermediate data during processing.</p>
 <div class="figure">
-<img src="/images/metcleaning/output%20files%20of%20MetClean.jpg" alt="Figure5 Output files of MetClean" />
+<img src="/images/metcleaning/output%20files%20of%20MetClean.jpg" alt="" />
 <p class="caption">Figure5 Output files of <em>MetClean</em></p>
 </div>
 </div>
-<div id="statistical-analysis" class="section level2">
+<div id="statistical-analysis" class="section level2" number="0.4">
 <h2><span class="header-section-number">0.4</span> <strong>Statistical analysis</strong></h2>
 <hr />
 <p>Data statistical analysis is integrated as a function named as <em>MetStat</em> in <em>MetCleaning</em>. We use the demo data as the example. <strong>Please note that now <em>MetStat</em> can only process two class data.</strong> Copy the code below and paste in you R console.</p>
@@ -121,7 +122,7 @@ setwd(&quot;Demo for MetStat&quot;)
 write.csv(new.group, &quot;new.group.csv&quot;, row.names = FALSE)</code></pre>
 <p>The demo data have been added in your work directory. “new.group.csv” is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don’t want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.</p>
 <div class="figure">
-<img src="/images/metcleaning/new.group.jpg" alt="Figure6 new group information" />
+<img src="/images/metcleaning/new.group.jpg" alt="" />
 <p class="caption">Figure6 new group information</p>
 </div>
 <p>code 5: Running of <em>MetStat</em></p>
@@ -129,12 +130,12 @@ write.csv(new.group, &quot;new.group.csv&quot;, row.names = FALSE)</code></pre>
 <p>Running results of <em>MetStat</em>
 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.</p>
 <div class="figure">
-<img src="/images/metcleaning/sample%20remove.jpg" alt="Figure7 sample removing confirmation" />
+<img src="/images/metcleaning/sample%20remove.jpg" alt="" />
 <p class="caption">Figure7 sample removing confirmation</p>
 </div>
 <p>2.Number of component selection in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the Console show “How many comps do you want to see?”, you can type 10 and enter “Enter” key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and enter “Enter” key.</p>
 <div class="figure">
-<img src="/images/metcleaning/PLS%20analysis.jpg" alt="Figure8 Number of component selection in PLS-DA analysis" />
+<img src="/images/metcleaning/PLS%20analysis.jpg" alt="" />
 <p class="caption">Figure8 Number of component selection in PLS-DA analysis</p>
 </div>
 <p>3.Output files. Output files of <em>MetStat</em> are listed as Figure 9 shows.
@@ -145,7 +146,7 @@ write.csv(new.group, &quot;new.group.csv&quot;, row.names = FALSE)</code></pre>
 (5) <strong>“data_after_stat.csv”, “qc.info.csv” and “subject.info”</strong> are the data and sample information after statistical analysis.
 (6) “intermediate” is the intermediate data during processing.</p>
 <div class="figure">
-<img src="/images/metcleaning/output%20files%20of%20MetStat.jpg" alt="Figure9 Output files of MetStat" />
+<img src="/images/metcleaning/output%20files%20of%20MetStat.jpg" alt="" />
 <p class="caption">Figure9 Output files of <em>MetStat</em></p>
 </div>
 </div>

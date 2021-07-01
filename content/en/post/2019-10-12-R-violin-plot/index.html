@@ -16,10 +16,12 @@ output:
     number_sections: true
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#基础小提琴图绘制"><span class="toc-section-number">0.1</span> 基础小提琴图绘制</a><ul>
+<li><a href="#基础小提琴图绘制"><span class="toc-section-number">0.1</span> 基础小提琴图绘制</a>
+<ul>
 <li><a href="#使用ggplot2包中的geom_violin函数."><span class="toc-section-number">0.1.1</span> 使用<code>ggplot2</code>包中的<code>geom_violin()</code>函数.</a></li>
 </ul></li>
 <li><a href="#将小提琴图水平展示"><span class="toc-section-number">0.2</span> 将小提琴图水平展示</a></li>
@@ -30,13 +32,12 @@ output:
 <blockquote>
 <p>本文翻译自“The graph gallery”网站,原帖文地址链接:<a href="https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html" class="uri">https://www.r-graph-gallery.com/95-violin-plot-with-ggplot2.html</a>.</p>
 </blockquote>
-<div id="基础小提琴图绘制" class="section level2">
+<div id="基础小提琴图绘制" class="section level2" number="0.1">
 <h2><span class="header-section-number">0.1</span> 基础小提琴图绘制</h2>
-<div id="使用ggplot2包中的geom_violin函数." class="section level3">
+<div id="使用ggplot2包中的geom_violin函数." class="section level3" number="0.1.1">
 <h3><span class="header-section-number">0.1.1</span> 使用<code>ggplot2</code>包中的<code>geom_violin()</code>函数.</h3>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>#构建数据
+<pre class="r"><code>library(ggplot2)
+#构建数据
 data &lt;- data.frame(
   name = c( rep(&quot;A&quot;,500), rep(&quot;B&quot;,500), rep(&quot;B&quot;,500), rep(&quot;C&quot;,20), rep(&#39;D&#39;, 100)),
   value = c( rnorm(500, 10, 5), rnorm(500, 13, 1), rnorm(500, 18, 1), rnorm(20, 25, 4), rnorm(100, 12, 1) )
@@ -44,12 +45,12 @@ data &lt;- data.frame(
 
 head(data)</code></pre>
 <pre><code>##   name     value
-## 1    A 14.586213
-## 2    A  8.547782
-## 3    A 17.655333
-## 4    A  5.494113
-## 5    A 15.576023
-## 6    A 12.404492</code></pre>
+## 1    A  7.269702
+## 2    A  9.985260
+## 3    A 13.631438
+## 4    A 18.297933
+## 5    A 12.261669
+## 6    A 11.602473</code></pre>
 <pre class="r"><code># Most basic violin chart
 p &lt;- 
   ggplot(data, aes(x = name, y = value, fill = name)) + 
@@ -57,8 +58,8 @@ p &lt;-
   theme_bw()
 
 p</code></pre>
-<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<div id="数据格式" class="section level4">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="数据格式" class="section level4" number="0.1.1.1">
 <h4><span class="header-section-number">0.1.1.1</span> 数据格式</h4>
 <p>注意在使用<code>geom_violin()</code>函数构建小提琴图时,数据格式为长数据(long format).每一行时一个观测.一共需要两列:</p>
 <ul>
@@ -67,22 +68,18 @@ p</code></pre>
 <li>数值型变量,用于Y轴.</li>
 </ul>
 </div>
-<div id="数据转换" class="section level4">
+<div id="数据转换" class="section level4" number="0.1.1.2">
 <h4><span class="header-section-number">0.1.1.2</span> 数据转换</h4>
 <p>如果数据为宽数据格式,需要对其进行转变.可以使用<code>tidyr</code>中的<code>pivot_longer()</code>函数将其转变为长数据格式.</p>
 <pre class="r"><code>data_wide &lt;- 
   iris[ , 1:4]
 library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages ---------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v tibble  2.1.3     v purrr   0.3.2
-## v tidyr   1.0.0     v dplyr   0.8.3
-## v readr   1.3.1     v stringr 1.4.0
-## v tibble  2.1.3     v forcats 0.4.0</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ tibble  3.1.0     ✓ dplyr   1.0.4
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.0
+## ✓ purrr   0.3.4</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>data_long &lt;- 
@@ -105,11 +102,11 @@ data_long %&gt;%
   ggplot(., aes(variable, value)) +
   geom_violin(aes(fill = variable)) +
   theme_bw()</code></pre>
-<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 </div>
 </div>
-<div id="将小提琴图水平展示" class="section level2">
+<div id="将小提琴图水平展示" class="section level2" number="0.2">
 <h2><span class="header-section-number">0.2</span> 将小提琴图水平展示</h2>
 <pre class="r"><code>library(ggplot2)
 library(tidyverse)
@@ -122,9 +119,9 @@ library(tidyverse)
   theme_bw() +
     theme(legend.position = &quot;none&quot;) +
     coord_flip()</code></pre>
-<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
-<div id="小提琴图与箱型图同时展示" class="section level2">
+<div id="小提琴图与箱型图同时展示" class="section level2" number="0.3">
 <h2><span class="header-section-number">0.3</span> 小提琴图与箱型图同时展示</h2>
 <pre class="r"><code>library(ggplot2)
 library(tidyverse)
@@ -139,5 +136,5 @@ library(tidyverse)
     theme(legend.position = &quot;none&quot;) +
     coord_flip()</code></pre>
 <pre><code>## Warning: position_dodge requires non-overlapping x intervals</code></pre>
-<p><img src="/zh/post/2019-10-12-R-violin-plot/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
