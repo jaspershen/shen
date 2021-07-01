@@ -8,6 +8,598 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright><lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>使用Rstudio进行project管理</title>
+      <link>https://www.shenxt.info/post/2021-06-30-rnaseq-raw-data-processing/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/2021-06-30-rnaseq-raw-data-processing/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#需要跟github配合使用首先在github创建repo.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#本地创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建必须文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在rstudio-project的本地文件夹下创建必须的文件夹.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github忽略某些文件文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第一次上传到github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装distill&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建网站地址&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#build-website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将doc文件夹复制到root路径&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#发布website到github-pages&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#提交github.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将github-repo设置为private&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在文章发表之前不想别人看到我们的数据code等.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#邀请合作者&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#装扮website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#website_files简单介绍&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改页面布局&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的文章并将其加入到网站中&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的rmarkdown文件放在website_files文件夹中.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编辑好文章之后添加到网页.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#我自己的project管理模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文件结构&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分析及重复&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#几个原则&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#直接使用r-script生成html文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#一个例子&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#仍然使用rmakdown&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;创建rstudio-project&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/h1&gt;
+&lt;div id=&#34;需要跟github配合使用首先在github创建repo.&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.06.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;本地创建rstudio-project&#34; class=&#34;section level2&#34; number=&#34;1.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.07.56%20PM.png&#34; /&gt;
+&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.01%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建必须文件夹&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/h1&gt;
+&lt;div id=&#34;在rstudio-project的本地文件夹下创建必须的文件夹.&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.11.18%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;github忽略某些文件文件夹&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/h2&gt;
+&lt;p&gt;如果不想要上传某些文件或者文件夹到github,在.gitgnore中写明.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.13.32%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第一次上传到github&#34; class=&#34;section level2&#34; number=&#34;2.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;first commit&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.04%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.24%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建website&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/h1&gt;
+&lt;p&gt;使用distill,参考网站:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://distill.netlify.app/&#34;&gt;https://distill.netlify.app/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&#34;&gt;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;安装distill&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;rstudio/distill&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建网站地址&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/h2&gt;
+&lt;p&gt;不要将webiste文件放到root路径,可以在root路径下创建一个文件夹,比如&lt;code&gt;website_files&lt;/code&gt;,然后把文件都放到这里面.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;distill::create_website(dir = &amp;quot;website_files/&amp;quot;, gh_pages = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.21.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.22.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-website&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将doc文件夹复制到root路径&#34; class=&#34;section level2&#34; number=&#34;3.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候会在root有一个&lt;code&gt;doc&lt;/code&gt;文件夹.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;发布website到github-pages&#34; class=&#34;section level2&#34; number=&#34;3.5&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/h2&gt;
+&lt;div id=&#34;提交github.&#34; class=&#34;section level3&#34; number=&#34;3.5.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;create website&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置website&#34; class=&#34;section level3&#34; number=&#34;3.5.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.26.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.44%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.51%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候就可以看到网址了.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jaspershen.github.io/rstudio_project_test/&#34;&gt;https://jaspershen.github.io/rstudio_project_test/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.29.00%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候网站就已经公开了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将github-repo设置为private&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/h1&gt;
+&lt;div id=&#34;在文章发表之前不想别人看到我们的数据code等.&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.30.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候虽然别人看不到你的github repo,但是网址仍然可见.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;邀请合作者&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/h2&gt;
+&lt;p&gt;这样,合作者还是可以看到repo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.32.41%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;装扮website&#34; class=&#34;section level1&#34; number=&#34;5&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/h1&gt;
+&lt;div id=&#34;website_files简单介绍&#34; class=&#34;section level2&#34; number=&#34;5.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.36.27%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;index.Rmd&lt;/code&gt;: This will be our site’s homepage. This file must be named index.Rmd.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;about.Rmd&lt;/code&gt;: This will be an additional page on our site, and you can change the name of this file to be whatever you want.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;_site.yml&lt;/code&gt;: is not a file that gets turned into a site page, but it is necessary for site setup.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs/&lt;/code&gt;: folder: This is the output folder, where knitted versions of our .Rmds live once they’ve been processed to become .html files.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改页面布局&#34; class=&#34;section level2&#34; number=&#34;5.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/h2&gt;
+&lt;p&gt;打开&lt;code&gt;_site.yml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.47.34%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后按照下图进行修改.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.51.13%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;编辑好文章之后,重新render并将docs copy到root路径&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新生成网站如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.52.29%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;但是这时候还没有提交到github.只有再次提交到github网址链接的网站才会更新.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建新的文章并将其加入到网站中&#34; class=&#34;section level2&#34; number=&#34;5.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/h2&gt;
+&lt;div id=&#34;创建新的rmarkdown文件放在website_files文件夹中.&#34; class=&#34;section level3&#34; number=&#34;5.3.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.41.38%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.42.14%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.43.26%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编辑好文章之后添加到网页.&#34; class=&#34;section level3&#34; number=&#34;5.3.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/h3&gt;
+&lt;p&gt;这里我们生成的文章名字为&lt;code&gt;figure1.html&lt;/code&gt;,所以在&lt;code&gt;_site.yml&lt;/code&gt;修改:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.55.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render,并提交到github即可.&lt;/p&gt;
+&lt;p&gt;打开链接:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.57.03%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;我自己的project管理模式&#34; class=&#34;section level1&#34; number=&#34;6&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/h1&gt;
+&lt;div id=&#34;文件结构&#34; class=&#34;section level2&#34; number=&#34;6.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data&lt;/code&gt;:存放原始数据. 不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data_analysis&lt;/code&gt;: 存放分析结果. 发表前不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;code&lt;/code&gt;: 分析脚本. 公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;summary&lt;/code&gt;: slides, document等. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;manuscript&lt;/code&gt;: figures. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs&lt;/code&gt;: project网站介绍,公开.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分析及重复&#34; class=&#34;section level2&#34; number=&#34;6.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/h2&gt;
+&lt;p&gt;数据分析自己以及别人重复很重要.&lt;/p&gt;
+&lt;div id=&#34;几个原则&#34; class=&#34;section level3&#34; number=&#34;6.2.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;以Rstudio project为中心组织数据和code&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所有的数据和code都以Rstudio project为中心进行组织. 文章发表之后,public project,如果别人要重复分析,下载Rstudio project, 包含了数据和code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.03.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;使用相对路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在code中,尽量不要使用绝对路径,使用相对路径. 每个code中,都首先将work directory定为到Rstudio project所在位置.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.07.16%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果想要使用&lt;code&gt;tinyTools&lt;/code&gt;,从github安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;devtools::install_github(&amp;quot;jaspershen/tinyTools&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;代码命名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代码按照分析步骤进行命名.&lt;/p&gt;
+&lt;p&gt;代码运行的可能会有先后依赖关系,命名时最好注明.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;直接使用r-script生成html文件&#34; class=&#34;section level3&#34; number=&#34;6.2.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/h3&gt;
+&lt;p&gt;我比较习惯直接使用r script而不是rmarkdown.为了能够直接render成html格式,需要在前面加上一些:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; ---
+#&amp;#39; title: &amp;quot;Stool microbiome metabolome correlation&amp;quot;
+#&amp;#39; author: 
+#&amp;#39;   - name: &amp;quot;Xiaotao Shen&amp;quot; 
+#&amp;#39;     url: https://www.shenxt.info/
+#&amp;#39;     affiliation: Stanford School of Medicine
+#&amp;#39; date: &amp;quot;2021-05-12&amp;quot;
+#&amp;#39; site: distill::distill_website
+#&amp;#39; output: 
+#&amp;#39;   distill::distill_article:
+#&amp;#39;     code_folding: false
+#&amp;#39; ---
+
+#+ r setup, echo=TRUE, eval = FALSE, include = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考网址:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&#34;&gt;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一些基本用法:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#&#39;&lt;/code&gt;后是markdown语法内容, 比如想要使用一级标题,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; # title&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#+&lt;/code&gt;后面是r code chunk设置.比如我们想要设置某段代码不运行但是显示,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#+ eval=FALSE, echo = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相当于rmarkdown的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{r eval=FALSE, echo = TRUE}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一个例子&#34; class=&#34;section level3&#34; number=&#34;6.2.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/h3&gt;
+&lt;p&gt;在code中创建r script&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.52.55%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后运行之后,会在保存该script的路径下生成html文件.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.53.46%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将该html文件copy到docs文件夹下.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sxtTools::setwd_project()
+file.copy(from = &amp;quot;code/microbiome_analysis/data_summary.html&amp;quot;, to = &amp;quot;docs/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将该文件放到网页中.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.49.52%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render website,copy &lt;code&gt;webiste_files/docs&lt;/code&gt;到&lt;code&gt;../docs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后提交到github.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.55.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;仍然使用rmakdown&#34; class=&#34;section level3&#34; number=&#34;6.2.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/h3&gt;
+&lt;p&gt;仍然在code中建立相应的rmakdown文件.&lt;/p&gt;
+&lt;p&gt;最后需要手动copy到&lt;code&gt;website_files文件夹中.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;后续步骤相同.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用Rstudio进行project管理</title>
+      <link>https://www.shenxt.info/post/2021-06-30-scg-summary/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/post/2021-06-30-scg-summary/</guid>
+      <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#需要跟github配合使用首先在github创建repo.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#本地创建rstudio-project&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建必须文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在rstudio-project的本地文件夹下创建必须的文件夹.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github忽略某些文件文件夹&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#第一次上传到github&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#安装distill&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建网站地址&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#build-website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将doc文件夹复制到root路径&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#发布website到github-pages&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#提交github.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#设置website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#将github-repo设置为private&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#在文章发表之前不想别人看到我们的数据code等.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#邀请合作者&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#装扮website&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#website_files简单介绍&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#修改页面布局&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的文章并将其加入到网站中&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#创建新的rmarkdown文件放在website_files文件夹中.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#编辑好文章之后添加到网页.&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#我自己的project管理模式&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文件结构&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#分析及重复&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#几个原则&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#直接使用r-script生成html文件&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#一个例子&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#仍然使用rmakdown&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;创建rstudio-project&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; 创建Rstudio project&lt;/h1&gt;
+&lt;div id=&#34;需要跟github配合使用首先在github创建repo.&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 需要跟github配合使用,首先在github创建repo.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.06.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;本地创建rstudio-project&#34; class=&#34;section level2&#34; number=&#34;1.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 本地创建Rstudio project&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.07.56%20PM.png&#34; /&gt;
+&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.01%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.08.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建必须文件夹&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; 创建必须文件夹&lt;/h1&gt;
+&lt;div id=&#34;在rstudio-project的本地文件夹下创建必须的文件夹.&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; 在Rstudio project的本地文件夹下创建必须的文件夹.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.11.18%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;github忽略某些文件文件夹&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; github忽略某些文件/文件夹&lt;/h2&gt;
+&lt;p&gt;如果不想要上传某些文件或者文件夹到github,在.gitgnore中写明.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.13.32%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;第一次上传到github&#34; class=&#34;section level2&#34; number=&#34;2.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.3&lt;/span&gt; 第一次上传到github&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;first commit&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.04%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.16.24%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建website&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; 创建website&lt;/h1&gt;
+&lt;p&gt;使用distill,参考网站:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://distill.netlify.app/&#34;&gt;https://distill.netlify.app/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&#34;&gt;https://rstudio4edu.github.io/rstudio4edu-book/make-distill.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;安装distill&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; 安装distill&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;remotes::install_github(&amp;quot;rstudio/distill&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建网站地址&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; 创建网站地址&lt;/h2&gt;
+&lt;p&gt;不要将webiste文件放到root路径,可以在root路径下创建一个文件夹,比如&lt;code&gt;website_files&lt;/code&gt;,然后把文件都放到这里面.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;distill::create_website(dir = &amp;quot;website_files/&amp;quot;, gh_pages = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.21.15%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.22.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-website&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Build website&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将doc文件夹复制到root路径&#34; class=&#34;section level2&#34; number=&#34;3.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; 将doc文件夹复制到root路径&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这时候会在root有一个&lt;code&gt;doc&lt;/code&gt;文件夹.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;发布website到github-pages&#34; class=&#34;section level2&#34; number=&#34;3.5&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; 发布website到github pages&lt;/h2&gt;
+&lt;div id=&#34;提交github.&#34; class=&#34;section level3&#34; number=&#34;3.5.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.1&lt;/span&gt; 提交github.&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;git add.
+git commit -m &amp;quot;create website&amp;quot;
+git push&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;设置website&#34; class=&#34;section level3&#34; number=&#34;3.5.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5.2&lt;/span&gt; 设置website&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.26.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.44%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.27.51%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候就可以看到网址了.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jaspershen.github.io/rstudio_project_test/&#34;&gt;https://jaspershen.github.io/rstudio_project_test/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.29.00%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候网站就已经公开了.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;将github-repo设置为private&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; 将github repo设置为private&lt;/h1&gt;
+&lt;div id=&#34;在文章发表之前不想别人看到我们的数据code等.&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; 在文章发表之前,不想别人看到我们的数据/code等.&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.30.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.31.10%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;这时候虽然别人看不到你的github repo,但是网址仍然可见.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;邀请合作者&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; 邀请合作者&lt;/h2&gt;
+&lt;p&gt;这样,合作者还是可以看到repo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.32.41%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;装扮website&#34; class=&#34;section level1&#34; number=&#34;5&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; 装扮website&lt;/h1&gt;
+&lt;div id=&#34;website_files简单介绍&#34; class=&#34;section level2&#34; number=&#34;5.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; website_files简单介绍&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.36.27%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;index.Rmd&lt;/code&gt;: This will be our site’s homepage. This file must be named index.Rmd.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;about.Rmd&lt;/code&gt;: This will be an additional page on our site, and you can change the name of this file to be whatever you want.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;_site.yml&lt;/code&gt;: is not a file that gets turned into a site page, but it is necessary for site setup.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs/&lt;/code&gt;: folder: This is the output folder, where knitted versions of our .Rmds live once they’ve been processed to become .html files.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;修改页面布局&#34; class=&#34;section level2&#34; number=&#34;5.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; 修改页面布局&lt;/h2&gt;
+&lt;p&gt;打开&lt;code&gt;_site.yml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.47.34%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后按照下图进行修改.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.51.13%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;编辑好文章之后,重新render并将docs copy到root路径&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新生成网站如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.52.29%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;但是这时候还没有提交到github.只有再次提交到github网址链接的网站才会更新.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;创建新的文章并将其加入到网站中&#34; class=&#34;section level2&#34; number=&#34;5.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; 创建新的文章并将其加入到网站中&lt;/h2&gt;
+&lt;div id=&#34;创建新的rmarkdown文件放在website_files文件夹中.&#34; class=&#34;section level3&#34; number=&#34;5.3.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.1&lt;/span&gt; 创建新的&lt;code&gt;rmarkdown&lt;/code&gt;文件,放在website_files文件夹中.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.41.38%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.42.14%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.43.26%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;编辑好文章之后添加到网页.&#34; class=&#34;section level3&#34; number=&#34;5.3.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3.2&lt;/span&gt; 编辑好文章之后,添加到网页.&lt;/h3&gt;
+&lt;p&gt;这里我们生成的文章名字为&lt;code&gt;figure1.html&lt;/code&gt;,所以在&lt;code&gt;_site.yml&lt;/code&gt;修改:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.55.02%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render,并提交到github即可.&lt;/p&gt;
+&lt;p&gt;打开链接:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%201.57.03%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;我自己的project管理模式&#34; class=&#34;section level1&#34; number=&#34;6&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; 我自己的project管理模式&lt;/h1&gt;
+&lt;div id=&#34;文件结构&#34; class=&#34;section level2&#34; number=&#34;6.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.1&lt;/span&gt; 文件结构&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data&lt;/code&gt;:存放原始数据. 不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;data_analysis&lt;/code&gt;: 存放分析结果. 发表前不上传到github.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;code&lt;/code&gt;: 分析脚本. 公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;summary&lt;/code&gt;: slides, document等. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;manuscript&lt;/code&gt;: figures. 不公开.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docs&lt;/code&gt;: project网站介绍,公开.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;分析及重复&#34; class=&#34;section level2&#34; number=&#34;6.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2&lt;/span&gt; 分析及重复&lt;/h2&gt;
+&lt;p&gt;数据分析自己以及别人重复很重要.&lt;/p&gt;
+&lt;div id=&#34;几个原则&#34; class=&#34;section level3&#34; number=&#34;6.2.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.1&lt;/span&gt; 几个原则&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;以Rstudio project为中心组织数据和code&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所有的数据和code都以Rstudio project为中心进行组织. 文章发表之后,public project,如果别人要重复分析,下载Rstudio project, 包含了数据和code.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.03.50%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;使用相对路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在code中,尽量不要使用绝对路径,使用相对路径. 每个code中,都首先将work directory定为到Rstudio project所在位置.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.07.16%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;如果想要使用&lt;code&gt;tinyTools&lt;/code&gt;,从github安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;devtools::install_github(&amp;quot;jaspershen/tinyTools&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;代码命名&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代码按照分析步骤进行命名.&lt;/p&gt;
+&lt;p&gt;代码运行的可能会有先后依赖关系,命名时最好注明.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;直接使用r-script生成html文件&#34; class=&#34;section level3&#34; number=&#34;6.2.2&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.2&lt;/span&gt; 直接使用r script生成html文件&lt;/h3&gt;
+&lt;p&gt;我比较习惯直接使用r script而不是rmarkdown.为了能够直接render成html格式,需要在前面加上一些:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; ---
+#&amp;#39; title: &amp;quot;Stool microbiome metabolome correlation&amp;quot;
+#&amp;#39; author: 
+#&amp;#39;   - name: &amp;quot;Xiaotao Shen&amp;quot; 
+#&amp;#39;     url: https://www.shenxt.info/
+#&amp;#39;     affiliation: Stanford School of Medicine
+#&amp;#39; date: &amp;quot;2021-05-12&amp;quot;
+#&amp;#39; site: distill::distill_website
+#&amp;#39; output: 
+#&amp;#39;   distill::distill_article:
+#&amp;#39;     code_folding: false
+#&amp;#39; ---
+
+#+ r setup, echo=TRUE, eval = FALSE, include = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考网址:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&#34;&gt;https://bookdown.org/yihui/rmarkdown-cookbook/spin.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一些基本用法:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#&#39;&lt;/code&gt;后是markdown语法内容, 比如想要使用一级标题,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; # title&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;#+&lt;/code&gt;后面是r code chunk设置.比如我们想要设置某段代码不运行但是显示,需要这样写:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#+ eval=FALSE, echo = TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相当于rmarkdown的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{r eval=FALSE, echo = TRUE}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;一个例子&#34; class=&#34;section level3&#34; number=&#34;6.2.3&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.3&lt;/span&gt; 一个例子&lt;/h3&gt;
+&lt;p&gt;在code中创建r script&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.52.55%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后运行之后,会在保存该script的路径下生成html文件.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%202.53.46%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将该html文件copy到docs文件夹下.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sxtTools::setwd_project()
+file.copy(from = &amp;quot;code/microbiome_analysis/data_summary.html&amp;quot;, to = &amp;quot;docs/&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将该文件放到网页中.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.49.52%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后重新render website,copy &lt;code&gt;webiste_files/docs&lt;/code&gt;到&lt;code&gt;../docs&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rmarkdown::render_site(input = &amp;quot;website_files/&amp;quot;)
+file.copy(from = &amp;quot;website_files/docs/&amp;quot;, to = &amp;quot;.&amp;quot;, recursive = TRUE, overwrite = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后提交到github.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Screen%20Shot%202021-05-12%20at%204.55.28%20PM.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;仍然使用rmakdown&#34; class=&#34;section level3&#34; number=&#34;6.2.4&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2.4&lt;/span&gt; 仍然使用rmakdown&lt;/h3&gt;
+&lt;p&gt;仍然在code中建立相应的rmakdown文件.&lt;/p&gt;
+&lt;p&gt;最后需要手动copy到&lt;code&gt;website_files文件夹中.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;后续步骤相同.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>使用Rstudio进行project管理</title>
       <link>https://www.shenxt.info/post/2021-5-12-rstudio-project/</link>
       <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
       <guid>https://www.shenxt.info/post/2021-5-12-rstudio-project/</guid>
@@ -1951,11 +2543,14 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       <guid>https://www.shenxt.info/post/linux/</guid>
       <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#linux常用命令总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Linux常用命令总结&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#文件和目录&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 文件和目录&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#linux常用命令总结&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Linux常用命令总结&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#文件和目录&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; 文件和目录&lt;/a&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#修改工作路径&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.1&lt;/span&gt; 修改工作路径&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#显示工作路径&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1.2&lt;/span&gt; 显示工作路径&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -1966,11 +2561,11 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;linux常用命令总结&#34; class=&#34;section level1&#34;&gt;
+&lt;div id=&#34;linux常用命令总结&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Linux常用命令总结&lt;/h1&gt;
-&lt;div id=&#34;文件和目录&#34; class=&#34;section level2&#34;&gt;
+&lt;div id=&#34;文件和目录&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; 文件和目录&lt;/h2&gt;
-&lt;div id=&#34;修改工作路径&#34; class=&#34;section level3&#34;&gt;
+&lt;div id=&#34;修改工作路径&#34; class=&#34;section level3&#34; number=&#34;1.1.1&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.1&lt;/span&gt; 修改工作路径&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;cat /home&lt;/code&gt;:进入home目录&lt;/p&gt;&lt;/li&gt;
@@ -1978,7 +2573,7 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
 &lt;li&gt;&lt;p&gt;&lt;code&gt;cat ../..&lt;/code&gt;;返回上两级目录.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div id=&#34;显示工作路径&#34; class=&#34;section level3&#34;&gt;
+&lt;div id=&#34;显示工作路径&#34; class=&#34;section level3&#34; number=&#34;1.1.2&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1.2&lt;/span&gt; 显示工作路径&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;pwd&lt;/code&gt;:显示当前工作路径.&lt;/p&gt;&lt;/li&gt;
@@ -1989,7 +2584,7 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;创建文件夹和文件&#34; class=&#34;section level2&#34;&gt;
+&lt;div id=&#34;创建文件夹和文件&#34; class=&#34;section level2&#34; number=&#34;1.2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; 创建文件夹和文件&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;mkdir dir1&lt;/code&gt;:创建dir1文件夹.&lt;/p&gt;&lt;/li&gt;
@@ -1997,7 +2592,7 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
 &lt;li&gt;&lt;p&gt;&lt;code&gt;touch file&lt;/code&gt;:创建一个名为file的文件.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div id=&#34;删除文件&#34; class=&#34;section level2&#34;&gt;
+&lt;div id=&#34;删除文件&#34; class=&#34;section level2&#34; number=&#34;1.3&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; 删除文件&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;rm -f file1&lt;/code&gt;:删除file1文件.&lt;/p&gt;&lt;/li&gt;
@@ -2005,7 +2600,7 @@ git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git
 &lt;li&gt;&lt;p&gt;&lt;code&gt;rm rf dir1&lt;/code&gt;:删除dir1文件夹及其中的文件.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div id=&#34;拷贝和复制文件&#34; class=&#34;section level2&#34;&gt;
+&lt;div id=&#34;拷贝和复制文件&#34; class=&#34;section level2&#34; number=&#34;1.4&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4&lt;/span&gt; 拷贝和复制文件&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;mv dir1 new_dir1&lt;/code&gt;: 重命名或者移动一个目录.&lt;/p&gt;&lt;/li&gt;

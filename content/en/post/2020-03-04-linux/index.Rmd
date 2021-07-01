@@ -41,6 +41,8 @@ output:
 
 * `ls -la`:查看文件详细信息和隐藏文件.
 
+* `ls -lht`:查看当前所有文件其他大小,并显示所有文件的总大小.
+
 ## 创建文件夹和文件
 
 * `mkdir dir1`:创建dir1文件夹.
@@ -49,13 +51,15 @@ output:
 
 * `touch file`:创建一个名为file的文件.
 
+* `ls -l | grep "^-" | wc -l`:查看当前文件夹下的文件数目
+
 ## 删除文件
 
 * `rm -f file1`:删除file1文件.
 
 * `rmdir dir1`:删除dir1文件夹.
 
-* `rm rf dir1`:删除dir1文件夹及其中的文件.
+* `rm -rf dir1`:删除dir1文件夹及其中的文件.
 
 ## 拷贝和复制文件
 

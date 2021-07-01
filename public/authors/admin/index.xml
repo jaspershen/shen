@@ -2174,13 +2174,19 @@ with urllib.request.urlopen(request_URL) as inStream:
 &lt;h1 id=&#34;tmux快捷键&#34;&gt;Tmux快捷键&lt;/h1&gt;
 &lt;h2 id=&#34;启动新对话&#34;&gt;启动新对话&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;tmux [new -s 会话名 -n 窗口名]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;比如创建一个新的会话:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tmux new -s new_session
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;列出所有的对话&#34;&gt;列出所有的对话&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;tmux ls
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;关闭会话&#34;&gt;关闭会话&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;进入某个会话&#34;&gt;进入某个会话&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;tmux a -t session
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;关闭某个会话&#34;&gt;关闭某个会话&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;tmux kill-session -t 会话名
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;关闭所有会话&#34;&gt;关闭所有会话&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;tmux ls | grep : | cut -d. -f1 | awk &#39;{print substr($1, 0, length($1)-1)}&#39; | xargs kill
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;在-tmux-中按下-tmux-前缀-ctrlb然后&#34;&gt;在 Tmux 中，按下 Tmux 前缀 ctrl+b，然后&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;在-tmux-中按下-tmux前缀ctrlbmac下未commandb然后再点击某个按键即可进行某些操作&#34;&gt;在 Tmux 中，按下 Tmux前缀ctrl+b(mac下未command+b)，然后再点击某个按键,即可进行某些操作&lt;/h2&gt;
+&lt;h3 id=&#34;退出某个会话&#34;&gt;退出某个会话&lt;/h3&gt;
+&lt;p&gt;先同时按下command+b,然后按d(detach的意思)&lt;/p&gt;
 &lt;h3 id=&#34;会话&#34;&gt;会话&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;:new&amp;lt;回车&amp;gt;  启动新会话
 s           列出所有会话

@@ -39,13 +39,24 @@ tmux是一款优秀的终端复用软件，主要得益于以下三处功能：
 ```
 tmux [new -s 会话名 -n 窗口名]
 ```
+比如创建一个新的会话:
+
+```
+tmux new -s new_session
+```
+
 ## 列出所有的对话
 
 ```
 tmux ls
 ```
+## 进入某个会话
 
-## 关闭会话
+```
+tmux a -t session
+```
+
+## 关闭某个会话
 
 ```
 tmux kill-session -t 会话名
@@ -57,7 +68,11 @@ tmux kill-session -t 会话名
 tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill
 ```
 
-## 在 Tmux 中，按下 Tmux 前缀 ctrl+b，然后
+## 在 Tmux 中，按下 Tmux前缀ctrl+b(mac下未command+b)，然后再点击某个按键,即可进行某些操作
+
+### 退出某个会话
+
+先同时按下command+b,然后按d(detach的意思)
 
 ### 会话
 
