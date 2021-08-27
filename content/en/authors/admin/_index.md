@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: Metabolomics, Multi-omics, Bioinformatics, Healthcare.
+bio: Metabolomics, Multi-omics, Bioinformatics, Healthcare, Systems biology.
 name: Xiaotao Shen PhD
 organizations:
 - name: Stanford University School of Medicine
