@@ -95,7 +95,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.b5be93281ad18a9874bd9a37087e64db.css">
+  <link rel="stylesheet" href="/css/academic.min.0133df55cff3670fd2bbcfe34412cd54.css">
 
   
     
@@ -154,7 +154,7 @@
   
   <meta property="article:published_time" content="2016-11-25T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2020-03-21T14:39:17-07:00">
+  <meta property="article:modified_time" content="2021-07-01T10:00:54-07:00">
   
 
   
@@ -597,7 +597,7 @@
 
 
 <meta content="2016-11-25 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2020-03-21 14:39:17 -0700 PDT" itemprop="dateModified">
+<meta content="2021-07-01 10:00:54 -0700 PDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -612,7 +612,7 @@
           Last updated on
       
     
-    <time>Mar 21, 2020</time>
+    <time>Jul 1, 2021</time>
   </span>
   
 
@@ -709,6 +709,7 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -719,12 +720,12 @@
 </ul>
 </div>
 
-<div id="r语言爬虫" class="section level2">
+<div id="r语言爬虫" class="section level2" number="0.1">
 <h2><span class="header-section-number">0.1</span> <strong>R语言爬虫</strong></h2>
 <hr />
 <p>虽然相对于python来说，R语言爬虫并不是那么流行，但是对于比较小的数据爬取量，使用R还是很方便的。R的数据爬取比较流行的是利用XML和RCurl包进行爬取，在这篇博客里面，我就利用XML和RCurl包进行KEGG和HMDB的数据爬取。</p>
 </div>
-<div id="爬取kegg通路信息" class="section level2">
+<div id="爬取kegg通路信息" class="section level2" number="0.2">
 <h2><span class="header-section-number">0.2</span> <strong>爬取KEGG通路信息</strong></h2>
 <hr />
 <p>因为我需要的信息是KEGG的通路信息，比较简单，也就是每个通路包含哪些代谢物，只要人的metaboloic pathway，因此，我需要先将KEGG中的通路的网页链接拿到。</p>
@@ -813,7 +814,7 @@ names(kegg.met) &lt;- c(&quot;gs&quot;, &quot;pathwaynames&quot;, &quot;metid&qu
 
 save(kegg.met, file = &quot;kegg.met&quot;)</code></pre>
 </div>
-<div id="爬取hmdb通路信息" class="section level2">
+<div id="爬取hmdb通路信息" class="section level2" number="0.3">
 <h2><span class="header-section-number">0.3</span> <strong>爬取HMDB通路信息</strong></h2>
 <hr />
 <p>首先爬取HMDB的通路信息。</p>
@@ -945,7 +946,7 @@ pathway.name &lt;- a
 hmdb.met &lt;- list(gs = metabolite.name, pathwaynames = pathway.name, id = metabolite.ID)
 save(hmdb.met, file = &quot;hmdb.met&quot;)</code></pre>
 </div>
-<div id="爬取hmdb代谢物信息" class="section level2">
+<div id="爬取hmdb代谢物信息" class="section level2" number="0.4">
 <h2><span class="header-section-number">0.4</span> <strong>爬取HMDB代谢物信息</strong></h2>
 <hr />
 <p>首先，获得所有代谢物的页面链接。</p>
@@ -1090,7 +1091,7 @@ for (i in 1:400) {
     <div class="media-body">
       <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen PhD</a></h5>
       <h6 class="card-subtitle">Postdoctoral Research Fellow</h6>
-      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
+      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Systems Biology.</p>
       <ul class="network-icon" aria-hidden="true">
         
           
@@ -1532,7 +1533,7 @@ for (i in 1:400) {
     
     
     
-    <script src="/js/academic.min.ee8463f2a394889d45e169a983fe913d.js"></script>
+    <script src="/js/academic.min.19496f51f1817958711e5adb6fde1726.js"></script>
 
   </body>
 </html>

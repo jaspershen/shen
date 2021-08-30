@@ -95,7 +95,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.b5be93281ad18a9874bd9a37087e64db.css">
+  <link rel="stylesheet" href="/css/academic.min.0133df55cff3670fd2bbcfe34412cd54.css">
 
   
     
@@ -154,7 +154,7 @@
   
   <meta property="article:published_time" content="2019-10-25T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2020-03-06T10:07:48-08:00">
+  <meta property="article:modified_time" content="2021-07-01T10:00:54-07:00">
   
 
   
@@ -597,7 +597,7 @@
 
 
 <meta content="2019-10-25 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2020-03-06 10:07:48 -0800 PST" itemprop="dateModified">
+<meta content="2021-07-01 10:00:54 -0700 PDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -612,7 +612,7 @@
           Last updated on
       
     
-    <time>Mar 6, 2020</time>
+    <time>Jul 1, 2021</time>
   </span>
   
 
@@ -709,6 +709,7 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -719,29 +720,27 @@
 </ul>
 </div>
 
-<div id="ggplot2中如何反转坐标轴" class="section level3">
+<div id="ggplot2中如何反转坐标轴" class="section level3" number="0.0.1">
 <h3><span class="header-section-number">0.0.1</span> <code>ggplot2</code>中如何反转坐标轴?</h3>
 <p>使用<code>scale_x_reverse()/scale_y_reverse()</code>函数.</p>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>library(magrittr)</code></pre>
-<pre><code>## Warning: package &#39;magrittr&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>p &lt;- 
+<pre class="r"><code>library(ggplot2)
+library(magrittr)
+p &lt;- 
 mtcars %&gt;% 
   ggplot(aes(mpg, disp)) +
   geom_point() 
 p</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <pre class="r"><code>##反转X坐标轴
 p + 
   scale_x_reverse()</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
 <pre class="r"><code># 反转y坐标轴
 p + 
   scale_y_reverse()</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
 </div>
-<div id="ggplot2中如何修改绘图区域的边界" class="section level3">
+<div id="ggplot2中如何修改绘图区域的边界" class="section level3" number="0.0.2">
 <h3><span class="header-section-number">0.0.2</span> <code>ggplot2</code>中如何修改绘图区域的边界?</h3>
 <p>在<code>theme()</code>函数中设置<code>plot.margin</code>参数,且该参数应该是一个<code>margin()</code>函数构建的对象.</p>
 <pre class="r"><code>library(ggplot2)
@@ -753,40 +752,39 @@ mtcars %&gt;%
   theme_bw() +
   theme(plot.margin = margin(t = 0, r = 0, b = 0, l = 0, unit = &quot;pt&quot;))
 p</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
-<div id="如何获得合适的配色组合" class="section level3">
+<div id="如何获得合适的配色组合" class="section level3" number="0.0.3">
 <h3><span class="header-section-number">0.0.3</span> 如何获得合适的配色组合?</h3>
 <p>比较常见的配色工具包括<code>ggsci</code>,<code>RColorBrewer</code>等.且可以使用<code>scales</code>包中的<code>show_col()</code>函数来展示颜色.</p>
-<pre class="r"><code>library(ggsci)</code></pre>
-<pre><code>## Warning: package &#39;ggsci&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>library(scales)
+<pre class="r"><code>library(ggsci)
+library(scales)
 
 test_colour &lt;- 
   ggsci::pal_jama()(7)
 
 show_col(test_colour)</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>test_colour &lt;- 
   ggsci::pal_jama(alpha = 0.5)(7)
 
 show_col(test_colour)</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <p>另外,<code>RColorBrewer</code>包也非常方便.</p>
 <pre class="r"><code>library(RColorBrewer)
 ##显示所有的配色
 RColorBrewer::display.brewer.all()</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>##可以扩大弄每一种配色左边都有该配色的名字,因此如果想要单独显示该配色,直接使用下列命令.
 RColorBrewer::display.brewer.pal(n = 9, name = &quot;Set1&quot;)</code></pre>
-<p><img src="/zh/post/2019-10-25-r-data-visulization-cookbook/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <pre class="r"><code>##两个参数分别用来设置需要显示的颜色的个数以及配色的名字.
 #如果需要将该配色名字提出来,使用下面命令
 RColorBrewer::brewer.pal(n = 9, name = &quot;Set1&quot;)</code></pre>
 <pre><code>## [1] &quot;#E41A1C&quot; &quot;#377EB8&quot; &quot;#4DAF4A&quot; &quot;#984EA3&quot; &quot;#FF7F00&quot; &quot;#FFFF33&quot; &quot;#A65628&quot;
 ## [8] &quot;#F781BF&quot; &quot;#999999&quot;</code></pre>
 </div>
-<div id="ggplot2中如何反转坐标轴-1" class="section level3">
+<div id="ggplot2中如何反转坐标轴-1" class="section level3" number="0.0.4">
 <h3><span class="header-section-number">0.0.4</span> <code>ggplot2</code>中如何反转坐标轴?</h3>
 </div>
 
@@ -828,7 +826,7 @@ RColorBrewer::brewer.pal(n = 9, name = &quot;Set1&quot;)</code></pre>
     <div class="media-body">
       <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen PhD</a></h5>
       <h6 class="card-subtitle">Postdoctoral Research Fellow</h6>
-      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
+      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Systems Biology.</p>
       <ul class="network-icon" aria-hidden="true">
         
           
@@ -1270,7 +1268,7 @@ RColorBrewer::brewer.pal(n = 9, name = &quot;Set1&quot;)</code></pre>
     
     
     
-    <script src="/js/academic.min.ee8463f2a394889d45e169a983fe913d.js"></script>
+    <script src="/js/academic.min.19496f51f1817958711e5adb6fde1726.js"></script>
 
   </body>
 </html>

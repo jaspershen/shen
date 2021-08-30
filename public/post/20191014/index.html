@@ -95,7 +95,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.b5be93281ad18a9874bd9a37087e64db.css">
+  <link rel="stylesheet" href="/css/academic.min.0133df55cff3670fd2bbcfe34412cd54.css">
 
   
     
@@ -154,7 +154,7 @@
   
   <meta property="article:published_time" content="2019-10-14T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2020-03-06T10:07:48-08:00">
+  <meta property="article:modified_time" content="2021-07-01T10:00:54-07:00">
   
 
   
@@ -597,7 +597,7 @@
 
 
 <meta content="2019-10-14 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2020-03-06 10:07:48 -0800 PST" itemprop="dateModified">
+<meta content="2021-07-01 10:00:54 -0700 PDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -612,7 +612,7 @@
           Last updated on
       
     
-    <time>Mar 6, 2020</time>
+    <time>Jul 1, 2021</time>
   </span>
   
 
@@ -709,6 +709,7 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -719,7 +720,7 @@
 </div>
 
 <p>实验室新买了一台workstation.因为有软件需要在windows上运行,因此本来需要安装windows server版本.但是后来问了一下学校的IT部门,安装一台服务器非常麻烦,需要学校IT部门来关理,每月收费350刀.如果是自己关理,也可以,但是如果有数据外漏的话,责任需要自己负责.因此最后考虑安装普通的window10版本,然后可以远程连接.我自己再看看能够在上面的虚拟机上安装linux系统,实现多人同时远程练级额.</p>
-<div id="远程连接" class="section level3">
+<div id="远程连接" class="section level3" number="0.0.1">
 <h3><span class="header-section-number">0.0.1</span> 远程连接</h3>
 <p>连接上Stanford的VPN之后,远程连接并不起作用.当时推测的可能就是这台电脑属于某个group,需要把我们的SunetID加入刀该group内,然后才能进去.但是来的IT人员搞了好几天也没搞定,我也是略微无语.随后不在管他,我在IT online提交了ticket,过了大概一个星期,终于查到了解决办法,就是说需要加入某个group.将邮件记录如下:</p>
 <blockquote>
@@ -736,14 +737,14 @@ Brian, Med T&amp;DS</p>
 <p>但是非常奇怪的是,这几个人我们都不认识,google一下,竟然是Biomedicine Informatics实验室的.然后赶紧给他们发了邮件,没想到很快就给了回复,说已经把我们的SunetID加入到该group中,大约20分钟之后可以连接.随后果然可以.</p>
 <p>使用Windows上的<code>Remote Desktop Connection</code>软件进行连接时,注意<code>User name</code>时需要在用户名前面加上<code>win\</code>,也就是写<code>win\shenxt</code>.</p>
 </div>
-<div id="安装虚拟机" class="section level3">
+<div id="安装虚拟机" class="section level3" number="0.0.2">
 <h3><span class="header-section-number">0.0.2</span> 安装虚拟机</h3>
 <p>原本想要安装VMware软件的,后来发现这个软件跟win10自带的<code>Hyper-V</code>软件是冲突的.后来就放弃使用VMware,直接使用Hyper-V软件.</p>
 <p>最开始下载的<code>CentOS-8</code>系统,但是安装的时候,遇到了问题,安装成功之后,重启之后没有进入登录界面,反而又重新到了安装界面!查了很多,都没有找到解决办法.</p>
 <p>后来,觉得有可能是系统版本的问题,因此在CentOS官网上找到了CentOS-7版本.重新走了一遍安装程序,终于成功了.</p>
 <p>安装之后没有图形界面,只有命令行形式.</p>
 </div>
-<div id="网络连接问题" class="section level3">
+<div id="网络连接问题" class="section level3" number="0.0.3">
 <h3><span class="header-section-number">0.0.3</span> 网络连接问题</h3>
 <p>直接安装之后,并没有网络连接.需要进行设置.查了一些资料,首先需要在Hyper-V软件上创建虚拟交换机,但是我在创建的时候,总是报错,无法创建,然后又开始google.结果找到了这样一个网页:</p>
 <p><a href="https://support.microsoft.com/zh-cn/help/3101106/you-cannot-create-a-hyper-v-virtual-switch-on-64-bit-versions-of-windo" class="uri">https://support.microsoft.com/zh-cn/help/3101106/you-cannot-create-a-hyper-v-virtual-switch-on-64-bit-versions-of-windo</a></p>
@@ -793,7 +794,7 @@ Brian, Med T&amp;DS</p>
     <div class="media-body">
       <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen PhD</a></h5>
       <h6 class="card-subtitle">Postdoctoral Research Fellow</h6>
-      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
+      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Systems Biology.</p>
       <ul class="network-icon" aria-hidden="true">
         
           
@@ -1235,7 +1236,7 @@ Brian, Med T&amp;DS</p>
     
     
     
-    <script src="/js/academic.min.ee8463f2a394889d45e169a983fe913d.js"></script>
+    <script src="/js/academic.min.19496f51f1817958711e5adb6fde1726.js"></script>
 
   </body>
 </html>

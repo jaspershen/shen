@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: Metabolomics, Multi-omics, Bioinformatics, Healthcare, Systems Biology.
+bio: Metabolomics, Multi-omics, Bioinformatics, Systems Biology.
 name: Xiaotao Shen PhD
 organizations:
 - name: Stanford University School of Medicine
@@ -11,8 +11,8 @@ role: Postdoctoral Research Fellow
 interests:
 - Bioinformatics
 - Metabolomics
+- Multi-omics
 - Systems Biology
-- Biomarker
 
 education:
   courses:
@@ -68,9 +68,11 @@ user_groups:
 ---
 
 
-I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics, Multi-omics, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
+I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics processing development, Multi-omics data integraton, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
 
 My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was [MetNormalizer](https://jaspershen.github.io/MetNormalizer/), which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics. Then I developed a web-based tool, [MetFlow](http://metflow.zhulab.cn/), aiming to provide a comprehensive pipeline for data cleaning and statistical analysis of large-scale metabolomics. The most important algorithm I have developed is called [MetDNA](http://metdna.zhulab.cn/), which is a novel algorithm for metabolite identification and dysregulated pathway analysis in untargeted metabolomics.
+
+Now I am also the co-chair of [Stanford Chinese Postdoctral Association (SCPA)](https://scpa.netlify.app/). Fell free to let me know if you want to join us and work for the amazing community!
 
 :floppy_disk: [Download my CV](https://www.shenxt.info/files/cv.pdf)
 

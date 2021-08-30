@@ -95,7 +95,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.b5be93281ad18a9874bd9a37087e64db.css">
+  <link rel="stylesheet" href="/css/academic.min.0133df55cff3670fd2bbcfe34412cd54.css">
 
   
     
@@ -154,7 +154,7 @@
   
   <meta property="article:published_time" content="2019-10-13T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2020-03-12T09:38:38-07:00">
+  <meta property="article:modified_time" content="2021-07-01T10:00:54-07:00">
   
 
   
@@ -597,7 +597,7 @@
 
 
 <meta content="2019-10-13 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2020-03-12 09:38:38 -0700 PDT" itemprop="dateModified">
+<meta content="2021-07-01 10:00:54 -0700 PDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -612,7 +612,7 @@
           Last updated on
       
     
-    <time>Mar 12, 2020</time>
+    <time>Jul 1, 2021</time>
   </span>
   
 
@@ -709,6 +709,7 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -718,33 +719,39 @@
 <li><a href="#如何添加新的页面"><span class="toc-section-number">4</span> 如何添加新的页面?</a></li>
 <li><a href="#如何在post中添加本地图片"><span class="toc-section-number">5</span> 如何在post中添加本地图片?</a></li>
 <li><a href="#如何在rmarkdown中添加table-of-contents"><span class="toc-section-number">6</span> 如何在Rmarkdown中添加table of contents?</a></li>
-<li><a href="#netlify自动部署deployfailed的问题"><span class="toc-section-number">7</span> netlify自动部署(deploy)failed的问题</a><ul>
+<li><a href="#netlify自动部署deployfailed的问题"><span class="toc-section-number">7</span> netlify自动部署(deploy)failed的问题</a>
+<ul>
 <li><a href="#打开netlify网站"><span class="toc-section-number">7.1</span> 打开netlify网站:</a></li>
 <li><a href="#点击site-settings"><span class="toc-section-number">7.2</span> 点击<code>Site settings</code></a></li>
 <li><a href="#点击build-deploy"><span class="toc-section-number">7.3</span> 点击<code>Build &amp; deploy</code></a></li>
 <li><a href="#修改hugo-version"><span class="toc-section-number">7.4</span> 修改<code>Hugo version</code></a></li>
 </ul></li>
-<li><a href="#将网站改为中英双文之后新建post报错"><span class="toc-section-number">8</span> 将网站改为中英双文之后,新建<code>post</code>报错</a><ul>
+<li><a href="#将网站改为中英双文之后新建post报错"><span class="toc-section-number">8</span> 将网站改为中英双文之后,新建<code>post</code>报错</a>
+<ul>
 <li><a href="#新建blog的yaml如下"><span class="toc-section-number">8.1</span> 新建blog的<code>YAML</code>如下:</a></li>
 <li><a href="#常用的categories"><span class="toc-section-number">8.2</span> 常用的categories:</a></li>
 <li><a href="#常用的tags"><span class="toc-section-number">8.3</span> 常用的tags:</a></li>
 </ul></li>
 <li><a href="#如何在postmarkdown中插入emojis"><span class="toc-section-number">9</span> 如何在post(markdown)中插入Emojis</a></li>
-<li><a href="#如何在post中插入视频"><span class="toc-section-number">10</span> 如何在post中插入视频?</a><ul>
+<li><a href="#如何在post中插入视频"><span class="toc-section-number">10</span> 如何在post中插入视频?</a>
+<ul>
 <li><a href="#如何插入b站视频"><span class="toc-section-number">10.1</span> 如何插入B站视频?</a></li>
-<li><a href="#在markdown中"><span class="toc-section-number">10.2</span> 在markdown中</a><ul>
+<li><a href="#在markdown中"><span class="toc-section-number">10.2</span> 在markdown中</a>
+<ul>
 <li><a href="#a-video-from-your-staticimg-media-library"><span class="toc-section-number">10.2.1</span> A video from your static/img/ media library:</a></li>
-<li><a href="#a-video-within-a-pages-folder-e.g.contentposthello"><span class="toc-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</a></li>
+<li><a href="#a-video-within-a-pages-folder-e.g.-contentposthello"><span class="toc-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</a></li>
 <li><a href="#youtube"><span class="toc-section-number">10.2.3</span> Youtube:</a></li>
 <li><a href="#vimeo"><span class="toc-section-number">10.2.4</span> Vimeo:</a></li>
 </ul></li>
-<li><a href="#在rmarkdown中"><span class="toc-section-number">10.3</span> 在Rmarkdown中</a><ul>
+<li><a href="#在rmarkdown中"><span class="toc-section-number">10.3</span> 在Rmarkdown中</a>
+<ul>
 <li><a href="#本地视频"><span class="toc-section-number">10.3.1</span> 本地视频</a></li>
 <li><a href="#youtube视频"><span class="toc-section-number">10.3.2</span> Youtube视频</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#如何在post中插入icon"><span class="toc-section-number">11</span> 如何在post中插入icon?</a></li>
-<li><a href="#如何使用jupyter编辑post"><span class="toc-section-number">12</span> 如何使用jupyter编辑post?</a><ul>
+<li><a href="#如何使用jupyter编辑post"><span class="toc-section-number">12</span> 如何使用jupyter编辑post?</a>
+<ul>
 <li><a href="#打开cmd修改路径到当前post路径下."><span class="toc-section-number">12.1</span> 打开CMD,修改路径到当前post路径下.</a></li>
 <li><a href="#打开jupyter-notebook"><span class="toc-section-number">12.2</span> 打开jupyter notebook</a></li>
 <li><a href="#开始对jupyter进行编辑."><span class="toc-section-number">12.3</span> 开始对jupyter进行编辑.</a></li>
@@ -755,17 +762,17 @@
 </ul>
 </div>
 
-<div id="如何修改网站icon" class="section level1">
+<div id="如何修改网站icon" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> 如何修改网站icon?</h1>
 <p>将自己的logo图片截取为192x192像素(长款分别为0.21cm).然后将其命名为’icon-192.png’放置于<code>static/img</code>文件夹中即可.</p>
 </div>
-<div id="如何将个人网站作为图床使用" class="section level1">
+<div id="如何将个人网站作为图床使用" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> 如何将个人网站作为图床使用?</h1>
 <p>将图片放置于<code>static/files</code>文件夹中即可.使用如下路径访问:</p>
 <p><code>shenxt.info/files/figure.name</code></p>
 <p>如: <a href="https://www.shenxt.info/files/wechat_QR.jpg" class="uri">https://www.shenxt.info/files/wechat_QR.jpg</a></p>
 </div>
-<div id="如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page" class="section level1">
+<div id="如何将某个部分如博客blog不显示在主页home上而是点击之后打开一个单独的page" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> 如何将某个部分(如博客blog)不显示在主页(home)上,而是点击之后,打开一个单独的page?</h1>
 <p>以blog为例(posts).</p>
 <ol style="list-style-type: decimal">
@@ -778,17 +785,17 @@
 </ol>
 <p><img src="change-url.png" /></p>
 </div>
-<div id="如何添加新的页面" class="section level1">
+<div id="如何添加新的页面" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> 如何添加新的页面?</h1>
 <p>以在我的网页添加新的中文入口为例.</p>
 <p>在<code>conternt</code>文件夹下面创建新的<code>chinese</code>文件夹.在该文件夹下面创建<code>_index.md</code>文件.</p>
 </div>
-<div id="如何在post中添加本地图片" class="section level1">
+<div id="如何在post中添加本地图片" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> 如何在post中添加本地图片?</h1>
 <p>首先在<code>content/post/</code>建立和post名z字去除掉数字之后的的文件夹(比如post名字为<code>2019-10-25-test</code>,则文件夹命名为<code>test</code>),然后再在该文件夹下建立和post同名的文件夹(<code>2019-10-25-test</code>),然后将图片(如<code>test.png</code>)放入该文件夹下.在post中,使用:</p>
 <p><code>![](test/2019-10-25-test/test.png)</code>语句插入图片.</p>
 </div>
-<div id="如何在rmarkdown中添加table-of-contents" class="section level1">
+<div id="如何在rmarkdown中添加table-of-contents" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> 如何在Rmarkdown中添加table of contents?</h1>
 <p>在每篇<code>Rmarkdown</code>的<code>YAML</code>添加如下内容:</p>
 <pre><code>output:
@@ -796,38 +803,38 @@
     toc: true
     number_sections: true</code></pre>
 </div>
-<div id="netlify自动部署deployfailed的问题" class="section level1">
+<div id="netlify自动部署deployfailed的问题" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> netlify自动部署(deploy)failed的问题</h1>
 <p>发现自动部署总是失败.查了一下,应该是本地的<code>Hugo</code>和netlify上的版本不一致,解决方法如下:</p>
 <p>首先,在R console输入下列语句,查看本地<code>Hugo</code>版本:</p>
 <pre class="r"><code>blogdown::hugo_version()</code></pre>
 <pre><code>## [1] &#39;0.66.0&#39;</code></pre>
 <p>然后修改netlify上的<code>Hugo</code>的版本.</p>
-<div id="打开netlify网站" class="section level2">
+<div id="打开netlify网站" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> 打开netlify网站:</h2>
 <p>点击下面网站:</p>
 <p><a href="https://app.netlify.com/teams/jaspershen/sites" class="uri">https://app.netlify.com/teams/jaspershen/sites</a></p>
 <p>然后点击托管的自己的网站.</p>
 <p><img src="netlify.png" /></p>
 </div>
-<div id="点击site-settings" class="section level2">
+<div id="点击site-settings" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> 点击<code>Site settings</code></h2>
 <p><img src="site_setting.png" /></p>
 </div>
-<div id="点击build-deploy" class="section level2">
+<div id="点击build-deploy" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> 点击<code>Build &amp; deploy</code></h2>
 <p><img src="build_deploy.png" /></p>
 </div>
-<div id="修改hugo-version" class="section level2">
+<div id="修改hugo-version" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> 修改<code>Hugo version</code></h2>
 <p>然后点击<code>Environment</code>,将HUGO_VERSION版本修改为和本地一致的版本.</p>
 <p><img src="hugo_version.png" /></p>
 </div>
 </div>
-<div id="将网站改为中英双文之后新建post报错" class="section level1">
+<div id="将网站改为中英双文之后新建post报错" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> 将网站改为中英双文之后,新建<code>post</code>报错</h1>
 <p>暂时没有找到好的解决办法.现在的问题是,使用<code>new_post()</code>创建新的博客,默认的根路径就在<code>content\en</code>中,但是默认的打开路径又在<code>content\zh</code>中.所以无法解决.现在只能使用copy其他博客新建来解决了.</p>
-<div id="新建blog的yaml如下" class="section level2">
+<div id="新建blog的yaml如下" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> 新建blog的<code>YAML</code>如下:</h2>
 <pre><code>---
 title: test
@@ -847,7 +854,7 @@ output:
     number_sections: true
 ---</code></pre>
 </div>
-<div id="常用的categories" class="section level2">
+<div id="常用的categories" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> 常用的categories:</h2>
 <ol style="list-style-type: decimal">
 <li>docker<br />
@@ -865,7 +872,7 @@ output:
 <li>Study</li>
 </ol>
 </div>
-<div id="常用的tags" class="section level2">
+<div id="常用的tags" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> 常用的tags:</h2>
 <ol style="list-style-type: decimal">
 <li>Academic<br />
@@ -896,7 +903,7 @@ output:
 </ol>
 </div>
 </div>
-<div id="如何在postmarkdown中插入emojis" class="section level1">
+<div id="如何在postmarkdown中插入emojis" class="section level1" number="9">
 <h1><span class="header-section-number">9</span> 如何在post(markdown)中插入Emojis</h1>
 <p>完整的emoji名单在这:</p>
 <p><a href="https://www.webfx.com/tools/emoji-cheat-sheet/" class="uri">https://www.webfx.com/tools/emoji-cheat-sheet/</a></p>
@@ -904,11 +911,11 @@ output:
 <pre><code>I : heart : Academic : smile :</code></pre>
 <p>注意需要把emoji文字和两边的冒号之间的空格去除掉.</p>
 <p>显示:</p>
-<p>I ❤ Academic 😄</p>
+<p>I ❤️ Academic 😄</p>
 </div>
-<div id="如何在post中插入视频" class="section level1">
+<div id="如何在post中插入视频" class="section level1" number="10">
 <h1><span class="header-section-number">10</span> 如何在post中插入视频?</h1>
-<div id="如何插入b站视频" class="section level2">
+<div id="如何插入b站视频" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> 如何插入B站视频?</h2>
 <p>参考下面帖子.</p>
 <p><a href="https://fengxiao.ml/2018/12/27/133.html" class="uri">https://fengxiao.ml/2018/12/27/133.html</a>.</p>
@@ -927,36 +934,36 @@ document.getElementById(&quot;test&quot;).style.height=document.getElementById(&
 document.getElementById("test").style.height=document.getElementById("test").scrollWidth*0.76+"px";
 </script>
 </div>
-<div id="在markdown中" class="section level2">
+<div id="在markdown中" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> 在markdown中</h2>
 <p>直接使用下面语句,插入到markdown中即可.</p>
-<div id="a-video-from-your-staticimg-media-library" class="section level3">
+<div id="a-video-from-your-staticimg-media-library" class="section level3" number="10.2.1">
 <h3><span class="header-section-number">10.2.1</span> A video from your static/img/ media library:</h3>
 <pre><code>{{&lt; video library=&quot;1&quot; src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}</code></pre>
 </div>
-<div id="a-video-within-a-pages-folder-e.g.contentposthello" class="section level3">
+<div id="a-video-within-a-pages-folder-e.g.-contentposthello" class="section level3" number="10.2.2">
 <h3><span class="header-section-number">10.2.2</span> A video within a page’s folder (e.g. content/post/hello/):</h3>
 <pre><code>{{&lt; video src=&quot;my_video.mp4&quot; controls=&quot;yes&quot; &gt;}}
 </code></pre>
 </div>
-<div id="youtube" class="section level3">
+<div id="youtube" class="section level3" number="10.2.3">
 <h3><span class="header-section-number">10.2.3</span> Youtube:</h3>
 <pre><code>{{&lt; youtube w7Ft2ymGmfc &gt;}}</code></pre>
 </div>
-<div id="vimeo" class="section level3">
+<div id="vimeo" class="section level3" number="10.2.4">
 <h3><span class="header-section-number">10.2.4</span> Vimeo:</h3>
 <pre><code>{{&lt; vimeo 146022717 &gt;}}</code></pre>
 </div>
 </div>
-<div id="在rmarkdown中" class="section level2">
+<div id="在rmarkdown中" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> 在Rmarkdown中</h2>
 <p>使用<code>shortcode()</code>函数.</p>
-<div id="本地视频" class="section level3">
+<div id="本地视频" class="section level3" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> 本地视频</h3>
 <p>将视频放入在与post相同的文件夹中.</p>
 <p>然后插入下面语句(注意是要放在r代码框中):</p>
 <pre class="r"><code>blogdown::shortcode(&quot;video&quot;, src = &quot;./test.mp4&quot;)</code></pre>
-
+<p>
 
 
 
@@ -972,22 +979,22 @@ document.getElementById("test").style.height=document.getElementById("test").scr
 
 
 <video autoplay loop >
-  <source src="./test.mp4" type="video/mp4">
-</video>
+  <source src="./test.mp4" type="video/4">
+</video></p>
 </div>
-<div id="youtube视频" class="section level3">
+<div id="youtube视频" class="section level3" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> Youtube视频</h3>
 <p>使用下面语句可以插入视频.第二个是youtube视频ID.</p>
 <pre class="r"><code>blogdown::shortcode(&quot;youtube&quot;, &quot;p4liifrbK8w&quot;)</code></pre>
-
+<p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/p4liifrbK8w" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
-
+</p>
 </div>
 </div>
 </div>
-<div id="如何在post中插入icon" class="section level1">
+<div id="如何在post中插入icon" class="section level1" number="11">
 <h1><span class="header-section-number">11</span> 如何在post中插入icon?</h1>
 <p>直接使用HTML语句即可.</p>
 <pre><code>&lt;i class=&quot;fab fa-weixin&quot;&gt;&lt;/i&gt;</code></pre>
@@ -1003,29 +1010,29 @@ document.getElementById("test").style.height=document.getElementById("test").scr
 <p>显示:</p>
 <p><i class="fas fa-hourglass"></i></p>
 </div>
-<div id="如何使用jupyter编辑post" class="section level1">
+<div id="如何使用jupyter编辑post" class="section level1" number="12">
 <h1><span class="header-section-number">12</span> 如何使用jupyter编辑post?</h1>
 <p>如果是写关于python的博客,那么使用jupyter就要比使用Rmarkdown方便太多了.以windowns系统为例.</p>
-<div id="打开cmd修改路径到当前post路径下." class="section level2">
+<div id="打开cmd修改路径到当前post路径下." class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> 打开CMD,修改路径到当前post路径下.</h2>
 <p>可以参考本博文的内容.</p>
 </div>
-<div id="打开jupyter-notebook" class="section level2">
+<div id="打开jupyter-notebook" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> 打开jupyter notebook</h2>
 <p>输入</p>
 <pre><code>jupyter notebook</code></pre>
 <p>打开jupyter notebook.然后新建一个jupyter文件,命名为<code>index</code>.</p>
 </div>
-<div id="开始对jupyter进行编辑." class="section level2">
+<div id="开始对jupyter进行编辑." class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> 开始对jupyter进行编辑.</h2>
 <p>开始在jupyter上进行编辑.</p>
 </div>
-<div id="另存为markdown文件." class="section level2">
+<div id="另存为markdown文件." class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> 另存为<code>markdown</code>文件.</h2>
 <p>如下图操作.</p>
 <p><img src="save_as_markdown.png" /></p>
 </div>
-<div id="编辑yaml" class="section level2">
+<div id="编辑yaml" class="section level2" number="12.5">
 <h2><span class="header-section-number">12.5</span> 编辑YAML</h2>
 <p>将index.md打开,然后添加YAML信息.</p>
 <pre><code>---
@@ -1048,7 +1055,7 @@ title: Display Jupyter Notebooks with Academic
 <p>如果要使用featured figure,需要将<code>featurd</code>设置为true,且在该post目录下添加名字为<code>featured.png</code>的图片.</p>
 </div>
 </div>
-<div id="如何修改页面宽度" class="section level1">
+<div id="如何修改页面宽度" class="section level1" number="13">
 <h1><span class="header-section-number">13</span> 如何修改页面宽度?</h1>
 <p>参考下面方法:</p>
 <p><a href="https://github.com/gcushen/hugo-academic/issues/147" class="uri">https://github.com/gcushen/hugo-academic/issues/147</a></p>
@@ -1092,7 +1099,7 @@ title: Display Jupyter Notebooks with Academic
     <div class="media-body">
       <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen PhD</a></h5>
       <h6 class="card-subtitle">Postdoctoral Research Fellow</h6>
-      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
+      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Systems Biology.</p>
       <ul class="network-icon" aria-hidden="true">
         
           
@@ -1534,7 +1541,7 @@ title: Display Jupyter Notebooks with Academic
     
     
     
-    <script src="/js/academic.min.ee8463f2a394889d45e169a983fe913d.js"></script>
+    <script src="/js/academic.min.19496f51f1817958711e5adb6fde1726.js"></script>
 
   </body>
 </html>

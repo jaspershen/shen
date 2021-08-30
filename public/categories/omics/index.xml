@@ -63,6 +63,7 @@
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
       <guid>https://www.shenxt.info/post/machine-for-genomics-conference/</guid>
       <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -81,7 +82,7 @@
 &lt;p&gt;ChIP-seq&lt;/p&gt;
 &lt;p&gt;prediCtive model of regularity DNA&lt;/p&gt;
 &lt;p&gt;Just transform DNA sequence to dummy matrxi.&lt;/p&gt;
-&lt;div id=&#34;machine-learning-for-biomedical-information&#34; class=&#34;section level3&#34;&gt;
+&lt;div id=&#34;machine-learning-for-biomedical-information&#34; class=&#34;section level3&#34; number=&#34;0.0.1&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; Machine learning for biomedical information&lt;/h3&gt;
 &lt;p&gt;hierarchical latent variable models?&lt;/p&gt;
 &lt;/div&gt;
@@ -94,6 +95,7 @@
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       <guid>https://www.shenxt.info/post/2019-10-10-modern-statistics-for-modern-biology/</guid>
       <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -102,10 +104,10 @@
 &lt;/div&gt;
 
 &lt;p&gt;是斯坦福大学统计系教授&lt;a href=&#34;&#34;&gt;Susan Holmes&lt;/a&gt;&lt;/p&gt;
-&lt;div id=&#34;离散变量discrete-data的生成模型&#34; class=&#34;section level3&#34;&gt;
+&lt;div id=&#34;离散变量discrete-data的生成模型&#34; class=&#34;section level3&#34; number=&#34;0.0.1&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; 离散变量(discrete data)的生成模型&lt;/h3&gt;
 &lt;p&gt;在分子生物学中,在很多情况下都会产生离散变量.&lt;/p&gt;
-&lt;div id=&#34;本章目标&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;本章目标&#34; class=&#34;section level4&#34; number=&#34;0.0.1.1&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1.1&lt;/span&gt; 1.1 本章目标&lt;/h4&gt;
 &lt;p&gt;在本章中,我们将会:&lt;/p&gt;
 &lt;ul&gt;
@@ -116,7 +118,7 @@
 &lt;li&gt;&lt;p&gt;从指定的分布生成随机数.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div id=&#34;一个真实例子&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;一个真实例子&#34; class=&#34;section level4&#34; number=&#34;0.0.1.2&#34;&gt;
 &lt;h4&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1.2&lt;/span&gt; 1.2 一个真实例子&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -129,6 +131,7 @@
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       <guid>https://www.shenxt.info/post/2019-10-10-data-analysis-omics/</guid>
       <description>
+&lt;script src=&#34;index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -136,7 +139,7 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;correlation-analysis&#34; class=&#34;section level3&#34;&gt;
+&lt;div id=&#34;correlation-analysis&#34; class=&#34;section level3&#34; number=&#34;0.0.1&#34;&gt;
 &lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;0.0.1&lt;/span&gt; Correlation analysis&lt;/h3&gt;
 &lt;p&gt;将组学变量(gene,protein,metabolite,clinical factor)进行相关性分析,得到他们之间的相关性,注意需要选择合适的相关性计算方法,并进行多重比较矫正(FDR,BH等).&lt;/p&gt;
 &lt;/div&gt;

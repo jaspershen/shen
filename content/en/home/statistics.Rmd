@@ -22,8 +22,8 @@ html <- xml2::read_html("https://github.com/jaspershen")
 calendar <- html_node(html, ".js-calendar-graph-svg")
 calendar_days <- html_nodes(calendar, "rect")
 gh_data <- tibble(
-  date = as.Date(xml_attr(calendar_days, "data-date")),
-  count = xml_attr(calendar_days, "data-count"),
+  date = as.Date(xml2::xml_attr(calendar_days, "data-date")),
+  count = xml2::xml_attr(calendar_days, "data-count"),
   type = "github",
   tip = str_glue("{count} contributions"),
   link = str_glue("https://github.com/jaspershen?from={date}&to={date}&tab=overview")

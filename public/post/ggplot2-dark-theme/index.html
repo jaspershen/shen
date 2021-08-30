@@ -95,7 +95,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.b5be93281ad18a9874bd9a37087e64db.css">
+  <link rel="stylesheet" href="/css/academic.min.0133df55cff3670fd2bbcfe34412cd54.css">
 
   
     
@@ -154,7 +154,7 @@
   
   <meta property="article:published_time" content="2019-10-25T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2020-03-06T10:07:48-08:00">
+  <meta property="article:modified_time" content="2021-07-01T10:00:54-07:00">
   
 
   
@@ -597,7 +597,7 @@
 
 
 <meta content="2019-10-25 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2020-03-06 10:07:48 -0800 PST" itemprop="dateModified">
+<meta content="2021-07-01 10:00:54 -0700 PDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -612,7 +612,7 @@
           Last updated on
       
     
-    <time>Mar 6, 2020</time>
+    <time>Jul 1, 2021</time>
   </span>
   
 
@@ -704,6 +704,7 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
@@ -714,7 +715,7 @@
 </div>
 
 <p>今天介绍一个<code>ggplot2</code>的扩展包,也是一个主题包,叫做<code>ggdark</code>.</p>
-<div id="安装" class="section level3">
+<div id="安装" class="section level3" number="0.0.1">
 <h3><span class="header-section-number">0.0.1</span> 安装</h3>
 <pre class="r"><code>#可以直接从cran安装
 # if(!require(ggdark)){
@@ -725,14 +726,13 @@
 #  devtools::install_github(&quot;nsgrantham/ggdark&quot;)
 # }</code></pre>
 </div>
-<div id="使用" class="section level3">
+<div id="使用" class="section level3" number="0.0.2">
 <h3><span class="header-section-number">0.0.2</span> 使用</h3>
 <p><code>ggdark</code>中的函数可以分为两大类,一类就是提供与<code>ggplot2</code>主题相对应的暗黑模式.</p>
-<pre class="r"><code>library(ggdark)</code></pre>
-<pre><code>## Warning: package &#39;ggdark&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>p &lt;- 
+<pre class="r"><code>library(ggdark)
+library(ggplot2)
+
+p &lt;- 
   ggplot(diamonds) + 
   geom_point(aes(carat, price, color = cut)) + 
   scale_y_continuous(label = scales::dollar) +
@@ -742,30 +742,30 @@
        y = &quot;Price in US dollars&quot;,
        color = &quot;Quality of the cut&quot;)
 p</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre class="r"><code>#使用ggdark的各种暗黑主题
 p + ggdark::dark_theme_bw()</code></pre>
 <pre><code>## Inverted geom defaults of fill and color/colour.
 ## To change them back, use invert_geom_defaults().</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_classic()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_dark()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_gray()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_light()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-6.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-6.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_linedraw()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-7.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-7.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_minimal()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-8.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-8.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_test()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-9.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-9.png" width="672" /></p>
 <pre class="r"><code>p + ggdark::dark_theme_void()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-2-10.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-10.png" width="672" /></p>
 </div>
-<div id="制作自己的暗黑主题" class="section level3">
+<div id="制作自己的暗黑主题" class="section level3" number="0.0.3">
 <h3><span class="header-section-number">0.0.3</span> 制作自己的暗黑主题</h3>
 <p>对于任意其他的主题,只需将主题放入到<code>dark_mode()</code>函数中,就可以将其转变为暗黑款的主题.</p>
 <pre class="r"><code>ggdark::invert_geom_defaults()  # change geom defaults back to black
@@ -773,9 +773,9 @@ p + ggdark::dark_theme_bw()</code></pre>
 # if(!require(gapminder)){
 #   install.packages(&quot;gapminder&quot;)
 # }
-library(gapminder)</code></pre>
-<pre><code>## Warning: package &#39;gapminder&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>p &lt;- 
+library(gapminder)
+
+p &lt;- 
   ggplot(subset(gapminder, continent != &quot;Oceania&quot;)) +
   geom_line(aes(year, lifeExp, group = country, color = country), lwd = 1, show.legend = FALSE) + 
   facet_wrap(~ continent) +
@@ -785,15 +785,15 @@ library(gapminder)</code></pre>
 # if(!require(ggthemes)){
 #   install.packages(&quot;ggthemes&quot;)
 # }
-library(ggthemes)</code></pre>
-<pre><code>## Warning: package &#39;ggthemes&#39; was built under R version 3.6.1</code></pre>
-<pre class="r"><code>p + theme_fivethirtyeight()</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+library(ggthemes)
+
+p + theme_fivethirtyeight()</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>##暗黑版主题
 p + dark_mode(theme_fivethirtyeight())</code></pre>
 <pre><code>## Inverted geom defaults of fill and color/colour.
 ## To change them back, use invert_geom_defaults().</code></pre>
-<p><img src="/zh/post/2019-10-25-ggplot2-dark-theme/index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 </div>
 
     </div>
@@ -828,7 +828,7 @@ p + dark_mode(theme_fivethirtyeight())</code></pre>
     <div class="media-body">
       <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen PhD</a></h5>
       <h6 class="card-subtitle">Postdoctoral Research Fellow</h6>
-      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Healthcare.</p>
+      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Systems Biology.</p>
       <ul class="network-icon" aria-hidden="true">
         
           
@@ -1252,7 +1252,7 @@ p + dark_mode(theme_fivethirtyeight())</code></pre>
     
     
     
-    <script src="/js/academic.min.ee8463f2a394889d45e169a983fe913d.js"></script>
+    <script src="/js/academic.min.19496f51f1817958711e5adb6fde1726.js"></script>
 
   </body>
 </html>
