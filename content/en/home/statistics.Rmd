@@ -275,7 +275,7 @@ plot <-
 ggplot(cit, aes(x = year, y = cites)) +
   geom_bar(stat = "identity", 
            color = ggplot2::alpha("#991500", 1),
-           fill = "transparent") +
+           fill = ggplot2::alpha("#991500", 0.5)) +
     xlab('Year of citation')+
     ylab('Number of cites') +
     theme_void() +

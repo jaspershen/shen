@@ -2,7 +2,7 @@
 authors:
 - admin
 bio: Metabolomics, Multi-omics, Bioinformatics, Systems Biology.
-name: Xiaotao Shen PhD
+name: Xiaotao Shen
 organizations:
 - name: Stanford University School of Medicine
   url: "https://www.stanford.edu/"
@@ -67,8 +67,7 @@ user_groups:
 - Visitors
 ---
 
-
-I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics processing development, Multi-omics data integraton, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
+I am now a postdoctoral research fellow at Stanford University. I am broadly interested in Metabolomics processing development, Multi-omics data integration, Biostatistics, Systems Biology, and Bioinformatics, and their application in healthcare.
 
 My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was [MetNormalizer](https://jaspershen.github.io/MetNormalizer/), which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics. Then I developed a web-based tool, [MetFlow](http://metflow.zhulab.cn/), aiming to provide a comprehensive pipeline for data cleaning and statistical analysis of large-scale metabolomics. The most important algorithm I have developed is called [MetDNA](http://metdna.zhulab.cn/), which is a novel algorithm for metabolite identification and dysregulated pathway analysis in untargeted metabolomics.
 
@@ -79,6 +78,8 @@ Now I am also the co-chair of [Stanford Chinese Postdoctral Association (SCPA)](
  :dog: :octocat: :school: :u7533: :smile: :facepunch: :fist: :family: :panda_face: :earth_asia: :tada: :cn:
  
 ---
+My favorite song recently:
+
 假如生活欺骗了你-新裤子乐队
 
 <iframe width="100%" height="500"

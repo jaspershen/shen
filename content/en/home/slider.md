@@ -9,6 +9,10 @@ weight = 10  # Order that this section will appear.
 # Use `false` to disable animation or enter a time in ms, e.g. `5000` (5s).
 interval = 5000
 
+# Slide height (optional).
+# E.g. `500px` for 500 pixels or `calc(100vh - 70px)` for full screen.
+height = "calc(100vh - 70px)"
+
 # Slides.
 # Duplicate an `[[item]]` block to add more slides.
 [[item]]
@@ -47,7 +51,6 @@ interval = 5000
   cta_icon_pack = "fab"
   cta_icon = "laptop-code"
   
-
 [[item]]
   title = "Record My life"
   content = "Life with my family. :smile:"
