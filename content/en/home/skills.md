@@ -18,7 +18,7 @@ subtitle = "Technology is the tool, no the aim."
   icon = "r-project"
   icon_pack = "fab"
   name = "R"
-  description = "I mainly work in the R language with Rmarkdown/Rshiny/bookdown/blogdown for reproducible reporting, and data analysis"
+  description = "90%"
   
 [[feature]]
   icon = "chart-line"

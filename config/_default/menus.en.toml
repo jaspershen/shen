@@ -13,10 +13,10 @@
   url = "#experience"
   weight = 2
   
-  [[main]]
-  name = "Honors&Awards"
-  url = "#accomplishments"
-  weight = 3
+#  [[main]]
+#  name = "Honors&Awards"
+#  url = "#accomplishments"
+#  weight = 3
   
   [[main]]
   name = "Publications"
@@ -44,12 +44,7 @@
   name = "Blog"
   url = "post/"
   weight = 8
-  
-#[[main]]
-#  name = "Blog"
-#  url = "#posts"
-#  weight = 40
-  
+
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # [[main]]
@@ -64,14 +59,6 @@
 #  weight = 10
 
 
-
-
-
-
-
-
-
-  
 #  [[main]]
 #  name = "Landing"  # Title of the link.
 #  url = "landing/"  # Widget Page folder name.
