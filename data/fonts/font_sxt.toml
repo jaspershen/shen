@@ -2,13 +2,13 @@
 name = "font_sxt"
 
 # Optional Google font URL
-google_fonts = "Open+Sans|Noto+Sans|PT+Sans|Playfair+Display"
+google_fonts = "Open+Sans|Noto+Sans|PT+Sans|Playfair+Display|Inter"
 
 # Font families
-heading_font = "Playfair Display"
-body_font = "Playfair Display"
-nav_font = "Playfair Display"
-mono_font = "Playfair Display"
+heading_font = "Inter"
+body_font = "Inter"
+nav_font = "Inter"
+mono_font = "Inter"
 
 # Font size
 font_size = "20"
