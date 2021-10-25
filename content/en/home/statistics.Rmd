@@ -171,7 +171,8 @@ library(ggthemes)
 my_pal = solarized_pal("green")(5)
 rebase <- ggthemes:::solarized_rebase()
 library(ggiraph)
-p <- ggplot() +
+p <- 
+  ggplot() +
   geom_tile(
     data = dplyr::filter(p_data, is.na(type)),
     width = 6,
@@ -226,14 +227,17 @@ p <- ggplot() +
     title = element_text(color = "#991500"),
     axis.text = element_text(color = "#991500"),
     axis.title = element_text(color = "#991500"),
-    axis.ticks = element_line(color = "#991500")
+    axis.ticks = element_line(color = "#991500"),
+    panel.border = element_rect(color = "#991500")
   ) +
   guides(
     alpha = "none",
     fill = guide_legend(
       title = NULL,
-      override.aes = list(shape = 'square filled', size = 1),
+      override.aes = list(shape = 21, 
+                          size = 1),
       keywidth = 1,
+      label.theme = element_text(color = "#991500"),
       # label.theme = element_text(family = "Lato", size = 7),
       label.position = "left",     
       nrow = 2
