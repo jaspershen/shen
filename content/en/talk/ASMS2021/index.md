@@ -1,5 +1,5 @@
 ---
-abstract: metID: A R package for Automatable Compound Annotation for LC−MS-based Data
+abstract: metID A R package for Automatable Compound Annotation for LC−MS-based Data
 all_day: false
 authors: []
 date: "2021-11-03T13:00:00Z"
@@ -20,13 +20,13 @@ math: true
 projects:
 - internal-project
 publishDate: "2021-11-03T00:00:00Z"
-slides: example
-summary: metID: A R package for Automatable Compound Annotation for LC−MS-based Data
+slides: 
+summary: metID A R package for Automatable Compound Annotation for LC−MS-based Data
 tags: []
-title: metID: A R package for Automatable Compound Annotation for LC−MS-based Data
+title: metID A R package for Automatable Compound Annotation for LC−MS-based Data
 url_code: ""
 url_pdf: ""
-url_slides: "https://www.shenxt.info/slides/Xiaotao Shen 2021-ASMS.pdf"
+url_slides: "slides/Xiaotao-Shen-2021-ASMS.pdf"
 url_video: ""
 ---
 
@@ -34,4 +34,4 @@ url_video: ""
 Click on the **Slides** button above to view the built-in slides feature.
 {{% /alert %}}
 
-The slides can be downloaded [here](https://www.shenxt.info/slides/Xiaotao Shen 2021-ASMS.pdf).
+The slides can be downloaded [here](https://www.shenxt.info/slides/Xiaotao-Shen-2021-ASMS.pdf).
