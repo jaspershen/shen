@@ -1,6 +1,6 @@
 ---
 abstract: Normalization and Integration of Large-Scale Mass Spectrometry-based Metabolomics Data Using Support Vector Regression
-all_day: false
+all_day: yes
 authors: []
 date: "2016-07-22T13:00:00Z"
 date_end: "2016-07-22T15:00:00Z"

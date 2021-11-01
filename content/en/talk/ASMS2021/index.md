@@ -1,9 +1,9 @@
 ---
 abstract: metID A R package for Automatable Compound Annotation for LC−MS-based Data
-all_day: false
+all_day: yes
 authors: []
-date: "2021-11-03T13:00:00Z"
-date_end: "2021-11-03T13:00:00Z"
+date: "2021-10-31T13:00:00Z"
+date_end: "2020-10-31T13:00:00Z"
 event: The 69<sup>th</sup> ASMS Conference on Mass Spectrometry and Allied Topics
 event_url: https://www.asms.org/conferences/annual-conference/annual-conference-homepage
 featured: true
@@ -19,7 +19,7 @@ location: Philadelphia, United States
 math: true
 projects:
 - internal-project
-publishDate: "2021-11-03T00:00:00Z"
+publishDate: "2021-10-31T00:00:00Z"
 slides: 
 summary: metID A R package for Automatable Compound Annotation for LC−MS-based Data
 tags: []
