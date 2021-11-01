@@ -6,7 +6,7 @@ date: "2016-07-22T13:00:00Z"
 date_end: "2016-07-22T15:00:00Z"
 event: The 64<sup>th</sup> American Society for Mass Spectrometry Conference
 event_url: https://www.asms.org/publications/journal-of-the-american-society-for-mass-spectrometry-group/news-detail/2016/07/22/highlights-from-the-64th-annual-asms-conference
-featured: false
+featured: true
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/bzdhc5b3Bxs)'
   focal_point: Right

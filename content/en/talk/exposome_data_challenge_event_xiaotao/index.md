@@ -6,7 +6,7 @@ date: "2021-04-29T13:00:00Z"
 date_end: "2021-04-29T13:00:00Z"
 event: Exposome Data Challenge Event
 event_url: https://www.asms.org/conferences/annual-conference/annual-conference-homepage
-featured: false
+featured: true
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/bzdhc5b3Bxs)'
   focal_point: Right

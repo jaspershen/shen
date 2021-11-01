@@ -6,7 +6,7 @@ date: "2021-11-03T13:00:00Z"
 date_end: "2021-11-03T13:00:00Z"
 event: The 69<sup>th</sup> ASMS Conference on Mass Spectrometry and Allied Topics
 event_url: https://www.asms.org/conferences/annual-conference/annual-conference-homepage
-featured: false
+featured: true
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/bzdhc5b3Bxs)'
   focal_point: Right

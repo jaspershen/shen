@@ -6,7 +6,7 @@ date: "2018-06-24T13:00:00Z"
 date_end: "2018-06-24T15:00:00Z"
 event: The 14<sup>th</sup> International Conference of the Metabolomics Society
 event_url: http://metabolomics2018.org/
-featured: false
+featured: true
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/bzdhc5b3Bxs)'
   focal_point: Right
