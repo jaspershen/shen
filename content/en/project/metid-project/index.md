@@ -1,6 +1,6 @@
 ---
 date: "2020-01-20T00:00:00Z"
-external_link: "https://jaspershen.github.io/metID/index.html"
+external_link: "https://metid.tidymass.org/"
 image:
   caption: Photo by rawpixel on Unsplash
   focal_point: Smart
@@ -8,7 +8,7 @@ links:
 - icon: twitter
   icon_pack: fab
   name: Follow
-  url: https://twitter.com/georgecushen
+  url: https://twitter.com/xiaotaoshen1990
 slides: example
 summary:
 tags:

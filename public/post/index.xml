@@ -5,7 +5,7 @@
     <link>https://www.shenxt.info/post/</link>
       <atom:link href="https://www.shenxt.info/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Xiaotao Shen&#39;s Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2021 From Stanford university, School of Medicine.</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2022 From Stanford university, School of Medicine.</copyright>
     <item>
       <title>RNA-seq原始数据处理</title>
       <link>https://www.shenxt.info/post/2021-06-30-rnaseq-raw-data-processing/</link>
@@ -5097,7 +5097,7 @@ response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; urllib&lt;span
 21	havana	exon	6486138	6486230	.	-	.	gene_id &amp;quot;ENSG00000275895&amp;quot;; gene_version &amp;quot;7&amp;quot;; transcript_id &amp;quot;ENST00000636315&amp;quot;; transcript_version &amp;quot;1&amp;quot;; exon_number &amp;quot;7&amp;quot;; gene_name &amp;quot;U2AF1L5&amp;quot;; gene_source &amp;quot;ensembl_havana&amp;quot;; gene_biotype &amp;quot;protein_coding&amp;quot;; transcript_name &amp;quot;U2AF1L5-207&amp;quot;; transcript_source &amp;quot;havana&amp;quot;; transcript_biotype &amp;quot;nonsense_mediated_decay&amp;quot;; exon_id &amp;quot;ENSE00003755540&amp;quot;; exon_version &amp;quot;1&amp;quot;; transcript_support_level &amp;quot;3&amp;quot;;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;从url读取text-data&#34;&gt;从URL读取text data&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;import urllib.request
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import urllib.request
 # variable for URL
 request_URL = &#39;** plain text file URL **&#39;
 # open the byte stream for data
@@ -5133,26 +5133,26 @@ with urllib.request.urlopen(request_URL) as inStream:
 &lt;/ul&gt;
 &lt;h1 id=&#34;tmux快捷键&#34;&gt;Tmux快捷键&lt;/h1&gt;
 &lt;h2 id=&#34;启动新对话&#34;&gt;启动新对话&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;tmux [new -s 会话名 -n 窗口名]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tmux [new -s 会话名 -n 窗口名]
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;比如创建一个新的会话:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;tmux new -s new_session
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tmux new -s new_session
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;列出所有的对话&#34;&gt;列出所有的对话&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;tmux ls
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tmux ls
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;进入某个会话&#34;&gt;进入某个会话&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;tmux a -t session
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tmux a -t session
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;关闭某个会话&#34;&gt;关闭某个会话&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;tmux kill-session -t 会话名
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tmux kill-session -t 会话名
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;关闭所有会话&#34;&gt;关闭所有会话&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;tmux ls | grep : | cut -d. -f1 | awk &#39;{print substr($1, 0, length($1)-1)}&#39; | xargs kill
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tmux ls | grep : | cut -d. -f1 | awk &#39;{print substr($1, 0, length($1)-1)}&#39; | xargs kill
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;在-tmux-中按下-tmux前缀ctrlbmac下未commandb然后再点击某个按键即可进行某些操作&#34;&gt;在 Tmux 中，按下 Tmux前缀ctrl+b(mac下未command+b)，然后再点击某个按键,即可进行某些操作&lt;/h2&gt;
 &lt;h3 id=&#34;退出某个会话&#34;&gt;退出某个会话&lt;/h3&gt;
 &lt;p&gt;先同时按下command+b,然后按d(detach的意思)&lt;/p&gt;
 &lt;h3 id=&#34;会话&#34;&gt;会话&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;:new&amp;lt;回车&amp;gt;  启动新会话
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;:new&amp;lt;回车&amp;gt;  启动新会话
 s           列出所有会话
 $           重命名当前会话
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;窗口-标签页&#34;&gt;窗口 (标签页)&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;c  创建新窗口
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;c  创建新窗口
 w  列出所有窗口
 n  后一个窗口
 p  前一个窗口
@@ -5171,7 +5171,7 @@ f  查找窗口
 &lt;p&gt;第五天的知识点总结.&lt;/p&gt;
 &lt;h1 id=&#34;fastq格式数据&#34;&gt;FASTQ格式数据&lt;/h1&gt;
 &lt;p&gt;Fastq是测序数据下机格式，其中包含测序序列(reads)的序列信息及其对应的测序质量信息。FASTQ格式文件中每个read由四行(name,sequence,comment,quality)描述，如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@YJM244_SRR800767.1 1 length=202      
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;@YJM244_SRR800767.1 1 length=202      
 TGTGAAACTTAGTTTTCTTTTTGTATTGGGGTGTAATTTCTTATTTTCCCTGTATTTCACCGCATGCAA      
 +YJM244 : Geographic Location of Isolate: Romania, Source: Clinical      
 CC@FDDFFHHHHHJJJJJJIIIJFHJGJJJJ:DCDDGHIJJG4DGIDGH&amp;lt;9??9=F@))B8-&#39;&#39;557=A)? 
@@ -5179,7 +5179,7 @@ CC@FDDFFHHHHHJJJJJJIIIJFHJGJJJJ:DCDDGHIJJG4DGIDGH&amp;lt;9??9=F@))B8-&#39;&#39;5
 &lt;h2 id=&#34;name&#34;&gt;name&lt;/h2&gt;
 &lt;p&gt;其中第一行是该read的name,以“@”开头，随后为Illumina 测序标识符(Sequence Identifiers)和描述文字(选择性部分).不同的公司或者软件不太一样.他是每一条read的唯一标识符,同一份FASTQ文件中不会出现重复,甚至不同的FASTQ的文件中也不会出现重复.&lt;/p&gt;
 &lt;p&gt;以下面的为例:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@HWUSI-EAS100R:6:73:941:1973#0/1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;@HWUSI-EAS100R:6:73:941:1973#0/1
 &lt;/code&gt;&lt;/pre&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
