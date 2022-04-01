@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
 title = "Publications"
-subtitle = "Science can be interesting."
+subtitle = "[Whole list can be found here](https://scholar.google.co.uk/citations?hl=en&user=3TK9yz8AAAAJ)"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.

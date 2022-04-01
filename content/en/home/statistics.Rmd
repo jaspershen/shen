@@ -30,8 +30,6 @@ gh_data <- tibble(
 )
 ```
 
-
-
 ```{r, include = FALSE}
 ## get posts
 posts <- list.files(
@@ -60,19 +58,24 @@ post_data <-
 
 ```{r, include = FALSE}
 ## Get talks and workshops
-talks <- list.files(here::here("content/en/talk"), 
-                    recursive = TRUE, 
-                    full.names = FALSE, 
-                    pattern = "^index[.]md")
-
-talk_data <- purrr::map_dfr(set_names(talks, dirname(talks)), function(file) {
-  data <- rmarkdown::yaml_front_matter(here::here("content/en/talk", file))
-  list(
-    date = as.Date(data$date),
-    title = data$title,
-    is_workshop = "workshop" %in% data$tags
+talks <-
+  list.files(
+    here::here("content/en/talk"),
+    recursive = TRUE,
+    full.names = FALSE,
+    pattern = "^index[.]md"
   )
-}, .id = "dir") %>%
+
+talk_data <-
+  purrr::map_dfr(set_names(talks, dirname(talks)), function(file) {
+    data <-
+      rmarkdown::yaml_front_matter(here::here("content/en/talk", file))
+    list(
+      date = as.Date(data$date),
+      title = data$title,
+      is_workshop = "workshop" %in% data$tags
+    )
+  }, .id = "dir") %>%
   mutate(
     type = ifelse(is_workshop, "workshop", "talk"),
     link = file.path("talk", dir),
@@ -128,42 +131,32 @@ all_data <- bind_rows(all_data,
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 ## prepare data for plots
 last_year <- today() - years(1)
-p_data <- dplyr::filter(all_data, date >= last_year, date <= today()) %>%
+p_data <-
+  dplyr::filter(all_data, date >= last_year, date <= today()) %>%
   dplyr::mutate(
     x = floor_date(date, "week"),
     y = fct_rev(lubridate::wday(date, label = TRUE)),
-    # type = factor(type, levels = c("github", 
-    #                                # "video", 
-    #                                "post"
-    #                                # "talk", 
-    #                                # "workshop"
-    #                                )),
     on_click = str_glue('window.location.assign("{link}")'),
     data_id = ifelse(!is.na(type), as.character(seq_along(x)), NA_character_),
     tip = str_glue("<b>{tip}</b> on {date}")
   )
-counts <- dplyr::count(p_data, type, .drop = FALSE) %>%
+counts <- 
+  dplyr::count(p_data, type, .drop = FALSE) %>%
   na.omit() %>%
+  dplyr::filter(type %in% c("github", "post")) %>% 
   dplyr::mutate(
     n = case_when(
-      type == "github" ~ dplyr::count(na.omit(p_data), type, wt = as.integer(count)) %>% 
+      type == "github" ~ dplyr::count(na.omit(p_data), type, wt = as.integer(count)) %>%
         dplyr::pull(),
       TRUE ~ n
     ),
     emoji = c("💻",
-              # "📹", 
-              "📋"
-              # "📽", 
-              # "⚒" 
-              ) ,
+              "📋"),
     nice = c("GitHub",
-             "posts"
-             ),
+             "posts"),
     label = str_glue("{scales::comma_format(accuracy = 1)(n)} {emoji}\n{nice}")
   )
-###
 library(ggthemes)
-###
 ```
 
 ```{r, echo = FALSE, warning = FALSE, out.width="100%"}
@@ -258,6 +251,7 @@ girafe_options(x, opts_tooltip(css = tooltip_css))
 ```
 
 
+[Google scholar link](https://scholar.google.co.uk/citations?hl=en&user=3TK9yz8AAAAJ)
 
 ```{r, echo = FALSE, warning = FALSE, out.width="100%", fig.asp = 0.6}
 library(scholar)
