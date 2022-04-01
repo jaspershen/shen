@@ -18,7 +18,7 @@ description = "Share"
 sharing_image = "shen3.png"
 
 # Twitter username (without @). Used when a vistor shares your site on Twitter.
-twitter = "JasperShen1990"
+twitter = "xiaotaoshen1990"
 
 # Diplay a logo in navigation bar rather than title (optional).
 #   To enable, place an image in `static/img/` and reference its filename below. To disable, set the value to "".
@@ -51,12 +51,12 @@ time_format = "3:04 PM"
 
 # Enter contact details (optional). To hide a field, clear it to "".
 email = "shenxt@stanford.edu"
-phone = "571-267-9283"
-address = "M339, Alway Building, Cooper Lane, Palo Alto, CA 94304, USA"
+phone = "+1 571-267-9283"
+address = "3165 Porter Drive, Palo Alto, CA 94034, USA"
 
 # Office hours: use `<br>` to insert a line break, or set to "" to remove office hours
 office_hours = """Monday-Friday 9:00 to 18:00<br>
-                  Saturday-Sunday 12:00 to 17:00"""
+                  Saturday 12:00 to 17:00"""
 
 # Enter an optional link for booking appointments (e.g. calendly.com).
 appointment_url = "https://calendly.com"
@@ -93,8 +93,8 @@ contact_links = [
 #   3: OpenStreetMap (Mapbox)
 map = 2
 map_api_key = ""
-latitude = "37.432533"
-longitude = "-122.174868"
+latitude = "37.40881390220905"
+longitude = "-122.149813679789"
 zoom = 15
 
 ############################
