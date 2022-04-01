@@ -24,6 +24,15 @@
     </item>
     
     <item>
+      <title>deepPseudoMSI</title>
+      <link>https://www.shenxt.info/project/deeppseudomsi-project/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/project/deeppseudomsi-project/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;deepPseudoMSI&lt;/code&gt; project is the first method that convert LC-MS raw data to “images” and then process them using deep learning method for diagnosis.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>metflow2</title>
       <link>https://www.shenxt.info/project/metflow2-project/</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>

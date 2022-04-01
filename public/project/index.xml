@@ -32,6 +32,24 @@
     </item>
     
     <item>
+      <title>deepPseudoMSI</title>
+      <link>https://www.shenxt.info/project/deeppseudomsi-project/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/project/deeppseudomsi-project/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;deepPseudoMSI&lt;/code&gt; project is the first method that convert LC-MS raw data to “images” and then process them using deep learning method for diagnosis.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>laggedcor</title>
+      <link>https://www.shenxt.info/project/laggedcor-project/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/project/laggedcor-project/</guid>
+      <description>&lt;p&gt;&lt;code&gt;TidyMass&lt;/code&gt; project is a comprehensive computational framework that can process the whole workflow of data processing and analysis for LC-MS-based untargeted metabolomics using tidyverse principles.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>metflow2</title>
       <link>https://www.shenxt.info/project/metflow2-project/</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
