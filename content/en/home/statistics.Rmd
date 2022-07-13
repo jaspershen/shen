@@ -140,6 +140,17 @@ p_data <-
     data_id = ifelse(!is.na(type), as.character(seq_along(x)), NA_character_),
     tip = str_glue("<b>{tip}</b> on {date}")
   )
+
+if(!"post" %in% unique(p_data$type)){
+  temp <- 
+    p_data %>% 
+    dplyr::filter(type == "github") %>% 
+    head(1) %>% 
+    dplyr::mutate(type = "post")
+  p_data <- rbind(p_data,
+                  temp)
+}
+
 counts <- 
   dplyr::count(p_data, type, .drop = FALSE) %>%
   na.omit() %>%
