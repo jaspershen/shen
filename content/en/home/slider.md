@@ -30,7 +30,7 @@ height = "calc(100vh - 70px)"
   #   Activate the button by specifying a URL and button label below.
   #   Deactivate by commenting out parameters, prefixing lines with `#`.
   cta_label = "Check my CV here"
-  cta_url = "https://www.shenxt.info/files/cv.html"
+  cta_url = "https://www.shenxt.info/files/XiaotaoShen20220731.pdf"
   cta_icon_pack = "fab"
   cta_icon = "address-card"
 
