@@ -2,8 +2,8 @@
 abstract: Tidymass An Object-oriented Computational Framework for LC-MS Data Processing and Analysis
 all_day: yes
 authors: []
-date: "2022-6-5T13:00:00Z"
-date_end: "2022-6-5T13:00:00Z"
+date: "2022-06-05T13:00:00Z"
+date_end: "2022-06-05T13:00:00Z"
 event: The 70<sup>th</sup> ASMS Conference on Mass Spectrometry and Allied Topics
 event_url: https://www.asms.org/conferences/annual-conference/annual-conference-homepage
 featured: true
@@ -19,7 +19,7 @@ location: Minneapolis, United States
 math: true
 projects:
 - internal-project
-publishDate: "2022-6-5T00:00:00Z"
+publishDate: "2022-06-05T00:00:00Z"
 slides: 
 summary: Tidymass An Object-oriented Computational Framework for LC-MS Data Processing and Analysis
 tags: []

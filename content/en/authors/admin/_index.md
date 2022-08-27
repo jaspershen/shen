@@ -53,7 +53,7 @@ social:
   link: https://www.shenxt.info/files/qq_QR.jpg
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/JasperShen1990
+  link: https://twitter.com/xiaotaoshen1990
 - icon: facebook
   icon_pack: fab
   link: https://www.facebook.com/xiaotao.shen.3
@@ -73,7 +73,7 @@ My research focuses on the development of bioinformatic algorithms and tools for
 
 Now I am also the co-chair of [Stanford Chinese Postdoctral Association (SCPA)](https://scpa.netlify.app/). Fell free to let me know if you want to join us and work for the amazing community!
 
-:floppy_disk: [Download my CV](https://www.shenxt.info/files/XiaotaoShen20220731.pdf)
+:floppy_disk: [Download my CV](https://www.shenxt.info/files/XiaotaoShen_CV_20220827.pdf)
 
  :dog: :octocat: :school: :u7533: :smile: :facepunch: :fist: :family: :panda_face: :earth_asia: :tada: :cn:
  

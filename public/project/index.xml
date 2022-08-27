@@ -5,7 +5,16 @@
     <link>https://www.shenxt.info/project/</link>
       <atom:link href="https://www.shenxt.info/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2022 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sun, 29 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2022 From Stanford university, School of Medicine.</copyright><lastBuildDate>Sat, 27 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>TidyMicrobiome</title>
+      <link>https://www.shenxt.info/project/tidymicrobiome-project/</link>
+      <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/project/tidymicrobiome-project/</guid>
+      <description>&lt;p&gt;&lt;code&gt;TidyMicrobiome&lt;/code&gt; project is a comprehensive computational framework that can process the whole workflow of data processing and analysis for microbiome data using tidyverse principles.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>SCPA</title>
       <link>https://www.shenxt.info/project/scpa-project/</link>
