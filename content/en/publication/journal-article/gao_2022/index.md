@@ -8,7 +8,7 @@ date: "2022-08-02T00:00:00Z"
 doi: "https://doi.org/10.1016/j.cell.2020.05.002"
 featured: false
 projects: []
-publication: '*Cell*'
+publication: '*Genome Research*'
 publication_short: ""
 publication_types: 
 - "2"
