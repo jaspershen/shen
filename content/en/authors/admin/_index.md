@@ -78,8 +78,9 @@ Now I am also the co-chair of [Stanford Chinese Postdoctral Association (SCPA)](
  :dog: :octocat: :school: :u7533: :smile: :facepunch: :fist: :family: :panda_face: :earth_asia: :tada: :cn:
  
 ---
-My favorite song recently: Hall of fame - The Script
+My favorite song recently: The hall of fame - The Script
 
-<iframe src="//player.bilibili.com/player.html?aid=3145765&bvid=BV1Ps411d7Kv&cid=4951795&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe iframe width="100%" height="500"
+src="//player.bilibili.com/player.html?aid=3145765&bvid=BV1Ps411d7Kv&cid=4951795&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ---
