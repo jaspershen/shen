@@ -5,7 +5,7 @@ authors:
 - admin
 - Michael Snyder
 date: "2022-08-02T00:00:00Z"
-doi: "https://doi.org/10.1016/j.cell.2020.05.002"
+# doi: "https://doi.org/10.1016/j.cell.2020.05.002"
 featured: false
 projects: []
 publication: '*Genome Research*'

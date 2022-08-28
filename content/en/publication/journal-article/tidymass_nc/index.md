@@ -5,8 +5,13 @@ authors:
 - Others
 - Michael Snyder
 date: "2022-08-02T00:00:00Z"
-doi: "https://www.nature.com/articles/s41467-022-32155-w"
+# doi: "https://www.nature.com/articles/s41467-022-32155-w"
 featured: false
+
+links:
+- name: TidyMass project
+  url: https://www.tidymass.org/
+
 projects: []
 publication: '*Nature Communications*'
 publication_short: ""
