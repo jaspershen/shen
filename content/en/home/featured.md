@@ -8,8 +8,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 21  # Order that this section will appear.
 
-title = "Research"
-subtitle = "Research highlight"
+title = "Research highlights"
+subtitle = "More in Publications"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.

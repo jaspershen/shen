@@ -30,8 +30,6 @@ url_slides: ""
 url_video: ""
 ---
 
-# {{% alert note %}}
-# Click on the **Slides** button above to view the built-in slides feature.
-# {{% /alert %}}
+Liquid chromatography-mass spectrometry (LC-MS) based untargeted metabolomics provides systematic profiling of metabolic. Yet its applications in precision medicine (disease diagnosis) have been limited by several challenges, including metabolite identification, information loss, and low reproducibility. Here, we present the deepPseudoMSI project (https://www.deeppseudomsi.org/), which converts LC-MS raw data to pseudo-MS images and then processes them by deep learning for precision medicine, such as disease diagnosis. Extensive tests based on real data demonstrated the superiority of deepPseudoMSI over traditional approaches and the capacity of our method to achieve an accurate individualized diagnosis. Our framework lays the foundation for future metabolic-based precision medicine.
 
 
