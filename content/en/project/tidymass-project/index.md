@@ -1,6 +1,6 @@
 ---
 date: "2020-01-20T00:00:00Z"
-external_link: "https://tidymass.org/"
+external_link: "https://www.tidymass.org/"
 image:
   caption: Photo by rawpixel on Unsplash
   focal_point: Smart
@@ -14,7 +14,7 @@ summary:
 tags:
 - Metabolomics
 title: TidyMass
-url_code: "https://github.com/tidymass/"
+url_code: "https://www.tidymass.org/"
 url_pdf: ""
 url_slides: ""
 url_video: ""
