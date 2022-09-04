@@ -46,7 +46,7 @@ social:
   link: '#contact'
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/in/chuchu-wang-71331190/
+  link: https://www.linkedin.com/in/caroline-h-johnson-8318532/
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`, 
@@ -56,12 +56,15 @@ social:
 #   link: uploads/resume.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: "ccw0820@stanford.edu"
+# email: "ccw0820@stanford.edu"
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
 
+Caroline H. Johnson, PhD, is Assistant Professor of Epidemiology in the Department of Environmental Health Sciences at Yale School of Public Health. She graduated from Imperial College London in 2009 with a PhD in Analytical Chemistry. Since then she has held postdoctoral and staff appointments at the National Cancer Institute and The Scripps Research Institute.
+
+Dr. Johnson's research uses mass spectrometry-based metabolomics to understand the role of metabolites in human health. Her primary research interest is to investigate the relationship between genetic and environmental influences (diet, hormones and microbiome) in colon cancer. She is also examining exposures during pregnancy.
 
 
 

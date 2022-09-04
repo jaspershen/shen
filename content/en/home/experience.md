@@ -25,14 +25,26 @@ date_format = "Jan 2006"
   date_start = "2019-04-01"
   date_end = ""
   description = """
-  Advisor: [Prof. Michael Snyder](http://snyderlab.stanford.edu/)
+  Advisor: [Prof. Michael P. Snyder](http://snyderlab.stanford.edu/)
   
   Research:
   
   * Metabolomics and System Biology
   * Multi-omics data analysis and their application in healthcare
-  * Sotfware and Algorithm development for metabolomics and other omics data
+  * Software and algorithm development for metabolomics and other omics data
   """
+  
+[[experience]]
+  title = "Research Scientist"
+  company = "Chinese Academy of Sciences"
+  company_url = "http://www.ucas.ac.cn/"
+  location = "Shanghai, China"
+  date_start = "2019-01-01"
+  date_end = "2019-03-31"
+  description = """
+  Advisor: [Prof. Zheng-Jiang Zhu](http://www.zhulab.cn/index.php)
+  """
+
 
 [[experience]]
   title = "Ph.D."
@@ -42,7 +54,7 @@ date_format = "Jan 2006"
   date_start = "2013-09-01"
   date_end = "2018-12-31"
   description = """
-   Advisor: [Dr. Zheng-Jiang Zhu](http://www.zhulab.cn/index.php)
+  Advisor: [Prof. Zheng-Jiang Zhu](http://www.zhulab.cn/index.php)
   
   Research:
   
@@ -51,7 +63,7 @@ date_format = "Jan 2006"
   """
   
 [[experience]]
-  title = "BS"
+  title = "B.S."
   company = "Inner Mongolia University"
   company_url = "http://www.imu.edu.cn/index.htm"
   location = "Hohhot, Inner Mongolia, China"

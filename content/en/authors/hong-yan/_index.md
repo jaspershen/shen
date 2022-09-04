@@ -46,7 +46,7 @@ social:
   link: '#contact'
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/in/chuchu-wang-71331190/
+  link: https://medicine.yale.edu/lab/cjohnson/profile/hong_yan/
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`, 
@@ -62,6 +62,9 @@ email: "ccw0820@stanford.edu"
 highlight_name: true
 ---
 
+Background: Chemometrics, algorithm development and application, LC-MS, infrared spectroscopy
+
+Interests: colorectal cancer metabolomics, Biostatistics, untargeted profiling
 
 
 
