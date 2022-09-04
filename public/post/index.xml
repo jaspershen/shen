@@ -5,7 +5,7 @@
     <link>https://www.shenxt.info/post/</link>
       <atom:link href="https://www.shenxt.info/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Xiaotao Shen&#39;s Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2022 From Stanford university, School of Medicine.</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2022</copyright>
     <item>
       <title>RNA-seq原始数据处理</title>
       <link>https://www.shenxt.info/post/2021-06-30-rnaseq-raw-data-processing/</link>

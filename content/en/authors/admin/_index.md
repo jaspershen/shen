@@ -69,9 +69,11 @@ user_groups:
 
 I am now a postdoctoral research fellow at Stanford University School of Medicine. I am broadly interested in Metabolomics processing development, Multi-omics data integration, Biostatistics, Systems Biology, Microbiome, and Bioinformatics, and their application in healthcare.
 
-My research focuses on the development of bioinformatic algorithms and tools for large-scale metabolomics as well as its application in discovering new biomarkers related to human diseases. I have developed several algorithms and tools in the past five years. The first algorithm was [MetNormalizer](https://jaspershen.github.io/MetNormalizer/), which is a machine learning-based algorithm for data normalization and integration of large-scale metabolomics. Then I developed a web-based tool, [MetFlow](http://metflow.zhulab.cn/), aiming to provide a comprehensive pipeline for data cleaning and statistical analysis of large-scale metabolomics. The most important algorithm I have developed is called [MetDNA](http://metdna.zhulab.cn/), which is a novel algorithm for metabolite identification and dysregulated pathway analysis in untargeted metabolomics. More tools and projects can be found in the `Projects` part.
+My overarching research interests are bioinformatics algorithms (R/Python) development for multi-omics data, and their application to precision medicine. Specifically, I am interested in bioinformatics algorithm development, including 1) comprehensive analysis workflow and deep learning for LC-MS data, 2) metabolic network analysis, 3) wearable and multi-omics data integration, and 4) microbiome and metabolome data integration. I also employed the developed bioinformatics algorithms as a unique systems biology approach to study the potential biomarkers and mechanisms of 1) pregnancy and related diseases, 2) aging and related diseases, and 3) cancer. 
 
-Now I am also the co-chair of [Stanford Chinese Postdoctral Association (SCPA)](https://scpa.netlify.app/). Fell free to let me know if you want to join us and work for the amazing community!
+More tools and projects can be found in the `Projects` part.
+
+Now I am also the member of [Stanford Chinese Postdoctral Association (SCPA)](https://scpa.netlify.app/). Fell free to let me know if you want to join us and work for the amazing community!
 
 :floppy_disk: [Download my CV](https://www.shenxt.info/files/XiaotaoShen_CV.pdf)
 

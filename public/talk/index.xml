@@ -5,7 +5,7 @@
     <link>https://www.shenxt.info/talk/</link>
       <atom:link href="https://www.shenxt.info/talk/index.xml" rel="self" type="application/rss+xml" />
     <description>PRESENTATIONS</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2022 From Stanford university, School of Medicine.</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2022</copyright>
     <item>
       <title>Tidymass An Object-oriented Computational Framework for LC-MS Data Processing and Analysis</title>
       <link>https://www.shenxt.info/talk/acs_fall_2022/</link>
