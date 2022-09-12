@@ -35,6 +35,16 @@ date_format = "Jan 2006"
   """
   
 [[experience]]
+  title = "Co-chair"
+  company = "Stanford Chinese Postdoctoral Association"
+  company_url = "https://scpa.netlify.app/"
+  location = "Palo Alto, California, US"
+  date_start = "2021-08-01"
+  date_end = "2022-08-01"
+  description = """
+  """
+  
+[[experience]]
   title = "Research Scientist"
   company = "Chinese Academy of Sciences"
   company_url = "http://www.ucas.ac.cn/"
