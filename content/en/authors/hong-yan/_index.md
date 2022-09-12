@@ -3,7 +3,7 @@
 name: Dr. Yan Hong
 
 # Is this the primary user of the site?
-superuser: true
+superuser: false
 user_groups:
 - Academia
 
@@ -41,9 +41,9 @@ organizations:
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "/#contact" for contact widget.
 social:
-- icon: envelope
-  icon_pack: fas
-  link: '#contact'
+# - icon: envelope
+#   icon_pack: fas
+#   link: '#contact'
 - icon: linkedin
   icon_pack: fab
   link: https://medicine.yale.edu/lab/cjohnson/profile/hong_yan/

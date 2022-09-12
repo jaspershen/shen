@@ -11,8 +11,11 @@ role: Postdoctoral Research Fellow
 interests:
 - Bioinformatics
 - Metabolomics
+- Proteomics
+- Microbiome
 - Multi-omics
 - Systems Biology
+- Aging
 
 education:
   courses:
@@ -84,5 +87,8 @@ My favorite song recently: The hall of fame - The Script
 
 <iframe iframe width="100%" height="500"
 src="//player.bilibili.com/player.html?aid=3145765&bvid=BV1Ps411d7Kv&cid=4951795&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+# Highlight the author in author lists? (true/false)
+highlight_name: true
 
 ---

@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 70  # Order that this section will appear.
 
 title = "Projects"
-subtitle = "Software and algorithm development. More software are in my [Github](https://github.com/jaspershen)."
+subtitle = "Software and algorithms. More here [Github](https://github.com/jaspershen)."
 
 [content]
   # Page type to display. E.g. project.
