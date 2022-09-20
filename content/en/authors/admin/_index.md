@@ -36,6 +36,9 @@ social:
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.co.uk/citations?hl=en&user=3TK9yz8AAAAJ
+- icon: orcid
+  icon_pack: fab
+  link: https://orcid.org/my-orcid?orcid=0000-0002-9608-9964
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
@@ -70,8 +73,7 @@ user_groups:
 - Visitors
 ---
 
-I am now a postdoctoral research fellow at Stanford University School of Medicine. I am broadly interested in Metabolomics processing development, Multi-omics data integration, Biostatistics, Systems Biology, Microbiome, and Bioinformatics, and their application in healthcare.
-My overarching research interests are bioinformatics algorithms (R/Python) development for multi-omics data, and their application to precision medicine. Specifically, I am interested in bioinformatics algorithm development, including 1) Comprehensive analysis workflow and deep learning for LC-MS data, 2) Metabolic network analysis, 3) Wearable and multi-omics data integration, and 4) microbiome and metabolome data integration. 
+I am now a postdoctoral research fellow at Stanford University School of Medicine. My overarching research interests are bioinformatics algorithms (R/Python) development for multi-omics data, and their application to precision medicine. Specifically, I am interested in bioinformatics algorithm development, including 1) Comprehensive analysis workflow and deep learning for LC-MS data, 2) Metabolic network analysis, 3) Wearable and multi-omics data integration, and 4) microbiome and metabolome data integration. 
 
 I also employed the developed bioinformatics algorithms as a unique systems biology approach to study the potential biomarkers and mechanisms of 1) pregnancy and related diseases, 2) aging and related diseases, and 3) cancer. 
 More tools and projects I developed can be found in the `Projects` part.
