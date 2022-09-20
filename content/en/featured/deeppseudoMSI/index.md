@@ -8,7 +8,7 @@ event:
 event_url: 
 featured: true
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/bzdhc5b3Bxs)'
+  caption: 'Image credit: [**Xiaotao Shen**](https://www.shenxt.info/)'
   focal_point: Right
 links:
 - icon: twitter
