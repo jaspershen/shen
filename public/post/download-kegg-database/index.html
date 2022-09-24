@@ -147,7 +147,7 @@
   <meta property="og:site_name" content="Dr. Xiaotao Shen">
   <meta property="og:url" content="https://www.shenxt.info/post/download-kegg-database/">
   <meta property="og:title" content="下载KEGG数据库 | Dr. Xiaotao Shen">
-  <meta property="og:description" content="记录使用一些R语言包下载KEGG数据库. #get the ID of all hsa pathways KEGGREST::listDatabases() path_ID &lt;- KEGGREST::keggList(organism = &quot;hsa&quot;, database = &quot;pathway&quot;) %&gt;% names() %&gt;% unique() %&gt;% stringr::str_replace_all(., &quot;path:&quot;, &quot;&quot;) dir.create(path = &quot;kegg_pathway&quot;) setwd(&quot;kegg_pathway/&quot;) node_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) edge_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) for(i in i:length(path_ID)){ cat(i, &quot; &quot;)"><meta property="og:image" content="https://www.shenxt.info/img/shen3.png">
+  <meta property="og:description" content="记录使用一些R语言包下载KEGG数据库. #get the ID of all hsa pathways KEGGREST::listDatabases() path_ID &lt;- KEGGREST::keggList(organism = &quot;hsa&quot;, database = &quot;pathway&quot;) %&gt;% names() %&gt;% unique() %&gt;% stringr::str_replace_all(., &quot;path:&quot;, &quot;&quot;) dir.create(path = &quot;kegg_pathway&quot;) setwd(&quot;kegg_pathway/&quot;) node_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) edge_info &lt;- vector(mode = &quot;list&quot;, length = length(path_ID)) for(i in i:length(path_ID)){ cat(i, &quot; &quot;)"><meta property="og:image" content="https://www.shenxt.info/img/shen.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-10-26T00:00:00&#43;00:00">
@@ -250,7 +250,7 @@
   <div class="container">
 
     
-      <a class="navbar-brand" href="/"><img src="/img/shen3.png" alt="Dr. Xiaotao Shen"></a>
+      <a class="navbar-brand" href="/"><img src="/img/shen.png" alt="Dr. Xiaotao Shen"></a>
       
       <button type="button" class="navbar-toggler" data-toggle="collapse"
               data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
