@@ -23,7 +23,7 @@ tags:
 title: Precision environmental health monitoring by longitudinal exposome and multi-omics profiling
 # url_code: ""
 # url_dataset: ""
-url_pdf: https://genome-cshlp-org.stanford.idm.oclc.org/content/early/2022/05/31/gr.276521.121.full.pdf+html
+url_pdf: https://www.shenxt.info/publications/Genome-Res-2022-Gao.pdf
 # url_poster: ""
 # url_project: ""
 # url_slides: ""

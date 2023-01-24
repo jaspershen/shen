@@ -27,7 +27,7 @@ tags:
 title: Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics
 url_code: 'https://github.com/ZhuMSLab/DecoMetDIA'
 #url_dataset: '#'
-url_pdf: https://www.nature.com/articles/s41467-019-09550-x
+url_pdf: https://www.shenxt.info/publications/metdna_nc.pdf
 #url_poster: '#'
 #url_project: ""
 #url_slides: ""

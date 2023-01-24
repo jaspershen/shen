@@ -24,7 +24,7 @@ tags:
 title: Metabolic Dynamics and Prediction of Gestational Age and Time to Delivery in Pregnant Women
 # url_code: ""
 # url_dataset: ""
-url_pdf: https://www.researchgate.net/publication/342458859_Metabolic_Dynamics_and_Prediction_of_Gestational_Age_and_Time_to_Delivery_in_Pregnant_Women
+url_pdf: https://www.shenxt.info/publications/cell_liang.pdf
 # url_poster: ""
 # url_project: ""
 # url_slides: ""

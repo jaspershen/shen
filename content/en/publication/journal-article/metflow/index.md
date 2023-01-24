@@ -26,7 +26,7 @@ tags:
 title: MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery
 # url_code: ""
 # url_dataset: ""
-url_pdf: https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/bty1066/5270667?redirectedFrom=fulltext
+url_pdf: https://www.shenxt.info/publications/metflow_bioinformatics.pdf
 # url_poster: ""
 # url_project: ""
 # url_slides: ""
