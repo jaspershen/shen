@@ -3,11 +3,11 @@ abstract: Mass spectrometry-based metabolomics aims to profile the metabolic cha
 authors:
 - admin
 - Zheng-Jiang Zhu
-date: "2019-01-02T00:00:00Z"
+date: "2018-12-27"
 doi: "10.1093/bioinformatics/bty1066"
 featured: false
 links:
-- name: MetFlow webserver
+- name: MetFlow
   url: http://metflow.zhulab.cn/
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/hpjSkU2UYSU)'
@@ -18,8 +18,8 @@ publication: '*Bioinformatics*'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2019-01-02T00:00:00Z"
-slides: example
+publishDate: "2018-12-27"
+# slides: example
 summary: Mass spectrometry-based metabolomics aims to profile the metabolic changes in biological systems and identify differential metabolites related to physiological phenotypes and aberrant activities. 
 tags:
 - Source Themes
@@ -34,10 +34,5 @@ url_pdf: https://www.shenxt.info/publications/metflow_bioinformatics.pdf
 # url_video: ""
 ---
 
-### Availability and implementation
+Mass spectrometry-based metabolomics aims to profile the metabolic changes in biological systems and identify differential metabolites related to physiological phenotypes and aberrant activities. However, many confounding factors during data acquisition complicate metabolomics data, which is characterized by high dimensionality, uncertain degrees of missing and zero values, nonlinearity, unwanted variations and non-normality. Therefore, prior to differential metabolite discovery analysis, various types of data cleaning such as batch alignment, missing value imputation, data normalization and scaling are essentially required for data post-processing. Here, we developed an interactive web server, namely, MetFlow, to provide an integrated and comprehensive workflow for metabolomics data cleaning and differential metabolite discovery. 
 
-The MetFlow is freely available on [http://metflow.zhulab.cn/](http://metflow.zhulab.cn/).
-
-### Supplementary information
-
-[Supplementary data](https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/PAP/10.1093_bioinformatics_bty1066/4/bty1066_supp.docx?Expires=1562370413&Signature=M~uVkc2HM8lV5SS96cccuCh4ZGmq3t5Y3m6X5UCE85GL6tLSiZh5YderYebpfDOwuKWwA9xMxzosXVrwU7f5l314XM6FtEfdChq7YK50O0UReaExGH7LSDTF9yrr0otobCobxejF9MaLttvPhTSV1u2R-~q3n~uqRA-sMZWF2TDaSWo2s-f6E2dknkx5aYgPa56R1MrSbzG1Eu95NCXBGh56Q6-uaCMn6zuwEnzDnKgvONbm0lHjZsO7HhYZJ3evbZ-OsFJiuGpzgpaXoV2OUdL71sCdqm9ebAlPdiNVTGa7T~iUXRBc4vUvmvPcU0eBNoHo3teCF2fC3I0wA03cSQ__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA) are available at Bioinformatics online.

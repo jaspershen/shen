@@ -2784,9 +2784,9 @@ rm Untitled.md
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>https://www.shenxt.info/publication/journal-article/metflow/</link>
+      <link>https://www.shenxt.info/publication/journal-article/metnormalizer_metabolomics_2016/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/metflow/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/metnormalizer_metabolomics_2016/</guid>
       <description>&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
 &lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
@@ -2796,13 +2796,10 @@ rm Untitled.md
     
     <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
-      <link>https://www.shenxt.info/publication/journal-article/metnormalizer_metabolomics_2016/</link>
-      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/metnormalizer_metabolomics_2016/</guid>
-      <description>&lt;h3 id=&#34;availability-and-implementation&#34;&gt;Availability and implementation&lt;/h3&gt;
-&lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/PAP/10.1093_bioinformatics_bty1066/4/bty1066_supp.docx?Expires=1562370413&amp;amp;Signature=M~uVkc2HM8lV5SS96cccuCh4ZGmq3t5Y3m6X5UCE85GL6tLSiZh5YderYebpfDOwuKWwA9xMxzosXVrwU7f5l314XM6FtEfdChq7YK50O0UReaExGH7LSDTF9yrr0otobCobxejF9MaLttvPhTSV1u2R-~q3n~uqRA-sMZWF2TDaSWo2s-f6E2dknkx5aYgPa56R1MrSbzG1Eu95NCXBGh56Q6-uaCMn6zuwEnzDnKgvONbm0lHjZsO7HhYZJ3evbZ-OsFJiuGpzgpaXoV2OUdL71sCdqm9ebAlPdiNVTGa7T~iUXRBc4vUvmvPcU0eBNoHo3teCF2fC3I0wA03cSQ__&amp;amp;Key-Pair-Id=APKAIE5G5CRDK6RD3PGA&#34;&gt;Supplementary data&lt;/a&gt; are available at Bioinformatics online.&lt;/p&gt;
+      <link>https://www.shenxt.info/publication/journal-article/2019-bioinformatics-metflow/</link>
+      <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/publication/journal-article/2019-bioinformatics-metflow/</guid>
+      <description>&lt;p&gt;Mass spectrometry-based metabolomics aims to profile the metabolic changes in biological systems and identify differential metabolites related to physiological phenotypes and aberrant activities. However, many confounding factors during data acquisition complicate metabolomics data, which is characterized by high dimensionality, uncertain degrees of missing and zero values, nonlinearity, unwanted variations and non-normality. Therefore, prior to differential metabolite discovery analysis, various types of data cleaning such as batch alignment, missing value imputation, data normalization and scaling are essentially required for data post-processing. Here, we developed an interactive web server, namely, MetFlow, to provide an integrated and comprehensive workflow for metabolomics data cleaning and differential metabolite discovery.&lt;/p&gt;
 </description>
     </item>
     
@@ -2825,9 +2822,9 @@ rm Untitled.md
     
     <item>
       <title>Predicting the pathological response to neoadjuvant chemoradiation using untargeted metabolomics in locally advanced rectal cancer</title>
-      <link>https://www.shenxt.info/publication/journal-article/huixun/</link>
+      <link>https://www.shenxt.info/publication/journal-article/2018-ro-huixun/</link>
       <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/huixun/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/2018-ro-huixun/</guid>
       <description>&lt;p&gt;The present study aimed to identify a panel of potential metabolite biomarkers to predict tumor response to neoadjuvant chemo-radiation therapy (NCRT) in locally advanced rectal cancer (LARC). Liquid chromatography–mass spectrometry (LC–MS)-based untargeted metabolomics was used to profile human serum samples (n=106) from LARC patients treated with NCRT. The samples were collected from Fudan University Shanghai Cancer Center (FUSCC) from July 2014 to January 2016. Statistical methods, such as partial least squares (PLS) and Wilcoxon rank-sum test, were used to identify discriminative metabolites between NCRT-sensitive and NCRT-resistant patients according to their tumor regression grade (TRG). This trial is registered with Clinical Trials.gov, number NCT03149978. A panel of metabolites was selected as potential predictive biomarkers of pathological response to NCRT. A total of 4810 metabolic peaks were detected, and 57 significantly dysregulated peaks were identified. These 57 metabolic peaks were used to differentiate patients using PLS in a dataset containing NCRT-sensitive (n=56) and NCRT-resistant (n=49) patients. The combination of 57 metabolic peaks had AUC values of 0.88, 0.81 and 0.84 in the prediction models using PLS, random forest, and support vector machine, respectively, suggesting that metabolomics has the potential ability to predict responses to NCRT. Furthermore, 15 metabolite biomarkers were identified and used to construct a logistic regression model and explore dysregulated metabolic pathways using untargeted metabolic profiling and data mining approaches. A panel of metabolites has been identified to facilitate the prediction of tumor response to NCRT in LARC, which is promising for the generation of personalized treatment strategies for LARC patients.&lt;/p&gt;
 </description>
     </item>
