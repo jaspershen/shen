@@ -3,9 +3,17 @@ abstract: The present study aimed to identify a panel of potential metabolite bi
 authors:
 - Huixun Jia
 - admin
-- Others
+- Yun Guan
+- Meimei Xu
+- Jia Tu
+- Miao Mo
+- Li Xie
+- Jing Yuan
+- Zhen Zhang
+- Sanjun Cai
+- Ji Zhu
 - Zheng-Jiang Zhu
-date: "2018-09-23T00:00:00Z"
+date: "2018-07-02"
 featured: false
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/hpjSkU2UYSU)'
@@ -16,8 +24,8 @@ publication: '*Radiotherapy and Oncology*'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2018-09-23T00:00:00Z"
-slides: example
+publishDate: "2018-07-02"
+# slides: example
 summary: A panel of metabolites has been identified to facilitate the prediction of tumor response to NCRT in LARC, which is promising for the generation of personalized treatment strategies for LARC patients.
 
 tags:
@@ -26,7 +34,7 @@ tags:
 title: Predicting the pathological response to neoadjuvant chemoradiation using untargeted metabolomics in locally advanced rectal cancer
 # url_code: ""
 # url_dataset: ""
-url_pdf: https://www.thegreenjournal.com/article/S0167-8140(18)33337-1/fulltext
+url_pdf: https://www.shenxt.info/publications/PIIS0167814018333371.pdf
 # url_poster: ""
 # url_project: ""
 # url_slides: ""
