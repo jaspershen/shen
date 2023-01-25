@@ -15,14 +15,6 @@
     </item>
     
     <item>
-      <title>Metabolic Reaction Network-based Recursive Metabolite Annotation for Untargeted Metabolomics</title>
-      <link>https://www.shenxt.info/publication/journal-article/metdna/</link>
-      <pubDate>Thu, 04 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/metdna/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
       <link>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
@@ -37,14 +29,6 @@
       <guid>https://www.shenxt.info/publication/journal-article/huixun/</guid>
       <description>&lt;p&gt;The present study aimed to identify a panel of potential metabolite biomarkers to predict tumor response to neoadjuvant chemo-radiation therapy (NCRT) in locally advanced rectal cancer (LARC). Liquid chromatography–mass spectrometry (LC–MS)-based untargeted metabolomics was used to profile human serum samples (n=106) from LARC patients treated with NCRT. The samples were collected from Fudan University Shanghai Cancer Center (FUSCC) from July 2014 to January 2016. Statistical methods, such as partial least squares (PLS) and Wilcoxon rank-sum test, were used to identify discriminative metabolites between NCRT-sensitive and NCRT-resistant patients according to their tumor regression grade (TRG). This trial is registered with Clinical Trials.gov, number NCT03149978. A panel of metabolites was selected as potential predictive biomarkers of pathological response to NCRT. A total of 4810 metabolic peaks were detected, and 57 significantly dysregulated peaks were identified. These 57 metabolic peaks were used to differentiate patients using PLS in a dataset containing NCRT-sensitive (n=56) and NCRT-resistant (n=49) patients. The combination of 57 metabolic peaks had AUC values of 0.88, 0.81 and 0.84 in the prediction models using PLS, random forest, and support vector machine, respectively, suggesting that metabolomics has the potential ability to predict responses to NCRT. Furthermore, 15 metabolite biomarkers were identified and used to construct a logistic regression model and explore dysregulated metabolic pathways using untargeted metabolic profiling and data mining approaches. A panel of metabolites has been identified to facilitate the prediction of tumor response to NCRT in LARC, which is promising for the generation of personalized treatment strategies for LARC patients.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>LipidCCS Prediction of Collision Cross-Section Values for Lipids with High Precision To Support Ion Mobility–Mass Spectrometry-Based Lipidomics</title>
-      <link>https://www.shenxt.info/publication/journal-article/lipidccs/</link>
-      <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/lipidccs/</guid>
-      <description></description>
     </item>
     
     <item>
