@@ -8,42 +8,44 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2023</copyright><lastBuildDate>Thu, 19 Jan 2023 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Multi-omics microsampling for the profiling of lifestyle-associated changes in health</title>
-      <link>https://www.shenxt.info/publication/journal-article/microsampling_nbme2023/</link>
+      <link>https://www.shenxt.info/publication/journal-article/2023-nbme-microsampling/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/microsampling_nbme2023/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/2023-nbme-microsampling/</guid>
       <description>&lt;p&gt;Current healthcare practices are reactive and use limited physiological and clinical information, often collected months or years apart. Moreover, the discovery and profiling of blood biomarkers in clinical and research settings are constrained by geographical barriers, the cost and inconvenience of in-clinic venepuncture, low sampling frequency and the low depth of molecular measurements. Here we describe a strategy for the frequent capture and analysis of thousands of metabolites, lipids, cytokines and proteins in 10 μl of blood alongside physiological information from wearable sensors. We show the advantages of such frequent and dense multi-omics microsampling in two applications, the assessment of the reactions to a complex mixture of dietary interventions, to discover individualized inflammatory and metabolic responses; and deep individualized profiling, to reveal large-scale molecular fluctuations as well as thousands of molecular relationships associated with intra-day physiological variations (in heart rate, for example) and with the levels of clinical biomarkers (specifically, glucose and cortisol) and of physical activity.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>massDatabase utilities for the operation of the public compound and pathway database</title>
-      <link>https://www.shenxt.info/publication/journal-article/massdatabase/</link>
+      <link>https://www.shenxt.info/publication/journal-article/massdatabase_bioinformatics_2022/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/massdatabase/</guid>
-      <description></description>
+      <guid>https://www.shenxt.info/publication/journal-article/massdatabase_bioinformatics_2022/</guid>
+      <description>&lt;p&gt;One of the major challenges in liquid chromatography coupled to mass spectrometry data is converting many metabolic feature entries to biological function information, such as metabolite annotation and pathway enrichment, which are based on the compound and pathway databases. Multiple online databases have been developed. However, no tool has been developed for operating all these databases for biological analysis. Therefore, we developed massDatabase, an R package that operates the online public databases and combines with other tools for streamlined compound annotation and pathway enrichment. massDatabase is a flexible, simple and powerful tool that can be installed on all platforms, allowing the users to leverage all the online public databases for biological function mining. A detailed tutorial and a case study are provided in the Supplementary Material.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Precision environmental health monitoring by longitudinal exposome and multi-omics profiling</title>
-      <link>https://www.shenxt.info/publication/journal-article/gao_2022/</link>
+      <link>https://www.shenxt.info/publication/journal-article/2022-gr-exposome/</link>
       <pubDate>Tue, 02 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/gao_2022/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/2022-gr-exposome/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TidyMass an object-oriented reproducible analysis framework for LC–MS data profiling</title>
-      <link>https://www.shenxt.info/publication/journal-article/tidymass_nc/</link>
+      <link>https://www.shenxt.info/publication/journal-article/2022-nc-tidymass/</link>
       <pubDate>Tue, 02 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/tidymass_nc/</guid>
-      <description></description>
+      <guid>https://www.shenxt.info/publication/journal-article/2022-nc-tidymass/</guid>
+      <description>&lt;p&gt;Reproducibility, traceability, and transparency have been long-standing issues for metabolomics data analysis. Multiple tools have been developed, but limitations still exist. Here, we present the tidyMass project (&lt;a href=&#34;https://www.tidymass.org/)&#34;&gt;https://www.tidymass.org/)&lt;/a&gt;, a comprehensive R-based computational framework that can achieve the traceable, shareable, and reproducible workflow needs of data processing and analysis for LC-MS-based untargeted metabolomics. TidyMass is an ecosystem of R packages that share an underlying design philosophy, grammar, and data structure, which provides a comprehensive, reproducible, and object-oriented computational framework. The modular architecture makes tidyMass a highly flexible and extensible tool, which other users can improve and integrate with other tools to customize their own pipeline.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Metabolic Dynamics and Prediction of Gestational Age and Time to Delivery in Pregnant Women</title>
-      <link>https://www.shenxt.info/publication/journal-article/liang_cell/</link>
+      <link>https://www.shenxt.info/publication/journal-article/2020-cell-pregnancy/</link>
       <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/liang_cell/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/2020-cell-pregnancy/</guid>
       <description></description>
     </item>
     
@@ -92,7 +94,8 @@
       <link>https://www.shenxt.info/publication/journal-article/huixun/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
       <guid>https://www.shenxt.info/publication/journal-article/huixun/</guid>
-      <description></description>
+      <description>&lt;p&gt;The present study aimed to identify a panel of potential metabolite biomarkers to predict tumor response to neoadjuvant chemo-radiation therapy (NCRT) in locally advanced rectal cancer (LARC). Liquid chromatography–mass spectrometry (LC–MS)-based untargeted metabolomics was used to profile human serum samples (n=106) from LARC patients treated with NCRT. The samples were collected from Fudan University Shanghai Cancer Center (FUSCC) from July 2014 to January 2016. Statistical methods, such as partial least squares (PLS) and Wilcoxon rank-sum test, were used to identify discriminative metabolites between NCRT-sensitive and NCRT-resistant patients according to their tumor regression grade (TRG). This trial is registered with Clinical Trials.gov, number NCT03149978. A panel of metabolites was selected as potential predictive biomarkers of pathological response to NCRT. A total of 4810 metabolic peaks were detected, and 57 significantly dysregulated peaks were identified. These 57 metabolic peaks were used to differentiate patients using PLS in a dataset containing NCRT-sensitive (n=56) and NCRT-resistant (n=49) patients. The combination of 57 metabolic peaks had AUC values of 0.88, 0.81 and 0.84 in the prediction models using PLS, random forest, and support vector machine, respectively, suggesting that metabolomics has the potential ability to predict responses to NCRT. Furthermore, 15 metabolite biomarkers were identified and used to construct a logistic regression model and explore dysregulated metabolic pathways using untargeted metabolic profiling and data mining approaches. A panel of metabolites has been identified to facilitate the prediction of tumor response to NCRT in LARC, which is promising for the generation of personalized treatment strategies for LARC patients.&lt;/p&gt;
+</description>
     </item>
     
     <item>
