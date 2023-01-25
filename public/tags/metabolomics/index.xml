@@ -99,7 +99,8 @@
       <link>https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/</guid>
-      <description></description>
+      <description>&lt;p&gt;Untargeted metabolomics studies for biomarker discovery often have hundreds to thousands of human samples. Data acquisition of large-scale samples has to be divided into several batches and may span from months to as long as several years. The signal drift of metabolites during data acquisition (intra- and inter-batch) is unavoidable and is a major confounding factor for large-scale metabolomics studies. We aim to develop a data normalization method to reduce unwanted variations and integrate multiple batches in large-scale metabolomics studies prior to statistical analyses. We developed a machine learning algorithm-based method, support vector regression (SVR), for large-scale metabolomics data normalization and integration. An R package named MetNormalizer was developed and provided for data processing using SVR normalization. After SVR normalization, the portion of metabolite ion peaks with relative standard deviations (RSDs) less than 30 % increased to more than 90 % of the total peaks, which is much better than other common normalization methods. The reduction of unwanted analytical variations helps to improve the performance of multivariate statistical analyses, both unsupervised and supervised, in terms of classification and prediction accuracy so that subtle metabolic changes in epidemiological studies can be detected. SVR normalization can effectively remove the unwanted intra- and inter-batch variations, and is much better than other common normalization methods.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
