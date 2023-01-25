@@ -17,9 +17,9 @@
     
     <item>
       <title>massDatabase utilities for the operation of the public compound and pathway database</title>
-      <link>https://www.shenxt.info/publication/journal-article/massdatabase_bioinformatics_2022/</link>
+      <link>https://www.shenxt.info/publication/journal-article/2022-bioinformatics-massdatabase/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/massdatabase_bioinformatics_2022/</guid>
+      <guid>https://www.shenxt.info/publication/journal-article/2022-bioinformatics-massdatabase/</guid>
       <description>&lt;p&gt;One of the major challenges in liquid chromatography coupled to mass spectrometry data is converting many metabolic feature entries to biological function information, such as metabolite annotation and pathway enrichment, which are based on the compound and pathway databases. Multiple online databases have been developed. However, no tool has been developed for operating all these databases for biological analysis. Therefore, we developed massDatabase, an R package that operates the online public databases and combines with other tools for streamlined compound annotation and pathway enrichment. massDatabase is a flexible, simple and powerful tool that can be installed on all platforms, allowing the users to leverage all the online public databases for biological function mining. A detailed tutorial and a case study are provided in the Supplementary Material.&lt;/p&gt;
 </description>
     </item>
@@ -59,14 +59,6 @@
     </item>
     
     <item>
-      <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
-      <link>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</link>
-      <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://www.shenxt.info/publication/journal-article/zhuozhong_ac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>MetFlow an interactive and integrated workflow for metabolomics data cleaning and differential metabolite discovery</title>
       <link>https://www.shenxt.info/publication/journal-article/metflow/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
@@ -87,6 +79,15 @@
 &lt;p&gt;The MetFlow is freely available on &lt;a href=&#34;http://metflow.zhulab.cn/&#34;&gt;http://metflow.zhulab.cn/&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;supplementary-information&#34;&gt;Supplementary information&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/PAP/10.1093_bioinformatics_bty1066/4/bty1066_supp.docx?Expires=1562370413&amp;amp;Signature=M~uVkc2HM8lV5SS96cccuCh4ZGmq3t5Y3m6X5UCE85GL6tLSiZh5YderYebpfDOwuKWwA9xMxzosXVrwU7f5l314XM6FtEfdChq7YK50O0UReaExGH7LSDTF9yrr0otobCobxejF9MaLttvPhTSV1u2R-~q3n~uqRA-sMZWF2TDaSWo2s-f6E2dknkx5aYgPa56R1MrSbzG1Eu95NCXBGh56Q6-uaCMn6zuwEnzDnKgvONbm0lHjZsO7HhYZJ3evbZ-OsFJiuGpzgpaXoV2OUdL71sCdqm9ebAlPdiNVTGa7T~iUXRBc4vUvmvPcU0eBNoHo3teCF2fC3I0wA03cSQ__&amp;amp;Key-Pair-Id=APKAIE5G5CRDK6RD3PGA&#34;&gt;Supplementary data&lt;/a&gt; are available at Bioinformatics online.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Development of a Correlative Strategy To Discover Colorectal Tumor Tissue Derived Metabolite Biomarkers in Plasma Using Untargeted Metabolomics</title>
+      <link>https://www.shenxt.info/publication/journal-article/2018-ac-zhuozhong/</link>
+      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/publication/journal-article/2018-ac-zhuozhong/</guid>
+      <description>&lt;p&gt;The metabolic profiling of biofluids using untargeted metabolomics provides a promising choice to discover metabolite biomarkers for clinical cancer diagnosis. However, metabolite biomarkers discovered in biofluids may not necessarily reflect the pathological status of tumor tissue, which makes these biomarkers difficult to reproduce. In this study, we developed a new analysis strategy by integrating the univariate and multivariate correlation analysis approach to discover tumor tissue derived (TTD) metabolites in plasma samples. Specifically, untargeted metabolomics was first used to profile a set of paired tissue and plasma samples from 34 colorectal cancer (CRC) patients. Next, univariate correlation analysis was used to select correlative metabolite pairs between tissue and plasma, and a random forest regression model was utilized to define 243 TTD metabolites in plasma samples. The TTD metabolites in CRC plasma were demonstrated to accurately reflect the pathological status of tumor tissue and have great potential for metabolite biomarker discovery. Accordingly, we conducted a clinical study using a set of 146 plasma samples from CRC patients and gender-matched polyp controls to discover metabolite biomarkers from TTD metabolites. As a result, eight metabolites were selected as potential biomarkers for CRC diagnosis with high sensitivity and specificity. For CRC patients after surgery, the survival risk score defined by metabolite biomarkers also performed well in predicting overall survival time (p = 0.022) and progression-free survival time (p = 0.002). In conclusion, we developed a new analysis strategy which effectively discovers tumor tissue related metabolite biomarkers in plasma for cancer diagnosis and prognosis.&lt;/p&gt;
 </description>
     </item>
     
