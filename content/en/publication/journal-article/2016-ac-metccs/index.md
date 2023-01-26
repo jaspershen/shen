@@ -8,7 +8,7 @@ authors:
 date: "2016-10-21"
 featured: false
 links:
-- name: MetCCS webserver
+- name: MetCCS
   url: http://www.metabolomics-shanghai.org/MetCCS/
 image:
   caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/hpjSkU2UYSU)'

@@ -27,7 +27,8 @@
   
     
   
-  <meta name="description" content="Untargeted metabolomics studies for biomarker discovery often have hundreds to thousands of human samples. Data acquisition of large-scale samples has to be divided into several batches and may span from months to as long as several years. The signal drift of metabolites during data acquisition (intra- and inter-batch) is unavoidable and is a major confounding factor for large-scale metabolomics studies. We aim to develop a data normalization method to reduce unwanted variations and integrate multiple batches in large-scale metabolomics studies prior to statistical analyses. We developed a machine learning algorithm-based method, support vector regression (SVR), for large-scale metabolomics data normalization and integration. An R package named MetNormalizer was developed and provided for data processing using SVR normalization. After SVR normalization, the portion of metabolite ion peaks with relative standard deviations (RSDs) less than 30 % increased to more than 90 % of the total peaks, which is much better than other common normalization methods. The reduction of unwanted analytical variations helps to improve the performance of multivariate statistical analyses, both unsupervised and supervised, in terms of classification and prediction accuracy so that subtle metabolic changes in epidemiological studies can be detected. SVR normalization can effectively remove the unwanted intra- and inter-batch variations, and is much better than other common normalization methods.">
+  <meta name="description" content="Introduction: Previous metabolomics studies have revealed perturbed metabolic signatures in esophageal squamous cell carcinoma (ESCC) patients, however, most of these studies included mainly late-staged ESCC patients due to the difficulties of collecting the early-staged samples from asymptotic ESCC subjects. Objectives This study aims to explore the early-staged ESCC metabolic signatures and potential of serum metabolomics to diagnose ESCC at early stages.
+Methods: Serum samples of 97 ESCC patients (stage 0, 39 cases; stage I, 17 cases; stage II, 11 cases, stage III, 30 cases) and 105 healthy controls (HC) were enrolled and randomly separated into training data (77 ESCCs, 84 HCs) and validation data (20 ESCCs, 21 HCs).">
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/">
@@ -146,8 +147,9 @@
   
   <meta property="og:site_name" content="Dr. Xiaotao Shen">
   <meta property="og:url" content="https://www.shenxt.info/publication/journal-article/taozhang_metabolomics/">
-  <meta property="og:title" content="Normalization and integration of large-scale metabolomics data using support vector regression | Dr. Xiaotao Shen">
-  <meta property="og:description" content="Untargeted metabolomics studies for biomarker discovery often have hundreds to thousands of human samples. Data acquisition of large-scale samples has to be divided into several batches and may span from months to as long as several years. The signal drift of metabolites during data acquisition (intra- and inter-batch) is unavoidable and is a major confounding factor for large-scale metabolomics studies. We aim to develop a data normalization method to reduce unwanted variations and integrate multiple batches in large-scale metabolomics studies prior to statistical analyses. We developed a machine learning algorithm-based method, support vector regression (SVR), for large-scale metabolomics data normalization and integration. An R package named MetNormalizer was developed and provided for data processing using SVR normalization. After SVR normalization, the portion of metabolite ion peaks with relative standard deviations (RSDs) less than 30 % increased to more than 90 % of the total peaks, which is much better than other common normalization methods. The reduction of unwanted analytical variations helps to improve the performance of multivariate statistical analyses, both unsupervised and supervised, in terms of classification and prediction accuracy so that subtle metabolic changes in epidemiological studies can be detected. SVR normalization can effectively remove the unwanted intra- and inter-batch variations, and is much better than other common normalization methods."><meta property="og:image" content="https://www.shenxt.info/img/shen.png">
+  <meta property="og:title" content="Serum metabolomics for early diagnosis of esophageal squamous cell carcinoma by UHPLC-QTOF/MS | Dr. Xiaotao Shen">
+  <meta property="og:description" content="Introduction: Previous metabolomics studies have revealed perturbed metabolic signatures in esophageal squamous cell carcinoma (ESCC) patients, however, most of these studies included mainly late-staged ESCC patients due to the difficulties of collecting the early-staged samples from asymptotic ESCC subjects. Objectives This study aims to explore the early-staged ESCC metabolic signatures and potential of serum metabolomics to diagnose ESCC at early stages.
+Methods: Serum samples of 97 ESCC patients (stage 0, 39 cases; stage I, 17 cases; stage II, 11 cases, stage III, 30 cases) and 105 healthy controls (HC) were enrolled and randomly separated into training data (77 ESCCs, 84 HCs) and validation data (20 ESCCs, 21 HCs)."><meta property="og:image" content="https://www.shenxt.info/img/shen.png">
   <meta property="og:locale" content="en-us">
   
   
@@ -184,7 +186,7 @@
 
   
 
-  <title>Normalization and integration of large-scale metabolomics data using support vector regression | Dr. Xiaotao Shen</title>
+  <title>Serum metabolomics for early diagnosis of esophageal squamous cell carcinoma by UHPLC-QTOF/MS | Dr. Xiaotao Shen</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -528,7 +530,7 @@
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">Normalization and integration of large-scale metabolomics data using support vector regression</h1>
+  <h1 itemprop="name">Serum metabolomics for early diagnosis of esophageal squamous cell carcinoma by UHPLC-QTOF/MS</h1>
 
   
 
@@ -551,7 +553,7 @@
 
 
 
-  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Xiaotao Shen</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/others/">Others</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/zheng-jiang-zhu/">Zheng-Jiang Zhu</a></span>
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/jialin-wang/">Jialin Wang</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/tao-zhang/">Tao Zhang</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Xiaotao Shen</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/jia-liu/">Jia Liu</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/deli-zhao/">Deli Zhao</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yawen-sun/">Yawen Sun</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/lu-wang/">Lu Wang</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yingjun-liu/">Yingjun Liu</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/xiaoyun-gong/">Xiaoyun Gong</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yanxun-liu/">Yanxun Liu</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/zheng-jiang-zhu/">Zheng-Jiang Zhu</a></span>, <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/fuzhong-xue/">Fuzhong Xue</a></span>
 
   </div>
   
@@ -659,7 +661,7 @@
 
 
 
-<a class="btn btn-outline-primary my-1 mr-1" href="/publications/s11306-016-1026-5.pdf" target="_blank" rel="noopener">
+<a class="btn btn-outline-primary my-1 mr-1" href="/publications/s11306-016-1050-5.pdf" target="_blank" rel="noopener">
   PDF
 </a>
 
@@ -695,7 +697,16 @@
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <p>Untargeted metabolomics studies for biomarker discovery often have hundreds to thousands of human samples. Data acquisition of large-scale samples has to be divided into several batches and may span from months to as long as several years. The signal drift of metabolites during data acquisition (intra- and inter-batch) is unavoidable and is a major confounding factor for large-scale metabolomics studies. We aim to develop a data normalization method to reduce unwanted variations and integrate multiple batches in large-scale metabolomics studies prior to statistical analyses. We developed a machine learning algorithm-based method, support vector regression (SVR), for large-scale metabolomics data normalization and integration. An R package named MetNormalizer was developed and provided for data processing using SVR normalization. After SVR normalization, the portion of metabolite ion peaks with relative standard deviations (RSDs) less than 30 % increased to more than 90 % of the total peaks, which is much better than other common normalization methods. The reduction of unwanted analytical variations helps to improve the performance of multivariate statistical analyses, both unsupervised and supervised, in terms of classification and prediction accuracy so that subtle metabolic changes in epidemiological studies can be detected. SVR normalization can effectively remove the unwanted intra- and inter-batch variations, and is much better than other common normalization methods.</p>
+      <p>Introduction: Previous metabolomics studies have revealed perturbed metabolic signatures in esophageal squamous cell carcinoma (ESCC) patients, however, most of these studies included mainly late-staged ESCC patients due to the difficulties of collecting the early-staged samples from asymptotic ESCC subjects. Objectives This study aims to explore the early-staged ESCC metabolic signatures and potential of serum metabolomics to diagnose ESCC at early stages.</p>
+<p>Methods: Serum samples of 97 ESCC patients (stage 0, 39 cases; stage I, 17 cases; stage II, 11 cases, stage III, 30 cases)
+and 105 healthy controls (HC) were enrolled and randomly separated into training data (77 ESCCs, 84 HCs) and validation
+data (20 ESCCs, 21 HCs). Untargeted metabolomics was performed to identify ESCC-related metabolic signatures.
+Results The global metabolomics profiles could clearly distinguish ESCC from HC in training data. 16 ascertained
+metabolites were found to be disturbed in the metabolic pathways characterized by dysregulated fatty acid biosynthesis,
+glycerophospholipid metabolism, choline metabolism in cancer and linoleic acid metabolism. The AUC value in validation data was 0.895, with sensitivity 85.0 % and specificity 90.5 %. Good diagnostic performances were also achieved for early stage ESCC, with the values of area under the curve (AUC) 0.881 for the ESCC patients in both stage 0 and I–II. In addition, six metabolites were found to discriminate ESCC stages. Among them, three
+biomarkers, dodecanoic acid, LysoPA(18:1), and LysoPC(14:0), exhibited clear trend for ESCC progression.</p>
+<p>Conclusion: These findings suggest serum metabolomics, performed in a minimally noninvasive and convenient
+manner, may possess great potential for early diagnosis of ESCC patients.</p>
 
     </div>
 
@@ -736,215 +747,12 @@
   
   <div class="media author-card" itemscope itemtype="http://schema.org/Person">
     
-      
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu86242519a21313948ac7dc77e0a27da6_1568301_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
-    
 
     <div class="media-body">
-      <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Xiaotao Shen</a></h5>
-      <h6 class="card-subtitle">Postdoctoral Research Fellow</h6>
-      <p class="card-text" itemprop="description">Metabolomics, Multi-omics, Bioinformatics, Systems Biology.</p>
+      <h5 class="card-title" itemprop="name"><a href="/authors/jialin-wang/"></a></h5>
+      
+      
       <ul class="network-icon" aria-hidden="true">
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="/#contact" >
-              <i class="fas fa-envelope"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://www.linkedin.com/in/shenxt/" target="_blank" rel="noopener">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://scholar.google.co.uk/citations?hl=en&amp;user=3TK9yz8AAAAJ" target="_blank" rel="noopener">
-              <i class="ai ai-google-scholar"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://orcid.org/my-orcid?orcid=0000-0002-9608-9964" target="_blank" rel="noopener">
-              <i class="ai ai-google-scholar"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://github.com/jaspershen" target="_blank" rel="noopener">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://www.researchgate.net/profile/Xiaotao_Shen" target="_blank" rel="noopener">
-              <i class="fab fa-researchgate"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://stackoverflow.com/users/7579484/jasper-shen" target="_blank" rel="noopener">
-              <i class="fab fa-stack-overflow"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://www.zhihu.com/people/shen-zu-tao-73/activities" target="_blank" rel="noopener">
-              <i class="fab fa-zhihu"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://www.shenxt.info/files/wechat_QR.jpg" target="_blank" rel="noopener">
-              <i class="fab fa-weixin"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://www.shenxt.info/files/qq_QR.jpg" target="_blank" rel="noopener">
-              <i class="fab fa-qq"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://twitter.com/xiaotaoshen1990" target="_blank" rel="noopener">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-        
-          
-          
-          
-            
-          
-          
-          
-          
-          
-            
-          
-          <li>
-            <a itemprop="sameAs" href="https://www.facebook.com/xiaotao.shen.3" target="_blank" rel="noopener">
-              <i class="fab fa-facebook"></i>
-            </a>
-          </li>
         
       </ul>
     </div>
