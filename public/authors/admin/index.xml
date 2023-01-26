@@ -42,6 +42,21 @@
     </item>
     
     <item>
+      <title>metID an R package for automatable compound annotation for LC2MS-based data</title>
+      <link>https://www.shenxt.info/publication/journal-article/2021-bioinformatics-metid/</link>
+      <pubDate>Sat, 31 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.shenxt.info/publication/journal-article/2021-bioinformatics-metid/</guid>
+      <description>&lt;p&gt;Accurate and efficient compound annotation is a long-standing challenge for LC–MS-based data (e.g.
+untargeted metabolomics and exposomics). Substantial efforts have been devoted to overcoming this obstacle,
+whereas current tools are limited by the sources of spectral information used (in-house and public databases) and
+are not automated and streamlined. Therefore, we developed metID, an R package that combines information from
+all major databases for comprehensive and streamlined compound annotation. metID is a flexible, simple and
+powerful tool that can be installed on all platforms, allowing the compound annotation process to be fully automatic
+and reproducible. A detailed tutorial and a case study are provided in Supplementary Materials.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Metabolic Dynamics and Prediction of Gestational Age and Time to Delivery in Pregnant Women</title>
       <link>https://www.shenxt.info/publication/journal-article/2020-cell-pregnancy/</link>
       <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
