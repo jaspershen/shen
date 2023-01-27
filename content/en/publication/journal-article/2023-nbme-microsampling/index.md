@@ -18,6 +18,11 @@ authors:
 - Chuchu Wang
 - Daniel Hornburg
 - Michael Snyder
+author_notes:
+- "Equal contribution"
+- "Equal contribution"
+- "Equal contribution"
+- "Equal contribution"
 date: "2023-01-19"
 doi: "https://www.nature.com/articles/s41551-022-00999-8"
 featured: true
