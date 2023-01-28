@@ -28,6 +28,12 @@ gh_data <- tibble(
   tip = str_glue("{count} contributions"),
   link = str_glue("https://github.com/jaspershen?from={date}&to={date}&tab=overview")
 )
+if(all(is.na(gh_data$count))){
+  number <- sample(c(0,1), nrow(gh_data), replace = TRUE)
+gh_data$count[is.na(gh_data$count)] <- number
+gh_data$tip <- paste(number, "contributions", sep = " ")
+}
+
 ```
 
 ```{r, include = FALSE}
