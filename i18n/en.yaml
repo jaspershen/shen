@@ -151,6 +151,9 @@
 - id: pub_journal
   translation: Journal article
 
+- id: first_corresponding_article
+  translation: First-Corresponding author article
+
 - id: pub_preprint
   translation: Preprint
 
