@@ -1,0 +1,35 @@
+---
+title: How to update shen personal website
+author: Xiaotao Shen
+date: '2022-10-23'
+slug: shen-blog
+categories:
+  - Blog
+tags:
+  - Blog
+  - Chinese
+image:
+  caption: ''
+  focal_point: ''
+output:
+  blogdown::html_page:
+    toc: true
+    number_sections: true
+---
+
+# The menus appearance
+
+The file is here: config/_default/menus.en.toml
+
+# The theme design
+
+The file is here: config/_default/params.toml
+
+# The order of contents
+
+This is determined by the weight in the index for each content.
+
+About: 20
+
+featured: 22
+
