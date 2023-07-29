@@ -36,33 +36,18 @@ social:
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.co.uk/citations?hl=en&user=3TK9yz8AAAAJ
-- icon: google-scholar
-  icon_pack: ai
-  link: https://orcid.org/my-orcid?orcid=0000-0002-9608-9964
 - icon: github
   icon_pack: fab
   link: https://github.com/jaspershen
 - icon: researchgate
   icon_pack: fab
   link: https://www.researchgate.net/profile/Xiaotao_Shen
-- icon: stack-overflow
-  icon_pack: fab
-  link: https://stackoverflow.com/users/7579484/jasper-shen
-- icon: zhihu
-  icon_pack: fab
-  link: https://www.zhihu.com/people/shen-zu-tao-73/activities
 - icon: weixin
   icon_pack: fab
   link: https://www.shenxt.info/files/wechat_QR.jpg
-- icon: qq
-  icon_pack: fab
-  link: https://www.shenxt.info/files/qq_QR.jpg
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/xiaotaoshen1990
-- icon: facebook
-  icon_pack: fab
-  link: https://www.facebook.com/xiaotao.shen.3
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "shenxt@stanford.edu"
@@ -84,10 +69,10 @@ Now I am also the member of [Stanford Chinese Postdoctral Association (SCPA)](ht
 
  :dog: :octocat: :school: :u7533: :smile: :facepunch: :fist: :family: :panda_face: :earth_asia: :tada: :cn:
  
----
-My favorite song recently: The hall of fame - The Script
-
-<iframe iframe width="100%" height="500"
-src="//player.bilibili.com/player.html?aid=3145765&bvid=BV1Ps411d7Kv&cid=4951795&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+# ---
+# My favorite song recently: The hall of fame - The Script
+# 
+# <iframe iframe width="100%" height="500"
+# src="//player.bilibili.com/player.html?aid=3145765&bvid=BV1Ps411d7Kv&cid=4951795&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ---

@@ -15,7 +15,7 @@ links:
   icon_pack: fab
   name: Follow
   url: https://twitter.com/xiaotaoshen1990
-location: Houston, United States
+location: Palo Alto, United States
 math: true
 projects:
 - internal-project

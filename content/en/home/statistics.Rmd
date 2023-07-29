@@ -4,7 +4,7 @@ headless: yes
 active: yes
 weight: 21
 widget: blank
-subtitle: Record how many work I have done
+subtitle: 
 design:
   columns: '1'
 ---
