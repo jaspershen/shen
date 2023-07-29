@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xiaotao Shen&#39;s Blog | Dr. Xiaotao Shen</title>
+    <title>Posts | Dr. Xiaotao Shen</title>
     <link>https://www.shenxt.info/post/</link>
       <atom:link href="https://www.shenxt.info/post/index.xml" rel="self" type="application/rss+xml" />
-    <description>Xiaotao Shen&#39;s Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2023</copyright>
+    <description>Posts</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©Xiaotao Shen 2023</copyright><lastBuildDate>Wed, 30 Jun 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>RNA-seq原始数据处理</title>
       <link>https://www.shenxt.info/post/2021-06-30-rnaseq-raw-data-processing/</link>
